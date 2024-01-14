@@ -5,7 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <script>
 // import TheWelcome from '../components/TheWelcome.vue'
-const imgUrl = new URL('../assets/imgs/cat.jpg', import.meta.url).href
+const imgUrl = new URL('../src/assets/imgs/cat.jpg', import.meta.url).href
 export default {
   data() {
     return {
