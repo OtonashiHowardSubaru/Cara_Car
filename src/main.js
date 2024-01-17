@@ -2,7 +2,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { Button, ButtonGroup,
-         Carousel, CarouselItem,
+        Carousel, CarouselItem,
+        Menu, MenuItem,
+        Icon,Submenu,MenuGroup,
         } from 'view-ui-plus'
 
 
@@ -26,6 +28,11 @@ vueApp.component('Button', Button)
 vueApp.component('ButtonGroup', ButtonGroup)
 vueApp.component('Carousel', Carousel)
 vueApp.component('CarouselItem', CarouselItem)
+vueApp.component('Menu', Menu)
+vueApp.component('MenuItem', MenuItem)
+vueApp.component('Icon', Icon)
+vueApp.component('Submenu', Submenu)
+vueApp.component('MenuGroup', MenuGroup)
 
 
 //渲染在index.html裡面的div#app
