@@ -9,6 +9,7 @@
         <RouterLink class="RouterLink" to="/Product">Product</RouterLink>
         <RouterLink class="RouterLink" to="/Test">Test</RouterLink>
         <RouterLink class="RouterLink" to="/Login">Login</RouterLink>
+        <RouterLink class="RouterLink" to="/BackLogin">BackLogin</RouterLink>
       </nav>
   </header>
 </template>
