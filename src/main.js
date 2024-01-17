@@ -10,6 +10,7 @@ import { Button, ButtonGroup,
 
 //樣式
 import "view-ui-plus/dist/styles/viewuiplus.css";
+// import "./assets/scss/main.scss"
 
 
 //引入主程式

@@ -1,10 +1,10 @@
 <template>
-    <h1>我是H1</h1>
-    <h2>我是H2</h2>
-    <h3>我是H3</h3>
-    <h4>我是H4</h4>
-    <h5>我是H5</h5>
-    <h6>我是H6</h6>
+    <h1 class="h1">我是H1</h1>
+    <h2 class="h2">我是H2</h2>
+    <h3 class="h3">我是H3</h3>
+    <h4 class="h4">我是H4</h4>
+    <h5 class="h5">我是H5</h5>
+    <h6 class="h6">我是H6</h6>
     <Button type="primary">Confirm</Button>
 
     <Carousel class="Carousel" loop>
@@ -69,7 +69,11 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+// @import "@/assets/scss/main.scss";
+.h2{
+    color: $redBean;
+}
 .Carousel{
     width: 600px;
 }
