@@ -1,38 +1,69 @@
-<script setup>
+<!-- <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-</script>
+</script> -->
 
-<script>
-// import TheWelcome from '../components/TheWelcome.vue'
-const imgUrl = new URL('../src/assets/imgs/cat.jpg', import.meta.url).href
+<script> //這一段是定義import圖片的方法
+const imgUrl = new URL('./assets/imgs/cat.jpg', import.meta.url).href
 export default {
   data() {
     return {
-      rawHtml: '<p>1</p>',
-      imgUrl: imgUrl
+      imgUrl: imgUrl,
+      list:[
+        {url: 'product/shopcard-nc16.png', name:'prod_1'},
+        {url: 'product/shopcard-nc17.png', name:'prod_2'},
+        {url: 'product/shopcard-nc18.png', name:'prod_3'},
+        {url: 'product/shopcard-nc19.png', name:'prod_4'},
+      ],
+      imgIndex: 16,
     }
   },
-  // components:{
-  //   TheWelcome
-  // },
+  methods:{
+    getImageUrl(paths){
+      return new URL(`./assets/imgs/${paths}`, import.meta.url).href
+    },
+    toggleImg(){
+      if(this.imgIndex == 19){
+        this.imgIndex = 16
+      }else{
+        this.imgIndex += 1
+      }
+    }
+  },
   mounted() {
   }
 }
 </script>
+
+<!-- 頁面路由route渲染的地方 -->
 <template>
   <header>
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
+    <img src="@/assets/imgs/cat.jpg" alt="">
     <img :src="imgUrl" alt="">
+    <img :src="getImageUrl('product/shopcard-nc16.png')" alt="" width="250">
+    <!-- <img v-for="(item, index) in list" :src="getImageUrl(item.url)" alt="" :width="(index + 1)* 25"> -->
     <!-- <img src="@/assets/imgs/cat.jpg" alt=""> -->
 
+    <div class="pro_card" v-for="item in list">
+      <img :src="getImageUrl(item.url)" alt="" width="100">
+      <p>{{item.name}}</p>
+    </div>
+    
+    <!-- <div  class="change_card">
+      <img :src="getImageUrl(`product/shopcard-nc${imgIndex}.png`)" alt="" width="400">
+      <img v-for="item in list" :src="getImageUrl(item.url)" alt="" width="80" @click="imgIndex=">
+    </div> -->
+
+    <button @click="toggleImg">換圖</button>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <!-- <HelloWorld msg="You did it!" /> -->
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/Product">Product</RouterLink>
+        <RouterLink to="/Test">Test</RouterLink>
       </nav>
     </div>
   </header>
@@ -44,6 +75,16 @@ export default {
 header {
   line-height: 1.5;
   max-height: 100vh;
+}
+.pro_card{
+  width: 25%;
+  float: left;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.change_card{
+  width: 200;
 }
 
 .logo {
