@@ -1,5 +1,5 @@
 //變數
-@use 'sass:math';
+// @use 'sass:math';
 @import "base/var";
 @import "base/color";
 @import "base/font";
@@ -25,10 +25,10 @@
 @import "layout/login";
 
 
-//page 小龜老師不喜歡這種
-// @import "page/index";
-// @import "page/about";
-// @import "page/product";
+//page 
+@import "page/index";
+@import "page/about";
+@import "page/product";
 
 //套件
 @import "plugin/bootstrap";

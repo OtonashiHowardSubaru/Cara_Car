@@ -50,5 +50,4 @@ import axios from 'axios'; //引入涵式庫
 </template>
 
 <style lnag="scss">
-@import '@/assets/sass/page/_product.scss';
 </style>

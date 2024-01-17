@@ -1,10 +1,13 @@
 //套件
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { Button, ButtonGroup,
+         Carousel, CarouselItem,
+        } from 'view-ui-plus'
 
 
 //樣式
-import './assets/sass/main.scss';
+import "view-ui-plus/dist/styles/viewuiplus.css";
 
 
 //引入主程式
@@ -18,6 +21,12 @@ const vueApp = createApp(App)
 
 vueApp.use(createPinia())
 vueApp.use(router)
+
+vueApp.component('Button', Button)
+vueApp.component('ButtonGroup', ButtonGroup)
+vueApp.component('Carousel', Carousel)
+vueApp.component('CarouselItem', CarouselItem)
+
 
 //渲染在index.html裡面的div#app
 vueApp.mount('#app')
