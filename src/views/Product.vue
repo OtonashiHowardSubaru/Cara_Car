@@ -24,13 +24,13 @@ import axios from 'axios'; //引入涵式庫
       this.axiosGetData();
     },
     methods: {
-      fetchData(){
-        fetch('https://fakestoreapi.com/products')
-          .then(res=>res.json())
-          .then(json=>this.responseData = json)
-      },
+      // fetchData(){
+      //   fetch('https://fakestoreapi.com/products')
+      //     .then(res=>res.json())
+      //     .then(json=>this.responseData = json)
+      // },
       axiosGetData(){
-        axios.get('https://fakestoreapi.com/products')
+        axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
           .then( res=> {
             console.log(res)
             if(res && res.data){
