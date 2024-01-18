@@ -2,7 +2,7 @@
   <header class="mainHeader">
     <h1>我是header的h1</h1>
     <h2>Test init</h2>
-
+    <h2>Test init</h2>
     <nav>
         <RouterLink class="RouterLink" to="/">Home</RouterLink>
         <RouterLink class="RouterLink" to="/about">About</RouterLink>
