@@ -44,25 +44,40 @@ export default {
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-10">
-        <div class="pro_card_list">
-            <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-if="index > 0"直接從第二個資料開始取 -->
-          <div class="product_card" v-for="item, in displayData.slice(1)" :key="item.prod_id">
-            <div class="pro_card_img">
-              <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
-            </div>
-            <div class="pro_crad_info">
-              <h6>{{ item.prod_name }}</h6>
-              <p>{{ item.prod_price }}</p>
-            </div>
+      <div class="pro_card_list col-md-9">
+        <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-if="index > 0"直接從第二個資料開始取 -->
+        <div class="product_card" v-for="item, in displayData.slice(1)" :key="item.prod_id">
+          <div class="pro_card_img">
+            <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
           </div>
-
+          <div class="pro_crad_info">
+            <h6>{{ item.prod_name }}</h6>
+            <p>{{ item.prod_price }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lnag="scss" scoped>
-
+<style lang="scss" scoped>
+.pro_card_list {
+  margin: auto;
+}
+.pro_card_img img{
+  vertical-align: top;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px; //這個之後要改變數
+}
+.pro_crad_info *{
+  width: fit-content;
+  margin: auto;
+}
+.pro_crad_info h6{
+  font-size: $h4;
+}
+.pro_crad_info p{
+  font-size: $p;
+}
 </style>
