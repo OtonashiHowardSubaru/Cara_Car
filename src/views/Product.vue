@@ -34,6 +34,10 @@ import axios from 'axios'; //引入涵式庫
           return item.title.includes(this.search)
         })
       },
+      getProductImageUrl(imageFileName) {
+      // 返回完整的图片 URL
+      return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
+    }
     },
   }
 </script>
@@ -44,7 +48,7 @@ import axios from 'axios'; //引入涵式庫
   <div v-for="(item,index) in displayData" :key="item.prod_id">
     <div v-if="index > 0" class="product_card">
       <div class="pro_card_img">
-        <img :src="item.prod_img1" alt="">
+        <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
       </div>
       <div class="pro_crad_info">
         <h6>{{ item.prod_name }}</h6>
