@@ -7,6 +7,7 @@
         <RouterLink class="RouterLink" to="/">Home</RouterLink>
         <RouterLink class="RouterLink" to="/about">About</RouterLink>
         <RouterLink class="RouterLink" to="/Product">Product</RouterLink>
+        <RouterLink class="RouterLink" to="/ProductView">ProductView</RouterLink>
         <RouterLink class="RouterLink" to="/Test">Test</RouterLink>
         <RouterLink class="RouterLink" to="/Login">Login</RouterLink>
         <RouterLink class="RouterLink" to="/BackLogin">BackLogin</RouterLink>
