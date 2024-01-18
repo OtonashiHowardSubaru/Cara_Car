@@ -7,6 +7,27 @@ import axios from 'axios'; //引入涵式庫
         search: '',
         responseData : [],
         displayData: [],
+        sh_contact: [
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'CONTACT',
+            context: '透過電子郵件聯繫我們',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'SECOND-HAND',
+            context: '查看二手車輛商品',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'RECYCLE CAR',
+            context: '了解二手車輛販賣',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+        ],
+
       }
     },
     created() {
@@ -56,6 +77,7 @@ import axios from 'axios'; //引入涵式庫
       </div>
     </div>
   </div>
+
 
 </template>
 
