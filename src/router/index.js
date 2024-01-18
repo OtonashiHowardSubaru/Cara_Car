@@ -18,8 +18,8 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/Product',
-      name: 'Product',
+      path: '/ProductView',
+      name: 'ProductView',
       component: () => import('../views/ProductView.vue')
     },
     {
@@ -31,6 +31,11 @@ const router = createRouter({
       path: '/Login',
       name: 'Login',
       component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/Product',
+      name: 'Product',
+      component: () => import('../views/Product.vue')
     },
     {
       path: '/BackLogin',
