@@ -10,6 +10,7 @@
 
 
 //組件
+@import "components/arrow";
 @import "components/btn";
 @import "components/body";
 @import "components/card";
@@ -26,9 +27,9 @@
 
 
 //page 
-@import "page/index";
-@import "page/about";
-@import "page/product";
+// @import "page/index";
+// @import "page/about";
+// @import "page/product";
 
 //套件
 @import "plugin/bootstrap";
