@@ -5,18 +5,26 @@
   border-bottom: 1px solid $blackWord;
   padding: 60px 0;
   h1{
-    font-size: $h2;
+    font-size: $h1;
   }
 }
 //分頁標題css終點
 
 
 //價格篩選器css起點
-.pro_list_sorter{
+.store_name{
   display: flex;
   justify-content: space-between;
   padding: 60px 40px;
   border-bottom: 8px solid $blackWord;
+  h2{
+    font-size: $h1;
+  }
+}
+@media (min-width:768px){
+  .pro_list_sorter{
+    margin-bottom: 60px;
+  }
 }
 //價格篩選器css終點
 
@@ -43,13 +51,49 @@
     top: 10px;
   }
 }
+@media (min-width:768px){
+  .pro_list_filter{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0;
+    position: sticky;
+    height: fit-content;
+    top: 50px;
+    button{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: fit-content;
+      margin: 0;
+      p{
+        writing-mode: vertical-rl;
+      }
+      p::after{
+        content: "\\";
+      }
+    }
+  }
+}
 //商品種類篩選器css終點
 
+.pro_card_list {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+@media screen and (min-width:768px) and (max-width:1270px) {
+  .pro_card_list{
+    margin: 0
+  }
+}
 
 //商品卡css起點
-.pro_card_list {
-    margin: auto;
-  }
+.product_card{
+  box-sizing: border-box;
+}
   .pro_card_img img{
     vertical-align: top;
     width: 100%;
