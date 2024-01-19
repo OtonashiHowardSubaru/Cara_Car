@@ -1,6 +1,7 @@
 <template>
   <footer class="mainFooter">
-    <div class="footerbg"></div>
+    <div class="footerbg">
+    </div>
     <div class="footerSection1">
       <div class="footerSection1Info">
         <RouterLink class="RouterLink" to="/">
@@ -50,7 +51,7 @@
           <li>
             <RouterLink class="RouterLink" to="/">> 門市資訊</RouterLink>
           </li>
-          <li>
+          <li class="footerGame">
             <RouterLink class="RouterLink" to="/">> 賽車小遊戲</RouterLink>
           </li>
         </ul>
@@ -72,7 +73,9 @@
         <p>TOP</p>
       </div>
     </div>
-
+    <div class="footerSection4">
+      <p>©Cara_Car Co. All rights reserved.<br>本網站為緯育TibaMe_前端設計工程師班學員專題成果作品本平台僅供學習、展示之用。</p>
+    </div>
 
   </footer>
 </template>
@@ -98,6 +101,6 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/layout/footer.scss" 
+@import "@/assets/scss/layout/footer.scss" ;
 
 </style>

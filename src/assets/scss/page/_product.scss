@@ -1,4 +1,52 @@
+//分頁標題css起點
+.pro_list_title{
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $blackWord;
+  padding: 60px 0;
+  h1{
+    font-size: $h2;
+  }
+}
+//分頁標題css終點
 
+
+//價格篩選器css起點
+.pro_list_sorter{
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 40px;
+  border-bottom: 8px solid $blackWord;
+}
+//價格篩選器css終點
+
+
+//商品種類篩選器css起點
+.pro_list_filter{
+  margin: 20px 0 50px 0;
+}
+.pro_list_filter button{
+  border: none;
+  background-color: #00f0;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: $h5;
+  box-sizing: border-box;
+  width: 120px;
+  margin: 10px;
+  padding: 0 10px;
+  p{
+    margin-inline-start: 15px;
+  }
+  .arrow_ltr{
+    position: relative;
+    top: 10px;
+  }
+}
+//商品種類篩選器css終點
+
+
+//商品卡css起點
 .pro_card_list {
     margin: auto;
   }
@@ -18,7 +66,7 @@
   .pro_crad_info p{
     font-size: $p;
   }
-
+//商品卡css終點
 
 // 二手流程
 .sh_contact {

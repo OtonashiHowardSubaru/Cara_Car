@@ -23,23 +23,23 @@
     background-color:rgba($grey_3,0.8);
 }
 #loginModal {
-    display: none;
-    align-items: center;
-    justify-content: center;
+    z-index: 1000;
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 1000;
-    width: 60%;
-    height: 60%;
-    transform: translate(-50%, -50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 70%;
+    border-radius: 100px;
     background-color: $grey_2;
-    border: 1px solid #888;
+    transform: translate(-50%, -50%);
 }
 .close {
     position: absolute;
-    top: 0%;
-    right: 0.5%;
+    top: 5%;
+    right: 5%;
     font-size: 40px;
     cursor: pointer;
 }
@@ -52,6 +52,7 @@
 }
 
 fieldset{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -59,13 +60,16 @@ fieldset{
     & legend{
         font-size: 26px;
         text-align: center;
-        margin-bottom: 50px;
+        margin-block: 30px;
     }
     & input{
-        width: 60%;
+        width: 100%;
         padding: 5px 25px;
         border-radius: 20px;
-        // margin-bottom: 30px;
+        font-size: $h5;
+        &:first-of-type{
+            margin-bottom: 20px;
+        }
     }
     & .error-message{
         color: #f00;
@@ -73,11 +77,12 @@ fieldset{
         margin-block: 5px;
     }
     & button{
-        width: 60%;
+        height: 70px;
+        width: 100%;
         font-size: $h5;
         margin-block: 5px;
         color: #fff;
-        border: none;
+        border-radius: 20px;
         cursor: pointer;
         text-align: center;
         transition: 0.3s linear;
@@ -85,15 +90,23 @@ fieldset{
         &:hover{background-color: #9baa7a;}
     }
     & p{
-        font-size: $h5;
+        font-size: $h4;
         text-align: left;
-        border: 1px solid #000;
+    }
+    & span{
+        color: #000;
+        font-size: $h5;
+        & a{
+            
+            font-size: $h5;
+            text-decoration: none;
+        }
     }
     & a{
         color: #000;
+        text-align: right;
         font-size: $default;
-        border: 1px solid #000;
-        text-decoration-color: #222;
+        text-decoration-color: transparent;
         &:hover{
             text-decoration-color: #222;
         }
@@ -117,4 +130,8 @@ fieldset{
                 width: 60%;
             }
 }
-
+@media (max-width:768px){
+    #loginModal{
+        width: 80%;
+    }
+}

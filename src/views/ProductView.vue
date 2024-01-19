@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios'; //引入涵式庫
+import axios from 'axios'; //引入函式庫
 
   export default {
     data(){
@@ -7,35 +7,45 @@ import axios from 'axios'; //引入涵式庫
         search: '',
         responseData : [],
         displayData: [],
+        sh_contact: [
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'CONTACT',
+            context: '透過電子郵件聯繫我們',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'SECOND-HAND',
+            context: '查看二手車輛商品',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'RECYCLE CAR',
+            context: '了解二手車輛販賣',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+        ],
+
       }
-    },
-    computed:{
-      productCount(){
-        return Array.isArray(this.displayData)? this.displayData.length : 0
-      },
-      nodata(){
-        return this.responseData.length === 0
-      },
-      loading(){
-        return this.responseData.length === 0
-      },
     },
     created() {
       this.axiosGetData();
     },
     methods: {
-      fetchData(){
-        fetch('https://fakestoreapi.com/products')
-          .then(res=>res.json())
-          .then(json=>this.responseData = json)
-      },
       axiosGetData(){
-        axios.get('https://fakestoreapi.com/products')
+        axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
           .then( res=> {
             console.log(res)
-            if(res && res.data){
-              this.responseData = res.data
-              this.displayData = res.data
+            if(res && res.data && res.data.prods){
+              this.responseData = res.data.prods
+              this.displayData = res.data.prods
+              //由於res是一整個方法，這個方法內有好幾個小東西，其中一個就是資料(data)
+              //所以要取值才是res.data，而學長姐的api預設有prods與prodCount
+              //所以才是displayData = res.data.prods
+            }else{
+              console.log('資料沒有回傳到displayData喔')
             }
           })
       },
@@ -44,23 +54,83 @@ import axios from 'axios'; //引入涵式庫
           // console.log(item);
           return item.title.includes(this.search)
         })
-        }
     },
-  }
+    handleFilter() {
+      this.displayData = this.responseData.filter((item) => {
+        // console.log(item);
+        return item.title.includes(this.search)
+      })
+    },
+    getProductImageUrl(imageFileName) {
+      // 返回完整的URL
+      return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
+    }
+  },
+}
 </script>
 <template>
-  <div class="product">
-    <h1>This is an product page</h1>
-    <input type="text" v-model.trim="search" @input="handleFilter">
-    {{ search }}，<i>{{productCount}}</i>
-    <br>
+  <div class="container">
+    <div class="row">
+      <div class="pro_card_list col-md-9">
+        <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-if="index > 0"直接從第二個資料開始取 -->
+        <div class="product_card" v-for="item, in displayData.slice(1)" :key="item.prod_id">
+          <div class="pro_card_img">
+            <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
+          </div>
+          <div class="pro_crad_info">
+            <h6>{{ item.prod_name }}</h6>
+            <p>{{ item.prod_price }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div v-if="loading">載入中</div>
-    <div v-else-if="nodata">沒有資料</div>
-    <div v-else>
-    {{displayData}}
+  </div>
+
+  <div class="sh_contact">
+    <div class="sh_text">
+      <h4>舊車新生，回憶傳承</h4>
+      <p>如果您有二手車或是任何其他問題，歡迎聯繫我們。</p>
     </div>
+      
+      <div class="cards">
+        <div class="contact_card" v-for="item in sh_contact">
+          <div class="card_info">
+            <img :src="item.img" alt="">
+            <div class="item_text">
+              <p>{{ item.shSubtitle }}</p>
+              <p>{{ item.context }}</p>
+            </div>
+            
+            <img :src="item.arrowImg" alt="" class="arrow">
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="phone">
+        <img src="../assets/imgs/product/sh_process_contact.png" alt="">
+        <div class="tel">
+          <div class="contact_detail">
+            <span>TELEPHONE</span>
+            <span>連絡電話</span>
+            <div class="phoneNumber">
+              <img src="../assets/imgs/product/sh_process_tel.png" alt="">
+              <span>03 425 1108</span>
+            </div>
+          
+          <div class="opening">
+            <span>每周一、二公休</span>
+          </div>
+        </div>
+        </div>
+      </div>
+  </div>
+    
+
 </template>
 
-<style lnag="scss">
+<style lang="scss">
+
+@import '@/assets/scss/page/product.scss'
+
 </style>
