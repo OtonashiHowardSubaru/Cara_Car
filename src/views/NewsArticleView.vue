@@ -5,4 +5,6 @@
     </div>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+@import '@/assets/scss/page/newsArticle.scss';
+</style>
