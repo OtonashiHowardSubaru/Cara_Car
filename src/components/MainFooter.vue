@@ -1,29 +1,31 @@
 <template>
   <footer class="mainFooter">
-    <h1>我是footer的h1</h1>
-    <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
+    <div class="footerbg"></div>
     <div class="footerSection1">
-      <h4>與我們一起探索無限可能，<br>讓每個角落都成為冒險天地！</h4>
-      <div class="shopInfo">
-        <p>桃園市中壢區復興路46號8樓</p>
-        <p>03-425-1108</p>
-        <p>Cara_car@gmail.com</p>
+      <div class="footerSection1Info">
+        <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
+        <h4>與我們一起探索無限可能，<br>讓每個角落都成為冒險天地！</h4>
+        <div class="shopInfo">
+          <p>桃園市中壢區復興路46號8樓</p>
+          <p>03-425-1108</p>
+          <p>Cara_car@gmail.com</p>
+      </div>
       </div>
     </div>
     <div class="footerSection2">
-        <ul>
+        <ul class="mainMenu">
           <li>> 商品一覽</li>
-              <ul>
+              <ul class="subMenu">
                 <li>> 兒童車</li>
                 <li>> 車車模型</li>
                 <li>> 其他配件</li>
               </ul>
           <li>> 二手車一覽</li>
-              <ul>
+              <ul class="subMenu">
                 <li>> 我要販售</li>
               </ul>    
         </ul>
-        <ul>
+        <ul class="mainMenu">
           <li>> 最新消息</li>
           <li>> 關於我們</li>
           <li>> 門市資訊</li>
@@ -32,12 +34,13 @@
     </div>
     <div class="footerSection3">
       <div class="footerSection3Follow">
-        <span>Follow Us</span>
+        <p>Follow Us</p>
         <img src="../assets/imgs/MainFooter/icon_fb.png" alt="">
         <img src="../assets/imgs/MainFooter/icon_ig.png" alt="">
       </div>
       <div class="footerSection3Top">
-        <span>TOP</span>
+        <div class="decoLine"></div>
+        <p>TOP</p>
       </div>
     </div>
 
@@ -65,6 +68,7 @@ export default{
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "@/assets/scss/layout/footer.scss" 
 
 </style>
