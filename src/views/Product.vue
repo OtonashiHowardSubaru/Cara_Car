@@ -1,31 +1,58 @@
 <script>
-import axios from 'axios'; //引入涵式庫
+import axios from 'axios'; //引入函式庫
 
-export default {
-  data() {
-    return {
-      search: '',
-      responseData: [],
-      displayData: [],
-    }
-  },
-  created() {
-    this.axiosGetData();
-  },
-  methods: {
-    axiosGetData() {
-      axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
-        .then(res => {
-          console.log(res)
-          if (res && res.data && res.data.prods) {
-            this.responseData = res.data.prods
-            this.displayData = res.data.prods
-            //由於res是一整個方法，這個方法內有好幾個小東西，其中一個就是資料(data)
-            //所以要取值才是res.data，而學長姐的api預設有prods與prodCount
-            //所以才是displayData = res.data.prods
-          } else {
-            console.log('資料沒有回傳到displayData喔')
-          }
+  export default {
+    data(){
+      return {
+        search: '',
+        responseData : [],
+        displayData: [],
+        sh_contact: [
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'CONTACT',
+            context: '透過電子郵件聯繫我們',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'SECOND-HAND',
+            context: '查看二手車輛商品',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'RECYCLE CAR',
+            context: '了解二手車輛販賣',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+        ],
+
+      }
+    },
+    created() {
+      this.axiosGetData();
+    },
+    methods: {
+      axiosGetData(){
+        axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
+          .then( res=> {
+            console.log(res)
+            if(res && res.data && res.data.prods){
+              this.responseData = res.data.prods
+              this.displayData = res.data.prods
+              //由於res是一整個方法，這個方法內有好幾個小東西，其中一個就是資料(data)
+              //所以要取值才是res.data，而學長姐的api預設有prods與prodCount
+              //所以才是displayData = res.data.prods
+            }else{
+              console.log('資料沒有回傳到displayData喔')
+            }
+          })
+      },
+      handleFilter(){
+        this.displayData = this.responseData.filter((item)=>{
+          // console.log(item);
+          return item.title.includes(this.search)
         })
     },
     handleFilter() {
@@ -58,26 +85,42 @@ export default {
       </div>
     </div>
   </div>
+
+  <div class="sh_contact">
+      <h4>舊車新生，回憶傳承</h4>
+      <p>如果您有二手車或是任何其他問題，歡迎聯繫我們。</p>
+      <div class="cards">
+        <div class="contct_card" v-for="item in sh_contact">
+          <img :src="item.img" alt="">
+          <p>{{ item.shSubtitle }}</p>
+          <p>{{ item.context }}</p>
+          <img :src="item.arrowImg" alt="" class="arrow">
+        </div>
+      </div>
+      
+      <div class="phone">
+        <img src="../assets/imgs/product/sh_process_contact.png" alt="">
+        <div class="tel">
+          <div class="contact_detail">
+            <span>TELEPHONE</span>
+            <span>連絡電話</span>
+            <div class="phoneNumber">
+              <img src="../assets/imgs/product/sh_process_tel.png" alt="">
+              <span>03 425 1108</span>
+            </div>
+          </div>
+          <div class="opening">
+            <span>每周一、二公休</span>
+          </div>
+        </div>
+      </div>
+  </div>
+    
+
 </template>
 
-<style lang="scss" scoped>
-.pro_card_list {
-  margin: auto;
-}
-.pro_card_img img{
-  vertical-align: top;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 20px; //這個之後要改變數
-}
-.pro_crad_info *{
-  width: fit-content;
-  margin: auto;
-}
-.pro_crad_info h6{
-  font-size: $h4;
-}
-.pro_crad_info p{
-  font-size: $p;
-}
+<style lang="scss">
+
+@import '@/assets/scss/page/product.scss'
+
 </style>
