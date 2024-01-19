@@ -3,7 +3,10 @@
     <div class="footerbg"></div>
     <div class="footerSection1">
       <div class="footerSection1Info">
-        <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
+        <RouterLink class="RouterLink" to="/">
+          <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
+        </RouterLink>
+        
         <h4>與我們一起探索無限可能，<br>讓每個角落都成為冒險天地！</h4>
         <div class="shopInfo">
           <p>桃園市中壢區復興路46號8樓</p>
@@ -14,29 +17,55 @@
     </div>
     <div class="footerSection2">
         <ul class="mainMenu">
-          <li>> 商品一覽</li>
+          <li>
+            <RouterLink class="RouterLink" to="/Product">> 商品一覽</RouterLink>
+          </li>
               <ul class="subMenu">
-                <li>> 兒童車</li>
-                <li>> 車車模型</li>
-                <li>> 其他配件</li>
+                <li>
+                  <RouterLink class="RouterLink" to="/">> 兒童車</RouterLink>
+                </li>
+                <li>
+                  <RouterLink class="RouterLink" to="/">> 車車模型</RouterLink>
+                </li>
+                <li>
+                  <RouterLink class="RouterLink" to="/">> 其他配件</RouterLink>
+                </li>
               </ul>
-          <li>> 二手車一覽</li>
+          <li>
+            <RouterLink class="RouterLink" to="/">> 二手車一覽</RouterLink>
+          </li>
               <ul class="subMenu">
-                <li>> 我要販售</li>
+                <li>
+                  <RouterLink class="RouterLink" to="/">> 我要販售</RouterLink>
+                </li>
               </ul>    
         </ul>
         <ul class="mainMenu">
-          <li>> 最新消息</li>
-          <li>> 關於我們</li>
-          <li>> 門市資訊</li>
-          <li>> 賽車小遊戲</li>
+          <li>
+            <RouterLink class="RouterLink" to="/">> 最新消息</RouterLink>
+          </li>
+          <li>
+            <RouterLink class="RouterLink" to="/about">> 關於我們</RouterLink>
+          </li>
+          <li>
+            <RouterLink class="RouterLink" to="/">> 門市資訊</RouterLink>
+          </li>
+          <li>
+            <RouterLink class="RouterLink" to="/">> 賽車小遊戲</RouterLink>
+          </li>
         </ul>
     </div>
     <div class="footerSection3">
       <div class="footerSection3Follow">
         <p>Follow Us</p>
-        <img src="../assets/imgs/MainFooter/icon_fb.png" alt="">
-        <img src="../assets/imgs/MainFooter/icon_ig.png" alt="">
+        <RouterLink class="RouterLink" to="/">
+          <img src="../assets/imgs/MainFooter/icon_fb.png" alt="icon_fb">
+        </RouterLink>
+        
+        <RouterLink class="RouterLink" to="/">
+          <img src="../assets/imgs/MainFooter/icon_ig.png" alt="icon_ig">
+        </RouterLink>
+        
       </div>
       <div class="footerSection3Top">
         <div class="decoLine"></div>
