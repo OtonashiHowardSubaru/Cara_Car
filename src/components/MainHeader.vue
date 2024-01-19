@@ -2,15 +2,31 @@
   <header class="mainHeader">
     <nav>
       <ul class="indexHeaderNav">
-        <li class="indexHeaderButton" v-for="item in img" :key="item">
+        <li class="indexHeaderButton" :class="{}" v-for="item in img" @mouseenter="hover = true" @mouseleave="hover = false" >
             <a href="#">
-              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIcon">
+              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIcon" >
+              <p v-if="hover">Product</p>
             </a>
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
           <a href="#">
             <img src="../assets/imgs/nav/nav-icon-Login.png" alt="" class="indexHeaderButtonLogin">
+          </a>
+        </div>
+      </ul>
+
+      <ul class="indexHeaderNavPh">
+        <li class="indexHeaderButtonPh" v-for="item in img">
+            <a href="#" class="indexHeaderA">
+              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
+                <!-- <p class="indexHeaderButtonP">PRODUCT</p> -->
+            </a>
+        </li>
+        <div class="linePh"></div>
+        <div class="indexHeaderLoginPh">
+          <a href="#">
+            <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="" class="indexHeaderButtonLoginPh">
           </a>
         </div>
       </ul>
@@ -40,13 +56,19 @@ export default{
       img:[
         {i:'nav/nav-icon-01.png'},
         {i:'nav/nav-icon-02.png'},
-        {i:'nav/nav-icon-03.png'},
+        // {i:'nav/nav-icon-03.png'},
         {i:'nav/nav-icon-04.png'},
         {i:'nav/nav-icon-05.png'},
         {i:'nav/nav-icon-06.png'},
-        // {i:'nav/nav-icon-Login.png'},
       ],
-      
+      // name:[
+      //   {p:'PRODUCT'},
+      //   {p:'2nd-HAND'},
+      //   {p:'SHOP-INFO'},
+      //   {p:'MEMBER'},
+      //   {p:'MY-CART'},
+      // ],
+      // hover: false,
     }
   },
     methods:{
