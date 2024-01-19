@@ -108,18 +108,17 @@ import axios from 'axios'; //引入函式庫
       <p>如果您有二手車或是任何其他問題，歡迎聯繫我們。</p>
     </div>
       
-      <div class="cards">
-        <div class="contact_card" v-for="item in sh_contact">
-          <div class="card_info">
-            <img :src="item.img" alt="">
-            <div class="item_text">
-              <p>{{ item.shSubtitle }}</p>
-              <p>{{ item.context }}</p>
-            </div>
-            
-            <img :src="item.arrowImg" alt="" class="arrow">
+    <div class="cards">
+      <div class="contact_card" v-for="item in sh_contact">
+        <div class="card_info">
+          <img :src="item.img" alt="">
+          <div class="item_text">
+            <p>{{ item.shSubtitle }}</p>
+            <p>{{ item.context }}</p>
           </div>
-          
+            
+          <img :src="item.arrowImg" alt="" class="arrow">
+        </div>
         </div>
       </div>
       
@@ -138,8 +137,8 @@ import axios from 'axios'; //引入函式庫
             <span>每周一、二公休</span>
           </div>
         </div>
-        </div>
       </div>
+    </div>
   </div>
     
 
