@@ -91,10 +91,13 @@ import axios from 'axios'; //引入函式庫
       <p>如果您有二手車或是任何其他問題，歡迎聯繫我們。</p>
       <div class="cards">
         <div class="contct_card" v-for="item in sh_contact">
-          <img :src="item.img" alt="">
-          <p>{{ item.shSubtitle }}</p>
-          <p>{{ item.context }}</p>
-          <img :src="item.arrowImg" alt="" class="arrow">
+          <div class="card_info">
+            <img :src="item.img" alt="">
+            <p>{{ item.shSubtitle }}</p>
+            <p>{{ item.context }}</p>
+            <img :src="item.arrowImg" alt="" class="arrow">
+          </div>
+          
         </div>
       </div>
       
@@ -121,6 +124,6 @@ import axios from 'axios'; //引入函式庫
 
 <style lang="scss">
 
-@import '@/assets/scss/page/product.scss'
+@import '@/assets/scss/page/product.scss';
 
 </style>
