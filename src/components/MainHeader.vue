@@ -20,7 +20,7 @@
         <li class="indexHeaderButtonPh" v-for="item in img">
             <a href="#" class="indexHeaderA">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
-                <!-- <p class="indexHeaderButtonP">PRODUCT</p> -->
+                <p class="indexHeaderButtonP">PRODUCT</p>
             </a>
         </li>
         <div class="linePh"></div>
