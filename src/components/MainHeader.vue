@@ -2,8 +2,8 @@
   <header class="mainHeader">
     <nav>
       <ul class="indexHeaderNav">
-        <li class="indexHeaderButton" v-for="item in img" :key="item">
-            <a href="#">
+        <li class="indexHeaderButton" v-for="(item, index) in img" :key="item">
+            <a :href="paths[index]">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIcon">
             </a>
         </li>
@@ -15,28 +15,27 @@
         </div>
       </ul>
     </nav>
-    <!-- <nav>
-        <RouterLink class="RouterLink" to="/">Home</RouterLink>
-        <RouterLink class="RouterLink" to="/about">About</RouterLink>
-        <RouterLink class="RouterLink" to="/Product">Product</RouterLink>
-        <RouterLink class="RouterLink" to="/Test">Test</RouterLink>
-        <RouterLink class="RouterLink" to="/Login">Login</RouterLink>
-        <RouterLink class="RouterLink" to="/BackLogin">BackLogin</RouterLink>
-      </nav> -->
   </header>
 </template>
 
 <script>
-
 // import { VueElement } from 'vue';
-import { RouterLink, RouterView } from 'vue-router'
+// import { RouterLink, RouterView } from 'vue-router'
 export default{
-  components: {
-    RouterLink,
-    RouterView,
-  },
+  // components: {
+  //   RouterLink,
+  //   RouterView,
+  // },
   data(){
     return{
+      paths:[
+        '../views/ProductListView.vue',
+        '../views/SecondHandListView.vue',
+        '../views/GameView.vue',
+        '../views/ShopInformationView.vue',
+        '../views/MemberCenterView.vue',
+        '../views/CartView.vue',
+    ],
       img:[
         {i:'nav/nav-icon-01.png'},
         {i:'nav/nav-icon-02.png'},
