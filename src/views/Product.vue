@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios'; //引入涵式庫
+import axios from 'axios'; //引入函式庫
 
   export default {
     data(){
@@ -78,8 +78,41 @@ import axios from 'axios'; //引入涵式庫
     </div>
   </div>
 
+  <div class="sh_contact">
+      <h4>舊車新生，回憶傳承</h4>
+      <p>如果您有二手車或是任何其他問題，歡迎聯繫我們。</p>
+      <div class="cards">
+        <div class="contct_card" v-for="item in sh_contact">
+          <img :src="item.img" alt="">
+          <p>{{ item.shSubtitle }}</p>
+          <p>{{ item.context }}</p>
+          <img :src="item.arrowImg" alt="" class="arrow">
+        </div>
+      </div>
+      
+      <div class="phone">
+        <img src="../assets/imgs/product/sh_process_contact.png" alt="">
+        <div class="tel">
+          <div class="contact_detail">
+            <span>TELEPHONE</span>
+            <span>連絡電話</span>
+            <div class="phoneNumber">
+              <img src="../assets/imgs/product/sh_process_tel.png" alt="">
+              <span>03 425 1108</span>
+            </div>
+          </div>
+          <div class="opening">
+            <span>每周一、二公休</span>
+          </div>
+        </div>
+      </div>
+  </div>
+    
 
 </template>
 
-<style lnag="scss">
+<style lang="scss">
+
+@import '@/assets/scss/page/product.scss'
+
 </style>

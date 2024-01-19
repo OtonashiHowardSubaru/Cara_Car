@@ -8,3 +8,83 @@
         font-size: 0.8rem;
     }
 }
+
+// 二手流程
+.sh_contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    line-height: 2;
+    color: $fontcolor;
+    h4{
+        font-size: $h4;
+    }
+    p, span{
+        font-size: $default;
+    }
+    .cards{
+      display: flex;
+      margin: 10px;
+      .contct_card{
+        margin: 30px 55px;
+        width: 160px;
+        text-align: center;
+        p:first-child{
+            font-size: $p;
+        }
+
+        img{
+          width: 90px;
+        }
+        .arrow{
+          width: 30px;
+        }
+      }
+    }
+    .phone{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 945px;
+      /* border: 1px solid red; */
+      margin-top: 30px;
+      span{
+        font-size: 16px;
+      }
+      img{
+        width: 60px;
+        margin-right: 90px;
+      }
+      .tel{
+        display: flex;
+        align-items: center;
+        img{
+          width: 25px;
+          height: 24px;
+          margin-right: 10px;
+        }
+        span{
+          margin-right: 30px;
+        }
+        .phoneNumber{
+          span{
+            font-size: 28px;
+          }
+        }
+        
+      }
+      .opening{
+        display: flex;
+        align-items: end;
+        span{
+          font-size: 14px;
+          border: 1px solid black;
+          padding: 1px 18px;
+          border-radius: 90px;
+          margin-left: 25px;
+        }
+      }
+  
+    }
+  }
