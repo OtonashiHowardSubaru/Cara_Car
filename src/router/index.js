@@ -18,29 +18,39 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/ProductView',
-      name: 'ProductView',
-      component: () => import('../views/ProductView.vue')
+      path: '/ProductList',
+      name: 'ProductList',
+      component: () => import('../views/ProductListView.vue')
     },
     {
-      path: '/Test',
-      name: 'Test',
-      component: () => import('../views/Test.vue')
+      path: '/SecondHandList',
+      name: 'SecondHandList',
+      component: () => import('../views/SecondHandListView.vue')
+    },
+    {
+      path: '/Game',
+      name: 'Game',
+      component: () => import('../views/GameView.vue')
+    },
+    {
+      path: '/ShopInformation',
+      name: 'ShopInformation',
+      component: () => import('../views/ShopInformationView.vue')
+    },
+    {
+      path: '/MemberCenter',
+      name: 'MemberCenter',
+      component: () => import('../views/MemberCenterView.vue')
+    },
+    {
+      path: '/Cart',
+      name: 'Cart',
+      component: () => import('../views/CartView.vue')
     },
     {
       path: '/Login',
       name: 'Login',
       component: () => import('../views/LoginView.vue')
-    },
-    {
-      path: '/Product',
-      name: 'Product',
-      component: () => import('../views/Product.vue')
-    },
-    {
-      path: '/BackLogin',
-      name: 'BackLogin',
-      component: () => import('../views/BackLoginView.vue')
     },
   ]
 })
