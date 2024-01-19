@@ -1,0 +1,38 @@
+.mainHeader{
+    display: flex;
+    justify-content: end;
+} 
+.indexHeaderButton{
+    background-color: $lightBlue;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.indexHeaderLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.indexHeaderNav{
+    display: flex;
+    gap:10px;
+    margin:10px;
+}
+.indexHeaderButtonIcon{
+    width: 40px;
+    height: 40px;
+
+}
+.indexHeaderButtonLogin{
+    height: 24px;
+}
+.line{
+    width: 2px;
+    height: 60px;
+    background-color: $grey_2;
+}

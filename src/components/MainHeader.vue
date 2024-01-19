@@ -1,53 +1,64 @@
 <template>
-  <header class="mainHeader" id="mainHeader">
-    <h2>讓我推</h2>
+  <header class="mainHeader">
     <nav>
-      <ul>
-        <li>
-          <div class="indexHeaderButton">
+      <ul class="indexHeaderNav">
+        <li class="indexHeaderButton" v-for="item in img" :key="item">
             <a href="#">
-              <img src="" alt="">
+              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIcon">
             </a>
-          </div>
         </li>
+        <div class="line"></div>
+        <div class="indexHeaderLogin">
+          <a href="#">
+            <img src="../assets/imgs/nav/nav-icon-Login.png" alt="" class="indexHeaderButtonLogin">
+          </a>
+        </div>
       </ul>
     </nav>
-    <nav>
+    <!-- <nav>
         <RouterLink class="RouterLink" to="/">Home</RouterLink>
         <RouterLink class="RouterLink" to="/about">About</RouterLink>
         <RouterLink class="RouterLink" to="/Product">Product</RouterLink>
-        <!-- <RouterLink class="RouterLink" to="/ProductView">ProductView</RouterLink> -->
-        <!-- <RouterLink class="RouterLink" to="/Test">Test</RouterLink> -->
+        <RouterLink class="RouterLink" to="/Test">Test</RouterLink>
         <RouterLink class="RouterLink" to="/Login">Login</RouterLink>
         <RouterLink class="RouterLink" to="/BackLogin">BackLogin</RouterLink>
-      </nav>
+      </nav> -->
   </header>
 </template>
 
 <script>
-import { VueElement } from 'vue';
+
+// import { VueElement } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
 export default{
   components: {
     RouterLink,
     RouterView,
   },
+  data(){
+    return{
+      img:[
+        {i:'nav/nav-icon-01.png'},
+        {i:'nav/nav-icon-02.png'},
+        {i:'nav/nav-icon-03.png'},
+        {i:'nav/nav-icon-04.png'},
+        {i:'nav/nav-icon-05.png'},
+        {i:'nav/nav-icon-06.png'},
+        // {i:'nav/nav-icon-Login.png'},
+      ],
+      
+    }
+  },
+    methods:{
+      getImageUrl(paths){
+        return new URL(`../assets/imgs/${paths}`, import.meta.url).href
+      }
+    }
 }
-// Vue.creatApp({
-
-// }).mount('#mainHeader')
+  
 </script>
 
-<style>
-  .RouterLink{
-    padding: 0 50px;
-    border: 1px solid black;
-    margin: 0 10px;
-  }
-  .indexHeaderButton{
-    background-color: blue;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
+<style lang="scss" scoped>
+@import '@/assets/scss/components/mainHeader.scss';
+
 </style>
