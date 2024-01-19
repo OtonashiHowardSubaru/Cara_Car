@@ -54,26 +54,34 @@ import axios from 'axios'; //引入函式庫
           // console.log(item);
           return item.title.includes(this.search)
         })
-      },
-      getProductImageUrl(imageFileName) {
-      // 返回完整的图片 URL
+    },
+    handleFilter() {
+      this.displayData = this.responseData.filter((item) => {
+        // console.log(item);
+        return item.title.includes(this.search)
+      })
+    },
+    getProductImageUrl(imageFileName) {
+      // 返回完整的URL
       return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
     }
-    },
-  }
+  },
+}
 </script>
 <template>
-  <div >
-  </div>
-  <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-if="index > 0"直接從第二個資料開始取 -->
-  <div v-for="(item,index) in displayData" :key="item.prod_id">
-    <div v-if="index > 0" class="product_card">
-      <div class="pro_card_img">
-        <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
-      </div>
-      <div class="pro_crad_info">
-        <h6>{{ item.prod_name }}</h6>
-        <p>{{ item.prod_price }}</p>
+  <div class="container">
+    <div class="row">
+      <div class="pro_card_list col-md-9">
+        <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-if="index > 0"直接從第二個資料開始取 -->
+        <div class="product_card" v-for="item, in displayData.slice(1)" :key="item.prod_id">
+          <div class="pro_card_img">
+            <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
+          </div>
+          <div class="pro_crad_info">
+            <h6>{{ item.prod_name }}</h6>
+            <p>{{ item.prod_price }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.mainFooter{
+    width: 1920px;
+    height: 825px;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    background-color: $grey_1;
+
+
+    .footerbg{
+        background: url(../../imgs/MainFooter/footer_bg.png) no-repeat;
+        background-size: cover;
+        width: 1920px;
+        height: 330px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .footerSection1{
+        width: 35%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        
+        
+
+        // background-color: $grey_2;
+
+        .footerSection1Info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            img {
+                width: 60%;
+            }
+            h4 {
+                font-size: $h4;
+                line-height: 50px;
+        
+            }  
+            .shopInfo {
+                p {
+                    font-size: $p;
+                    line-height: 35px;
+                }
+            }
+        }
+    }
+    .footerSection2{
+        width: 35%;
+        height: 60%;
+        display: flex;
+        font-size: $h5;
+        justify-content: center;
+        align-items: center;
+
+
+        .mainMenu>li {
+            margin: 20px 80px 5px 0;
+        
+        }
+        .subMenu>li {
+            font-size: $p;
+            margin: 0 0 7.5px 50px;
+
+        }        
+
+
+        
+    }
+    .footerSection3{
+        width: 35%;
+        height: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        position: relative;
+
+        .footerSection3Follow {
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-right: 20px;
+                font-size: $p;
+            }
+            img {
+                width: 30px;
+                height: 30px;
+                margin-right: 20px;
+            }
+        }
+        .footerSection3Top {
+            position: relative;
+            top: -200px;
+            // display: flex;
+            .decoLine {
+                width: 40px;
+                height: 1px;
+                background-color: #222;
+                transform: rotate(90deg);
+
+            }
+            p{
+
+                bottom: -50px;
+                left: 6px;
+                position: absolute;
+            }
+
+            
+        }
+
+    }
+
+}    

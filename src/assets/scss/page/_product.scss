@@ -1,13 +1,33 @@
 .product{
     background-color: #ddd;
     input{
-        color: $blue-1;
+        color: $lightBlue;
     }
     &_container{
         padding: 1rem;
         font-size: 0.8rem;
     }
 }
+
+.pro_card_list {
+    margin: auto;
+  }
+  .pro_card_img img{
+    vertical-align: top;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px; //這個之後要改變數
+  }
+  .pro_crad_info *{
+    width: fit-content;
+    margin: auto;
+  }
+  .pro_crad_info h6{
+    font-size: $h4;
+  }
+  .pro_crad_info p{
+    font-size: $p;
+  }
 
 // 二手流程
 .sh_contact{
@@ -16,7 +36,8 @@
     align-items: center;
     margin: 0 auto;
     line-height: 2;
-    color: $fontcolor;
+    color: #222;
+    margin: 120px 0;
     h4{
         font-size: $h4;
     }
