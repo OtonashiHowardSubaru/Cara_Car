@@ -3,9 +3,9 @@
     <nav>
       <ul class="indexHeaderNav">
         <li class="indexHeaderButton" v-for="(item, index) in img" :key="item">
-            <a :href="paths[index]">
+            <RouterLink :to="name[index]">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIcon">
-            </a>
+            </RouterLink>
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
@@ -28,13 +28,13 @@ export default{
   // },
   data(){
     return{
-      paths:[
-        '../views/ProductListView.vue',
-        '../views/SecondHandListView.vue',
-        '../views/GameView.vue',
-        '../views/ShopInformationView.vue',
-        '../views/MemberCenterView.vue',
-        '../views/CartView.vue',
+      name:[
+        '/ProductList',
+        '/SecondHandList',
+        '/Game',
+        '/ShopInformation',
+        '/MemberCenter',
+        '/Cart',
     ],
       img:[
         {i:'nav/nav-icon-01.png'},
