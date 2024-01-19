@@ -103,14 +103,20 @@ import axios from 'axios'; //引入函式庫
   </div>
 
   <div class="sh_contact">
+    <div class="sh_text">
       <h4>舊車新生，回憶傳承</h4>
       <p>如果您有二手車或是任何其他問題，歡迎聯繫我們。</p>
+    </div>
+      
       <div class="cards">
-        <div class="contct_card" v-for="item in sh_contact">
+        <div class="contact_card" v-for="item in sh_contact">
           <div class="card_info">
             <img :src="item.img" alt="">
-            <p>{{ item.shSubtitle }}</p>
-            <p>{{ item.context }}</p>
+            <div class="item_text">
+              <p>{{ item.shSubtitle }}</p>
+              <p>{{ item.context }}</p>
+            </div>
+            
             <img :src="item.arrowImg" alt="" class="arrow">
           </div>
           
@@ -127,10 +133,11 @@ import axios from 'axios'; //引入函式庫
               <img src="../assets/imgs/product/sh_process_tel.png" alt="">
               <span>03 425 1108</span>
             </div>
-          </div>
+          
           <div class="opening">
             <span>每周一、二公休</span>
           </div>
+        </div>
         </div>
       </div>
   </div>
