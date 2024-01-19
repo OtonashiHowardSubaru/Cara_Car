@@ -41,19 +41,31 @@
               </ul>    
         </ul>
         <ul class="mainMenu">
-          <li>> 最新消息</li>
+          <li>
+            <RouterLink class="RouterLink" to="/">> 最新消息</RouterLink>
+          </li>
           <li>
             <RouterLink class="RouterLink" to="/about">> 關於我們</RouterLink>
           </li>
-          <li>> 門市資訊</li>
-          <li>> 賽車小遊戲</li>
+          <li>
+            <RouterLink class="RouterLink" to="/">> 門市資訊</RouterLink>
+          </li>
+          <li>
+            <RouterLink class="RouterLink" to="/">> 賽車小遊戲</RouterLink>
+          </li>
         </ul>
     </div>
     <div class="footerSection3">
       <div class="footerSection3Follow">
         <p>Follow Us</p>
-        <img src="../assets/imgs/MainFooter/icon_fb.png" alt="">
-        <img src="../assets/imgs/MainFooter/icon_ig.png" alt="">
+        <RouterLink class="RouterLink" to="/">
+          <img src="../assets/imgs/MainFooter/icon_fb.png" alt="icon_fb">
+        </RouterLink>
+        
+        <RouterLink class="RouterLink" to="/">
+          <img src="../assets/imgs/MainFooter/icon_ig.png" alt="icon_ig">
+        </RouterLink>
+        
       </div>
       <div class="footerSection3Top">
         <div class="decoLine"></div>
