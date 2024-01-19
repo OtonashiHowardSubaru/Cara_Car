@@ -14,6 +14,21 @@
           </a>
         </div>
       </ul>
+
+      <ul class="indexHeaderNavPh">
+        <li class="indexHeaderButtonPh" v-for="item in img">
+            <a href="#" class="indexHeaderA">
+              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
+                <!-- <p class="indexHeaderButtonP">PRODUCT</p> -->
+            </a>
+        </li>
+        <div class="linePh"></div>
+        <div class="indexHeaderLoginPh">
+          <a href="#">
+            <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="" class="indexHeaderButtonLoginPh">
+          </a>
+        </div>
+      </ul>
     </nav>
   </header>
   <!--  ↓登入燈箱↓  -->

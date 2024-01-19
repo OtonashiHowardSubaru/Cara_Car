@@ -69,27 +69,28 @@ import axios from 'axios'; //引入函式庫
 }
 </script>
 <template>
+  <div class="pro_list_title col-12">
+    <h1>新品專區</h1>
+  </div>
   <div class="container">
     <div class="row">
-      <div class="pro_list_title col-12">
-        <h1>新品專區</h1>
-      </div>
-      <div class="pro_list_sorter col-12">
+      <div class="store_name col-12">
         <h2>CARA CAR</h2>
         <select name="" id="priceSorter">
-          <option value="asc">價格　　↑</option>
+          <option value=""></option>
           <option value="desc">價格　　↓</option>
+          <option value="asc">價格　　↑</option>
         </select>
       </div>
-      <div class="pro_list_filter col-12">
+      <div class="pro_list_filter col-12 col-md-1">
         <button><div class="arrow_ltr"></div><p>促銷中</p></button>
         <button><div class="arrow_ltr"></div><p>電動車</p></button>
         <button><div class="arrow_ltr"></div><p>配件</p></button>
         <button><div class="arrow_ltr"></div><p>模型車</p></button>
       </div>
-      <div class="pro_card_list col-9">
+      <div class="pro_card_list col-9 col-md-10">
         <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-for="item, in displayData.slice(1)"直接從第二個資料開始取 -->
-        <div class="product_card" v-for="item, in displayData.slice(1)" :key="item.prod_id">
+        <div class="product_card col-md-4" v-for="item, in displayData.slice(1)" :key="item.prod_id">
           <div class="pro_card_img">
             <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
           </div>
