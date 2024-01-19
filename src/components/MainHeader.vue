@@ -14,21 +14,6 @@
           </a>
         </div>
       </ul>
-
-      <ul class="indexHeaderNavPh">
-        <li class="indexHeaderButtonPh" v-for="item in img">
-            <a href="#" class="indexHeaderA">
-              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
-                <!-- <p class="indexHeaderButtonP">PRODUCT</p> -->
-            </a>
-        </li>
-        <div class="linePh"></div>
-        <div class="indexHeaderLoginPh">
-          <a href="#">
-            <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="" class="indexHeaderButtonLoginPh">
-          </a>
-        </div>
-      </ul>
     </nav>
   </header>
   <!--  ↓登入燈箱↓  -->
@@ -87,7 +72,7 @@ export default{
       img:[
         {i:'nav/nav-icon-01.png'},
         {i:'nav/nav-icon-02.png'},
-        // {i:'nav/nav-icon-03.png'},
+        {i:'nav/nav-icon-03.png'},
         {i:'nav/nav-icon-04.png'},
         {i:'nav/nav-icon-05.png'},
         {i:'nav/nav-icon-06.png'},
