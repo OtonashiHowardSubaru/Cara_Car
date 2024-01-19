@@ -45,7 +45,7 @@ export default {
   <div class="container">
     <div class="row">
       <div class="pro_card_list col-md-9">
-        <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-if="index > 0"直接從第二個資料開始取 -->
+        <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-for="item, in displayData.slice(1)"直接從第二個資料開始取 -->
         <div class="product_card" v-for="item, in displayData.slice(1)" :key="item.prod_id">
           <div class="pro_card_img">
             <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
