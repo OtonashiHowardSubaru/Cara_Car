@@ -84,6 +84,7 @@
         font-family: Kosugi Maru;
         justify-content: center;
         align-items: center;
+        z-index: 2;
 
 
         .mainMenu>li {
@@ -270,7 +271,10 @@
                 font-size: $p;
                 margin: 0 0 7.5px 50px;
     
-            }        
+            }    
+            .footerGame {
+                display: block;
+            }    
     
     
             
