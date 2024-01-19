@@ -116,7 +116,7 @@ import axios from 'axios'; //引入函式庫
             <div class="phoneNumber">
               <img src="../assets/imgs/product/sh_process_tel.png" alt="">
               <span>03 425 1108</span>
-            </div>
+          </div>
           
           <div class="opening">
             <span>每周一、二公休</span>
@@ -129,7 +129,7 @@ import axios from 'axios'; //引入函式庫
 
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" ::v-deep>
 
 @import '@/assets/scss/page/product.scss';
 

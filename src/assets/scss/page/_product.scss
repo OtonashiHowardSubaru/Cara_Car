@@ -21,7 +21,7 @@
 
 
 // 二手流程
-.sh_contact{
+.sh_contact {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,14 +49,28 @@
         p:first-child{
             font-size: $p;
         }
-        img:first-child{
-          width: 2vw;
-        }
-        .arrow{
-          width: 30px;
-        }
       }
     }
+    .card_info{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 40px;
+      img{
+        width: 80px;
+      }
+      .arrow{
+        width: 30px;
+      }
+    }
+    .item_text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px ;
+    }
+  }
+
     .phone{
       display: flex;
       justify-content: center;
@@ -86,7 +100,6 @@
             font-size: 28px;
           }
         }
-        
       }
       .opening{
         display: flex;
@@ -99,21 +112,21 @@
           margin-left: 25px;
         }
       }
-  
     }
-  }
+  
 
   // 之後改min-width
+
   @media (max-width: 768px) {
     .sh_contact{
       width: 100%;
     }
-    .cards{
+    .cards {
       flex-direction: column;
       width: 500px;
     }
 
-    .contact_card{
+    .contact_card {
         width: 100%; 
         background-color: $grey_1; 
         border-radius: 20px;
@@ -128,12 +141,14 @@
           height: 5px;
           position: absolute;
           right: 0;
+          top: 50%;
           margin-right: 40px;
         } 
-    } 
-    .card_info{ 
-      display: flex;
-      padding: 20px 60px;
+    }
+
+    .card_info { 
+      // display: flex;
+      padding: 10px 60px;
       align-items: center; 
     }  
 
@@ -142,16 +157,10 @@
       background-color: $grey_1; 
       border-radius: 20px;
       .contact_detail{
-        display: flex;
-        flex-direction: column;
+        padding: 20px 0;
+      }
+      img{
+        width: 50px;
       }
     }
-    .tel{
-      .phoneNumber{
-        span{
-          font-size: 10px;
-        }
-      }
-    } 
-  }  
-  
+  }
