@@ -9,11 +9,12 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-#部屬目錄
+# 部署目錄
 dist
 front
 
 dist-ssr
+front
 coverage
 *.local
 
