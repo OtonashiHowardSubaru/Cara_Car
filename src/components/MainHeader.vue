@@ -14,12 +14,12 @@
           </a>
         </div>
       </ul>
-
       <ul class="indexHeaderNavPh">
-        <li class="indexHeaderButtonPh" v-for="item in img">
+        <li class="indexHeaderButtonPh" v-for="item in img" >
             <a href="#" class="indexHeaderA">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
-                <!-- <p class="indexHeaderButtonP">PRODUCT</p> -->
+              <br>
+              <div class="indexHeaderButtonP">{{item.p}}</div>
             </a>
         </li>
         <div class="linePh"></div>
@@ -92,19 +92,20 @@ export default{
         {i:'nav/nav-icon-05.png'},
         {i:'nav/nav-icon-06.png'},
       ],
-      // name:[
-      //   {p:'PRODUCT'},
-      //   {p:'2nd-HAND'},
-      //   {p:'SHOP-INFO'},
-      //   {p:'MEMBER'},
-      //   {p:'MY-CART'},
-      // ],
+      title:[
+        {p:'PRODUCT'},
+        {p:'2nd-HAND'},
+        {p:'SHOP-INFO'},
+        {p:'MEMBER'},
+        {p:'MY-CART'},
+      ],
       // hover: false,
     }
   },
   // created() {
   //   this.axiosGetData();
   // },
+
   methods:{
     getImageUrl(paths){
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
