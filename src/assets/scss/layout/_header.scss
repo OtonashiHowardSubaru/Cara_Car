@@ -67,6 +67,8 @@
     height: 60px;
     background-color: $grey_2;
 }
+
+
 .indexHeaderButton{
     background-color: $lightBlue;
     width: 60px;
@@ -91,8 +93,9 @@
     gap:10px;
     background-color: $whiteWord;
     box-sizing: border-box;
+    padding-top: 10px;
     padding-right: 10px;
-    height: 70px;
+    height: 75px;
     // width: 100%;
     opacity: 0;
     box-sizing: border-box;
@@ -104,6 +107,7 @@
 
 .indexHeaderButtonLogin{
     height: 24px;
+    
 }
 .line{
     width: 2px;
