@@ -1,0 +1,1 @@
+import{_ as t,c as o,o as a,p as _,d as n,a as s}from"./index-BiPQBcwm.js";const i={},c=e=>(_("data-v-bbbac533"),e=e(),n(),e),d={class:"newsArticle"},r=c(()=>s("h1",null,"This is a newsArticle page",-1)),p=c(()=>s("h2",null,"Test init",-1)),l=[r,p];function h(e,b){return a(),o("div",d,l)}const u=t(i,[["render",h],["__scopeId","data-v-bbbac533"]]);export{u as default};
