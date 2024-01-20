@@ -89,7 +89,8 @@
     display: flex;
     gap:10px;
     background-color: $whiteWord;
-    margin:10px;
+    box-sizing: border-box;
+    padding-right: 10px;
     width: 100%;
     height: 80px;
 }
