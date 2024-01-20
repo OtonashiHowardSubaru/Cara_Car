@@ -1,1 +1,0 @@
-import{_ as s,c as t,o,a as e}from"./index-BiPQBcwm.js";const c={},a={class:"game"},n=e("h1",null,"This is a game page",-1),_=e("h2",null,"Test init",-1),i=[n,_];function r(d,l){return o(),t("div",a,i)}const m=s(c,[["render",r]]);export{m as default};

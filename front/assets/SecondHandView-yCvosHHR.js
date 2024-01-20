@@ -1,1 +1,0 @@
-import{_ as s,c as n,o,a as e}from"./index-BiPQBcwm.js";const c={},t={class:"SecondHand"},a=e("h1",null,"This is a SecondHand page",-1),_=e("h2",null,"Test init",-1),d=[a,_];function i(r,l){return o(),n("div",t,d)}const f=s(c,[["render",i]]);export{f as default};

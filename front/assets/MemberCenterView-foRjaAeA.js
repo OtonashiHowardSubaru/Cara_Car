@@ -1,1 +1,0 @@
-import{_ as t,c as s,o as n,a as e}from"./index-BiPQBcwm.js";const o={},c={class:"MemberCenter"},r=e("h1",null,"This is a MemberCenterView page",-1),_=e("h2",null,"Test init",-1),a=[r,_];function i(d,l){return n(),s("div",c,a)}const m=t(o,[["render",i]]);export{m as default};

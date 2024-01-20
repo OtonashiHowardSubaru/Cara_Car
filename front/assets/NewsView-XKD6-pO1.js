@@ -1,1 +1,0 @@
-import{_ as t,c,o as a,p as _,d,a as s}from"./index-BiPQBcwm.js";const n={},o=e=>(_("data-v-37eb8905"),e=e(),d(),e),i={class:"News"},p=o(()=>s("h1",null,"This is a News page",-1)),r=o(()=>s("h2",null,"Test init",-1)),h=[p,r];function l(e,f){return a(),c("div",i,h)}const w=t(n,[["render",l],["__scopeId","data-v-37eb8905"]]);export{w as default};
