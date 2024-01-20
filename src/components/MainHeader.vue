@@ -16,7 +16,7 @@
       </ul>
 
       <ul class="indexHeaderNavPh">
-        <li class="indexHeaderButtonPh" v-for="item in img">
+        <li class="indexHeaderButtonPh" v-for="item in img" :key="item">
             <a href="#" class="indexHeaderA">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
                 <!-- <p class="indexHeaderButtonP">PRODUCT</p> -->
