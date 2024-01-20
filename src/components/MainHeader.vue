@@ -9,9 +9,7 @@
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
-          <a href="#">
             <img src="../assets/imgs/nav/nav-icon-Login.png" alt="" class="indexHeaderButtonLogin" @click="openModal">
-          </a>
         </div>
       </ul>
 
@@ -41,10 +39,10 @@
                 <p>帳號</p>
                 <input type="email" id="username" name="username" placeholder="電子郵件" required>
                 <p>密碼</p>
-                <input type="password" id="password" name="password" placeholder="************" required>
+                <input :type="passwordVisible ? 'text' : 'password'" v-model="password" placeholder="●●●●●●●●" maxlength="12">
                 <a href="#">忘記密碼</a>
-                <img v-if="passwordVisible" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye" @click="togglePswVisbility">
-                <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye" @click="togglePswVisbility">
+                <img v-if="passwordVisible" src="../assets/imgs/open-eye.svg" alt="openEye" class="eye" @click="togglePswVisbility">
+                <img v-else src="../assets/imgs/close-eye.svg" alt="closeEye" class="eye" @click="togglePswVisbility">
                 <div id="errorMessage" class="error-message"></div>
                 <button type="submit">登入</button>
                 <span>還不是會員嗎? <a href="#">立即註冊　！</a></span>
@@ -69,6 +67,7 @@
 </template>
 
 <script>
+// import axios from 'axios';
 // import { VueElement } from 'vue';
 // import { RouterLink, RouterView } from 'vue-router'
 export default{
@@ -78,6 +77,8 @@ export default{
   // },
   data(){
     return{
+      password:'',
+      passwordVisible: false,
       name:[
         '/ProductList',
         '/SecondHandList',
@@ -111,17 +112,6 @@ export default{
     getImageUrl(paths){
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
     },
-    // axiosGetData(){
-    //     axios.get('https://tibamef2e.com/cgd103/g1/api/getMember.php?type=front')
-    //         .then( res=> {
-    //         console.log(res)
-    //         if(res && res.data){
-    //             this.responseData = res.data
-    //             this.displayData = res.data
-    //         }
-    //     })
-    // },
-
     openModal(){
       const loginModal = document.querySelector('#loginModal')
       const loginOverlay = document.querySelector('#loginOverlay')
