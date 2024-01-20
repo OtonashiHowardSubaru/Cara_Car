@@ -28,6 +28,8 @@
                 <p>密碼</p>
                 <input type="password" id="password" name="password" placeholder="************" required>
                 <a href="#">忘記密碼</a>
+                <img v-if="passwordVisible" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye" @click="togglePswVisbility">
+                <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye" @click="togglePswVisbility">
                 <div id="errorMessage" class="error-message"></div>
                 <button type="submit">登入</button>
                 <span>還不是會員嗎? <a href="#">立即註冊　！</a></span>
@@ -127,11 +129,16 @@ export default{
         loginOverlay.style.display = 'none';
         }, 100);
     },
+    togglePswVisbility() {
+            // console.log(togglePswVisbility)
+            this.passwordVisible = !this.passwordVisible;
+        }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
+@import '@/assets/scss/layout/login.scss';
 
 </style>
