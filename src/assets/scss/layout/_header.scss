@@ -67,10 +67,6 @@
     height: 60px;
     background-color: $grey_2;
 }
-
-
-
-
 .indexHeaderButton{
     background-color: $lightBlue;
     width: 60px;
@@ -86,12 +82,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    & img{
+        cursor: pointer;
+    }
 }
 .indexHeaderNav{
     display: flex;
     gap:10px;
     background-color: $whiteWord;
-    margin:10px;
+    box-sizing: border-box;
+    padding-right: 10px;
     height: 70px;
     // width: 100%;
     opacity: 0;
