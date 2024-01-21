@@ -69,11 +69,28 @@ import axios from 'axios'; //引入函式庫
 }
 </script>
 <template>
+  <div class="pro_list_title col-12">
+    <h1>新品專區</h1>
+  </div>
   <div class="container">
     <div class="row">
-      <div class="pro_card_list col-md-9">
-        <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-if="index > 0"直接從第二個資料開始取 -->
-        <div class="product_card" v-for="item, in displayData.slice(1)" :key="item.prod_id">
+      <div class="store_name col-12">
+        <h2>CARA CAR</h2>
+        <select name="" id="priceSorter">
+          <option value=""></option>
+          <option value="desc">價格　　↓</option>
+          <option value="asc">價格　　↑</option>
+        </select>
+      </div>
+      <div class="pro_list_filter col-12 col-md-1">
+        <button><div class="arrow_ltr"></div><p>促銷中</p></button>
+        <button><div class="arrow_ltr"></div><p>電動車</p></button>
+        <button><div class="arrow_ltr"></div><p>配件</p></button>
+        <button><div class="arrow_ltr"></div><p>模型車</p></button>
+      </div>
+      <div class="pro_card_list col-9 col-md-10">
+        <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-for="item, in displayData.slice(1)"直接從第二個資料開始取 -->
+        <div class="product_card col-md-4" v-for="item, in displayData.slice(1)" :key="item.prod_id">
           <div class="pro_card_img">
             <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
           </div>
@@ -87,40 +104,49 @@ import axios from 'axios'; //引入函式庫
   </div>
 
   <div class="sh_contact">
+    <div class="sh_text">
       <h4>舊車新生，回憶傳承</h4>
       <p>如果您有二手車或是任何其他問題，歡迎聯繫我們。</p>
-      <div class="cards">
-        <div class="contct_card" v-for="item in sh_contact">
+    </div>
+      
+    <div class="cards">
+      <div class="contact_card" v-for="item in sh_contact">
+        <div class="card_info">
           <img :src="item.img" alt="">
-          <p>{{ item.shSubtitle }}</p>
-          <p>{{ item.context }}</p>
+          <div class="item_text">
+            <p>{{ item.shSubtitle }}</p>
+            <p>{{ item.context }}</p>
+          </div>
+            
           <img :src="item.arrowImg" alt="" class="arrow">
         </div>
       </div>
-      
-      <div class="phone">
-        <img src="../assets/imgs/product/sh_process_contact.png" alt="">
-        <div class="tel">
-          <div class="contact_detail">
-            <span>TELEPHONE</span>
-            <span>連絡電話</span>
-            <div class="phoneNumber">
-              <img src="../assets/imgs/product/sh_process_tel.png" alt="">
-              <span>03 425 1108</span>
-            </div>
-          </div>
-          <div class="opening">
-            <span>每周一、二公休</span>
+    </div>
+    
+    <div class="phone">
+      <img src="../assets/imgs/product/sh_process_contact.png" alt="">
+      <div class="tel">
+        <div class="contact_detail">
+          <p>TELEPHONE</p>
+          <span>連絡電話</span>
+          <div class="phoneNumber">
+            <img src="../assets/imgs/product/sh_process_tel.png" alt="">
+            <span>03 425 1108</span>
           </div>
         </div>
+        
+        <div class="opening">
+          <span>每周一、二公休</span>
+        </div>
       </div>
+    </div>
   </div>
     
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-@import '@/assets/scss/page/product.scss'
+@import '@/assets/scss/page/product.scss';
 
 </style>

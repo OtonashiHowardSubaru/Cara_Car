@@ -2,25 +2,22 @@
   <header class="mainHeader">
     <nav>
       <ul class="indexHeaderNav">
-        <li class="indexHeaderButton" :class="{}" v-for="item in img" @mouseenter="hover = true" @mouseleave="hover = false" >
-            <a href="#">
-              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIcon" >
-              <p v-if="hover">Product</p>
-            </a>
+        <li class="indexHeaderButton" v-for="(item, index) in img" :key="item">
+            <RouterLink :to="name[index]">
+              <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIcon">
+            </RouterLink>
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
-          <a href="#">
-            <img src="../assets/imgs/nav/nav-icon-Login.png" alt="" class="indexHeaderButtonLogin">
-          </a>
+            <img src="../assets/imgs/nav/nav-icon-Login.png" alt="" class="indexHeaderButtonLogin" @click="openModal">
         </div>
       </ul>
-
       <ul class="indexHeaderNavPh">
-        <li class="indexHeaderButtonPh" v-for="item in img">
+        <li class="indexHeaderButtonPh" v-for="item in img" >
             <a href="#" class="indexHeaderA">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
-                <p class="indexHeaderButtonP">PRODUCT</p>
+              <br>
+              <div class="indexHeaderButtonP">{{item.p}}</div>
             </a>
         </li>
         <div class="linePh"></div>
@@ -31,56 +28,123 @@
         </div>
       </ul>
     </nav>
-    <!-- <nav>
-        <RouterLink class="RouterLink" to="/">Home</RouterLink>
-        <RouterLink class="RouterLink" to="/about">About</RouterLink>
-        <RouterLink class="RouterLink" to="/Product">Product</RouterLink>
-        <RouterLink class="RouterLink" to="/Test">Test</RouterLink>
-        <RouterLink class="RouterLink" to="/Login">Login</RouterLink>
-        <RouterLink class="RouterLink" to="/BackLogin">BackLogin</RouterLink>
-      </nav> -->
   </header>
+  <!--  ↓登入燈箱↓  -->
+  <div id="loginOverlay" @click="closeModal"></div>
+  <div id="loginModal">
+    <span class="close" @click="closeModal">&times;</span>
+        <div class="login_container">
+            <fieldset>
+                <legend>會員登入</legend>
+                <p>帳號</p>
+                <input type="email" id="username" name="username" placeholder="電子郵件" required>
+                <p>密碼</p>
+                <input :type="passwordVisible ? 'text' : 'password'" v-model="password" placeholder="●●●●●●●●" maxlength="12">
+                <a href="#">忘記密碼</a>
+                <img v-if="passwordVisible" src="../assets/imgs/open-eye.svg" alt="openEye" class="eye" @click="togglePswVisbility">
+                <img v-else src="../assets/imgs/close-eye.svg" alt="closeEye" class="eye" @click="togglePswVisbility">
+                <div id="errorMessage" class="error-message"></div>
+                <button type="submit">登入</button>
+                <span>還不是會員嗎? <a href="#">立即註冊　！</a></span>
+            </fieldset>
+
+            <div class="other_login">
+                <h2>—————更多方式登入—————</h2>
+                <div class="login_group">
+                    <a href="#">
+                        <img src="../assets/imgs/login/loginGoogle.png" alt="otherLogin">
+                    </a>
+                    <a href="#">
+                        <img src="../assets/imgs/login/loginFacebbok.png" alt="otherLogin">
+                    </a>
+                    <a href="#">
+                        <img src="../assets/imgs/login/loginLine.png" alt="otherLogin">
+                    </a>
+                </div>
+            </div>
+        </div>
+</div>
 </template>
 
 <script>
-
+// import axios from 'axios';
 // import { VueElement } from 'vue';
-import { RouterLink, RouterView } from 'vue-router'
+// import { RouterLink, RouterView } from 'vue-router'
 export default{
-  components: {
-    RouterLink,
-    RouterView,
-  },
+  // components: {
+    // RouterLink,
+    // RouterView,
+  // },
   data(){
     return{
+      password:'',
+      passwordVisible: false,
+      name:[
+        '/ProductList',
+        '/SecondHandList',
+        '/Game',
+        '/ShopInformation',
+        '/MemberCenter',
+        '/Cart',
+    ],
       img:[
         {i:'nav/nav-icon-01.png'},
         {i:'nav/nav-icon-02.png'},
-        // {i:'nav/nav-icon-03.png'},
+        {i:'nav/nav-icon-03.png'},
         {i:'nav/nav-icon-04.png'},
         {i:'nav/nav-icon-05.png'},
         {i:'nav/nav-icon-06.png'},
       ],
-      // name:[
-      //   {p:'PRODUCT'},
-      //   {p:'2nd-HAND'},
-      //   {p:'SHOP-INFO'},
-      //   {p:'MEMBER'},
-      //   {p:'MY-CART'},
-      // ],
+      title:[
+        {p:'PRODUCT'},
+        {p:'2nd-HAND'},
+        {p:'SHOP-INFO'},
+        {p:'MEMBER'},
+        {p:'MY-CART'},
+      ],
       // hover: false,
     }
   },
-    methods:{
-      getImageUrl(paths){
-        return new URL(`../assets/imgs/${paths}`, import.meta.url).href
-      }
-    }
+  // created() {
+  //   this.axiosGetData();
+  // },
+
+  methods:{
+    getImageUrl(paths){
+      return new URL(`../assets/imgs/${paths}`, import.meta.url).href
+    },
+    openModal(){
+      const loginModal = document.querySelector('#loginModal')
+      const loginOverlay = document.querySelector('#loginOverlay')
+      loginOverlay.style.display = 'block';
+      loginModal.style.display = 'block';
+      loginOverlay.classList.add('fadeIn');
+      loginModal.classList.add('fadeIn');
+    },
+    closeModal(){
+        loginOverlay.style.display = 'none';
+        loginModal.classList.remove('fadeIn');
+        loginModal.classList.add('fadeOut');
+        loginOverlay.classList.remove('fadeIn');
+        loginOverlay.classList.add('fadeOut');
+
+        setTimeout(() => {
+        loginModal.classList.remove('fadeOut');
+        loginOverlay.classList.remove('fadeOut');
+        loginModal.style.display = 'none';
+        loginOverlay.style.display = 'none';
+        }, 100);
+    },
+    togglePswVisbility() {
+            // console.log(togglePswVisbility)
+            this.passwordVisible = !this.passwordVisible;
+        }
+  }
 }
-  
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
+@import '@/assets/scss/layout/login.scss';
 
 </style>

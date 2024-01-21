@@ -1,6 +1,7 @@
 <template>
   <footer class="mainFooter">
-    <div class="footerbg"></div>
+    <div class="footerbg">
+    </div>
     <div class="footerSection1">
       <div class="footerSection1Info">
         <RouterLink class="RouterLink" to="/">
@@ -18,49 +19,63 @@
     <div class="footerSection2">
         <ul class="mainMenu">
           <li>
-            <RouterLink class="RouterLink" to="/Product">> 商品一覽</RouterLink>
+            <RouterLink class="RouterLink" to="/ProductList">> 商品一覽</RouterLink>
           </li>
               <ul class="subMenu">
                 <li>
-                  <RouterLink class="RouterLink" to="/">> 兒童車</RouterLink>
+                  <RouterLink class="RouterLink" to="/ProductList">> 兒童車</RouterLink>
                 </li>
                 <li>
-                  <RouterLink class="RouterLink" to="/">> 車車模型</RouterLink>
+                  <RouterLink class="RouterLink" to="/ProductList">> 車車模型</RouterLink>
                 </li>
                 <li>
-                  <RouterLink class="RouterLink" to="/">> 其他配件</RouterLink>
+                  <RouterLink class="RouterLink" to="/ProductList">> 其他配件</RouterLink>
                 </li>
               </ul>
           <li>
-            <RouterLink class="RouterLink" to="/">> 二手車一覽</RouterLink>
+            <RouterLink class="RouterLink" to="/SecondHandList">> 二手車一覽</RouterLink>
           </li>
               <ul class="subMenu">
                 <li>
-                  <RouterLink class="RouterLink" to="/">> 我要販售</RouterLink>
+                  <RouterLink class="RouterLink" to="/SecondHandSale">> 我要販售</RouterLink>
                 </li>
               </ul>    
         </ul>
         <ul class="mainMenu">
-          <li>> 最新消息</li>
           <li>
-            <RouterLink class="RouterLink" to="/about">> 關於我們</RouterLink>
+            <RouterLink class="RouterLink" to="/News">> 最新消息</RouterLink>
           </li>
-          <li>> 門市資訊</li>
-          <li>> 賽車小遊戲</li>
+          <li>
+            <RouterLink class="RouterLink" to="/About">> 關於我們</RouterLink>
+          </li>
+          <li>
+            <RouterLink class="RouterLink" to="/ShopInformation">> 門市資訊</RouterLink>
+          </li>
+          <li class="footerGame">
+            <RouterLink class="RouterLink" to="/Game">> 賽車小遊戲</RouterLink>
+          </li>
         </ul>
     </div>
     <div class="footerSection3">
       <div class="footerSection3Follow">
         <p>Follow Us</p>
-        <img src="../assets/imgs/MainFooter/icon_fb.png" alt="">
-        <img src="../assets/imgs/MainFooter/icon_ig.png" alt="">
+        <RouterLink class="RouterLink" to="/">
+          <img src="../assets/imgs/MainFooter/icon_fb.png" alt="icon_fb">
+        </RouterLink>
+        
+        <RouterLink class="RouterLink" to="/">
+          <img src="../assets/imgs/MainFooter/icon_ig.png" alt="icon_ig">
+        </RouterLink>
+        
       </div>
       <div class="footerSection3Top">
         <div class="decoLine"></div>
         <p>TOP</p>
       </div>
     </div>
-
+    <div class="footerSection4">
+      <p>©Cara_Car Co. All rights reserved.<br>本網站為緯育TibaMe_前端設計工程師班學員專題成果作品本平台僅供學習、展示之用。</p>
+    </div>
 
   </footer>
 </template>
@@ -86,6 +101,6 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/layout/footer.scss" 
+@import "@/assets/scss/layout/footer.scss" ;
 
 </style>
