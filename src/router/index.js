@@ -115,9 +115,12 @@ const router = createRouter({
       }
     },
     {
-      path: '/BackLogin',
-      name: 'BackLogin',
-      component: () => import('../views/BackLoginView.vue')
+      path: '/Register',
+      name: 'Register',
+      component: () => import('../views/RegisterView.vue'),
+      meta:{
+        title: '會員註冊 | Cara Car',
+      }
     },
   ]
 })
