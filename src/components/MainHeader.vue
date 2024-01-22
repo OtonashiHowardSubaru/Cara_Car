@@ -1,24 +1,27 @@
 <template>
   <header class="mainHeader">
     <nav>
+      <!-- 電腦版header -->
       <ul class="indexHeaderNav">
-        <li class="indexHeaderButton" v-for="(item, index) in img" :key="item">
+        <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)" @mouseleave="resetImageTitle()">
           <RouterLink :to="name[index]">
-            <img :src="getImageUrl(item.i)" class="indexHeaderButtonIcon">
+            <img :src="getImageUrl(item.i)" class="indexHeaderButtonIcon" v-show="currentHoverIndex !== index">
           </RouterLink>
+          <div class="indexHeaderButtonP" v-if="currentHoverIndex === index">{{ title[index].p }}</div>
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
           <img src="../assets/imgs/nav/nav-icon-Login.png" alt="" class="indexHeaderButtonLogin" @click="openModal">
         </div>
       </ul>
+      <!-- 手機板haeder -->
       <ul class="indexHeaderNavPh">
-        <li class="indexHeaderButtonPh" v-for="item in img" :key="item">
+        <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
             <a href="#" class="indexHeaderA">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
-              <br>
-              <div class="indexHeaderButtonP">{{item.p}}</div>
+              <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
             </a>
+            
         </li>
         <div class="linePh"></div>
         <div class="indexHeaderLoginPh">
@@ -90,6 +93,11 @@ export default {
       username: '',
       psw6666: '',
       passwordVisible: false,
+      //header v-for v-show
+      currentTitle: '',
+      currentHoverIndex: -1,
+      currentTitlePh: '',
+      currentHoverIndexPh: -1,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -106,14 +114,29 @@ export default {
         { i: 'nav/nav-icon-05.png' },
         { i: 'nav/nav-icon-06.png' },
       ],
+      imgPh: [
+        { i: 'nav/nav-icon-01.png' },
+        { i: 'nav/nav-icon-02.png' },
+        { i: 'nav/nav-icon-04.png' },
+        { i: 'nav/nav-icon-05.png' },
+        { i: 'nav/nav-icon-06.png' },
+      ],
       title:[
         {p:'PRODUCT'},
-        {p:'2nd-HAND'},
-        {p:'SHOP-INFO'},
+        {p:'2nd HAND'},
+        {p:'GAME'},
+        {p:'SHOP INFO'},
         {p:'MEMBER'},
-        {p:'MY-CART'},
+        {p:'MY CART'},
       ],
-      // hover: false,
+      titlePh:[
+        {ph:'PRODUCT'},
+        {ph:'2nd-HAND'},
+        {ph:'SHOP-INFO'},
+        {ph:'MEMBER'},
+        {ph:'MY-CART'},
+      ],
+      
     }
   },
   // created() {
@@ -122,6 +145,25 @@ export default {
   methods: {
     getImageUrl(paths) {
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
+    },
+    changeImageTitle(index) {
+      this.currentTitle = this.title[index].p;
+      this.currentHoverIndex = index;
+    },
+    resetImageTitle() {
+      this.currentHoverIndex = -1;
+    },
+    changeImageTitlePh($index) {
+      console.log('Index:', $index);
+      console.log('titlePh[index]:', this.titlePh[$index]);
+
+      if (this.titlePh[$index]) {
+        this.currentTitle = this.titlePh[$index].ph;
+        this.currentHoverIndexPh =$index;
+      }
+    },
+    resetImageTitlePh() {
+      this.currentHoverIndexPh = -1;
     },
     openModal() {
       const modal = document.querySelector('#loginModal')
@@ -183,9 +225,12 @@ export default {
 
   }
 }
+// @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,600&display=swap');
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
 @import '@/assets/scss/layout/login.scss';
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,600;6..12,800&display=swap" rel="stylesheet">
