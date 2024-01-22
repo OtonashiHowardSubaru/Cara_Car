@@ -1,8 +1,8 @@
 .fadeIn {
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
 }
 .fadeOut {
-    animation: fadeOut 0.5s ease-in-out;
+    animation: fadeOut 0.3s ease-in-out;
 }
 @keyframes fadeIn {
     0% { opacity: 0; }
@@ -22,7 +22,7 @@
     height: 100%;
     background-color:rgba($grey_3,0.8);
 }
-#loginModal {
+#loginModal{
     z-index: 1000;
     position: fixed;
     top: 50%;
@@ -30,108 +30,112 @@
     display: none;
     align-items: center;
     justify-content: center;
-    width: 30%;
-    height: 70%;
-    border-radius: 100px;
+    border-radius: 80px;
     background-color: $grey_2;
     transform: translate(-50%, -50%);
 }
-.close {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    font-size: 40px;
-    cursor: pointer;
-}
 
-.login_container{
-    width: 60%;
-    max-width: 1920px;
-    margin: auto;
-    padding: 50px 0;
-}
-
-fieldset{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    border-style: none;
-    & legend{
-        font-size: 26px;
-        text-align: center;
-        margin-block: 30px;
+@media (min-width:768px){
+    #loginModal {
+        width: 55%;
     }
-    & input{
-        width: 100%;
-        padding: 5px 25px;
-        border-radius: 20px;
-        font-size: $h5;
-        &:first-of-type{
-            margin-bottom: 20px;
-        }
-    }
-    & .error-message{
-        color: #f00;
-        font-size: 20px;
-        margin-block: 5px;
-    }
-    & button{
-        height: 70px;
-        width: 100%;
-        font-size: $h5;
-        margin-block: 5px;
-        color: #fff;
-        border-radius: 20px;
+    .close {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        font-size: 40px;
         cursor: pointer;
-        text-align: center;
-        transition: 0.3s linear;
-        background-color: $lightGreen;
-        &:hover{background-color: #9baa7a;}
     }
-    & p{
-        font-size: $h4;
-        text-align: left;
+    
+    .login_container{
+        width: 60%;
+        margin: auto;
+        padding-top: 10px;
     }
-    & span{
-        color: #000;
-        font-size: $h5;
-        & a{
-            
+    .eye{
+        position: absolute;
+        top: 40%;
+        right: 2%;
+        width: 20px;
+        cursor: pointer;
+    }
+    .login_textarea{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border-style: none;
+        & h2{
+            font-size: $h4;
+            text-align: center;
+            margin-block: 15px;
+        }
+        & .email{
+            margin-bottom: 10px;
+        }
+        & .psw_input{
+            position: relative;
+        }
+        & input{
+            position: relative;
+            width: 100%;
+            padding: 5px 25px;
+            border-radius: 20px;
             font-size: $h5;
-            text-decoration: none;
+        }
+        & button{
+            height: 70px;
+            width: 100%;
+            font-size: $h5;
+            margin-block: 5px;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s linear;
+            background-color: $lightGreen;
+            &:hover{background-color: #9baa7a;}
+        }
+        & p{
+            font-size: $h4;
+        }
+        & span{
+            color: #222;
+            font-size: $p;
+            & a{
+                font-size: $p;
+            }
+        }
+        & a{
+            color: #222;
+            text-align: right;
+            font-size: $default;
         }
     }
-    & a{
-        color: #000;
-        text-align: right;
-        font-size: $default;
-        text-decoration-color: transparent;
-        &:hover{
-            text-decoration-color: #222;
-        }
-    }
-}
-.other_login{
-    width: 100%;
-    margin: auto;
-    padding-top: 35px;
-    & h2{
-        font-size: $h5;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-        & .login_group, .login_group a{
+    .other_login{
+        width: 100%;
+        margin: 10px auto 20px auto;
+        & .other_login_title{
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-            & .login_group img{
-                width: 60%;
+            & .other_line{
+                border: 1px solid #222;
+                width: 20%;
             }
-}
-@media (max-width:768px){
-    #loginModal{
-        width: 80%;
+        }
+        & h2{
+            font-size: $h5;
+            text-align: center;
+            margin-block: 8px;
+        }
+            & .login_group, .login_group a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+                & .login_group img{
+                    width: 60%;
+                    vertical-align: top;
+                }
     }
 }
