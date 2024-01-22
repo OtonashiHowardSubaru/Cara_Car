@@ -1,16 +1,25 @@
 <script>
 export default {
     data() {
-        return{}
+        return {
+            psw7777: '',
+            psw8888: '',
+            passwordVisibleLeft: false,
+            passwordVisibleRight: false,
+        }
     },
-    methods:{
-        togglePswVisbility() {
+    methods: {
+        togglePswLeft() {
             // console.log(togglePswVisbility)
-            this.passwordVisible = !this.passwordVisible;
+            this.passwordVisibleLeft = !this.passwordVisibleLeft;
+        },
+        togglePswRight() {
+            // console.log(togglePswVisbility)
+            this.passwordVisibleRight = !this.passwordVisibleRight;
         },
     },
     mounted() {
-        
+
     }
 }
 </script>
@@ -19,33 +28,94 @@ export default {
     <div class="register">
         <div class="registerTitle">
             <div class="line"></div>
-            <h1>成為會員</h1>
+            <div class="title">
+                <div class="title_icon">
+                    <img src="../assets/imgs/nav/nav-icon-05.png" alt="title_icon">
+                </div>
+                <h1>成為會員</h1>
+                <div class="title_icon">
+                    <img src="../assets/imgs/nav/nav-icon-05.png" alt="title_icon">
+                </div>
+            </div>
             <div class="line"></div>
         </div>
         <div class="registerContent">
-            <div class="Textarea">
-                <p>會員姓名</p>
-                <input type="text">
-                <p>會員生日</p>
-                <input type="date">
-                <p>電子郵件</p>
-                <input type="email">
-                <p>連絡電話</p>
-                <input type="tel">
-                <p>會員地址</p>
-                <input type="address">
-                <p>輸入密碼</p>
-                <input type="password">
-                <img v-if="passwordVisible" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye1" @click="togglePswVisbility">
-                <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye1" @click="togglePswVisbility">
-                <p>確認密碼</p>
-                <input type="password">
-                <img v-if="passwordVisible" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye2" @click="togglePswVisbility">
-                <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye2" @click="togglePswVisbility">
+            <div class="textarea">
+                <div class="name_birth">
+                    <div class="space">
+                        <p>會員姓名</p>
+                        <input type="text" placeholder="輸入您的姓名">
+                    </div>
+                    <div class="space">
+                        <p>會員生日</p>
+                        <input type="date" placeholder="2024/01/01">
+                    </div>
+                </div>
+                <div class="email_tel">
+                    <div class="space">
+                        <p>電子郵件</p>
+                        <input type="email" placeholder="cara_car@gmail.com">
+                    </div>
+                    <div class="space">
+                        <p>連絡電話</p>
+                        <input type="tel" placeholder="0912345678" maxlength="10">
+                    </div>
+                </div>
+                <div class="address">
+                    <p>會員地址</p>
+                    <input type="address" placeholder="桃園市中壢區復興路46號">
+                </div>
+                <div class="register_psw">
+                    <div class="keyin_psw">
+                        <p>輸入密碼</p>
+                        <input :type="passwordVisibleLeft ? 'text' : 'password'" v-model="psw7777" placeholder="請輸入密碼"
+                            maxlength="12">
+                        <img v-if="passwordVisibleLeft" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye1"
+                            @click="togglePswLeft">
+                        <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye1"
+                            @click="togglePswLeft">
+                    </div>
+                    <div class="confirm_psw">
+                        <p>確認密碼</p>
+                        <input :type="passwordVisibleRight ? 'text' : 'password'" v-model="psw8888" placeholder="確認密碼"
+                            maxlength="12">
+                        <img v-if="passwordVisibleRight" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye2"
+                            @click="togglePswRight">
+                        <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye2"
+                            @click="togglePswRight">
+                    </div>
+                </div>
             </div>
             <div class="check">
-
+                <input type="checkbox" id="registerChecked" name="registerChecked">
+                <label for="registerChecked">我已閱讀並同意所有條款</label>
+                <span>使用條款 / 隱私政策 / 推播通知</span>
+            </div>
+            <div class="register_btn">
+                <!-- <button @click.prevent="signup">送出並成為會員</button> -->
+                <button>送出並成為會員</button>
+                <RouterLink to="/">已經是會員了嗎? 在此登入</RouterLink>
+            </div>
+            <div class="other_register">
+                <div class="other_register_title">
+                    <div class="other_line"></div>
+                    <h2>更多註冊方式</h2>
+                    <div class="other_line"></div>
+                </div>
+                <div class="register_group">
+                    <a href="#">
+                        <img src="../assets/imgs/login/loginGoogle.png" alt="otherRegister">
+                    </a>
+                    <a href="#">
+                        <img src="../assets/imgs/login/loginFacebbok.png" alt="otherRegister">
+                    </a>
+                    <a href="#">
+                        <img src="../assets/imgs/login/loginLine.png" alt="otherRegister">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
+<style lang="scss" scoped>@import '@/assets/scss/page/register.scss'</style>
