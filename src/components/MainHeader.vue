@@ -52,7 +52,7 @@
         <button @click.prevent="signin">登入</button>
         <span>
           還不是會員嗎? 
-          <RouterLink to="../views/Register.vue">立即註冊 ！</RouterLink>
+          <RouterLink to="/Register">立即註冊 ！</RouterLink>
         </span>
       </div>
 
