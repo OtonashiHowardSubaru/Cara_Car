@@ -46,17 +46,6 @@
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.indexHeaderButtonP{
-    color: $blackWord;
-    font-size: 12px;
-    text-align: center;
-    font-weight: 800;
-    font-family: 'Nunito Sans', sans-serif;
-    // display: inline-block;
-    
-
-    
-}
 .indexHeaderA{
     text-decoration: none;
 }
@@ -116,6 +105,15 @@
     height: 40px;
 }
 
+.indexHeaderButtonP{
+    color: $blackWord;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 1000;
+    font-family: 'Nunito Sans', sans-serif;
+        
+}
+
 .indexHeaderButtonLogin{
     height: 24px;
     
@@ -126,16 +124,27 @@
     background-color: $grey_2;
 }
 
+.indexLogo{
+    position:absolute;
+    left: 40px;
+    top: 500px;
+}
+
 @media (min-width:768px) {
     .indexHeaderNav{
-            opacity: 1;
+        opacity: 1;
         
     }
     .indexHeaderNavPh{
-            display: none;
+        display: none;
         
     }
+    // .indexLogo{
+    //     display: block;
+    // }
 }
 @media (max-width:1280px) {
-    
+    // .indexLogo{
+    //     display: none;
+    // }
 }

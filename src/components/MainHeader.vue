@@ -6,8 +6,8 @@
         <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)" @mouseleave="resetImageTitle()">
           <RouterLink :to="name[index]">
             <img :src="getImageUrl(item.i)" class="indexHeaderButtonIcon" v-show="currentHoverIndex !== index">
+            <div class="indexHeaderButtonP" v-if="currentHoverIndex === index">{{ title[index].p }}</div>
           </RouterLink>
-          <div class="indexHeaderButtonP" v-if="currentHoverIndex === index">{{ title[index].p }}</div>
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
@@ -21,7 +21,6 @@
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
               <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
             </a>
-            
         </li>
         <div class="linePh"></div>
         <div class="indexHeaderLoginPh">
@@ -31,7 +30,9 @@
         </div>
       </ul>
     </nav>
+    <!-- <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexLogo"> -->
   </header>
+  
   <!--  ↓登入燈箱↓  -->
   <div id="loginOverlay" @click="closeModal"></div>
   <div id="loginModal">
