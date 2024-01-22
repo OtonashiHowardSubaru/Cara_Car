@@ -1,3 +1,4 @@
+
 <template>
     <div class="newsArticle">
         <h1>This is a newsArticle page</h1>

@@ -117,25 +117,21 @@ import axios from 'axios'; //引入函式庫
       <div class="tel">
 
         <div class="contact_detail">
-
-          <span>TELEPHONE</span>
-          <span>連絡電話</span>
+          <div class="tel_title">
+            <span>TELEPHONE</span>
+            <span>連絡電話</span>
+          </div>
 
           <div class="phoneNumber">
             <img src="../assets/imgs/product/sh_process_tel.png" alt="">
             <span>03 425 1108</span>
           </div>
-        
-          <div class="opening">
-            <span>每周一、二公休</span>
-          </div>
-
         </div>
-
+        <div class="opening">
+          <span>每周一、二公休</span>
+        </div>
       </div>
     </div>
-    
-
   </div>
     
 
