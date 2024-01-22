@@ -21,10 +21,10 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/AboutView.vue'),
+      meta:{
+        title: '關於我們 | Cara Car',
+      }
     },
     {
       path: '/ProductList',
@@ -64,6 +64,14 @@ const router = createRouter({
       component: () => import('../views/MemberCenterView.vue'),
       meta:{
         title: '會員中心 | Cara Car',
+      }
+    },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: () => import('../views/RegisterView.vue'),
+      meta:{
+        title: '會員註冊 | Cara Car',
       }
     },
     {
