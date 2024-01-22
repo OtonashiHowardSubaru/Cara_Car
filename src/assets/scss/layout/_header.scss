@@ -42,8 +42,8 @@
     display: inline-block;
     // letter-spacing: 2px;
     margin-right: 40px;
-    // border: 1px solid red;
-
+    // margin: 15px;
+    border: $bor1 solid red;
     
 }
 .indexHeaderA{
@@ -73,7 +73,7 @@
     background-color: $lightBlue;
     width: 60px;
     height: 60px;
-    border-radius: 50%;
+    border-radius: $borr4;
     display: flex;
     justify-content: center;
     align-items: center;
