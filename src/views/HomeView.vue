@@ -13,13 +13,8 @@ export default {
 
 
 <template>
-  <div class="home">
-      <h1>This is a home page</h1>
-      <h2>Test init</h2>
-  </div>
-</template>
 
-<style></style>
+</template>
 
 <style scoped>
 

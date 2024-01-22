@@ -19,12 +19,12 @@ const router = createRouter({
       }
     },
     {
-      path: '/About',
-      name: 'About',
-      component: () => import('../views/AboutView.vue'),
-      meta:{
-        title: '關於我們 | Cara Car',
-      }
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue')
     },
     {
       path: '/ProductList',
@@ -35,35 +35,11 @@ const router = createRouter({
       }
     },
     {
-      path: '/Product',
-      name: 'Product',
-      component: () => import('../views/ProductView.vue'),
-      meta:{
-        title: '商品內頁 | Cara Car',
-      }
-    },
-    {
       path: '/SecondHandList',
       name: 'SecondHandList',
       component: () => import('../views/SecondHandListView.vue'),
       meta:{
         title: '二手專區 | Cara Car',
-      }
-    },
-    {
-      path: '/SecondHandSale',
-      name: 'SecondHandSale',
-      component: () => import('../views/SecondHandSaleView.vue'),
-      meta:{
-        title: '二手出售流程 | Cara Car',
-      }
-    },
-    {
-      path: '/SecondHand',
-      name: 'SecondHandS',
-      component: () => import('../views/SecondHandView.vue'),
-      meta:{
-        title: '二手商品內頁 | Cara Car',
       }
     },
     {
@@ -96,30 +72,6 @@ const router = createRouter({
       component: () => import('../views/CartView.vue'),
       meta:{
         title: '購物車 | Cara Car',
-      }
-    },
-    {
-      path: '/News',
-      name: 'News',
-      component: () => import('../views/NewsView.vue'),
-      meta:{
-        title: '最新消息 | Cara Car',
-      }
-    },
-    {
-      path: '/NewsArticle',
-      name: 'NewsArticle',
-      component: () => import('../views/NewsArticleView.vue'),
-      meta:{
-        title: '最新消息內頁 | Cara Car',
-      }
-    },
-    {
-      path: '/Register',
-      name: 'Register',
-      component: () => import('../views/RegisterView.vue'),
-      meta:{
-        title: '會員註冊 | Cara Car',
       }
     },
   ]
