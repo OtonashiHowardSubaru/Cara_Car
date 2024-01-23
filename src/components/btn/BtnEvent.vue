@@ -3,9 +3,9 @@
 </script>
 <template>
             <div class="btnWithImg">
-                <button class="event" id="btnEvent">
-                    <img src="/src/assets/imgs/button/Event.png" alt="event">
-                </button>
+                <RouterLink class="btnWithImage" id="btnEvent" to="/News">
+                    <img src="/src/assets/imgs/button/eventRow.png" alt="event">
+                </RouterLink>
             </div>
 </template>
 <style lang="scss" scope>
