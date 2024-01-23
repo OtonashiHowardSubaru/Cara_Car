@@ -77,9 +77,10 @@ import axios from 'axios'; //引入函式庫
       <div class="store_name col-12">
         <h2>CARA CAR</h2>
         <select name="" id="priceSorter">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="desc">價格　　↓</option>
           <option value="asc">價格　　↑</option>
+          <div class="arrow_ttd"></div>
         </select>
       </div>
       <div class="pro_list_filter col-12 col-md-1">
@@ -145,6 +146,6 @@ import axios from 'axios'; //引入函式庫
 
 <style lang="scss">
 
-@import '@/assets/scss/page/product.scss';
+@import '@/assets/scss/page/productList.scss';
 
 </style>

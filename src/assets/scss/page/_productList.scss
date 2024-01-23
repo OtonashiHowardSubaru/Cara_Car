@@ -18,15 +18,21 @@
   padding: 60px 40px;
   border-bottom: $bor3 solid $blackWord;
   h2{
-    font-size: $h1;
+    font-size: $h2;
   }
+}
+#priceSorter{
+  box-sizing: border-box;
+  width: 25%;
+  padding: 10px;
+  border-radius: $borr2;
 }
 @media (min-width:768px){
   .pro_list_sorter{
     margin-bottom: 60px;
   }
   .store_name{
-    margin-left: 8.333%;
+    margin: 0 8.333%;
   }
 }
 //價格篩選器css終點
@@ -60,7 +66,6 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    width: fit-content;
     margin: 0;
     position: sticky;
     height: fit-content;
@@ -70,7 +75,7 @@
       flex-wrap: wrap;
       flex-direction: column;
       width: fit-content;
-      margin: 10px 0;
+      margin: 10px auto;
       p{
         writing-mode: vertical-rl;
       }
@@ -94,7 +99,7 @@
 }
 @media screen and (min-width:768px) {
   .pro_card_list{
-    margin: 60px auto 0 auto;
+    margin: 60px 0 0 0;
   }
 }
 
