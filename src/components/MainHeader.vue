@@ -225,15 +225,12 @@ export default {
       // this.updateToken(123) //1
       // console.log('login'); //2
     },
-
   }
 }
-
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
 @import '@/assets/scss/layout/login.scss';
-
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,1000&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,1000&display=swap" rel="stylesheet"> -->
