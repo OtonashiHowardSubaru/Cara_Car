@@ -2,6 +2,8 @@
   <header class="mainHeader">
     <nav>
       <!-- 電腦版header -->
+      <!-- 內頁才有這個LOGO圖 -->
+      <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
       <ul class="indexHeaderNav">
         <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)" @mouseleave="resetImageTitle()">
           <RouterLink :to="name[index]">
@@ -226,7 +228,7 @@ export default {
 
   }
 }
-// @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,600&display=swap');
+
 </script>
 
 <style lang="scss" scoped>
@@ -234,4 +236,4 @@ export default {
 @import '@/assets/scss/layout/login.scss';
 
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,600;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,1000&display=swap" rel="stylesheet">
