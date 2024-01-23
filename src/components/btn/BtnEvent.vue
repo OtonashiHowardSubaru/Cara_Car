@@ -4,7 +4,7 @@
 <template>
             <div class="btnWithImg">
                 <RouterLink class="btnWithImage" id="btnEvent" to="/News">
-                    <img src="/src/assets/imgs/button/eventRow.png" alt="event">
+                    <img src="/src/assets/imgs/button/event.png" alt="event">
                 </RouterLink>
             </div>
 </template>
