@@ -187,19 +187,19 @@ import axios from 'axios'; //引入函式庫
               <span>03 425 1108</span>
             </div>
           </div>
-          
+
           <div class="opening">
             <span>每周一、二公休</span>
-          </div>
-        </div>
+          </div> 
+        </div>  
       </div>
-    </div>
+    </div>  
   </div>
     
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @import '@/assets/scss/page/shproduct.scss';
 
