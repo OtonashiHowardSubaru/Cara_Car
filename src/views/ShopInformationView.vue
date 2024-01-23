@@ -29,20 +29,18 @@
                 </p>
             </div>
             <div class="map"></div>
-            <div class="btn">
-                <button class="aboutUs">
-                    <img src="/src/assets/imgs/button/aboutUsRow.png" alt="aboutUs">
-                </button>
-                <button class="event">
-                    <img src="/src/assets/imgs/button/eventRow.png" alt="event">
-                </button>
-            </div>
+            <BtnAboutUs />
         </section>
     </main>
 </template>
 
 <script>
+import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
+
 export default {
+    components:{
+        BtnAboutUs,
+    },
     data() {
         return{
             infoText: [{

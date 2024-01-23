@@ -1,0 +1,28 @@
+.btnWithImg {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button {
+        border: none;
+        width: 80%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        border-radius: $borr2;
+    }
+    img {
+        max-height: 100%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+}
+#btnAboutUs{
+    background-color: $lightBrown;
+}
+#btnEvent{
+    background-color: $redBean;
+}

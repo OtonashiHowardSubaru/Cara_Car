@@ -21,7 +21,8 @@ import MainHeader from '@/components/MainHeader.vue'
 import MainFooter from '@/components/MainFooter.vue'
 
 
-const imgUrl = new URL('./assets/imgs/cat.jpg', import.meta.url).href
+// const imgUrl = new URL('./assets/imgs/cat.jpg', import.meta.url).href
+// 這是取圖片的一種方法
 export default {
   components:{
     RouterView,
