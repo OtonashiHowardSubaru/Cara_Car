@@ -98,6 +98,14 @@ const router = createRouter({
         title: '最新消息 | Cara Car',
       }
     },
+    {
+      path: '/BackLogin',
+      name: 'BackLogin',
+      component: () => import('../views/BackLoginView.vue'),
+      meta:{
+        title: '後台登入 | Cara Car',
+      }
+    },
   ]
 })
 //以下為上方新增meta:{title:}去更改每個頁面的頁簽名稱才需要解開註解。
