@@ -34,4 +34,6 @@ export default {
     </div>
 </template>
 
-
+<style lang="scss" scoped>
+@import '@/assets/scss/page/BackLogin.scss'
+</style>
