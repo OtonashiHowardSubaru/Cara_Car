@@ -12,7 +12,8 @@
     
 } 
 .nav{
-    position: relative;
+    position: fixed;
+
 }
 .indexNavLogo{
     position: absolute;
@@ -24,7 +25,6 @@
 .indexHeaderNavPh{
     display: flex;
     // gap:10px;
-    // margin:10px 10px 10px 0px;
     background-color: #333;
     right: 0;
     height: 80px;
@@ -52,6 +52,7 @@
     // vertical-align: top;
 
 }
+
 .indexHeaderButtonPhP{
     color: $whiteWord;
     font-size: 12px;
@@ -105,8 +106,8 @@
     // width: 100%;
     opacity: 0;
     box-sizing: border-box;
+    
 }
-
 
 
 .indexHeaderButton{
