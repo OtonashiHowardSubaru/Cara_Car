@@ -38,7 +38,7 @@
         }
     }
     .registerContent{
-        width: 50%;
+        width: 60%;
         margin: 40px auto;
         padding: 20px 0;
         background-color: $grey_2;
@@ -71,7 +71,7 @@
                 right: 3%;
             }
             & p{
-                font-size: $h5;
+                font-size: $p;
             }
         }
         & .check{
@@ -148,5 +148,10 @@
                         vertical-align: top;
                     }
         }
+    }
+}
+@media (min-width: 1440px){
+    .registerContent{
+        width: 55%;
     }
 }

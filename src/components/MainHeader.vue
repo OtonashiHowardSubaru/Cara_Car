@@ -13,7 +13,7 @@
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
-          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="" class="indexHeaderButtonLogin" @click="openModal">
+          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin" @click="openModal">
         </div>
       </ul>
       <!-- 手機板haeder -->
@@ -26,9 +26,7 @@
         </li>
         <div class="linePh"></div>
         <div class="indexHeaderLoginPh">
-          <a href="#">
-            <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="" class="indexHeaderButtonLoginPh">
-          </a>
+            <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh" @click="openModal">
         </div>
       </ul>
     </nav>
