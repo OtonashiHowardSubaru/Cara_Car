@@ -43,6 +43,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/SecondHand',
+      name: 'SecondHand',
+      component: () => import('../views/SecondHandView.vue'),
+      meta:{
+        title: '二手專區 | Cara Car',
+      }
+    },
+    {
       path: '/Game',
       name: 'Game',
       component: () => import('../views/GameView.vue'),
