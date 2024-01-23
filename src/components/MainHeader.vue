@@ -132,10 +132,10 @@ export default {
       ],
       titlePh:[
         {ph:'PRODUCT'},
-        {ph:'2nd-HAND'},
-        {ph:'SHOP-INFO'},
+        {ph:'2nd HAND'},
+        {ph:'SHOP INFO'},
         {ph:'MEMBER'},
-        {ph:'MY-CART'},
+        {ph:'MY CART'},
       ],
       
     }
