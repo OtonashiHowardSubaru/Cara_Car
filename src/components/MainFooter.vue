@@ -68,8 +68,11 @@
         </RouterLink>
         
       </div>
-      <div class="footerSection3Top">
-        <div class="decoLine"></div>
+      <div class="footerSection3Top" @click="toTop">
+        <div class="arrowToTop">
+          <!-- <i class="fa-solid fa-angle-right"></i> -->
+          <div class="decoLine"></div>
+        </div>
         <p>TOP</p>
       </div>
     </div>
@@ -84,18 +87,15 @@
 export default{
   data() {
     return{
-      targetValue: 0
+    
     }
   },
-  props: ['content1','content2'],
+  
   created() {},
   methods: {
-    callMoney(){
-      console.log('123');
-      // 利用emit去呼叫父層更新資訊
-      // 
-      this.$emit('callParentPay', this.money);
-    },
+    toTop(){
+      document.documentElement.scrollTop = 0
+    }
   }
 }
 </script>
