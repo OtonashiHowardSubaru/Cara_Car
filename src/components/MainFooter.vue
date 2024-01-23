@@ -19,7 +19,7 @@
     <div class="footerSection2">
         <ul class="mainMenu">
           <li>
-            <RouterLink class="RouterLink" to="/Product">> 商品一覽</RouterLink>
+            <RouterLink class="RouterLink" to="/ProductList">> 商品一覽</RouterLink>
           </li>
               <ul class="subMenu">
                 <li>
