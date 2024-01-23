@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    button {
+    .btnWithImage {
         border: none;
         width: 80%;
         height: 100px;
@@ -25,4 +25,7 @@
 }
 #btnEvent{
     background-color: $redBean;
+}
+#btnInformation{
+    background-color: $grass_2;
 }

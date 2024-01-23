@@ -3,9 +3,9 @@
 </script>
 <template>
             <div class="btnWithImg">
-                <button class="aboutUs" id="btnAboutUs">
+                <RouterLink class="btnWithImage" id="btnAboutUs" to="/About">
                     <img src="/src/assets/imgs/button/aboutUsRow.png" alt="aboutUs">
-                </button>
+                </RouterLink>
             </div>
 </template>
 <style lang="scss" scope>

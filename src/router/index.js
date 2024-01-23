@@ -19,8 +19,8 @@ const router = createRouter({
       }
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/About',
+      name: 'About',
       component: () => import('../views/AboutView.vue'),
       meta:{
         title: '關於我們 | Cara Car',
@@ -88,6 +88,14 @@ const router = createRouter({
       component: () => import('../views/CartView.vue'),
       meta:{
         title: '購物車 | Cara Car',
+      }
+    },
+    {
+      path: '/News',
+      name: 'News',
+      component: () => import('../views/NewsView.vue'),
+      meta:{
+        title: '最新消息 | Cara Car',
       }
     },
   ]
