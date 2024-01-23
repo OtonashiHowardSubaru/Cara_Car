@@ -1,0 +1,102 @@
+.about{
+    width: 100%;
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    
+    .topPics{
+        display: flex;
+        align-items: center;
+        // height: 15vh;
+            img{
+                padding: 1%;
+                width: 25%;
+                height: 25%;
+            }
+    }
+    
+    .aboutUsC{
+        padding: 10% 0;
+        // height: 720px;
+        // display: flex;
+
+
+        .aboutUsCon{
+            width: 100%;
+            // background-color: $grey_2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            img{
+                width: 20%;
+                position: absolute;
+                right: 25%;
+            }
+            
+            p{
+                font-size: $p;
+                font-family: 'Kosugi Maru';
+                line-height: 40px;
+                padding: 20px 60px;
+                display: flex;
+                position: relative;
+                // align-items: center;
+            }
+        }
+    }
+
+}
+
+
+// .about{
+//     width: 100%;
+
+//     * {
+//         margin: 0;
+//         padding: 0;
+//     }
+
+    
+//     .topPics{
+//         display: flex;
+//         align-items: center;
+//         // height: 15vh;
+//             img{
+//                 padding: 1%;
+//                 width: 25%;
+//                 height: 25%;
+//             }
+//     }
+    
+//     .aboutUsC{
+//         padding: 10% 0;
+//         height: 720px;
+//         display: flex;
+        
+//         .aboutUsCon{
+//             width: 100%;
+//             background-color: $grey_2;
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+            
+//             img{
+//                 width: 60%;
+//             }
+            
+//             p{
+//                 font-size: $p;
+//                 font-family: 'Kosugi Maru';
+//                 line-height: 40px;
+//                 padding: 20px 60px;
+//                 display: flex;
+//                 // align-items: center;
+//             }
+//         }
+//     }
+
+// }
