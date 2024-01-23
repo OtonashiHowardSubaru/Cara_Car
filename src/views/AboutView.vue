@@ -27,13 +27,34 @@
       <p>我們相信，<br>每個孩子都應該擁有屬於自己的獨特遊戲體驗。
       </p>
       </div>
+
     </div>
-
-
+    <BtnEvent/>
+    <BtnShopInfo/>
 
 
   </div>
 </template>
+
+<script>
+import BtnEvent from '@/components/btn/BtnEvent.vue'
+import BtnShopInfo from '@/components/btn/BtnShopInfo.vue'
+
+export default {
+    components:{
+        BtnEvent, BtnShopInfo
+    },
+    data() {
+        return{
+            
+        }
+    },
+    methods:{
+    },
+    mounted() {
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/page/about.scss";

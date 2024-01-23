@@ -4,7 +4,7 @@
 <template>
             <div class="btnWithImg">
                 <button class="event" id="btnEvent">
-                    <img src="/src/assets/imgs/button/eventRow.png" alt="event">
+                    <img src="/src/assets/imgs/button/Event.png" alt="event">
                 </button>
             </div>
 </template>

@@ -3,8 +3,8 @@
 </script>
 <template>
             <div class="btnWithImg">
-                <button class="aboutUs" id="btnAboutUs">
-                    <img src="/src/assets/imgs/button/AboutUs.png" alt="aboutUs">
+                <button class="ShopInfo" id="btnShopInfo">
+                    <img src="/src/assets/imgs/button/ShopInfo.png" alt="ShopInfo">
                 </button>
             </div>
 </template>
