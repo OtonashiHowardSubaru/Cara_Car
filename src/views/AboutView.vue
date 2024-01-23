@@ -11,7 +11,7 @@
     <div class="aboutUsC">
       <img src="../assets/imgs/about/aboutUsC1.png" alt="">
       <div class="aboutUsCon">
-        <img src="../assets/imgs/draw/person_love.PNG" alt="">
+        <img src="../assets/imgs/draw/person_love.png" alt="">
         <p>歡迎踏入 Cara Car，<br>一個充滿創意與歡樂的玩具車仙境。
         </p>
         <p>我們的故事始於一群充滿熱情的年輕人團隊，<br>共同夢想打造一個屬於孩子的彩色車輪世界。
