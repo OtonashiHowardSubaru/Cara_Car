@@ -30,25 +30,28 @@
             </div>
             <div class="map"></div>
             <BtnAboutUs />
+            <BtnEvent />
         </section>
     </main>
 </template>
 
 <script>
 import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
+import BtnEvent from '@/components/btn/BtnEvent.vue'
 
 export default {
     components:{
         BtnAboutUs,
+        BtnEvent,
     },
     data() {
         return{
             infoText: [{
-                    shopAddress: "桃園市中壢區復興路46號8樓",
-                    contactNumber: "(03)425-1108",
-                    contactEmail: "Cara_car@gmail.com",
-                    openTime: "10 : 00 ~ 20 :30",
-                    holiday: "每周一、四"
+                    shopAddress: " 桃園市中壢區復興路46號8樓",
+                    contactNumber: " (03)425-1108",
+                    contactEmail: " Cara_car@gmail.com",
+                    openTime: " 10 : 00 ~ 20 :30",
+                    holiday: " 每周一、四"
                 }]
         }
     },

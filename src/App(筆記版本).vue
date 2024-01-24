@@ -69,7 +69,7 @@ export default {
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/Product">Product</RouterLink>
+        <RouterLink to="/ProductList">Product</RouterLink>
         <RouterLink to="/Test">Test</RouterLink>
         <RouterLink to="/Login">Login</RouterLink>
       </nav>

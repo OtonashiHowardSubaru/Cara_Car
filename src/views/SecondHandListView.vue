@@ -5,13 +5,15 @@ import axios from 'axios'; //引入函式庫
     data(){
       return {
         search: '',
+        priceSorter: '',
         responseData : [],
         displayData: [],
+        productDisplayList: [],
         sh_product_list: [
             {
                 img:"/src/assets/imgs/product/sh_product_1.png",
                 sh_product_name:"極光追逐者",
-                sh_product_price:"$3000"
+                sh_product_price:"3000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_2.png",
@@ -79,13 +81,14 @@ import axios from 'axios'; //引入函式庫
       }
     },
     created() {
-      this.axiosGetData();
+      // this.axiosGetData();
+      this.priceSortHandle()
     },
     methods: {
       axiosGetData(){
         axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
           .then( res=> {
-            console.log(res)
+            // console.log(res)
             if(res && res.data && res.data.prods){
               this.responseData = res.data.prods
               this.displayData = res.data.prods
@@ -97,12 +100,6 @@ import axios from 'axios'; //引入函式庫
             }
           })
       },
-      handleFilter(){
-        this.displayData = this.responseData.filter((item)=>{
-          // console.log(item);
-          return item.title.includes(this.search)
-        })
-    },
     handleFilter() {
       this.displayData = this.responseData.filter((item) => {
         // console.log(item);
@@ -112,6 +109,18 @@ import axios from 'axios'; //引入函式庫
     getProductImageUrl(imageFileName) {
       // 返回完整的URL
       return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
+    },
+    priceSortHandle(){
+      // 可以和同學分享一下這個寫法
+      if(this.priceSorter === 'desc'){
+        //大到小
+        this.productDisplayList = this.sh_product_list.sort((a,b)=> parseFloat(b.sh_product_price) - parseFloat(a.sh_product_price) )
+      }else if(this.priceSorter === 'asc'){
+        //小到
+        this.productDisplayList = this.sh_product_list.sort((a,b)=> parseFloat(a.sh_product_price) - parseFloat(b.sh_product_price) )
+      }else{
+        this.productDisplayList = this.sh_product_list
+      }
     }
   },
 }
@@ -124,21 +133,21 @@ import axios from 'axios'; //引入函式庫
     <div class="row">
       <div class="store_name col-12">
         <h2>USED CAR</h2>
-        <select name="" id="priceSorter">
-          <option value=""></option>
+        <select name="" v-model="priceSorter" id="priceSorter" @change="priceSortHandle">
+          <option value="">價格排序</option>
           <option value="desc">價格　　↓</option>
           <option value="asc">價格　　↑</option>
         </select>
       </div>
       
       <div class="sh_pro_card_list col-9 col-md-10">
-        <div class="sh_product_card col-md-4" v-for="item in sh_product_list">
+        <div class="sh_product_card col-md-4" v-for="item in productDisplayList">
           <div class="sh_pro_card_img">
             <img :src="item.img" alt="sh_Product Image">
           </div>
           <div class="sh_pro_crad_info">
             <h6>{{ item.sh_product_name }}</h6>
-            <p>{{ item.sh_product_price }}</p>
+            <p>${{ item.sh_product_price }}</p>
           </div>
         </div>
       </div>

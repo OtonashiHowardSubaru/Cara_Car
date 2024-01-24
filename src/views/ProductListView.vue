@@ -77,9 +77,10 @@ import axios from 'axios'; //引入函式庫
       <div class="store_name col-12">
         <h2>CARA CAR</h2>
         <select name="" id="priceSorter">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="desc">價格　　↓</option>
           <option value="asc">價格　　↑</option>
+          <div class="arrow_ttd"></div>
         </select>
       </div>
       <div class="pro_list_filter col-12 col-md-1">
@@ -121,30 +122,31 @@ import axios from 'axios'; //引入函式庫
           <img :src="item.arrowImg" alt="" class="arrow">
         </div>
       </div>
-      
-      <div class="phone">
-        <img src="../assets/imgs/product/sh_process_contact.png" alt="">
-        <div class="tel">
-          <div class="contact_detail">
-            <span>TELEPHONE</span>
-            <span>連絡電話</span>
-            <div class="phoneNumber">
-              <img src="../assets/imgs/product/sh_process_tel.png" alt="">
-              <span>03 425 1108</span>
-            </div>
-          </div>
-
-          <div class="opening">
-            <span>每周一、二公休</span>
-          </div> 
-        </div>  
-      </div>
     </div>  
+
+    <div class="phone">
+      <img src="../assets/imgs/product/sh_process_contact.png" alt="">
+      <div class="tel">
+        <div class="contact_detail">
+          <span>TELEPHONE</span>
+          <span>連絡電話</span>
+          <div class="phoneNumber">
+            <img src="../assets/imgs/product/sh_process_tel.png" alt="">
+            <span>03 425 1108</span>
+          </div>
+        </div>
+
+        <div class="opening">
+          <span>每周一、二公休</span>
+        </div> 
+      </div>  
+    </div>
+
   </div>
 </template>
 
 <style lang="scss">
 
-@import '@/assets/scss/page/product.scss';
+@import '@/assets/scss/page/productList.scss';
 
 </style>
