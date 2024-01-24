@@ -29,13 +29,7 @@ export default {
         <div class="registerTitle">
             <div class="line"></div>
             <div class="title">
-                <div class="title_icon">
-                    <img src="../assets/imgs/nav/nav-icon-05.png" alt="title_icon">
-                </div>
-                <h1>成為會員</h1>
-                <div class="title_icon">
-                    <img src="../assets/imgs/nav/nav-icon-05.png" alt="title_icon">
-                </div>
+                <img src="../assets/imgs/login/JoinUsTitle.png" alt="title">
             </div>
             <div class="line"></div>
         </div>
