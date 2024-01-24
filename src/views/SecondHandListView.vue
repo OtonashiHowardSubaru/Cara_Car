@@ -16,42 +16,42 @@ import axios from 'axios'; //引入函式庫
             {
                 img:"/src/assets/imgs/product/sh_product_2.png",
                 sh_product_name:"極速閃電車",
-                sh_product_price:"5000"
+                sh_product_price:"$5000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_3.png",
                 sh_product_name:"太空探險車",
-                sh_product_price:"8000"
+                sh_product_price:"$8000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_4.png",
                 sh_product_name:"科技漂移车",
-                sh_product_price:"6000"
+                sh_product_price:"$6000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_5.png",
                 sh_product_name:"爆炸速度狂飆车",
-                sh_product_price:"4000"
+                sh_product_price:"$4000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_6.png",
                 sh_product_name:"魔法變形賽車",
-                sh_product_price:"6000"
+                sh_product_price:"$6000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_7.png",
                 sh_product_name:"閃電漂移車",
-                sh_product_price:"2500"
+                sh_product_price:"$2500"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_8.png",
                 sh_product_name:"太空漫步車",
-                sh_product_price:"3500"
+                sh_product_price:"$3500"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_9.png",
                 sh_product_name:"磁浮飛行車",
-                sh_product_price:"5500"
+                sh_product_price:"$5500"
             },
         ],
 
@@ -63,13 +63,13 @@ import axios from 'axios'; //引入函式庫
             arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
           },
           {
-            img: "src/assets/imgs/product/sh_process_bird.png",
+            img: "src/assets/imgs/product/sh_process_second_hand.png",
             shSubtitle:'SECOND-HAND',
             context: '查看二手車輛商品',
             arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
           },
           {
-            img: "src/assets/imgs/product/sh_process_bird.png",
+            img: "src/assets/imgs/product/sh_process_recycle_car.png",
             shSubtitle:'RECYCLE CAR',
             context: '了解二手車輛販賣',
             arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
@@ -118,7 +118,7 @@ import axios from 'axios'; //引入函式庫
 </script>
 <template>
   <div class="sh_pro_list_title col-12">
-    <h1>二手車專區</h1>
+    <img src="../assets/imgs/product/sh_product_title.png" alt="used car">
   </div>
   <div class="container">
     <div class="row">

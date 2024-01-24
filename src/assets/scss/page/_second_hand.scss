@@ -1,0 +1,42 @@
+.intro{
+    display: flex;
+    flex-direction: column;
+    h4{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+#searchItem{
+    ul{
+        display: flex;
+        justify-content: center;
+
+        li{
+            margin: 0;
+            padding: 10px;
+            background-color: $yellow;
+            border-radius: 10px 10px 0 0;
+            a{
+                color: $blackWord;
+            }
+            p{
+                color: $blackWord;
+            }
+        }
+    }
+}
+
+#searchCont{
+    width: 80%;
+    border-radius: 20px;
+    background-color: $yellow;
+    margin: 0 auto;
+    padding: 40px 50px;
+
+    h4{
+        font-size: $h4;
+        margin-bottom: 20px;
+    }
+}
