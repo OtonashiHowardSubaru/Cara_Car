@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import HomeView from '../views/IndexView.vue'
 
 
 const router = createRouter({
@@ -11,11 +11,11 @@ const router = createRouter({
   },
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+      path: '/Index',
+      name: 'Index',
+      component: () => import('../views/IndexView.vue'),
       meta:{
-        title: 'Cara Car',
+        title: '首頁 | Cara Car',
       }
     },
     {
@@ -96,14 +96,6 @@ const router = createRouter({
       component: () => import('../views/NewsView.vue'),
       meta:{
         title: '最新消息 | Cara Car',
-      }
-    },
-    {
-      path: '/BackLogin',
-      name: 'BackLogin',
-      component: () => import('../views/BackLoginView.vue'),
-      meta:{
-        title: '後台登入 | Cara Car',
       }
     },
   ]

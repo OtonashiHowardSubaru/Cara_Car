@@ -54,9 +54,9 @@
                 <div class="psw_input">
                   <input :type="pswVisible ? 'text' : 'password'" v-model="psw6666" placeholder="●●●●●●●●"
                     maxlength="12">
-                  <img v-if="pswVisible" src="../assets/imgs/open-eye.svg" alt="openEye" class="eye"
+                  <img v-if="pswVisible" src="../assets/imgs/login/open-eye.svg" alt="openEye" class="eye"
                     @click="togglePsw">
-                  <img v-else src="../assets/imgs/close-eye.svg" alt="closeEye" class="eye" @click="togglePsw">
+                  <img v-else src="../assets/imgs/login/close-eye.svg" alt="closeEye" class="eye" @click="togglePsw">
                 </div>
               </div>
               <a href="#">忘記密碼</a>
@@ -223,7 +223,6 @@ export default {
       // this.updateToken(123) //1
       // console.log('login'); //2
     },
-
   }
 }
 
