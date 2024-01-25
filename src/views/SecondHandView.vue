@@ -166,81 +166,6 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
 
   <button class="slider_right"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
 
-    <!-- tab -->
-    <div id="searchItem" class="list">
-            <ul>
-            　 <li class="onSearch"><a onclick="SearchTag('searchItem','searchCont','0');">商品介紹</a></li>
-            　 <li><a onclick="SearchTag('searchItem','searchCont','1');">購物須知</a></li>
-                <li><a onclick="SearchTag('searchItem','searchCont','2');">常見問題</a></li>
-            </ul>
-            </div>
-            <div id="searchCont" class="searchCont">
-                <ul>
-                　 <li>
-                    
-                      <div class="aboutShProduct">
-                          <div class="productIntro">
-                              <h4>AMERICAN CLASSIC</h4>
-                              <p>
-                                產品規格：
-尺寸與重量：
-      -長度：約120公分。
-      -寬度：約60公分。
-      -高度：約50公分。
-      -重量：約20公斤。
-電池與續航：
-      - 電池類型：鋰離子電池。
-      -充電時間：約2-3小時。
-      - 續航能力：每次充滿電可行駛約1-2小時
-                       （視使用條件而定）。
-速度與控制：
-      -最高速度：每小時5-6公里。
-      -加速控制：腳踏式加速器。
-      -方向控制：方向盤操作。
-      -遙控器：2.4G無線遙控，控制範圍約20-30米。
-安全設計：
-      -安全帶：可調節五點式安全帶。
-      -制動系統：電子制動系統，腳離開加速器即自動減速停車。
-附加功能：
-      -音響系統：USB/MP3接口，內建小喇叭。
-      -燈光系統：前後LED照明燈。
-      -輪胎：耐磨防滑塑膠輪胎。
-適用年齡與承重：
-      -適用年齡：3至8歲。
-      -最大承重：約30公斤。
-                              </p>
-                              
-                          
-                          </div> 
-              
-                      </div>
-                  </li><!--0 -->
-                  <li>
-                    
-                      <div class="aboutShProduct">
-                          <div class="purchase">
-                              
-                              
-                          
-                          </div> 
-              
-                      </div>
-                  </li><!--1 -->
-                  <li>
-                
-                      <div class="aboutShProduct">
-                          <div class="question">
-                              
-                              
-                          
-                          </div> 
-              
-                      </div>
-                  </li><!--2 -->
-            
-                </ul>
-            </div>
-
 </div>
 <div class="maybeYouLike">
   <h4>也許你會喜歡</h4>
@@ -257,6 +182,6 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
   
   <style lang="scss" scoped>
   
-  @import '@/assets/scss/page/second_hand.scss';
+  @import '@/assets/scss/page/shproduct.scss';
   
   </style>
