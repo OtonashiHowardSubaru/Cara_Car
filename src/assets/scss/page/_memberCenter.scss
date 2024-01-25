@@ -1,0 +1,191 @@
+.fade-enter-active, .fade-leave-active {
+    transition:opacity 0.2s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+.memberCenter{
+    .memberTitle{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        & .line {
+            width: 100%;
+            height: 0;
+            background-color: transparent;
+            border: 0.5px solid #000;
+        }
+        & .title{
+            & img{
+                width: 100%;
+                vertical-align: top;
+            }
+        }
+    }
+    .memberContent {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        & .member_profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            & .welcome,.orderState,.userCollect {
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: $grey_2;
+                border-radius: $borr2;
+            }
+            & .state,.user,.collect {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: $mh4;
+            }
+            & .memberButton {
+                border-radius: $borr2;
+                cursor: pointer;
+                color: $whiteWord;
+                background-color: $lightGreen;
+            }
+        }
+    }
+}
+
+@media (min-width: 375px) {
+    .memberCenter {
+        .memberTitle {            
+            & .title {
+                width: 60%;
+                padding: 20px 0;
+            }
+        }
+        .memberContent {
+            gap: 4%;
+            margin: auto;
+            padding: 2%;
+            & .member_profile {
+                padding: 10px;
+                & .mb_user_image {
+                    border-radius: $borr5;
+                    border: 1px solid $blackWord;
+                    overflow: hidden;
+                    width: 25%;
+                    margin-bottom: 2%;
+                    & img {
+                        width: 100%;
+                        vertical-align: top;
+                    }
+                }
+                & .welcome,.orderState,.userCollect {
+                    padding: 3% 2%;
+                    margin-bottom: 5%;
+                }
+                & .welcome{
+                    justify-content: flex-start;
+                    & h3{
+                        font-size: $mh4;;
+                    }
+                }
+
+                & .memberButton {
+                    width: 30%;
+                    height: 50px;
+                    font-size: $mh6;
+                }
+                    
+                & .mb_member_sidebar {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    margin-bottom: 15%;
+                    font-size: $mh5;
+                    border-radius: $borr2;
+                    background-color: $grey_2;
+                    & nav {
+                        padding: 10px;
+                        & ul li {
+                            cursor: pointer;
+                            padding: 8px 0;
+                        }
+                    }
+                    & .subMenu {
+                        padding: 4px 0 0 10px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+    @media (min-width: 768px) {
+    .memberCenter {
+        max-width: 1920px;
+        .memberTitle {
+            & .title {
+                width: 25%;
+                padding: 10px 0;
+            }
+        }
+        .memberContent {
+            gap: 10%;
+            margin: auto;
+            padding: 2%;
+            margin-bottom: 13%;
+
+            & .member_sidebar {
+                display: flex;
+                flex-direction: column;
+                & nav {
+                    padding: 10px;
+                    & ul li {
+                        cursor: pointer;
+                        padding: 8px 0;
+                        font-size: $p;
+                    }
+                }
+                & .subMenu {
+                    padding: 4px 0 0 14px;
+                    cursor: pointer;
+                }
+            }
+
+            & .member_profile {
+                width: 70%;
+                padding:0;
+                & .welcome {
+                    padding: 2%;
+                    justify-content: space-between;
+                    & .user_image {
+                        border-radius: $borr4;
+                        border: 1px solid $blackWord;
+                        overflow: hidden;
+                        width: 20%;
+                        & img {
+                            width: 100%;
+                            vertical-align: top;
+                        }
+                    }
+                }
+            }
+
+            & .orderState {
+                & .memberButton {
+                    width: 25%;
+                    font-size: $p;
+                    &:hover {
+                        background-color: #9baa7a;
+                    }
+                }
+            }
+        }
+    }
+}

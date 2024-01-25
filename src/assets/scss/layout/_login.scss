@@ -1,19 +1,26 @@
-.fadeIn {
-    animation: fadeIn 0.3s ease-in-out;
+// .fadeIn {
+//     animation: fadeIn 0.3s ease-in-out;
+// }
+// .fadeOut {
+//     animation: fadeOut 0.3s ease-in-out;
+// }
+// @keyframes fadeIn {
+//     0% { opacity: 0; }
+//     100% { opacity: 1; }
+// }
+// @keyframes fadeOut {
+//     100% { opacity: 0; }
+//     0% { opacity: 1; }
+// }
+.fade-enter-active, .fade-leave-active {
+    transition:opacity 0.5s;
 }
-.fadeOut {
-    animation: fadeOut 0.3s ease-in-out;
-}
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-@keyframes fadeOut {
-    100% { opacity: 0; }
-    0% { opacity: 1; }
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
 #loginOverlay {
-    display: none;
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,21 +30,22 @@
     background-color:rgba($grey_3,0.8);
 }
 #loginModal{
-    z-index: 1000;
-    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     top: 50%;
     left: 50%;
-    display: none;
-    align-items: center;
-    justify-content: center;
+    transform: translate(-50%, -50%);
     border-radius: $borr3;
     background-color: $grey_2;
-    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+    z-index: 1000;
 }
-
-@media (min-width:768px){
+@media (min-width:320px){
     #loginModal {
-        width: 40%;
+        min-width: 375px;
+        max-width: 1920px;
     }
     .close {
         position: absolute;
@@ -65,7 +73,7 @@
         flex-direction: column;
         border-style: none;
         & h2{
-            font-size: $h4;
+            font-size: $mh4;
             text-align: center;
             margin-block: 15px;
         }
@@ -78,14 +86,14 @@
         & input{
             position: relative;
             width: 100%;
-            padding: 5px 25px;
+            padding: 5px 15px;
             border-radius: $borr2;
-            font-size: $h5;
+            font-size: $mh6;
         }
         & button{
-            height: 70px;
+            height: 50px;
             width: 100%;
-            font-size: $h5;
+            font-size: $p;
             margin-block: 5px;
             color: $whiteWord;
             border-radius: $borr2;
@@ -96,13 +104,13 @@
             &:hover{background-color: #9baa7a;}
         }
         & p{
-            font-size: $h4;
+            font-size: $mh5;
         }
         & span{
             color: $blackWord;
-            font-size: $p;
+            font-size: $mh6;
             & a{
-                font-size: $p;
+                font-size: $mh6;
             }
         }
         & a{
@@ -124,7 +132,7 @@
             }
         }
         & h2{
-            font-size: $h5;
+            font-size: $p;
             text-align: center;
             margin-block: 8px;
         }
@@ -134,8 +142,48 @@
                 align-items: center;
             }
                 & .login_group img{
-                    width: 60%;
+                    width: 50%;
                     vertical-align: top;
                 }
     }
 }
+
+@media (min-width:768px){
+    #loginModal {
+        padding: 40px;
+        width: 50%;
+        // min-width: 768px;
+    }
+}
+// @media (min-width:1440px){
+//     #loginModal {
+//         padding: 40px;
+//         width: 40%;
+//     }
+//     .login_textarea{
+//         & h2{
+//             font-size: $mh4;
+//         }
+//         & input{
+//             width: 100%;
+//             font-size: $mh6;
+//         }
+//         & button{
+//             height: 50px;
+//             width: 100%;
+//             font-size: $p;
+//         }
+//         & p{
+//             font-size: $mh5;
+//         }
+//         & span{
+//             font-size: $mh6;
+//             & a{
+//                 font-size: $mh6;
+//             }
+//         }
+//         & a{
+//             font-size: $default;
+//         }
+//     }
+// }

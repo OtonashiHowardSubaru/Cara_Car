@@ -19,7 +19,7 @@
     <div class="footerSection2">
         <ul class="mainMenu">
           <li>
-            <RouterLink class="RouterLink" to="/Product">> 商品一覽</RouterLink>
+            <RouterLink class="RouterLink" to="/ProductList">> 商品一覽</RouterLink>
           </li>
               <ul class="subMenu">
                 <li>
@@ -33,7 +33,7 @@
                 </li>
               </ul>
           <li>
-            <RouterLink class="RouterLink" to="/">> 二手車一覽</RouterLink>
+            <RouterLink class="RouterLink" to="/SecondHandList">> 二手車一覽</RouterLink>
           </li>
               <ul class="subMenu">
                 <li>
@@ -43,16 +43,16 @@
         </ul>
         <ul class="mainMenu">
           <li>
-            <RouterLink class="RouterLink" to="/">> 最新消息</RouterLink>
+            <RouterLink class="RouterLink" to="/News">> 最新消息</RouterLink>
           </li>
           <li>
-            <RouterLink class="RouterLink" to="/about">> 關於我們</RouterLink>
+            <RouterLink class="RouterLink" to="/About">> 關於我們</RouterLink>
           </li>
           <li>
-            <RouterLink class="RouterLink" to="/">> 門市資訊</RouterLink>
+            <RouterLink class="RouterLink" to="/ShopInformation">> 門市資訊</RouterLink>
           </li>
           <li class="footerGame">
-            <RouterLink class="RouterLink" to="/">> 賽車小遊戲</RouterLink>
+            <RouterLink class="RouterLink" to="/Game">> 賽車小遊戲</RouterLink>
           </li>
         </ul>
     </div>
@@ -68,8 +68,11 @@
         </RouterLink>
         
       </div>
-      <div class="footerSection3Top">
-        <div class="decoLine"></div>
+      <div class="footerSection3Top" @click="toTop">
+        <div class="arrowToTop">
+          <!-- <i class="fa-solid fa-angle-right"></i> -->
+          <div class="decoLine"></div>
+        </div>
         <p>TOP</p>
       </div>
     </div>
@@ -84,18 +87,15 @@
 export default{
   data() {
     return{
-      targetValue: 0
+    
     }
   },
-  props: ['content1','content2'],
+  
   created() {},
   methods: {
-    callMoney(){
-      console.log('123');
-      // 利用emit去呼叫父層更新資訊
-      // 
-      this.$emit('callParentPay', this.money);
-    },
+    toTop(){
+      document.documentElement.scrollTop = 0
+    }
   }
 }
 </script>

@@ -29,13 +29,7 @@ export default {
         <div class="registerTitle">
             <div class="line"></div>
             <div class="title">
-                <div class="title_icon">
-                    <img src="../assets/imgs/nav/nav-icon-05.png" alt="title_icon">
-                </div>
-                <h1>成為會員</h1>
-                <div class="title_icon">
-                    <img src="../assets/imgs/nav/nav-icon-05.png" alt="title_icon">
-                </div>
+                <img src="../assets/imgs/login/JoinUsTitle.png" alt="title">
             </div>
             <div class="line"></div>
         </div>
@@ -70,18 +64,18 @@ export default {
                         <p>輸入密碼</p>
                         <input :type="passwordVisibleLeft ? 'text' : 'password'" v-model="psw7777" placeholder="請輸入密碼"
                             maxlength="12">
-                        <img v-if="passwordVisibleLeft" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye1"
+                        <img v-if="passwordVisibleLeft" src="../assets/imgs/register/close-eye.svg" alt="closeEye" class="eye1"
                             @click="togglePswLeft">
-                        <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye1"
+                        <img v-else src="../assets/imgs/register/open-eye.svg" alt="closeOpen" class="eye1"
                             @click="togglePswLeft">
                     </div>
                     <div class="confirm_psw">
                         <p>確認密碼</p>
                         <input :type="passwordVisibleRight ? 'text' : 'password'" v-model="psw8888" placeholder="確認密碼"
                             maxlength="12">
-                        <img v-if="passwordVisibleRight" src="../assets/imgs/open-eye.svg" alt="closeEye" class="eye2"
+                        <img v-if="passwordVisibleRight" src="../assets/imgs/register/open-eye.svg" alt="closeEye" class="eye2"
                             @click="togglePswRight">
-                        <img v-else src="../assets/imgs/close-eye.svg" alt="closeOpen" class="eye2"
+                        <img v-else src="../assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye2"
                             @click="togglePswRight">
                     </div>
                 </div>
