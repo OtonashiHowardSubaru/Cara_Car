@@ -1,0 +1,21 @@
+//商品卡css起點
+.product_card{
+    box-sizing: border-box;
+}
+    .pro_card_img img{
+        vertical-align: top;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 20px; //這個之後要改變數
+    }
+    .pro_crad_info *{
+        width: fit-content;
+        margin: auto;
+    }
+    .pro_crad_info h6{
+        font-size: $h4;
+    }
+    .pro_crad_info p{
+        font-size: $p;
+    }
+//商品卡css終點

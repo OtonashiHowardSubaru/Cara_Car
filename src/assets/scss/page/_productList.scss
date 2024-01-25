@@ -11,31 +11,25 @@
 //分頁標題css終點
 
 
-//價格篩選器css起點
+//商店名css起點
 .store_name{
   display: flex;
   justify-content: space-between;
-  padding: 60px 40px;
+  padding: 30px 20px;
   border-bottom: $bor3 solid $blackWord;
   h2{
     font-size: $h2;
+    height: fit-content;
   }
 }
-#priceSorter{
-  box-sizing: border-box;
-  width: 25%;
-  padding: 10px;
-  border-radius: $borr2;
-}
+
 @media (min-width:768px){
-  .pro_list_sorter{
-    margin-bottom: 60px;
-  }
   .store_name{
     margin: 0 8.333%;
+    padding: 60px 40px;
   }
 }
-//價格篩選器css終點
+//商店名css終點點
 
 
 //商品種類篩選器css起點
@@ -91,6 +85,7 @@
 }
 //商品種類篩選器css終點
 
+//商品卡列表css起點
 .pro_card_list {
   margin: auto;
   display: flex;
@@ -102,31 +97,11 @@
     margin: 60px 0 0 0;
   }
 }
+//商品卡列表css終點
 
 //商品卡css起點
-.product_card{
-  box-sizing: border-box;
-}
-  .pro_card_img img{
-    vertical-align: top;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 20px; //這個之後要改變數
-  }
-  .pro_crad_info *{
-    width: fit-content;
-    margin: auto;
-  }
-  .pro_crad_info h6{
-    font-size: $h4;
-  }
-  .pro_crad_info p{
-    font-size: $p;
-  }
+
 //商品卡css終點
-
-
-
 
 // 二手流程
 .sh_contact{
