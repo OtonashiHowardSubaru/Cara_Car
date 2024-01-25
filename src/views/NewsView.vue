@@ -24,7 +24,6 @@
                     <div class="newsCardText">
                         <div class="cardTitle">
                             <h3>【{{ newsInfo.activeTag }}】{{ newsInfo.title }}</h3>
-                            <!-- <span class="activeTag">【{{ newsInfo.activeTag }}】</span> -->
                         </div>
                         <p>{{ newsInfo.beginTime }}</p>
                     </div>
