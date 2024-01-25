@@ -182,6 +182,6 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
   
   <style lang="scss" scoped>
   
-  @import '@/assets/scss/page/shproduct.scss';
+  @import '../assets/scss/page/shproduct';
   
   </style>
