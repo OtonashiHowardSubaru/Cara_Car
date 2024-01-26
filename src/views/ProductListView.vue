@@ -4,10 +4,11 @@
   import PriceSorter from '@/components/PriceSorter.vue';
   import CardShProcess from "@/components/card/CardShProcess.vue";
   import PageNumber from "@/components/btn/PageNumber.vue";
-  import BtnFilter from '@/components/btn/BtnFilter.vue'
+  import BtnFilter from '@/components/btn/BtnFilter.vue';
+  import MainHeader from '@/components/Header.vue'
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,
+      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,MainHeader
     },
     data(){
       return {
@@ -92,6 +93,7 @@
   }
   </script>
   <template>
+    <MainHeader />
     <div class="pro_list_title col-12">
       <h1>新品專區</h1>
     </div>
