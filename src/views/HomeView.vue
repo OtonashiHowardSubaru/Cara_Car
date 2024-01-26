@@ -6,7 +6,6 @@ export default {
     return{
       currentTitle: '',
       currentHoverIndex: -1,
-      canvas: null,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -47,8 +46,7 @@ export default {
     
   },
   mounted() {
-    this.initCanvas();
-    this.drawImage();
+    
   }
 }
 </script>
@@ -72,11 +70,46 @@ export default {
       </ul>
     </nav>
   </header>
-  <div class="indexBanner">
-    <canvas id="canvas"></canvas>
+
+    <div class="indexBannerGroup">
+      <img src="../assets/imgs/index/indexBannerImg.png" alt="" class="indexBannerImg">
+      <h1 class="indexBannerTitle">每一次轉彎，</h1>
+      <h2 class="indexBannerTitle2">都是新的發現！</h2>
+      <RouterLink class="RouterLink" to="/">
+      <img src="../assets/imgs/nav/nav-logo.png" alt="" class="indexLogo">
+      </RouterLink>
+      <div class="indexBannerBagBlock"></div>
+    </div>
+  
+
+  <div class="indexGameGroup">
+      <img src="../assets/imgs/index/indexGameTitle.png" alt="" class="indexGameTitle">
+      <div class="indexGameBagBlock"></div>
+      <img src="../assets/imgs/index/indexGameImg.png" alt="GameImg" class="indexGameImg">
+      <div class="indexGameButton">
+        <button class="indexGameButton2">
+          <p class="indexGameButtonTitle">Get<br>Start</p>
+        </button>
+        <!-- <p class="indexGameButtonP">
+          MAKE YOUR OWN CARA CAR
+        </p> -->
+      </div>
+    <div class="circular">
+      <svg viewBox="0 0 100 100">
+        <path d="M 80,50 a 65,65 0 1,1 -1,0 z"
+              id="circle" />
+        <text>
+          <textPath class="textPath" xlink:href="#circle">
+            MAKE YOUR OWN CARA CAR 
+          </textPath>
+        </text>
+      </svg>
+    </div>
   </div>
+
 </template>
 
 <style lang="scss" scoped>
   @import '@/assets/scss/layout/header.scss';
+  @import '@/assets/scss/page/home.scss';
 </style>

@@ -23,6 +23,13 @@ export default {
         '/MemberCenter',
         '/Cart',
       ],
+      namePh:[
+        '/ProductList',
+        '/SecondHandList',
+        '/ShopInformation',
+        '/MemberCenter',
+        '/Cart',
+      ],
       // img: [
       //   { i: 'nav/nav-icon-01.png' },
       //   { i: 'nav/nav-icon-02.png' },
@@ -164,10 +171,10 @@ export default {
       <!-- 手機板haeder -->
       <ul class="indexHeaderNavPh">
         <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
-            <a href="#" class="indexHeaderA">
+            <RouterLink :to="namePh[$index]">
               <img :src= "getImageUrl(item.i)" class="indexHeaderButtonIconPh" >
               <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
-            </a>
+            </RouterLink>
         </li>
         <div class="linePh"></div>
         <div class="indexHeaderLoginPh">
@@ -175,7 +182,6 @@ export default {
         </div>
       </ul>
     </nav>
-    <!-- <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexLogo"> -->
   </header>
   
   <!--  ↓登入燈箱↓  -->
