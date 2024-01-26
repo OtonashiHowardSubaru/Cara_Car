@@ -4,15 +4,32 @@
   import PriceSorter from '@/components/PriceSorter.vue';
   import CardShProcess from "@/components/card/CardShProcess.vue";
   import PageNumber from "@/components/btn/PageNumber.vue";
-
+  import BtnFilter from '@/components/btn/BtnFilter.vue'
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess,PageNumber,
+      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,
     },
     data(){
       return {
-        search: '',
         newSort: '',
+        filter: [
+          {
+            filterId: "",
+            filterName: "促銷中",
+          },
+          {
+            filterId: "",
+            filterName: "電動車",
+          },
+          {
+            filterId: "",
+            filterName: "配件",
+          },
+          {
+            filterId: "",
+            filterName: "模型車",
+          },
+        ],
         responseData : [],
         displayData: [],
         sh_contact: [
@@ -87,10 +104,11 @@
           />
         </div>
         <div class="pro_list_filter col-12 col-md-1">
-          <button><div class="arrow_ltr"></div><p>促銷中</p></button>
-          <button><div class="arrow_ltr"></div><p>電動車</p></button>
-          <button><div class="arrow_ltr"></div><p>配件</p></button>
-          <button><div class="arrow_ltr"></div><p>模型車</p></button>
+          <BtnFilter 
+            v-for="item in filter"
+            :filterId="item.filterId"
+            :filterName="item.filterName"
+          />
         </div>
         <div class="pro_card_list col-9 col-md-10">
           <ProductCard 

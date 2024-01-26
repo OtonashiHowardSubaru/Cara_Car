@@ -35,6 +35,15 @@ const router = createRouter({
       }
     },
     {
+      path: '/Product',
+      name: 'Product',
+      component: () => import('../views/ProductView.vue'),
+      meta:{
+        title: '商品明細 | Cara Car',
+        // 這個要想辦法改成品名做為title
+      }
+    },
+    {
       path: '/SecondHandList',
       name: 'SecondHandList',
       component: () => import('../views/SecondHandListView.vue'),

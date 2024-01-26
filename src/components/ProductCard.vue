@@ -17,7 +17,7 @@ export default {
 <template>
     <!-- 用vfor迴圈出資料，而第一項資料是測試資料，所以用v-for="item, in displayData.slice(1)"直接從第二個資料開始取 -->
     <div class="product_card col-md-4" v-for="item in displayData" :key="item.prod_id">
-        <!-- 這邊要插入連結 -->
+      <RouterLink to='/product'>
         <div class="pro_card_img">
             <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
         </div>
@@ -25,7 +25,7 @@ export default {
             <h6>{{ item.prod_name }}</h6>
             <p>{{ item.prod_price }}</p>
         </div>
-        
+      </RouterLink>
     </div>
 </template>
 <style>
