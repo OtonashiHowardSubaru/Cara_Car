@@ -69,7 +69,6 @@
             }  
             .shopInfo {
                 p {
-                    font-size: $p;
                     line-height: 35px;
                     font-family:'Noto Sans' ;
                     text-align: center;
@@ -124,7 +123,6 @@
             opacity: 0;
 
             p {
-                font-size: $p;
                 font-family: 'Kosugi Maru';
                 transform: rotate(90deg);
                 
@@ -232,10 +230,13 @@
                     width: 100%;
                 }
                 h4 {
-                    font-size: $h4;
+                    font-size: clamp($h5,2vw,$h4 );
                     line-height: 50px;
-            
+                    text-wrap: nowrap;
                 }  
+                p {
+                    font-size: clamp($mp,1.5vw,$p);
+                }
             }
         }
         .footerSection2{
@@ -243,7 +244,7 @@
             height: 60%;
             margin: 0;
             display: flex;
-            font-size: $h5;
+            font-size: clamp($mp,1.5vw,$p);
             justify-content: space-evenly;
             
             
@@ -284,10 +285,7 @@
         .footerSection3{
             width: 25%;
             height: 60%;
-            align-items: end;
-
-
-            
+            align-items: end;  
     
             .footerSection3Follow {
                 width: 70%;
@@ -302,9 +300,11 @@
 
     
                 p {
+                    font-size: clamp($mp,1.5vw,$p);
                     margin-right: 20px;
                     transform: rotate(0deg);
                     text-align: center;
+                    text-wrap: nowrap;
                 }
                 .RouterLink {
                     img {
