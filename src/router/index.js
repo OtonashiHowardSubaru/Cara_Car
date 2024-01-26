@@ -18,7 +18,7 @@
 */
 
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '@/views/IndexView.vue'
+// import IndexView from '@/views/IndexView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +31,7 @@ const router = createRouter({
     // {
     //   path: '/',
     //   name: 'Index',
-    //   // component: HomeView,
+    //   // component: IndexView,
     //   component: () => import('@/views/IndexView.vue'),
     //   meta:{title: 'Cara Car',}
     // },

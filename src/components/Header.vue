@@ -66,8 +66,9 @@ resetImageTitle() {
 <nav>
     <!-- 電腦版header -->
     <!-- 內頁才有這個LOGO圖 -->
-    
-    <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
+    <RouterLink to="/">
+        <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
+    </RouterLink>
     <ul class="indexHeaderNav">
     <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)" @mouseleave="resetImageTitle()">
         <RouterLink :to="name[index]">
