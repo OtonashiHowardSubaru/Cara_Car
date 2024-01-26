@@ -1,19 +1,12 @@
-.fadeIn {
-    animation: fadeIn 0.3s ease-in-out;
+.fade-enter-active, .fade-leave-active {
+    transition:opacity 0.5s;
 }
-.fadeOut {
-    animation: fadeOut 0.3s ease-in-out;
-}
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-@keyframes fadeOut {
-    100% { opacity: 0; }
-    0% { opacity: 1; }
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
 #loginOverlay {
-    display: none;
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,17 +16,17 @@
     background-color:rgba($grey_3,0.8);
 }
 #loginModal{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
-    z-index: 1000;
-    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     top: 50%;
     left: 50%;
-    display: none;
-    align-items: center;
-    justify-content: center;
+    transform: translate(-50%, -50%);
     border-radius: $borr3;
     background-color: $grey_2;
-    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+    z-index: 1000;
 }
 @media (min-width:320px){
     #loginModal {
