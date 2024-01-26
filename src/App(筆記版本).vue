@@ -23,6 +23,7 @@ export default {
         {url: 'product/shopcard-nc19.png', name:'prod_4'},
       ],
       imgIndex: 16,
+      msg: 100,
     }
   },
   methods:{
@@ -35,6 +36,10 @@ export default {
       }else{
         this.imgIndex += 1
       }
+    },
+    pay(money){
+      console.log('pay')
+      this.msg += money
     }
   },
   mounted() {
@@ -52,7 +57,7 @@ export default {
     <!-- <img v-for="(item, index) in list" :src="getImageUrl(item.url)" alt="" :width="(index + 1)* 25"> -->
     <!-- <img src="@/assets/imgs/cat.jpg" alt=""> -->
 
-    <div class="pro_card" v-for="item in list">
+    <div class="pro_card" v-for="item in list" :key="item">
       <img :src="getImageUrl(item.url)" alt="" width="100">
       <p>{{item.name}}</p>
     </div>
@@ -77,6 +82,11 @@ export default {
   </header>
 
   <RouterView />
+  <MainFooter 
+      :content1="['dd', 'cc']"
+      :content2="msg"
+      @callParentPay="pay"
+    />
 </template>
 
 <style scoped>

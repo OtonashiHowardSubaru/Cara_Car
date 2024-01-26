@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/IndexView.vue'
 
 
 const router = createRouter({
@@ -12,10 +12,10 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Index',
       component: HomeView,
       meta:{
-        title: 'Cara Car',
+        title: '首頁 | Cara Car',
       }
     },
     {
@@ -32,6 +32,15 @@ const router = createRouter({
       component: () => import('../views/ProductListView.vue'),
       meta:{
         title: '商品總覽 | Cara Car',
+      }
+    },
+    {
+      path: '/Product',
+      name: 'Product',
+      component: () => import('../views/ProductView.vue'),
+      meta:{
+        title: '商品明細 | Cara Car',
+        // 這個要想辦法改成品名做為title
       }
     },
     {
@@ -99,11 +108,11 @@ const router = createRouter({
       }
     },
     {
-      path: '/BackLogin',
-      name: 'BackLogin',
-      component: () => import('../views/BackLoginView.vue'),
+      path: '/NewsArticle',
+      name: 'NewsArticle',
+      component: () => import('../views/NewsArticleView.vue'),
       meta:{
-        title: '後台登入 | Cara Car',
+        title: '最新消息 | Cara Car',
       }
     },
   ]
