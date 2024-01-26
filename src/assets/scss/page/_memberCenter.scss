@@ -16,9 +16,11 @@
             width: 100%;
             height: 0;
             background-color: transparent;
-            border: 0.5px solid #000;
+            border: $bor1 - 0.5 solid #000;
         }
         & .title{
+            width: 60%;
+            padding: 20px 0;
             & img{
                 width: 100%;
                 vertical-align: top;
@@ -28,20 +30,27 @@
     .memberContent {
         position: relative;
         display: flex;
-        justify-content: center;
+        flex-wrap: wrap;
         align-items: start;
+        justify-content: center;
+        gap: 4%;
+        margin: auto;
+        padding: 2%;
         & .member_profile {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            flex-direction: column;
             width: 100%;
+            padding: 10px;
             & .welcome,.orderState,.userCollect {
-                width: 100%;
                 display: flex;
-                justify-content: space-evenly;
                 align-items: center;
-                background-color: $grey_2;
+                justify-content: space-evenly;
                 border-radius: $borr2;
+                background-color: $grey_2;
+                width: 100%;
+                padding: 3% 2%;
+                margin-bottom: 5%;
             }
             & .state,.user,.collect {
                 display: flex;
@@ -54,79 +63,52 @@
                 cursor: pointer;
                 color: $whiteWord;
                 background-color: $lightGreen;
+                width: 30%;
+                height: 50px;
+                font-size: $mh6;
             }
+        }
+        & .welcome{
+            justify-content: flex-start;
+            & h3{
+                font-size: $mh4;;
+            }
+        }
+    }
+    & .mb_user_image {
+        border-radius: $borr5;
+        border: $bor1 solid $blackWord;
+        overflow: hidden;
+        width: 25%;
+        margin-bottom: 2%;
+        & img {
+            width: 100%;
+            vertical-align: top;
+        }
+    }
+    & .mb_member_sidebar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 15%;
+        font-size: $mh4;
+        border-radius: $borr2;
+        background-color: $grey_2;
+        & nav {
+            padding: 10px;
+            & ul li {
+                cursor: pointer;
+                padding: 8px 0;
+            }
+        }
+        & .subMenu {
+            padding: 10px 0 0 20px;
+            cursor: pointer;
         }
     }
 }
 
-@media (min-width: 375px) {
-    .memberCenter {
-        .memberTitle {            
-            & .title {
-                width: 60%;
-                padding: 20px 0;
-            }
-        }
-        .memberContent {
-            gap: 4%;
-            margin: auto;
-            padding: 2%;
-            & .member_profile {
-                padding: 10px;
-                & .mb_user_image {
-                    border-radius: $borr5;
-                    border: 1px solid $blackWord;
-                    overflow: hidden;
-                    width: 25%;
-                    margin-bottom: 2%;
-                    & img {
-                        width: 100%;
-                        vertical-align: top;
-                    }
-                }
-                & .welcome,.orderState,.userCollect {
-                    padding: 3% 2%;
-                    margin-bottom: 5%;
-                }
-                & .welcome{
-                    justify-content: flex-start;
-                    & h3{
-                        font-size: $mh4;;
-                    }
-                }
-
-                & .memberButton {
-                    width: 30%;
-                    height: 50px;
-                    font-size: $mh6;
-                }
-                    
-                & .mb_member_sidebar {
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    margin-bottom: 15%;
-                    font-size: $mh5;
-                    border-radius: $borr2;
-                    background-color: $grey_2;
-                    & nav {
-                        padding: 10px;
-                        & ul li {
-                            cursor: pointer;
-                            padding: 8px 0;
-                        }
-                    }
-                    & .subMenu {
-                        padding: 4px 0 0 10px;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-    }
-}
-
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
     .memberCenter {
         max-width: 1920px;
         .memberTitle {
@@ -153,7 +135,7 @@
                     }
                 }
                 & .subMenu {
-                    padding: 4px 0 0 14px;
+                    padding: 10px 0 0 20px;
                     cursor: pointer;
                 }
             }
@@ -166,7 +148,7 @@
                     justify-content: space-between;
                     & .user_image {
                         border-radius: $borr4;
-                        border: 1px solid $blackWord;
+                        border: $bor1 solid $blackWord;
                         overflow: hidden;
                         width: 20%;
                         & img {
@@ -176,7 +158,6 @@
                     }
                 }
             }
-
             & .orderState {
                 & .memberButton {
                     width: 25%;

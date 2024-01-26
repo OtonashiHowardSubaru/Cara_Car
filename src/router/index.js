@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/IndexView.vue'
+import HomeView from '../views/IndexView.vue'
 
 
 const router = createRouter({
@@ -11,9 +11,9 @@ const router = createRouter({
   },
   routes: [
     {
-      path: '/Index',
+      path: '/',
       name: 'Index',
-      component: () => import('../views/IndexView.vue'),
+      component: HomeView,
       meta:{
         title: '首頁 | Cara Car',
       }
