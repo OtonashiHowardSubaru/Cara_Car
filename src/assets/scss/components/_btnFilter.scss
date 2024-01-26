@@ -1,0 +1,41 @@
+.pro_list_filter button{ 
+    border: none;
+    background-color: #00f0;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: $h5;
+    box-sizing: border-box;
+    width: calc(100% - 20px); //這個20px是基於下面的margin20px而來的
+    margin: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+    p{
+      margin-inline-start: 15px;
+    }
+    .arrow_ltr{
+      position: relative;
+      top: 10px;
+    }
+}
+@media (min-width:768px){
+    .pro_list_filter button{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: fit-content;
+        margin: 10px auto;
+        position: relative;
+        right: 0;
+        transition: all 0.5s ease;
+        p{
+          writing-mode: vertical-rl;
+        }
+        p::after{
+          content: "  \\";
+        }
+        .arrow_ltr{
+          transform: rotate(45deg);
+          left: 10px;
+        }
+      }
+}

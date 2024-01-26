@@ -33,27 +33,8 @@
 
 
 //商品種類篩選器css起點
-.pro_list_filter{
-  margin: 20px 0 50px 0;
-}
-.pro_list_filter button{
-  border: none;
-  background-color: #00f0;
-  display: flex;
-  flex-wrap: wrap;
-  font-size: $h5;
-  box-sizing: border-box;
-  width: 120px;
-  margin: 10px;
-  padding: 0 10px;
-  cursor: pointer;
-  p{
-    margin-inline-start: 15px;
-  }
-  .arrow_ltr{
-    position: relative;
-    top: 10px;
-  }
+.pro_list_filter{ //這是盒子
+  margin: 20px 0 40px 0;
 }
 @media (min-width:768px){
   .pro_list_filter{
@@ -64,23 +45,6 @@
     position: sticky;
     height: fit-content;
     top: 50px;
-    button{
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      width: fit-content;
-      margin: 10px auto;
-      p{
-        writing-mode: vertical-rl;
-      }
-      p::after{
-        content: "  \\";
-      }
-      .arrow_ltr{
-        transform: rotate(45deg);
-        left: 10px;
-      }
-    }
   }
 }
 //商品種類篩選器css終點
