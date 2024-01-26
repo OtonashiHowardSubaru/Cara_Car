@@ -2,11 +2,12 @@
   import axios from 'axios'; //引入函式庫
   import ProductCard from '@/components/ProductCard.vue';
   import PriceSorter from '@/components/PriceSorter.vue';
-  import CardShProcess from "@/components/card/CardShProcess.vue"
+  import CardShProcess from "@/components/card/CardShProcess.vue";
+  import PageNumber from "@/components/btn/PageNumber.vue";
 
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess,
+      ProductCard, PriceSorter, CardShProcess,PageNumber,
     },
     data(){
       return {
@@ -98,6 +99,7 @@
         </div>
       </div>
     </div>
+<PageNumber />
 
   <div class="sh_contact">
     <div class="sh_text">

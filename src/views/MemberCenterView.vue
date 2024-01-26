@@ -90,10 +90,6 @@ export default {
                         <h3>
                             您好，歡迎光臨<br>CARA CAR官網購物帳號
                         </h3>
-                        <!-- <input type="file" @change="handleFileChange" v-if="!imageUrl">
-                        <div class="user_image" v-else>
-                                <img :src="imageUrl" alt="User Avatar">
-                        </div> -->
                         <div class="user_image" v-if="isDesktop">
                                 <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar">
                         </div>
