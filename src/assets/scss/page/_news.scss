@@ -167,6 +167,7 @@
                 justify-content: space-between;
             }
 
+            
             .newsCard {
                 width: 100%;
                 margin-bottom: 50px;
@@ -181,12 +182,24 @@
                     box-sizing: border-box;   
                 }
 
-                img {
+                .newsCardImg {
                     width: 100%;
                     border-radius: $borr5;
-
-                    @media (min-width : 768px) {
-                        border-radius: $borr4;  
+                    overflow: hidden;
+                    
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        transition: .3s ease-in-out;
+    
+                        @media (min-width : 768px) {
+                            // border-radius: $borr4;
+    
+                            
+                            &:hover {
+                                transform: scale(1.05);
+                            }
+                        }
                     }
                 }
                 .timingTag {
@@ -219,6 +232,7 @@
                     margin-top: 20px;
                     position: relative;
                     text-align: center;
+                    color: $blackWord;
 
                     .cardTitle {
                         margin-top: 20px;

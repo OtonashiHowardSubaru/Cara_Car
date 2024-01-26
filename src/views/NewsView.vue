@@ -18,8 +18,10 @@
                 </select>
             </div>
             <div class="newsCardList">
-                <div class="newsCard" v-for="newsInfo in newsCard" :key="newsInfo.title">
-                    <img :src="newsInfo.img" alt="newsInfo.img">
+                <RouterLink to="/NewsArticle" class="newsCard" v-for="newsInfo in newsCard" :key="newsInfo.title">
+                    <div class="newsCardImg">
+                        <img :src="newsInfo.img" alt="newsInfo.img">
+                    </div>
                     <span class="timingTag">{{ newsInfo.timingTag }}</span>
                     <div class="newsCardText">
                         <div class="cardTitle">
@@ -27,7 +29,7 @@
                         </div>
                         <p>{{ newsInfo.beginTime }}</p>
                     </div>
-                </div>
+                </RouterLink>
             </div>
             <div class="pageSwitch"></div>
         </section>
