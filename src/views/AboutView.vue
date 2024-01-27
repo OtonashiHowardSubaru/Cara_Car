@@ -25,15 +25,18 @@
         <img src="../assets/imgs/about/aboutUsC2.png" alt="">
       </div>
       <div class="aboutUsContent">
-        <!-- <div class="car_caraPic"><img src="../assets/imgs/draw/car_caracar.png" alt=""></div> -->
+        
+        <div class="car_caraPic"><img src="../assets/imgs/draw/car_caracar.png" alt=""></div>
+        <!-- <div class="car_caraPic2"><img src="../assets/imgs/draw/car_caracar.png" alt=""></div> -->
         <p>我們致力於提供各種特色的玩具車，<br>讓每個孩子都能擁有專屬的玩具車，<br>展開一場屬於他們獨特的冒險旅程。
       </p>
       <p>我們相信，<br>每個孩子都應該擁有屬於自己的獨特遊戲體驗。
       </p>
+
       </div>
 
     </div>
-    <div class="car_caraPic"><img src="../assets/imgs/draw/car_caracar.png" alt=""></div>
+    <!-- <div class="car_caraPic"><img src="../assets/imgs/draw/car_caracar.png" alt=""></div> -->
     <BtnEvent/>
     <BtnShopInfo/>
 
