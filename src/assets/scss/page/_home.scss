@@ -1,56 +1,90 @@
+//indexBanner
 .indexBannerGroup{
-    margin-top: 140px;
-    max-width: 768px;
-    height: 1000px;
+    margin-top: 6%;
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: 100px;
 }
 .indexBannerImg{
-    position: absolute;
-    right: 0;
-    width: 500px;
-    height: 483px;
-    margin-top: 100px;
-    
+    // display: flex;
+    // position: absolute;
+    // right: 0;
+    width: 100%;
+    height: 100%;
+    margin: 22% 0px 10% 0px;
+    padding-left: 10%;
 }
 .indexBannerTitle{
     font-family: 'Kosugi Maru';
-    font-size: $h3;
+    letter-spacing: 5px;
+    font-size: $mh4;
     position: absolute;
-    top: 8%;
+    top: 0;
     left: 35%;
-
+    
 }
 .indexBannerTitle2{
     font-family: 'Kosugi Maru';
-    font-size: $h3;
+    letter-spacing: 5px;
+    font-size: $mh4;
     position: absolute;
-    top: 15%;
-    left: 45%;
-
+    top: 6%;
+    left: 50%;
 }
 .indexLogo{
-    width: 200px;
+    width: 20%;
     position: absolute;
     top: 15%;
-    left: 10%;
+    left: 12%;
 }
 .indexBannerBagBlock{
-    width: 30%;
-    height: 90%;
+    width: 25%;
+    height: 100%;
     background-color: $grey_1;
     border-radius: 0 $borr2 $borr2 0;
-    margin-top:50px;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    z-index: -1;
+    
 }
 //indexGame
 .indexGameGroup{
     display: none;
 }
 @media (min-width:768px) {
+    .indexBannerImg{
+        // width: 100%;
+        // height: 100%;
+        margin: 2% 0px 0px 0px;
+        padding-left: 30%;
+    }
+    
+    .indexBannerTitle{
+        writing-mode: vertical-rl;
+        left: 10%;
+        top:8%;
+        font-size: $h4;
+    }
+    .indexBannerTitle2{
+        writing-mode: vertical-rl;
+        left: 15%;
+        top: 20%;
+        font-size: $h4;
+    }
+    .indexLogo{
+        top:50%;
+        left: 5%;
+
+    }
     .indexGameGroup{
         position: relative;
         display: block;
         max-width: 900px;
         
     }
+    
     .indexGameTitle{
         width: 420px;
         position: absolute;
@@ -72,7 +106,12 @@
         bottom: 70px;
         
     }
-
+    .indexBannerBagBlock{
+        width: 30%;
+        height: 100%;
+        top: 60%;
+        
+    }
     .indexGameButton{
         width: 260px;
         height: 260px;

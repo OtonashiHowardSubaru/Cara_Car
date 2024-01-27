@@ -1,4 +1,5 @@
 <template>
+    <MainHeader />
     <main class="ShopInformation">
         <div class="infoBg">
             <img src="/src/assets/imgs/shopInfo/InfoLongImg.png" alt="">
@@ -38,11 +39,12 @@
 <script>
 import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
 import BtnEvent from '@/components/btn/BtnEvent.vue'
-
+import MainHeader from '@/components/Header.vue';
 export default {
     components:{
         BtnAboutUs,
         BtnEvent,
+        MainHeader,
     },
     data() {
         return{

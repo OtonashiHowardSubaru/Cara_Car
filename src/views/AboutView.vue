@@ -1,4 +1,5 @@
 <template>
+  <MainHeader />
   <div class="about">
     <h1><img src="../assets/imgs/about/aboutTitle.png" alt=""></h1>
     <!-- <h2>Test init</h2> -->
@@ -47,10 +48,11 @@
 <script>
 import BtnEvent from '@/components/btn/BtnEvent.vue'
 import BtnShopInfo from '@/components/btn/BtnShopInfo.vue'
+import MainHeader from '@/components/Header.vue'
 
 export default {
     components:{
-        BtnEvent, BtnShopInfo
+        BtnEvent, BtnShopInfo,MainHeader
     },
     data() {
         return{

@@ -1,4 +1,5 @@
 <template>
+    <MainHeader />
     <main class="pageNews">
         <header class="newsTitle">
             <img src="/src/assets/imgs/event/eventTitle.png" alt="eventTitle.png">
@@ -37,10 +38,11 @@
 </template>
 
 <script>
+import MainHeader from '@/components/Header.vue'
 export default {
-    // components:{
-        
-    // },
+    components:{
+        MainHeader
+    },
     data() {
         return{
             buttonTag: [

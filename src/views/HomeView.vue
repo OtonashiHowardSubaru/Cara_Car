@@ -69,15 +69,15 @@ export default {
     </nav>
   </header>
 
-    <div class="indexBannerGroup">
-      <img src="../assets/imgs/index/indexBannerImg.png" alt="" class="indexBannerImg">
-      <h1 class="indexBannerTitle">每一次轉彎，</h1>
-      <h2 class="indexBannerTitle2">都是新的發現！</h2>
-      <RouterLink class="RouterLink" to="/">
-      <img src="../assets/imgs/nav/nav-logo.png" alt="" class="indexLogo">
-      </RouterLink>
-      <div class="indexBannerBagBlock"></div>
-    </div>
+  <div class="indexBannerGroup">
+    <img src="../assets/imgs/index/indexBannerImg.png" alt="" class="indexBannerImg">
+    <h1 class="indexBannerTitle">每一次轉彎，</h1>
+    <h2 class="indexBannerTitle2">都是新的發現！</h2>
+    <RouterLink class="RouterLink" to="/">
+    <img src="../assets/imgs/nav/nav-logo.png" alt="" class="indexLogo">
+    </RouterLink>
+    <div class="indexBannerBagBlock"></div>
+  </div>
   
 
   <div class="indexGameGroup">

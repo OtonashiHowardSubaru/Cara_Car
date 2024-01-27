@@ -1,5 +1,6 @@
 
 <template>
+    <MainHeader />
     <main class="newsArticle">
         <article v-for="newsInfo in newsCard" :key="newsInfo.title">
             <header>
@@ -22,10 +23,11 @@
 </template>
 
 <script>
+import MainHeader from '@/components/Header.vue'
 export default {
-    // components:{
-        
-    // },
+    components:{
+        MainHeader
+    },
     data() {
         return{
             newsCard:[

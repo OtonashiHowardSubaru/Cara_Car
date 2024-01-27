@@ -21,10 +21,10 @@
       <!-- 手機板haeder -->
       <ul class="indexHeaderNavPh">
         <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
-          <a href="#" class="indexHeaderA">
+          <RouterLink :to="namePh[$index]">
             <img :src="getImageUrl(item.i)" class="indexHeaderButtonIconPh">
             <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
-          </a>
+          </RouterLink>
         </li>
         <div class="linePh"></div>
         <div class="indexHeaderLoginPh">

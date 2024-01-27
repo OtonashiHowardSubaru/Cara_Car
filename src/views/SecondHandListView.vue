@@ -1,10 +1,10 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import CardShProcess from "@/components/card/CardShProcess.vue";
-
+import MainHeader from '@/components/Header.vue';
   export default {
     components:{
-      CardShProcess,
+      CardShProcess,MainHeader
     },
     data(){
       return {
@@ -130,6 +130,7 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
 }
 </script>
 <template>
+  <MainHeader />
   <div class="sh_pro_list_title col-12">
     <img src="../assets/imgs/product/sh_product_title.png" alt="used car">
   </div>

@@ -5,7 +5,7 @@
   import CardShProcess from "@/components/card/CardShProcess.vue";
   import PageNumber from "@/components/btn/PageNumber.vue";
   import BtnFilter from '@/components/btn/BtnFilter.vue';
-  import MainHeader from '@/components/Header.vue'
+  import MainHeader from '@/components/Header.vue';
   export default {
     components:{
       ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,MainHeader
