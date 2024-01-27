@@ -1,5 +1,9 @@
 <script>
+import MainHeader from '@/components/Header.vue'
 export default {
+    components:{
+        MainHeader
+    },
     data() {
         return {
             showSubMenu: false,
@@ -60,9 +64,10 @@ export default {
 </script>
 
 <template>
+    <MainHeader />
     <div class="memberCenter">
         <div class="memberTitle">
-            <div class="line"></div>
+            <!-- <div class="line"></div> -->
             <div class="title">
                 <img src="../assets/imgs/memberCenter/memberCenterTitle.png" alt="title">
             </div>
