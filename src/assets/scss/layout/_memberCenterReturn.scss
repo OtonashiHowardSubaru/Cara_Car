@@ -1,13 +1,18 @@
-.order{
+.return{
     width: 100%;
     margin-bottom: 50px;
+}
+.sub_title{
+    h3.return_title{
+        margin: 40px 0;
+    }
 }
 .sub_title_line{
     width: 100%;
     height: 0;
     border: $bor1 solid $blackWord;
 }
-.order_filter{
+.return_filter{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -19,7 +24,8 @@
     & nav ul{
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: start;
+        gap: 50px;
         width: 100%;
         text-align: center;
     }
@@ -37,43 +43,44 @@
         background-color: $grass_1;
     }
 }
-.order_content{
+.return_content{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     .empty_img{
-        width: 80%;
+        width: 30%;
         img{
             width: 100%;
             vertical-align: top;
         }
     }
-    .order_none{
+    .return_none{
         padding: 10px 0;
         font-size: $mh4;
     }
 }
 @media (min-width: 768px) {
-    .order{
+    .return{
         width: 70%;
     }
     .sub_title{
-        h3{
+        h3.return_title{
             margin: 0;
         }
     }
-    .order_filter{
+    .return_filter{
         li{
             margin-top: 5px;
             font-size: $h5;
+            width: 120px;
         }
     }
-    .order_content{
+    .return_content{
         .empty_img{
             margin: 10px auto;
         }
-        .order_none{
+        .return_none{
             font-size: $h4;
         }
     }
