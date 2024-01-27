@@ -63,7 +63,7 @@ export default {
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
-          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin" @click="openModal">
+          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin" @click="openLightbox">
         </div>
       </ul>
     </nav>
@@ -110,4 +110,5 @@ export default {
 <style lang="scss" scoped>
   @import '@/assets/scss/layout/header.scss';
   @import '@/assets/scss/page/home.scss';
+  @import '@/assets/scss/layout/login.scss';
 </style>
