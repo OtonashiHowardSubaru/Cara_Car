@@ -23,20 +23,27 @@
     }
     .infoBg {
         width: 100%;
-        // height: 150vh;
+        height: 100vh;
+        // height: initial;
         overflow: hidden;
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
+        
 
         @media (min-width : 768px) {
             width: 50%;
-            // position: relative;
+            position: fixed;
+            z-index: -1;
         }
+        .bgAnime {
 
-        img {
-            width: 100%;
-            object-fit: cover;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
         }
         
     
