@@ -56,9 +56,23 @@ methods: {
 
             <div class="customContent">
                 <span class="custom">客製化</span>
-                
             </div>
 
+        </section>
+        <section class="cartFunction">
+            <div class="cartPrice">
+                <span class="cartFunctionTitle">小計</span>
+                <span class="cartFunctionTitle">$10,000</span>
+            </div>
+            <div class="cartPrice">
+                <span class="cartFunctionTitle">運費</span>
+                <span class="cartFunctionTitle">運費計算參考</span>
+            </div>
+            <p class="cartCountTotal">合計金額：$10,500</p>
+            <div class="cartMatter">
+                <span class="cartFunctionTitle">運費計算及注意事項</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
         </section>
         <section class="cartReceiptInformation">
             <div class="receiptnformation">

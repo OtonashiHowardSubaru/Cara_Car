@@ -1,5 +1,5 @@
 .cart{
-    margin-top: 80px;
+    margin-top: 100px;
     width: 100%;
     margin-bottom: 100px;
 }
@@ -7,10 +7,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    border-bottom: $bor1 solid $blackWord;
 }
 .cartTitle{
-    width: 40%;
-    margin: 20px auto;
+    width: 60%;
+    // margin: 10px auto;
+    // display: flex;
+    // justify-content: center;
+    
 }
 .cartContent{
     // border-bottom: $bor1 solid $blackWord;
@@ -125,17 +130,56 @@
 .subButton{
     font-size: $mh4;
     width: 68%;
-    height: 50px;
+    padding: 10px 0;
     margin: 15px auto 25px auto;
     border-style: none;
     border-radius: $borr1;
     background-color: $lightGreen;
+    color: $whiteWord;
     cursor: pointer;
 }
+.cartPrice{
+    font-family:'Noto Sans' ;
+    font-weight: 600;
+    width:68%;
+    background-color: $grey_2;
+    border-radius: $borr1;
+    margin: 3% auto;
+    padding: 1% 0;
+}
+.cartFunctionTitle:nth-child(2){
+    float: right;
+    padding-right: 3%;
+}
+.cartFunctionTitle:nth-child(1){
+    padding-left: 3%;
+}
+.cartCountTotal{
+    float: right;
+    padding-right: 16%;
+    font-family:'Noto Sans' ;
+    font-size: $mh5;
+    font-weight: 600;
+    // padding: 20px 16% 20px 0px;
+}
+.cartMatter{
+    font-family:'Noto Sans' ;
+    font-weight: 600;
+    width:68%;
+    background-color: $grey_2;
+    border-radius: $borr1;
+    margin: 10% auto;
+    padding: 3% 0;
+}
+.fa-solid{
+    float: right;
+    padding-right: 6%;
+}
+
 @media (min-width : 768px) {
     .cartTitle{
-        width: 30%;
-        margin: 40px auto;
+        width: 40%;
+        // margin: 40px auto;
     }
     .cartTitleGroup{
         border-bottom: $bor1 solid $blackWord;
