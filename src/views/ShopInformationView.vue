@@ -2,7 +2,9 @@
     <MainHeader />
     <main class="ShopInformation">
         <div class="infoBg">
-            <img src="/src/assets/imgs/shopInfo/InfoLongImg.png" alt="">
+            <div class="bgAnime">
+                <img src="/src/assets/imgs/shopInfo/InfoLongImg.png" alt="InfoLongImg">
+            </div>
         </div>
 
         <section class="infoText" v-for="item in infoText">
