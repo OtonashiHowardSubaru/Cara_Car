@@ -76,6 +76,12 @@ const router = createRouter({
       meta:{title: '二手專區 | Cara Car',}
     },
     {
+      path: '/SecondHandSale',
+      name: 'SecondHandSale',
+      component: () => import('@/views/SecondHandSaleView.vue'),
+      meta:{title: '二手販賣 | Cara Car',}
+    },
+    {
       path: '/Game',
       name: 'Game',
       component: () => import('@/views/GameView.vue'),
