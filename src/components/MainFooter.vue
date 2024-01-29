@@ -1,7 +1,11 @@
 <template>
   <footer class="mainFooter">
-    <div class="footerbg">
+
+    <div class="scrollJumpOut">
+      <img class="jumpOutCat" src="../assets/imgs/draw/cat2.PNG" alt="cat2.PNG">
+      <img class="jumpOutGrass" src="../assets/imgs/draw/bush.PNG" alt="bush.PNG">
     </div>
+    <div class="footerbg"></div>
     <div class="footerSection1">
       <div class="footerSection1Info">
         <RouterLink class="RouterLink" to="/">
@@ -96,9 +100,20 @@ export default{
     toTop(){
       document.documentElement.scrollTop = 0
     }
-  }
+  },
+  mounted() {
+
+  },
+  destroyed() {
+
+  },
+  methods: {
+    
+  },
 }
 </script>
+
+
 
 <style lang="scss" scoped>
 @import "@/assets/scss/layout/footer.scss" ;

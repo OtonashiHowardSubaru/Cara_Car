@@ -17,6 +17,47 @@
     //     align-items: start;
     // }
 
+    .scrollJumpOut {
+        width: 100%;
+        position: absolute;
+        background-color: #aaa;
+        top: -50px;
+        
+        @media (min-width : 768px) {
+            top: -70px;
+
+        }
+        @media (min-width : 1024px) {
+            top: -90px;
+        }
+        @media (min-width : 1200px) {
+            top: -120px;
+
+            &:hover {
+
+                .jumpOutCat {
+                    top: 0px;
+
+                }
+            }
+        }
+
+        img {
+            width: 20%;
+            position: absolute;
+            right: 0;
+        }
+        .jumpOutCat {
+            top: 20px;
+            transition: .1s ease-in;
+            
+            
+
+            @media (min-width : 1024px) {
+                top: 30px;
+            }
+        }
+    }
 
     .RouterLink {
         border: none;
