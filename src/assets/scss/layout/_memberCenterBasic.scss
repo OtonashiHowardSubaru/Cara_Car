@@ -39,25 +39,19 @@ width: 100%;
         }
     }
 }
-label{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0 0 20px 0;
-    & .change_user_image{
-        border-radius: $borr2;
-        cursor: pointer;
-        color: $whiteWord;
-        background-color: $lightGreen;
-        width: 30%;
-        height: 50px;
-        font-size: $mh6;
-        border: $bor2 dashed rgb(102, 102, 102);
-        transition: border 0.1s ease-in;
-        &:hover{
-            border: solid;
-            box-shadow: rgba(102, 102, 102, 0.35) 0px 10px 20px;
-        }
+.change_user_image{
+    border-radius: $borr2;
+    cursor: pointer;
+    color: $whiteWord;
+    background-color: $lightGreen;
+    width: 30%;
+    height: 50px;
+    font-size: $mh6;
+    border: $bor2 dashed rgb(102, 102, 102);
+    transition: border 0.1s ease-in;
+    &:hover{
+        border: solid;
+        box-shadow: rgba(102, 102, 102, 0.35) 0px 5px 20px;
     }
 }
 

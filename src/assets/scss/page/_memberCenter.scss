@@ -149,8 +149,10 @@
                     & .user_image {
                         border-radius: $borr4;
                         border: $bor1 solid $blackWord;
-                        overflow: hidden;
+                        background-color: transparent;
                         width: 20%;
+                        height: 155px;
+                        overflow: hidden;
                         & img {
                             width: 100%;
                             vertical-align: top;
