@@ -31,9 +31,11 @@
                     <span>{{ item.holiday }}</span>
                 </p>
             </div>
-            <div class="map"></div>
-            <BtnAboutUs />
-            <BtnEvent />
+            <ShopMap class="shopInfoMap" />
+            <div class="shopInfoBtnGroup">
+                <BtnAboutUs />
+                <BtnEvent />
+            </div>
         </section>
     </main>
 </template>
@@ -42,11 +44,15 @@
 import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
 import BtnEvent from '@/components/btn/BtnEvent.vue'
 import MainHeader from '@/components/Header.vue';
+import ShopMap from '@/components/ShopMap.vue';
+
+
 export default {
     components:{
         BtnAboutUs,
         BtnEvent,
         MainHeader,
+        ShopMap,
     },
     data() {
         return{
@@ -56,7 +62,7 @@ export default {
                     contactEmail: " Cara_car@gmail.com",
                     openTime: " 10 : 00 ~ 20 :30",
                     holiday: " 每周一、四"
-                }]
+                }],
         }
     },
     methods:{
