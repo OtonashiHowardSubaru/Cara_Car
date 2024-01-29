@@ -142,28 +142,28 @@
 .cartInputTitle{
     font-size: $mh6;
     padding-left: 16%;
-    margin: 10px 0 5px 0;
+    margin: 5px 0 0 0;
 }
 .cartInput{
     border-style: none;
     border-radius: $borr1;
     width: 72%;
     height: 6%;
-    margin: 10px auto;
+    margin: 15px auto;
 }
 #city{
     border-style: none;
     border-radius: $borr1;
     width: 72%;
-    height: 30%;
+    height: 40%;
     margin: 10px 2% 5px 14%;
 }
 .area{
     border-style: none;
     border-radius: $borr1;
     width: 72%;
-    height: 30%;
-    margin: 10px 2% 20px 14%;
+    height: 40%;
+    margin: 5px 2% 20px 14%;
 }
 .remark{
     border-style: none;
@@ -174,7 +174,7 @@
 }
 .subButton{
     font-size: $mh4;
-    width: 68%;
+    width: 72%;
     padding: 10px 0;
     margin: 15px auto 25px auto;
     border-style: none;
@@ -205,7 +205,6 @@
     font-family:'Noto Sans' ;
     font-size: $mh5;
     font-weight: 600;
-    // padding: 20px 16% 20px 0px;
 }
 .cartMatter{
     font-family:'Noto Sans' ;
@@ -252,7 +251,9 @@
     .customContent{
         font-size: $h4;
     }
-
+    .receiptnformation{
+        height: 800px;
+    }
     .informationTitle{
         font-size: $mh4;
     }
@@ -267,8 +268,7 @@
         font-size: $mh5;
     }
     .cartInput{
-        height: 10%;
-        margin: 15px auto;
+        margin: 20px auto;
     }
     #city{
         width: 35%;
@@ -279,8 +279,5 @@
         width: 35%;
         height: 90%;
         margin: 10px 0 20px 0;
-    }
-    .remark{
-        height: 60%;
     }
 }
