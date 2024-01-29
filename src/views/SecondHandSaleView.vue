@@ -79,10 +79,52 @@
                 </div>
             
         </section>
+        <section class="infoText">
 
+            <ShopMap class="shopInfoMap" />
+            <InfoTextCards />
+            
+            <div class="shopInfoBtnGroup">
+                <BtnAboutUs />
+                <BtnEvent />
+            </div>
+        </section>
     </div>
 </template>
 
+<script>
+import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
+import BtnEvent from '@/components/btn/BtnEvent.vue'
+import MainHeader from '@/components/Header.vue';
+import ShopMap from '@/components/ShopMap.vue';
+import InfoTextCards from '@/components/InfoTextCards.vue';
+
+
+export default {
+    components:{
+        BtnAboutUs,
+        BtnEvent,
+        MainHeader,
+        ShopMap,
+        InfoTextCards,
+    },
+    data() {
+        return{
+            infoText: [{
+                    shopAddress: " 桃園市中壢區復興路46號8樓",
+                    contactNumber: " (03)425-1108",
+                    contactEmail: " Cara_car@gmail.com",
+                    openTime: " 10 : 00 ~ 20 :30",
+                    holiday: " 每周一、四"
+                }],
+        }
+    },
+    methods:{
+    },
+    mounted() {
+    }
+}
+</script>
 <!-- <script src="https://unpkg.com/vue@3.4.5/dist/vue.global.js">
         import MainHeader from '@/components/Header.vue'
         

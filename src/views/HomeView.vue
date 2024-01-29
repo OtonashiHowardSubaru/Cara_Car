@@ -1,8 +1,13 @@
 <script>
+import EventCardSlider from '@/components/card/EventCardSlider.vue'
+
 // import gsap from 'gsap';
 // import { TextPlugin } from 'gsap/TextPlugin';
 // gsap.registerPlugin(TextPlugin);
 export default {
+  components:{
+        EventCardSlider,
+    },
   data() {
     return{
       currentTitle: '',
@@ -87,7 +92,25 @@ export default {
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
   </div>
-  
+
+  <div class="indexProductGroup"></div>
+
+  <div class="indexEventGroup">
+    <div class="indexEventTitle">
+      <img src="../assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
+      <RouterLink to="/News" class="linkToEvent">
+        <!-- <div class="decoLine"></div> -->
+        <div class="eventLink">消息一覽</div>
+      </RouterLink>
+      <img class="decoImg" src="../assets/imgs/draw/person_sit.PNG" alt="person_sit">
+    </div>
+    <div class="otherEventCards">
+        <EventCardSlider class="otherEventCard" />
+    </div>
+  </div>
+
+  <div class="indexAboutGroup"></div>
+
   <div class="indexGameGroup">
       <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
       <div class="indexGameBagBlock"></div>
