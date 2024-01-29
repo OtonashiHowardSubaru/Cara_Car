@@ -149,10 +149,20 @@
             justify-content: center;
             align-items: center;
             border: 1px solid $blackWord;
+            background-color: $whiteWord;
+            color: $blackWord;
             z-index: 0;
+            cursor: pointer;
+            transition: .2s ease-in-out;
     
             @media (min-width : 768px) {
                 margin: 0 30px 0;
+
+                &:hover {
+                    border: 1px solid $lightGreen;
+                    background-color: $lightGreen;
+                    color: $whiteWord;
+                }
             }
         }
     }
