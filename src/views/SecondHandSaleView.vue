@@ -1,12 +1,14 @@
 <template id="app">
     <MainHeader />
     <div class="SecondHandSale">
-        <h2>我要賣車</h2>
+        <div class="SecondHandSaleTitle">
+            <h2>我要賣車</h2>
+        </div>
         <div class="saleCarStepTopText">
             <p>這部玩具汽車可能充滿回憶，曾陪伴您與孩子歡樂成長。現在雖然用不到了，但還是充滿溫馨。以合理價格轉讓給需要的人，讓歡笑傳承，尋找新主人吧！</p>
             <div class="drawPic"><img src="../assets/imgs/draw/person_love.png" alt="插圖"></div>
         </div>
-
+        
         <section class="saleCarSteps">
             
 
