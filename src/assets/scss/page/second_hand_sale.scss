@@ -1,5 +1,6 @@
 .SecondHandSale{
     width: 100%;
+
     .SecondHandSaleTitle{
         margin-top: 110px;
         padding-bottom: 25px;
@@ -64,8 +65,10 @@
     
     }
     .infoText{
+        height: 1000px;
         .shopInfoMap {
             margin: 50px auto;
+            // height: 300px;
         }
     }
 }
