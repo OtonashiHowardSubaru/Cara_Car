@@ -50,8 +50,8 @@
                 </p>
                 <p>
                     【活動時間】<br>
-                    2024/1/10 ~ 2024/3/10 23:59 <br>
-                    結果公告：2024/3/26 12:00
+                    2024/2/1 ~ 2024/4/1 23:59 <br>
+                    結果公告：2024/4/20 12:00
                 </p>
             </div>
             
@@ -75,11 +75,11 @@ export default {
         return{
             newsCard:[
                 {
-                    img: "src/assets/imgs/event/infocard01.jpg",
+                    img: "src/assets/imgs/event/infocard03.jpg",
                     title: "玩具車攝影比賽",
                     timingTag: "進行中",
                     activeTag: "活動",
-                    beginTime: " 2024/1/10 ~ 2024/3/10",
+                    beginTime: " 2024/2/1 ~ 2024/4/1",
                     // infoText1: "為了迎接2024年而推出的特別優惠!",
                     // infoText2: "如購買任何電動車即可享受9折優惠，",
                     // infoText3: "並贈送小型玩具車模型。",

@@ -1,10 +1,12 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import CardShProcess from "@/components/card/CardShProcess.vue";
+import TitleMaybeYouLike from "@/components/TitleMaybeYouLike.vue";
+import TitleViewed from "@/components/TitleViewed.vue";
 
   export default {
     components:{
-      CardShProcess,
+      CardShProcess, TitleMaybeYouLike, TitleViewed,
     },
     data(){
       return {
@@ -50,6 +52,10 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
 
 <template>
 <div class="sh_product_wrap">
+    <div class="intromq">
+      <h1>超強小車車</h1>
+      <h2>AMERICAN CLASSIC</h2>
+    </div>
     <div class="prodpic">
       <div class="mainpic">
         <img src="../assets/imgs/product/sh_product_mainpic.png" alt="超強小車車">
@@ -161,18 +167,18 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
 
 <div class="recommand">
   <div class="view">
-  <h4>別人也逛過</h4>
-  <button class="slider_left"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+    <TitleViewed/>
+    <button class="slider_left"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
 
-  <button class="slider_right"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+    <button class="slider_right"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
 
-</div>
-<div class="maybeYouLike">
-  <h4>也許你會喜歡</h4>
-  <button class="slider_left"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+  </div>
+  <div class="maybeYouLike">
+    <TitleMaybeYouLike/>
+    <button class="slider_left"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
 
-  <button class="slider_right"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
-</div>
+    <button class="slider_right"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+  </div>
 </div>
 
 

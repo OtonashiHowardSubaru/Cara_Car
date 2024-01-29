@@ -8,7 +8,7 @@
         </div>
 
         <section class="infoText" v-for="item in infoText">
-            <img src="/src/assets/imgs/shopInfo/infoTitle.png" alt="infoTitle" class="infoTitle">
+            <img src="/src/assets/imgs/shopInfo/infoTitle.svg" alt="infoTitle" class="infoTitle">
             <div>
                 <p>
                     <span>門市地址 :</span>
