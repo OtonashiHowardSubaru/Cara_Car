@@ -1,9 +1,11 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/Header.vue';
+import TitleViewed from '@/components/TitleViewed.vue';
+import ProductCard from '@/components/ProductCard.vue';
 export default {
 components:{
-    MainHeader,
+    MainHeader,TitleViewed,
 },
 data(){
     return {
@@ -44,27 +46,57 @@ methods: {
     <MainHeader />
     <main>
         <section class="cart">
-            <div class="cartTitleGroup">
-                <img src="../assets/imgs/cart/cart_title.svg" alt="" class="cartTitle">
+            <div class="cartTitle">
+                <img src="../assets/imgs/cart/cart_title.svg" alt="cartTitle">
             </div>
-
             <div class="cartContent">
                 <span class="productName">商品名稱</span>
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
             </div>
-
-            <div class="customContent">
-                <span class="custom">客製化</span>
-                
+            <div class="productCard">
+                    <img src="../assets/imgs/cart/cart_product_img.png" alt="ProductImage">
+                    <div class="proCardP">
+                        <p class="pro_name">閃電漂移車</p>
+                        <p class="pro_price">$2500</p>
+                    </div>
+                    <div class="countButton">
+                        <button>-</button>
+                        <input type="number" value="1">
+                        <button>+</button>
+                    </div>
+                    <p class="proCount">$2,500</p>
             </div>
 
+            <div class="cartContent">
+                <span class="custom">客製化</span>
+            </div>
+            <form action="">
+                <div class="customPlate">
+                    <span class="customPlateNumber">車牌號碼</span>
+                    <input type="text" maxlength="8" class="customNumber">
+                </div>
+            </form>
         </section>
-        <section class="cartReceiptInformation">
+        <section class="cartFunction">
+            <div class="cartPrice">
+                <span class="cartFunctionTitle">小計</span>
+                <span class="cartFunctionTitle">$3,000</span>
+            </div>
+            <div class="cartPrice">
+                <span class="cartFunctionTitle">運費</span>
+                <span class="cartFunctionTitle">運費計算參考</span>
+            </div>
+            <p class="cartCountTotal">合計金額：$3,500</p>
+            <div class="cartMatter">
+                <span class="cartFunctionTitle">運費計算及注意事項</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+        </section>
+        <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
                     填寫收件人資料
-                    
                     <span class="informationTitle2"><input type="checkbox" class="cartCheckbox">同會員資料</span>
                 </span>
                 <p class="cartInputTitle">收件人姓名</p>
@@ -84,9 +116,11 @@ methods: {
                 <input type="text" size="20" class="remark">
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
-        </section>
+        </form>
+        <TitleViewed/>
+        
     </main>
-
+    <!-- <ProductCard/> -->
 </template>
 
 <style lang="scss">

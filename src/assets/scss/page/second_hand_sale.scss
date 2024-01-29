@@ -5,6 +5,8 @@
 
     }
     .saleCarStepTopText{
+        width: 50%;
+        margin: 0 auto;
         p{
             font-size: $p;
             font-family: 'Kosugi Maru';
@@ -87,15 +89,18 @@
         }
     
         .saleCarSteps{
-            
+            width: 80%;
+            margin: 0 auto;
             .saleCarStep{
+            
             &:nth-child(even) {
-                background-color: $grey_2;
+                // background-color: $grey_2;
                 flex-direction: row-reverse;
             }    
                 width: 80%;
                 display: flex;
                 margin: 0 auto;
+                padding: 10px;
                     .saleCarStepImg{
                         width: 100%;
                         img{
@@ -110,12 +115,15 @@
                         align-items: flex-start;
                         .saleCarStepNum{
                             font-size: $h3;
-                            margin: 15px;
+                            margin: 30px;
                         }
                         
                     }
                     .saleCarStepContent{
                         font-size: $h3;
+                    h5{
+                        margin: 10px 30px;
+                    }    
                     p{
                         display: block;
                         font-size: $p;

@@ -1,24 +1,22 @@
 .cart{
-    margin-top: 80px;
+    margin-top: 100px;
     width: 100%;
     margin-bottom: 100px;
 }
-.cartTitleGroup{
-    width: 100%;
+.cartTitle{
     display: flex;
     justify-content: center;
+    align-items: center;
+    border-bottom: $bor1 solid $blackWord;
 }
-.cartTitle{
-    width: 40%;
-    margin: 20px auto;
+.cartTitle img{
+    width: 60%; 
 }
 .cartContent{
-    // border-bottom: $bor1 solid $blackWord;
     font-family:'Noto Sans' ;
     font-size: $mh4;
     font-weight: 700;
     width: 100%;
-    // position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,21 +37,79 @@
     padding-left: 8%;
     border-bottom: $bor1 solid $blackWord;
 }
-
-.customContent{
-    font-family:'Noto Sans' ;
-    font-size: $mh4;
-    font-weight: 700;
-    width: 100%;
+.productCard{
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 5%;
+    width: 68%;
+    margin: 1% auto;
+    padding: 1% 5% 1% 5%;
+}
+.productCard img{
+    width: 15%;
+}
+.proCardP{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+.pro_name{
+    font-size: $mh6;
+    display: inline-block;
+    padding: 1% 0;
+}
+.pro_price{
+    font-size: $mh6;
+    display: inline-block;
+    padding: 1% 0;
+}
+.countButton{
+    background-color: $grey_1;
+    width: 75px;
+    height: 25px;
+    border-radius: $borr2;
+    display: inline-block;
+    margin: 0 auto;
+}
+.countButton input{
+    width: 25px;
+    height: 25px;
+    border-style: none;
+    text-align: center;
+    background-color: $grey_1;
+}
+.countButton button{
+    border-style: none;
+    width: 25px;
+    height: 25px;
+    border-radius: $borr2;
+}
+.proCount{
+    width: 1%;
+    margin: 0 auto;
+    font-family:'Noto Sans' ;
 }
 .custom{
     width: 68%;
     border-bottom: $bor1 solid $blackWord;
     padding-left: 5%;
+}
+.customPlate{
+    width:68%;
+    background-color: $grey_1;
+    border-radius: $borr2;
+    margin: 3% auto;
+    padding: 1% 0 1% 2%;
+}
+.customPlateNumber{
+    font-family:'Noto Sans' ;
+    font-weight: 600;
+}
+.customNumber{
+    border-style: none;
+    border-radius: $borr2;
+    float: right;
+    margin-right: 4%;
 }
 .cartReceiptInformation{
     width: 100%;
@@ -69,8 +125,6 @@
     background-color: $grey_2;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
     letter-spacing: 2px;
     margin-bottom: 80px;
 }
@@ -81,7 +135,6 @@
 }
 .informationTitle2{
     font-size: $mh6;
-    
 }
 .cartCheckbox{
     width: 10px;
@@ -90,70 +143,123 @@
 .cartInputTitle{
     font-size: $mh6;
     padding-left: 16%;
-    margin: 10px 0 5px 0;
+    margin: 5px 0 0 0;
 }
 .cartInput{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
-    height: 5%;
-    margin: 10px auto;
+    width: 72%;
+    height: 6%;
+    margin: 15px auto;
 }
 #city{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
-    height: 30%;
-    margin: 10px 2% 5px 16%;
-    // font-family: 'Kosugi Maru';
+    width: 72%;
+    height: 40%;
+    margin: 10px 2% 5px 14%;
 }
 .area{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
-    height: 30%;
-    margin: 10px 2% 20px 16%;
-    
+    width: 72%;
+    height: 40%;
+    margin: 5px 2% 20px 14%;
 }
 .remark{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
+    width: 72%;
     height: 20%;
     margin: 10px auto;
 }
 .subButton{
     font-size: $mh4;
-    width: 68%;
-    height: 50px;
+    width: 72%;
+    padding: 10px 0;
     margin: 15px auto 25px auto;
     border-style: none;
     border-radius: $borr1;
     background-color: $lightGreen;
+    color: $whiteWord;
     cursor: pointer;
 }
+.cartPrice{
+    font-family:'Noto Sans' ;
+    font-weight: 600;
+    width:68%;
+    background-color: $grey_2;
+    border-radius: $borr1;
+    margin: 3% auto;
+    padding: 1% 0;
+}
+.cartFunctionTitle:nth-child(2){
+    float: right;
+    padding-right: 3%;
+}
+.cartFunctionTitle:nth-child(1){
+    padding-left: 3%;
+}
+.cartCountTotal{
+    float: right;
+    padding-right: 16%;
+    font-family:'Noto Sans' ;
+    font-size: $mh5;
+    font-weight: 600;
+}
+.cartMatter{
+    font-family:'Noto Sans' ;
+    font-weight: 600;
+    width:68%;
+    background-color: $grey_2;
+    border-radius: $borr1;
+    margin: 10% auto;
+    padding: 3% 0;
+}
+.fa-solid{
+    float: right;
+    padding-right: 6%;
+}
+
 @media (min-width : 768px) {
-    .cartTitle{
-        width: 30%;
-        margin: 40px auto;
+    .cartTitle img{
+        width: 40%;
     }
-    .cartTitleGroup{
+    .cartTitle{
         border-bottom: $bor1 solid $blackWord;
     }
     .cartContent{
         font-size: $h4;
     }
+    .pro_name{
+        font-size: $mh5;
+    }
+    .countButton{
+        width: 90px;
+        height: 30px;
+    }
+    .countButton input{
+        width: 30px;
+        height: 30px;
+    }
+    .countButton button{
+        width: 30px;
+        height: 30px;
+    }
+    .proCount{
+        font-size: $h5;
+    }
     .customContent{
         font-size: $h4;
     }
-
+    .receiptnformation{
+        height: 800px;
+    }
     .informationTitle{
         font-size: $mh4;
-
     }
     .informationTitle2{
         font-size: $mh5;
-        
     }
     .cartCheckbox{
         width: 14px;
@@ -163,19 +269,15 @@
         font-size: $mh5;
     }
     .cartInput{
-        //桌機
-        height: 8%;
-        margin: 15px auto;
+        margin: 20px auto;
     }
     #city{
-        //桌機
-        width: 33%;
+        width: 35%;
         height: 90%;
-        margin: 10px 2% 20px 16%;
+        margin: 10px 2% 20px 14%;
     }
     .area{
-        //桌機
-        width: 33%;
+        width: 35%;
         height: 90%;
         margin: 10px 0 20px 0;
     }
