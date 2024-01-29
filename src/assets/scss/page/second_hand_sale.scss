@@ -1,14 +1,12 @@
 .SecondHandSale{
     width: 100%;
     .SecondHandSaleTitle{
-        margin-top: 100px;
-        border-bottom: 1px soil #bbb;
-        
+        margin-top: 110px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid $blackWord;
         h2{
             text-align: center;
-    
-    }
-
+        }
     }
     .saleCarStepTopText{
         width: 95%;
@@ -21,22 +19,19 @@
         }
         .drawPic{
             img{
-                width: 25%;
+                width: 20%;
                 position: absolute;
-                right: 0;
-                top: 0;
+                right: 5%;
+                top: 8%;
             }
         }
     }
 
     .saleCarSteps{
         margin: 5%;
-        .saleCarStep{
-        // &:nth-child(even) {
-        //     background-color: $grey_2;
-        // }    
-            width: 98%;
-            margin: 0 auto;
+        .saleCarStep{ 
+            width: 95%;
+            margin: 0 5% 0 10%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -48,6 +43,7 @@
                         }
                 }
                 .saleCarStepType{
+                    width: 55%;
                     display: flex;
                     align-items: start;
                     flex-direction: column;
@@ -60,12 +56,17 @@
                 }
                 .saleCarStepContent{
                     font-size: $h3;
-                p{
-                    display: none;
-                }
+                    p{
+                        display: none;
+                    }
                 }
         }
     
+    }
+    .infoText{
+        .shopInfoMap {
+            margin: 50px auto;
+        }
     }
 }
 
