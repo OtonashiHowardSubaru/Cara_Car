@@ -82,7 +82,10 @@
         position: relative;
         display: block;
         max-width: 900px;
-        
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // margin: 0 auto;
     }
     
     .indexGameTitle{
@@ -90,6 +93,7 @@
         position: absolute;
         top: 20px;
         left: 50%;
+        // margin-top: 20px;
 
     }
     .indexGameBagBlock{
@@ -104,13 +108,13 @@
         height: 450px;
         position: absolute;
         bottom: 70px;
+        // margin-bottom: 70px;
         
     }
     .indexBannerBagBlock{
         width: 30%;
         height: 100%;
         top: 60%;
-        
     }
     .indexGameButton{
         width: 260px;
@@ -121,6 +125,8 @@
         bottom: 20%;
         left: 80%;
         position: absolute;
+        // margin-top: auto;
+        cursor: pointer;
     }
     .indexGameButton2{
         width: 220px;
@@ -131,8 +137,10 @@
         position: absolute;
         bottom: 18px;
         right: 18px;
+        // margin-bottom: 18px;
+        // margin-right: 18px;
         // pointer-events: none;
-        // cursor: pointer;
+        cursor: pointer;
     }
     .indexGameButtonTitle{
         display: inline-block;
@@ -143,53 +151,55 @@
         bottom: 45px;
         right: 60px;
         font-family: 'Single Day', cursive;
+        cursor: pointer;
     }
-    // .indexGameButtonP{
-    //     font-family: 'Single Day', cursive;
-    //     color: $blackWord;
-    //     font-size: $h3;
-    //     transform: translateX(-50%);
-    //     shape-outside: radial-gradient(circle at center, transparent 50%, $blackWord 50%);
-    //     // white-space: nowrap;
-    //     position: absolute;
-    //     bottom: 35px; 
-    //     left: 280px;
-    // }
 
+    .circular {
+        margin: 0 auto;
+        width: 10em;
+        height: 10em;
+        font-family: 'Single Day', cursive;
+        font-size: $h5;
+        position: absolute;
+        bottom: 310px;
+        right: 0;
+        
+    }
     
-}
-
-.circular {
-    margin: 0 auto;
-    width: 10em;
-    height: 10em;
-    font-family: 'Single Day', cursive;
-    font-size: $h5;
-    position: absolute;
-    bottom: 305px;
-    right: 0;
+    .circular path { 
+        fill: none; 
+        }
+        
+    .circular svg {
+    display: block;
+    overflow: visible;
+    }
+    :root {
+        --start-offset-value: 0;
+    }
+    .indexGameButton:hover + .circular .text-path  {
+        animation: move 15s linear infinite;
+    }
+    .text-path{
+        animation: initial-state 0s linear forwards;
+    }
+    .indexGameButton.hovered + .circular .text-path {
+        animation: move 15s linear infinite;
+    }
+    @keyframes initial-state {
+    to {
+        startOffset: var(--start-offset-value);
+        }
+    }
     
+    @keyframes move {
+    to {
+        startOffset: 360;
+        }
+    }
 }
-.circular:hover{animation: f-rotate 16s linear infinite;}
 
-.circular path { 
-fill: none; 
-}
 
-.circular svg {
-display: block;
-overflow: visible;
-}
-.textPath{
-    offset-path: path("M 50,50 a 64,64 0 1,1 -1,0 z");
-    
-}
-.indexGameButton:hover{
-    animation: move 5s linear infinite;
-}
-@keyframes move {
-    100%{
-        -webkit-offset-distance: 100%;
-        offset-distance: 100%;}
 
-}
+
+

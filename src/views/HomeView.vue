@@ -1,4 +1,7 @@
 <script>
+// import gsap from 'gsap';
+// import { TextPlugin } from 'gsap/TextPlugin';
+// gsap.registerPlugin(TextPlugin);
 export default {
   data() {
     return{
@@ -41,11 +44,17 @@ export default {
     resetImageTitle() {
       this.currentHoverIndex = -1;
     },
-    
+    handleMouseOver() {
+      this.$refs.gameButton.classList.add('hovered');
+    },
+    handleMouseOut() {
+      this.$refs.gameButton.classList.remove('hovered');
+    },
   },
   mounted() {
-    
-  }
+  // const textPath = document.querySelector('.text-path');
+  // gsap.to('.text-path', { rotation: 360, duration: 10, repeat: -1, ease: 'linear' });
+},
 }
 </script>
 
@@ -83,21 +92,19 @@ export default {
       <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
       <div class="indexGameBagBlock"></div>
       <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
-      <div class="indexGameButton">
+      <div class="indexGameButton" ref="gameButton" @mouseover="handleMouseOver" @mouseout="handleMouseOut">
         <button class="indexGameButton2">
           <p class="indexGameButtonTitle">Get<br>Start</p>
         </button>
-        <!-- <p class="indexGameButtonP">
-          MAKE YOUR OWN CARA CAR
-        </p> -->
       </div>
     <div class="circular">
       <svg viewBox="0 0 100 100">
-        <path d="M 80,50 a 65,65 0 1,1 -1,0 z"
+        <path d="M 82,51 a 66,66 0 1,1 -1,0 z"
               id="circle" />
         <text>
-          <textPath class="textPath" xlink:href="#circle">
+          <textPath class="text-path" xlink:href="#circle">
             MAKE YOUR OWN CARA CAR 
+            <!-- <animate attributeName="startOffset" from="0" to="360" dur="15s" repeatCount="indefinite"></animate> -->
           </textPath>
         </text>
       </svg>

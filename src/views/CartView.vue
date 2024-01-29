@@ -65,7 +65,7 @@ methods: {
                         <input type="number" value="1">
                         <button>+</button>
                     </div>
-                    <p class="proCount">$2,500</p>
+                    <p class="proCount">$3,000</p>
             </div>
 
             <div class="cartContent">
