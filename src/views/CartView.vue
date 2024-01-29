@@ -46,25 +46,29 @@ methods: {
     <MainHeader />
     <main>
         <section class="cart">
-            <div class="cartTitleGroup">
-                <img src="../assets/imgs/cart/cart_title.svg" alt="" class="cartTitle">
+            <div class="cartTitle">
+                <img src="../assets/imgs/cart/cart_title.svg" alt="cartTitle">
             </div>
             <div class="cartContent">
                 <span class="productName">商品名稱</span>
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
             </div>
-            <div class="product_card col-md-4">
-                <div class="pro_card_img">
-                    <img src="../assets/imgs/cart/cart_product_img.png" alt="Product Image">
-                </div>
-                <div class="pro_crad_info">
-                    <p class="pro_crad_name">閃電漂移車</p>
-                    <p class="pro_crad_price">$2500</p>
-                </div>
+            <div class="productCard">
+                    <img src="../assets/imgs/cart/cart_product_img.png" alt="ProductImage">
+                    <div class="proCardP">
+                        <p class="pro_name">閃電漂移車</p>
+                        <p class="pro_price">$2500</p>
+                    </div>
+                    <div class="countButton">
+                        <button>-</button>
+                        <input type="number" value="1">
+                        <button>+</button>
+                    </div>
+                    <p class="proCount">$2,500</p>
             </div>
 
-            <div class="customContent">
+            <div class="cartContent">
                 <span class="custom">客製化</span>
             </div>
             <form action="">
@@ -77,13 +81,13 @@ methods: {
         <section class="cartFunction">
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
-                <span class="cartFunctionTitle">$8,000</span>
+                <span class="cartFunctionTitle">$3,000</span>
             </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">運費</span>
                 <span class="cartFunctionTitle">運費計算參考</span>
             </div>
-            <p class="cartCountTotal">合計金額：$10,500</p>
+            <p class="cartCountTotal">合計金額：$3,500</p>
             <div class="cartMatter">
                 <span class="cartFunctionTitle">運費計算及注意事項</span>
                 <i class="fa-solid fa-caret-down"></i>
