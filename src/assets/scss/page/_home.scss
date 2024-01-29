@@ -49,6 +49,142 @@
     z-index: -1;
     
 }
+
+
+.indexEventGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background-color: #aaa;
+    margin-bottom: 100px;
+
+    .indexEventTitle {
+        width: 90%;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        z-index: 3;
+
+
+        .linkToEvent {
+            // width: 195px;
+            margin: 0 0 5px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $blackWord;
+            border-radius: $bor2 $bor1 0 $bor2;
+            position: relative;
+            
+            &::after {
+                // content:'';
+                // display: block;
+                // width: 0px;
+                // height: 0px;
+                // position: absolute;
+                // background-color: #faa;
+                // border-bottom: 40px solid #faa;
+                // border-top: 0;
+                // border-left: 10px solid #faa;
+                // right: -10px;
+                // bottom: 0;
+
+                content: '';
+                display: block;
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                border-style: solid;
+                border-width: 0px 15px 39.6px 0px; 
+                border-radius: 0 0 $bor1 0;
+                border-color: transparent transparent $blackWord transparent; 
+                right: -14.5px;
+                bottom: 0;
+                
+            }
+
+            .decoLine {
+                width: 20px;
+                height: 1px;
+                background-color: $whiteWord;
+                transition: width 0.3s ease-in-out;
+                transform-origin: right;
+
+                
+            }
+            .eventLink {
+                width: 135px;
+                // width: 130px;
+                height: 40px;
+                margin: 0 10px;
+                color: $whiteWord;
+                background-color: $blackWord;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: .3s ease-in-out;
+                position: relative;
+                
+                @media (min-width:768px) {
+                    &:hover::before {
+                        width: 30px;
+                    }
+
+                }
+
+
+                &::before {
+                content: '';
+                width: 20px;
+                height: 1px;
+                margin-right: 20px;
+                background-color: #fff;
+                display: block;
+                // position: absolute;
+                left: 0;
+                bottom: 50%;
+                transition: width .3s ease-in-out;
+                transform-origin: right;
+                    
+                }
+
+    
+            }
+
+        }
+
+        .decoImg {
+            display: none;
+
+
+            @media (min-width:768px) {
+                display: block;
+                width: 160px;
+                position: relative;
+                bottom: -10px;
+                left: 40px;
+            }
+        }
+    }
+
+    .otherEventCards {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        overflow: hidden;
+
+        .otherEventCard {
+            width: 90%;
+        }
+
+    }
+    
+}
+
+
 //indexGame
 .indexGameGroup{
     display: none;
