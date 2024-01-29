@@ -1,0 +1,132 @@
+.SecondHandSale{
+    width: 100%;
+    h2{
+        margin-top: 100px;
+
+    }
+    .saleCarStepTopText{
+        p{
+            font-size: $p;
+            font-family: 'Kosugi Maru';
+            line-height: 40px;
+            padding: 20px 60px;
+        }
+        .drawPic{
+            img{
+                width: 25%;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+
+    .saleCarSteps{
+        
+        .saleCarStep{
+        // &:nth-child(even) {
+        //     background-color: $grey_2;
+        // }    
+            width: 80%;
+            display: flex;
+            margin: 0 auto;
+                .saleCarStepImg{
+                    width: 40%;
+                    img{
+                        width: 100%;
+                        height: auto; 
+                        }
+                }
+                .saleCarStepType{
+                    display: flex;
+                    align-items: center;
+                    // flex-direction: column;
+                    .saleCarStepNum{
+                        font-size: $h3;
+                        margin: 15px;
+                    }
+                    
+                }
+                .saleCarStepContent{
+                    font-size: $h3;
+                p{
+                    display: none;
+                    // font-size: $p;
+                    // font-family: 'Kosugi Maru';
+                    // line-height: 40px;
+                    // padding: 20px 60px;
+                }
+                }
+        }
+    
+    }
+}
+
+@media (min-width : 768px) {
+    .SecondHandSale{
+        width: 100%;
+        h2{
+            margin-top: 100px;
+    
+        }
+        .saleCarStepTopText{
+            p{
+                font-size: $p;
+                font-family: 'Kosugi Maru';
+                line-height: 40px;
+                padding: 20px 60px;
+            }
+            .drawPic{
+                img{
+                    width: 25%;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+    
+        .saleCarSteps{
+            
+            .saleCarStep{
+            &:nth-child(even) {
+                background-color: $grey_2;
+                flex-direction: row-reverse;
+            }    
+                width: 80%;
+                display: flex;
+                margin: 0 auto;
+                    .saleCarStepImg{
+                        width: 100%;
+                        img{
+                            width: 100%;
+                            height: auto; 
+                            }
+                    }
+                    .saleCarStepType{
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        .saleCarStepNum{
+                            font-size: $h3;
+                            margin: 15px;
+                        }
+                        
+                    }
+                    .saleCarStepContent{
+                        font-size: $h3;
+                    p{
+                        display: block;
+                        font-size: $p;
+                        font-family: 'Kosugi Maru';
+                        line-height: 40px;
+                        padding: 20px 60px;
+                    }
+                    }
+            }
+        
+        }
+    }
+
+}

@@ -37,7 +37,7 @@
           </li>
               <ul class="subMenu">
                 <li>
-                  <RouterLink class="RouterLink" to="/">> 我要販售</RouterLink>
+                  <RouterLink class="RouterLink" to="/SecondHandSale">> 我要販售</RouterLink>
                 </li>
               </ul>    
         </ul>
