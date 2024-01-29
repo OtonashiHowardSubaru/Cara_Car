@@ -44,7 +44,20 @@
     padding-left: 8%;
     border-bottom: $bor1 solid $blackWord;
 }
-
+// .pro_crad_info{
+//     // font-size: $mh4;
+// }
+.pro_card_img{
+    .img{
+        width: 20%;
+    }
+}
+.pro_crad_name{
+    font-size: $mh6;
+}
+.pro_crad_price{
+    font-size: $mh6;
+}
 .customContent{
     font-family:'Noto Sans' ;
     font-size: $mh4;
@@ -60,6 +73,31 @@
     border-bottom: $bor1 solid $blackWord;
     padding-left: 5%;
 }
+.customPlate{
+    width:68%;
+    background-color: $grey_1;
+    border-radius: $borr1;
+    margin: 3% auto;
+    padding: 1% 0 1% 2%;
+}
+.customPlateNumber{
+    font-family:'Noto Sans' ;
+    font-weight: 600;
+}
+.customNumber{
+    border-style: none;
+    border-radius: $borr1;
+    float: right;
+    margin-right: 4%;
+}
+// input[type=number]::-webkit-inner-spin-button, 
+// input[type=number]::-webkit-outer-spin-button { 
+//     -webkit-appearance: none;
+//     margin: 0; 
+// }
+// input[type=number] {
+//     -moz-appearance:textfield;
+// }
 .cartReceiptInformation{
     width: 100%;
     display: flex;
@@ -100,30 +138,30 @@
 .cartInput{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
+    width: 72%;
     height: 5%;
     margin: 10px auto;
 }
 #city{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
+    width: 72%;
     height: 30%;
-    margin: 10px 2% 5px 16%;
+    margin: 10px 2% 5px 14%;
     // font-family: 'Kosugi Maru';
 }
 .area{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
+    width: 72%;
     height: 30%;
-    margin: 10px 2% 20px 16%;
+    margin: 10px 2% 20px 14%;
     
 }
 .remark{
     border-style: none;
     border-radius: $borr1;
-    width: 68%;
+    width: 72%;
     height: 20%;
     margin: 10px auto;
 }

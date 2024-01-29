@@ -79,7 +79,6 @@ export default {
     <div class="indexBannerBagBlock"></div>
   </div>
   
-
   <div class="indexGameGroup">
       <img src="../assets/imgs/index/indexGameTitle.png" alt="" class="indexGameTitle">
       <div class="indexGameBagBlock"></div>
@@ -104,9 +103,7 @@ export default {
       </svg>
     </div>
   </div>
-
 </template>
-
 <style lang="scss" scoped>
   @import '@/assets/scss/layout/header.scss';
   @import '@/assets/scss/page/home.scss';
