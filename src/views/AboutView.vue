@@ -1,7 +1,7 @@
 <template>
   <MainHeader />
   <div class="about">
-    <h1><img src="../assets/imgs/about/aboutTitle.png" alt=""></h1>
+    <div class="aboutTitle"><img src="../assets/imgs/about/aboutTitle.svg" alt=""></div>
     <!-- <h2>Test init</h2> -->
     <div class="topPics">
       <img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG">
