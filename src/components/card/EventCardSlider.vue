@@ -1,25 +1,35 @@
 <template>
     <div class="newsCardList">
-        <router-link to="/NewsArticle" class="newsCards">
-            <div class="newsCard" v-for="newsInfo in newsCard" :key="newsInfo.title">
-                <div class="newsCardImg">
-                    <div class="newsInfoImg">
-                        <img :src="newsInfo.img" alt="newsInfo.img">
+        <!-- <div class="btnSliderArrow">
+            <i class="fa-solid fa-arrow-left"></i>
+        </div> -->
+
+        <div class="newsCardGroup">
+            <router-link to="/NewsArticle" class="newsCards">
+                <div class="newsCard" v-for="newsInfo in newsCard" :key="newsInfo.title">
+                    <div class="newsCardImg">
+                        <div class="newsInfoImg">
+                            <img :src="newsInfo.img" alt="newsInfo.img">
+                        </div>
+                        <span class="timingTag">{{ newsInfo.timingTag }}</span>
                     </div>
-                    <span class="timingTag">{{ newsInfo.timingTag }}</span>
-                </div>
-                <div class="newsCardText">
-                    <div class="cardTitle">
-                        <h3>【{{ newsInfo.activeTag }}】{{ newsInfo.title }}</h3>
+                    <div class="newsCardText">
+                        <div class="cardTitle">
+                            <h3>【{{ newsInfo.activeTag }}】{{ newsInfo.title }}</h3>
+                        </div>
+                        <p>{{ newsInfo.beginTime }}</p>
                     </div>
-                    <p>{{ newsInfo.beginTime }}</p>
                 </div>
-            </div>
-        </router-link>
-    </div>
-    <div class="btnSliderLeftRight">
-        <i class="fa-solid fa-arrow-left"></i>
-        <i class="fa-solid fa-arrow-right"></i>
+            </router-link>
+        </div>
+
+        <!-- <div class="btnSliderArrow">
+            <i class="fa-solid fa-arrow-right"></i>
+        </div> -->
+        <div class="btnSliderLeftRight">
+            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-arrow-right"></i>
+        </div>
     </div>
 </template>
 
