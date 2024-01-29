@@ -70,7 +70,7 @@ export default {
   </header>
 
   <div class="indexBannerGroup">
-    <img src="../assets/imgs/index/indexBannerImg.png" alt="" class="indexBannerImg">
+    <img src="../assets/imgs/Home/indexBannerImg.png" alt="" class="indexBannerImg">
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
@@ -80,9 +80,9 @@ export default {
   </div>
   
   <div class="indexGameGroup">
-      <img src="../assets/imgs/index/indexGameTitle.png" alt="" class="indexGameTitle">
+      <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
       <div class="indexGameBagBlock"></div>
-      <img src="../assets/imgs/index/indexGameImg.png" alt="GameImg" class="indexGameImg">
+      <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
       <div class="indexGameButton">
         <button class="indexGameButton2">
           <p class="indexGameButtonTitle">Get<br>Start</p>
