@@ -1,11 +1,17 @@
 .SecondHandSale{
     width: 100%;
-    h2{
+    .SecondHandSaleTitle{
         margin-top: 100px;
+        border-bottom: 1px soil #bbb;
+        
+        h2{
+            text-align: center;
+    
+    }
 
     }
     .saleCarStepTopText{
-        width: 50%;
+        width: 95%;
         margin: 0 auto;
         p{
             font-size: $p;
@@ -24,16 +30,18 @@
     }
 
     .saleCarSteps{
-        
+        margin: 5%;
         .saleCarStep{
         // &:nth-child(even) {
         //     background-color: $grey_2;
         // }    
-            width: 80%;
-            display: flex;
+            width: 98%;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
                 .saleCarStepImg{
-                    width: 40%;
+                    width: 45%;
                     img{
                         width: 100%;
                         height: auto; 
@@ -41,8 +49,9 @@
                 }
                 .saleCarStepType{
                     display: flex;
-                    align-items: center;
-                    // flex-direction: column;
+                    align-items: start;
+                    flex-direction: column;
+                    margin: 2% 5%;
                     .saleCarStepNum{
                         font-size: $h3;
                         margin: 15px;
@@ -53,10 +62,6 @@
                     font-size: $h3;
                 p{
                     display: none;
-                    // font-size: $p;
-                    // font-family: 'Kosugi Maru';
-                    // line-height: 40px;
-                    // padding: 20px 60px;
                 }
                 }
         }
@@ -109,6 +114,7 @@
                             }
                     }
                     .saleCarStepType{
+                        margin: 15px;
                         display: flex;
                         align-items: center;
                         flex-direction: column;
@@ -129,7 +135,7 @@
                         font-size: $p;
                         font-family: 'Kosugi Maru';
                         line-height: 40px;
-                        padding: 20px 60px;
+                        padding: 20px 30px;
                     }
                     }
             }
