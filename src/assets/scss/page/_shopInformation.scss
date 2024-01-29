@@ -1,12 +1,15 @@
 .ShopInformation {
     width: 100%;
+    height: 1500px;
+    // max-height: 1200px;
     position: relative;
-    padding-top: 45%;
-    margin-bottom: 20%;
+    padding-top: 10%;
     box-sizing: border-box;
     overflow: hidden;
+    // background-color: #aaa;
 
     @media (min-width : 768px) {
+        height: 1200px;
         display: flex;
         padding-top: 0;
         // height: 150vh;
@@ -19,19 +22,28 @@
     }
     .infoBg {
         width: 100%;
-        // height: 150vh;
+        height: 100vh;
+        // height: initial;
         overflow: hidden;
         position: absolute;
         top: 0;
         left: 0;
+        
 
         @media (min-width : 768px) {
-            position: relative;
+            width: 50%;
+            position: fixed;
+            z-index: -1;
+            bottom: 0;
         }
+        .bgAnime {
 
-        img {
-            width: 100%;
-            object-fit: cover;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
         }
         
     
@@ -39,17 +51,21 @@
 
     .infoText {
         width: 100%;
-
+        padding-bottom: 30%;
         border-radius: 100px 100px 0 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: relative;
-        top: 50%;
-        z-index: 2;
+        position: absolute;
+        top: 60vh;
+        bottom: 0;
+        z-index: 1;
 
         @media (min-width : 768px) {
-            margin-top: 5%;
+            width: 50%;
+            top: 10%;
+            right: 0;
+            padding-bottom: 5%;
         }
 
         background-color: #fff;

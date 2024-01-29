@@ -3,7 +3,7 @@
     <nav>
       <!-- 電腦版header -->
       <!-- 內頁才有這個LOGO圖 -->
-      <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
+      <!-- <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
       <ul class="indexHeaderNav">
         <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)"
           @mouseleave="resetImageTitle()">
@@ -17,14 +17,14 @@
           <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
             @click="openLightbox">
         </div>
-      </ul>
+      </ul> -->
       <!-- 手機板haeder -->
       <ul class="indexHeaderNavPh">
         <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
-          <a href="#" class="indexHeaderA">
+          <RouterLink :to="namePh[$index]">
             <img :src="getImageUrl(item.i)" class="indexHeaderButtonIconPh">
             <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
-          </a>
+          </RouterLink>
         </li>
         <div class="linePh"></div>
         <div class="indexHeaderLoginPh">
@@ -33,7 +33,6 @@
         </div>
       </ul>
     </nav>
-    <!-- <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexLogo"> -->
   </header>
 
   <!--  ↓登入燈箱↓  -->
@@ -106,8 +105,8 @@ export default {
       pswVisible: false,
       showLightbox: false,
       //header v-for v-show
-      currentTitle: '',
-      currentHoverIndex: -1,
+      // currentTitle: '',
+      // currentHoverIndex: -1,
       currentTitlePh: '',
       currentHoverIndexPh: -1,
       name: [
@@ -118,14 +117,21 @@ export default {
         '/MemberCenter',
         '/Cart',
       ],
-      img: [
-        { i: 'nav/nav-icon-01.png' },
-        { i: 'nav/nav-icon-02.png' },
-        { i: 'nav/nav-icon-03.png' },
-        { i: 'nav/nav-icon-04.png' },
-        { i: 'nav/nav-icon-05.png' },
-        { i: 'nav/nav-icon-06.png' },
+      namePh:[
+        '/ProductList',
+        '/SecondHandList',
+        '/ShopInformation',
+        '/MemberCenter',
+        '/Cart',
       ],
+      // img: [
+      //   { i: 'nav/nav-icon-01.png' },
+      //   { i: 'nav/nav-icon-02.png' },
+      //   { i: 'nav/nav-icon-03.png' },
+      //   { i: 'nav/nav-icon-04.png' },
+      //   { i: 'nav/nav-icon-05.png' },
+      //   { i: 'nav/nav-icon-06.png' },
+      // ],
       imgPh: [
         { i: 'nav/nav-icon-01.png' },
         { i: 'nav/nav-icon-02.png' },
@@ -133,6 +139,21 @@ export default {
         { i: 'nav/nav-icon-05.png' },
         { i: 'nav/nav-icon-06.png' },
       ],
+      // title:[
+      //   {p:'PRODUCT'},
+      //   {p:'2nd HAND'},
+      //   {p:'GAME'},
+      //   {p:'SHOP INFO'},
+      //   {p:'MEMBER'},
+      //   {p:'MY CART'},
+      // ],
+      titlePh:[
+        {ph:'PRODUCT'},
+        {ph:'2nd HAND'},
+        {ph:'SHOP INFO'},
+        {ph:'MEMBER'},
+        {ph:'MY CART'},
+        ],
       title: [
         { p: 'PRODUCT' },
         { p: '2nd HAND' },
@@ -158,13 +179,13 @@ export default {
     getImageUrl(paths) {
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
     },
-    changeImageTitle(index) {
-      this.currentTitle = this.title[index].p;
-      this.currentHoverIndex = index;
-    },
-    resetImageTitle() {
-      this.currentHoverIndex = -1;
-    },
+    // changeImageTitle(index) {
+    //   this.currentTitle = this.title[index].p;
+    //   this.currentHoverIndex = index;
+    // },
+    // resetImageTitle() {
+    //   this.currentHoverIndex = -1;
+    // },
     changeImageTitlePh($index) {
       console.log('Index:', $index);
       console.log('titlePh[index]:', this.titlePh[$index]);
@@ -225,11 +246,12 @@ export default {
     },
   }
 }
-
 </script>
+
+
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
 @import '@/assets/scss/layout/login.scss';
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,1000&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,1000&display=swap" rel="stylesheet"> -->

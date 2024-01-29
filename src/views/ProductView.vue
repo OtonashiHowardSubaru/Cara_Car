@@ -139,6 +139,5 @@ import axios from 'axios'; //引入函式庫
 
 <style lang="scss" scoped>
 
-@import '@/assets/scss/page/product.scss'
 
 </style>

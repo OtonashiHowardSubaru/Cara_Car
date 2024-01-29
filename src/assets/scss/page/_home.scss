@@ -1,0 +1,195 @@
+//indexBanner
+.indexBannerGroup{
+    margin-top: 6%;
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: 100px;
+}
+.indexBannerImg{
+    // display: flex;
+    // position: absolute;
+    // right: 0;
+    width: 100%;
+    height: 100%;
+    margin: 22% 0px 10% 0px;
+    padding-left: 10%;
+}
+.indexBannerTitle{
+    font-family: 'Kosugi Maru';
+    letter-spacing: 5px;
+    font-size: $mh4;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    
+}
+.indexBannerTitle2{
+    font-family: 'Kosugi Maru';
+    letter-spacing: 5px;
+    font-size: $mh4;
+    position: absolute;
+    top: 6%;
+    left: 50%;
+}
+.indexLogo{
+    width: 20%;
+    position: absolute;
+    top: 15%;
+    left: 12%;
+}
+.indexBannerBagBlock{
+    width: 25%;
+    height: 100%;
+    background-color: $grey_1;
+    border-radius: 0 $borr2 $borr2 0;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    z-index: -1;
+    
+}
+//indexGame
+.indexGameGroup{
+    display: none;
+}
+@media (min-width:768px) {
+    .indexBannerImg{
+        // width: 100%;
+        // height: 100%;
+        margin: 2% 0px 0px 0px;
+        padding-left: 30%;
+    }
+    
+    .indexBannerTitle{
+        writing-mode: vertical-rl;
+        left: 10%;
+        top:8%;
+        font-size: $h4;
+    }
+    .indexBannerTitle2{
+        writing-mode: vertical-rl;
+        left: 15%;
+        top: 20%;
+        font-size: $h4;
+    }
+    .indexLogo{
+        top:50%;
+        left: 5%;
+
+    }
+    .indexGameGroup{
+        position: relative;
+        display: block;
+        max-width: 900px;
+        
+    }
+    
+    .indexGameTitle{
+        width: 420px;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+
+    }
+    .indexGameBagBlock{
+        width: 450px;
+        height: 720px;
+        background-color: $grey_1;
+        border-radius: 0 $borr2 $borr2 0;
+        margin-bottom:50px;
+    }
+    .indexGameImg{
+        width: 850px;
+        height: 450px;
+        position: absolute;
+        bottom: 70px;
+        
+    }
+    .indexBannerBagBlock{
+        width: 30%;
+        height: 100%;
+        top: 60%;
+        
+    }
+    .indexGameButton{
+        width: 260px;
+        height: 260px;
+        border-radius: $borr5;
+        background-color: $blackWord;
+        border: $bor2 solid $whiteWord;
+        bottom: 20%;
+        left: 80%;
+        position: absolute;
+    }
+    .indexGameButton2{
+        width: 220px;
+        height: 220px;
+        border-radius: $borr5;
+        background-color: $blackWord;
+        border: $bor3 solid $whiteWord;
+        position: absolute;
+        bottom: 18px;
+        right: 18px;
+        // pointer-events: none;
+        // cursor: pointer;
+    }
+    .indexGameButtonTitle{
+        display: inline-block;
+        font-size: $h1;
+        color: $whiteWord;
+        text-align: center;
+        position: absolute;
+        bottom: 45px;
+        right: 60px;
+        font-family: 'Single Day', cursive;
+    }
+    // .indexGameButtonP{
+    //     font-family: 'Single Day', cursive;
+    //     color: $blackWord;
+    //     font-size: $h3;
+    //     transform: translateX(-50%);
+    //     shape-outside: radial-gradient(circle at center, transparent 50%, $blackWord 50%);
+    //     // white-space: nowrap;
+    //     position: absolute;
+    //     bottom: 35px; 
+    //     left: 280px;
+    // }
+
+    
+}
+
+.circular {
+    margin: 0 auto;
+    width: 10em;
+    height: 10em;
+    font-family: 'Single Day', cursive;
+    font-size: $h5;
+    position: absolute;
+    bottom: 305px;
+    right: 0;
+    
+}
+.circular:hover{animation: f-rotate 16s linear infinite;}
+
+.circular path { 
+fill: none; 
+}
+
+.circular svg {
+display: block;
+overflow: visible;
+}
+.textPath{
+    offset-path: path("M 50,50 a 64,64 0 1,1 -1,0 z");
+    
+}
+.indexGameButton:hover{
+    animation: move 5s linear infinite;
+}
+@keyframes move {
+    100%{
+        -webkit-offset-distance: 100%;
+        offset-distance: 100%;}
+
+}

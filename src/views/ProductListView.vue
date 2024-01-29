@@ -2,16 +2,35 @@
   import axios from 'axios'; //引入函式庫
   import ProductCard from '@/components/ProductCard.vue';
   import PriceSorter from '@/components/PriceSorter.vue';
-  import CardShProcess from "@/components/card/CardShProcess.vue"
-
+  import CardShProcess from "@/components/card/CardShProcess.vue";
+  import PageNumber from "@/components/btn/PageNumber.vue";
+  import BtnFilter from '@/components/btn/BtnFilter.vue';
+  import MainHeader from '@/components/Header.vue';
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess,
+      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,MainHeader
     },
     data(){
       return {
-        search: '',
         newSort: '',
+        filter: [
+          {
+            filterId: "",
+            filterName: "促銷中",
+          },
+          {
+            filterId: "",
+            filterName: "電動車",
+          },
+          {
+            filterId: "",
+            filterName: "配件",
+          },
+          {
+            filterId: "",
+            filterName: "模型車",
+          },
+        ],
         responseData : [],
         displayData: [],
         sh_contact: [
@@ -74,6 +93,7 @@
   }
   </script>
   <template>
+    <MainHeader />
     <div class="pro_list_title col-12">
       <h1>新品專區</h1>
     </div>
@@ -86,10 +106,11 @@
           />
         </div>
         <div class="pro_list_filter col-12 col-md-1">
-          <button><div class="arrow_ltr"></div><p>促銷中</p></button>
-          <button><div class="arrow_ltr"></div><p>電動車</p></button>
-          <button><div class="arrow_ltr"></div><p>配件</p></button>
-          <button><div class="arrow_ltr"></div><p>模型車</p></button>
+          <BtnFilter 
+            v-for="item in filter"
+            :filterId="item.filterId"
+            :filterName="item.filterName"
+          />
         </div>
         <div class="pro_card_list col-9 col-md-10">
           <ProductCard 
@@ -98,6 +119,7 @@
         </div>
       </div>
     </div>
+<PageNumber />
 
   <div class="sh_contact">
     <div class="sh_text">

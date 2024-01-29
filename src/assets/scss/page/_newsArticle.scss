@@ -1,0 +1,206 @@
+.newsArticle {
+    width: 100%;
+    margin-top: 100px;
+
+
+    .infoInner {
+        width: 100%;
+        header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            @media (min-width : 768px) {
+                flex-direction: row;    
+                            
+            }
+
+            .infoImg {
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                img {
+                    width: 95%;
+                    border-radius: $borr1 0 0 $borr1;
+
+                    @media (min-width : 768px) {
+                        border-radius: $borr2 0 0 $borr2;
+                                    
+                    }
+                    
+                }
+
+                @media (min-width : 768px) {
+                    width: 70%;
+                    order: 1;
+                            
+                }
+            }
+
+            .infoInnerText {
+                margin-top: 20px;
+                width: 90%;
+                height: 30vh;
+                display: flex;
+
+                @media (min-width : 768px) {
+                    width: 30%;
+                    height: 100%;
+                    order: 0;
+                    // background-color: #aaa;
+                    position: relative;
+                    left: 5%;
+
+                            
+                }
+                
+                .infoInnerTextTitle {
+                    width: 100%;
+
+                    // display: flex;
+                    // flex-direction: column;
+                    // justify-content: space-between;
+                    h1 {
+                        margin-top: 10px;
+                        font-size: clamp($mh2,2.33vw,$h3 );
+
+                        
+                    }
+                    .timingTag {
+                        width: 18%;
+                        padding: 2px 10px;
+                        margin: 20px 10px;
+                        font-size: $mh6;
+                        color: $whiteWord;
+                        background-color: $grass_1;
+                        border: $bor2 solid $grass_2;
+                        border-radius: $borr2;
+                        text-align: center;
+                        line-height: 20px;
+                        letter-spacing: 1px;
+    
+                        @media (min-width : 768px) {
+                            width: 20%;  
+                            margin: 20px 10px 50px;
+                        }
+                        
+                    }
+                    .beginTime {
+                        margin-left: 10px;
+                    }
+
+                }
+
+                .infoInnerTextScroll {
+                    width: 10%;
+                    display: flex;
+
+                    @media (min-width : 768px) {
+                        display: none;             
+                    }
+                    
+                    .scrollText {
+                        font-size: 8px;
+                        display: inline-block;
+                        color: $grey_3;
+                        transform-origin: top ;
+                        transform: rotate(90deg);
+                        position: relative;
+                        bottom: -20px;
+                        right: -15px;
+                    
+                    }
+                    .scrollLine {
+                        width: 1px;
+                        height: 30vh;
+                        display: inline-block;
+                        background-color: $grey_2;
+                        overflow: hidden;
+
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 1px;
+                            height: calc((40 / 290) * 100%);
+                            // background: #000;
+                            background-image: linear-gradient(0deg,#222,#ccc);
+                            animation: scrollLineInOut 2.3s infinite;
+                        }
+                        @keyframes scrollLineInOut {
+                            0% {
+                                transform: translate3d(0,-100%,0);
+                            }
+                            100% {
+                                transform: translate3d(0,750%,0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .infoTextWord {
+            width: 90%;
+            margin: 30px auto 50px;
+
+            @media (min-width : 768px) {
+                width: 50%;   
+                margin: 100px auto 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+
+            p {
+                margin-bottom: 30px;
+                font-size: $mh5;
+                line-height: 30px;
+
+                @media (min-width : 768px) {
+                    width: 100%;
+                    margin-bottom: 50px;
+                }
+            }
+
+        }
+
+        a {
+            width: 90%;
+            height: 70px;
+            margin: auto;
+            display: block;
+            border-radius: $borr2;
+            text-align: center;
+            font-size: $mh5;
+            line-height: 70px;
+            background-color: $lightGreen;
+            color: $whiteWord;
+            transition: .3s ease-in-out;
+
+
+            @media (min-width : 768px) {
+                width: 50%;
+                    
+                &:hover {
+                    background-color: $green;
+                }
+                            
+            }
+
+        }
+    }
+
+    .otherEvent {
+        padding: 25px 30px;
+        border-top: 1px solid $blackWord;
+        border-bottom: 1px solid $blackWord;
+        margin: 80px 0 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+}

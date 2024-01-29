@@ -1,11 +1,14 @@
 <template>
+    <MainHeader />
     <main class="ShopInformation">
         <div class="infoBg">
-            <img src="/src/assets/imgs/shopInfo/InfoLongImg.png" alt="">
+            <div class="bgAnime">
+                <img src="/src/assets/imgs/shopInfo/InfoLongImg.png" alt="InfoLongImg">
+            </div>
         </div>
 
         <section class="infoText" v-for="item in infoText">
-            <img src="/src/assets/imgs/shopInfo/infoTitle.png" alt="infoTitle" class="infoTitle">
+            <img src="/src/assets/imgs/shopInfo/infoTitle.svg" alt="infoTitle" class="infoTitle">
             <div>
                 <p>
                     <span>門市地址 :</span>
@@ -38,11 +41,12 @@
 <script>
 import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
 import BtnEvent from '@/components/btn/BtnEvent.vue'
-
+import MainHeader from '@/components/Header.vue';
 export default {
     components:{
         BtnAboutUs,
         BtnEvent,
+        MainHeader,
     },
     data() {
         return{

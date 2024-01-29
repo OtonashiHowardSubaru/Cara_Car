@@ -1,0 +1,182 @@
+.cart{
+    margin-top: 80px;
+    width: 100%;
+    margin-bottom: 100px;
+}
+.cartTitleGroup{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.cartTitle{
+    width: 40%;
+    margin: 20px auto;
+}
+.cartContent{
+    // border-bottom: $bor1 solid $blackWord;
+    font-family:'Noto Sans' ;
+    font-size: $mh4;
+    font-weight: 700;
+    width: 100%;
+    // position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+.productName{
+    width: 30%;
+    border-bottom: $bor1 solid $blackWord;
+    padding-left: 5%;
+}
+.count{
+    width: 20%;
+    padding-left: 10%;
+    border-bottom: $bor1 solid $blackWord;
+}
+.countTotal{
+    width: 18%;
+    padding-left: 8%;
+    border-bottom: $bor1 solid $blackWord;
+}
+
+.customContent{
+    font-family:'Noto Sans' ;
+    font-size: $mh4;
+    font-weight: 700;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+.custom{
+    width: 68%;
+    border-bottom: $bor1 solid $blackWord;
+    padding-left: 5%;
+}
+.cartReceiptInformation{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Kosugi Maru';
+}
+.receiptnformation{
+    width: 68%;
+    height: 650px;
+    border-radius: $borr2;
+    background-color: $grey_2;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    letter-spacing: 2px;
+    margin-bottom: 80px;
+}
+.informationTitle{
+    font-size: $mh5;
+    padding-left: 14%;
+    margin-top: 30px;
+}
+.informationTitle2{
+    font-size: $mh6;
+    
+}
+.cartCheckbox{
+    width: 10px;
+    height: 10px;
+}
+.cartInputTitle{
+    font-size: $mh6;
+    padding-left: 16%;
+    margin: 10px 0 5px 0;
+}
+.cartInput{
+    border-style: none;
+    border-radius: $borr1;
+    width: 68%;
+    height: 5%;
+    margin: 10px auto;
+}
+#city{
+    border-style: none;
+    border-radius: $borr1;
+    width: 68%;
+    height: 30%;
+    margin: 10px 2% 5px 16%;
+    // font-family: 'Kosugi Maru';
+}
+.area{
+    border-style: none;
+    border-radius: $borr1;
+    width: 68%;
+    height: 30%;
+    margin: 10px 2% 20px 16%;
+    
+}
+.remark{
+    border-style: none;
+    border-radius: $borr1;
+    width: 68%;
+    height: 20%;
+    margin: 10px auto;
+}
+.subButton{
+    font-size: $mh4;
+    width: 68%;
+    height: 50px;
+    margin: 15px auto 25px auto;
+    border-style: none;
+    border-radius: $borr1;
+    background-color: $lightGreen;
+    cursor: pointer;
+}
+@media (min-width : 768px) {
+    .cartTitle{
+        width: 30%;
+        margin: 40px auto;
+    }
+    .cartTitleGroup{
+        border-bottom: $bor1 solid $blackWord;
+    }
+    .cartContent{
+        font-size: $h4;
+    }
+    .customContent{
+        font-size: $h4;
+    }
+
+    .informationTitle{
+        font-size: $mh4;
+
+    }
+    .informationTitle2{
+        font-size: $mh5;
+        
+    }
+    .cartCheckbox{
+        width: 14px;
+        height: 14px;
+    }
+    .cartInputTitle{
+        font-size: $mh5;
+    }
+    .cartInput{
+        //桌機
+        height: 8%;
+        margin: 15px auto;
+    }
+    #city{
+        //桌機
+        width: 33%;
+        height: 90%;
+        margin: 10px 2% 20px 16%;
+    }
+    .area{
+        //桌機
+        width: 33%;
+        height: 90%;
+        margin: 10px 0 20px 0;
+    }
+}

@@ -4,15 +4,28 @@
     list-style: none;
 }
 .mainHeader{
-    position: relative;
     display: flex;
     justify-content: end;
-    // align-items: center;
+    position: fixed;
     z-index: 850;
+    top:0;
+    width: 100%;
+    height: 80px;
+    // background-color: $whiteWord;
+    padding-bottom: 5px;
     
 } 
-.nav{
-    position: relative;
+.mainHeaderIndex{
+    display: flex;
+    justify-content: end;
+    position: fixed;
+    z-index: 850;
+    top:0;
+    width: 100%;
+    height: 80px;
+    padding-bottom: 5px;
+    background-color: $whiteWord;
+    border-bottom: $bor1 solid $blackWord;
 }
 .indexNavLogo{
     position: absolute;
@@ -23,8 +36,6 @@
 }
 .indexHeaderNavPh{
     display: flex;
-    // gap:10px;
-    // margin:10px 10px 10px 0px;
     background-color: #333;
     right: 0;
     height: 80px;
@@ -33,7 +44,6 @@
     left: 0;
     justify-content: center;
     align-items: center;
-    
 }
 .indexHeaderButtonPh{
     height: 100%;
@@ -52,6 +62,7 @@
     // vertical-align: top;
 
 }
+
 .indexHeaderButtonPhP{
     color: $whiteWord;
     font-size: 12px;
@@ -69,13 +80,7 @@
     line-height: 1;
 }
 
-.indexHeaderA{
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+
 
 .indexHeaderButtonLoginPh{
     height: 24px;
@@ -95,35 +100,36 @@
 }
 
 .indexHeaderNav{
-    display: flex;
-    gap:10px;
+    // display: flex;
+    display: none;
+    // gap:10px;
     background-color: $whiteWord;
     box-sizing: border-box;
     padding-top: 10px;
     padding-right: 10px;
     height: 75px;
-    // width: 100%;
-    opacity: 0;
+    // opacity: 0;
     box-sizing: border-box;
 }
-
 
 
 .indexHeaderButton{
     background-color: $lightBlue;
     width: 60px;
-    height: 60px;display: flex;
+    height: 60px;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: $borr4;
-    
-    
+    float: left;
+    margin:0px 5px;
 }
 
 .indexHeaderLogin{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px 5px 0px 10px;
     & img{
         cursor: pointer;
     }
@@ -136,21 +142,20 @@
 
 .indexHeaderButtonP{
     color: $blackWord;
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
     font-weight: 1000;
     font-family: 'Nunito Sans', sans-serif;
-        
 }
 
 .indexHeaderButtonLogin{
     height: 24px;
-    
 }
 .line{
     width: 2px;
     height: 60px;
     background-color: $grey_2;
+    float: left;
 }
 
 .indexLogo{
@@ -160,21 +165,22 @@
 }
 
 @media (min-width:768px) {
+    .mainHeader{
+        background-color: $whiteWord;
+    }
+    .mainHeaderIndex{
+        background-color: $whiteWord;
+    }
     .indexHeaderNav{
-        opacity: 1;
-        
+        display: block;
     }
     .indexHeaderNavPh{
         display: none;
-        
     }
-    // .indexLogo{
-    //     display: block;
-    // }
     .indexNavLogo{
         position: absolute;
         width: 140px;
-        left: 100px;
-        top: 35px;
+        left: 11%;
+        top: 45%;
     }
 }

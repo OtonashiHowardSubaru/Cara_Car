@@ -1,4 +1,5 @@
 <script>
+import MainHeader from '@/components/Header.vue'
 export default {
     data() {
         return {
@@ -7,6 +8,9 @@ export default {
             passwordVisibleLeft: false,
             passwordVisibleRight: false,
         }
+    },
+    components:{
+        MainHeader
     },
     methods: {
         togglePswLeft() {
@@ -25,9 +29,10 @@ export default {
 </script>
 
 <template>
+    <MainHeader />
     <div class="register">
         <div class="registerTitle">
-            <div class="line"></div>
+            <!-- <div class="line"></div> -->
             <div class="title">
                 <img src="../assets/imgs/login/JoinUsTitle.png" alt="title">
             </div>
@@ -64,9 +69,9 @@ export default {
                         <p>輸入密碼</p>
                         <input :type="passwordVisibleLeft ? 'text' : 'password'" v-model="psw7777" placeholder="請輸入密碼"
                             maxlength="12">
-                        <img v-if="passwordVisibleLeft" src="../assets/imgs/register/close-eye.svg" alt="closeEye" class="eye1"
+                        <img v-if="passwordVisibleLeft" src="../assets/imgs/register/open-eye.svg" alt="closeEye" class="eye1"
                             @click="togglePswLeft">
-                        <img v-else src="../assets/imgs/register/open-eye.svg" alt="closeOpen" class="eye1"
+                        <img v-else src="../assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye1"
                             @click="togglePswLeft">
                     </div>
                     <div class="confirm_psw">

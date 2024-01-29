@@ -1,0 +1,142 @@
+.basic{
+width: 100%;
+}
+.sub_title{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    & h2{
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: $blackWord;
+        cursor: pointer;
+    }
+    h3{
+        color: $blackWord;
+        font-size: $mh3;
+        margin: 40px 0 0 0;
+        padding: 0 0 5px 0 ;
+    }
+}
+.user_edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .user_image{
+        // width: 25%;
+        width: 200px;
+        height: 200px;
+        margin: 3% 0;
+        overflow: hidden;
+        border-radius: $borr4;
+        border: $bor1 solid $blackWord;
+        & img{
+            width: 100%;
+            vertical-align: top;
+        }
+    }
+}
+label{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 0;
+    & .change_user_image{
+        border-radius: $borr2;
+        cursor: pointer;
+        color: $whiteWord;
+        background-color: $lightGreen;
+        width: 30%;
+        height: 50px;
+        font-size: $mh6;
+        border: $bor2 dashed rgb(102, 102, 102);
+        transition: border 0.1s ease-in;
+        &:hover{
+            border: solid;
+            box-shadow: rgba(102, 102, 102, 0.35) 0px 10px 20px;
+        }
+    }
+}
+
+.user_profile{
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: $borr2;
+    background-color: $grey_2;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    & .table{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        padding: 5px;
+        p{
+            font-size: $mh5;
+        }
+        input{
+            font-size: $mh6;
+            width: 40%;
+            border-radius: 15px;
+            height: 40px;
+            padding: 0 5px;
+            border: none;
+            background-color: $grey_1;
+        }
+    }
+}
+#send{
+    border-radius: $borr2;
+    cursor: pointer;
+    color: $whiteWord;
+    background-color: $lightGreen;
+    width: 30%;
+    height: 50px;
+    font-size: $mh6;
+    margin: 20px 0;
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .basic{
+        width: 70%;
+    }
+    .sub_title{
+        justify-content: flex-start;
+        h3{
+            font-size: $h3;
+        }
+        & .sub_title_line{
+            width: 100%;
+            height: 0;
+            border: $bor1 solid $blackWord;
+        }
+    }
+    label .change_user_image{
+        font-size: $p;
+    }
+    .user_profile form .table{
+        gap: 6%;
+        p{
+            font-size: $h5;
+        }
+        input{
+            padding: 0 15px;
+            font-size: $default;
+        }
+    }
+    #send{
+        font-size: $p;
+    }
+}

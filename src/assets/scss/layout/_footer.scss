@@ -7,7 +7,9 @@
     position: relative;
     align-items: center;
     background-color: $grey_1;
+    z-index: 100;
     // bottom: 0;
+
 
     // @media (min-width : 768px) {
     //     flex-direction: row;
@@ -27,11 +29,14 @@
         height: 100%;
         background: url(../../imgs/MainFooter/phFooter_bg.png) no-repeat;
         background-size: contain;
-        background-position: 0% 70%;
+        background-position: 0% 100%;
         position: absolute;
         bottom: 0;
         // z-index: 1;
         // left: 0;
+        @media (max-width : 550px) {
+            background-position: 0% 93%;
+        }
 
     }
     .footerSection1{
@@ -64,7 +69,6 @@
             }  
             .shopInfo {
                 p {
-                    font-size: $p;
                     line-height: 35px;
                     font-family:'Noto Sans' ;
                     text-align: center;
@@ -74,9 +78,10 @@
         }
     }
     .footerSection2{
-        width: 100%;
+        width: 50%;
         // height: 60%;
         // display: flex;
+        margin: -30px auto 50px;
         font-size: $mh5;
         font-family: 'Kosugi Maru';
         justify-content: center;
@@ -118,7 +123,6 @@
             opacity: 0;
 
             p {
-                font-size: $p;
                 font-family: 'Kosugi Maru';
                 transform: rotate(90deg);
                 
@@ -179,8 +183,6 @@
 
     .footerSection4{
         width: 100%;
-        // height: 150px;
-        // background-color: #333;
         display: flex;
         justify-content: center;
         align-items: start;
@@ -191,6 +193,7 @@
             width: 90%;
             text-align: center;
             color: $whiteWord;
+            font-size: 12px;
         }
     
     }
@@ -201,6 +204,8 @@
     .mainFooter{
         width: 100%;
         height: 90vh;
+        min-height: 550px;
+        max-height: 550px;
         flex-direction: row;
         justify-content: space-between;
         align-items: start;
@@ -225,22 +230,39 @@
                     width: 100%;
                 }
                 h4 {
-                    font-size: $h4;
+                    font-size: clamp($h5,2vw,$h4 );
                     line-height: 50px;
-            
+                    text-wrap: nowrap;
                 }  
+                p {
+                    font-size: clamp($mp,1.5vw,$p);
+                }
             }
         }
         .footerSection2{
             width: 35%;
             height: 60%;
+            margin: 0;
             display: flex;
-            font-size: $h5;
+            font-size: clamp($mp,1.5vw,$p);
             justify-content: space-evenly;
             
             
             .mainMenu {
                 height: 70%;
+            }
+
+            .mainMenu li {
+                transition: .3s ease-in-out;
+                &:hover {
+                    
+                    transform: translateX(5px);
+
+                    .RouterLink {
+                        color: $brown;
+                    }
+
+                }
             }
     
             .mainMenu>li {
@@ -263,10 +285,7 @@
         .footerSection3{
             width: 25%;
             height: 60%;
-            align-items: end;
-
-
-            
+            align-items: end;  
     
             .footerSection3Follow {
                 width: 70%;
@@ -281,9 +300,11 @@
 
     
                 p {
+                    font-size: clamp($mp,1.5vw,$p);
                     margin-right: 20px;
                     transform: rotate(0deg);
                     text-align: center;
+                    text-wrap: nowrap;
                 }
                 .RouterLink {
                     img {
