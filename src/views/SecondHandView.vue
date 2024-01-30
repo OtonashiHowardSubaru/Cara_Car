@@ -7,24 +7,6 @@ import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/Header.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
 
-// 小圖換大圖
-// function showLarge(e){
-//   let small = e.target;
-//   document.getElementById("mainpic").src = small.src;
-// }
-
-// function init(){
-//     let smalls = document.querySelectorAll(".littlepic img");
-
-//     for(let i=0; i<smalls.length; i++) {
-//         smalls[i].onclick = showLarge;
-//     }
-// }
-
-// window.onload = function() {
-//   init();
-// };
-
 
   export default {
     components:{
