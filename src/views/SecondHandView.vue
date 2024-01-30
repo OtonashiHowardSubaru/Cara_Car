@@ -1,28 +1,27 @@
 <script>
 import axios from 'axios'; //引入函式庫
-import MainHeader from '@/components/Header.vue';
 import CardShProcess from "@/components/card/CardShProcess.vue";
 import TitleMaybeYouLike from "@/components/TitleMaybeYouLike.vue";
 import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 
 // 小圖換大圖
-function showLarge(e){
-  let small = e.target;
-  document.getElementById("mainpic").src = small.src;
-}
+// function showLarge(e){
+//   let small = e.target;
+//   document.getElementById("mainpic").src = small.src;
+// }
 
-function init(){
-    let smalls = document.querySelectorAll(".littlepic img");
+// function init(){
+//     let smalls = document.querySelectorAll(".littlepic img");
 
-    for(let i=0; i<smalls.length; i++) {
-        smalls[i].onclick = showLarge;
-    }
-}
+//     for(let i=0; i<smalls.length; i++) {
+//         smalls[i].onclick = showLarge;
+//     }
+// }
 
-window.onload = function() {
-  init();
-};
+// window.onload = function() {
+//   init();
+// };
 
 
   export default {
