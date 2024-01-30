@@ -28,15 +28,15 @@ const router = createRouter({
     return { top: 0 }
   },
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'Index',
-    //   // component: IndexView,
-    //   component: () => import('@/views/IndexView.vue'),
-    //   meta:{title: 'Cara Car',}
-    // },
     {
       path: '/',
+      name: 'Index',
+      // component: IndexView,
+      component: () => import('@/views/IndexView.vue'),
+      meta:{title: 'Cara Car',}
+    },
+    {
+      path: '/Home',
       name: 'Home',
       // component: HomeView,
       component: () => import('@/views/HomeView.vue'),
