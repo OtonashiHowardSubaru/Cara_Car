@@ -1,12 +1,8 @@
-.arrow_ltr{
-  transform: rotate(90deg);
-}
-
 //分頁標題css起點
-.sh_pro_list_title{
+.pro_list_title{
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid $blackWord;
+  border-bottom: $bor1 solid $blackWord;
   padding: 60px 0;
   margin-top: 60px;
   h1{
@@ -16,7 +12,7 @@
 //分頁標題css終點
 
 
-//價格篩選器css起點
+//商店名css起點
 .store_name{
   display: flex;
   justify-content: space-between;
@@ -24,17 +20,18 @@
   border-bottom: $bor2 solid $blackWord;
   h2{
     font-size: $h2;
+    height: fit-content;
   }
-  // #priceSorter{
-  //     width: 150px;
-  //     height: 40px;
-  //     border-radius: 10px;
-  // }
-
 }
 
+@media (min-width:768px){
+  .store_name{
+    margin: 0 8.333%;
+  }
+}
+//商店名css終點點
 
-//價格篩選器css終點
+// 價格篩選器css終點
 
 .sh_pro_card_list {
   margin: 60px auto;
@@ -69,11 +66,19 @@
 
 //商品卡css終點
 
-// 二手商品列表
-.container{
-  h2{
-  font-size: $h2;
-}
+ @media screen and   (min-width:768px) and  (max-width:1270px) {
+  .pro_list_sorter{
+    margin-bottom: 60px;
+  }
+  
+  .sh_pro_card_list{
+    margin: 0
+  }
+  #priceSorter{
+      width: 300px;
+      height: 40px;
+      border-radius: 10px;
+  }
 }
 
 
