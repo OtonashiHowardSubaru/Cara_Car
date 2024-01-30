@@ -64,27 +64,6 @@ import PriceSorter from '@/components/PriceSorter.vue';
             },
         ],
 
-        sh_contact: [
-          {
-            img: "src/assets/imgs/product/sh_process_bird.png",
-            shSubtitle:'CONTACT',
-            context: '透過電子郵件聯繫我們',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
-          {
-            img: "src/assets/imgs/product/sh_process_second_hand.png",
-            shSubtitle:'SECOND-HAND',
-            context: '查看二手車輛商品',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
-          {
-            img: "src/assets/imgs/product/sh_process_recycle_car.png",
-            shSubtitle:'RECYCLE CAR',
-            context: '了解二手車輛販賣',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
-        ],
-
       }
     },
     created() {
@@ -131,7 +110,7 @@ import PriceSorter from '@/components/PriceSorter.vue';
 <template>
   <MainHeader />
   <div class="sh_pro_list_title col-12">
-    <img src="../assets/imgs/product/sh_product_title.png" alt="used car">
+    <h1><img src="../assets/imgs/product/sh_product_list_title.png" alt="used car 二手車"></h1>
   </div>
   <div class="container">
     <div class="row">
@@ -143,7 +122,7 @@ import PriceSorter from '@/components/PriceSorter.vue';
       </div>
       
       <div class="sh_pro_card_list col-9 col-md-10">
-        <div class="sh_product_card col-md-4" v-for="item in productDisplayList">
+        <div class="sh_product_card col-md-4" v-for="item in sh_product_list">
           <div class="sh_pro_card_img">
             <img :src="item.img" alt="sh_Product Image">
           </div>
