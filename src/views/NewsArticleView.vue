@@ -59,17 +59,25 @@
         </article>
 
         <div class="otherEvent">
-            <h2>其他活動</h2>
-            <RouterLink to="/News">More</RouterLink>
+            <div class="otherEventTitle">
+                <h2>其他活動</h2>
+                <RouterLink to="/News">More</RouterLink>
+            </div>
+            <div class="otherEventCards">
+                <EventCardSlider class="otherEventCard" />
+            </div>
         </div>
     </main>
 </template>
 
 <script>
 import MainHeader from '@/components/Header.vue'
+import EventCardSlider from '@/components/card/EventCardSlider.vue'
 export default {
     components:{
-        MainHeader
+        MainHeader,
+        EventCardSlider,
+        
     },
     data() {
         return{

@@ -1,6 +1,6 @@
 .newsArticle {
     width: 100%;
-    margin-top: 100px;
+    margin: 100px auto;
 
 
     .infoInner {
@@ -69,8 +69,8 @@
                         
                     }
                     .timingTag {
-                        width: 18%;
-                        padding: 2px 10px;
+                        width: 100px;
+                        padding: 3px 10px;
                         margin: 20px 10px;
                         font-size: $mh6;
                         color: $whiteWord;
@@ -82,7 +82,7 @@
                         letter-spacing: 1px;
     
                         @media (min-width : 768px) {
-                            width: 20%;  
+                            // padding: 5px 10px;
                             margin: 20px 10px 50px;
                         }
                         
@@ -144,6 +144,7 @@
         .infoTextWord {
             width: 90%;
             margin: 30px auto 50px;
+            
 
             @media (min-width : 768px) {
                 width: 50%;   
@@ -194,13 +195,31 @@
     }
 
     .otherEvent {
-        padding: 25px 30px;
-        border-top: 1px solid $blackWord;
-        border-bottom: 1px solid $blackWord;
-        margin: 80px 0 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        
+
+        .otherEventTitle {
+            padding: 25px 30px;
+            border-top: 1px solid $blackWord;
+            border-bottom: 1px solid $blackWord;
+            margin: 80px 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .otherEventCards {
+            
+            display: flex;
+            justify-content: space-evenly;
+            overflow: hidden;
+
+            .otherEventCard {
+                width: 100%;
+                margin: 30px auto 100px;
+            }
+
+        }
 
     }
 }

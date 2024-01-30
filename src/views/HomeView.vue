@@ -1,9 +1,18 @@
 <script>
+import EventCardSlider from '@/components/card/EventCardSlider.vue'
+
+// import gsap from 'gsap';
+// import { TextPlugin } from 'gsap/TextPlugin';
+// gsap.registerPlugin(TextPlugin);
 export default {
+  components:{
+        EventCardSlider,
+    },
   data() {
     return{
       currentTitle: '',
       currentHoverIndex: -1,
+      // isHovered: false,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -41,11 +50,17 @@ export default {
     resetImageTitle() {
       this.currentHoverIndex = -1;
     },
-    
+    // handleMouseOver() {
+    //   this.isHovered = true;
+    // },
+    // handleMouseOut() {
+    //   this.isHovered = false;
+    // },
   },
   mounted() {
-    
-  }
+  // const textPath = document.querySelector('.text-path');
+  // gsap.to('.text-path', { rotation: 360, duration: 10, repeat: -1, ease: 'linear' });
+},
 }
 </script>
 
@@ -70,7 +85,7 @@ export default {
   </header>
 
   <div class="indexBannerGroup">
-    <img src="../assets/imgs/index/indexBannerImg.png" alt="" class="indexBannerImg">
+    <img src="../assets/imgs/Home/indexBannerImg.png" alt="" class="indexBannerImg">
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
@@ -78,35 +93,49 @@ export default {
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
   </div>
-  
+
+  <div class="indexProductGroup"></div>
+
+  <div class="indexEventGroup">
+    <div class="indexEventTitle">
+      <img src="../assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
+      <RouterLink to="/News" class="linkToEvent">
+        <!-- <div class="decoLine"></div> -->
+        <div class="eventLink">消息一覽</div>
+      </RouterLink>
+      <img class="decoImg" src="../assets/imgs/draw/person_sit.PNG" alt="person_sit">
+    </div>
+    <div class="otherEventCards">
+        <EventCardSlider class="otherEventCard" />
+    </div>
+  </div>
+
+  <div class="indexAboutGroup"></div>
 
   <div class="indexGameGroup">
-      <img src="../assets/imgs/index/indexGameTitle.png" alt="" class="indexGameTitle">
+      <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
       <div class="indexGameBagBlock"></div>
-      <img src="../assets/imgs/index/indexGameImg.png" alt="GameImg" class="indexGameImg">
-      <div class="indexGameButton">
+      <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
+      <div class="indexGameButton" @mouseover="handleMouseOver" @mouseout="handleMouseOut" :class="{ 'hovered': isHovered }">
         <button class="indexGameButton2">
           <p class="indexGameButtonTitle">Get<br>Start</p>
         </button>
-        <!-- <p class="indexGameButtonP">
-          MAKE YOUR OWN CARA CAR
-        </p> -->
       </div>
     <div class="circular">
       <svg viewBox="0 0 100 100">
-        <path d="M 80,50 a 65,65 0 1,1 -1,0 z"
-              id="circle" />
+        <path d="M 76,51 a 66,66 0 1,1 -1,0 z"
+              id="circle"/>
         <text>
-          <textPath class="textPath" xlink:href="#circle">
+          <textPath class="text-path" xlink:href="#circle">
             MAKE YOUR OWN CARA CAR 
+            <animate attributeName="startOffset" values="0;180;360" dur="15s" repeatCount="indefinite"></animate>
+            <animate attributeName="fill" values="black;white;black" dur="15s" repeatCount="indefinite"></animate>
           </textPath>
         </text>
       </svg>
     </div>
   </div>
-
 </template>
-
 <style lang="scss" scoped>
   @import '@/assets/scss/layout/header.scss';
   @import '@/assets/scss/page/home.scss';

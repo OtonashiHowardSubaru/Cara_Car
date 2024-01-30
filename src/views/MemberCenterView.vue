@@ -52,13 +52,24 @@ export default {
             const file = files[0];
             const reader = new FileReader();
             reader.onload = function () {
-                document.getElementById('imagePreview').src = reader.result;
+                localStorage.setItem('imagePreview', reader.result);
+                var imagePreviews = document.querySelectorAll('.imagePreview')
+                imagePreviews.forEach(function (element) {
+                element.src = reader.result;
+                });
             }
             reader.readAsDataURL(file);
         }
     },
     mounted() {
         document.getElementById("upFile").addEventListener("change", this.showFile);
+        const storedImage = localStorage.getItem('imagePreview');
+        if (storedImage) {
+            var imagePreviews = document.querySelectorAll('.imagePreview')
+                imagePreviews.forEach(function (element) {
+                element.src = storedImage;
+                });
+        }
     },
 }
 </script>
@@ -95,14 +106,14 @@ export default {
             </div>
             <div class="member_profile" v-show="currentProfile === 'default'">
                 <div class="mb_user_image" v-if="isMobile">
-                    <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar">
+                    <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar" class="imagePreview">
                 </div>
                 <div class="welcome">
                     <h3>
                         您好，歡迎光臨<br>CARA CAR官網購物帳號
                     </h3>
                     <div class="user_image" v-if="isDesktop">
-                        <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar">
+                        <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar" class="imagePreview">
                     </div>
                 </div>
                 <div class="currentOrder">
@@ -139,12 +150,12 @@ export default {
                 </div>
                 <div class="user_edit">
                     <div class="user_image">
-                        <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar" id="imagePreview">
+                        <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar" class="imagePreview">
                     </div>
                     <label for="upFile">
-                        <button class="change_user_image" @click="changeFile">+上傳檔案</button>
                         <input type="file" name="upFile" id="upFile" style="display:none;">
                     </label>
+                        <button class="change_user_image" @click="changeFile">+上傳檔案</button>
                 </div>
                 <div class="user_profile">
                     <form action="" method="post" name="" id="">

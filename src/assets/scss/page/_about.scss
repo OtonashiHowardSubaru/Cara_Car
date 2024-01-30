@@ -6,13 +6,21 @@
         padding: 0;
     }
 
-    h1 {
-        margin: 0 auto;
+    .aboutTitle {
+        width: 100%;
+        margin-top: 80px;
+        border-bottom: 1px solid $blackWord;
         display: flex;
-    img{
-        width: 35%;
-        margin: 0 auto;
-        padding: 15px;
+        justify-content: center;
+        img {
+            width: 60%;
+            margin: 20px auto;
+
+            @media (min-width : 768px) {
+                width: 40%;
+                margin: 30px auto 10px;
+            }
+            
         }
     }
     
@@ -71,6 +79,11 @@
                 // align-items: center;
             }
         }
+    }
+    .bottonbtns{
+        width: 80%;
+        margin: 0 auto 50px;
+
     }
 
 }
@@ -169,8 +182,12 @@
                 top: 100;
             }
     }
+    .bottonbtns{
+        width: 70%;
+        margin: 0 auto 100px;
+
+    }
 
 
-
-}
+    }
 }

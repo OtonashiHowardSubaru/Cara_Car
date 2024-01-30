@@ -7,33 +7,16 @@
             </div>
         </div>
 
-        <section class="infoText" v-for="item in infoText">
+        <section class="infoText">
             <img src="/src/assets/imgs/shopInfo/infoTitle.svg" alt="infoTitle" class="infoTitle">
-            <div>
-                <p>
-                    <span>門市地址 :</span>
-                    <span>{{ item.shopAddress }}</span>
-                </p>
-                <p>
-                    <span>聯絡電話 :</span>
-                    <span>{{ item.contactNumber }}</span>
-                </p>
-                <p>
-                    <span>電子信箱 :</span>
-                    <span>{{ item.contactEmail }}</span>
-                </p>
-                <p>
-                    <span>營業時間 :</span>
-                    <span>{{ item.openTime }}</span>
-                </p>
-                <p>
-                    <span>公休日 :</span>
-                    <span>{{ item.holiday }}</span>
-                </p>
+
+            <InfoTextCards />
+            
+            <ShopMap class="shopInfoMap" />
+            <div class="shopInfoBtnGroup">
+                <BtnAboutUs />
+                <BtnEvent />
             </div>
-            <div class="map"></div>
-            <BtnAboutUs />
-            <BtnEvent />
         </section>
     </main>
 </template>
@@ -42,11 +25,17 @@
 import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
 import BtnEvent from '@/components/btn/BtnEvent.vue'
 import MainHeader from '@/components/Header.vue';
+import ShopMap from '@/components/ShopMap.vue';
+import InfoTextCards from '@/components/InfoTextCards.vue';
+
+
 export default {
     components:{
         BtnAboutUs,
         BtnEvent,
         MainHeader,
+        ShopMap,
+        InfoTextCards,
     },
     data() {
         return{
@@ -56,7 +45,7 @@ export default {
                     contactEmail: " Cara_car@gmail.com",
                     openTime: " 10 : 00 ~ 20 :30",
                     holiday: " 每周一、四"
-                }]
+                }],
         }
     },
     methods:{

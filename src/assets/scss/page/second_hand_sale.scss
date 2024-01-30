@@ -1,0 +1,220 @@
+.SecondHandSale{
+    width: 100%;
+
+    .SecondHandSaleTitle{
+        margin-top: 110px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid $blackWord;
+        h2{
+            text-align: center;
+        }
+    }
+    .saleCarStepTopText{
+        width: 95%;
+        margin: 0 auto;
+        p{
+            font-size: $p;
+            font-family: 'Kosugi Maru';
+            line-height: 40px;
+            padding: 20px 60px;
+        }
+        .drawPic{
+            img{
+                width: 20%;
+                position: absolute;
+                right: 5%;
+                top: 12%;
+            }
+        }
+    }
+    .iwantsellCar{
+        .iwantsellCarbutton{
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: $green;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+            p{
+            font-size: $p;
+            }
+        }
+    }
+    .saleCarSteps{
+        margin: 5%;
+        .saleCarStep{ 
+            width: 95%;
+            margin: 0 5% 0 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+                .saleCarStepImg{
+                    width: 45%;
+                    img{
+                        width: 100%;
+                        height: auto; 
+                        }
+                }
+                .saleCarStepType{
+                    width: 55%;
+                    display: flex;
+                    align-items: start;
+                    flex-direction: column;
+                    margin: 2% 5%;
+                    .saleCarStepNum{
+                        font-size: $h3;
+                        margin: 15px;
+                    }
+                    
+                }
+                .saleCarStepContent{
+                    font-size: $h3;
+                    p{
+                        display: none;
+                    }
+                }
+        }
+    
+    }
+    .infoTextSale{
+        height: 1000px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        .InfoTextCards{
+            width: 70%;
+            // height: ;
+            margin: 0 auto;
+        }
+        .shopInfoMapSale {
+            margin: 0 auto;
+            // height: 50%;
+        }
+        .AboutUsBtnSale{
+            width: 80%;
+            margin: 5% auto;
+        }
+    }
+}
+
+@media (min-width : 768px) {
+    .SecondHandSale{
+        width: 100%;
+        h2{
+            margin-top: 100px;
+    
+        }
+        .saleCarStepTopText{
+            p{  
+                width: 50%;
+                font-size: $p;
+                font-family: 'Kosugi Maru';
+                line-height: 40px;
+                padding: 20px 60px;
+                text-align: center;
+                margin: auto;
+            }
+            .drawPic{
+                img{
+                    width: 20%;
+                    position: absolute;
+                    right: 5%;
+                    top: 18%;
+                }
+            }
+        }
+    
+        .saleCarSteps{
+            width: 80%;
+            margin: 0 auto;
+            .saleCarStep{
+            
+            &:nth-child(even) {
+                // background-color: $grey_2;
+                flex-direction: row-reverse;
+            }    
+                width: 90%;
+                display: flex;
+                margin: 0 auto;
+                padding: 10px;
+                    .saleCarStepImg{
+                        // width: 50%;
+                        height: 50%;
+                        img{
+                            width: 100%;
+                            height: auto; 
+                            }
+                    }
+                    .saleCarStepType{
+                        width: 50%;
+                        margin: 15px;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        .saleCarStepNum{
+                            font-size: $h3;
+                            margin: 30px;
+                        }
+                        
+                    }
+                    .saleCarStepContent{
+                        font-size: $h3;
+                    h5{
+                        margin: 10px 30px;
+                    }    
+                    p{
+                        display: block;
+                        font-size: $p;
+                        font-family: 'Kosugi Maru';
+                        line-height: 40px;
+                        padding: 20px 30px;
+                    }
+                    }
+            }
+        
+        }
+        .infoText{
+            height: 1200px;
+            width: 90%;
+            display: flex;
+            margin: 0 auto;
+            .InfoTextCards{
+                width: 70%;
+                // height: ;
+                margin: 0 auto;
+            }
+            .shopInfoMap {
+                margin: 0 auto;
+                height: 50%;
+            }
+            .AboutUsBtn{
+                width: 80%;
+                margin: 5% auto;
+            }
+        }
+        .iwantsellCar{
+            .iwantsellCarbutton{
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                
+                p{
+                font-size: $p;
+                }
+            }
+        }
+    }
+
+}
