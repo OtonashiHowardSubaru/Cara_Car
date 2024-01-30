@@ -1,0 +1,217 @@
+    main{
+        padding-top: 80px;
+    }
+
+.pro_title{
+    text-align: center;
+    font-size: $mh1;
+}
+@media (min-width: 768px){
+    .pro_title{
+        font-size: $h1;
+    }
+}
+//圖片切換器css起點
+.bigImgBox{
+    width: 75%;
+    margin: auto;
+    img{
+        width: 100%;
+        vertical-align: top;
+        aspect-ratio: 1/1;
+        object-fit:contain;
+        overflow: hidden;
+    }
+}
+.smallImgsBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .smallImg{
+        box-sizing: border-box;
+        width: 24%;
+        aspect-ratio: 1/1;
+        object-fit:contain;
+        overflow: hidden;
+    }
+}
+@media (min-width: 768px){
+    .smallImgsBox .smallImg{
+        width: 48%;
+    }
+}
+//圖片切換器css終點
+
+
+//商品簡介區css起點
+.intro{
+    padding: 0 12.5%;
+    margin: auto;
+    .price{
+        font-size: $mh2;
+        padding: 20px 0;
+    }
+    .intro_tet{
+        border-top: $bor1 solid $blackWord;
+        border-bottom: $bor1 solid $blackWord;
+        padding: 20px 0;
+    }
+    ul{
+        list-style: disc;
+        list-style-type: disc;
+    }
+    li{
+        margin-bottom: 20px;
+    }
+    li:last-of-type{
+        margin-bottom: 0;
+    }
+}
+@media (min-width:768px){
+    .intro{
+        padding: 0 0 0 8.333%;
+    }
+}
+.pro_functions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: $bor1 solid $blackWord;
+}
+//商品數量加減器起點
+.numberChoice{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.numberChoice label {
+    align-items: center;
+    font-size: $mh5;
+    color: $grass_2;
+}
+.qty {
+    box-sizing: border-box;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: #00f0;
+    font-size: $mh4;
+    color: $grass_2;
+}
+.qtyPlus, .qtyMinus {
+    width: 35px;
+    height: 35px;
+    background-color: #00f0;
+    border: none;
+    color: $grass_2;
+}
+//商品數量加減器終點
+
+//商品加購起點
+.additional_pro{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: $mh5;
+    label {
+        align-items: center;
+        color: $grass_2;
+    }
+    .choose_additional_pro{
+        min-width: 45%;
+        max-width: 190px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .btn_buy_additional{
+        box-sizing: border-box;
+        width: 100%;
+        height: 100px;
+        padding: 0 10px;
+        border-radius: $borr2;
+        background-color: #00f0;
+        // background-color: #24A895;
+        color: $grass_2;
+        // color: $whiteWord;
+        border: $bor1 solid $grass_2;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-around;
+        span:first-of-type{
+            margin-right: auto;
+        }
+        span:nth-of-type(3){
+            font-size: $mh6;
+            color: $grey_3;
+            // color: $whiteWord;
+        }
+        input{
+            box-sizing: border-box;
+            width: 100%;
+            padding-inline-start: 10px;
+            border: $grass_2 solid $bor1;
+            border-radius: $borr1;
+            color: $grey_3;
+            font-size: $mh6;
+        }
+    }
+}
+//商品加購終點
+
+//直接購買、加入購物車
+.buy_pro{
+    padding: 20px 0 0 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    button{
+        border: none;
+        border-radius: $borr2;
+        font-size: $mh5;
+        width: 40%;
+    }
+}
+
+//商品簡介區css終點
+
+
+//詳情區塊
+.detail_selecter{
+    margin: 100px auto 0 auto;
+    width: fit-content;
+    button{
+        box-sizing: border-box;
+        width: fit-content;
+        padding: 10px;
+        border-radius: $borr2 $borr2 0 0;
+        border: none;
+        text-align: center;
+        font-size: $mh5;
+        background-color: $lightYellow;
+    }
+}
+.pro_detail{
+    box-sizing: border-box;
+    width: 90%;
+    background-color: $yellow;
+    border-radius: $borr2;
+    padding: 50px 10%;
+    margin: 0 5% 100px 5%;
+    line-height: 1.7;
+    position: relative;
+    h2{
+        margin-bottom: 20px;
+        text-align-last: center;
+    }
+    .articlel{
+        font-size: $mh5;
+    }
+}
+//詳情區塊
+

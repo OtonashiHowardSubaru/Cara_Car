@@ -1,0 +1,26 @@
+//輪替套件預設值
+.swiper {
+    width: 90%;
+    height: 100%;
+    margin: auto;    
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommand h4{
+    font-size: $mh3;
+    border-bottom: $bor1 solid $blackWord;
+    border-top: $bor1 solid $blackWord;
+    padding: 30px 0;
+    margin: 90px 40px 40px 40px;
+}
+
+
