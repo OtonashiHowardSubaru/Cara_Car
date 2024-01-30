@@ -1,5 +1,6 @@
 <script>
 import MainHeader from '@/components/Header.vue'
+import userImage from '@/assets/imgs/memberCenter/userImage(default).png'
 export default {
     components:{
         MainHeader
@@ -12,8 +13,10 @@ export default {
             activeTab: 'noPay',
             imageUrl: null,
             selectedFile: null,
-            isMobile: window.innerWidth >= 325,
-            isDesktop:window.innerWidth >= 768,
+            isMobile: window.innerWidth >= 325 && window.innerWidth < 768,
+            isDesktop: window.innerWidth >= 768,
+            storedImage: '',
+            // innerWidth: 500,
         }
     },
     created() {
@@ -21,9 +24,17 @@ export default {
         window.addEventListener('resize', this.updateWindowSize);
         this.updateWindowSize()
     },
+    computed: {
+        imagePreviewUrl() {
+            return this.storedImage || userImage
+        },
+    },
+    beforeUnmount() {
+        window.removeEventListener('resize', this.updateWindowSize);
+    },
     methods: {
         updateWindowSize() {
-            this.isMobile = window.innerWidth >= 325;
+            this.isMobile = window.innerWidth >= 325 && window.innerWidth < 768;
             this.isDesktop = window.innerWidth >= 768;
         },
         beforeDestroy() {
@@ -32,7 +43,6 @@ export default {
         },
         toggleSubMenu() {
             this.showSubMenu = !this.showSubMenu;
-            // this.currentProfile = 'default';
         },
         showProfile(profile) {
             this.currentProfile = profile;
@@ -51,25 +61,25 @@ export default {
             }
             const file = files[0];
             const reader = new FileReader();
-            reader.onload = function () {
+
+            reader.onload =  () => {
                 localStorage.setItem('imagePreview', reader.result);
-                var imagePreviews = document.querySelectorAll('.imagePreview')
-                imagePreviews.forEach(function (element) {
-                element.src = reader.result;
-                });
+                this.storedImage = reader.result
             }
             reader.readAsDataURL(file);
         }
     },
     mounted() {
+        // this.innerWidth = window.innerWidth
+        // window.addEventListener
         document.getElementById("upFile").addEventListener("change", this.showFile);
-        const storedImage = localStorage.getItem('imagePreview');
-        if (storedImage) {
-            var imagePreviews = document.querySelectorAll('.imagePreview')
-                imagePreviews.forEach(function (element) {
-                element.src = storedImage;
-                });
-        }
+        this.storedImage = localStorage.getItem('imagePreview');
+        // if (storedImage) {
+        //     var imagePreviews = document.querySelectorAll('.imagePreview')
+        //         imagePreviews.forEach(function (element) {
+        //         element.src = storedImage;
+        //         });
+        // }
     },
 }
 </script>
@@ -106,14 +116,14 @@ export default {
             </div>
             <div class="member_profile" v-show="currentProfile === 'default'">
                 <div class="mb_user_image" v-if="isMobile">
-                    <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar" class="imagePreview">
+                    <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                 </div>
                 <div class="welcome">
                     <h3>
                         您好，歡迎光臨<br>CARA CAR官網購物帳號
                     </h3>
                     <div class="user_image" v-if="isDesktop">
-                        <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar" class="imagePreview">
+                        <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                     </div>
                 </div>
                 <div class="currentOrder">
@@ -141,6 +151,24 @@ export default {
                         <p>我的收藏</p>
                     </div>
                 </div>
+                <div class="mb_member_sidebar" v-if="isMobile">
+                    <nav>
+                        <ul>
+                            <li @click="toggleSubMenu">
+                                會員專區
+                                <transition name="fade">
+                                    <ul v-if="showSubMenu">
+                                        <li class="subMenu" @click="showProfile('default')">會員中心</li>
+                                        <li class="subMenu" @click="showProfile('basic')">基本資料</li>
+                                    </ul>
+                                </transition>
+                            </li>
+                            <li @click="showProfile('order')">購買訂單</li>
+                            <li @click="showProfile('return')">退貨申請</li>
+                            <li @click="showProfile('collect')">收藏清單</li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
             <div class="basic" v-show="currentProfile === 'basic'">
                 <div class="sub_title">
@@ -150,7 +178,7 @@ export default {
                 </div>
                 <div class="user_edit">
                     <div class="user_image">
-                        <img src="../assets/imgs/memberCenter/userImage(default).png" alt="User Avatar" class="imagePreview">
+                        <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                     </div>
                     <label for="upFile">
                         <input type="file" name="upFile" id="upFile" style="display:none;">

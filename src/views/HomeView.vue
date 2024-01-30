@@ -1,15 +1,18 @@
 <script>
-import EventCardSlider from '@/components/card/EventCardSlider.vue'
-
 // import gsap from 'gsap';
 // import { TextPlugin } from 'gsap/TextPlugin';
 // gsap.registerPlugin(TextPlugin);
+import EventCardSlider from '@/components/card/EventCardSlider.vue'
+import lightBoxStore from "@/stores/lightBox.js"
+import LoginBox from '@/components/LoginBox.vue'
 export default {
-  components:{
-        EventCardSlider,
-    },
+  components: {
+    EventCardSlider, LoginBox
+  },
   data() {
-    return{
+    return {
+      lightBoxStore: lightBoxStore(),
+      showLightbox: false,
       currentTitle: '',
       currentHoverIndex: -1,
       // isHovered: false,
@@ -29,17 +32,17 @@ export default {
         { i: 'nav/nav-icon-05.png' },
         { i: 'nav/nav-icon-06.png' },
       ],
-      title:[
-        {p:'PRODUCT'},
-        {p:'2nd HAND'},
-        {p:'GAME'},
-        {p:'SHOP INFO'},
-        {p:'MEMBER'},
-        {p:'MY CART'},
+      title: [
+        { p: 'PRODUCT' },
+        { p: '2nd HAND' },
+        { p: 'GAME' },
+        { p: 'SHOP INFO' },
+        { p: 'MEMBER' },
+        { p: 'MY CART' },
       ],
     }
   },
-  methods:{
+  methods: {
     getImageUrl(paths) {
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
     },
@@ -50,17 +53,27 @@ export default {
     resetImageTitle() {
       this.currentHoverIndex = -1;
     },
-    // handleMouseOver() {
-    //   this.isHovered = true;
-    // },
-    // handleMouseOut() {
-    //   this.isHovered = false;
-    // },
+    handleClick(e) {
+      if (e.target.id === 'loginOverlay') {
+        this.closeLightbox();
+      } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
+        this.$router.push('/Register');
+        this.closeLightbox();
+      }
+    },
+    openLightbox() {
+      // this.showLightbox = true;
+      this.lightBoxStore.openLightbox()
+    },
+    closeLightbox() {
+      // this.showLightbox = false;
+      this.lightBoxStore.closeLightbox()
+    },
   },
   mounted() {
-  // const textPath = document.querySelector('.text-path');
-  // gsap.to('.text-path', { rotation: 360, duration: 10, repeat: -1, ease: 'linear' });
-},
+    // const textPath = document.querySelector('.text-path');
+    // gsap.to('.text-path', { rotation: 360, duration: 10, repeat: -1, ease: 'linear' });
+  },
 }
 </script>
 
@@ -70,7 +83,8 @@ export default {
     <nav>
       <!-- 電腦版header -->
       <ul class="indexHeaderNav">
-        <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)" @mouseleave="resetImageTitle()">
+        <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)"
+          @mouseleave="resetImageTitle()">
           <RouterLink :to="name[index]">
             <img :src="getImageUrl(item.i)" class="indexHeaderButtonIcon" v-show="currentHoverIndex !== index">
             <div class="indexHeaderButtonP" v-if="currentHoverIndex === index">{{ title[index].p }}</div>
@@ -78,18 +92,22 @@ export default {
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin">
-          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin" @click="openLightbox">
+          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
+            @click="openLightbox">
         </div>
       </ul>
     </nav>
   </header>
+  <Transition name="fade">
+      <LoginBox v-if="lightBoxStore.showLightbox"/>
+  </Transition>
 
   <div class="indexBannerGroup">
     <img src="../assets/imgs/Home/indexBannerImg.png" alt="" class="indexBannerImg">
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
-    <img src="../assets/imgs/nav/nav-logo.png" alt="" class="indexLogo">
+      <img src="../assets/imgs/nav/nav-logo.png" alt="" class="indexLogo">
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
   </div>
@@ -106,28 +124,28 @@ export default {
       <img class="decoImg" src="../assets/imgs/draw/person_sit.PNG" alt="person_sit">
     </div>
     <div class="otherEventCards">
-        <EventCardSlider class="otherEventCard" />
+      <EventCardSlider class="otherEventCard" />
     </div>
   </div>
 
   <div class="indexAboutGroup"></div>
 
   <div class="indexGameGroup">
-      <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
-      <div class="indexGameBagBlock"></div>
-      <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
-      <div class="indexGameButton" @mouseover="handleMouseOver" @mouseout="handleMouseOut" :class="{ 'hovered': isHovered }">
-        <button class="indexGameButton2">
-          <p class="indexGameButtonTitle">Get<br>Start</p>
-        </button>
-      </div>
+    <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
+    <div class="indexGameBagBlock"></div>
+    <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
+    <div class="indexGameButton" @mouseover="handleMouseOver" @mouseout="handleMouseOut"
+      :class="{ 'hovered': isHovered }">
+      <button class="indexGameButton2">
+        <p class="indexGameButtonTitle">Get<br>Start</p>
+      </button>
+    </div>
     <div class="circular">
       <svg viewBox="0 0 100 100">
-        <path d="M 76,51 a 66,66 0 1,1 -1,0 z"
-              id="circle"/>
+        <path d="M 76,51 a 66,66 0 1,1 -1,0 z" id="circle" />
         <text>
           <textPath class="text-path" xlink:href="#circle">
-            MAKE YOUR OWN CARA CAR 
+            MAKE YOUR OWN CARA CAR
             <animate attributeName="startOffset" values="0;180;360" dur="15s" repeatCount="indefinite"></animate>
             <animate attributeName="fill" values="black;white;black" dur="15s" repeatCount="indefinite"></animate>
           </textPath>
@@ -137,7 +155,7 @@ export default {
   </div>
 </template>
 <style lang="scss" scoped>
-  @import '@/assets/scss/layout/header.scss';
-  @import '@/assets/scss/page/home.scss';
-  @import '@/assets/scss/layout/login.scss';
+@import '@/assets/scss/layout/header.scss';
+@import '@/assets/scss/page/home.scss';
+@import '@/assets/scss/layout/login.scss';
 </style>

@@ -20,12 +20,14 @@
 
 
 <script>
+import NewCardImage01 from "/imgs/event/infoCard01.jpg"
+
 export default { 
     data() {
         return{
             newsCard:[
                 {
-                    img: "/imgs/event/infoCard01.jpg",
+                    img: NewCardImage01,
                     title: "當月小壽星特別禮遇",
                     timingTag: "進行中",
                     activeTag: "優惠",
