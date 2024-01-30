@@ -28,4 +28,7 @@ export default defineConfig({
       }
     },
   },
+  server:{
+    host:'10.1.16.67'
+  }
 })

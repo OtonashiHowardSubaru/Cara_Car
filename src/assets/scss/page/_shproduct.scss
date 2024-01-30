@@ -86,15 +86,19 @@
 // 二手商品內頁
 
 .sh_product_wrap{
-width: 80%;
-display: flex;
-justify-content: space-between;
-margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 100px;
 }
 
 // 商品小圖換大圖區
 .prodpic{
   .mainpic{
+    width: 500px;
+    height: 400px;
+    // padding: 20px;
     img{
       width: 500px;
     }
@@ -221,10 +225,36 @@ margin: 0 auto;
       width: 100%;
     }
   }
-  .slider_right{
-    img{
+  i{
+    font-size: 16px;
+    border: 1px solid #222;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+  }
+  i:hover{
+      background-color: $lightGreen;
+      border: none;
+
+  }
+  .slider_left{
+    i{
       transform: rotate(180deg);
     }
+  }
+}
+
+.salecar{
+  a{
+    color: #fff;
+    background-color: $green;
+    border-radius: 100%;
+    padding: 50px;
   }
 }
 

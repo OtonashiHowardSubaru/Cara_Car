@@ -1,9 +1,10 @@
 <script>
-import axios from 'axios'; //引入函式庫
+//import axios from 'axios'; //引入函式庫
 import CardShProcess from "@/components/card/CardShProcess.vue";
 import TitleMaybeYouLike from "@/components/TitleMaybeYouLike.vue";
 import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
+import MainHeader from "@/components/Header.vue";
 
 // 小圖換大圖
 // function showLarge(e){
@@ -26,8 +27,8 @@ import ProductCard from "@/components/ProductCard.vue";
 
   export default {
     components:{
-    CardShProcess, TitleMaybeYouLike, TitleViewed, MainHeader, ProductCard,
-    ProductCard,
+    CardShProcess, TitleMaybeYouLike, TitleViewed,
+    ProductCard, MainHeader
 },
     data(){
       return {
@@ -35,65 +36,54 @@ import ProductCard from "@/components/ProductCard.vue";
         responseData : [],
         displayData: [],
         activeTab: 0,
+        mainImage: "/src/assets/imgs/product/sh_product_mainpic.png", 
+        littleImages: [  
+          "/src/assets/imgs/product/sh_product_mainpic.png",
+          "/src/assets/imgs/product/sh_product_litpic.png",
+          "/src/assets/imgs/product/sh_product_litpic1.png",
+          "/src/assets/imgs/product/sh_product_litpic2.png",
+        ],
       }
     },
-    created() {
-      this.axiosGetData();
-    },
+    // created() {
+      
+    // },
     methods: {
-      axiosGetData(){
-        axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
-          .then( res=> {
-            console.log(res)
-            if(res && res.data && res.data.prods){
-              this.responseData = res.data.prods
-              this.displayData = res.data.prods
-              //由於res是一整個方法，這個方法內有好幾個小東西，其中一個就是資料(data)
-              //所以要取值才是res.data，而學長姐的api預設有prods與prodCount
-              //所以才是displayData = res.data.prods
-            }else{
-              console.log('資料沒有回傳到displayData喔')
-            }
-          })
+      showLarge(e) {
+        console.log('Clicked on image:', e.target.src);
+        if (e.target.tagName === 'IMG' && e.target.src) {
+          this.mainImage = e.target.src;
+    }
       },
-      handleFilter(){
-        this.displayData = this.responseData.filter((item)=>{
-          // console.log(item);
-          return item.title.includes(this.search)
-        })
-    },
-    handleFilter() {
-      this.displayData = this.responseData.filter((item) => {
-        // console.log(item);
-        return item.title.includes(this.search)
-      })
-    },
-    showLarge(e) {
-      // 使用 Vue 提供的方式來獲取元素和設定屬性
-      this.$refs.mainpic.src = e.target.src;
-    },
+      init() {
+        const smalls = this.$refs.littlepicImgs;
 
-    init() {
-      // 使用 Vue 提供的 $refs 來獲取元素，並使用 v-for 來動態設定事件監聽器
-      const smalls = this.$refs.littlepicImgs;
-
-      for (let i = 0; i < smalls.length; i++) {
-        smalls[i].addEventListener("click", this.showLarge);
-      }
+    for (let i = 0; i < smalls.length; i++) {
+      smalls[i].addEventListener("click", this.showLarge);
+    }
+      },
+      changeTab(tabIndex) {
+        // 頁籤跳轉
+        this.activeTab = tabIndex;
+      },
+      changeMainImage(image) {
+        this.mainImage = image;
+      },
     },
-    changeTab(tabIndex) {
-      // 頁籤跳轉
-      this.activeTab = tabIndex;
-    },
-  },
+    mounted() {
+      this.init();
+      // this.mainImage = this.littleImages[0];
 
-  mounted() {
-    this.init(); 
+      // // 使用 Vue 提供的 $refs 來獲取元素，並使用 forEach 來動態設定事件監聽器
+      // this.$refs.littleImages.forEach(img => {
+      //   img.addEventListener("click", this.showLarge);
+      // });
+    }
   }
-}
 </script>
 
 <template>
+  <MainHeader />
 <div class="sh_product_wrap">
     <div class="intromq">
       <h1>超強小車車</h1>
@@ -101,13 +91,17 @@ import ProductCard from "@/components/ProductCard.vue";
     </div>
     <div class="prodpic">
       <div class="mainpic" id="mainpic">
-        <img src="../assets/imgs/product/sh_product_mainpic.png" alt="超強小車車">
+        <!-- <img src="../assets/imgs/product/sh_product_mainpic.png" alt="超強小車車"> -->
+        <img :src="mainImage" alt="超強小車車">
       </div>
       <div class="littlepic">
-        <img src="../assets/imgs/product/sh_product_mainpic.png" alt="超強小車車">
+        <img v-for="(image, index) in littleImages" :key="index" :src="image" alt="超強小車車" @click="showLarge" ref="littlepicImgs">
+
+
+        <!-- <img src="../assets/imgs/product/sh_product_mainpic.png" alt="超強小車車">
         <img src="../assets/imgs/product/sh_product_litpic.png" alt="超強小車車">
         <img src="../assets/imgs/product/sh_product_litpic1.png" alt="超強小車車">
-        <img src="../assets/imgs/product/sh_product_litpic2.png" alt="超強小車車">
+        <img src="../assets/imgs/product/sh_product_litpic2.png" alt="超強小車車"> -->
       </div>
       
     </div>
@@ -347,19 +341,23 @@ import ProductCard from "@/components/ProductCard.vue";
 <div class="recommand">
   <div class="view">
     <TitleViewed/>
-    <button class="slider_left"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+    <button class="slider_left"><i class="fa-solid fa-arrow-right"></i></button>
     <ProductCard/>
 
-    <button class="slider_right"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+    <button><i class="fa-solid fa-arrow-right"></i></button>
 
   </div>
   <div class="maybeYouLike">
     <TitleMaybeYouLike/>
-    <button class="slider_left"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+    <button class="slider_left"><i class="fa-solid fa-arrow-right"></i></button>
 
-    <button class="slider_right"><img src="/src/assets/imgs/product/sh_slide_arrow.png" alt=""></button>
+    <button><i class="fa-solid fa-arrow-right"></i></button>
   </div>
 </div>
+
+<!-- <div class="salecar">
+  <a href="./SecondHandSaleView.vue">我要賣車</a>
+</div> -->
 
 
 
