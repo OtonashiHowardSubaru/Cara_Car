@@ -34,20 +34,28 @@
       </ul>
     </nav>
   </header>
+  <Transition name="fade">
+        <LoginBox v-if="lightBoxStore.showLightbox"/>
+    </Transition>
 </template>
 
 <script>
 import axios from 'axios';
 import { mapActions } from 'pinia'; // mapActions pinia的方法，取得api的
 import userStore from '@/stores/user.js'
+import lightBoxStore from "@/stores/lightBox.js"
+import LoginBox from '@/components/LoginBox.vue'
 export default {
-  // components: {
-  // },
+  components: {
+    LoginBox,
+    },
   data() {
     return {
+      lightBoxStore: lightBoxStore(),
       username: '',
       psw6666: '',
       pswVisible: false,
+      showLightbox: false,
       //header v-for v-show
       // currentTitle: '',
       // currentHoverIndex: -1,
@@ -142,6 +150,14 @@ export default {
     resetImageTitlePh() {
       this.currentHoverIndexPh = -1;
     },
+    openLightbox() {
+          // this.showLightbox = true;
+          this.lightBoxStore.openLightbox()
+        },
+        closeLightbox() {
+          // this.showLightbox = false;
+          this.lightBoxStore.closeLightbox()
+        },
     ...mapActions(userStore, ['updateToken']),
     signin() {
       axios.post('https://fakestoreapi.com/auth/login', {
@@ -176,5 +192,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
+@import '@/assets/scss/layout/login.scss';
 </style>
 <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,1000&display=swap" rel="stylesheet"> -->
