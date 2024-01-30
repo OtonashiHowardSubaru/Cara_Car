@@ -18,71 +18,59 @@ import PriceSorter from '@/components/PriceSorter.vue';
         productDisplayList: [],
         sh_product_list: [
             {
-                img:"/src/assets/imgs/product/sh_product_1.png",
-                sh_product_name:"極光追逐者",
-                sh_product_price:"3000"
+              prod_img1:"/src/assets/imgs/product/sh_product_1.png",
+              prod_name:"極光追逐者",
+              prod_price:"3000",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_2.png",
-                sh_product_name:"極速閃電車",
-                sh_product_price:"5000"
+              prod_img1:"/src/assets/imgs/product/sh_product_2.png",
+              prod_name:"極速閃電車",
+              prod_price:"5000",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_3.png",
-                sh_product_name:"太空探險車",
-                sh_product_price:"8000"
+              prod_img1:"/src/assets/imgs/product/sh_product_3.png",
+              prod_name:"太空探險車",
+              prod_price:"8000",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_4.png",
-                sh_product_name:"科技漂移车",
-                sh_product_price:"6000"
+              prod_img1:"/src/assets/imgs/product/sh_product_4.png",
+              prod_name:"科技漂移车",
+              prod_price:"6000",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_5.png",
-                sh_product_name:"爆炸速度狂飆车",
-                sh_product_price:"4000"
+              prod_img1:"/src/assets/imgs/product/sh_product_5.png",
+              prod_name:"爆炸速度狂飆车",
+              prod_price:"4000",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_6.png",
-                sh_product_name:"魔法變形賽車",
-                sh_product_price:"6000"
+              prod_img1:"/src/assets/imgs/product/sh_product_6.png",
+              prod_name:"魔法變形賽車",
+              prod_price:"6000",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_7.png",
-                sh_product_name:"閃電漂移車",
-                sh_product_price:"2500"
+              prod_img1:"/src/assets/imgs/product/sh_product_7.png",
+              prod_name:"閃電漂移車",
+              prod_price:"2500",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_8.png",
-                sh_product_name:"太空漫步車",
-                sh_product_price:"3500"
+              prod_img1:"/src/assets/imgs/product/sh_product_8.png",
+              prod_name:"太空漫步車",
+              prod_price:"3500",
+              linkwhere:"/SecondHand"
             },
             {
-                img:"/src/assets/imgs/product/sh_product_9.png",
-                sh_product_name:"磁浮飛行車",
-                sh_product_price:"5500"
+              prod_img1:"/src/assets/imgs/product/sh_product_9.png",
+              prod_name:"磁浮飛行車",
+              prod_price:"5500",
+              linkwhere:"/SecondHand"
             },
-        ],
-
-        sh_contact: [
-          {
-            img: "src/assets/imgs/product/sh_process_bird.png",
-            shSubtitle:'CONTACT',
-            context: '透過電子郵件聯繫我們',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
-          {
-            img: "src/assets/imgs/product/sh_process_second_hand.png",
-            shSubtitle:'SECOND-HAND',
-            context: '查看二手車輛商品',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
-          {
-            img: "src/assets/imgs/product/sh_process_recycle_car.png",
-            shSubtitle:'RECYCLE CAR',
-            context: '了解二手車輛販賣',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
         ],
 
       }
@@ -131,7 +119,7 @@ import PriceSorter from '@/components/PriceSorter.vue';
 <template>
   <MainHeader />
   <div class="sh_pro_list_title col-12">
-    <img src="../assets/imgs/product/sh_product_title.png" alt="used car">
+    <h1><img src="/src/assets/imgs/product/sh_product_title.png" alt="used car"></h1>
   </div>
   <div class="container">
     <div class="row">
@@ -143,7 +131,7 @@ import PriceSorter from '@/components/PriceSorter.vue';
       </div>
       
       <div class="sh_pro_card_list col-9 col-md-10">
-        <div class="sh_product_card col-md-4" v-for="item in productDisplayList">
+        <!-- <div class="sh_product_card col-md-4" v-for="item in sh_product_list">
           <div class="sh_pro_card_img">
             <img :src="item.img" alt="sh_Product Image">
           </div>
@@ -151,8 +139,10 @@ import PriceSorter from '@/components/PriceSorter.vue';
             <h6>{{ item.sh_product_name }}</h6>
             <p>${{ item.sh_product_price }}</p>
           </div>
-        </div>
-        <!-- <ProductCard/> -->
+        </div> -->
+        <ProductCard
+        :displayData = "sh_product_list"
+        />
       </div>
     </div>
     <div class="paginator">
