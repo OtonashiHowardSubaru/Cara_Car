@@ -29,6 +29,7 @@
         }
     }
     .iwantsellCar{
+        
         .iwantsellCarbutton{
             position: fixed;
             bottom: 100px;
@@ -45,7 +46,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            
+            z-index: 700;
             p{
             font-size: $p;
             }
@@ -89,20 +90,24 @@
     
     }
     .infoTextSale{
-        height: 1000px;
+        // height: 900px;
         width: 90%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         margin: 0 auto;
         .InfoTextCards{
-            width: 70%;
-            // height: ;
-            margin: 0 auto;
-        }
-        .shopInfoMapSale {
-            margin: 0 auto;
-            // height: 50%;
+            width: 80%;
+            margin: 10px auto;
+            padding-top: 50px;
+            border-top: 1px solid $blackWord;
+            .InfoTextText{
+                width: 100%;
+            }
+            .shopInfoMapSale {
+                width: 100%;
+                margin: 0 auto;
+            }
         }
         .AboutUsBtnSale{
             width: 80%;
@@ -188,23 +193,30 @@
             }
         
         }
-        .infoText{
-            height: 1200px;
+        .infoTextSale{
+            // height: 900px;
             width: 90%;
             display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
             margin: 0 auto;
             .InfoTextCards{
-                width: 70%;
-                // height: ;
-                margin: 0 auto;
-            }
-            .shopInfoMap {
-                margin: 0 auto;
-                height: 50%;
-            }
-            .AboutUsBtn{
+                display: flex;
+                align-items: center;
                 width: 80%;
-                margin: 5% auto;
+                margin: 0 auto;
+                .InfoTextText{
+                    width: 90%;
+                    margin: 20px;
+                }
+                .shopInfoMapSale {
+                    width: 100%;
+                    margin: 0 auto;
+                }
+            }
+            .AboutUsBtnSale{
+                width: 80%;
+                margin: 10px auto;
             }
         }
         .iwantsellCar{

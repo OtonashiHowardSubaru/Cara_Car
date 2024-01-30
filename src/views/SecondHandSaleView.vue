@@ -87,9 +87,13 @@
         <section class="infoTextSale">
 
             <div class="InfoTextCards">
-                <InfoTextCards />
+                <div class="InfoTextText">
+                    <InfoTextCards />
+                </div>
+                <div class="shopInfoMapSale">
+                    <ShopMap/>
+                </div>
             </div>
-            <ShopMap class="shopInfoMapSale"/>
             <BtnAboutUs class="AboutUsBtnSale"/>
 
         </section>
