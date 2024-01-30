@@ -16,7 +16,7 @@ export default {
 </script>
 <template>
     <select name="" id="priceSorter" v-model="selectedSort" @change="handleSortChange">
-        <option value="0"></option>
+        <option value="0">價格排序</option>
         <option value="desc">價格  ↓</option>
         <option value="asc">價格  ↑</option>
     </select>

@@ -4,9 +4,10 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
 import MainHeader from '@/components/Header.vue';
 import PageNumber from "@/components/btn/PageNumber.vue"
 import ProductCard from "@/components/ProductCard.vue"
+import PriceSorter from '@/components/PriceSorter.vue';
   export default {
     components:{
-      CardShProcess,MainHeader,PageNumber,ProductCard
+      CardShProcess,MainHeader,PageNumber,ProductCard,PriceSorter
     },
     data(){
       return {
@@ -116,18 +117,15 @@ import ProductCard from "@/components/ProductCard.vue"
       // 返回完整的URL
       return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
     },
-    priceSortHandle(){
-      // 可以和同學分享一下這個寫法
-      if(this.priceSorter === 'desc'){
-        //大到小
-        this.productDisplayList = this.sh_product_list.sort((a,b)=> parseFloat(b.sh_product_price) - parseFloat(a.sh_product_price) )
-      }else if(this.priceSorter === 'asc'){
-        //小到
-        this.productDisplayList = this.sh_product_list.sort((a,b)=> parseFloat(a.sh_product_price) - parseFloat(b.sh_product_price) )
-      }else{
-        this.productDisplayList = this.sh_product_list
-      }
-    }
+    handleSortChange(newSort){
+        if (newSort === "0") {
+          this.displayData = this.responseData
+        } else if (newSort === "desc") {
+          this.displayData.sort((a, b) => b.prod_price - a.prod_price);
+        } else if (newSort === "asc"){
+          this.displayData.sort((a, b) => a.prod_price - b.prod_price);
+        };
+      },
   },
 }
 </script>
@@ -140,11 +138,9 @@ import ProductCard from "@/components/ProductCard.vue"
     <div class="row">
       <div class="store_name col-12">
         <h2>USED CAR</h2>
-        <select name="" v-model="priceSorter" id="priceSorter" @change="priceSortHandle">
-          <option value="">價格排序</option>
-          <option value="desc">價格　　↓</option>
-          <option value="asc">價格　　↑</option>
-        </select>
+          <PriceSorter 
+            @sortChange="handleSortChange"
+          />
       </div>
       
       <div class="sh_pro_card_list col-9 col-md-10">

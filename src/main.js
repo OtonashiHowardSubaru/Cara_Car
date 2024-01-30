@@ -1,15 +1,13 @@
 //套件
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { Button, ButtonGroup,
-        Carousel, CarouselItem,
-        Menu, MenuItem,
-        Icon,Submenu,MenuGroup,
-        } from 'view-ui-plus'
+// import { Button,} from 'view-ui-plus' //這是示範
 
 
 //樣式
 import "view-ui-plus/dist/styles/viewuiplus.css";
+import 'swiper/css'
+import 'swiper/css/pagination';
 // import "./assets/scss/main.scss"
 
 
@@ -25,15 +23,7 @@ const vueApp = createApp(App)
 vueApp.use(createPinia())
 vueApp.use(router)
 
-vueApp.component('Button', Button)
-vueApp.component('ButtonGroup', ButtonGroup)
-vueApp.component('Carousel', Carousel)
-vueApp.component('CarouselItem', CarouselItem)
-vueApp.component('Menu', Menu)
-vueApp.component('MenuItem', MenuItem)
-vueApp.component('Icon', Icon)
-vueApp.component('Submenu', Submenu)
-vueApp.component('MenuGroup', MenuGroup)
+// vueApp.component('Button', Button) //這是示範
 
 
 //渲染在index.html裡面的div#app
