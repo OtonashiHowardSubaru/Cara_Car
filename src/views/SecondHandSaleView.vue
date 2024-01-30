@@ -8,7 +8,12 @@
             <p>這部玩具汽車可能充滿回憶，曾陪伴您與孩子歡樂成長。現在雖然用不到了，但還是充滿溫馨。以合理價格轉讓給需要的人，讓歡笑傳承，尋找新主人吧！</p>
             <div class="drawPic"><img src="../assets/imgs/draw/person_love.png" alt="插圖"></div>
         </div>
-        
+        <div class="iwantsellCar">
+            <div class="iwantsellCarbutton" onclick="togglePopup()">
+            <p>我要<br>賣車</p>    
+            </div>
+            
+        </div>
         <section class="saleCarSteps">
             
 
@@ -79,22 +84,20 @@
                 </div>
             
         </section>
-        <section class="infoText">
+        <section class="infoTextSale">
 
-            <ShopMap class="shopInfoMap" />
-            <InfoTextCards />
-            
-            <div class="shopInfoBtnGroup">
-                <BtnAboutUs />
-                <BtnEvent />
+            <div class="InfoTextCards">
+                <InfoTextCards />
             </div>
+            <ShopMap class="shopInfoMapSale"/>
+            <BtnAboutUs class="AboutUsBtnSale"/>
+
         </section>
     </div>
 </template>
 
 <script>
 import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
-import BtnEvent from '@/components/btn/BtnEvent.vue'
 import MainHeader from '@/components/Header.vue';
 import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
@@ -103,7 +106,6 @@ import InfoTextCards from '@/components/InfoTextCards.vue';
 export default {
     components:{
         BtnAboutUs,
-        BtnEvent,
         MainHeader,
         ShopMap,
         InfoTextCards,
