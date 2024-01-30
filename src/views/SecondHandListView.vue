@@ -89,7 +89,6 @@ import PriceSorter from '@/components/PriceSorter.vue';
     },
     created() {
       // this.axiosGetData();
-      this.priceSortHandle()
     },
     methods: {
       axiosGetData(){
