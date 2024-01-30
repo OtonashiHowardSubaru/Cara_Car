@@ -11,8 +11,10 @@
             <img src="/src/assets/imgs/shopInfo/infoTitle.svg" alt="infoTitle" class="infoTitle">
 
             <InfoTextCards />
-            
-            <ShopMap class="shopInfoMap" />
+            <div class="shopInfoMap">
+                <ShopMap />
+            </div>
+
             <div class="shopInfoBtnGroup">
                 <BtnAboutUs />
                 <BtnEvent />
