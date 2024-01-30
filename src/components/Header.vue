@@ -1,15 +1,16 @@
 <script>
-import axios from 'axios';
-import { mapActions } from 'pinia'; // mapActions pinia的方法，取得api的
-import userStore from '@/stores/user.js'
+// import axios from 'axios';
+// import { mapActions } from 'pinia'; // mapActions pinia的方法，取得api的
+// import userStore from '@/stores/user.js'
 export default {
   // components: {
   // },
 data() {
 return {
-    // username: '',
-    // psw6666: '',
-    // passwordVisible: false,
+    username: '',
+    psw6666: '',
+    passwordVisible: false,
+    showLightbox: false,
     //header v-for v-show
     currentTitle: '',
     currentHoverIndex: -1,
@@ -44,17 +45,30 @@ return {
 //   this.axiosGetData();
 // },
 methods: {
-getImageUrl(paths) {
-    return new URL(`../assets/imgs/${paths}`, import.meta.url).href
-},
-changeImageTitle(index) {
-    this.currentTitle = this.title[index].p;
-    this.currentHoverIndex = index;
-},
-resetImageTitle() {
-    this.currentHoverIndex = -1;
-},
-
+    getImageUrl(paths) {
+        return new URL(`../assets/imgs/${paths}`, import.meta.url).href
+    },
+    changeImageTitle(index) {
+        this.currentTitle = this.title[index].p;
+        this.currentHoverIndex = index;
+    },
+    resetImageTitle() {
+        this.currentHoverIndex = -1;
+    },
+    handleClick(e) {
+    if (e.target.id === 'loginOverlay') {
+        this.closeLightbox();
+    } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
+        this.$router.push('/Register');
+        this.closeLightbox();
+    }
+    },
+    openLightbox() {
+        this.showLightbox = true;
+    },
+    closeLightbox() {
+        this.showLightbox = false;
+    },
 },
 }
 
@@ -78,7 +92,7 @@ resetImageTitle() {
         </li>
     <div class="line"></div>
     <div class="indexHeaderLogin">
-        <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin" @click="openModal">
+        <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin" @click="openLightbox">
     </div>
     </ul>
 </nav>
@@ -87,5 +101,5 @@ resetImageTitle() {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
-// @import '@/assets/scss/layout/login.scss';
+@import '@/assets/scss/layout/login.scss';
 </style>
