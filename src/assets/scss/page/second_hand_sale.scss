@@ -23,11 +23,33 @@
                 width: 20%;
                 position: absolute;
                 right: 5%;
-                top: 8%;
+                top: 12%;
             }
         }
     }
-
+    .iwantsellCar{
+        .iwantsellCarbutton{
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: $green;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+            p{
+            font-size: $p;
+            }
+        }
+    }
     .saleCarSteps{
         margin: 5%;
         .saleCarStep{ 
@@ -64,11 +86,24 @@
         }
     
     }
-    .infoText{
+    .infoTextSale{
         height: 1000px;
-        .shopInfoMap {
-            margin: 50px auto;
-            // height: 300px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        .InfoTextCards{
+            width: 70%;
+            // height: ;
+            margin: 0 auto;
+        }
+        .shopInfoMapSale {
+            margin: 0 auto;
+            // height: 50%;
+        }
+        .AboutUsBtnSale{
+            width: 80%;
+            margin: 5% auto;
         }
     }
 }
@@ -81,18 +116,21 @@
     
         }
         .saleCarStepTopText{
-            p{
+            p{  
+                width: 50%;
                 font-size: $p;
                 font-family: 'Kosugi Maru';
                 line-height: 40px;
                 padding: 20px 60px;
+                text-align: center;
+                margin: auto;
             }
             .drawPic{
                 img{
-                    width: 25%;
+                    width: 20%;
                     position: absolute;
-                    right: 0;
-                    top: 0;
+                    right: 5%;
+                    top: 18%;
                 }
             }
         }
@@ -106,18 +144,20 @@
                 // background-color: $grey_2;
                 flex-direction: row-reverse;
             }    
-                width: 80%;
+                width: 90%;
                 display: flex;
                 margin: 0 auto;
                 padding: 10px;
                     .saleCarStepImg{
-                        width: 100%;
+                        // width: 50%;
+                        height: 50%;
                         img{
                             width: 100%;
                             height: auto; 
                             }
                     }
                     .saleCarStepType{
+                        width: 50%;
                         margin: 15px;
                         display: flex;
                         align-items: center;
@@ -144,6 +184,36 @@
                     }
             }
         
+        }
+        .infoText{
+            height: 1200px;
+            width: 90%;
+            display: flex;
+            margin: 0 auto;
+            .InfoTextCards{
+                width: 70%;
+                // height: ;
+                margin: 0 auto;
+            }
+            .shopInfoMap {
+                margin: 0 auto;
+                height: 50%;
+            }
+            .AboutUsBtn{
+                width: 80%;
+                margin: 5% auto;
+            }
+        }
+        .iwantsellCar{
+            .iwantsellCarbutton{
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                
+                p{
+                font-size: $p;
+                }
+            }
         }
     }
 

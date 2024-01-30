@@ -8,9 +8,8 @@
 
     .aboutTitle {
         width: 100%;
-        // padding: 60px auto;
+        margin-top: 80px;
         border-bottom: 1px solid $blackWord;
-        // box-sizing: border-box;
         display: flex;
         justify-content: center;
         img {
@@ -80,6 +79,11 @@
                 // align-items: center;
             }
         }
+    }
+    .bottonbtns{
+        width: 80%;
+        margin: 0 auto 50px;
+
     }
 
 }
@@ -178,8 +182,12 @@
                 top: 100;
             }
     }
+    .bottonbtns{
+        width: 70%;
+        margin: 0 auto 100px;
+
+    }
 
 
-
-}
+    }
 }

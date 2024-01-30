@@ -37,9 +37,11 @@
       </div>
 
     </div>
-    <!-- <div class="car_caraPic"><img src="../assets/imgs/draw/car_caracar.png" alt=""></div> -->
-    <BtnEvent/>
-    <BtnShopInfo/>
+
+    <div class="bottonbtns">
+      <BtnEvent/>
+      <BtnShopInfo/>
+    </div>
 
 
   </div>
