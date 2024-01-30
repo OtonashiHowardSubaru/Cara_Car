@@ -12,8 +12,8 @@ export default {
             activeTab: 'noPay',
             imageUrl: null,
             selectedFile: null,
-            isMobile: window.innerWidth < 768,
-            isDesktop: window.innerWidth >= 768,
+            isMobile: window.innerWidth >= 325,
+            isDesktop:window.innerWidth >= 768,
         }
     },
     created() {
@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         updateWindowSize() {
-            this.isMobile = window.innerWidth < 768;
+            this.isMobile = window.innerWidth >= 325;
             this.isDesktop = window.innerWidth >= 768;
         },
         beforeDestroy() {
