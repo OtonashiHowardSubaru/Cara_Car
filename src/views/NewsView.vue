@@ -2,13 +2,13 @@
     <MainHeader />
     <main class="pageNews">
         <header class="newsTitle">
-            <img src="/src/assets/imgs/event/eventTitle.svg" alt="eventTitle.png">
+            <img src="/public/imgs/event/eventTitle.svg" alt="eventTitle.png">
         </header>
         <section class="newsOverview">
             <div class="selector">
                 <div class="space"></div>
                 <div class="btnTag">
-                    <button v-for="tag in buttonTag">
+                    <button v-for="tag in buttonTag" :key="tag">
                         <span>{{ tag }}</span>
                     </button>
                 </div>
