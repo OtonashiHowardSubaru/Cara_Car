@@ -170,6 +170,7 @@
 </div>
 
 <ProCardSwiper :displayData="displayData" />
+<ProCardSwiper :displayData="displayData" />
 
 </template>
 
