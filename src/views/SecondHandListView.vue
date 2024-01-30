@@ -2,9 +2,11 @@
 import axios from 'axios'; //引入函式庫
 import CardShProcess from "@/components/card/CardShProcess.vue";
 import MainHeader from '@/components/Header.vue';
+import PageNumber from "@/components/btn/PageNumber.vue"
+import ProductCard from "@/components/ProductCard.vue"
   export default {
     components:{
-      CardShProcess,MainHeader
+      CardShProcess,MainHeader,PageNumber,ProductCard
     },
     data(){
       return {
@@ -22,42 +24,42 @@ import MainHeader from '@/components/Header.vue';
             {
                 img:"/src/assets/imgs/product/sh_product_2.png",
                 sh_product_name:"極速閃電車",
-                sh_product_price:"$5000"
+                sh_product_price:"5000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_3.png",
                 sh_product_name:"太空探險車",
-                sh_product_price:"$8000"
+                sh_product_price:"8000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_4.png",
                 sh_product_name:"科技漂移车",
-                sh_product_price:"$6000"
+                sh_product_price:"6000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_5.png",
                 sh_product_name:"爆炸速度狂飆车",
-                sh_product_price:"$4000"
+                sh_product_price:"4000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_6.png",
                 sh_product_name:"魔法變形賽車",
-                sh_product_price:"$6000"
+                sh_product_price:"6000"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_7.png",
                 sh_product_name:"閃電漂移車",
-                sh_product_price:"$2500"
+                sh_product_price:"2500"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_8.png",
                 sh_product_name:"太空漫步車",
-                sh_product_price:"$3500"
+                sh_product_price:"3500"
             },
             {
                 img:"/src/assets/imgs/product/sh_product_9.png",
                 sh_product_name:"磁浮飛行車",
-                sh_product_price:"$5500"
+                sh_product_price:"5500"
             },
         ],
 
@@ -155,18 +157,11 @@ import MainHeader from '@/components/Header.vue';
             <p>${{ item.sh_product_price }}</p>
           </div>
         </div>
+        <!-- <ProductCard/> -->
       </div>
     </div>
     <div class="paginator">
-        <ul>
-            <li><img src="" alt=""></li>
-            <li><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href="">5</a></li>
-            <li><img src="" alt=""></li>
-        </ul>
+        <PageNumber/>
     </div>
     
   </div>
