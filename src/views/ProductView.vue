@@ -1,15 +1,17 @@
 <script>
   import axios from 'axios'; //引入函式庫
   import ProCardSwiper from '@/components/ProCardSwiper.vue'
+  import MainHeader from '@/components/Header.vue';
 
   export default {
     components: {
-      ProCardSwiper,
+      ProCardSwiper,MainHeader
     },
     data(){
       return {
         responseData : [],
         displayData: [],
+        activeTab: 0,
       }
     },
     created() {
@@ -35,20 +37,22 @@
 }
 </script>
 <template>
+<MainHeader />
 <main class="container">
   <div class="row">
-    <h1 class="col-12 col-md-12 pro_title">
-      AMERICAN CLASSIC
-    </h1>
+    <div class="col-12 col-md-12 pro_title">
+      <h1>超強小車車</h1>
+      <h2>AMERICAN CLASSIC</h2>
+    </div>
     <div class="col-12 col-md-6 pro_img_switcher">
       <div class="bigImgBox">
-        <img src="https://fakeimg.pl/300x200/200" alt="" class="bigImg">
+        <img src="../assets/imgs/product/sh_product_mainpic.png" alt="" class="bigImg">
       </div>
       <div class="smallImgsBox">
-        <img src="https://fakeimg.pl/300x200/200" alt="" class="smallImg">
-        <img src="https://fakeimg.pl/300x200/200" alt="" class="smallImg">
-        <img src="https://fakeimg.pl/300x200/200" alt="" class="smallImg">
-        <img src="https://fakeimg.pl/300x200/200" alt="" class="smallImg">
+        <img src="../assets/imgs/product/sh_product_mainpic.png" alt="" class="smallImg">
+        <img src="../assets/imgs/product/sh_product_litpic.png" alt="" class="smallImg">
+        <img src="../assets/imgs/product/sh_product_litpic1.png" alt="" class="smallImg">
+        <img src="../assets/imgs/product/sh_product_litpic2.png" alt="" class="smallImg">
       </div>
     </div>
     <div class="col-12 col-md-6 intro">
