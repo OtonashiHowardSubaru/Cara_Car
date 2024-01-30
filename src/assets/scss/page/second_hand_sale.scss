@@ -1,5 +1,6 @@
 .SecondHandSale{
     width: 100%;
+    margin-bottom: 100px;
 
     .SecondHandSaleTitle{
         margin-top: 110px;
@@ -73,7 +74,8 @@
                     margin: 2% 5%;
                     .saleCarStepNum{
                         font-size: $h3;
-                        margin: 15px;
+                        margin: 10px 15px;
+                        font-family: "Single DAY";
                     }
                     
                 }
@@ -91,6 +93,7 @@
         width: 90%;
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
         margin: 0 auto;
         .InfoTextCards{
             width: 70%;
@@ -103,7 +106,7 @@
         }
         .AboutUsBtnSale{
             width: 80%;
-            margin: 5% auto;
+            margin: 0 auto;
         }
     }
 }
