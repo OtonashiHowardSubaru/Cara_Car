@@ -36,7 +36,7 @@ export default{
   <div class="view">
     <h4>別人也逛過</h4>
     <div class="swiper-button-next" ></div>
-    <swiper
+    <swiper 
     :slidesPerView="3"
     :spaceBetween="30"
     :navigation="{
@@ -111,12 +111,75 @@ export default{
 .pro_crad_info p{
     font-size: $p;
 }
-.swiper-button-next{
-  position: absolute;
-  // right: -10px;
+// .swiper-button-next{
+//   position: absolute;
+//   // right: -10px;
+// }
+// .swiper-button-prev{
+//   position: absolute;
+//   // left: -10px;
+// }
+
+.swiper-button-prev {
+  width: 50px;
+  height: 50px;
+  border-radius: 200px;
+  border: 1px solid $blackWord;
+  color: $blackWord;
+
+  transition: .3s ease-in-out;
+
 }
-.swiper-button-prev{
-  position: absolute;
-  // left: -10px;
+.swiper-button-prev:hover {
+    background-color: $lightGreen;
+    color: $whiteWord;
+    border: 1px solid $lightGreen;
 }
+.swiper-button-prev::after{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f060";
+    font-size: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // width: 60px;
+    // height: 27px;
+    // border-radius: 200px;
+    // border: 1px solid $blackWord;
+    // color: $blackWord;
+
+    // transition: .3s ease-in-out;
+}
+
+
+.swiper-button-next {
+  width: 50px;
+  height: 50px;
+  border-radius: 200px;
+  border: 1px solid $blackWord;
+  color: $blackWord;
+
+  transition: .3s ease-in-out;
+}
+.swiper-button-next:hover {
+    background-color: $lightGreen;
+    color: $whiteWord;
+    border: 1px solid $lightGreen;
+}
+.swiper-button-next::after{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f061";
+    font-size: 14px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
 </style>
