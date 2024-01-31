@@ -83,7 +83,7 @@ export default {
         return{
             newsCard:[
                 {
-                    img: "src/assets/imgs/event/infocard03.jpg",
+                    img: "/imgs/event/infoCard03.jpg",
                     title: "玩具車攝影比賽",
                     timingTag: "進行中",
                     activeTag: "活動",

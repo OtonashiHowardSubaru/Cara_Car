@@ -29,6 +29,6 @@ export default defineConfig({
     },
   },
   server:{
-    host:'10.1.16.67'
+    host:'10.1.18.254'
   }
 })
