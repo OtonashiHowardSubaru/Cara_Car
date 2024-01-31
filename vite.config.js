@@ -29,7 +29,11 @@ export default defineConfig({
       }
     },
   },
+<<<<<<< HEAD
   server:{
     // host:'192.168.1.102' //億家中網路ipv4
   }
+=======
+
+>>>>>>> carapp
 })
