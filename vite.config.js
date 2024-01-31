@@ -34,6 +34,6 @@ export default defineConfig({
   //   //這個host上傳前要清除，再要不然就是不要commit(最好直接不commit)
   // }
   server:{
-    // host:'192.168.1.102' //億家中網路ipv4
+    host:'192.168.1.241'
   }
 })

@@ -88,42 +88,22 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
       // this.axiosGetData();
     },
     methods: {
-      axiosGetData(){
-        axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
-          .then( res=> {
-            // console.log(res)
-            if(res && res.data && res.data.prods){
-              this.responseData = res.data.prods
-              this.displayData = res.data.prods
-              //由於res是一整個方法，這個方法內有好幾個小東西，其中一個就是資料(data)
-              //所以要取值才是res.data，而學長姐的api預設有prods與prodCount
-              //所以才是displayData = res.data.prods
-            }else{
-              console.log('資料沒有回傳到displayData喔')
-            }
-          })
+      handleFilter() {
+        this.displayData = this.responseData.filter((item) => {
+          // console.log(item);
+          return item.title.includes(this.search)
+        })
       },
-    handleFilter() {
-      this.displayData = this.responseData.filter((item) => {
-        // console.log(item);
-        return item.title.includes(this.search)
-      })
-    },
-    getProductImageUrl(imageFileName) {
-      // 返回完整的URL
-      return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
-      // return new URL(`../assets/imgs/product${imageFileName}`);
-    },
-    handleSortChange(newSort){
-        if (newSort === "0") {
-          this.displayData = this.responseData
-        } else if (newSort === "desc") {
-          this.displayData.sort((a, b) => b.prod_price - a.prod_price);
-        } else if (newSort === "asc"){
-          this.displayData.sort((a, b) => a.prod_price - b.prod_price);
-        };
+      handleSortChange(newSort){
+          if (newSort === "0") {
+            this.sh_product_list = this.responseData
+          } else if (newSort === "desc") {
+            this.sh_product_list.sort((a, b) => b.prod_price - a.prod_price);
+          } else if (newSort === "asc"){
+            this.sh_product_list.sort((a, b) => a.prod_price - b.prod_price);
+          };
       },
-  },
+    },
 }
 </script>
 <template>
@@ -158,7 +138,13 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
     <div class="paginator">
         <PageNumber/>
     </div>
-    
+
+    <div class="iwantsellCar">
+            <div class="iwantsellCarbutton" onclick="togglePopup()">
+            <a href="./SecondHandSale"><p>我要<br>賣車</p></a>    
+            </div>
+            
+        </div>
   </div>
 
 <CardShProcess/>
