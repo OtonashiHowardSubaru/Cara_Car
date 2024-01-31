@@ -59,6 +59,20 @@ import NewCardImage06 from "../../assets/imgs/event/infoCard06.jpg"
 import NewCardImage07 from "../../assets/imgs/event/infoCard07.jpg"
 import NewCardImage08 from "../../assets/imgs/event/infoCard08.jpg"
 import NewCardImage09 from "../../assets/imgs/event/infoCard09.jpg"
+
+// import Swiper core and required modules
+import { Navigation} from 'swiper/modules';
+
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+
 export default { 
     components:{
         Swiper,
