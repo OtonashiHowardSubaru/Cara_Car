@@ -3,7 +3,7 @@
     .searchItem{
     position: absolute;
     bottom: 100%;
-    right: 50%;
+    right: 38%;
     ul{
       display: flex;
       justify-content: center;
@@ -58,26 +58,27 @@
 
 @media(max-width: 768px){
   .introduction{
+    
     img{
       display: none;
     }
     .searchItem{
       position: absolute;
-      top: 30px;
-      right: 0;
+      left: 37%;
       ul{
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
         justify-content: center;
         li{
           background-color: $yellow;
-          padding: 15px 10px;
-          border-radius: 0 20px 20px 0;
+          padding: 10px 35px;
+          border-radius: 20px 20px 0 0;
           text-align: center;
-          writing-mode:vertical-lr;
-          cursor: pointer;
+          line-height: 15px;
           a{
             color: $blackWord;
+            
+            
           }
         }
       }
@@ -85,7 +86,7 @@
 
     .sh_detail{
       width: 75%;
-      margin-top: 15px;
+      margin-top: 60px;
       .sh_detail_content{
         display: flex;
         flex-direction: column;
@@ -106,7 +107,4 @@
       }
     }
   }
-
-  
-  
 }
