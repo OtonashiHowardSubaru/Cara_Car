@@ -52,11 +52,11 @@ export default{
         <div class="product_card">
         <RouterLink to='/product'>
           <div class="pro_card_img">
-              <img :src="getProductImageUrl(item.prod_img1)" alt="Product Image">
+              <img :src="item.prod_img1" alt="Product Image">
           </div>
           <div class="pro_crad_info">
               <h6>{{ item.prod_name }}</h6>
-              <p>{{ item.prod_price }}</p>
+              <p>${{ item.prod_price }}</p>
           </div>
         </RouterLink>
         </div>

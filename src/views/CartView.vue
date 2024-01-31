@@ -3,6 +3,16 @@ import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/Header.vue';
 import TitleViewed from '@/components/TitleViewed.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
+
+import product01 from '@/assets/imgs/product/product_1.png';
+import product02 from '@/assets/imgs/product/product_2.png';
+import product03 from '@/assets/imgs/product/product_3.png';
+import product04 from '@/assets/imgs/product/product_4.png';
+import product05 from '@/assets/imgs/product/product_5.png';
+import product06 from '@/assets/imgs/product/product_6.png';
+import product07 from '@/assets/imgs/product/product_7.png';
+import product08 from '@/assets/imgs/product/product_8.png';
+import product09 from '@/assets/imgs/product/product_9.png';
 export default {
 components:{
     MainHeader,TitleViewed,ProCardSwiper,
@@ -32,6 +42,62 @@ data(){
             {c:'花蓮縣'},
             {c:'宜蘭縣'},
             {c:'澎湖縣'},
+        ],
+        productList:[
+        {
+              prod_img1:product01,
+              prod_name:"起始玩家",
+              prod_price:"5000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product02,
+              prod_name:"賓士少爺",
+              prod_price:"10000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product03,
+              prod_name:"賓士少爺二代",
+              prod_price:"12000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product04,
+              prod_name:"敞篷輕旅",
+              prod_price:"12000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product05,
+              prod_name:"野貓戰機",
+              prod_price:"8000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product06,
+              prod_name:"敞篷輕旅二代",
+              prod_price:"14000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product07,
+              prod_name:"赤色風暴",
+              prod_price:"8000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product08,
+              prod_name:"英倫經典",
+              prod_price:"10000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product09,
+              prod_name:"F1一代",
+              prod_price:"18000",
+              linkwhere:"/Product"
+            },
         ],
     }
 },
@@ -162,11 +228,9 @@ methods: {
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
         </form>
-        <TitleViewed/>
-        
     </main>
-    <ProCardSwiper :displayData="displayData" />
-    <ProCardSwiper :displayData="displayData" />
+    <ProCardSwiper :displayData="productList" />
+    <ProCardSwiper :displayData="productList" />
 </template>
 
 <style lang="scss">
