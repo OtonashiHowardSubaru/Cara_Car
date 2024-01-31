@@ -3,6 +3,7 @@
   import ProCardSwiper from '@/components/ProCardSwiper.vue'
   import MainHeader from '@/components/Header.vue';
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
+
   import product01 from '@/assets/imgs/product/product_1.png';
   import product02 from '@/assets/imgs/product/product_2.png';
   import product03 from '@/assets/imgs/product/product_3.png';
@@ -12,7 +13,10 @@
   import product07 from '@/assets/imgs/product/product_7.png';
   import product08 from '@/assets/imgs/product/product_8.png';
   import product09 from '@/assets/imgs/product/product_9.png';
-
+  import thisProductImg01 from '@/assets/imgs/product/sh_product_mainpic.png';
+  import thisProductImg02 from '@/assets/imgs/product/sh_product_litpic.png';
+  import thisProductImg03 from '@/assets/imgs/product/sh_product_litpic1.png';
+  import thisProductImg04 from '@/assets/imgs/product/sh_product_litpic2.png';
   export default {
     components: {
       ProCardSwiper,MainHeader, NumberSelect,
@@ -239,7 +243,7 @@
   </div>
   <!-- <img src="../assets/imgs/product/product_detail_hello.png" alt=""> -->
 </div>
-
+<!-- 我需要讓這兩個卡片swiper的按鈕不會互相影響 -->
 <ProCardSwiper :displayData="productList" />
 <ProCardSwiper :displayData="productList" />
 
