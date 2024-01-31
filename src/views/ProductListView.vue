@@ -7,10 +7,19 @@
   import BtnFilter from '@/components/btn/BtnFilter.vue';
   import MainHeader from '@/components/Header.vue';
 
+  import product01 from '@/assets/imgs/product/product_1.png';
+  import product02 from '@/assets/imgs/product/product_2.png';
+  import product03 from '@/assets/imgs/product/product_3.png';
+  import product04 from '@/assets/imgs/product/product_4.png';
+  import product05 from '@/assets/imgs/product/product_5.png';
+  import product06 from '@/assets/imgs/product/product_6.png';
+  import product07 from '@/assets/imgs/product/product_7.png';
+  import product08 from '@/assets/imgs/product/product_8.png';
+  import product09 from '@/assets/imgs/product/product_9.png';
 
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,MainHeader,
+      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter, MainHeader,
     },
     data(){
       return {
@@ -35,61 +44,25 @@
         ],
         responseData : [],
         displayData: [],
-        sh_product_list: [
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_1.png",
-              prod_name:"極光追逐者",
-              prod_price:"3000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_2.png",
-              prod_name:"極速閃電車",
-              prod_price:"5000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_3.png",
-              prod_name:"太空探險車",
-              prod_price:"8000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_4.png",
-              prod_name:"科技漂移车",
-              prod_price:"6000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_5.png",
-              prod_name:"爆炸速度狂飆车",
-              prod_price:"4000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_6.png",
-              prod_name:"魔法變形賽車",
-              prod_price:"6000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_7.png",
-              prod_name:"閃電漂移車",
-              prod_price:"2500",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_8.png",
-              prod_name:"太空漫步車",
-              prod_price:"3500",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:"/src/assets/imgs/product/sh_product_9.png",
-              prod_name:"磁浮飛行車",
-              prod_price:"5500",
-              linkwhere:"/SecondHand"
-            },
+        sh_contact: [
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'CONTACT',
+            context: '透過電子郵件聯繫我們',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_second_hand.png",
+            shSubtitle:'SECOND-HAND',
+            context: '查看二手車輛商品',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_recycle_car.png",
+            shSubtitle:'RECYCLE CAR',
+            context: '了解二手車輛販賣',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
         ],
       }
     },
@@ -152,7 +125,7 @@
         </div>
         <div class="pro_card_list col-9 col-md-10">
           <ProductCard 
-          :displayData="displayData"
+          :displayData="productList"
           />
         </div>
       </div>

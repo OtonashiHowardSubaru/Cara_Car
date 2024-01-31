@@ -33,7 +33,7 @@ export default defineConfig({
   //   host:'10.1.16.83'
   //   //這個host上傳前要清除，再要不然就是不要commit(最好直接不commit)
   // }
-  server:{
-    host:'192.168.1.241'
-  }
+  // server:{
+  //   host:'10.1.6.221'
+  // }
 })

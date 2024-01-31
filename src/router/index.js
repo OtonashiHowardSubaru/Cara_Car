@@ -28,10 +28,10 @@ const router = createRouter({
     return { top: 0 }
   },
   routes: [
-    // {
-    //   path: '/',
-    //   redirect: '/Index'
-    // },
+    {
+      path: '/',
+      redirect: '/Index'
+    },
     {
       path: '/Index',
       name: 'Index',
@@ -40,7 +40,7 @@ const router = createRouter({
       meta:{title: 'Cara Car',}
     },
     {
-      path: '/',
+      path: '/Home',
       name: 'Home',
       // component: HomeView,
       component: () => import('@/views/HomeView.vue'),
@@ -127,6 +127,18 @@ const router = createRouter({
       component: () => import('@/views/NewsArticleView.vue'),
       meta:{title: '最新消息 | Cara Car',}
     },
+    // {
+    //   path: '/BackLogin',
+    //   name: 'BackLogin',
+    //   component: () => import('@/views/admin/BackLogin.vue'),
+    //   meta:{title: '後台登入 | Cara Car',}
+    // },
+    // {
+    //   path: '/BackAdmin',
+    //   name: 'BackAdmin',
+    //   component: () => import('@/views/admin/BackAdmin.vue'),
+    //   meta:{title: '權限管理 | Cara Car',}
+    // },
   ]
 })
 //以下為上方新增meta:{title:}去更改每個頁面的頁簽名稱才需要解開註解。
