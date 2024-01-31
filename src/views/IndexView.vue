@@ -7,7 +7,7 @@ export default {
     },
     mounted() {
         document.getElementById('frontButton').addEventListener('click', function() {
-            window.location.href = 'https://tibamef2e.com/chd104/g6/front/';
+            window.location.href = 'https://tibamef2e.com/chd104/g6/front/Home';
         });
         document.getElementById('backButton').addEventListener('click', function() {
             window.location.href = 'https://tibamef2e.com/chd104/g6/admin/';
