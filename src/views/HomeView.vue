@@ -177,7 +177,7 @@ export default {
   <div class="indexProductGroup">
     <div class="indexProductTitle">
       <img src="../assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
-      <RouterLink to="/product" class="linkToProductList">
+      <RouterLink to="/productList" class="linkToProductList">
         <!-- <div class="decoLine"></div> -->
         <div class="productListLink">商品一覽</div>
       </RouterLink>
