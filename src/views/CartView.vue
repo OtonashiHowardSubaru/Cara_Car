@@ -2,10 +2,10 @@
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/Header.vue';
 import TitleViewed from '@/components/TitleViewed.vue';
-import ProductCard from '@/components/ProductCard.vue';
+import ProCardSwiper from '@/components/ProCardSwiper.vue';
 export default {
 components:{
-    MainHeader,TitleViewed,
+    MainHeader,TitleViewed,ProCardSwiper,
 },
 data(){
     return {
@@ -165,7 +165,8 @@ methods: {
         <TitleViewed/>
         
     </main>
-    <!-- <ProductCard/> -->
+    <ProCardSwiper :displayData="displayData" />
+    <ProCardSwiper :displayData="displayData" />
 </template>
 
 <style lang="scss">
