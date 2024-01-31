@@ -1,5 +1,4 @@
-.iwantsellCar{
-    .iwantsellCarbutton{
+    .iWantSellCarButton{
         position: fixed;
         bottom: 500px;
         right: 20px;
@@ -16,9 +15,7 @@
         justify-content: center;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 700;
-        p{
         font-size: $p;
-        }
     }
 
     #iwantsellCarOverlay {
@@ -52,4 +49,3 @@
         }
 
     }
-}
