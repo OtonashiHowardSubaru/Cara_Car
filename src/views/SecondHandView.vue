@@ -142,7 +142,7 @@ import mainImage from "@/assets/imgs/product/sh_product_mainpic.png";
         <img :src="mainImage" alt="超強小車車">
       </div>
       <div class="littlepic">
-        <img v-for="(image, index) in littleImages" :key="index" :src="image" alt="超強小車車" @click="showLarge" ref="littlepicImgs">
+        <img v-for="(image, index) in littleImages" :key="index" :src="getImageUrl(image.img)" alt="超強小車車" @click="showLarge" ref="littlepicImgs">
 
       </div>
       
