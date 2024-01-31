@@ -167,9 +167,6 @@
       justify-content: center;
       text-align: center;
       
-      // overflow: hidden;
-      
-      
       .swiper-button-prev {
         position: absolute;
         top: 100px;
@@ -179,7 +176,7 @@
         top: 100px;
       }
       .sh_slider_card{
-        width: 25%;
+        width: 30%;
         margin: 10px 10px 0 30px;
       }
       
@@ -213,6 +210,12 @@
   .slider_left{
     i{
       transform: rotate(180deg);
+    }
+  }
+  .product_card{
+    width: 100%;
+    img{
+      width: 100%;
     }
   }
   
