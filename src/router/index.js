@@ -35,14 +35,12 @@ const router = createRouter({
     {
       path: '/Index',
       name: 'Index',
-      // component: IndexView,
       component: () => import('@/views/IndexView.vue'),
       meta:{title: 'Cara Car',}
     },
     {
       path: '/Home',
       name: 'Home',
-      // component: HomeView,
       component: () => import('@/views/HomeView.vue'),
       meta:{title: '首頁 | Cara Car',}
     },
