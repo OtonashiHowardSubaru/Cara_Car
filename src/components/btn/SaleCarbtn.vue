@@ -56,13 +56,13 @@
 
 <script>
 
-import lightBoxStore from "@/stores/lightBox.js"
+import lightBoxForm from "@/stores/lightBoxForm.js"
 
 export default {
 
     data() {
         return {
-            lightBoxStore: lightBoxStore(),
+            lightBoxForm: lightBoxForm(),
             showLightbox: false,
         };
     },
@@ -90,7 +90,7 @@ export default {
 
 
 <style lang="scss" scoped>
-// @import "@/assets/scss/page/second_hand_sale.scss";
+@import "@/assets/scss/page/second_hand_sale.scss";
 @import "@/assets/scss/components/saleCarbtn.scss";
 </style>
 
