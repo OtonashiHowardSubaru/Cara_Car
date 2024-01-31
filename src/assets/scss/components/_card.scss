@@ -45,14 +45,16 @@
   
           @media (min-width: 768px) {
             width: 30%;
-            background-color: #fff;
+            height: 200px;
+            // background-color: #fff;
             position: relative;
+            background-color: $grey_1;
         }
   
   
-          img:first-child{
+          img{
             width: 60px;
-            margin-right: 30px;
+            // margin-right: 30px;
           }
           
           .card_info { 
@@ -78,7 +80,7 @@
               // margin-right: 40px;
               @media (min-width: 768px) {
                 position: absolute;
-                top: 100%;
+                top: 90%;
                 right: 50%;
 
               }
