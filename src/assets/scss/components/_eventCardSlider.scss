@@ -1,5 +1,7 @@
 .newsCardListSwiper {
     position: relative;
+    display: flex;
+    justify-content: center;
 
 
 
@@ -110,7 +112,7 @@
     .newsCardGroup {
         display: flex;
         align-items: center;
-        
+        background-color: #0000;
 
         .newsCards {
             // width: 890%;
