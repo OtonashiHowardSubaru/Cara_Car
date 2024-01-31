@@ -121,15 +121,6 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
       </div>
       
       <div class="sh_pro_card_list col-9 col-md-10">
-        <!-- <div class="sh_product_card col-md-4" v-for="item in sh_product_list">
-          <div class="sh_pro_card_img">
-            <img :src="item.img" alt="sh_Product Image">
-          </div>
-          <div class="sh_pro_crad_info">
-            <h6>{{ item.sh_product_name }}</h6>
-            <p>${{ item.sh_product_price }}</p>
-          </div>
-        </div> -->
         <ProductCard
         :displayData = "sh_product_list"
         />

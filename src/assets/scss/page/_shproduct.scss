@@ -1,4 +1,4 @@
-//分頁標題css起點
+
 .sh_pro_list_title{
   display: flex;
   justify-content: center;
@@ -8,29 +8,33 @@
     margin-top: 10px;
   }
 }
-//分頁標題css終點
 
-
-//商店名css起點
-.store_name{
-  display: flex;
-  justify-content: space-between;
-  padding: 30px 20px;
-  border-bottom: $bor2 solid $blackWord;
-  h2{
-    font-size: $h2;
-    height: fit-content;
+.container{
+  .row{
+    display: flex;
+    justify-content: center;
+  }
+  .store_name{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    border-bottom: $bor2 solid $blackWord;
+    h2{
+      font-size: $h2;
+      height: fit-content;
+    }
   }
 }
+
 
 @media (min-width:768px){
   .store_name{
     margin: 0 8.333%;
   }
 }
-//商店名css終點點
 
-// 價格篩選器css終點
+
+// 價格篩選器c
 
 .sh_pro_card_list {
   margin: 60px auto;
