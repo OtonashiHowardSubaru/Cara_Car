@@ -1,11 +1,11 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/Header.vue';
-import TitleViewed from '@/components/TitleViewed.vue';
+// import TitleViewed from '@/components/TitleViewed.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 export default {
 components:{
-    MainHeader,TitleViewed,ProCardSwiper,
+    MainHeader,ProCardSwiper,
 },
 data(){
     return {
@@ -33,6 +33,7 @@ data(){
             {c:'宜蘭縣'},
             {c:'澎湖縣'},
         ],
+        
     }
 },
 created() {
@@ -166,7 +167,7 @@ methods: {
         
     </main>
     <ProCardSwiper :displayData="displayData" />
-    <ProCardSwiper :displayData="displayData" />
+    
 </template>
 
 <style lang="scss">
