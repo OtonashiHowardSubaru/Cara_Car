@@ -17,7 +17,7 @@
                             <div class="psw">
                                 <p>連絡電話</p>
                                 <div class="psw_input">
-                                    <input type="phone" id="phone" name="username" placeholder="電子郵件">
+                                    <input type="phone" id="phone" name="username" placeholder="連絡電話">
 
                                 </div>
                             </div>
@@ -27,7 +27,7 @@
                         <div class="other_SellCarForm">
                             <div class="other_SellCarForm_title">
                                 <div class="other_line"></div>
-                                <h2>更多方式登入</h2>
+                                <h2>照片及影片上傳</h2>
                                 <div class="other_line"></div>
                             </div>
                             <div class="SellCarForm_group">
