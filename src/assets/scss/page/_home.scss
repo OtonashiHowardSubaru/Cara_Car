@@ -61,6 +61,9 @@
         justify-content: start;
         align-items: end;
         z-index: 3;
+        img{
+            width: clamp(150px,40%,250px);
+        }
         .linkToProductList{
             margin: 0 0 5px 20px;
             display: flex;
@@ -240,7 +243,9 @@
             margin-bottom: 50px;
         }
 
-
+        img{
+            width: clamp(150px,40%,205px);
+        }
         .linkToEvent {
             // width: 195px;
             margin: 0 0 5px 20px;
