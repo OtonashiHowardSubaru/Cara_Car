@@ -1,51 +1,117 @@
-    .iWantSellCarButton{
-        position: fixed;
-        bottom: 500px;
-        right: 20px;
-        background-color: $green;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        font-size: 24px;
-        cursor: pointer;
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 700;
-        font-size: $p;
+.fade-enter-active, .fade-leave-active {
+    transition:opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+#SellCarFormOverlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color:rgba($grey_3,0.8);
+}
+#SellCarFormModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: $borr3;
+    background-color: $grey_2;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+    z-index: 1000;
+}
+@media (min-width:320px){
+    #SellCarFormModal {
+        min-width: 375px;
+        max-width: 1920px;
     }
-
-    #iwantsellCarOverlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 999;
+    .close {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        font-size: 40px;
+        cursor: pointer;
+    }
+    
+    .SellCarForm_container{
+        width: 60%;
+        margin: auto;
+        padding-top: 10px;
+    }
+    .eye{
+        position: absolute;
+        top: 40%;
+        right: 2%;
+        width: 20px;
+        cursor: pointer;
+    }
+    .SellCarForm_textarea{
         width: 100%;
-        height: 100%;
-        background-color:rgba($grey_3,0.8);
-        
-        #iwantsellCarModal{
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        display: flex;
+        flex-direction: column;
+        border-style: none;
+        & h2{
+            font-size: $mh4;
+            text-align: center;
+            margin-block: 15px;
+        }
+        & .email{
+            margin-bottom: 10px;
+        }
+        & .psw_input{
             position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: $borr3;
-            background-color: $grey_2;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
-            z-index: 1000;
-
-            & iwantsellCar_container{
-                .sellcarforms{
-                    display: flex;
-                }
+        }
+        & input{
+            position: relative;
+            width: 100%;
+            padding: 5px 15px;
+            border-radius: $borr2;
+            font-size: $mh6;
+        }
+        & button{
+            height: 50px;
+            width: 100%;
+            font-size: $p;
+            margin-block: 5px;
+            color: $whiteWord;
+            border-radius: $borr2;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s linear;
+            background-color: $lightGreen;
+            &:hover{background-color: #9baa7a;}
+        }
+        & p{
+            font-size: $mh5;
+        }
+        & span{
+            color: $blackWord;
+            font-size: $mh6;
+            & a{
+                font-size: $mh6;
             }
         }
-
+        & a{
+            color: $blackWord;
+            text-align: right;
+            font-size: $default;
+        }
     }
+    
+}
+
+@media (min-width:768px){
+    #SellCarFormModal {
+        padding: 40px;
+        width: 50%;
+        // min-width: 768px;
+    }
+}
