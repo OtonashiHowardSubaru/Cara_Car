@@ -73,7 +73,7 @@
 <script>
 import MainHeader from '@/components/Header.vue'
 import EventCardSlider from '@/components/card/EventCardSlider.vue'
-import NewCardImage03 from "../../assets/imgs/event/infoCard03.jpg"
+import NewCardImage03 from "@/assets/imgs/event/infoCard03.jpg"
 export default {
     components:{
         MainHeader,
