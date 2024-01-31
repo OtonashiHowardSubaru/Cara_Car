@@ -4,6 +4,7 @@
   import MainHeader from '@/components/Header.vue';
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue"
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
+
   import product01 from '@/assets/imgs/product/product_1.png';
   import product02 from '@/assets/imgs/product/product_2.png';
   import product03 from '@/assets/imgs/product/product_3.png';
@@ -13,7 +14,10 @@
   import product07 from '@/assets/imgs/product/product_7.png';
   import product08 from '@/assets/imgs/product/product_8.png';
   import product09 from '@/assets/imgs/product/product_9.png';
-
+  import thisProductImg01 from '@/assets/imgs/product/sh_product_mainpic.png';
+  import thisProductImg02 from '@/assets/imgs/product/sh_product_litpic.png';
+  import thisProductImg03 from '@/assets/imgs/product/sh_product_litpic1.png';
+  import thisProductImg04 from '@/assets/imgs/product/sh_product_litpic2.png';
   export default {
     components: {
       ProCardSwiper,MainHeader,ProductIntroCard, NumberSelect,
