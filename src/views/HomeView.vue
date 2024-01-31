@@ -160,7 +160,7 @@ export default {
     </nav>
   </header>
   <Transition name="fade">
-      <LoginBox v-if="lightBoxStore.showLightbox"/>
+    <LoginBox v-if="lightBoxStore.showLightbox" />
   </Transition>
 
   <div class="indexBannerGroup">
@@ -202,7 +202,27 @@ export default {
     </div>
   </div>
 
-  <div class="indexAboutGroup"></div>
+  <div class="indexAboutUsGroup">
+    <div class="indexAboutBlock"></div>
+    <div class="indexAboutUsImg">
+      <img src="../assets/imgs/Home/indexAboutUsImg.png" alt="indexAboutUsImg">
+    </div>
+    <div class="indexAboutUsContent">
+      <div class="indexAboutUsTitle">
+        <img src="../assets/imgs/Home/indexAboutUsTitle.svg" alt="">
+        <img class="decoImg" src="../assets/imgs/draw/person_ballon.PNG" alt="person_sit">
+      </div>
+      <div class="indexAboutText">
+        <p>我們致力於提供各種特色的玩具車，
+          讓每個孩子都能擁有專屬的玩具車，
+          展開一場屬於他們獨特的冒險旅程。</p>
+      </div>
+      <RouterLink to="/News" class="linkToEvent">
+        <!-- <div class="decoLine"></div> -->
+        <div class="eventLink">了解更多</div>
+      </RouterLink>
+    </div>
+    </div>
 
   <div class="indexGameGroup">
     <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
