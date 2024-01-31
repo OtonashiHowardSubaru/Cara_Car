@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   border-bottom: $bor1 solid $blackWord;
-  padding: 100px 0 10px 0;
+  margin: 100px 0 10px 0;
   h1{
     width: clamp(320px,100vw,350px);
     img{
