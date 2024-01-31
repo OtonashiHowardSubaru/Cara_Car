@@ -5,9 +5,10 @@
 import EventCardSlider from '@/components/card/EventCardSlider.vue'
 import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
+import CardShProcess from '@/components/card/CardShProcess.vue'
 export default {
   components: {
-    EventCardSlider, LoginBox
+    EventCardSlider, LoginBox,CardShProcess
   },
   data() {
     return {
@@ -153,6 +154,7 @@ export default {
       </svg>
     </div>
   </div>
+  <CardShProcess/>
 </template>
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
