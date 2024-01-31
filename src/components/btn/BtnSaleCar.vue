@@ -1,8 +1,8 @@
 <template>
     <!-- 我要賣車的表格按鈕lightbox -->
-    <div class="SellCarFormButton">
+    <!-- <div class="SellCarFormButton">
         <button @click="openLightbox">填寫表格1</button>
-    </div>
+    </div> -->
 
     <div id="SellCarFormOverlay" @click="handleClick">
                 <div id="SellCarFormModal">
@@ -46,26 +46,22 @@ export default {
     data() {
         return {
             lightBoxForm:lightBoxForm(),
-            showLightbox: false,
         };
     },
     methods: {
-        openLightbox() {
-            this.showLightbox = true;
-            
-        },
         closeLightbox() {
-            this.showLightbox = false;
-
+            this.lightBoxForm.closeLightbox()
         },
+
         handleClick(e) {
             // console.log(e)
             if (e.target.id === 'SellCarFormOverlay') {
                 this.closeLightbox();
-            } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
-                this.$router.push('/Register');
-                this.closeLightbox();
-            }
+            } 
+            // else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
+            //     this.$router.push('/Register');
+            //     this.closeLightbox();
+            // }
         },
     },
 }

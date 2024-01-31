@@ -92,15 +92,16 @@
 
         </section>
 
-        <div class="iWantSellCarButton">
+        <!-- <div class="iWantSellCarButton">
             <div @click="openBtnSaleCar">填寫表格</div>
-        </div>
+        </div> -->
         <div class="SellCarFormButton">
-        <button @click="openBtnSaleCar">填寫表格2</button>
+        <button @click="openLightbox">填寫表格2</button>
     </div>
-        
-        <!-- <BtnSaleCar v-if="lightBoxStore.showLightbox"/> -->
-        <BtnSaleCar/>
+        <Transition name="fade">
+            <BtnSaleCar v-if="lightBoxForm.showLightbox"/>
+        </Transition>
+        <!-- <BtnSaleCar/> -->
         
     </div>
     
@@ -141,20 +142,18 @@ export default {
         };
     },
     methods: {
-        // openLightbox() {
-        //     this.showLightbox = true;
-        //     // console.log('我有抓到');
-        // },
-        // closeLightbox() {
-        //     this.showLightbox = false;
-        // },
+        openLightbox() {
+          // this.showLightbox = true;
+            this.lightBoxForm.openLightbox()
+        },
+        closeLightbox() {
+          // this.showLightbox = false;
+            this.lightBoxForm.closeLightbox()
+        },
         // handleClick(e) {
         //     if (e.target.id === 'loginOverlay') {
         //         this.closeLightbox();
         //     }
-        // },
-        // handleLogin() {
-        //     console.log('Login clicked');
         // },
     },
     mounted() {
