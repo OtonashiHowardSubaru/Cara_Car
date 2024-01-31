@@ -5,9 +5,20 @@
 import EventCardSlider from '@/components/card/EventCardSlider.vue'
 import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
+import ProductCard from "@/components/ProductCard.vue";
+
+import product01 from '@/assets/imgs/product/product_1.png';
+import product02 from '@/assets/imgs/product/product_2.png';
+import product03 from '@/assets/imgs/product/product_3.png';
+import product04 from '@/assets/imgs/product/product_4.png';
+import product05 from '@/assets/imgs/product/product_5.png';
+import product06 from '@/assets/imgs/product/product_6.png';
+import product07 from '@/assets/imgs/product/product_7.png';
+import product08 from '@/assets/imgs/product/product_8.png';
+
 export default {
   components: {
-    EventCardSlider, LoginBox
+    EventCardSlider, LoginBox, ProductCard,
   },
   data() {
     return {
@@ -39,6 +50,56 @@ export default {
         { p: 'SHOP INFO' },
         { p: 'MEMBER' },
         { p: 'MY CART' },
+      ],
+      productList:[
+        {
+              prod_img1:product01,
+              prod_name:"起始玩家",
+              prod_price:"5000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product02,
+              prod_name:"賓士少爺",
+              prod_price:"10000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product03,
+              prod_name:"賓士少爺二代",
+              prod_price:"12000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product04,
+              prod_name:"敞篷輕旅",
+              prod_price:"12000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product05,
+              prod_name:"野貓戰機",
+              prod_price:"8000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product06,
+              prod_name:"敞篷輕旅二代",
+              prod_price:"14000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product07,
+              prod_name:"赤色風暴",
+              prod_price:"8000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product08,
+              prod_name:"英倫經典",
+              prod_price:"10000",
+              linkwhere:"/Product"
+            },
       ],
     }
   },
@@ -112,7 +173,20 @@ export default {
     <div class="indexBannerBagBlock"></div>
   </div>
 
-  <div class="indexProductGroup"></div>
+  <div class="indexProductGroup">
+    <div class="indexProductTitle">
+      <img src="../assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
+      <RouterLink to="/product" class="linkToProductList">
+        <!-- <div class="decoLine"></div> -->
+        <div class="productListLink">商品一覽</div>
+      </RouterLink>
+    </div>
+    <div class="indexDisplayProducts">
+      <ProductCard
+      :displayData="productList"
+      />
+    </div>
+  </div>
 
   <div class="indexEventGroup">
     <div class="indexEventTitle">
