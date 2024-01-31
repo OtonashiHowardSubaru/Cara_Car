@@ -95,7 +95,9 @@ export default{
     }
   },
   
-  created() {},
+  created() {
+    
+  },
   methods: {
     toTop(){
       document.documentElement.scrollTop = 0
@@ -106,9 +108,6 @@ export default{
   },
   destroyed() {
 
-  },
-  methods: {
-    
   },
 }
 </script>
