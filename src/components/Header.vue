@@ -78,7 +78,7 @@ export default {
         <nav>
             <!-- 電腦版header -->
             <!-- 內頁才有這個LOGO圖 -->
-            <RouterLink to="/Home">
+            <RouterLink to="/">
                 <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
             </RouterLink>
             <ul class="indexHeaderNav">
