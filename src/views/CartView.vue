@@ -224,7 +224,7 @@ methods: {
                 </div>
                 <input type="text" class="cartInput"> 
                 <p class="cartInputTitle">備註欄</p>
-                <input type="text" size="20" class="remark">
+                <input type="textarea" size="100" class="remark">
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
         </form>
