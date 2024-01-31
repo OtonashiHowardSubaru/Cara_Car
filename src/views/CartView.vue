@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/Header.vue';
-import TitleViewed from '@/components/TitleViewed.vue';
+// import TitleViewed from '@/components/TitleViewed.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 
 import product01 from '@/assets/imgs/product/product_1.png';
@@ -15,7 +15,7 @@ import product08 from '@/assets/imgs/product/product_8.png';
 import product09 from '@/assets/imgs/product/product_9.png';
 export default {
 components:{
-    MainHeader,TitleViewed,ProCardSwiper,
+    MainHeader,ProCardSwiper,
 },
 data(){
     return {
