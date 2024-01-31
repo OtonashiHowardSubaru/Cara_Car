@@ -44,26 +44,26 @@
         ],
         responseData : [],
         displayData: [],
-        // sh_contact: [
-        //   {
-        //     img: "src/assets/imgs/product/sh_process_bird.png",
-        //     shSubtitle:'CONTACT',
-        //     context: '透過電子郵件聯繫我們',
-        //     arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-        //   },
-        //   {
-        //     img: "src/assets/imgs/product/sh_process_second_hand.png",
-        //     shSubtitle:'SECOND-HAND',
-        //     context: '查看二手車輛商品',
-        //     arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-        //   },
-        //   {
-        //     img: "src/assets/imgs/product/sh_process_recycle_car.png",
-        //     shSubtitle:'RECYCLE CAR',
-        //     context: '了解二手車輛販賣',
-        //     arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-        //   },
-        // ],
+        sh_contact: [
+          {
+            img: "src/assets/imgs/product/sh_process_bird.png",
+            shSubtitle:'CONTACT',
+            context: '透過電子郵件聯繫我們',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_second_hand.png",
+            shSubtitle:'SECOND-HAND',
+            context: '查看二手車輛商品',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+          {
+            img: "src/assets/imgs/product/sh_process_recycle_car.png",
+            shSubtitle:'RECYCLE CAR',
+            context: '了解二手車輛販賣',
+            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+          },
+        ],
         productList:[
         {
               prod_img1:product01,
