@@ -18,7 +18,7 @@ import product08 from '@/assets/imgs/product/product_8.png';
 
 export default {
   components: {
-    EventCardSlider, LoginBox
+    EventCardSlider, LoginBox, ProductCard, 
   },
   data() {
     return {
@@ -182,8 +182,8 @@ export default {
       </RouterLink>
     </div>
     <div class="indexDisplayProducts">
-      <ProductCard
-      :displayData="productList"
+      <ProductCard 
+        :displayData="productList"
       />
     </div>
   </div>
