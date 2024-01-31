@@ -5,7 +5,10 @@
   border-bottom: $bor1 solid $blackWord;
   padding: 100px 0 10px 0;
   h1{
-    // font-size: $h1;
+    width: clamp(320px,100vw,350px);
+    img{
+      width: 100%;
+    }
   }
 }
 //分頁標題css終點
