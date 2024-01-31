@@ -230,11 +230,15 @@
 
     .indexEventTitle {
         width: 90%;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         display: flex;
         justify-content: start;
         align-items: end;
         z-index: 3;
+
+        @media (min-width:768px) {
+            margin-bottom: 50px;
+        }
 
 
         .linkToEvent {
@@ -248,18 +252,6 @@
             position: relative;
             
             &::after {
-                // content:'';
-                // display: block;
-                // width: 0px;
-                // height: 0px;
-                // position: absolute;
-                // background-color: #faa;
-                // border-bottom: 40px solid #faa;
-                // border-top: 0;
-                // border-left: 10px solid #faa;
-                // right: -10px;
-                // bottom: 0;
-
                 content: '';
                 display: block;
                 width: 0px;
