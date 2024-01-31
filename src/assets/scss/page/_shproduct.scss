@@ -164,6 +164,12 @@
       
       // overflow: hidden;
       
+      
+      .swiper-button-prev {
+        background-color: #ce9d50;
+        color: #691d1d;
+        
+      }
       .sh_slider_card{
         width: 25%;
         margin: 10px 10px 0 30px;
@@ -201,6 +207,7 @@
       transform: rotate(180deg);
     }
   }
+  
   
 }
 
@@ -258,10 +265,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    
-      .mainpic{
-        
-      }
 
       .littlepic{
         box-sizing: border-box;
@@ -310,6 +313,13 @@
         font-size: 12px;
       }
     }
+  }
+
+  .recommand{
+    .product_card{
+      width: 80%;
+    }
+    
   }
   
 }

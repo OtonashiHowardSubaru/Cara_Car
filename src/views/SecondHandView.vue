@@ -6,13 +6,17 @@ import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/Header.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
-import BtnProductBuy from "@/components/btn/BtnProductBuy.vue"
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+
 
 
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,BtnProductBuy
+    ProductCard, MainHeader,ProductIntroCard,Swiper,SwiperSlide,
 },
     data(){
       return {
@@ -86,6 +90,12 @@ import BtnProductBuy from "@/components/btn/BtnProductBuy.vue"
 
       }
     },
+    setup() {
+      return {
+        modules: [Navigation],
+      };
+    },
+    props:['displayData', ],
     // created() {
       
     // },
@@ -168,49 +178,63 @@ import BtnProductBuy from "@/components/btn/BtnProductBuy.vue"
 <div class="recommand">
   <div class="view">
     <TitleViewed/>
-    <div class="sh_prod_slider" >
-      <button class="slider_left"><i class="fa-solid fa-arrow-right"></i></button>
-    
-      <div class="sh_slider_card" v-for="(item, index) in sh_product_list.slice(0, 3)" :key="index">
-        <div class="sh_pro_card_img">
-          <img :src="item.prod_img1" alt="sh_Product Image">
+    <div class="sh_prod_slider">
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <swiper :slides-per-view="3" :space-between="30" :navigation="{
+        nextEl: '.swiper-button-next' ,
+        prevEl: '.swiper-button-prev',
+        }" 
+        :modules="modules" class="mySwiper">
+      <swiper-slide v-for="(item, index) in sh_product_list" :key="index">
+        <div class="product_card">
+          <router-link :to="item.linkwhere">
+            <div class="pro_card_img">
+              <img :src="item.prod_img1" alt="Product Image">
+            </div>
+            <div class="pro_crad_info">
+              <h6>{{ item.prod_name }}</h6>
+              <p>{{ item.prod_price }}</p>
+            </div>
+          </router-link>
         </div>
-        <div class="sh_pro_crad_info">
-          <h6>{{ item.prod_name }}</h6>
-          <p>{{ item.prod_price }}</p>
-        </div>
-      </div>
-
-      <button><i class="fa-solid fa-arrow-right"></i></button>
+      </swiper-slide>
+    </swiper>
+    <!-- <div class="btnSliderLeftRight">
+            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-arrow-right"></i>
+        </div> -->
     </div>
-
-   
   </div>
 
   <div class="maybeYouLike">
     <TitleMaybeYouLike/>
     <div class="sh_prod_slider" >
-      <button class="slider_left"><i class="fa-solid fa-arrow-right"></i></button>
-    
-      <div class="sh_slider_card" v-for="(item, index) in sh_product_list.slice(0, 3)" :key="index">
-        <div class="sh_pro_card_img">
-          <img :src="item.prod_img1" alt="sh_Product Image">
-        </div>
-        <div class="sh_pro_crad_info">
-          <h6>{{ item.prod_name }}</h6>
-          <p>{{ item.prod_price }}</p>
-        </div>
+      <div class="sh_prod_slider">
+        <swiper :slides-per-view="3" :space-between="30" :navigation="{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        }" 
+        :modules="modules" 
+        class="mySwiper">
+        <swiper-slide v-for="(item, index) in sh_product_list" :key="index">
+          <div class="product_card">
+            <router-link :to="item.linkwhere">
+              <div class="pro_card_img">
+                <img :src="item.prod_img1" alt="Product Image">
+              </div>
+              <div class="pro_crad_info">
+                <h6>{{ item.prod_name }}</h6>
+                <p>{{ item.prod_price }}</p>
+              </div>
+            </router-link>
+          </div>
+        </swiper-slide>
+        </swiper>
       </div>
-
-      <button><i class="fa-solid fa-arrow-right"></i></button>
     </div>
-
   </div>
 </div>
-
-<!-- <div class="salecar">
-  <a href="./SecondHandSaleView.vue">我要賣車</a>
-</div> -->
 
 
 
