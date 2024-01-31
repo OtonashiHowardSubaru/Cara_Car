@@ -6,6 +6,7 @@ import EventCardSlider from '@/components/card/EventCardSlider.vue'
 import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
 import ProductCard from "@/components/ProductCard.vue";
+import CardShProcess from '@/components/card/CardShProcess.vue'
 
 import product01 from '@/assets/imgs/product/product_1.png';
 import product02 from '@/assets/imgs/product/product_2.png';
@@ -18,7 +19,7 @@ import product08 from '@/assets/imgs/product/product_8.png';
 
 export default {
   components: {
-    EventCardSlider, LoginBox, ProductCard, 
+    EventCardSlider, LoginBox, ProductCard, CardShProcess
   },
   data() {
     return {
