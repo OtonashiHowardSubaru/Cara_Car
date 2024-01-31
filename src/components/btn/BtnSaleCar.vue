@@ -12,7 +12,7 @@
                             <h2>我要賣車</h2>
                             <div class="email">
                                 <p>聯絡人姓名</p>
-                                <input type="email" id="username" name="username" placeholder="電子郵件">
+                                <input type="email" id="username" name="username" placeholder="輸入姓名">
                             </div>
                             <div class="psw">
                                 <p>連絡電話</p>
