@@ -549,6 +549,7 @@
         left: 80%;
         position: absolute;
         cursor: pointer;
+        transition-duration: 1s;
     }
     .indexGameButton:hover{
         background-color: $lightBlue;
