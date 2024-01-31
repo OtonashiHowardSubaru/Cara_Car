@@ -46,6 +46,7 @@ export default {
           <div class="item_text">
             <p>{{ item.shSubtitle }}</p>
             <p>{{ item.context }}</p>
+            
           </div>
             
           <img :src="item.arrowImg" alt="" class="arrow">
