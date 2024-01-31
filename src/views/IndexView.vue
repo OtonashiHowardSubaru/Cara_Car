@@ -20,9 +20,9 @@ export default {
     <div class="choosePage">
         <div class="g6Title">Cara Car</div>
         <div class="btnLeft">
-            <RouterLink to="/Home">
+            <!-- <RouterLink to="/Home"> -->
                 <button id="frontButton">前台</button>
-            </RouterLink>
+            <!-- </RouterLink> -->
         </div>
         <div class="bImg">
             <img src="../../public/imgs/chooseBG.jpg" alt="bg">
