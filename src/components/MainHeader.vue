@@ -1,4 +1,4 @@
-<!-- 小龜老師看這裡 ↓↓ -->
+<!-- 疑問疑問 ↓↓小龜老師看這裡 ↓↓ 疑問疑問-->
 <!-- 在這頁中有引用燈箱的store和component，這頁的header是手機板的nav，但在HomeView.vue檔中引用燈箱和MainHeader.vue就會變成有兩個燈箱，而且我修改燈箱的css他會影分身成兩個 -->
 <template>
   <header class="mainHeader">

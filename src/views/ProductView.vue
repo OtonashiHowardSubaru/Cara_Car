@@ -1,4 +1,3 @@
-<!-- ↓↓ 小龜老師看這頁第193行 ↓↓ -->
 <script>
   import axios from 'axios'; //引入函式庫
   import ProCardSwiper from '@/components/ProCardSwiper.vue'
@@ -188,7 +187,7 @@
 
 
 <ProductIntroCard/>
-<!-- ↓↓ 小龜老師看這裡 ↓↓ -->
+<!-- 疑問疑問疑問 ↓↓ 小龜老師看這裡 ↓↓ 疑問疑問疑問疑問 -->
 <!-- 我需要讓這兩個卡片swiper的按鈕不會互相影響 -->
 <ProCardSwiper :displayData="productList" />
 <ProCardSwiper :displayData="productList" />
