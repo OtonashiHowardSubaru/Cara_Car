@@ -6,12 +6,12 @@ import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/Header.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
-import mainImage from "@/assets/imgs/product/sh_product_mainpic.png"
+import mainImage from "@/assets/imgs/product/sh_product_mainpic.png";
 
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,BtnProductBuy
+    ProductCard, MainHeader,ProductIntroCard,
 },
     data(){
       return {
@@ -144,11 +144,6 @@ import mainImage from "@/assets/imgs/product/sh_product_mainpic.png"
       <div class="littlepic">
         <img v-for="(image, index) in littleImages" :key="index" :src="image" alt="超強小車車" @click="showLarge" ref="littlepicImgs">
 
-
-        <!-- <img src="../assets/imgs/product/sh_product_mainpic.png" alt="超強小車車">
-        <img src="../assets/imgs/product/sh_product_litpic.png" alt="超強小車車">
-        <img src="../assets/imgs/product/sh_product_litpic1.png" alt="超強小車車">
-        <img src="../assets/imgs/product/sh_product_litpic2.png" alt="超強小車車"> -->
       </div>
       
     </div>
