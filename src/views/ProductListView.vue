@@ -6,9 +6,20 @@
   import PageNumber from "@/components/btn/PageNumber.vue";
   import BtnFilter from '@/components/btn/BtnFilter.vue';
   import MainHeader from '@/components/Header.vue';
+
+  import product01 from '@/assets/imgs/product/product_1.png';
+  import product02 from '@/assets/imgs/product/product_2.png';
+  import product03 from '@/assets/imgs/product/product_3.png';
+  import product04 from '@/assets/imgs/product/product_4.png';
+  import product05 from '@/assets/imgs/product/product_5.png';
+  import product06 from '@/assets/imgs/product/product_6.png';
+  import product07 from '@/assets/imgs/product/product_7.png';
+  import product08 from '@/assets/imgs/product/product_8.png';
+  import product09 from '@/assets/imgs/product/product_9.png';
+
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,MainHeader
+      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter, MainHeader,
     },
     data(){
       return {
@@ -52,6 +63,62 @@
             context: '了解二手車輛販賣',
             arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
           },
+        ],
+        productList:[
+        {
+              prod_img1:product01,
+              prod_name:"起始玩家",
+              prod_price:"5000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product02,
+              prod_name:"賓士少爺",
+              prod_price:"10000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product03,
+              prod_name:"賓士少爺二代",
+              prod_price:"12000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product04,
+              prod_name:"敞篷輕旅",
+              prod_price:"12000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product05,
+              prod_name:"野貓戰機",
+              prod_price:"8000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product06,
+              prod_name:"敞篷輕旅二代",
+              prod_price:"14000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product07,
+              prod_name:"赤色風暴",
+              prod_price:"8000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product08,
+              prod_name:"英倫經典",
+              prod_price:"10000",
+              linkwhere:"/Product"
+            },
+            {
+              prod_img1:product09,
+              prod_name:"F1一代",
+              prod_price:"18000",
+              linkwhere:"/Product"
+            },
         ],
       }
     },
@@ -114,7 +181,7 @@
         </div>
         <div class="pro_card_list col-9 col-md-10">
           <ProductCard 
-          :displayData="displayData"
+          :displayData="productList"
           />
         </div>
       </div>
