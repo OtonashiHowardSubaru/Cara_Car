@@ -10,7 +10,7 @@
     border-bottom: $bor1 solid $blackWord;
 }
 .cartTitle img{
-    width: 60%; 
+    width: 70%; 
 }
 .cartContent{
     font-family:'Noto Sans' ;
@@ -23,26 +23,26 @@
     margin-top: 5%;
 }
 .productName{
-    width: 30%;
+    width: 35%;
     border-bottom: $bor1 solid $blackWord;
     padding-left: 5%;
 }
 .count{
-    width: 20%;
+    width: 25%;
     padding-left: 10%;
     border-bottom: $bor1 solid $blackWord;
 }
 .countTotal{
-    width: 18%;
+    width: 20%;
     padding-left: 8%;
     border-bottom: $bor1 solid $blackWord;
 }
 .productCard{
     display: flex;
     align-items: center;
-    width: 68%;
+    width: 80%;
     margin: 1% auto;
-    padding: 1% 5% 1% 5%;
+    padding: 1% 6% 1% 5%;
 }
 .productCard img{
     width: 15%;
@@ -95,12 +95,12 @@ input[type=number]::-webkit-outer-spin-button {
     font-family:'Noto Sans' ;
 }
 .custom{
-    width: 68%;
+    width: 80%;
     border-bottom: $bor1 solid $blackWord;
     padding-left: 5%;
 }
 .customPlate{
-    width:68%;
+    width:80%;
     background-color: $grey_1;
     border-radius: $borr2;
     margin: 3% auto;
@@ -124,7 +124,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: 'Kosugi Maru';
 }
 .receiptnformation{
-    width: 68%;
+    width: 80%;
     height: 650px;
     border-radius: $borr2;
     background-color: $grey_2;
@@ -192,7 +192,7 @@ input[type=number]::-webkit-outer-spin-button {
 .cartPrice{
     font-family:'Noto Sans' ;
     font-weight: 600;
-    width:68%;
+    width:80%;
     background-color: $grey_2;
     border-radius: $borr1;
     margin: 3% auto;
@@ -215,7 +215,7 @@ input[type=number]::-webkit-outer-spin-button {
 .cartMatter{
     font-family:'Noto Sans' ;
     font-weight: 600;
-    width:68%;
+    width:80%;
     background-color: $grey_2;
     border-radius: $borr1;
     margin: 10% auto;
