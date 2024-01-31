@@ -7,7 +7,7 @@ export default {
     },
     mounted() {
         document.getElementById('frontButton').addEventListener('click', function() {
-            window.location.href = 'https://tibamef2e.com/chd104/g6/front/';
+            // window.location.href = 'https://tibamef2e.com/chd104/g6/front/';
         });
         document.getElementById('backButton').addEventListener('click', function() {
             window.location.href = 'https://tibamef2e.com/chd104/g6/admin/';
@@ -20,13 +20,17 @@ export default {
     <div class="choosePage">
         <div class="g6Title">Cara Car</div>
         <div class="btnLeft">
-            <button id="frontButton">前台</button>
+            <RouterLink to="/Home">
+                <button id="frontButton">前台</button>
+            </RouterLink>
         </div>
         <div class="bImg">
             <img src="../../public/imgs/chooseBG.jpg" alt="bg">
         </div>
         <div class="btnRight">
-            <button id="backButton">後台</button>
+            <!-- <RouterLink to="/BackLogin"> -->
+                <button id="backButton">後台</button>
+            <!-- </RouterLink> -->
         </div>
     </div>
 </template>
