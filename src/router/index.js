@@ -28,10 +28,10 @@ const router = createRouter({
     return { top: 0 }
   },
   routes: [
-    {
-      path: '/',
-      redirect: '/Index'
-    },
+    // {
+    //   path: '/',
+    //   redirect: '/Index'
+    // },
     {
       path: '/Index',
       name: 'Index',
