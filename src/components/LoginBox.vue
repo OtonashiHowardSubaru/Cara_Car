@@ -1,34 +1,23 @@
 <script>
-// import axios from 'axios';
-// import { mapActions } from 'pinia'; // mapActions pinia的方法，取得api的
-// import userStore from '@/stores/user.js'
+import lightBoxStore from "@/stores/lightBox.js"
 export default {
     data() {
         return {
+            lightBoxStore:lightBoxStore(),
             username: '',
             psw6666: '',
             pswVisible: false,
-            showLightbox: false,
         };
     },
-    // components: {
-
-    // },
-    // created() {
-    //     this.axiosGetData();
-    // },
     methods: {
-        openLightbox() {
-            this.showLightbox = true;
-        },
         closeLightbox() {
-            this.showLightbox = false;
+            this.lightBoxStore.closeLightbox()
         },
         togglePsw() {
-            // console.log(togglePswVisbility)
             this.pswVisible = !this.pswVisible;
         },
         handleClick(e) {
+            console.log(e)
             if (e.target.id === 'loginOverlay') {
                 this.closeLightbox();
             } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
@@ -36,50 +25,15 @@ export default {
                 this.closeLightbox();
             }
         },
-        handleLogin() {
-        // Handle login logic
-        console.log('Login clicked');
-    }
-        // ...mapActions(userStore, ['updateToken']),
-        // signin() {
-        //     axios.post('https://fakestoreapi.com/auth/login', {
-        //         username: "mor_2314",
-        //         password: "83r5^_"
-                // username: this.username,
-                // password: this.psw6666,
-            // }, {
-            // })
-                // .then(response => {
-                //     if (response.data && response.data.token) { //3
-                //         localStorage.setItem('token', response.data.token)
-                //         this.updateToken(response.data.token)
-                        // this.updateToken(123) //1 一定要寫在api轉譯的.then方法內
-                        // console.log('login'); //2
-                        // this.$router.push('/')
-                //     }
-                // })
-                // .catch(error => {
-                //     console.error(error)
-                //     this.updateToken('')
-                    //登入失敗
-                    //系統維護中
-                // });
-            // pinia
-            // this.updateToken(123) //1
-            // console.log('login'); //2
-        // },
     },
 }
 </script>
 
 <template>
     <!--  ↓登入燈箱↓  -->
-    <Transition name="fade">
-        <div v-if="showLightbox">
-            <button @click="handleLogin">Login</button>
             <div id="loginOverlay" @click="handleClick">
                 <div id="loginModal">
-                    <span class="close" @click="closeLightbox">&times;</span>
+                    <span class="close" @click.stop="closeLightbox">&times;</span>
                     <div class="login_container">
                         <div class="login_textarea">
                             <h2>會員登入</h2>
@@ -127,8 +81,6 @@ export default {
                     </div>
                 </div>
             </div>
-        </div>
-    </Transition>
 </template>
 
 <style lang="scss" scoped>

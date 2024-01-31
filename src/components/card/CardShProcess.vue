@@ -1,25 +1,29 @@
 <script>
+import processBird from '@/assets/imgs/product/sh_process_bird.png'
+import processSH from '@/assets/imgs/product/sh_process_second_hand.png'
+import processRecycle from '@/assets/imgs/product/sh_process_recycle_car.png'
+import processArrow from '@/assets/imgs/product/sh_process_arrow.png'
 export default {
     data(){
       return {
         sh_contact: [
           {
-            img: "src/assets/imgs/product/sh_process_bird.png",
+            img: processBird,
             shSubtitle:'CONTACT',
             context: '透過電子郵件聯繫我們',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+            arrowImg: processArrow,
           },
           {
-            img: "/src/assets/imgs/product/sh_process_second_hand.png",
+            img: processSH,
             shSubtitle:'SECOND-HAND',
             context: '查看二手車輛商品',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+            arrowImg: processArrow,
           },
           {
-            img: "/src/assets/imgs/product/sh_process_recycle_car.png",
+            img: processRecycle,
             shSubtitle:'RECYCLE CAR',
             context: '了解二手車輛販賣',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
+            arrowImg: processArrow,
           },
         ],
 
@@ -36,7 +40,7 @@ export default {
     </div>
       
     <div class="cards">
-      <div class="contact_card" v-for="item in sh_contact">
+      <div class="contact_card" v-for="item in sh_contact" :key="item">
         <div class="card_info">
           <img :src="item.img" alt="">
           <div class="item_text">
@@ -50,7 +54,7 @@ export default {
     </div>  
 
     <div class="phone">
-      <img src="/src/assets/imgs/product/sh_process_contact.png" alt="">
+      <img src="../../assets/imgs/product/sh_process_contact.png" alt="">
       <div class="tel">
         <div class="contact_detail">
           <div class="tel_title">
@@ -58,7 +62,7 @@ export default {
             <span>連絡電話</span>
           </div>
           <div class="phoneNumber">
-            <img src="/src/assets/imgs/product/sh_process_tel.png" alt="">
+            <img src="../../assets/imgs/product/sh_process_tel.png" alt="">
             <span>03 425 1108</span>
           </div>
         </div>

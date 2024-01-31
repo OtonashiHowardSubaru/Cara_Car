@@ -20,68 +20,78 @@
 
 
 <script>
+import NewCardImage01 from "../../assets/imgs/event/infoCard01.jpg"
+import NewCardImage02 from "../../assets/imgs/event/infoCard02.jpg"
+import NewCardImage03 from "../../assets/imgs/event/infoCard03.jpg"
+import NewCardImage04 from "../../assets/imgs/event/infoCard04.jpg"
+import NewCardImage05 from "../../assets/imgs/event/infoCard05.jpg"
+import NewCardImage06 from "../../assets/imgs/event/infoCard06.jpg"
+import NewCardImage07 from "../../assets/imgs/event/infoCard07.jpg"
+import NewCardImage08 from "../../assets/imgs/event/infoCard08.jpg"
+import NewCardImage09 from "../../assets/imgs/event/infoCard09.jpg"
+
 export default { 
     data() {
         return{
             newsCard:[
                 {
-                    img: "/public/imgs/event/infocard01.jpg",
+                    img: NewCardImage01,
                     title: "當月小壽星特別禮遇",
                     timingTag: "進行中",
                     activeTag: "優惠",
                     beginTime: "2024/1/1 ~ 2024/12/31",
                 },
                 {
-                    img: "/public/imgs/event/infocard02.jpg",
+                    img: NewCardImage02,
                     title: "網上預訂折扣",
                     timingTag: "進行中",
                     activeTag: "優惠",
                     beginTime: "2024/1/1 ~ 2024/12/31",
                 },
                 {
-                    img: "/public/imgs/event/infocard03.jpg",
+                    img: NewCardImage03,
                     title: "玩具車攝影比賽",
                     timingTag: "進行中",
                     activeTag: "活動",
                     beginTime: " 2024/2/1 ~ 2024/4/1",
                 },
                 {
-                    img: "/public/imgs/event/infocard04.jpg",
+                    img: NewCardImage04,
                     title: "玩具車組裝講座",
                     timingTag: "進行中",
                     activeTag: "活動",
                     beginTime: " 2024/2/1 ~ 2024/12/31",
                 },
                 {
-                    img: "/public/imgs/event/infocard05.jpg",
+                    img: NewCardImage05,
                     title: "新春特別優惠",
                     timingTag: "即將舉辦",
                     activeTag: "優惠",
                     beginTime: "2024/2/5 ~ 2024/2/18",
                 },
                 {
-                    img: "/public/imgs/event/infocard06.jpg",
+                    img: NewCardImage06,
                     title: "玩具車繪畫大賽",
                     timingTag: "即將舉辦",
                     activeTag: "活動",
                     beginTime: "2024/3/1 ~ 2024/5/31",
                 },
                 {
-                    img: "/public/imgs/event/infocard07.jpg",
+                    img: NewCardImage07,
                     title: "限時快閃活動",
                     timingTag: "即將舉辦",
                     activeTag: "優惠",
                     beginTime: " 2024/3/12 ~ 2024/3/31",
                 },
                 {
-                    img: "/public/imgs/event/infocard08.jpg",
+                    img: NewCardImage08,
                     title: "玩具車比例模型製作",
                     timingTag: "即將舉辦",
                     activeTag: "活動",
                     beginTime: " 2024/4/20 ~ 2024/6/20",
                 },
                 {
-                    img: "/public/imgs/event/infocard09.jpg",
+                    img: NewCardImage09,
                     title: "玩具車展覽會",
                     timingTag: "即將舉辦",
                     activeTag: "活動",

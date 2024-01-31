@@ -1,11 +1,11 @@
 //分頁標題css起點
-.pro_list_title{
+.sh_pro_list_title{
   display: flex;
   justify-content: center;
   border-bottom: $bor1 solid $blackWord;
-  padding: 60px 0;
+  padding: 80px 0 10px 0;
   h1{
-    font-size: $h1;
+    margin-top: 10px;
   }
 }
 //分頁標題css終點
@@ -37,6 +37,7 @@
   display: flex;
   flex-wrap: wrap;
   row-gap: 20px;
+  
 }
 
 
@@ -72,21 +73,32 @@
   .sh_pro_card_list{
     margin: 0
   }
+  #priceSorter{
+      width: 300px;
+      height: 40px;
+      border-radius: 10px;
+  }
 }
+
+
 
 
 // 二手商品內頁
 
 .sh_product_wrap{
-width: 80%;
-display: flex;
-justify-content: space-between;
-margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 100px;
 }
 
 // 商品小圖換大圖區
 .prodpic{
   .mainpic{
+    width: 500px;
+    height: 400px;
+    // padding: 20px;
     img{
       width: 500px;
     }
@@ -106,98 +118,33 @@ margin: 0 auto;
 }
 
 .intro{
-width: 100%;
-line-height: 2;
-padding: 90px 30px;
-.year{
-  margin-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid $blackWord;
-  display: flex;
-  justify-content: space-between;
-}
-.intro_text{
-  padding: 20px 0;
-  border-bottom: 1px solid $blackWord;
-}
-.purchase_btn{
-  margin-top: 40px;
-  display: flex;
-  justify-content: end;
-  a{
-    color: #fff;
-    background-color: $grass_1;
-    padding: 10px 70px;
-    border-radius: 15px;
+  width: 100%;
+  line-height: 2;
+  padding: 90px 30px;
+  .year{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $blackWord;
+    display: flex;
+    justify-content: space-between;
+  }
+  .intro_text{
+    padding: 20px 0;
+    border-bottom: 1px solid $blackWord;
+  }
+  .purchase_btn{
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+    a{
+      color: #fff;
+      background-color: $grass_1;
+      padding: 10px 70px;
+      border-radius: 15px;
+    }
   }
 }
-}
 
-
-// 頁籤標題
-
-.introduction{
-  position: relative;
-  margin-top:200px;
-    .searchItem{
-    position: absolute;
-    bottom: 100%;
-    right: 50%;
-    ul{
-      display: flex;
-      justify-content: center;
-      li{
-        background-color: $yellow;
-        padding: 15px 25px;
-        border-radius: 20px 20px 0 0;
-        cursor: pointer;
-        a{
-          color: $blackWord;
-        }
-
-      }
-    
-    }
-    
-  }
-
-  //詳情區塊
-  .sh_detail{
-    width: 60%;
-    background-color: $yellow;
-    border-radius: 20px;
-    padding: 50px 60px;
-    margin: 0 auto;
-    margin-top: 90px;
-    line-height: 2;
-    position: relative;
-
-    .sh_detail_content{
-      display: flex;
-    }
-    h2{
-      margin-bottom: 30px;
-    }
-    span{
-      font-weight: bold;
-    }
-
-    .articlel{
-      width: 50%;
-      margin-right: 30px;
-    }
-    .articler{
-      width: 50%;
-    }
-    img{
-      width: 80px;
-      position: absolute;
-      left: -75px;
-      top: 20%;
-    }
-
-  }
-}
 
 
 
@@ -213,10 +160,36 @@ margin: 0 auto;
       width: 100%;
     }
   }
-  .slider_right{
-    img{
+  i{
+    font-size: 16px;
+    border: 1px solid #222;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+  }
+  i:hover{
+      background-color: $lightGreen;
+      border: none;
+
+  }
+  .slider_left{
+    i{
       transform: rotate(180deg);
     }
+  }
+}
+
+.salecar{
+  a{
+    color: #fff;
+    background-color: $green;
+    border-radius: 100%;
+    padding: 50px;
   }
 }
 

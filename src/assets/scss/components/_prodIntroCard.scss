@@ -1,0 +1,61 @@
+.introduction{
+    position: relative;
+      .searchItem{
+      position: absolute;
+      bottom: 100%;
+      right: 50%;
+      ul{
+        display: flex;
+        justify-content: center;
+        li{
+          background-color: $yellow;
+          padding: 15px 25px;
+          border-radius: 20px 20px 0 0;
+          cursor: pointer;
+          a{
+            color: $blackWord;
+          }
+  
+        }
+      
+      }
+      
+    }
+  
+    //詳情區塊
+    .sh_detail{
+      width: 60%;
+      background-color: $yellow;
+      border-radius: 20px;
+      padding: 50px 60px;
+      margin: 0 auto;
+      margin-top: 180px;
+      line-height: 2;
+      position: relative;
+  
+      .sh_detail_content{
+        display: flex;
+      }
+      h2{
+        margin-bottom: 30px;
+      }
+      span{
+        font-weight: bold;
+      }
+  
+      .articlel{
+        width: 50%;
+        margin-right: 30px;
+      }
+      .articler{
+        width: 50%;
+      }
+      img{
+        width: 80px;
+        position: absolute;
+        left: -75px;
+        top: 20%;
+      }
+  
+    }
+  }

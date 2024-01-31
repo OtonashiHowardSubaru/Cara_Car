@@ -30,11 +30,15 @@ const router = createRouter({
   routes: [
     // {
     //   path: '/',
-    //   name: 'Index',
-    //   // component: IndexView,
-    //   component: () => import('@/views/IndexView.vue'),
-    //   meta:{title: 'Cara Car',}
+    //   redirect: '/Index'
     // },
+    {
+      path: '/Index',
+      name: 'Index',
+      // component: IndexView,
+      component: () => import('@/views/IndexView.vue'),
+      meta:{title: 'Cara Car',}
+    },
     {
       path: '/',
       name: 'Home',
