@@ -1,4 +1,4 @@
-<template id="app">
+<template>
     <MainHeader />
     <div class="SecondHandSale">
         <div class="SecondHandSaleTitle">
@@ -91,7 +91,14 @@
             <BtnAboutUs class="AboutUsBtnSale" />
 
         </section>
+
+        <div class="iWantSellCarButton">
+            <div @click="openSaleCarbtn">填寫表格</div>
+        </div>
+        
+        <!-- <SaleCarbtn v-if="lightBoxStore.showLightbox"/> -->
         <SaleCarbtn/>
+        
     </div>
     
 </template>
@@ -101,6 +108,7 @@ import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
 import MainHeader from '@/components/Header.vue';
 import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
+import lightBoxStore from "@/stores/lightBox.js"
 import SaleCarbtn from '@/components/btn/SaleCarbtn.vue';
 
 
@@ -111,10 +119,13 @@ export default {
         ShopMap,
         InfoTextCards,
         SaleCarbtn,
+        
     },
     data() {
         return {
+            lightBoxStore: lightBoxStore(),
             showLightbox: false,
+            
             infoText: [
                 {
                     shopAddress: "桃園市中壢區復興路46號8樓",
@@ -127,21 +138,21 @@ export default {
         };
     },
     methods: {
-        openLightbox() {
-            this.showLightbox = true;
-            // console.log('我有抓到');
-        },
-        closeLightbox() {
-            this.showLightbox = false;
-        },
-        handleClick(e) {
-            if (e.target.id === 'loginOverlay') {
-                this.closeLightbox();
-            }
-        },
-        handleLogin() {
-            console.log('Login clicked');
-        },
+        // openLightbox() {
+        //     this.showLightbox = true;
+        //     // console.log('我有抓到');
+        // },
+        // closeLightbox() {
+        //     this.showLightbox = false;
+        // },
+        // handleClick(e) {
+        //     if (e.target.id === 'loginOverlay') {
+        //         this.closeLightbox();
+        //     }
+        // },
+        // handleLogin() {
+        //     console.log('Login clicked');
+        // },
     },
     mounted() {
     },

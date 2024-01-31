@@ -1,98 +1,85 @@
 <template>
-    
-    <div class="iwantsellCar">
-        <div class="iwantsellCarbutton">
-            <button @click="openLightbox">填寫表格</button>
-        </div>
+    <!-- 我要賣車的表格按鈕lightbox -->
+    <div class="iWantSellCarButton">
+        <button @click="openLightbox">填寫表格1</button>
+    </div>
 
-        <Transition name="fade">
-            <!-- <div v-if="showLightbox"> -->
-            <div>
-                <div id="iwantsellCarOverlay" @click="handleClick">
-                    <div id="iwantsellCarModal">
-                        <span class="close" @click="closeLightbox">&times;</span>
-                        <div class="iwantsellCar_container">
-                            <div class="iwantsellCar_textarea">
-                                <h2>我要賣車</h2>
-                                <div class="sellcarforms">
+    <div class="iWantSellCarOverlay" @click="handleClickForm">
 
-                                    <div class="sellcarform">
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                    </div>
-                                    <div class="sellcarform">
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                        <div class="email">
-                                            <p>帳號</p>
-                                            <input type="email" id="username" name="username" placeholder="電子郵件">
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="iWantSellCarModal">
 
+            <span class="closeBox" @click="closeLightbox">&times;</span> <!-- 開關的X -->
+
+            <div class="iWantSellCar_container">
+
+                <div class="iWantSellCar_textarea">
+                    <h2>我要賣車</h2>
+                    <div class="sellcarforms">
+
+                        <div class="sellcarform">
+                            <div class="email">
+                                <p>帳號</p>
+                                <input type="email" id="username" name="username" placeholder="電子郵件">
+                            </div>
+                            <div class="email">
+                                <p>帳號</p>
+                                <input type="email" id="username" name="username" placeholder="電子郵件">
+                            </div>
+                            <div class="email">
+                                <p>帳號</p>
+                                <input type="email" id="username" name="username" placeholder="電子郵件">
+                            </div>
+                            <div class="email">
+                                <p>帳號</p>
+                                <input type="email" id="username" name="username" placeholder="電子郵件">
+                            </div>
+                        </div>
+                        <div class="sellcarform">
+                            <div class="email">
+                                <p>帳號</p>
+                                <input type="email" id="username" name="username" placeholder="電子郵件">
+                            </div>
+                            <div class="email">
+                                <p>帳號</p>
+                                <input type="email" id="username" name="username" placeholder="電子郵件">
                             </div>
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </Transition>
 
+                </div>
+
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 
-
+import lightBoxStore from "@/stores/lightBox.js"
 
 export default {
-    components: {
 
-    },
     data() {
         return {
+            lightBoxStore: lightBoxStore(),
             showLightbox: false,
         };
     },
     methods: {
-        openLightbox() {
-            this.showLightbox = true;
-            // console.log('我有抓到');
-        },
-        closeLightbox() {
-            this.showLightbox = false;
-        },
         handleClick(e) {
-            if (e.target.id === 'loginOverlay') {
+            if (e.target.class === 'iWantSellCarOverlay') {
                 this.closeLightbox();
+                // } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
+                //     this.$router.push('/Register');
+                //     this.closeLightbox();
             }
         },
-        handleLogin() {
-            console.log('Login clicked');
+        openLightbox() {
+            this.lightBoxStore.openLightbox()
+        },
+        closeLightbox() {
+            this.lightBoxStore.closeLightbox()
         },
     },
     mounted() {
@@ -103,6 +90,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "@/assets/scss/page/second_hand_sale.scss";
+// @import "@/assets/scss/page/second_hand_sale.scss";
+@import "@/assets/scss/components/saleCarbtn.scss";
 </style>
 
