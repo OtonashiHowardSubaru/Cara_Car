@@ -8,7 +8,7 @@
     <div class="footerbg"></div>
     <div class="footerSection1">
       <div class="footerSection1Info">
-        <RouterLink class="RouterLink" to="/Home">
+        <RouterLink class="RouterLink" to="/">
           <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
         </RouterLink>
         
@@ -63,11 +63,11 @@
     <div class="footerSection3">
       <div class="footerSection3Follow">
         <p>Follow Us</p>
-        <RouterLink class="RouterLink" to="/Home">
+        <RouterLink class="RouterLink" to="/">
           <img src="../assets/imgs/MainFooter/icon_fb.png" alt="icon_fb">
         </RouterLink>
         
-        <RouterLink class="RouterLink" to="/Home">
+        <RouterLink class="RouterLink" to="/">
           <img src="../assets/imgs/MainFooter/icon_ig.png" alt="icon_ig">
         </RouterLink>
         
