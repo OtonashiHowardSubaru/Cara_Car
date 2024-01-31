@@ -45,6 +45,80 @@
     z-index: -1;
 }
 
+.indexProductGroup{
+    box-sizing: border-box;
+    padding: 0 0 0 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: center;
+    // background-color: #aaa;
+    margin-bottom: 100px;
+    .indexProductTitle{
+        width: 90%;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        z-index: 3;
+        .linkToProductList{
+            // width: 195px;
+            margin: 0 0 5px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $blackWord;
+            border-radius: $bor2 $bor1 0 $bor2;
+            position: relative;
+            &::after {
+                content: '';
+                display: block;
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                border-style: solid;
+                border-width: 0px 15px 39.6px 0px; 
+                border-radius: 0 0 $bor1 0;
+                border-color: transparent transparent $blackWord transparent; 
+                right: -14.5px;
+                bottom: 0;
+            }
+        }
+        .productListLink{
+            width: 135px;
+                // width: 130px;
+                height: 40px;
+                margin: 0 10px;
+                color: $whiteWord;
+                background-color: $blackWord;
+                display: flex;
+                align-items: center;
+                // justify-content: center;
+                padding: 0 0 0 10px;
+                transition: .3s ease-in-out;
+                position: relative;
+                @media (min-width:768px) {
+                    &:hover::before {
+                        width: 30px;
+                    }
+                }
+                &::before {
+                content: '';
+                width: 20px;
+                height: 1px;
+                margin-right: 20px;
+                background-color: #fff;
+                display: block;
+                // position: absolute;
+                left: 0;
+                bottom: 50%;
+                transition: width .3s ease-in-out;
+                transform-origin: right;
+                }
+        }
+    }
+}
 
 .indexEventGroup {
     width: 100%;
@@ -119,7 +193,8 @@
                 background-color: $blackWord;
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                // justify-content: center;
+                padding: 0 0 0 10px;
                 transition: .3s ease-in-out;
                 position: relative;
                 
