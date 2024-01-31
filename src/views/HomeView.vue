@@ -188,6 +188,16 @@ export default {
     </div>
   </div>
 
+  <div class="decoTrainAnimation">
+    <img src="../assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
+    <div class="decoTrainAnima">
+      <div class="decoTrain">
+        <img src="../assets/imgs/draw/train.svg" alt="train.svg" class="decoTrainImg">
+      </div>
+      <img src="../assets/imgs/draw/rail.svg" alt="rail.svg" class="decoRail">
+    </div>
+  </div>
+
   <div class="indexEventGroup">
     <div class="indexEventTitle">
       <img src="../assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
