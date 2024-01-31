@@ -2,7 +2,7 @@
     <MainHeader />
     <main class="pageNews">
         <header class="newsTitle">
-            <img src="/imgs/event/eventTitle.svg" alt="eventTitle.png">
+            <img src="../assets/imgs/event/eventTitle.svg" alt="eventTitle.png">
         </header>
         <section class="newsOverview">
             <div class="selector">

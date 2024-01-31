@@ -1,14 +1,24 @@
     main{
         padding-top: 80px;
     }
-
-.pro_title{
-    text-align: center;
-    font-size: $mh1;
-}
+    .pro_title{
+        h1{
+            text-align: center;
+            font-size: $mh1;
+        }
+        h2{
+            text-align: center;
+            font-size: $mh2;
+        }
+    }
 @media (min-width: 768px){
     .pro_title{
-        font-size: $h1;
+        h1{
+            font-size: $h1;
+        }
+        h2{
+            font-size: $h2;
+        }
     }
 }
 //圖片切換器css起點
@@ -69,7 +79,8 @@
 }
 @media (min-width:768px){
     .intro{
-        padding: 0 0 0 8.333%;
+        box-sizing: border-box;
+        padding: 0 4.157%;
     }
 }
 .pro_functions{
@@ -148,6 +159,7 @@
         span:nth-of-type(3){
             font-size: $mh6;
             color: $grey_3;
+            width: 100%;
             // color: $whiteWord;
         }
         input{

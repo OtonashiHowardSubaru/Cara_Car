@@ -2,13 +2,15 @@
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/Header.vue';
 import TitleViewed from '@/components/TitleViewed.vue';
-import ProductCard from '@/components/ProductCard.vue';
+import ProCardSwiper from '@/components/ProCardSwiper.vue';
 export default {
 components:{
-    MainHeader,TitleViewed,
+    MainHeader,TitleViewed,ProCardSwiper,
 },
 data(){
     return {
+        count: 1,
+        expanded:false,
         city:[
             {c:'台北市'},
             {c:'新北市'},
@@ -37,7 +39,20 @@ created() {
 
 },
 methods: {
+    minus(){
+        if(this.count>1){
+            this.count--;
+        }
+    },
+    add(){
+        this.count++;
+    },
+    updataCount(){
 
+    },
+    toggleCartContent(){
+        this.expanded = !this.expanded;
+    }
 },
 }
 </script>
@@ -54,6 +69,23 @@ methods: {
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
             </div>
+            <!-- <div class="item_container" >
+                <div id="Cart">
+                    <div class="productCard">
+                        <img src="../assets/imgs/cart/cart_product_img.png" alt="ProductImage">
+                        <div class="proCardP">
+                            <p class="pro_name">閃電漂移車</p>
+                            <p class="pro_price">$2500</p>
+                        </div>
+                        <div class="countButton">
+                            <button>-</button>
+                            <input type="number" value="1">
+                            <button>+</button>
+                        </div>
+                        <p class="proCount">$3,000</p>
+                    </div>
+                </div>
+            </div> -->
             <div class="productCard">
                     <img src="../assets/imgs/cart/cart_product_img.png" alt="ProductImage">
                     <div class="proCardP">
@@ -61,9 +93,9 @@ methods: {
                         <p class="pro_price">$2500</p>
                     </div>
                     <div class="countButton">
-                        <button>-</button>
-                        <input type="number" value="1">
-                        <button>+</button>
+                        <button @click="minus">-</button>
+                        <input type="number" v-model="count" @input="updataCount">
+                        <button @click="add">+</button>
                     </div>
                     <p class="proCount">$3,000</p>
             </div>
@@ -88,9 +120,22 @@ methods: {
                 <span class="cartFunctionTitle">運費計算參考</span>
             </div>
             <p class="cartCountTotal">合計金額：$3,500</p>
-            <div class="cartMatter">
+            <div class="cartMatter" @click="toggleCartContent">
                 <span class="cartFunctionTitle">運費計算及注意事項</span>
-                <i class="fa-solid fa-caret-down"></i>
+                <i class="fa-solid fa-caret-down" :class="{ rotated: expanded }"></i>
+                <div v-if="expanded" class="CartContent">
+                    <p class="cartContentTitle">運費計算規則：</p>
+                    <p>運費=基本運費+額外費用</p>
+                    <p>基本運費：每個訂單都需要支付的固定費用，包括包裝、處理和基本運輸費用。</p>
+                    <p>距離成本：根據運送的地理距離而定。</p>
+                    <p class="cartContentTitle">運送注意事項：</p>
+                    <p>法規遵守： 確保商品符合兒童玩具的相關安全標準和法規。</p>
+                    <p>標籤和包裝： 提供完整的標籤和堅固的包裝，以確保運送過程中的安全。</p>
+                    <p>保險和追踪： 提供商品運送保險，使用能追踪包裹的服務。</p>
+                    <p>包裝堅固性： 使用堅固的包裝材料，減少損壞的風險。</p>
+                    <p>運送時間： 提供預期的運送時間範圍，並提供即時更新。</p>
+                    <p>客戶支援： 提供客戶支援服務，處理問題和查詢。</p>
+                </div>
             </div>
         </section>
         <form class="cartReceiptInformation">
@@ -120,7 +165,8 @@ methods: {
         <TitleViewed/>
         
     </main>
-    <!-- <ProductCard/> -->
+    <ProCardSwiper :displayData="displayData" />
+    <ProCardSwiper :displayData="displayData" />
 </template>
 
 <style lang="scss">

@@ -73,6 +73,7 @@
 <script>
 import MainHeader from '@/components/Header.vue'
 import EventCardSlider from '@/components/card/EventCardSlider.vue'
+import NewCardImage03 from "@/assets/imgs/event/infoCard03.jpg"
 export default {
     components:{
         MainHeader,
@@ -83,7 +84,7 @@ export default {
         return{
             newsCard:[
                 {
-                    img: "src/assets/imgs/event/infocard03.jpg",
+                    img: NewCardImage03,
                     title: "玩具車攝影比賽",
                     timingTag: "進行中",
                     activeTag: "活動",

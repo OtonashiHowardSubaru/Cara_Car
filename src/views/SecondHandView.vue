@@ -6,8 +6,7 @@ import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/Header.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
-import BtnProductBuy from "@/components/btn/BtnProductBuy.vue"
-
+import mainImage from "@/assets/imgs/product/sh_product_mainpic.png"
 
   export default {
     components:{
@@ -76,12 +75,16 @@ import BtnProductBuy from "@/components/btn/BtnProductBuy.vue"
         ],
         displayData: [],
         activeTab: 0,
-        mainImage: "/src/assets/imgs/product/sh_product_mainpic.png", 
-        littleImages: [  
-          "/src/assets/imgs/product/sh_product_mainpic.png",
-          "/src/assets/imgs/product/sh_product_litpic.png",
-          "/src/assets/imgs/product/sh_product_litpic1.png",
-          "/src/assets/imgs/product/sh_product_litpic2.png",
+        mainImage: mainImage, 
+        littleImages: [
+          {img: 'sh_product_mainpic.png'},
+          {img: 'sh_product_litpic.png'},
+          {img: 'sh_product_litpic1.png'},
+          {img: 'sh_product_litpic2.png'},
+          // "/src/assets/imgs/product/sh_product_mainpic.png",
+          // "/src/assets/imgs/product/sh_product_litpic.png",
+          // "/src/assets/imgs/product/sh_product_litpic1.png",
+          // "/src/assets/imgs/product/sh_product_litpic2.png",
         ],
 
       }
@@ -90,6 +93,9 @@ import BtnProductBuy from "@/components/btn/BtnProductBuy.vue"
       
     // },
     methods: {
+      getImageUrl(paths) {
+      return new URL(`../assets/imgs/product/${paths}`, import.meta.url).href
+    },
       showLarge(e) {
         console.log('Clicked on image:', e.target.src);
         if (e.target.tagName === 'IMG' && e.target.src) {
@@ -137,6 +143,12 @@ import BtnProductBuy from "@/components/btn/BtnProductBuy.vue"
       </div>
       <div class="littlepic">
         <img v-for="(image, index) in littleImages" :key="index" :src="image" alt="超強小車車" @click="showLarge" ref="littlepicImgs">
+
+
+        <!-- <img src="../assets/imgs/product/sh_product_mainpic.png" alt="超強小車車">
+        <img src="../assets/imgs/product/sh_product_litpic.png" alt="超強小車車">
+        <img src="../assets/imgs/product/sh_product_litpic1.png" alt="超強小車車">
+        <img src="../assets/imgs/product/sh_product_litpic2.png" alt="超強小車車"> -->
       </div>
       
     </div>

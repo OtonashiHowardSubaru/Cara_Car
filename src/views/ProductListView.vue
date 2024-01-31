@@ -133,7 +133,7 @@
   <template>
     <MainHeader />
     <div class="pro_list_title col-12">
-      <h1>新品專區</h1>
+      <h1><img src="../assets/imgs/product/productList_title.png" alt="新品專區"></h1>
     </div>
     <div class="container">
       <div class="row">
