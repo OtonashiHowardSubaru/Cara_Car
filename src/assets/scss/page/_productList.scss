@@ -3,9 +3,9 @@
   display: flex;
   justify-content: center;
   border-bottom: $bor1 solid $blackWord;
-  padding: 60px 0;
+  padding: 100px 0 10px 0;
   h1{
-    font-size: $h1;
+    // font-size: $h1;
   }
 }
 //分頁標題css終點
@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   padding: 30px 20px;
-  border-bottom: $bor2 solid $blackWord;
+  border-bottom: $bor3 solid $blackWord;
   h2{
     font-size: $h2;
     height: fit-content;
@@ -26,6 +26,7 @@
 @media (min-width:768px){
   .store_name{
     margin: 0 8.333%;
+    padding: 60px 40px;
   }
 }
 //商店名css終點點

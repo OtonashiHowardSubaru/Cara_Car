@@ -28,13 +28,17 @@ const router = createRouter({
     return { top: 0 }
   },
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'Index',
-    //   // component: IndexView,
-    //   component: () => import('@/views/IndexView.vue'),
-    //   meta:{title: 'Cara Car',}
-    // },
+    {
+      path: '/',
+      redirect: '/Index'
+    },
+    {
+      path: '/Index',
+      name: 'Index',
+      // component: IndexView,
+      component: () => import('@/views/IndexView.vue'),
+      meta:{title: 'Cara Car',}
+    },
     {
       path: '/',
       name: 'Home',
