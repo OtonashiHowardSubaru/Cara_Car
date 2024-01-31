@@ -6,9 +6,11 @@
   import PageNumber from "@/components/btn/PageNumber.vue";
   import BtnFilter from '@/components/btn/BtnFilter.vue';
   import MainHeader from '@/components/Header.vue';
+
+
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,MainHeader
+      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter,MainHeader,
     },
     data(){
       return {
@@ -33,25 +35,61 @@
         ],
         responseData : [],
         displayData: [],
-        sh_contact: [
-          {
-            img: "src/assets/imgs/product/sh_process_bird.png",
-            shSubtitle:'CONTACT',
-            context: '透過電子郵件聯繫我們',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
-          {
-            img: "src/assets/imgs/product/sh_process_second_hand.png",
-            shSubtitle:'SECOND-HAND',
-            context: '查看二手車輛商品',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
-          {
-            img: "src/assets/imgs/product/sh_process_recycle_car.png",
-            shSubtitle:'RECYCLE CAR',
-            context: '了解二手車輛販賣',
-            arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
-          },
+        sh_product_list: [
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_1.png",
+              prod_name:"極光追逐者",
+              prod_price:"3000",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_2.png",
+              prod_name:"極速閃電車",
+              prod_price:"5000",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_3.png",
+              prod_name:"太空探險車",
+              prod_price:"8000",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_4.png",
+              prod_name:"科技漂移车",
+              prod_price:"6000",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_5.png",
+              prod_name:"爆炸速度狂飆车",
+              prod_price:"4000",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_6.png",
+              prod_name:"魔法變形賽車",
+              prod_price:"6000",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_7.png",
+              prod_name:"閃電漂移車",
+              prod_price:"2500",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_8.png",
+              prod_name:"太空漫步車",
+              prod_price:"3500",
+              linkwhere:"/SecondHand"
+            },
+            {
+              prod_img1:"/src/assets/imgs/product/sh_product_9.png",
+              prod_name:"磁浮飛行車",
+              prod_price:"5500",
+              linkwhere:"/SecondHand"
+            },
         ],
       }
     },
@@ -76,11 +114,11 @@
       },
       handleSortChange(newSort){
         if (newSort === "0") {
-          this.displayData = this.responseData
+          this.sh_product_list = this.responseData
         } else if (newSort === "desc") {
-          this.displayData.sort((a, b) => b.prod_price - a.prod_price);
+          this.sh_product_list.sort((a, b) => b.prod_price - a.prod_price);
         } else if (newSort === "asc"){
-          this.displayData.sort((a, b) => a.prod_price - b.prod_price);
+          this.sh_product_list.sort((a, b) => a.prod_price - b.prod_price);
         };
       },
       handleFilter(){ //這是老師的標題搜尋範例，先留著也許哪天用的到

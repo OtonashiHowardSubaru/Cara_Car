@@ -168,13 +168,37 @@
     padding: 20px 0 0 0;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+//     flex-wrap: wrap;
     justify-content: space-between;
-    button{
-        border: none;
-        border-radius: $borr2;
-        font-size: $mh5;
-        width: 40%;
+//     button{
+//         border: none;
+//         border-radius: $borr2;
+//         font-size: $mh5;
+//         width: 40%;
+//     }
+    #purchase_btn{
+        // margin-top: 40px;
+        display: flex;
+        justify-content: end;
+        a{
+            color: #fff;
+            background-color: $grass_1;
+            padding: 10px 70px;
+            border-radius: 15px;
+        }
+    }
+}
+
+
+#addToCart_btn{
+    // margin-top: 40px;
+    display: flex;
+    justify-content: end;
+    a{
+        color: #fff;
+        background-color: $navy;
+        padding: 10px 70px;
+        border-radius: 15px;
     }
 }
 

@@ -37,3 +37,27 @@
 #btnShopInfo{
     background-color: $grass_2;
 }
+
+#purchase_btn{
+    // margin-top: 40px;
+    display: flex;
+    justify-content: end;
+    a{
+        color: #fff;
+        background-color: $grass_1;
+        padding: 10px 70px;
+        border-radius: 15px;
+    }
+}
+
+#addToCart_btn{
+    // margin-top: 40px;
+    display: flex;
+    justify-content: end;
+    a{
+        color: #fff;
+        background-color: $navy;
+        padding: 10px 70px;
+        border-radius: 15px;
+    }
+}
