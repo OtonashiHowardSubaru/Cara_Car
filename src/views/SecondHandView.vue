@@ -11,13 +11,14 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
+import ProCardSwiper from "@/components/ProCardSwiper.vue"
 
 
 
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,SwiperSlide
+    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper
 },
     data(){
       return {
@@ -27,55 +28,55 @@ import { Navigation } from 'swiper/modules';
             {
               prod_img1:"/src/assets/imgs/product/sh_product_1.png",
               prod_name:"極光追逐者",
-              prod_price:"$3000",
+              prod_price:"3000",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_2.png",
               prod_name:"極速閃電車",
-              prod_price:"$5000",
+              prod_price:"5000",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_3.png",
               prod_name:"太空探險車",
-              prod_price:"$8000",
+              prod_price:"8000",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_4.png",
               prod_name:"科技漂移车",
-              prod_price:"$6000",
+              prod_price:"6000",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_5.png",
               prod_name:"爆炸速度狂飆车",
-              prod_price:"$4000",
+              prod_price:"4000",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_6.png",
               prod_name:"魔法變形賽車",
-              prod_price:"$6000",
+              prod_price:"6000",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_7.png",
               prod_name:"閃電漂移車",
-              prod_price:"$2500",
+              prod_price:"2500",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_8.png",
               prod_name:"太空漫步車",
-              prod_price:"$3500",
+              prod_price:"3500",
               linkwhere:"/SecondHand"
             },
             {
               prod_img1:"/src/assets/imgs/product/sh_product_9.png",
               prod_name:"磁浮飛行車",
-              prod_price:"$5500",
+              prod_price:"5500",
               linkwhere:"/SecondHand"
             },
         ],
@@ -186,59 +187,9 @@ import { Navigation } from 'swiper/modules';
 <ProductIntroCard/>
 
 <div class="recommand">
-  <div class="view">
-    <TitleViewed/>
-    <div class="sh_prod_slider">
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <swiper :slides-per-view="3" :space-between="30" :navigation="{
-        nextEl: '.swiper-button-next' ,
-        prevEl: '.swiper-button-prev',
-        }" 
-        :modules="modules" class="mySwiper">
-      <swiper-slide v-for="(item, index) in sh_product_list" :key="index">
-        <div class="product_card">
-          <router-link :to="item.linkwhere">
-            <div class="pro_card_img">
-              <img :src="item.prod_img1" alt="Product Image">
-            </div>
-            <div class="pro_crad_info">
-              <h6>{{ item.prod_name }}</h6>
-              <p>{{ item.prod_price }}</p>
-            </div>
-          </router-link>
-        </div>
-      </swiper-slide>
-    </swiper>
-    </div>
-  </div>
-
-  <div class="maybeYouLike">
-    <TitleMaybeYouLike/>
-    <div class="sh_prod_slider">
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <swiper :slides-per-view="3" :space-between="30" :navigation="{
-        nextEl: '.swiper-button-next' ,
-        prevEl: '.swiper-button-prev',
-        }" 
-        :modules="modules" class="mySwiper">
-      <swiper-slide v-for="(item, index) in sh_product_list" :key="index">
-        <div class="product_card">
-          <router-link :to="item.linkwhere">
-            <div class="pro_card_img">
-              <img :src="item.prod_img1" alt="Product Image">
-            </div>
-            <div class="pro_crad_info">
-              <h6>{{ item.prod_name }}</h6>
-              <p>{{ item.prod_price }}</p>
-            </div>
-          </router-link>
-        </div>
-      </swiper-slide>
-    </swiper>
-    </div>
-  </div>
+  
+  <ProCardSwiper :displayData="sh_product_list" />
+  <ProCardSwiper :displayData="sh_product_list" />
 </div>
 
 
