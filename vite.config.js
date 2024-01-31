@@ -6,8 +6,8 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.NODE_ENV === 'production'
-  // ? '/chd104/g6/front/'
-  ? '/chd104/g6/'
+  ? '/chd104/g6/front/'
+  // ? '/chd104/g6/'
   : '/',
   build: {
     outDir: 'front'
