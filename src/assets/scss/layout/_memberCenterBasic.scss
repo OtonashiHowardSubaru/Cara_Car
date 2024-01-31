@@ -47,8 +47,8 @@ width: 100%;
     width: 30%;
     height: 50px;
     font-size: $mh6;
-    border: $bor2 dashed rgb(102, 102, 102);
-    transition: border 0.1s ease-in;
+    // border: $bor2 dashed #666666;
+    transition: border 0.1s ease-in-out;
     &:hover{
         border: solid;
         box-shadow: rgba(102, 102, 102, 0.35) 0px 5px 20px;
@@ -57,7 +57,8 @@ width: 100%;
 
 .user_profile{
     width: 100%;
-    margin: 20px auto;
+    margin: 20px auto 40px auto;
+    padding: 10px 0 0 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -97,7 +98,9 @@ form{
     height: 50px;
     font-size: $mh6;
     margin: 20px 0;
+    transition: border 0.1s ease-in-out;
     &:hover{
+        border: solid;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
     }
 }
