@@ -1,30 +1,24 @@
 <script>
-  export default {
-    data(){
-      return {
-      }
+export default {
+  data() {
+    return {
+      qtyValue: 1,
+    };
+  },
+  methods: {
+    handleQtyChange(increment) {
+      let qtyValue = parseInt(this.$refs.qtyInput.value);
+      qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
+      this.$refs.qtyInput.value = qtyValue;
     },
-    methods: {
-      handleQtyPlus(e) {
-        e.preventDefault();
-        const currentVal = parseInt(e.target.parentNode.querySelector('.qty').value) || 0;
-        e.target.parentNode.querySelector('.qty').value = currentVal + 1;
-      },
-      handleQtyMinus(e) {
-        e.preventDefault();
-        const currentVal = parseInt(e.target.parentNode.querySelector('.qty').value) || 0;
-        if (currentVal > 0) {
-          e.target.parentNode.querySelector('.qty').value = currentVal - 1;
-        }
-      },
-    }
-}
+  },
+};
 </script>
 <template>
   <div class="number_select">
-    <input type="button" value="-" class="qtyMinus" @click="handleQtyMinus($event)">
-    <input type="text" name="quantity" value="0" class="qty">
-    <input type="button" value="+" class="qtyPlus" @click="handleQtyPlus($event)">
+    <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(-1)">
+    <input type="text" name="quantity" :value="qtyValue" class="qty" ref="qtyInput">
+    <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(1)">
   </div>
 </template>
 <style lang="scss" scoped>

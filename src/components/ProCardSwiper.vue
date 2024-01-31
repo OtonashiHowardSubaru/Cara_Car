@@ -68,6 +68,9 @@ export default{
 
 </template>
 <style scoped lang="scss">
+.product_card{
+  width: 100%;
+}
 .pro_card_img img{
     vertical-align: top;
     width: 100%;
@@ -87,13 +90,5 @@ export default{
 .pro_crad_info p{
     font-size: $p;
 }
-// .swiper-button-next{
-//   position: absolute;
-//   // right: -10px;
-// }
-// .swiper-button-prev{
-//   position: absolute;
-//   // left: -10px;
-// }
 
 </style>
