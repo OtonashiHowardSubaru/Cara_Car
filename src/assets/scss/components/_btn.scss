@@ -50,14 +50,20 @@
     }
 }
 
-#addToCart_btn{
-    // margin-top: 40px;
-    display: flex;
-    justify-content: end;
-    a{
-        color: #fff;
-        background-color: $navy;
-        padding: 10px 70px;
-        border-radius: 15px;
-    }
+.qty {
+    box-sizing: border-box;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: #00f0;
+    font-size: $mh4;
+    color: $grass_2;
+}
+.qtyPlus, .qtyMinus {
+    width: 35px;
+    height: 35px;
+    background-color: #00f0;
+    border: none;
+    color: $grass_2;
 }

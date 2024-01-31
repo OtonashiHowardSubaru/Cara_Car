@@ -6,6 +6,7 @@ import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/Header.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
+import mainImage from "@/assets/imgs/product/sh_product_mainpic.png";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -16,7 +17,7 @@ import { Navigation } from 'swiper/modules';
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,SwiperSlide,
+    ProductCard, MainHeader,ProductIntroCard,Swiper,SwiperSlide
 },
     data(){
       return {
@@ -95,8 +96,10 @@ import { Navigation } from 'swiper/modules';
       }
     },
     setup() {
+      
       return {
         modules: [Navigation],
+        
       };
     },
     props:['displayData', ],
@@ -154,7 +157,6 @@ import { Navigation } from 'swiper/modules';
       </div>
       <div class="littlepic">
         <img v-for="(image, index) in littleImages" :key="index" :src="getImageUrl(image.img)" alt="超強小車車" @click="showLarge" ref="littlepicImgs">
-
       </div>
       
     </div>
@@ -208,38 +210,33 @@ import { Navigation } from 'swiper/modules';
         </div>
       </swiper-slide>
     </swiper>
-    <!-- <div class="btnSliderLeftRight">
-            <i class="fa-solid fa-arrow-left"></i>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div> -->
     </div>
   </div>
 
   <div class="maybeYouLike">
     <TitleMaybeYouLike/>
-    <div class="sh_prod_slider" >
-      <div class="sh_prod_slider">
-        <swiper :slides-per-view="3" :space-between="30" :navigation="{
-        nextEl: '.swiper-button-next',
+    <div class="sh_prod_slider">
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <swiper :slides-per-view="3" :space-between="30" :navigation="{
+        nextEl: '.swiper-button-next' ,
         prevEl: '.swiper-button-prev',
         }" 
-        :modules="modules" 
-        class="mySwiper">
-        <swiper-slide v-for="(item, index) in sh_product_list" :key="index">
-          <div class="product_card">
-            <router-link :to="item.linkwhere">
-              <div class="pro_card_img">
-                <img :src="item.prod_img1" alt="Product Image">
-              </div>
-              <div class="pro_crad_info">
-                <h6>{{ item.prod_name }}</h6>
-                <p>{{ item.prod_price }}</p>
-              </div>
-            </router-link>
-          </div>
-        </swiper-slide>
-        </swiper>
-      </div>
+        :modules="modules" class="mySwiper">
+      <swiper-slide v-for="(item, index) in sh_product_list" :key="index">
+        <div class="product_card">
+          <router-link :to="item.linkwhere">
+            <div class="pro_card_img">
+              <img :src="item.prod_img1" alt="Product Image">
+            </div>
+            <div class="pro_crad_info">
+              <h6>{{ item.prod_name }}</h6>
+              <p>{{ item.prod_price }}</p>
+            </div>
+          </router-link>
+        </div>
+      </swiper-slide>
+    </swiper>
     </div>
   </div>
 </div>

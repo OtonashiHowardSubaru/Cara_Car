@@ -155,6 +155,7 @@
   display: flex;
   flex-direction: column;
     .sh_prod_slider{
+      position: relative;
       margin: 0 auto;
       width: 90%;
       // border: 1px solid red;
@@ -166,9 +167,12 @@
       
       
       .swiper-button-prev {
-        background-color: #ce9d50;
-        color: #691d1d;
-        
+        position: absolute;
+        top: 100px;
+      }
+      .swiper-button-next{
+        position: absolute;
+        top: 100px;
       }
       .sh_slider_card{
         width: 25%;
@@ -262,16 +266,29 @@
     }
 
     .prodpic{
+      
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin: 0 auto;
+      .mainpic{
+        width: 90%;
+        height: 250px;
+         img{
+          width: 100%;
+          
+        }
 
+      }
+     
       .littlepic{
+        width: 100%;
         box-sizing: border-box;
         align-content: center;
+        margin-top: 5vw;
         img{
           width: 20%;
-          margin: 10px;
+          margin: 5px;
         }
       }
     }
@@ -284,24 +301,7 @@
   }
 
   
-  .sh_detail{
-    width: 75%;
-    img{
-      width: 50px;
-      margin-left: 28px;
-    }
-
-    .sh_detail_content{
-      flex-direction: column;
-      
-      .articlel{
-        width: 100%;
-      }
-      .articler{
-        width: 100%;
-      }
-    }
-  }
+  
 
   .iwantsellCarbutton{
     width: 50px;
@@ -319,7 +319,23 @@
     .product_card{
       width: 80%;
     }
-    
-  }
-  
+    .mySwiper{
+      .swiper-wrapper {
+        display: flex ;
+        flex-wrap: nowrap ;
+      }
+    }
+    .swiper-slide {
+      width: 100% !important;
+      margin-right: 0 ;
+    }
+    .swiper-button-next{
+      margin-right: -20px;
+      margin-top: -15px;
+    }
+    .swiper-button-prev{
+      margin-left: -20px;
+      margin-top: -15px;
+    }
+}
 }

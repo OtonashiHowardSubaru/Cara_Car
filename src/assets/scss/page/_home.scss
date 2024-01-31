@@ -47,7 +47,6 @@
 
 .indexProductGroup{
     box-sizing: border-box;
-    padding: 0 0 0 10%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -56,14 +55,13 @@
     // background-color: #aaa;
     margin-bottom: 100px;
     .indexProductTitle{
-        width: 90%;
+        padding: 0 0 0 10%;
         margin-bottom: 50px;
         display: flex;
         justify-content: start;
         align-items: end;
         z-index: 3;
         .linkToProductList{
-            // width: 195px;
             margin: 0 0 5px 20px;
             display: flex;
             align-items: center;
@@ -87,39 +85,138 @@
         }
         .productListLink{
             width: 135px;
-                // width: 130px;
-                height: 40px;
-                margin: 0 10px;
-                color: $whiteWord;
-                background-color: $blackWord;
-                display: flex;
-                align-items: center;
-                // justify-content: center;
-                padding: 0 0 0 10px;
-                transition: .3s ease-in-out;
-                position: relative;
-                @media (min-width:768px) {
-                    &:hover::before {
-                        width: 30px;
-                    }
+            // width: 130px;
+            height: 40px;
+            margin: 0 10px;
+            color: $whiteWord;
+            background-color: $blackWord;
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+            padding: 0 0 0 10px;
+            transition: .3s ease-in-out;
+            position: relative;
+            @media (min-width:768px) {
+                &:hover::before {
+                    width: 30px;
                 }
-                &::before {
-                content: '';
-                width: 20px;
-                height: 1px;
-                margin-right: 20px;
-                background-color: #fff;
-                display: block;
-                // position: absolute;
-                left: 0;
-                bottom: 50%;
-                transition: width .3s ease-in-out;
-                transform-origin: right;
-                }
+            }
+            &::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            margin-right: 20px;
+            background-color: #fff;
+            display: block;
+            // position: absolute;
+            left: 0;
+            bottom: 50%;
+            transition: width .3s ease-in-out;
+            transform-origin: right;
+            }
         }
+    }
+    .indexDisplayProducts{
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        width: 90%;
+        margin: 0 auto;
+        // max-width: 1200px;
     }
 }
 
+
+.decoTrainAnimation {
+    position: relative;
+    width: 100%;
+    height: 60vw;
+    overflow: hidden;
+    // background-color: #aaa;
+
+    @media (min-width:768px) {
+        height: 25vw;
+    }
+
+
+    .decoMountain {
+        // width: 30%;
+        width: 70%;
+        position: absolute;
+        top: 23%;
+        right: 0;
+
+        @media (min-width:600px) {
+            top:  5%;
+        }
+        @media (min-width:768px) {
+            width: 50%;
+            top: 0;
+        }
+    
+        
+    }
+
+    .decoTrainAnima {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        // background-color: #aaa;
+        
+    
+        .decoTrain {
+            // width: 50%;
+            width: 100%;
+            position: absolute;
+            bottom: 40%;
+            z-index: 10;
+            // background-color: #aaa;
+
+            @media (min-width:450px) {
+                bottom: 45%;
+            }
+            @media (min-width:600px) {
+                bottom: 50%;
+            }
+            @media (min-width:768px) {
+                bottom: 35%;
+            }
+            
+            .decoTrainImg {
+                width: 50%;
+                position: absolute;
+                animation: movingTrain 10s linear infinite;
+
+                @media (min-width:768px) {
+                    width: 30%;
+                }
+            }
+        }
+    
+        
+        .decoRail {
+            width: 1000px;
+            position: absolute;
+            bottom: 20%;
+            
+
+            @media (min-width:768px) {
+                width: 100%;
+                bottom: 5%;
+            }
+            
+        }
+    
+        @keyframes movingTrain {
+            from {
+                right: -500px; /* 起始位置 */
+            }
+            to {
+                right: 100%; /* 终点位置 */
+            }
+        }
+    }
+}
 
 
 .indexEventGroup {
