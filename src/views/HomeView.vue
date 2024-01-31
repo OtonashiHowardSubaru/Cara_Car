@@ -227,9 +227,9 @@ export default {
           讓每個孩子都能擁有專屬的玩具車，
           展開一場屬於他們獨特的冒險旅程。</p>
       </div>
-      <RouterLink to="/News" class="linkToEvent">
+      <RouterLink to="/About" class="linkToAbout">
         <!-- <div class="decoLine"></div> -->
-        <div class="eventLink">了解更多</div>
+        <div class="AboutLink">了解更多</div>
       </RouterLink>
     </div>
     </div>
