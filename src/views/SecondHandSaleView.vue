@@ -93,11 +93,14 @@
         </section>
 
         <div class="iWantSellCarButton">
-            <div @click="openSaleCarbtn">填寫表格</div>
+            <div @click="openBtnSaleCar">填寫表格</div>
         </div>
+        <div class="SellCarFormButton">
+        <button @click="openBtnSaleCar">填寫表格2</button>
+    </div>
         
-        <!-- <SaleCarbtn v-if="lightBoxStore.showLightbox"/> -->
-        <SaleCarbtn/>
+        <!-- <BtnSaleCar v-if="lightBoxStore.showLightbox"/> -->
+        <BtnSaleCar/>
         
     </div>
     
@@ -108,8 +111,8 @@ import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
 import MainHeader from '@/components/Header.vue';
 import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
-import lightBoxStore from "@/stores/lightBox.js"
-import SaleCarbtn from '@/components/btn/SaleCarbtn.vue';
+import lightBoxForm from "@/stores/lightBoxForm.js"
+import BtnSaleCar from '@/components/btn/BtnSaleCar.vue';
 
 
 export default {
@@ -118,12 +121,12 @@ export default {
         MainHeader,
         ShopMap,
         InfoTextCards,
-        SaleCarbtn,
+        BtnSaleCar,
         
     },
     data() {
         return {
-            lightBoxStore: lightBoxStore(),
+            lightBoxForm: lightBoxForm(),
             showLightbox: false,
             
             infoText: [

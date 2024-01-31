@@ -102,23 +102,7 @@
     font-size: $mh5;
     color: $grass_2;
 }
-.qty {
-    box-sizing: border-box;
-    text-align: center;
-    width: 35px;
-    height: 35px;
-    border: none;
-    background-color: #00f0;
-    font-size: $mh4;
-    color: $grass_2;
-}
-.qtyPlus, .qtyMinus {
-    width: 35px;
-    height: 35px;
-    background-color: #00f0;
-    border: none;
-    color: $grass_2;
-}
+
 //商品數量加減器終點
 
 //商品加購起點
@@ -180,39 +164,24 @@
     padding: 20px 0 0 0;
     width: 100%;
     display: flex;
-//     flex-wrap: wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
-//     button{
-//         border: none;
-//         border-radius: $borr2;
-//         font-size: $mh5;
-//         width: 40%;
-//     }
-    #purchase_btn{
-        // margin-top: 40px;
-        display: flex;
-        justify-content: end;
-        a{
-            color: #fff;
-            background-color: $grass_1;
-            padding: 10px 70px;
-            border-radius: 15px;
-        }
-    }
-}
-
-
-#addToCart_btn{
-    // margin-top: 40px;
-    display: flex;
-    justify-content: end;
-    a{
+    button{
+        border: none;
+        border-radius: $borr2;
+        font-size: $mh6;
+        width: 40%;
         color: #fff;
-        background-color: $navy;
-        padding: 10px 70px;
-        border-radius: 15px;
+        padding: 10px;
     }
+    #buyNowBtn{
+        background-color: $grass_1;
+    }
+    #addToCartBtn{
+        background-color: $navy;
 }
+}
+
 
 //商品簡介區css終點
 
