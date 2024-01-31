@@ -1,36 +1,50 @@
 <template>
-    <div class="newsCardList">
-        <!-- <div class="btnSliderArrow">
-            <i class="fa-solid fa-arrow-left"></i>
-        </div> -->
 
-        <div class="newsCardGroup">
-            <router-link to="/NewsArticle" class="newsCards">
-                <div class="newsCard" v-for="newsInfo in newsCard" :key="newsInfo.title">
-                    <div class="newsCardImg">
-                        <div class="newsInfoImg">
-                            <img :src="newsInfo.img" alt="newsInfo.img">
-                        </div>
-                        <span class="timingTag">{{ newsInfo.timingTag }}</span>
-                    </div>
-                    <div class="newsCardText">
-                        <div class="cardTitle">
-                            <h3>【{{ newsInfo.activeTag }}】{{ newsInfo.title }}</h3>
-                        </div>
-                        <p>{{ newsInfo.beginTime }}</p>
-                    </div>
-                </div>
-            </router-link>
-        </div>
+<div class="newsCardListSwiper">
 
-        <!-- <div class="btnSliderArrow">
-            <i class="fa-solid fa-arrow-right"></i>
-        </div> -->
-        <div class="btnSliderLeftRight">
-            <i class="fa-solid fa-arrow-left"></i>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>
-    </div>
+    <swiper
+    :slidesPerView="slidesPerView"
+    :spaceBetween="10"
+    :navigation="{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    }"
+    :pagination="{
+        clickable: true,
+    }"
+    :modules="modules"
+    class="newsCardList"
+    >
+        <swiper-slide v-for="newsInfo in newsCard" :key="newsInfo.title">
+            <div class="newsCardGroup">
+                <router-link to="/NewsArticle" class="newsCards">
+                    <div class="newsCard">
+                        <div class="newsCardImg">
+                            <div class="newsInfoImg">
+                                <img :src="newsInfo.img" alt="newsInfo.img">
+                            </div>
+                            <span class="timingTag">{{ newsInfo.timingTag }}</span>
+                        </div>
+                        <div class="newsCardText">
+                            <div class="cardTitle">
+                                <h3>【{{ newsInfo.activeTag }}】{{ newsInfo.title }}</h3>
+                            </div>
+                            <p>{{ newsInfo.beginTime }}</p>
+                        </div>
+                    </div>
+                </router-link>
+
+            </div>
+        </swiper-slide>
+
+        
+    </swiper>
+    
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+
 </template>
 
 
@@ -46,6 +60,10 @@ import NewCardImage07 from "../../assets/imgs/event/infoCard07.jpg"
 import NewCardImage08 from "../../assets/imgs/event/infoCard08.jpg"
 import NewCardImage09 from "../../assets/imgs/event/infoCard09.jpg"
 export default { 
+    components:{
+        Swiper,
+        SwiperSlide,
+    },
     data() {
         return{
             newsCard:[
@@ -112,8 +130,37 @@ export default {
                     activeTag: "活動",
                     beginTime: "2024/5/20 ~ 2024/12/31",
                 },
-            ]
+            ],
+            slidesPerView: 1,
         }
+    },
+    setup() {
+        const onSwiper = (swiper) => {
+            console.log(swiper);
+        };
+        const onSlideChange = () => {
+            console.log('slide change');
+        };
+        return {
+            onSwiper,
+            onSlideChange,
+            modules: [Navigation],
+        };
+    },
+    computed: {
+        modules() {
+            return [Navigation];
+        },
+    },
+    mounted() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize(); // 初始调用一次，确保初始值正确
+    },
+    methods: {
+        handleResize() {
+            // 根据窗口宽度动态设置 slidesPerView
+            this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;
+        },
     },
 }
 </script>
