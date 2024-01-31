@@ -45,59 +45,59 @@ data(){
         ],
         productList:[
         {
-              prod_img1:product01,
-              prod_name:"起始玩家",
-              prod_price:"5000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product02,
-              prod_name:"賓士少爺",
-              prod_price:"10000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product03,
-              prod_name:"賓士少爺二代",
-              prod_price:"12000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product04,
-              prod_name:"敞篷輕旅",
-              prod_price:"12000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product05,
-              prod_name:"野貓戰機",
-              prod_price:"8000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product06,
-              prod_name:"敞篷輕旅二代",
-              prod_price:"14000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product07,
-              prod_name:"赤色風暴",
-              prod_price:"8000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product08,
-              prod_name:"英倫經典",
-              prod_price:"10000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product09,
-              prod_name:"F1一代",
-              prod_price:"18000",
-              linkwhere:"/Product"
-            },
+            prod_img1:product01,
+            prod_name:"起始玩家",
+            prod_price:"5000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product02,
+            prod_name:"賓士少爺",
+            prod_price:"10000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product03,
+            prod_name:"賓士少爺二代",
+            prod_price:"12000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product04,
+            prod_name:"敞篷輕旅",
+            prod_price:"12000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product05,
+            prod_name:"野貓戰機",
+            prod_price:"8000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product06,
+            prod_name:"敞篷輕旅二代",
+            prod_price:"14000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product07,
+            prod_name:"赤色風暴",
+            prod_price:"8000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product08,
+            prod_name:"英倫經典",
+            prod_price:"10000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product09,
+            prod_name:"F1一代",
+            prod_price:"18000",
+            linkwhere:"/Product"
+        },
         ],
     }
 },
@@ -224,7 +224,7 @@ methods: {
                 </div>
                 <input type="text" class="cartInput"> 
                 <p class="cartInputTitle">備註欄</p>
-                <input type="text" size="20" class="remark">
+                <input type="textarea" size="100" class="remark">
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
         </form>

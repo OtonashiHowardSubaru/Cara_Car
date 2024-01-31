@@ -179,7 +179,7 @@
             :filterName="item.filterName"
           />
         </div>
-        <div class="pro_card_list col-9 col-md-10">
+        <div class="pro_card_list col-md-10">
           <ProductCard 
           :displayData="productList"
           />
