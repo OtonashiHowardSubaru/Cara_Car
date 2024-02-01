@@ -166,10 +166,7 @@
 
 @media (min-width:768px) {
     .mainHeader{
-        background-color: $whiteWord;
-    }
-    .mainHeaderIndex{
-        background-color: $whiteWord;
+        display: none;
     }
     .indexHeaderNav{
         display: block;

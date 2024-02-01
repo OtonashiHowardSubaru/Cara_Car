@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import MainHeader from '@/components/Header.vue'
+import MainHeader from '@/components/MainHeader.vue'
 import EventCard from '@/components/card/EventCard.vue'
 import PageNumber from '@/components/btn/PageNumber.vue'
 export default {
