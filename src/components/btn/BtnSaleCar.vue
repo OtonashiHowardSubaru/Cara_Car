@@ -1,23 +1,26 @@
 <template>
     <!-- 我要賣車的表格按鈕lightbox -->
-    <!-- <div class="SellCarFormButton">
-        <button @click="openLightbox">填寫表格1</button>
-    </div> -->
-
     <div id="SellCarFormOverlay" @click="handleClick">
                 <div id="SellCarFormModal">
                     <span class="close" @click.stop="closeLightbox">&times;</span>
                     <div class="SellCarForm_container">
                         <div class="SellCarForm_textarea">
                             <h2>我要賣車</h2>
-                            <div class="email">
+                            <div class="name">
                                 <p>聯絡人姓名</p>
-                                <input type="email" id="username" name="username" placeholder="輸入姓名">
+                                <input type="name" id="username" name="username" placeholder="輸入姓名">
                             </div>
-                            <div class="psw">
+                            <div class="phone">
                                 <p>連絡電話</p>
                                 <div class="psw_input">
                                     <input type="phone" id="phone" name="username" placeholder="連絡電話">
+
+                                </div>
+                            </div>
+                            <div class="time">
+                                <p>連絡時間</p>
+                                <div class="psw_input">
+                                    <input type="date" id="date" name="username" placeholder="聯絡時間">
 
                                 </div>
                             </div>
@@ -28,7 +31,9 @@
                             <div class="other_SellCarForm_title">
                                 <div class="other_line"></div>
                                 <h2>照片及影片上傳</h2>
-                                <div class="other_line"></div>
+                                <div class="other_line">
+                                    照片
+                                </div>
                             </div>
                             <div class="SellCarForm_group">
                                 
@@ -70,7 +75,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "@/assets/scss/page/second_hand_sale.scss";
+// @import "@/assets/scss/page/second_hand_sale.scss";
 @import "@/assets/scss/components/saleCarbtn.scss";
 </style>
 
