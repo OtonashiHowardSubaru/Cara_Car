@@ -77,5 +77,5 @@ export default {
   </div>
 </template>
 <style lang="scss" scope>
-@import '@/assets/scss/components/card.scss';
+@import '@/assets/scss/components/cardShProcess.scss';
 </style>

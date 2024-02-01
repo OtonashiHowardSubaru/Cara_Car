@@ -1,7 +1,7 @@
 <script>
   import axios from 'axios'; //引入函式庫
   import ProCardSwiper from '@/components/ProCardSwiper.vue'
-  import MainHeader from '@/components/Header.vue';
+  import MainHeader from '@/components/MainHeader.vue';
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue"
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 
@@ -157,7 +157,7 @@
         <img :src="productMainImg" alt="" class="bigImg">
       </div>
       <div class="smallImgsBox">
-        <img v-for="item in productImgs" :src="item" alt="" class="smallImg" @click="showLarge($event)">
+        <img v-for="item in productImgs" :src="item" alt="" class="smallImg" :key="item" @click="showLarge($event)">
       </div>
     </div>
     <div class="col-12 col-md-6 intro">

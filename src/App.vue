@@ -1,5 +1,5 @@
 <template>
-    <MainHeader />
+    <!-- <MainHeader /> -->
 
     <RouterView />
 
@@ -8,13 +8,13 @@
 
 <script> 
 import { RouterView } from 'vue-router'
-import MainHeader from '@/components/MainHeader.vue'
+// import MainHeader from '@/components/Header.vue'
 import MainFooter from '@/components/MainFooter.vue'
 
 export default {
   components:{
     RouterView,
-    MainHeader,
+    // MainHeader,
     MainFooter,
   },
   data() {

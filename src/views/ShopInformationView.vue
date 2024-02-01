@@ -26,7 +26,7 @@
 <script>
 import BtnAboutUs from '@/components/btn/BtnAboutUs.vue'
 import BtnEvent from '@/components/btn/BtnEvent.vue'
-import MainHeader from '@/components/Header.vue';
+import MainHeader from '@/components/MainHeader.vue';
 import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
 
