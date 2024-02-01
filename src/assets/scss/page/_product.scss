@@ -56,7 +56,7 @@
 //商品簡介區css起點
 .intro{
     padding: 0 12.5%;
-    margin: auto;
+    margin: 0 auto 100px auto;
     .price{
         font-size: $mh2;
         padding: 20px 0;
@@ -166,50 +166,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 100px;
-    #purchase_btn{
-        display: flex;
-        justify-content: end;
-        a{
-            color: #fff;
-            background-color: $grass_1;
-            padding: 10px 5vw;
-            border-radius: 15px;
-        }
+    button{
+        border: none;
+        border-radius: $borr2;
+        font-size: $mh6;
+        width: 40%;
+        color: #fff;
+        padding: 10px;
     }
-    #addToCart_btn{
-        display: flex;
-        justify-content: end;
-        a{
-            color: #fff;
-            background-color: $navy;
-            padding: 10px 4.5vw;
-            border-radius: 15px;
-        }
+    #buyNowBtn{
+        background-color: $grass_1;
     }
+    #addToCartBtn{
+        background-color: $navy;
+}
 }
 
-@media(max-width: 768px){
-    .buy_pro{
-        padding: 20px 0 0 0;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        
-        #purchase_btn{
-            a{
-                padding: 10px 40px;
-            }
-        }
-        #addToCart_btn{
-            a{
-                padding: 10px 35px;
-            }
-        }
-        
-    }
-}
 
 
 //商品簡介區css終點

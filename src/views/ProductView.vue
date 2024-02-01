@@ -20,7 +20,7 @@
   import thisProductImg04 from '@/assets/imgs/product/sh_product_litpic2.png';
   export default {
     components: {
-      ProCardSwiper,MainHeader,ProductIntroCard, NumberSelect,
+      ProCardSwiper,MainHeader,ProCardSwiper,MainHeader
     },
     data(){
       return {
@@ -187,8 +187,8 @@
 
 
 <ProductIntroCard/>
-
-
+<!-- 疑問疑問疑問 ↓↓ 小龜老師看這裡 ↓↓ 疑問疑問疑問疑問 -->
+<!-- 我需要讓這兩個卡片swiper的按鈕不會互相影響 -->
 <ProCardSwiper :displayData="productList" />
 <ProCardSwiper :displayData="productList" />
 

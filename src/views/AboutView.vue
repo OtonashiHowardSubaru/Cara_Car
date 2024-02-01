@@ -2,7 +2,6 @@
   <MainHeader />
   <div class="about">
     <div class="aboutTitle"><img src="../assets/imgs/about/aboutTitle.svg" alt=""></div>
-    <!-- <h2>Test init</h2> -->
     <div class="topPics">
       <img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG">
       <img src="../assets/imgs/about/aboutTop2.png" alt="aboutIMG">
