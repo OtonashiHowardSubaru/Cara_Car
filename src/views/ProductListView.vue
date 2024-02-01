@@ -5,7 +5,7 @@
   import CardShProcess from "@/components/card/CardShProcess.vue";
   import PageNumber from "@/components/btn/PageNumber.vue";
   import BtnFilter from '@/components/btn/BtnFilter.vue';
-  import MainHeader from '@/components/Header.vue';
+  import MainHeader from '@/components/MainHeader.vue';
 
   import product01 from '@/assets/imgs/product/product_1.png';
   import product02 from '@/assets/imgs/product/product_2.png';
@@ -177,6 +177,7 @@
             v-for="item in filter"
             :filterId="item.filterId"
             :filterName="item.filterName"
+            :key="item"
           />
         </div>
         <div class="pro_card_list col-md-10">

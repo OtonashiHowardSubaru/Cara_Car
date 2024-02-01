@@ -1,5 +1,5 @@
 <script>
-import MainHeader from '@/components/Header.vue'
+import MainHeader from '@/components/MainHeader.vue'
 export default {
     data() {
         return {

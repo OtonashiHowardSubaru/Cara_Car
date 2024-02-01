@@ -144,7 +144,7 @@ export default {
 
 
 <template>
-  <header class="mainHeader">
+  <header class="mainHeaderIndex">
     <nav>
       <!-- 電腦版header -->
       <ul class="indexHeaderNav">

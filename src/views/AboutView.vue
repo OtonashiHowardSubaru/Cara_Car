@@ -1,3 +1,24 @@
+<script>
+import BtnEvent from '@/components/btn/BtnEvent.vue'
+import BtnShopInfo from '@/components/btn/BtnShopInfo.vue'
+import MainHeader from '@/components/MainHeader.vue'
+
+export default {
+    components:{
+        BtnEvent, BtnShopInfo,MainHeader
+    },
+    data() {
+        return{
+            
+        }
+    },
+    methods:{
+    },
+    mounted() {
+    }
+}
+</script>
+
 <template>
   <MainHeader />
   <div class="about">
@@ -42,30 +63,8 @@
       <BtnShopInfo/>
     </div>
 
-
   </div>
 </template>
-
-<script>
-import BtnEvent from '@/components/btn/BtnEvent.vue'
-import BtnShopInfo from '@/components/btn/BtnShopInfo.vue'
-import MainHeader from '@/components/Header.vue'
-
-export default {
-    components:{
-        BtnEvent, BtnShopInfo,MainHeader
-    },
-    data() {
-        return{
-            
-        }
-    },
-    methods:{
-    },
-    mounted() {
-    }
-}
-</script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/page/about.scss";
