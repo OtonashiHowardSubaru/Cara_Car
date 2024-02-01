@@ -4,7 +4,7 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
 import TitleMaybeYouLike from "@/components/TitleMaybeYouLike.vue";
 import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
-import MainHeader from "@/components/Header.vue";
+import MainHeader from "@/components/MainHeader.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
 import mainImage from "@/assets/imgs/product/sh_product_mainpic.png";
 import { Swiper, SwiperSlide } from 'swiper/vue';

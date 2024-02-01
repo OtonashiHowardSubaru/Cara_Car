@@ -9,7 +9,7 @@ import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
 import ProductCard from "@/components/ProductCard.vue";
 import CardShProcess from '@/components/card/CardShProcess.vue'
-import bannerCanvas from "@/components/Canvas.vue";
+// import bannerCanvas from "@/components/Canvas.vue";
 
 import product01 from '@/assets/imgs/product/product_1.png';
 import product02 from '@/assets/imgs/product/product_2.png';
@@ -22,7 +22,8 @@ import product08 from '@/assets/imgs/product/product_8.png';
 
 export default {
   components: {
-    EventCardSlider, LoginBox, ProductCard, CardShProcess,bannerCanvas
+    EventCardSlider, LoginBox, ProductCard, CardShProcess,
+    // bannerCanvas
   },
   data() {
     return {
@@ -30,6 +31,9 @@ export default {
       showLightbox: false,
       currentTitle: '',
       currentHoverIndex: -1,
+      currentTitlePh: '',
+      currentHoverIndexPh: -1,
+      // isHovered: false,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -53,6 +57,27 @@ export default {
         { p: 'SHOP INFO' },
         { p: 'MEMBER' },
         { p: 'MY CART' },
+      ],
+      namePh: [
+        '/ProductList',
+        '/SecondHandList',
+        '/ShopInformation',
+        '/MemberCenter',
+        '/Cart',
+      ],
+      imgPh: [
+          { i: 'nav/nav-icon-01.png' },
+          { i: 'nav/nav-icon-02.png' },
+          { i: 'nav/nav-icon-04.png' },
+          { i: 'nav/nav-icon-05.png' },
+          { i: 'nav/nav-icon-06.png' },
+      ],
+      titlePh: [
+          { ph: 'PRODUCT' },
+          { ph: '2nd HAND' },
+          { ph: 'SHOP INFO' },
+          { ph: 'MEMBER' },
+          { ph: 'MY CART' },
       ],
       productList:[
         {
@@ -117,13 +142,17 @@ export default {
     resetImageTitle() {
       this.currentHoverIndex = -1;
     },
-    handleClick(e) {
-      if (e.target.id === 'loginOverlay') {
-        this.closeLightbox();
-      } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
-        this.$router.push('/Register');
-        this.closeLightbox();
-      }
+    changeImageTitlePh($index) {
+        console.log('Index:', $index);
+        console.log('titlePh[index]:', this.titlePh[$index]);
+
+        if (this.titlePh[$index]) {
+            this.currentTitle = this.titlePh[$index].ph;
+            this.currentHoverIndexPh = $index;
+        }
+        },
+        resetImageTitlePh() {
+        this.currentHoverIndexPh = -1;
     },
     openLightbox() {
       // this.showLightbox = true;
@@ -132,6 +161,14 @@ export default {
     closeLightbox() {
       // this.showLightbox = false;
       this.lightBoxStore.closeLightbox()
+    },
+    handleClick(e) {
+      if (e.target.id === 'loginOverlay') {
+        this.closeLightbox();
+      } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
+        this.$router.push('/Register');
+        this.closeLightbox();
+      }
     },
   },
   mounted() {
@@ -143,9 +180,10 @@ export default {
 
 
 <template>
-  <header class="mainHeader">
+  <header class="mainHeaderIndex">
     <nav>
       <!-- 電腦版header -->
+      <!-- 首頁沒有Logo -->
       <ul class="indexHeaderNav">
         <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)"
           @mouseleave="resetImageTitle()">
@@ -163,6 +201,26 @@ export default {
       <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
+
+  <!-- 手機板haeder -->
+  <header class="mainHeader">
+        <nav>
+            <ul class="indexHeaderNavPh">
+                <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
+                    <RouterLink :to="namePh[$index]">
+                        <img :src="getImageUrl(item.i)" class="indexHeaderButtonIconPh">
+                        <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
+                    </RouterLink>
+                </li>
+                <div class="linePh"></div>
+                <div class="indexHeaderLoginPh">
+                    <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
+                        @click="openLightbox">
+                </div>
+            </ul>
+        </nav>
+    </header>
+
   <Transition name="fade">
     <LoginBox v-if="lightBoxStore.showLightbox" />
   </Transition>
@@ -267,5 +325,4 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
 @import '@/assets/scss/page/home.scss';
-@import '@/assets/scss/layout/login.scss';
 </style>

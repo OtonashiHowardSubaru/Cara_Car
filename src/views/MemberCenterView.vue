@@ -1,5 +1,5 @@
 <script>
-import MainHeader from '@/components/Header.vue'
+import MainHeader from '@/components/MainHeader.vue'
 import userImage from '@/assets/imgs/memberCenter/userImage(default).png'
 export default {
     components:{

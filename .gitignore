@@ -12,6 +12,7 @@ node_modules
 # 部署目錄
 dist
 front
+css
 
 dist-ssr
 front

@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import CardShProcess from "@/components/card/CardShProcess.vue";
-import MainHeader from '@/components/Header.vue';
+import MainHeader from '@/components/MainHeader.vue';
 import PageNumber from "@/components/btn/PageNumber.vue"
 import ProductCard from "@/components/ProductCard.vue"
 import PriceSorter from '@/components/PriceSorter.vue';

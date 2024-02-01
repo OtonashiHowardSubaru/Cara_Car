@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios'; //引入函式庫
-import MainHeader from '@/components/Header.vue';
+import MainHeader from '@/components/MainHeader.vue';
 // import TitleViewed from '@/components/TitleViewed.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 
@@ -218,7 +218,7 @@ methods: {
                 <div class="col66">
                     <select name="city" id="city" >
                         <option value="">請選擇縣市</option>
-                        <option v-for="item in city">{{ (item).c }}</option>
+                        <option v-for="item in city" :key="item">{{ (item).c }}</option>
                     </select>
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>
