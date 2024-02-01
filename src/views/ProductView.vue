@@ -16,7 +16,7 @@
 
   export default {
     components: {
-      ProCardSwiper,MainHeader,ProductIntroCard, NumberSelect,
+      ProCardSwiper,MainHeader,ProCardSwiper,MainHeader
     },
     data(){
       return {

@@ -13,12 +13,22 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import ProCardSwiper from "@/components/ProCardSwiper.vue"
 
+import product01 from '@/assets/imgs/product/sh_product_1.png';
+import product02 from '@/assets/imgs/product/sh_product_2.png';
+import product03 from '@/assets/imgs/product/sh_product_3.png';
+import product04 from '@/assets/imgs/product/sh_product_4.png';
+import product05 from '@/assets/imgs/product/sh_product_5.png';
+import product06 from '@/assets/imgs/product/sh_product_6.png';
+import product07 from '@/assets/imgs/product/sh_product_7.png';
+import product08 from '@/assets/imgs/product/sh_product_8.png';
+import product09 from '@/assets/imgs/product/sh_product_9.png';
+
 
 
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper
+    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,product01,product02,product03,product04,product05,product06,product07,product08,product09
 },
     data(){
       return {
@@ -26,55 +36,55 @@ import ProCardSwiper from "@/components/ProCardSwiper.vue"
         responseData : [],
         sh_product_list: [
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_1.png",
+              prod_img1:product01,
               prod_name:"極光追逐者",
               prod_price:"3000",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_2.png",
+              prod_img1:product02,
               prod_name:"極速閃電車",
               prod_price:"5000",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_3.png",
+              prod_img1:product03,
               prod_name:"太空探險車",
               prod_price:"8000",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_4.png",
+              prod_img1:product04,
               prod_name:"科技漂移车",
               prod_price:"6000",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_5.png",
+              prod_img1:product05,
               prod_name:"爆炸速度狂飆车",
               prod_price:"4000",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_6.png",
+              prod_img1:product06,
               prod_name:"魔法變形賽車",
               prod_price:"6000",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_7.png",
+              prod_img1:product07,
               prod_name:"閃電漂移車",
               prod_price:"2500",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_8.png",
+              prod_img1:product08,
               prod_name:"太空漫步車",
               prod_price:"3500",
               linkwhere:"/SecondHand"
             },
             {
-              prod_img1:"/src/assets/imgs/product/sh_product_9.png",
+              prod_img1:product09,
               prod_name:"磁浮飛行車",
               prod_price:"5500",
               linkwhere:"/SecondHand"
