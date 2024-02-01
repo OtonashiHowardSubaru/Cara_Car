@@ -67,6 +67,25 @@ export default {
             // this.showLightbox = false;
             this.lightBoxStore.closeLightbox()
         },
+        onScroll(){
+            const scrollTop = document.documentElement.scrollTop + document.body.scrollTop
+            const headerDom = this.$refs.header
+            if(headerDom){
+                if(scrollTop >= 100){
+                    if(!headerDom.classList.contains('hidden')){
+                        headerDom.classList.add('hidden');
+                    }
+                }else{
+                    headerDom.classList.remove('hidden');
+                }
+            }
+        }
+    },
+    mounted(){
+        document.addEventListener('scroll',this.onScroll);
+    },
+    beforeDestroy(){
+        document.removeEventListener('scroll', this.onScroll)
     },
 }
 
@@ -74,7 +93,7 @@ export default {
 </script>
 
 <template>
-    <header class="mainHeaderIndex">
+    <header class="mainHeaderIndex" ref="header">
         <nav>
             <!-- 電腦版header -->
             <!-- 內頁才有這個LOGO圖 -->

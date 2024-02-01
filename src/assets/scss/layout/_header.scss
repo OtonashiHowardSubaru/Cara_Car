@@ -13,8 +13,12 @@
     height: 80px;
     // background-color: $whiteWord;
     padding-bottom: 5px;
-    
+        
 } 
+.hidden{
+    transform: translateY(-100%);
+    transition: transform 3s ease;
+}
 .mainHeaderIndex{
     display: flex;
     justify-content: end;
@@ -26,6 +30,10 @@
     padding-bottom: 5px;
     background-color: $whiteWord;
     border-bottom: $bor1 solid $blackWord;
+    transition: transform 0.3s ease;
+}
+.mainHeaderIndex.hidden {
+    transform: translateY(-100%);
 }
 .indexNavLogo{
     position: absolute;
@@ -33,6 +41,9 @@
     left: 50%;
     top:50%;
     transform: translate(-50%, -50%);
+    // &.not-top{
+    //     transform: translate(3s);
+    // }
 }
 .indexHeaderNavPh{
     display: flex;
@@ -170,6 +181,10 @@
     }
     .mainHeaderIndex{
         background-color: $whiteWord;
+        transition: none;
+    }
+    .mainHeaderIndex.hidden {
+        transform: none;
     }
     .indexHeaderNav{
         display: block;

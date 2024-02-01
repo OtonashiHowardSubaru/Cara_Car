@@ -60,7 +60,7 @@
         display: flex;
         justify-content: start;
         align-items: end;
-        z-index: 3;
+        z-index: 2;
         img{
             width: clamp(150px,40%,250px);
         }
@@ -102,6 +102,7 @@
             @media (min-width:768px) {
                 &:hover::before {
                     width: 30px;
+                    
                 }
             }
             &::before {
@@ -148,7 +149,7 @@
         position: absolute;
         top: 23%;
         right: 0;
-
+        z-index: -3;
         @media (min-width:600px) {
             top:  5%;
         }
@@ -172,14 +173,14 @@
             width: 100%;
             position: absolute;
             bottom: 40%;
-            z-index: 10;
+            z-index: -3;
             // background-color: #aaa;
 
             @media (min-width:450px) {
                 bottom: 45%;
             }
             @media (min-width:600px) {
-                bottom: 50%;
+                bottom: 48%;
             }
             @media (min-width:768px) {
                 bottom: 35%;
@@ -188,24 +189,25 @@
             .decoTrainImg {
                 width: 50%;
                 position: absolute;
-                animation: movingTrain 10s linear infinite;
-
+                animation: movingTrain 15s linear infinite, shake 3s infinite;
                 @media (min-width:768px) {
                     width: 30%;
                 }
             }
+            
         }
     
         
         .decoRail {
             width: 1000px;
             position: absolute;
-            bottom: 20%;
+            bottom: 26%;
             
 
             @media (min-width:768px) {
                 width: 100%;
-                bottom: 5%;
+                bottom: 8%;
+                z-index: -2;
             }
             
         }
@@ -217,6 +219,12 @@
             to {
                 right: 100%; /* 终点位置 */
             }
+        }
+        @keyframes shake {
+            0%, 100%{transform: translateX(0);}
+            10%,30%,50%,70%,90%{transform: translateY(-2px);}
+            20%, 40%, 60%, 80%{transform: translateY(2px);}
+        
         }
     }
 }
@@ -501,35 +509,38 @@
     .indexBannerTitle{
         writing-mode: vertical-rl;
         left: 10%;
-        top:8%;
+        top:19%;
         font-size: $h4;
     }
     .indexBannerTitle2{
         writing-mode: vertical-rl;
         left: 15%;
-        top: 20%;
+        top: 32%;
         font-size: $h4;
     }
     .indexLogo{
-        top:50%;
+        top: 1%;
         left: 5%;
     }
     .indexBannerBagBlock{
         width: 30%;
-        height: 100%;
+        height: 1750px;
         top: 60%;
     }
+    
+}
+@media (width >= 1280px) {
     .indexGameGroup{
         position: relative;
         display: block;
-        max-width: 900px;
+        max-width: 1280px;
     }
     
     .indexGameTitle{
         width: 420px;
         position: absolute;
         top: 20px;
-        left: 50%;
+        left: 38%;
     }
     .indexGameBagBlock{
         width: 450px;
@@ -551,9 +562,8 @@
         background-color: $blackWord;
         border: $bor2 solid $whiteWord;
         bottom: 20%;
-        left: 80%;
+        left: 60%;
         position: absolute;
-        cursor: pointer;
         transition-duration: 1s;
     }
     .indexGameButton:hover{
@@ -571,7 +581,8 @@
         position: absolute;
         bottom: 18px;
         right: 18px;
-        cursor: pointer;
+        transition-duration: 1s;
+        
     }
     .indexGameButtonTitle{
         display: inline-block;
@@ -605,9 +616,9 @@
     // :root {
     //     --start-offset-value: 0;
     // }
-    .circular:hover .text-path {
-        animation: move 15s linear infinite;
-    }
+    // .circular:hover .text-path {
+    //     animation: move 15s linear infinite;
+    // }
     .text-path{
         animation: initial-state 0s linear forwards;
     }
@@ -623,7 +634,6 @@
         }
     }
 }
-
 
 
 

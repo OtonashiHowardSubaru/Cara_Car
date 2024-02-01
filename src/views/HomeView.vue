@@ -30,7 +30,6 @@ export default {
       showLightbox: false,
       currentTitle: '',
       currentHoverIndex: -1,
-      // isHovered: false,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -242,14 +241,14 @@ export default {
     <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
     <div class="indexGameBagBlock"></div>
     <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
-    <div class="indexGameButton" @mouseover="handleMouseOver" @mouseout="handleMouseOut"
-      :class="{ 'hovered': isHovered }">
+    <button class="indexGameButton" @mouseover="handleMouseOver" @mouseout="handleMouseOut"
+      >
       <button class="indexGameButton2">
         <p class="indexGameButtonTitle">Get<br>Start</p>
       </button>
-    </div>
+    </button>
     <div class="circular">
-      <svg viewBox="0 0 100 100">
+      <svg viewBox="165 0 100 100">
         <path d="M 76,51 a 66,66 0 1,1 -1,0 z" id="circle" />
         <text>
           <textPath class="text-path" xlink:href="#circle">

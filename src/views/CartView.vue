@@ -222,9 +222,10 @@ methods: {
                     </select>
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>
-                <input type="text" class="cartInput"> 
+                <input type="text" placeholder="OO路O段O號O樓" class="cartInput"> 
                 <p class="cartInputTitle">備註欄</p>
-                <input type="textarea" size="100" class="remark">
+                <textarea name="remark" id="remark" cols="20" rows="5"></textarea>
+                <!-- <input type="textarea" size="100" class="remark"> -->
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
         </form>
