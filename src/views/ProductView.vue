@@ -2,7 +2,9 @@
   import axios from 'axios'; //引入函式庫
   import ProCardSwiper from '@/components/ProCardSwiper.vue'
   import MainHeader from '@/components/Header.vue';
+  import ProductIntroCard from "@/components/card/ProductIntroCard.vue"
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
+
   import product01 from '@/assets/imgs/product/product_1.png';
   import product02 from '@/assets/imgs/product/product_2.png';
   import product03 from '@/assets/imgs/product/product_3.png';
@@ -12,10 +14,13 @@
   import product07 from '@/assets/imgs/product/product_7.png';
   import product08 from '@/assets/imgs/product/product_8.png';
   import product09 from '@/assets/imgs/product/product_9.png';
-
+  import thisProductImg01 from '@/assets/imgs/product/sh_product_mainpic.png';
+  import thisProductImg02 from '@/assets/imgs/product/sh_product_litpic.png';
+  import thisProductImg03 from '@/assets/imgs/product/sh_product_litpic1.png';
+  import thisProductImg04 from '@/assets/imgs/product/sh_product_litpic2.png';
   export default {
     components: {
-      ProCardSwiper,MainHeader, NumberSelect,
+      ProCardSwiper,MainHeader,ProCardSwiper,MainHeader
     },
     data(){
       return {
@@ -180,66 +185,10 @@
   </div>
 </main>
 
-<div class="detail_selecter">
-  <button type="button">商品介紹</button>
-  <button type="button">購買須知</button>
-  <button type="button">常見問題</button>
-</div>
-<div class="pro_detail">
-  <h2>AMERICAN CLASSIC</h2>
-  <div class="pro_detail_content">
-    <div class="articlel">
-      <p>
-        設計特點：
-        尺寸：適合3至8歲兒童。
-        顏色：多樣化顏色選擇，包括鮮豔的紅色、藍色和粉色。
-        安全帶：配備安全帶，保證兒童駕駛時的安全。
-        遙控操作：父母可透過遙控器控制車輛，確保兒童安全。
-        技術優勢：
-        電池壽命：長效鋰電池，續航能力強。
-        馬達效能：高效能馬達，提供平穩駕駛體驗。
-        耐用性：堅固的車身結構，耐用且易於維護。
-        使用優勢：
-        音效系統：內建音樂播放器，提升兒童駕駛樂趣。
-        照明系統：LED燈光，增加夜間駕駛的安全性。
-        教育性：幫助兒童學習基本的駕駛技巧和交通安全知識。
-        環境友好：
-        無污染排放：電動驅動，不產生廢氣排放，環境友好。
-        噪音低：運行時噪音小，適合室內外使用。
-        這款兒童電動車結合了安全、樂趣和教育性，是適合家庭的理想選擇。
-        規格：
-        尺寸與重量：
-        長度：約120公分。
-        寬度：約60公分。
-        高度：約50公分。
-        重量：約20公斤。
-        電池與續航：
-        電池類型：鋰離子電池。
-        充電時間：約2-3小時。
-        續航能力：每次充滿電可行駛約1-2小時
-        （視使用條件而定）。
-        速度與控制：
-        最高速度：每小時5-6公里。
-        加速控制：腳踏式加速器。
-        方向控制：方向盤操作。
-        遙控器：2.4G無線遙控，控制範圍約20-30米。
-        安全設計：
-        安全帶：可調節五點式安全帶。
-        制動系統：電子制動系統，
-        腳離開加速器即自動減速停車。
-        附加功能：
-        音響系統：USB/MP3接口，內建小喇叭。
-        燈光系統：前後LED照明燈。
-        輪胎：耐磨防滑塑膠輪胎。
-        適用年齡與承重：
-        適用年齡：3至8歲。
-        最大承重：約30公斤。
-      </p>
-    </div>
-  </div>
-  <!-- <img src="../assets/imgs/product/product_detail_hello.png" alt=""> -->
-</div>
 
+<ProductIntroCard/>
+<!-- 疑問疑問疑問 ↓↓ 小龜老師看這裡 ↓↓ 疑問疑問疑問疑問 -->
+<!-- 我需要讓這兩個卡片swiper的按鈕不會互相影響 -->
 <ProCardSwiper :displayData="productList" />
 <ProCardSwiper :displayData="productList" />
 

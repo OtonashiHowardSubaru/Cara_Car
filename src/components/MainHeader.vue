@@ -1,3 +1,5 @@
+<!-- 疑問疑問 ↓↓小龜老師看這裡 ↓↓ 疑問疑問-->
+<!-- 在這頁中有引用燈箱的store和component，這頁的header是手機板的nav，但在HomeView.vue檔中引用燈箱和MainHeader.vue就會變成有兩個燈箱，而且我修改燈箱的css他會影分身成兩個 -->
 <template>
   <header class="mainHeader">
     <nav>
@@ -150,14 +152,20 @@ export default {
     resetImageTitlePh() {
       this.currentHoverIndexPh = -1;
     },
+    handleClick(e) {
+      if (e.target.id === 'loginOverlay') {
+        this.closeLightbox();
+      } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
+        this.$router.push('/Register');
+        this.closeLightbox();
+      }
+    },
     openLightbox() {
-          // this.showLightbox = true;
-          this.lightBoxStore.openLightbox()
-        },
-        closeLightbox() {
-          // this.showLightbox = false;
-          this.lightBoxStore.closeLightbox()
-        },
+      this.lightBoxStore.openLightbox()
+    },
+    closeLightbox() {
+      this.lightBoxStore.closeLightbox()
+    },
     ...mapActions(userStore, ['updateToken']),
     signin() {
       axios.post('https://fakestoreapi.com/auth/login', {

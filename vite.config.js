@@ -29,8 +29,8 @@ export default defineConfig({
       }
     },
   },
-  // server:{
-  //   host:'192.168.0.10'
-  //   // 這個host上傳前要清除，再要不然就是不要commit(最好直接不commit)
-  // }
+  server:{
+    // host:'192.168.1.106'
+    // 這個host上傳前要清除，再要不然就是不要commit(最好直接不commit)
+  }
 })

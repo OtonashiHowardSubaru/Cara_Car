@@ -11,6 +11,7 @@ export default{
     },
     data(){
         return{
+          slidesPerView: 3,
         }
     },
     setup() {
@@ -24,10 +25,14 @@ export default{
         getProductImageUrl(imageFileName) {
         // 返回完整的URL
         return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
+        },
+        handleResize(){
+          this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;
         }
     },
     mounted() {
-      
+      window.addEventListener('resize',this.handleResize);
+      this.handleResize();
     },
 }
 
@@ -39,7 +44,7 @@ export default{
     <h4>別人也逛過</h4>
     <div class="swiper-button-next" ref="nextButton"></div>
     <swiper 
-    :slidesPerView="3"
+    :slidesPerView="slidesPerView"
     :spaceBetween="30"
     :navigation="{
       nextEl: '.swiper-button-next',
