@@ -160,6 +160,7 @@ export default {
             @click="openLightbox">
         </div>
       </ul>
+      <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
   <Transition name="fade">
