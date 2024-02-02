@@ -168,19 +168,31 @@
     justify-content: space-between;
     button{
         border: none;
-        border-radius: $borr2;
+        // border-radius: $borr2;
+        border-radius: 15px;
         font-size: $mh6;
         width: 40%;
         color: #fff;
         padding: 10px;
     }
-    #buyNowBtn{
+    #addToCartBtn{
         background-color: $grass_1;
     }
-    #addToCartBtn{
-        background-color: $navy;
+    #buyNowBtn{
+        background-color: $grass_1;
+        // display: flex;
+        padding: 14px 70px;
+        // justify-content: center;
+        a{
+            color: $grass_1;
+            border: 1px solid $grass_1;
+            
+            
+        }
+    }
 }
-}
+    
+
 
 
 

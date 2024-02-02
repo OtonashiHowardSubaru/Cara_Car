@@ -143,11 +143,11 @@
       },
       handleSortChange(newSort){
         if (newSort === "0") {
-          this.sh_product_list = this.responseData
+          this.productList = this.responseData
         } else if (newSort === "desc") {
-          this.sh_product_list.sort((a, b) => b.prod_price - a.prod_price);
+          this.productList.sort((a, b) => b.prod_price - a.prod_price);
         } else if (newSort === "asc"){
-          this.sh_product_list.sort((a, b) => a.prod_price - b.prod_price);
+          this.productList.sort((a, b) => a.prod_price - b.prod_price);
         };
       },
       handleFilter(){ //這是老師的標題搜尋範例，先留著也許哪天用的到
