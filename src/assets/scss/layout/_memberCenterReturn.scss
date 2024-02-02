@@ -2,11 +2,6 @@
     width: 100%;
     margin-bottom: 50px;
 }
-.sub_title{
-    h3.return_title{
-        margin: 40px 0;
-    }
-}
 .sub_title_line{
     width: 100%;
     height: 0;
@@ -24,8 +19,8 @@
     & nav ul{
         display: flex;
         align-items: center;
-        justify-content: start;
-        gap: 50px;
+        justify-content: space-evenly;
+        gap: 40px;
         width: 100%;
         text-align: center;
     }
@@ -33,7 +28,7 @@
         width: 100px;
         // height: 37px;
         padding: 5px;
-        font-size: $mh6;
+        font-size: $mh5;
         margin-bottom: 1%;
         cursor: pointer;
     }
@@ -71,6 +66,9 @@
         }
     }
     .return_filter{
+        nav ul{
+            justify-content: start;
+        }
         li{
             margin-top: 5px;
             font-size: $h5;

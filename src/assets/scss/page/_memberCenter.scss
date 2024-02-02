@@ -1,177 +1,156 @@
-.fade-enter-active, .fade-leave-active {
-    transition:opacity 0.2s;
-}
-.fade-enter, .fade-leave-to {
-    opacity: 0;
-}
-
-.memberCenter{
+//會員中心預設頁面
+.memberCenter {
     font-family: 'Noto Sans';
-    .memberTitle{
+    .memberTitle {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         margin-top: 80px;
-        & .line {
-            width: 100%;
-            height: 0;
-            background-color: transparent;
-            border: $bor1 solid $blackWord;
-        }
-        & .title{
-            width: 60%;
-            padding: 20px 0;
-            & img{
-                width: 100%;
-                vertical-align: top;
-            }
-        }
     }
-    .memberContent {
-        position: relative;
+}
+.line {
+    width: 100%;
+    height: 0;
+    border: $bor1 solid $blackWord;
+}
+
+.title {
+    width: 60%;
+    padding: 20px 0;
+
+    img {
+        width: 100%;
+        vertical-align: top;
+    }
+}
+
+.memberContent {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    gap: 4%;
+    margin: auto;
+    padding: 2%;
+
+    .member_profile {
         display: flex;
-        flex-wrap: wrap;
-        align-items: start;
-        justify-content: center;
-        gap: 4%;
-        margin: auto;
-        padding: 2%;
-        & .member_profile {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            width: 100%;
-            padding: 10px;
-            & .welcome,.currentOrder,.userCollect {
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-                border-radius: $borr2;
-                background-color: $grey_2;
-                width: 100%;
-                padding: 3% 2%;
-                margin-bottom: 5%;
-            }
-            & .state,.user,.collect {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                font-size: $mh4;
-            }
-            & .memberButton {
-                cursor: pointer;
-                color: $whiteWord;
-                border: none;
-                border-radius: $borr2;
-                background-color: $grass_1;
-                width: 30%;
-                height: 50px;
-                font-size: $mh6;
-            }
-        }
-        & .welcome{
-            justify-content: flex-start;
-            & h3{
-                font-size: $mh4;;
-            }
-        }
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
     }
-    & .mb_user_image {
+}
+.welcome,
+.currentOrder,
+.userCollect {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: $borr2;
+    background-color: $grey_2;
+    width: 100%;
+    padding: 3% 2%;
+    margin-bottom: 5%;
+}
+
+.state,
+.user,
+.collect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: $mh4;
+}
+
+.user,
+.collect {
+    width: 50%;
+    cursor: pointer;
+}
+
+.memberButton {
+    cursor: pointer;
+    color: $whiteWord;
+    border: none;
+    border-radius: $borr2;
+    background-color: $grass_1;
+    width: 30%;
+    height: 50px;
+    font-size: $mh6;
+}
+.welcome {
+    justify-content: flex-start;
+
+    & h3 {
+        font-size: $mh4;
+    }
+}
+
+    .mb_user_image {
         border-radius: $borr5;
         border: $bor1 solid $blackWord;
         overflow: hidden;
         width: 150px;
         height: 150px;
         margin-bottom: 2%;
+
         & img {
             width: 100%;
             vertical-align: top;
         }
     }
-    & .mb_member_sidebar {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15%;
-        width: 100%;
-        font-family: 'Kosugi Maru';
-        font-size: $mh4;
-        border-radius: $borr2;
-        background-color: $grey_2;
-        & nav {
-            padding: 10px;
-            font-family: 'Noto Sans';
-            & ul li {
-                cursor: pointer;
-                padding: 8px 0;
-            }
-        }
-        & .subMenu {
-            padding: 10px 0 0 20px;
-            cursor: pointer;
-        }
-    }
-}
+// }
 
 @media (min-width: 768px) {
     .memberCenter {
         max-width: 1920px;
+
         .memberTitle {
-            & .title {
+            .title {
                 width: 40%;
             }
         }
+
         .memberContent {
             gap: 10%;
             margin: auto;
             padding: 2%;
             margin-bottom: 13%;
 
-            & .member_sidebar {
-                display: flex;
-                flex-direction: column;
-                font-family: 'Kosugi Maru';
-                & nav {
-                    padding: 10px;
-                    font-family: 'Noto Sans';
-                    & ul li {
-                        cursor: pointer;
-                        padding: 8px 0;
-                        font-size: $p;
-                    }
-                }
-                & .subMenu {
-                    padding: 10px 0 0 20px;
-                    cursor: pointer;
-                }
-            }
-
-            & .member_profile {
+            .member_profile {
                 width: 70%;
-                padding:0;
-                & .welcome {
+                padding: 0;
+
+                .welcome {
                     padding: 2%;
                     justify-content: space-between;
-                    & .user_image {
+
+                    .user_image {
                         border-radius: $borr5;
                         border: $bor1 solid $blackWord;
                         background-color: transparent;
                         width: 150px;
                         height: 150px;
                         overflow: hidden;
-                        & img {
+
+                        img {
                             width: 100%;
                             vertical-align: top;
                         }
                     }
                 }
             }
-            & .currentOrder {
-                & .memberButton {
+
+            .currentOrder {
+                .memberButton {
                     width: 25%;
                     font-size: $p;
                     transition: border 0.1s ease-in-out;
+
                     &:hover {
                         border: solid #fff;
                         box-shadow: rgba(102, 102, 102, 0.35) 0px 5px 20px;
