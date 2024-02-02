@@ -17,7 +17,7 @@ export default {
             this.pswVisible = !this.pswVisible;
         },
         handleClick(e) {
-            console.log(e)
+            // console.log(e)
             if (e.target.id === 'loginOverlay') {
                 this.closeLightbox();
             } else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {

@@ -1,5 +1,6 @@
 .basic{
 width: 100%;
+font-family: 'Noto Sans';
 }
 .sub_title{
     position: relative;
@@ -40,17 +41,17 @@ width: 100%;
     }
 }
 .change_user_image{
-    border-radius: $borr2;
     cursor: pointer;
     color: $whiteWord;
-    background-color: $lightGreen;
+    border: none;
+    border-radius: $borr2;
+    background-color: $grass_1;
     width: 30%;
     height: 50px;
     font-size: $mh6;
-    // border: $bor2 dashed #666666;
     transition: border 0.1s ease-in-out;
     &:hover{
-        border: solid;
+        border: solid #fff;
         box-shadow: rgba(102, 102, 102, 0.35) 0px 5px 20px;
     }
 }
@@ -76,6 +77,7 @@ form{
         gap: 10%;
         padding: 5px;
         p{
+            font-family: 'Kosugi Maru';
             font-size: $mh5;
         }
         input{
@@ -90,10 +92,11 @@ form{
     }
 }
 #send{
-    border-radius: $borr2;
     cursor: pointer;
     color: $whiteWord;
-    background-color: $lightGreen;
+    border: none;
+    border-radius: $borr2;
+    background-color: $grass_1;
     width: 30%;
     height: 50px;
     font-size: $mh6;

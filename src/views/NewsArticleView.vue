@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import MainHeader from '@/components/Header.vue'
+import MainHeader from '@/components/MainHeader.vue'
 import EventCardSlider from '@/components/card/EventCardSlider.vue'
 import NewCardImage03 from "@/assets/imgs/event/infoCard03.jpg"
 export default {

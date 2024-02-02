@@ -1,5 +1,5 @@
 <script>
-import MainHeader from '@/components/Header.vue'
+import MainHeader from '@/components/MainHeader.vue'
 import userImage from '@/assets/imgs/memberCenter/userImage(default).png'
 export default {
     components:{
@@ -11,6 +11,8 @@ export default {
             currentProfile: 'default',
             currentOrder: 'noPay',
             activeTab: 'noPay',
+            currentReturn: 'default2',
+            activeTab2: 'default2',
             imageUrl: null,
             selectedFile: null,
             isMobile: window.innerWidth >= 325 && window.innerWidth < 768,
@@ -50,6 +52,10 @@ export default {
         orderState(order) {
             this.currentOrder = order;
             this.activeTab = order;
+        },
+        returnState(ret) {
+            this.currentReturn = ret;
+            this.activeTab2 = ret;
         },
         changeFile() {
             document.getElementById('upFile').click();
@@ -251,14 +257,14 @@ export default {
                 <div class="return_filter">
                     <nav>
                         <ul>
-                            <li :class="{ active: activeTab === 'handle2' }" @click="orderState('handle2')">處理中</li>
-                            <li :class="{ active: activeTab === 'refund' }" @click="orderState('refund')">已退款</li>
-                            <li :class="{ active: activeTab === 'unRefund' }" @click="orderState('unRefund')">不同意退款</li>
+                            <li :class="{ active: activeTab2 === 'handle2' }" @click="returnState('handle2')">處理中</li>
+                            <li :class="{ active: activeTab2 === 'refund' }" @click="returnState('refund')">已退款</li>
+                            <li :class="{ active: activeTab2 === 'unRefund' }" @click="returnState('unRefund')">不同意退款</li>
                         </ul>
                     </nav>
                 </div>
                 <div class="sub_title_line"></div>
-                    <div v-show="currentOrder === 'handle2'" class="return_content">
+                    <div v-show="currentReturn === 'handle2'" class="return_content">
                         <div class="empty_img">
                             <img src="../assets/imgs/memberCenter/return-empty-image.png" alt="noReturn">
                         </div>
