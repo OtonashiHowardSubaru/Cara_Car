@@ -88,7 +88,12 @@ export default {
             <div class="check">
                 <input type="checkbox" id="registerChecked" name="registerChecked">
                 <label for="registerChecked">我已閱讀並同意所有條款</label>
-                <span>使用條款 / 隱私政策 / 推播通知</span>
+                <!-- <span>我已閱讀並同意所有條款</span> -->
+                <div class="terms-and-privacy">
+                    <span>使用條款</span>
+                    <span>隱私政策</span>
+                    <span class="no-slash">推播通知</span>
+                </div>
             </div>
             <div class="register_btn">
                 <!-- <button @click.prevent="signup">送出並成為會員</button> -->

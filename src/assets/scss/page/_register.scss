@@ -1,13 +1,14 @@
 // @media (min-width: 768px){
 // }
 .register{
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     font-family:'Noto Sans' ;
     & input{
         width: 100%;
         padding: 10px;
+        margin: 10px 0;
         font-size: $mh6;
-        border-radius: 15px;
+        border-radius: $borr2 - 5px;
     }
 }
 .registerTitle{
@@ -41,7 +42,7 @@
     margin: 40px auto;
     padding: 20px 0;
     background-color: $grey_2;
-    border-radius: 80px;
+    border-radius: $borr3 - 10px;
     & .textarea{
         display: flex;
         flex-direction: column;
@@ -81,40 +82,46 @@
         align-items: center;
         justify-content: center;
         & #registerChecked{
-            width: 2%;
-            height: 15px;
-            margin: 0 3px 0 0;
+            width: 3%;
+            height: 16px;
+            // margin: 0 3px 0 0;
         }
         & label{
             display: block;
-            padding: 10px 0;
+            padding: 10px 10px 10px 0;
             font-size: $p;
         }
         & span{
             display: inline-block;
             color: $blue;
-            padding: 0 10px;
+            // padding: 0 10px;
             font-size: $default;
-            text-decoration-line: underline;
-            text-decoration-color: $blue;
             cursor: pointer;
+            text-decoration-line: underline;
+            text-decoration-color: transparent;
+            transition:text-decoration-color .2s linear;
+            &:hover{
+                text-decoration-color: $blue;
+            }
         }
     }
     & .register_btn{
         display: flex;
-        flex-direction: column;
         align-items: center;
+        flex-direction: column;
         & button{
             width: 50%;
             height: 70px;
             font-size: $h5;
             margin-block: 5px;
             color: $whiteWord;
+            border: none;
             border-radius: $borr2;
             cursor: pointer;
+            margin-bottom: 10px;
             text-align: center;
             transition: border 0.1s ease-in-out;
-            background-color: $lightGreen;
+            background-color: $grass_1;
             &:hover{
                 border: solid;
                 box-shadow: rgba(102, 102, 102, 0.35) 0px 5px 20px;
@@ -145,8 +152,15 @@
         }
             & .register_group, .register_group a{
                 display: flex;
-                justify-content: center;
                 align-items: center;
+                justify-content: center;
+            }
+            .register_group a{
+                transition: 0.3s linear;
+                scale: 1.0;
+                &:hover{
+                    scale: 1.1;
+                }
             }
                 & .register_group img{
                     width: 60%;
@@ -161,19 +175,29 @@
         }
     }
     .registerContent{
-        width: 50%;
+        width: 60%;
+        .check{
+            .terms-and-privacy span:after {
+                content: "/";
+                margin: 0 5px; 
+            }
+            
+            .terms-and-privacy .no-slash:after {
+                content: none;
+            }
+        }
     }
     .registerContent .textarea{
         p{
             font-size: $p;
         }
         .eye1, .eye2{
-            width: 7%;
+            bottom: 30%;
+            width: 5%;
         }
     }
     .registerTitle .title{
         width: 35%;
         margin-block: 12px;
     }
-
 }
