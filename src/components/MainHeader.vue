@@ -102,12 +102,31 @@ export default {
                 this.closeLightbox();
             }
         },
+        onScroll(){
+            const scrollTop = document.documentElement.scrollTop + document.body.scrollTop
+            const headerDom = this.$refs.header
+            if(headerDom){
+                if(scrollTop >= 100){
+                    if(!headerDom.classList.contains('hidden')){
+                        headerDom.classList.add('hidden');
+                    }
+                }else{
+                    headerDom.classList.remove('hidden');
+                }
+            }
+        }
+    },
+    mounted(){
+        document.addEventListener('scroll',this.onScroll);
+    },
+    beforeDestroy(){
+        document.removeEventListener('scroll', this.onScroll)
     },
 }
 </script>
 
 <template>
-    <header class="mainHeaderIndex">
+    <header class="mainHeaderIndex" ref="header">
         <nav>
             <!-- 電腦版header -->
             <!-- 內頁才有這個LOGO圖 -->
@@ -130,10 +149,7 @@ export default {
             </ul>
         </nav>
     </header>
-
     <!-- 手機板haeder -->
-    <header class="mainHeader">
-        <nav>
             <ul class="indexHeaderNavPh">
                 <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
                     <RouterLink :to="namePh[$index]">
@@ -147,8 +163,6 @@ export default {
                         @click="openLightbox">
                 </div>
             </ul>
-        </nav>
-    </header>
     <Transition name="fade">
         <LoginBox v-if="lightBoxStore.showLightbox" />
     </Transition>

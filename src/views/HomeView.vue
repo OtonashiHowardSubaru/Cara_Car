@@ -180,7 +180,7 @@ export default {
 
 
 <template>
-  <header class="mainHeaderIndex">
+  <header class="mainHeader">
     <nav>
       <!-- 電腦版header -->
       <!-- 首頁沒有Logo -->
@@ -201,10 +201,7 @@ export default {
       <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
-
   <!-- 手機板haeder -->
-  <header class="mainHeader">
-        <nav>
             <ul class="indexHeaderNavPh">
                 <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
                     <RouterLink :to="namePh[$index]">
@@ -218,9 +215,6 @@ export default {
                         @click="openLightbox">
                 </div>
             </ul>
-        </nav>
-    </header>
-
   <Transition name="fade">
     <LoginBox v-if="lightBoxStore.showLightbox" />
   </Transition>
