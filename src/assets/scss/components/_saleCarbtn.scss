@@ -7,7 +7,7 @@
 }
 #SellCarFormOverlay {
     display: block;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     z-index: 999;
@@ -20,7 +20,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 50%;
+    top: 0;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: $borr3;
@@ -46,20 +46,14 @@
         margin: auto;
         padding-top: 10px;
     }
-    .eye{
-        position: absolute;
-        top: 40%;
-        right: 2%;
-        width: 20px;
-        cursor: pointer;
-    }
+
     .SellCarForm_textarea{
         width: 100%;
         display: flex;
         flex-direction: column;
         border-style: none;
         & h2{
-            font-size: $mh4;
+            font-size: 18px;
             text-align: center;
             margin-block: 15px;
         }
@@ -82,7 +76,7 @@
             font-size: $p;
             margin-block: 5px;
             color: $whiteWord;
-            border-radius: $borr2;
+            // border-radius: $borr2;
             cursor: pointer;
             text-align: center;
             transition: 0.3s linear;
@@ -90,22 +84,24 @@
             &:hover{background-color: #9baa7a;}
         }
         & p{
-            font-size: $mh5;
-        }
-        & span{
-            color: $blackWord;
-            font-size: $mh6;
-            & a{
-                font-size: $mh6;
-            }
-        }
-        & a{
-            color: $blackWord;
-            text-align: right;
-            font-size: $default;
+            font-size: 15px;
         }
     }
-    
+
+}
+.SellCarFormItem{
+    width: 100%;   
+}
+.other_SellCarForm{
+    .SellCarForm_upload{
+    width: 100%;
+    background-color: rgba($grey_3,0.8);
+    .SellCarForm_upload_video{
+        width: 50%;
+        background-color: #9baa7a;
+    }
+}
+
 }
 
 @media (min-width:768px){
