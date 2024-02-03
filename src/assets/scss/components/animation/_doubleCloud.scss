@@ -1,0 +1,19 @@
+.doubleCloud {
+    animation: doubleCloud 5s infinite;
+}
+.doubleCloud img{
+    max-width: 200px;
+    position: relative;
+}
+
+@keyframes doubleCloud {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

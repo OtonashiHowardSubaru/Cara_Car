@@ -1,0 +1,19 @@
+.blueBird {
+    animation: blueBird 6s infinite;
+}
+.blueBird img{
+    max-width: 70px;
+    position: relative;
+}
+
+@keyframes blueBird {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-13px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
