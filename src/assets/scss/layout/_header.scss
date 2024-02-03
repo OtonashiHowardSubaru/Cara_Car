@@ -8,6 +8,7 @@
     height: 80px;
     // background-color: $whiteWord;
     padding-bottom: 5px;
+    
         
 } 
 .hidden{
@@ -40,9 +41,9 @@
     //     transform: translate(3s);
     // }
 }
-// .broad{
-//     display: none;
-// }
+.broad{
+    display: none;
+}
 .indexHeaderNavPh{
     display: flex;
     background-color: #333;
@@ -53,6 +54,7 @@
     left: 0;
     justify-content: center;
     align-items: center;
+    z-index: 850;
 }
 .indexHeaderButtonPh{
     height: 100%;
@@ -111,13 +113,11 @@
 .indexHeaderNav{
     // display: flex;
     display: none;
-    // gap:10px;
-    background-color: $whiteWord;
+    // background-color: $whiteWord;
     box-sizing: border-box;
     padding-top: 10px;
     padding-right: 10px;
     height: 75px;
-    // opacity: 0;
     box-sizing: border-box;
 }
 
@@ -176,7 +176,7 @@
 @media (min-width:768px) {
     .mainHeader{
         background-color: $whiteWord;
-        display: none;
+        
     }
     .mainHeaderIndex{
         background-color: $whiteWord;
@@ -184,7 +184,7 @@
     }
     .mainHeaderIndex.hidden {
         transform: none;
-        display: none;
+        // display: none;
     }
     .indexHeaderNav{
         display: block;

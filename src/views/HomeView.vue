@@ -9,7 +9,7 @@ import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
 import ProductCard from "@/components/ProductCard.vue";
 import CardShProcess from '@/components/card/CardShProcess.vue'
-// import bannerCanvas from "@/components/Canvas.vue";
+import bannerCanvas from "@/components/Canvas.vue";
 
 import product01 from '@/assets/imgs/product/product_1.png';
 import product02 from '@/assets/imgs/product/product_2.png';
@@ -23,7 +23,7 @@ import product08 from '@/assets/imgs/product/product_8.png';
 export default {
   components: {
     EventCardSlider, LoginBox, ProductCard, CardShProcess,
-    // bannerCanvas
+    bannerCanvas
   },
   data() {
     return {
@@ -33,7 +33,10 @@ export default {
       currentHoverIndex: -1,
       currentTitlePh: '',
       currentHoverIndexPh: -1,
-      // isHovered: false,
+      rotateFrom: "0 60 60",
+      rotateTo: "360 60 60",
+      duration: "10s",
+      isRotating: false,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -170,17 +173,30 @@ export default {
         this.closeLightbox();
       }
     },
+    setupAnimation() {
+      
+      const svgElement = this.$refs.svg;
+      const animateTransformElement = svgElement.querySelector("animateTransform");
+      animateTransformElement.setAttribute("from", this.rotateFrom);
+      animateTransformElement.setAttribute("to", this.rotateTo);
+      animateTransformElement.setAttribute("dur", this.duration);
+    },
+    // startRotateAnimation() {
+    //   this.isRotating = true;
+    // },
+    // animationIteration() {
+    //   this.isRotating = false;
+    // },
   },
   mounted() {
-    // const textPath = document.querySelector('.text-path');
-    // gsap.to('.text-path', { rotation: 360, duration: 10, repeat: -1, ease: 'linear' });
+    this.setupAnimation();
   },
 }
 </script>
 
 
 <template>
-  <header class="mainHeaderIndex">
+  <header class="mainHeader">
     <nav>
       <!-- 電腦版header -->
       <!-- 首頁沒有Logo -->
@@ -201,10 +217,7 @@ export default {
       <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
-
   <!-- 手機板haeder -->
-  <header class="mainHeader">
-        <nav>
             <ul class="indexHeaderNavPh">
                 <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
                     <RouterLink :to="namePh[$index]">
@@ -218,9 +231,6 @@ export default {
                         @click="openLightbox">
                 </div>
             </ul>
-        </nav>
-    </header>
-
   <Transition name="fade">
     <LoginBox v-if="lightBoxStore.showLightbox" />
   </Transition>
@@ -300,21 +310,24 @@ export default {
     <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
     <div class="indexGameBagBlock"></div>
     <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
-    <button class="indexGameButton" @mouseover="handleMouseOver" @mouseout="handleMouseOut"
+    <button class="indexGameButton" @mouseenter="setupAnimation"
       >
       <button class="indexGameButton2">
         <p class="indexGameButtonTitle">Get<br>Start</p>
       </button>
     </button>
     <div class="circular">
-      <svg viewBox="165 0 100 100">
-        <path d="M 76,51 a 66,66 0 1,1 -1,0 z" id="circle" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
         <text>
-          <textPath class="text-path" xlink:href="#circle">
+          <textPath class="text-path" :class="{ 'rotate-animation': isRotating }" xlink:href="#circle">
             MAKE YOUR OWN CARA CAR
-            <animate attributeName="startOffset" values="0;180;360" dur="15s" repeatCount="indefinite"></animate>
-            <animate attributeName="fill" values="black;white;black" dur="15s" repeatCount="indefinite"></animate>
+            <!-- <animate attributeName="startOffset" values="0;180;360" dur="15s" repeatCount="indefinite"></animate> -->
+            <!-- <animate attributeName="fill" values="black;white;black" dur="15s" repeatCount="indefinite"></animate> -->
+            
           </textPath>
+          <!-- <animateTransform  attributeName="transform" type="rotate" :from="rotateFrom" :to="rotateTo" :dur="duration" repeatCount="indefinite" /> -->
+          <!-- v-if="isRotating" -->
         </text>
       </svg>
     </div>
@@ -325,4 +338,14 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
 @import '@/assets/scss/page/home.scss';
+// ::v-deep{
+//   .rotate-animation {
+//         animation: rotateAnimation 15s linear infinite;
+//     }
+//     .indexGameButton:hover .text-path {
+//   transform: rotate(360deg); /* 這樣可以在 hover 時重置轉動，而不是從上一個停止的地方繼續 */
+//   transition-duration: 1s;
+//   cursor: pointer;
+// }
+// }
 </style>

@@ -24,6 +24,7 @@
     },
     data(){
       return {
+        cart:[],
         responseData : [],
         displayData: [],
         productMainImg: thisProductImg01,
@@ -38,7 +39,8 @@
               prod_img1:product01,
               prod_name:"起始玩家",
               prod_price:"5000",
-              linkwhere:"/Product"
+              linkwhere:"/Product",
+              count: 1,
             },
             {
               prod_img1:product02,
@@ -116,6 +118,29 @@
         // console.log('Clicked on image:', clickedImgSrc);
         this.productMainImg = clickedImgSrc;
       },
+      // addToCart(product){
+      //   console.log('Adding to cart:', product);
+      //   if (!product || typeof product.prod_img1 === 'undefined') {
+      //   console.error('Invalid product object or missing prod_img1 property');
+      //   return;
+      //   }
+      //   const addedIndex = this.cart.findIndex(item=>item.id===product.id)
+      //   if(addedIndex >= 0){
+      //     this.cart[addedIndex] = {
+      //       ...this.cart[addedIndex],
+      //       count: this.cart[addedIndex]['count']+ quanitiy
+      //     }
+      //   }else{
+      //     this.cart.push({
+      //       prod_img1:product.prod_img1,
+      //       prod_name:product.prod_name,
+      //       prod_price:product.prod_price,
+      //       linkwhere:"/Product",
+      //       count: quanitiy,
+      //     })
+      //   }
+      //   console.log('Cart:', this.cart);
+      // }
   },
 }
 </script>
@@ -179,7 +204,7 @@
           </svg>
         </div>
         <button type="button" id="buyNowBtn">直接購買</button>
-        <button type="button" id="addToCartBtn">加入購物車</button>
+        <button type="button" id="addToCartBtn" @click="addToCart(product,1)">加入購物車</button>
       </div>
     </div>
   </div>
