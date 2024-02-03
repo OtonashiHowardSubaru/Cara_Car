@@ -8,10 +8,11 @@
     .newsTitle {
         width: 100%;
         // padding: 60px auto;
-        border-bottom: 1px solid $blackWord;
         // box-sizing: border-box;
         display: flex;
         justify-content: center;
+        position: relative;
+        // background-color: #aaa;
 
         img {
             width: 60%;
@@ -23,6 +24,22 @@
             }
             
         }
+    }
+
+    .GreenBird {
+        position: absolute;
+        top: 30%;
+        left: 20%;
+    }
+    .YellowBird {
+        position: absolute;
+        top: 15%;
+        right: 20%;
+    }
+    .RedBird {
+        position: absolute;
+        top: 60%;
+        right: 10%;
     }
 
     .newsOverview {

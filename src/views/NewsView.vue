@@ -3,6 +3,14 @@
     <main class="pageNews">
         <header class="newsTitle">
             <img src="../assets/imgs/event/eventTitle.svg" alt="eventTitle.png">
+
+            <GreenBird class="GreenBird" />
+            <YellowBird class="YellowBird" />
+            <RedBird class="RedBird" />
+            <!-- <SingleCloud /> -->
+            <!-- <DoubleCloud /> -->
+
+
         </header>
         <section class="newsOverview">
             <div class="selector">
@@ -28,11 +36,24 @@
 import MainHeader from '@/components/MainHeader.vue'
 import EventCard from '@/components/card/EventCard.vue'
 import PageNumber from '@/components/btn/PageNumber.vue'
+import YellowBird from '@/components/animation/YellowBird.vue'
+import RedBird from '@/components/animation/RedBird.vue'
+import GreenBird from '@/components/animation/GreenBird.vue'
+import DoubleCloud from '@/components/animation/DoubleCloud.vue'
+import SingleCloud from '@/components/animation/SingleCloud.vue'
+
+
+
 export default {
     components:{
         MainHeader,
         EventCard,
         PageNumber,
+        YellowBird,
+        RedBird,
+        GreenBird,
+        DoubleCloud,
+        SingleCloud,
     },
     data() {
         return{
