@@ -1,13 +1,14 @@
 <!-- 疑問疑問 ↓↓小龜老師看這裡 ↓↓ 疑問疑問-->
 <!-- 在這頁中有引用燈箱的store和component，這頁的header是手機板的nav，但在HomeView.vue檔中引用燈箱和MainHeader.vue就會變成有兩個燈箱，而且我修改燈箱的css他會影分身成兩個 -->
 <script>
-import EventCardSlider from '@/components/card/EventCardSlider.vue'
-import lightBoxStore from "@/stores/lightBox.js"
-import LoginBox from '@/components/LoginBox.vue'
+import EventCardSlider from '@/components/card/EventCardSlider.vue';
+import lightBoxStore from "@/stores/lightBox.js";
+import LoginBox from '@/components/LoginBox.vue';
 import ProductCard from "@/components/ProductCard.vue";
-import CardShProcess from '@/components/card/CardShProcess.vue'
+import CardShProcess from '@/components/card/CardShProcess.vue';
 // import bannerCanvas from "@/components/Canvas.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
+import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
 
 import product01 from '@/assets/imgs/product/product_1.png';
@@ -22,6 +23,7 @@ import product08 from '@/assets/imgs/product/product_8.png';
 export default {
   components: {
     EventCardSlider, LoginBox, ProductCard, CardShProcess,SingleCloud,
+    DoubleCloud,
     // bannerCanvas,
   },
   data() {
@@ -36,6 +38,7 @@ export default {
       rotateTo: "360 60 60",
       duration: "10s",
       // isRotating: false,
+      isHovered: false,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -185,6 +188,12 @@ export default {
     // animationIteration() {
     //   this.isRotating = false;
     // },
+    toggleHover() {
+      this.isHovered = !this.isHovered;
+    },
+    resetRotation() {
+    this.isHovered = false;
+    },
   },
   mounted() {
     // this.setupAnimation();
@@ -234,14 +243,15 @@ export default {
   </Transition>
 
   <div class="indexBannerGroup">
-    <img src="../assets/imgs/Home/indexBannerImg.png" alt="" class="indexBannerImg">
+    <img src="../assets/imgs/Home/indexBannerImg.svg" alt="" class="indexBannerImg">
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
-      <img src="../assets/imgs/nav/nav-logo.png" alt="" class="indexLogo">
+      <img src="../assets/imgs/Home/index-logo.svg" alt="" class="indexLogo">
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
     <SingleCloud class="SingleCloud"/>
+    <DoubleCloud class="DoubleCloud"/>
   </div>
 
   <div class="indexProductGroup">
@@ -260,6 +270,7 @@ export default {
   </div>
 
   <div class="decoTrainAnimation">
+    <img src="../assets/imgs/Home/index-grass-background.svg" alt="grass.svg" class="decoGrass">
     <img src="../assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
     <div class="decoTrainAnima">
       <div class="decoTrain">
@@ -304,35 +315,45 @@ export default {
       </RouterLink>
     </div>
     </div>
-
+    
+      
+    
   <div class="indexGameGroup">
-    <img src="../assets/imgs/Home/indexGameTitle.png" alt="" class="indexGameTitle">
-    <div class="indexGameBagBlock"></div>
-    <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
-    <button class="indexGameButton" @mouseenter="setupAnimation"
-      >
-      <button class="indexGameButton2">
-        <p class="indexGameButtonTitle">Get<br>Start</p>
-      </button>
-    </button>
-    <div class="circular">
+    <img src="../assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
+    <div class="game">
+      <img src="../assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
+      <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
+      <RouterLink class="RouterLink" to="/Game">
+        <button class="indexGameButton" @mouseover="toggleHover" @mouseout="resetRotation" :class="{ 'hovered': isHovered }">
+          <button class="indexGameButton2">
+            <p class="indexGameButtonTitle">Get<br>Start</p>
+          </button>
+        </button>
+      </RouterLink>
+    <div class="gameButtonText">
+      <transition name="rotate">
+        <img :class="{ 'rotate': isHovered }" src="../assets/imgs/Home/Make Your own cara car3.svg" alt="buttonText">
+      </transition>
+    </div>
+    <!-- <div class="circular">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
         <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
         <text>
           <textPath class="text-path"  xlink:href="#circle">
-            <!-- :class="{ 'rotate-animation': isRotating }" -->
+            :class="{ 'rotate-animation': isRotating }"
             MAKE YOUR OWN CARA CAR
-            <!-- <animate attributeName="startOffset" values="0;180;360" dur="15s" repeatCount="indefinite"></animate> -->
-            <!-- <animate attributeName="fill" values="black;white;black" dur="15s" repeatCount="indefinite"></animate> -->
+            <animate attributeName="startOffset" values="0;180;360" dur="15s" repeatCount="indefinite"></animate>
+            <animate attributeName="fill" values="black;white;black" dur="15s" repeatCount="indefinite"></animate>
             
           </textPath>
-          <!-- <animateTransform  attributeName="transform" type="rotate" :from="rotateFrom" :to="rotateTo" :dur="duration" repeatCount="indefinite" /> -->
-          <!-- v-if="isRotating" -->
+          <animateTransform  attributeName="transform" type="rotate" :from="rotateFrom" :to="rotateTo" :dur="duration" repeatCount="indefinite" />
+          v-if="isRotating"
         </text>
       </svg>
-    </div>
+    </div> -->
   </div>
-  <CardShProcess/>
+  </div>
+  <CardShProcess class=""/>
   <!-- <bannerCanvas/> -->
 </template>
 <style lang="scss" scoped>

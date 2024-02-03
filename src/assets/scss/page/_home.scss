@@ -36,7 +36,7 @@
 }
 .indexBannerBagBlock{
     width: 25%;
-    height: 100%;
+    height: 1200px;
     background-color: $grey_1;
     border-radius: 0 $borr2 $borr2 0;
     position: absolute;
@@ -46,9 +46,15 @@
 }
 .SingleCloud {
     position: absolute;
-    left: 10%;
+    left: 6%;
     bottom: 28%;
 }
+.DoubleCloud{
+    position: absolute;
+    left: 18%;
+    bottom: 13%;
+}
+
 
 .indexProductGroup{
     box-sizing: border-box;
@@ -156,16 +162,26 @@
         right: 0;
         z-index: -3;
         @media (min-width:600px) {
-            top:  5%;
+            top:  18%;
         }
         @media (min-width:768px) {
             width: 50%;
             top: 0;
         }
-    
         
     }
-
+    .decoGrass{
+        z-index: -5;
+        position: absolute;
+        width: 100%;
+        
+        @media (min-width:600px) {
+            top:  50%;
+        }
+        @media (min-width:768px) {
+            top:40%;
+        }
+    }
     .decoTrainAnima {
         width: 100%;
         height: 100%;
@@ -369,7 +385,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 100px;
+    margin-bottom: 180px;
     @media (min-width:768px) {
         width: 90%;
         flex-direction: row;
@@ -488,17 +504,18 @@
                 transform-origin: right;
                     
                 }
-
     
             }
 
         }
 
-
     }
     
 }
 
+.CardShProcess{
+    margin-top: 150px;
+}
 
 //indexGame
 .indexGameGroup{
@@ -514,51 +531,62 @@
     .indexBannerTitle{
         writing-mode: vertical-rl;
         left: 10%;
-        top:19%;
+        top:17%;
         font-size: $h4;
     }
     .indexBannerTitle2{
         writing-mode: vertical-rl;
-        left: 15%;
-        top: 32%;
+        left: 16%;
+        top: 28%;
         font-size: $h4;
     }
     .indexLogo{
-        top: 1%;
+        top: 0.5%;
         left: 5%;
     }
     .indexBannerBagBlock{
-        width: 30%;
-        height: 1700px;
-        top: 60%;
+        width: 25%;
+        height: 1400px;
+        top: 56%;
+    }
+    .SingleCloud {
+        position: absolute;
+        left: 5%;
+        bottom: 37%;
+    }
+    .DoubleCloud{
+        position: absolute;
+        left: 16%;
+        bottom: 24%;
     }
     
 }
 @media (width >= 1280px) {
     .indexGameGroup{
-        position: relative;
-        display: block;
+        // position: relative;
+        display: flex;
         max-width: 1280px;
+        // border: 1px solid red;
+        flex-direction: column;
     }
-    
     .indexGameTitle{
         width: 420px;
-        position: absolute;
-        top: 20px;
-        left: 38%;
+        margin: 0 auto;
     }
-    .indexGameBagBlock{
-        width: 450px;
-        height: 720px;
-        background-color: $grey_1;
-        border-radius: 0 $borr2 $borr2 0;
-        margin-bottom:50px;
+    .game{
+        position: relative;
+    }
+    .indexGameBackground{
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        top: -78%;
     }
     .indexGameImg{
         width: 850px;
         height: 450px;
-        position: absolute;
-        bottom: 70px; 
+        margin-top: 50px;
+
     }
     .indexGameButton{
         width: 200px;
@@ -566,17 +594,51 @@
         border-radius: $borr5;
         background-color: $blackWord;
         border: $bor2 solid $whiteWord;
-        bottom: 25%;
-        left: 62%;
-        position: absolute;
-        transition-duration: 1s;
         cursor: pointer;
-        z-index: 8;
+        z-index: 7;
+        position: absolute;
+        top:40%;
+        right: 25%;
+        // transition: 1s ease-in-out;
     }
     .indexGameButton:hover{
-        background-color: $lightBlue;
         .indexGameButton2{
-            background-color: $lightBlue;
+            background-color: $blue;
+        }
+        // .gameButtonText img{
+        //     transform: rotate(360deg); 
+        //     transition: transform 5s linear infinite;
+        // }
+    }
+    .gameButtonText{
+        position: absolute;
+        top:34%;
+        left: 56%;
+    }
+    // .rotate{
+    //     transition: transform 5s;
+    //     transform: rotate(360deg);
+    // }
+    .gameButtonText img.rotate{
+        animation:  rotate 5s linear infinite;
+    }
+    .indexGameButton:not(:hover) .gameButtonText img {
+        animation: rotateBack 5s linear forwards;
+    }
+    @keyframes rotate {
+        from{
+            transform: rotate(0deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes rotateBack {
+        from{
+            transform: rotate(360deg);
+        }
+        to{
+            transform: rotate(0deg);
         }
     }
     .indexGameButton2{
@@ -585,24 +647,17 @@
         border-radius: $borr5;
         background-color: $blackWord;
         border: $bor3 solid $whiteWord;
-        position: absolute;
-        bottom: 18px;
-        right: 18px;
-        transition-duration: 1s;
         cursor: pointer;
-        z-index:9;
+        z-index:8;
     }
     .indexGameButtonTitle{
         display: inline-block;
         font-size: $h1;
         color: $whiteWord;
         text-align: center;
-        position: absolute;
-        bottom: 20px;
-        right: 30px;
         font-family: 'Single Day', cursive;
         cursor: pointer;
-        z-index: 10;
+        z-index: 9;
     }
     .circular {
         // margin: 0 auto;
@@ -612,13 +667,12 @@
         font-size: $h5;
         margin-left: 70%;
         position: absolute;
-        bottom: 25%;
-        right: 22%;
+        top:38%;
+        right: 24.5%;
         
     }
     .circular path { 
-        // fill: red; 
-        
+        fill: none; 
         // z-index: -4;
     }
         
