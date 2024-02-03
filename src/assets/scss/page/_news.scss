@@ -6,23 +6,22 @@
     align-items: center;
 
     .newsTitle {
-        width: 100%;
-        // padding: 60px auto;
-        // box-sizing: border-box;
         display: flex;
         justify-content: center;
+        //   margin: 80px 0 0 0;
         position: relative;
-        // background-color: #aaa;
-
-        img {
-            width: 60%;
-            margin: 20px auto;
-
-            @media (min-width : 768px) {
-                width: 40%;
-                margin: 30px auto 10px;
-            }
-            
+        background-image: url(../../imgs/draw/greeting_illust.svg);
+        background-position: center bottom -30px;
+        height: 130px;
+        h1{
+            line-height: 0; //使盒子大小與內容物相同
+            white-space: nowrap;
+            overflow: hidden;
+            text-indent:101%;
+            width: 100%;
+            background-image: url(../../imgs/event/eventTitle.svg);
+            background-repeat: no-repeat;
+            background-position: bottom;
         }
     }
 

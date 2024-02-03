@@ -1,17 +1,25 @@
 .cart{
-    margin-top: 100px;
     width: 100%;
-    margin-bottom: 100px;
+    margin: 0 0 100px 0;
 }
 .cartTitle{
     display: flex;
     justify-content: center;
-    align-items: center;
-    border-bottom: $bor1 solid $blackWord;
-}
-.cartTitle img{
-    width: 70%; 
-    margin-bottom: 20px;
+    margin: 80px 0 0 0;
+    position: relative;
+    background-image: url(../../imgs/draw/greeting_illust.svg);
+    background-position: center bottom -30px;
+    height: 130px;
+    h1{
+        line-height: 0; //使盒子大小與內容物相同
+        white-space: nowrap;
+        overflow: hidden;
+        text-indent:101%;
+        width: 100%;
+        background-image: url(../../imgs/cart/cart_title.svg);
+        background-repeat: no-repeat;
+        background-position: bottom;
+    }
 }
 .cartContent{
     font-family:'Noto Sans' ;
@@ -256,12 +264,6 @@ input[type=number]::-webkit-outer-spin-button {
     display: block;
 }
 @media (min-width : 768px) {
-    .cartTitle img{
-        width: 40%;
-    }
-    .cartTitle{
-        border-bottom: $bor1 solid $blackWord;
-    }
     .cartContent{
         font-size: $h4;
     }
