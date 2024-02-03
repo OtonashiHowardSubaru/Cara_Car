@@ -1,15 +1,14 @@
 <!-- 疑問疑問 ↓↓小龜老師看這裡 ↓↓ 疑問疑問-->
 <!-- 在這頁中有引用燈箱的store和component，這頁的header是手機板的nav，但在HomeView.vue檔中引用燈箱和MainHeader.vue就會變成有兩個燈箱，而且我修改燈箱的css他會影分身成兩個 -->
 <script>
-// import gsap from 'gsap';
-// import { TextPlugin } from 'gsap/TextPlugin';
-// gsap.registerPlugin(TextPlugin);
 import EventCardSlider from '@/components/card/EventCardSlider.vue'
 import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
 import ProductCard from "@/components/ProductCard.vue";
 import CardShProcess from '@/components/card/CardShProcess.vue'
 // import bannerCanvas from "@/components/Canvas.vue";
+import SingleCloud from "@/components/animation/SingleCloud.vue";
+
 
 import product01 from '@/assets/imgs/product/product_1.png';
 import product02 from '@/assets/imgs/product/product_2.png';
@@ -22,7 +21,7 @@ import product08 from '@/assets/imgs/product/product_8.png';
 
 export default {
   components: {
-    EventCardSlider, LoginBox, ProductCard, CardShProcess,
+    EventCardSlider, LoginBox, ProductCard, CardShProcess,SingleCloud,
     // bannerCanvas,
   },
   data() {
@@ -36,7 +35,7 @@ export default {
       rotateFrom: "0 60 60",
       rotateTo: "360 60 60",
       duration: "10s",
-      isRotating: false,
+      // isRotating: false,
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -173,14 +172,13 @@ export default {
         this.closeLightbox();
       }
     },
-    setupAnimation() {
-      
-      const svgElement = this.$refs.svg;
-      const animateTransformElement = svgElement.querySelector("animateTransform");
-      animateTransformElement.setAttribute("from", this.rotateFrom);
-      animateTransformElement.setAttribute("to", this.rotateTo);
-      animateTransformElement.setAttribute("dur", this.duration);
-    },
+    // setupAnimation() {
+    //   const svgElement = this.$refs.svg;
+    //   const animateTransformElement = svgElement.querySelector("animateTransform");
+    //   animateTransformElement.setAttribute("from", this.rotateFrom);
+    //   animateTransformElement.setAttribute("to", this.rotateTo);
+    //   animateTransformElement.setAttribute("dur", this.duration);
+    // },
     // startRotateAnimation() {
     //   this.isRotating = true;
     // },
@@ -189,7 +187,7 @@ export default {
     // },
   },
   mounted() {
-    this.setupAnimation();
+    // this.setupAnimation();
   },
 }
 </script>
@@ -243,6 +241,7 @@ export default {
       <img src="../assets/imgs/nav/nav-logo.png" alt="" class="indexLogo">
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
+    <SingleCloud class="SingleCloud"/>
   </div>
 
   <div class="indexProductGroup">
@@ -320,7 +319,8 @@ export default {
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
         <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
         <text>
-          <textPath class="text-path" :class="{ 'rotate-animation': isRotating }" xlink:href="#circle">
+          <textPath class="text-path"  xlink:href="#circle">
+            <!-- :class="{ 'rotate-animation': isRotating }" -->
             MAKE YOUR OWN CARA CAR
             <!-- <animate attributeName="startOffset" values="0;180;360" dur="15s" repeatCount="indefinite"></animate> -->
             <!-- <animate attributeName="fill" values="black;white;black" dur="15s" repeatCount="indefinite"></animate> -->
