@@ -2,7 +2,7 @@
     <MainHeader />
     <main class="pageNews">
         <header class="newsTitle">
-            <img src="../assets/imgs/event/eventTitle.svg" alt="eventTitle.png">
+            <h1>最新消息</h1>
 
             <GreenBird class="GreenBird" />
             <YellowBird class="YellowBird" />

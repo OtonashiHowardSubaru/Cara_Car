@@ -20,7 +20,7 @@
   import thisProductImg04 from '@/assets/imgs/product/sh_product_litpic2.png';
   export default {
     components: {
-      ProCardSwiper,MainHeader,ProCardSwiper,MainHeader
+      ProCardSwiper,MainHeader,ProCardSwiper,MainHeader,NumberSelect,ProductIntroCard
     },
     data(){
       return {
