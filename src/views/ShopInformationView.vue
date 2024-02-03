@@ -8,7 +8,10 @@
         </div>
 
         <section class="infoText">
-            <img src="/src/assets/imgs/shopInfo/infoTitle.svg" alt="infoTitle" class="infoTitle">
+            <div class="infoTitle">
+                <h1>商店資訊
+                </h1>
+            </div>
 
             <InfoTextCards />
             <div class="shopInfoMap">

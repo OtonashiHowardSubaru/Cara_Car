@@ -52,6 +52,7 @@
         height: 100%;
         padding-bottom: 30%;
         border-radius: 100px 100px 0 0;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -59,20 +60,37 @@
         top: 55vh;
         bottom: 0;
         z-index: 1;
+        background-color: #fff;
 
         @media (min-width : 768px) {
             width: 50%;
-            top: 10%;
+            top: 0;
             right: 0;
             padding-bottom: 5%;
         }
 
-        background-color: #fff;
-        .infoTitle {
-            width: 60%;
-            margin: 80px auto;
-            @media (min-width : 768px) {
-                // margin: 30px auto;
+        .infoTitle{
+            display: flex;
+            justify-content: center;
+            margin: 0 0 80px 0;
+            width: 100%;
+            position: relative;
+            background-image: url(../../imgs/draw/greeting_illust.svg);
+            background-position: center bottom -30px;
+            height: 130px;
+            
+            @media (min-width: 768px) {
+                margin: 80px 0 80px 0;
+            }
+            h1{
+              line-height: 0; //使盒子大小與內容物相同
+                white-space: nowrap;
+                overflow: hidden;
+                text-indent:101%;
+                width: 100%;
+                background-image: url(../../imgs/product/productList_title.svg);
+                background-repeat: no-repeat;
+                background-position: bottom;
             }
         }
         p {
