@@ -98,10 +98,6 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
           {img: 'sh_product_litpic.png'},
           {img: 'sh_product_litpic1.png'},
           {img: 'sh_product_litpic2.png'},
-          // "/src/assets/imgs/product/sh_product_mainpic.png",
-          // "/src/assets/imgs/product/sh_product_litpic.png",
-          // "/src/assets/imgs/product/sh_product_litpic1.png",
-          // "/src/assets/imgs/product/sh_product_litpic2.png",
         ],
 
       }
@@ -172,8 +168,8 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
       
     </div>
     <div class="intro">
-        <h1>超強小車車</h1>
-        <h2>AMERICAN CLASSIC</h2>
+        <h1>AMERICAN CLASSIC</h1>
+        <h2>超強小車車</h2>
         <div class="year price">
             <span>$ 10,000</span>
             <span>車輛年份: 2019</span>
@@ -193,18 +189,21 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
         </div>
     </div>
 </div>
+<div class="productIntro">
+  <ProductIntroCard/>
+</div>
 
-<ProductIntroCard/>
 
 <div class="recommand">
   
   <ProCardSwiper :displayData="sh_product_list" />
-  <ProCardSwiper :displayData="sh_product_list" />
 </div>
 
 
+<div class="sh_process">
+  <CardShProcess/> 
+</div>
 
-<CardShProcess/> 
 </template>
   
   <style lang="scss" scoped>
