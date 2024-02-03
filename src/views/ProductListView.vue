@@ -161,8 +161,9 @@
   </script>
   <template>
     <MainHeader />
-    <div class="pro_list_title col-12">
-      <h1><img src="../assets/imgs/product/productList_title.png" alt="新品專區"></h1>
+    <div class="pro_list_title">
+      <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
+      <h1><img src="../assets/imgs/product/productList_title.svg" alt="新品專區"></h1>
     </div>
     <div class="container">
       <div class="row">

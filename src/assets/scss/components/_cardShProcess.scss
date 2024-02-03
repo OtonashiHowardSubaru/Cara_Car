@@ -115,8 +115,8 @@
         height: 20%;
         display: flex;
         gap: 10px;
-        align-items: center;
         position: relative;
+        align-items: center;
     }
     p {
         display: inline;
@@ -149,9 +149,8 @@
 }
 .sh_contact .phone .opening{
     @media (min-width: 768px) {
-        
+        margin: 30px 0 0 0;
     }
-
     span{
         font-size: $mh6;
         border: 1px solid black;
