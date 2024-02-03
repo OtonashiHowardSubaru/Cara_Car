@@ -1,0 +1,19 @@
+.redBird {
+    animation: redBird 6s infinite;
+}
+.redBird img{
+    max-width: 70px;
+    position: relative;
+}
+
+@keyframes redBird {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

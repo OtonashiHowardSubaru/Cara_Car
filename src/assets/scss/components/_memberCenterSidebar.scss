@@ -1,0 +1,54 @@
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+// 手機版會員中心sidebar,放在下方
+.mb_member_sidebar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15%;
+    width: 100%;
+    font-family: 'Kosugi Maru';
+    font-size: $mh4;
+    border-radius: $borr2;
+    background-color: $grey_2;
+    nav {
+        padding: 10px;
+        font-family: 'Noto Sans';
+        ul li {
+            cursor: pointer;
+            padding: 8px 0;
+        }
+    }
+    .subMenu {
+        padding: 10px 0 0 20px;
+        cursor: pointer;
+    }
+}
+// 電腦版會員中心sidebar,放在左邊
+@media (min-width: 768px) {
+    .member_sidebar {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Kosugi Maru';
+        nav {
+            padding: 10px;
+            font-family: 'Noto Sans';
+            ul li {
+                cursor: pointer;
+                padding: 8px 0;
+                font-size: $p;
+            }
+        }
+        .subMenu {
+            padding: 10px 0 0 20px;
+            cursor: pointer;
+        }
+    }
+}

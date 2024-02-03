@@ -44,6 +44,11 @@
     left: 0;
     z-index: -1;
 }
+.SingleCloud {
+    position: absolute;
+    left: 10%;
+    bottom: 28%;
+}
 
 .indexProductGroup{
     box-sizing: border-box;
@@ -60,7 +65,7 @@
         display: flex;
         justify-content: start;
         align-items: end;
-        z-index: 3;
+        z-index: 2;
         img{
             width: clamp(150px,40%,250px);
         }
@@ -102,6 +107,7 @@
             @media (min-width:768px) {
                 &:hover::before {
                     width: 30px;
+                    
                 }
             }
             &::before {
@@ -148,7 +154,7 @@
         position: absolute;
         top: 23%;
         right: 0;
-
+        z-index: -3;
         @media (min-width:600px) {
             top:  5%;
         }
@@ -172,14 +178,14 @@
             width: 100%;
             position: absolute;
             bottom: 40%;
-            z-index: 10;
+            z-index: -3;
             // background-color: #aaa;
 
             @media (min-width:450px) {
                 bottom: 45%;
             }
             @media (min-width:600px) {
-                bottom: 50%;
+                bottom: 48%;
             }
             @media (min-width:768px) {
                 bottom: 35%;
@@ -188,24 +194,25 @@
             .decoTrainImg {
                 width: 50%;
                 position: absolute;
-                animation: movingTrain 10s linear infinite;
-
+                animation: movingTrain 15s linear infinite, shake 3s infinite;
                 @media (min-width:768px) {
                     width: 30%;
                 }
             }
+            
         }
     
         
         .decoRail {
             width: 1000px;
             position: absolute;
-            bottom: 20%;
+            bottom: 26%;
             
 
             @media (min-width:768px) {
                 width: 100%;
-                bottom: 5%;
+                bottom: 8%;
+                z-index: -2;
             }
             
         }
@@ -217,6 +224,12 @@
             to {
                 right: 100%; /* 终点位置 */
             }
+        }
+        @keyframes shake {
+            0%, 100%{transform: translateX(0);}
+            10%,30%,50%,70%,90%{transform: translateY(-2px);}
+            20%, 40%, 60%, 80%{transform: translateY(2px);}
+        
         }
     }
 }
@@ -501,35 +514,38 @@
     .indexBannerTitle{
         writing-mode: vertical-rl;
         left: 10%;
-        top:8%;
+        top:19%;
         font-size: $h4;
     }
     .indexBannerTitle2{
         writing-mode: vertical-rl;
         left: 15%;
-        top: 20%;
+        top: 32%;
         font-size: $h4;
     }
     .indexLogo{
-        top:50%;
+        top: 1%;
         left: 5%;
     }
     .indexBannerBagBlock{
         width: 30%;
-        height: 100%;
+        height: 1700px;
         top: 60%;
     }
+    
+}
+@media (width >= 1280px) {
     .indexGameGroup{
         position: relative;
         display: block;
-        max-width: 900px;
+        max-width: 1280px;
     }
     
     .indexGameTitle{
         width: 420px;
         position: absolute;
         top: 20px;
-        left: 50%;
+        left: 38%;
     }
     .indexGameBagBlock{
         width: 450px;
@@ -545,16 +561,17 @@
         bottom: 70px; 
     }
     .indexGameButton{
-        width: 260px;
-        height: 260px;
+        width: 200px;
+        height: 200px;
         border-radius: $borr5;
         background-color: $blackWord;
         border: $bor2 solid $whiteWord;
-        bottom: 20%;
-        left: 80%;
+        bottom: 25%;
+        left: 62%;
         position: absolute;
-        cursor: pointer;
         transition-duration: 1s;
+        cursor: pointer;
+        z-index: 8;
     }
     .indexGameButton:hover{
         background-color: $lightBlue;
@@ -563,15 +580,17 @@
         }
     }
     .indexGameButton2{
-        width: 220px;
-        height: 220px;
+        width: 160px;
+        height: 160px;
         border-radius: $borr5;
         background-color: $blackWord;
         border: $bor3 solid $whiteWord;
         position: absolute;
         bottom: 18px;
         right: 18px;
+        transition-duration: 1s;
         cursor: pointer;
+        z-index:9;
     }
     .indexGameButtonTitle{
         display: inline-block;
@@ -579,43 +598,58 @@
         color: $whiteWord;
         text-align: center;
         position: absolute;
-        bottom: 45px;
-        right: 60px;
+        bottom: 20px;
+        right: 30px;
         font-family: 'Single Day', cursive;
         cursor: pointer;
+        z-index: 10;
     }
     .circular {
-        margin: 0 auto;
+        // margin: 0 auto;
         width: 10em;
         height: 10em;
         font-family: 'Single Day', cursive;
         font-size: $h5;
+        margin-left: 70%;
         position: absolute;
-        bottom: 310px;
-        right: 0;
+        bottom: 25%;
+        right: 22%;
+        
     }
     .circular path { 
-        fill: none; 
-        }
+        // fill: red; 
+        
+        // z-index: -4;
+    }
         
     .circular svg {
     display: block;
     overflow: visible;
+    // border: 1px solid red;
+    // z-index: -4;
     }
     // :root {
     //     --start-offset-value: 0;
     // }
-    .circular:hover .text-path {
-        animation: move 15s linear infinite;
-    }
     .text-path{
-        animation: initial-state 0s linear forwards;
+        transition: transform 0.3s ease; 
     }
-    @keyframes initial-state {
-    to {
-        startOffset: var(--start-offset-value);
+    
+    
+    @keyframes rotateAnimation {
+        from {
+          transform: rotate(0deg); /* 開始時的角度 */
         }
+        to {
+          transform: rotate(360deg); /* 結束時的角度 */
+        }
+    
     }
+    // @keyframes initial-state {
+    // to {
+    //     startOffset: var(--start-offset-value);
+    //     }
+    // }
     
     @keyframes move {
     to {
@@ -623,7 +657,6 @@
         }
     }
 }
-
 
 
 

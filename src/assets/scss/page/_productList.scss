@@ -2,14 +2,24 @@
 .pro_list_title{
   display: flex;
   justify-content: center;
-  border-bottom: $bor1 solid $blackWord;
-  margin: 100px 0 10px 0;
-  h1{
+  // border-bottom: $bor1 solid $blackWord;
+  margin: 20px 0 10px 0;
+  position: relative;
+  // 這個盒子的可視範圍高度大概130px
+  & >img {
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    img{
-      width: 100%;
+    margin: 0 0 20px 0;
+  }
+  h1{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    line-height: 0; //使盒子大小與內容物相同
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    & > img {
+      margin-left: 50px;
     }
   }
 }
