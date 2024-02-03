@@ -108,9 +108,10 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
 </script>
 <template>
   <MainHeader />
-  <div class="sh_pro_list_title col-12">
-    <h1><img src="../assets/imgs/product/sh_product_list_title.png" alt="used car 二手車"></h1>
-  </div>
+  <div class="sh_pro_list_title">
+      <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
+      <h1><img src="../assets/imgs/product/sh_product_list_title.png" alt="used car 二手車"></h1>
+    </div>
   <div class="container">
     <div class="row">
       <div class="store_name col-12">
