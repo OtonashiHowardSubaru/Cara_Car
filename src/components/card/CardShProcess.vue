@@ -10,7 +10,7 @@ export default {
           {
             img: processBird,
             shSubtitle:'CONTACT',
-            context: '透過電子郵件聯繫我們',
+            context: '透過FaceBook聯繫我們',
             arrowImg: processArrow,
             link:"",
           },
@@ -19,14 +19,14 @@ export default {
             shSubtitle:'SECOND-HAND',
             context: '查看二手車輛商品',
             arrowImg: processArrow,
-            link:"/src/views/SecondHandListView.vue",
+            link:"/SecondHandList",
           },
           {
             img: processRecycle,
             shSubtitle:'RECYCLE CAR',
             context: '了解二手車輛販賣',
             arrowImg: processArrow,
-            link:"/src/views/SecondHandSaleView.vue",
+            link:"/SecondHandSale",
           },
         ],
 

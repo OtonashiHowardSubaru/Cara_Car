@@ -5,6 +5,9 @@ import MainHeader from '@/components/MainHeader.vue';
 import PageNumber from "@/components/btn/PageNumber.vue"
 import ProductCard from "@/components/ProductCard.vue"
 import PriceSorter from '@/components/PriceSorter.vue';
+import GreenBird from "@/components/animation/GreenBird.vue";
+import YellowBird from "@/components/animation/YellowBird.vue";
+import BlueBird from "@/components/animation/BlueBird.vue";
 import shProduct01 from '@/assets/imgs/product/sh_product_1.png'
 import shProduct02 from '@/assets/imgs/product/sh_product_2.png'
 import shProduct03 from '@/assets/imgs/product/sh_product_3.png'
@@ -16,7 +19,7 @@ import shProduct08 from '@/assets/imgs/product/sh_product_8.png'
 import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
   export default {
     components:{
-      CardShProcess,MainHeader,PageNumber,ProductCard,PriceSorter
+      CardShProcess,MainHeader,PageNumber,ProductCard,PriceSorter,GreenBird,BlueBird,YellowBird,
     },
     data(){
       return {
@@ -108,9 +111,11 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
 </script>
 <template>
   <MainHeader />
+  
   <div class="sh_pro_list_title">
       <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
       <h1><img src="../assets/imgs/product/sh_product_list_title.png" alt="used car 二手車"></h1>
+      
     </div>
   <div class="container">
     <div class="row">
@@ -119,6 +124,16 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
           <PriceSorter 
             @sortChange="handleSortChange"
           />
+          <div class="gbird">
+            <GreenBird/>
+          </div>
+          <div class="bbird">
+            <BlueBird/>
+          </div>
+          <div class="ybird">
+            <YellowBird/>
+          </div>
+          
       </div>
       
       <div class="sh_pro_card_list col-9 col-md-10">
