@@ -203,6 +203,7 @@ export default {
     data() {
         return {
             lightBoxForm: lightBoxForm(),
+            ContactEmail: ''
         };
     },
     methods: {
