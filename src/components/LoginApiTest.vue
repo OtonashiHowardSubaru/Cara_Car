@@ -1,13 +1,16 @@
 <template>
+  <!-- Login燈箱 -->
   <Transition name="fade">
         <LoginBox v-if="lightBoxStore.showLightbox"/>
     </Transition>
 </template>
 
 <script>
+//登入import
 import axios from 'axios';
 import { mapActions } from 'pinia'; // mapActions pinia的方法，取得api的
 import userStore from '@/stores/user.js'
+//燈箱import
 import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
 export default {
@@ -23,10 +26,11 @@ export default {
       showLightbox: false,
     }
   },
-  // created() {
-  //   this.axiosGetData();
-  // },
+  created() {
+    this.axiosGetData();
+  },
   methods: {
+    //控制燈箱關閉&跳轉註冊頁面
     handleClick(e) {
       if (e.target.id === 'loginOverlay') {
         this.closeLightbox();
@@ -35,12 +39,15 @@ export default {
         this.closeLightbox();
       }
     },
+    //開燈箱
     openLightbox() {
       this.lightBoxStore.openLightbox()
     },
+    //關燈箱
     closeLightbox() {
       this.lightBoxStore.closeLightbox()
     },
+    // 獲取登入token的pinia
     ...mapActions(userStore, ['updateToken']),
     signin() {
       axios.post('https://fakestoreapi.com/auth/login', {
