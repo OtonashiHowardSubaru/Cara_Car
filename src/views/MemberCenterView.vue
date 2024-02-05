@@ -1,7 +1,6 @@
 <script>
+import axios from 'axios';
 import MainHeader from '@/components/MainHeader.vue'
-// import MemberCenterSidebarPCVue from '@/components/MemberCenterSidebarPC.vue'
-// import MemberCenterSidebarMB from '@/components/MemberCenterSidebarMB.vue'
 import userImage from '@/assets/imgs/memberCenter/userImage(default).png'
 export default {
     components: {
@@ -9,9 +8,6 @@ export default {
     },
     data() {
         return {
-            user:{
-                name : 'Yee'
-            },
             showSubMenu: false,
             currentProfile: 'default',
             currentOrder: 'noPay',
@@ -23,13 +19,22 @@ export default {
             isMobile: window.innerWidth >= 325 && window.innerWidth < 768,
             isDesktop: window.innerWidth >= 768,
             storedImage: '',
-            // innerWidth: 500,
+            member: [],
         }
     },
     created() {
         // 監聽視窗大小變化，更新 isMobile 和 isDesktop 的值
         window.addEventListener('resize', this.updateWindowSize);
         this.updateWindowSize()
+
+        axios.get(`${import.meta.env.VITE_CARA_URL}/memberCenterLogin.php`)
+                .then((response) => {
+                    // 成功取得資料後，將資料存入 member 陣列
+                    this.member = response.data;
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                });
     },
     computed: {
         imagePreviewUrl() {
@@ -44,10 +49,6 @@ export default {
             this.isMobile = window.innerWidth >= 325 && window.innerWidth < 768;
             this.isDesktop = window.innerWidth >= 768;
         },
-        // beforeDestroy() {
-        //     // 移除事件監聽器，避免在組件銷毀時仍然觸發事件
-        //     window.removeEventListener('resize', this.updateWindowSize);
-        // },
         toggleSubMenu() {
             this.showSubMenu = !this.showSubMenu;
         },
@@ -81,16 +82,8 @@ export default {
         }
     },
     mounted() {
-        // this.innerWidth = window.innerWidth
-        // window.addEventListener
         document.getElementById("upFile").addEventListener("change", this.showFile);
         this.storedImage = localStorage.getItem('imagePreview');
-        // if (storedImage) {
-        //     var imagePreviews = document.querySelectorAll('.imagePreview')
-        //         imagePreviews.forEach(function (element) {
-        //         element.src = storedImage;
-        //         });
-        // }
     },
 }
 </script>
@@ -130,10 +123,9 @@ export default {
                 <div class="mb_user_image" v-if="isMobile">
                     <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                 </div>
-
                 <div class="welcome">
                     <h3>
-                        您好{{user.name}}，歡迎光臨<br>Cara Car官網購物帳號
+                        您好{{member.m_name}}，歡迎光臨<br>Cara Car官網購物帳號
                     </h3>
                     <div class="user_image" v-if="isDesktop">
                         <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
@@ -206,15 +198,15 @@ export default {
                         </div>
                         <div class="table">
                             <p>原密碼　</p>
-                            <input type="password" name="memOldPsw" id="memOldPsw" placeholder="請輸入原密碼">
+                            <input type="password" name="memOldPsw" id="memOldPsw" autocomplete="current-password" placeholder="請輸入原密碼">
                         </div>
                         <div class="table">
                             <p>新密碼　</p>
-                            <input type="password" name="memNewPsw" id="memNewPsw" placeholder="請輸入新密碼">
+                            <input type="password" name="memNewPsw" id="memNewPsw" autocomplete="current-password" placeholder="請輸入新密碼">
                         </div>
                         <div class="table">
                             <p>確認密碼</p>
-                            <input type="password" name="memConPsw" id="memConPsw" placeholder="請再次輸入新密碼">
+                            <input type="password" name="memConPsw" id="memConPsw" autocomplete="current-password" placeholder="請再次輸入新密碼">
                         </div>
                     </form>
                     <input id="send" type="submit" name="button" value="我要修改">
