@@ -162,8 +162,8 @@
   <template>
     <MainHeader />
     <div class="pro_list_title">
-      <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
-      <h1><img src="../assets/imgs/product/productList_title.svg" alt="新品專區"></h1>
+      <h1>新品專區
+      </h1>
     </div>
     <div class="container">
       <div class="row">

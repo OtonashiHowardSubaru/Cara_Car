@@ -22,7 +22,10 @@ export default {
 <template>
   <MainHeader />
   <div class="about">
-    <div class="aboutTitle"><img src="../assets/imgs/about/aboutTitle.svg" alt=""></div>
+    <div class="aboutTitle">
+      <h1>關於CaRa Car</h1>
+      <img src="../assets/imgs/about/aboutTitle.svg" alt="關於CaRa Car">
+    </div>
     <div class="topPics">
       <img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG">
       <img src="../assets/imgs/about/aboutTop2.png" alt="aboutIMG">

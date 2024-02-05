@@ -17,7 +17,7 @@ export default {
 <template>
   <div class="number_select">
     <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(-1)">
-    <input type="text" name="quantity" :value="qtyValue" class="qty" ref="qtyInput">
+    <input type="text" name="quantity" :value="qtyValue" class="qty" ref="qtyInput" @keydown.enter.prevent>
     <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(1)">
   </div>
 </template>

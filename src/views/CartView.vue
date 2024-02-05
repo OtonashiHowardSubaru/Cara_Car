@@ -128,7 +128,8 @@ methods: {
     <main>
         <section class="cart">
             <div class="cartTitle">
-                <img src="../assets/imgs/cart/cart_title.svg" alt="cartTitle">
+                <h1>購物車
+                </h1>
             </div>
             <div class="cartContent">
                 <span class="productName">商品名稱</span>

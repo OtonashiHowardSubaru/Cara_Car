@@ -99,15 +99,10 @@ export default {
     <MainHeader />
 
     <div class="memberCenter">
-
         <div class="memberTitle">
-
-            <div class="title">
-                <img src="../assets/imgs/memberCenter/memberCenterTitle.png" alt="title">
-            </div>
-            <div class="line"></div>
+            <h1>新品專區
+            </h1>
         </div>
-
         <div class="memberContent">
 
             <div class="member_sidebar" v-if="isDesktop">
