@@ -1,5 +1,8 @@
 <script>
+import axios from 'axios';
 import MainHeader from '@/components/MainHeader.vue';
+import router from "@/router";
+
     export default {
         components:{
             MainHeader,
@@ -12,14 +15,15 @@ import MainHeader from '@/components/MainHeader.vue';
     }
 </script>
 
+<script setup>
+    
+</script>
 
 <template>
 <MainHeader />
-    <div class="game">
-        <h1>這裡是還沒做的遊戲頁面</h1>
-    </div>
+
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

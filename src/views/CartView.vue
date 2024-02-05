@@ -13,6 +13,7 @@ import product06 from '@/assets/imgs/product/product_6.png';
 import product07 from '@/assets/imgs/product/product_7.png';
 import product08 from '@/assets/imgs/product/product_8.png';
 import product09 from '@/assets/imgs/product/product_9.png';
+
 export default {
 components:{
     MainHeader,ProCardSwiper,
