@@ -1,17 +1,12 @@
 <template>
   <footer class="mainFooter">
-
-    <div class="scrollJumpOut">
-      <img class="jumpOutCat" src="../assets/imgs/draw/cat2.PNG" alt="cat2.PNG">
-      <img class="jumpOutGrass" src="../assets/imgs/draw/bush.PNG" alt="bush.PNG">
-    </div>
+    <RouterLink class="footerLogo" to="/">
+      <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
+    </RouterLink>
+    <div class="footerDecoBg"></div>
     <div class="footerbg"></div>
     <div class="footerSection1">
-      <div class="footerSection1Info">
-        <RouterLink class="RouterLink" to="/">
-          <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
-        </RouterLink>
-        
+      <div class="footerSection1Info">   
         <h4>與我們一起探索無限可能，<br>讓每個角落都成為冒險天地！</h4>
         <div class="shopInfo">
           <p>桃園市中壢區復興路46號8樓</p>
@@ -73,15 +68,17 @@
         
       </div>
       <div class="footerSection3Top" @click="toTop">
-        <div class="arrowToTop">
-          <!-- <i class="fa-solid fa-angle-right"></i> -->
-          <div class="decoLine"></div>
-        </div>
+        <img class="toTopCat" src="../assets/imgs/draw/cat2.png" alt="cat2.png">
+        <img class="toTopGrass" src="../assets/imgs/draw/bushSmall.png" alt="bushSmall.png">
         <p>TOP</p>
       </div>
     </div>
     <div class="footerSection4">
-      <p>©Cara_Car Co. All rights reserved.<br>本網站為緯育TibaMe_前端設計工程師班學員專題成果作品本平台僅供學習、展示之用。</p>
+      <p>
+        ©Cara_Car Co. All rights reserved.
+        <br>
+        本網站為緯育TibaMe_前端設計工程師班第88期學員專題成果作品,本平台僅供學習、展示之用。
+      </p>
     </div>
 
   </footer>
