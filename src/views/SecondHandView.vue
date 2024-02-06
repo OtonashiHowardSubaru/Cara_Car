@@ -6,7 +6,7 @@ import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
-import mainImage from "@/assets/imgs/product/sh_product_mainpic.png";
+import mainImage from "@/assets/imgs/product/sh_products/sh_product_mainpic.png";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -95,9 +95,9 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
         mainImage: mainImage, 
         littleImages: [
           {img: 'sh_product_mainpic.png'},
-          {img: 'sh_product_litpic.png'},
-          {img: 'sh_product_litpic1.png'},
-          {img: 'sh_product_litpic2.png'},
+          {img: 'product001_001.png'},
+          {img: 'product001_002.png'},
+          {img: 'product001_003.png'},
           // "/src/assets/imgs/product/sh_product_mainpic.png",
           // "/src/assets/imgs/product/sh_product_litpic.png",
           // "/src/assets/imgs/product/sh_product_litpic1.png",
@@ -119,7 +119,7 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
     // },
     methods: {
       getImageUrl(paths) {
-      return new URL(`../assets/imgs/product/${paths}`, import.meta.url).href
+      return new URL(`../assets/imgs/product/sh_products/${paths}`, import.meta.url).href
     },
       showLarge(e) {
         console.log('Clicked on image:', e.target.src);
