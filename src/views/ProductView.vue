@@ -14,10 +14,10 @@
   import product07 from '@/assets/imgs/product/product_7.png';
   import product08 from '@/assets/imgs/product/product_8.png';
   import product09 from '@/assets/imgs/product/product_9.png';
-  import thisProductImg01 from '@/assets/imgs/product/sh_product_mainpic.png';
-  import thisProductImg02 from '@/assets/imgs/product/sh_product_litpic.png';
-  import thisProductImg03 from '@/assets/imgs/product/sh_product_litpic1.png';
-  import thisProductImg04 from '@/assets/imgs/product/sh_product_litpic2.png';
+  import thisProductImg01 from '@/assets/imgs/product/sh_products/sh_product_mainpic.png';
+  import thisProductImg02 from '@/assets/imgs/product/sh_products/product001_001.png';
+  import thisProductImg03 from '@/assets/imgs/product/sh_products/product001_002.png';
+  import thisProductImg04 from '@/assets/imgs/product/sh_products/product001_003.png';
   export default {
     components: {
       ProCardSwiper,MainHeader,ProCardSwiper,MainHeader,NumberSelect,ProductIntroCard

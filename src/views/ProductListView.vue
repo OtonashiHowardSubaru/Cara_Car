@@ -64,62 +64,6 @@
             arrowImg: "src/assets/imgs/product/sh_process_arrow.png"
           },
         ],
-        productList:[
-        {
-              prod_img1:product01,
-              prod_name:"起始玩家",
-              prod_price:"5000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product02,
-              prod_name:"賓士少爺",
-              prod_price:"10000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product03,
-              prod_name:"賓士少爺二代",
-              prod_price:"12000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product04,
-              prod_name:"敞篷輕旅",
-              prod_price:"12000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product05,
-              prod_name:"野貓戰機",
-              prod_price:"8000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product06,
-              prod_name:"敞篷輕旅二代",
-              prod_price:"14000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product07,
-              prod_name:"赤色風暴",
-              prod_price:"8000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product08,
-              prod_name:"英倫經典",
-              prod_price:"10000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product09,
-              prod_name:"F1一代",
-              prod_price:"18000",
-              linkwhere:"/Product"
-            },
-        ],
       }
     },
     created() {
@@ -143,11 +87,11 @@
       },
       handleSortChange(newSort){
         if (newSort === "0") {
-          this.productList = this.responseData
+          this.displayData = this.responseData
         } else if (newSort === "desc") {
-          this.productList.sort((a, b) => b.prod_price - a.prod_price);
+          this.displayData.sort((a, b) => b.prod_price - a.prod_price);
         } else if (newSort === "asc"){
-          this.productList.sort((a, b) => a.prod_price - b.prod_price);
+          this.displayData.sort((a, b) => a.prod_price - b.prod_price);
         };
       },
       handleFilter(){ //這是老師的標題搜尋範例，先留著也許哪天用的到
@@ -183,7 +127,7 @@
         </div>
         <div class="pro_card_list col-md-10">
           <ProductCard 
-          :displayData="productList"
+          :displayData="displayData"
           />
         </div>
       </div>
