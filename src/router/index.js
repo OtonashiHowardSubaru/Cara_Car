@@ -66,6 +66,15 @@ const router = createRouter({
       }
     },
     {
+      path: '/Producttest/:pro_id',
+      name: 'Producttest',
+      component: () => import('../views/Producttest.vue'),
+      meta:{
+        title: '商品明細 | Cara Car',
+        // 這個要想辦法改成品名做為title
+      }
+    },
+    {
       path: '/SecondHandList',
       name: 'SecondHandList',
       component: () => import('@/views/SecondHandListView.vue'),
