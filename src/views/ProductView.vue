@@ -1,117 +1,101 @@
 <script>
   import axios from 'axios'; //引入函式庫
-  import ProCardSwiper from '@/components/ProCardSwiper.vue'
+  import ProCardSwiper from '@/components/ProCardSwiper.vue';
   import MainHeader from '@/components/MainHeader.vue';
-  import ProductIntroCard from "@/components/card/ProductIntroCard.vue"
+  import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 
-  // import product01 from '@/assets/imgs/product/product_1.png';
-  // import product02 from '@/assets/imgs/product/product_2.png';
-  // import product03 from '@/assets/imgs/product/product_3.png';
-  // import product04 from '@/assets/imgs/product/product_4.png';
-  // import product05 from '@/assets/imgs/product/product_5.png';
-  // import product06 from '@/assets/imgs/product/product_6.png';
-  // import product07 from '@/assets/imgs/product/product_7.png';
-  // import product08 from '@/assets/imgs/product/product_8.png';
-  // import product09 from '@/assets/imgs/product/product_9.png';
-  // import thisProductImg01 from '@/assets/imgs/product/sh_product_mainpic.png';
-  // import thisProductImg02 from '@/assets/imgs/product/sh_product_litpic.png';
-  // import thisProductImg03 from '@/assets/imgs/product/sh_product_litpic1.png';
-  // import thisProductImg04 from '@/assets/imgs/product/sh_product_litpic2.png';
-  export default {
-    components: {
-      ProCardSwiper,MainHeader,ProCardSwiper,MainHeader,NumberSelect,ProductIntroCard
+  export default{
+    components:{
+        ProCardSwiper,
+        MainHeader,
+        ProCardSwiper,
+        MainHeader,
+        NumberSelect,
+        ProductIntroCard,
     },
     data(){
-      return {
-        cart:[],
-        displayProductData: [],
-        productMainImg: thisProductImg01,
-        productImgs: {
-          thisProductImg01,
-          thisProductImg02,
-          thisProductImg03,
-          thisProductImg04,
-        },
-        productList:[
-        ],
-        activeTab: 0,
-      }
+        return {
+          cart: [],
+          allProducts:[],
+          thisProduct:[],
+          ImgsName:[],
+          activeTab: 0,
+        }
     },
-    created() {
-      this.axiosGetData();
+    created() {//在頁面載入時同時載入function
+      // 定義頁碼
+      const pageId = this.$route.params.pro_id
+      // console.log(pageId)
+      
+      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/frontProductinfo.php`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          // console.log(response.data)
+          this.allProducts = response.data;
+          this.thisProduct = response.data.find((item) =>{
+          return item.pro_id == pageId
+        })
+        // console.log(this.thisProduct)
+      })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
+      
+      // 取得這一份商品的全部圖片名稱
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/thisproductimgs.php?pageId=${pageId}`)
+        .then((response) => {
+          this.ImgsName = response.data;
+          // console.log(this.ImgsName);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
     },
     methods: {
-      axiosGetData(){
-        const pageId = this.$route.params.id
-
-        axios.get('https://fakestoreapi.com/products')
-          .then( res=> {
-            console.log(res)
-            if(res && res.data && res.data.prods){
-              this.displayProductData = res.data
-            }else{
-              console.log('資料沒有回傳到displayData喔')
-            }
-          })
+      // 取得圖片的路徑函式
+      getProductImgSrc(imgName){
+        return new URL(`../assets/imgs/product/new_products/${imgName}.jpg`, import.meta.url).href
       },
+
+      // 大圖換小圖
       showLarge(e){
         const clickedImgSrc = e.target.src;
         // console.log('Clicked on image:', clickedImgSrc);
-        this.productMainImg = clickedImgSrc;
+        const bigImg = document.getElementById('bigImg');
+        bigImg.src = clickedImgSrc;
       },
-      // addToCart(product){
-      //   console.log('Adding to cart:', product);
-      //   if (!product || typeof product.prod_img1 === 'undefined') {
-      //   console.error('Invalid product object or missing prod_img1 property');
-      //   return;
-      //   }
-      //   const addedIndex = this.cart.findIndex(item=>item.id===product.id)
-      //   if(addedIndex >= 0){
-      //     this.cart[addedIndex] = {
-      //       ...this.cart[addedIndex],
-      //       count: this.cart[addedIndex]['count']+ quanitiy
-      //     }
-      //   }else{
-      //     this.cart.push({
-      //       prod_img1:product.prod_img1,
-      //       prod_name:product.prod_name,
-      //       prod_price:product.prod_price,
-      //       linkwhere:"/Product",
-      //       count: quanitiy,
-      //     })
-      //   }
-      //   console.log('Cart:', this.cart);
-      // }
-  },
-}
+    }
+  }
 </script>
+
 <template>
 <MainHeader />
 <main class="container">
   <div class="row">
     <div class="col-12 col-md-12 pro_title">
-      <h1>超強小車車</h1>
-      <h2>AMERICAN CLASSIC</h2>
+      <h1>{{ thisProduct.pro_name }}</h1>
+      <h2>{{ thisProduct.pro_en_name }}</h2>
     </div>
     <div class="col-12 col-md-6 pro_img_switcher">
       <div class="bigImgBox">
-        <img :src="productMainImg" alt="" class="bigImg">
+        <!-- 第一圖片 -->
+        <!-- 不知道為什麼一定要v-if="ImgsName.length > 0"，不然會報錯 -->
+        <img v-if="ImgsName.length > 0" :src="getProductImgSrc(ImgsName[0].img_name)" alt="" id="bigImg">
       </div>
       <div class="smallImgsBox">
-        <img v-for="item in productImgs" :src="item" alt="" class="smallImg" :key="item" @click="showLarge($event)">
+        <!-- 圖片們 -->
+        <img v-for="item in ImgsName" :src="getProductImgSrc(item.img_name)" alt="" class="smallImg " :key="item" @click="showLarge($event)">
       </div>
     </div>
     <div class="col-12 col-md-6 intro">
-      <div class="price">$10,000</div>
+      <div class="price">{{ thisProduct.pro_price}}</div>
       <div class="intro_tet">
-        <ul>
-          <li>可遙控操作</li>
-          <li>續航能力強</li>
-          <li>高效能馬達，提供平穩駕駛體驗</li>
-          <li>內建音樂播放器，提升兒童駕駛樂趣</li>
-          <li>運行時噪音小，適合室內外使用</li>
-        </ul>
+        {{ thisProduct.pro_intro }}
       </div>
       <div class="pro_functions">
         <form class="numberChoice" name="numberChoice" action="#">
@@ -124,7 +108,7 @@
             <button type="button" class="btn_buy_additional">
               <span>客製化車牌</span>
               <span>(+$300)</span>
-              <input type="text" placeholder="請輸入最多8碼" maxlength="8">
+              <span>專屬於你的個性化車牌</span>
             </button>
             <button type="button" class="btn_buy_additional">
               <span>升級充電器</span>
@@ -151,16 +135,7 @@
     </div>
   </div>
 </main>
-
-
-<ProductIntroCard/>
-<!-- 疑問疑問疑問 ↓↓ 小龜老師看這裡 ↓↓ 疑問疑問疑問疑問 -->
-<!-- 我需要讓這兩個卡片swiper的按鈕不會互相影響 -->
-<ProCardSwiper :displayData="productList" />
-<ProCardSwiper :displayData="productList" />
-
 </template>
-
 <style lang="scss" scoped>
   @import '../assets/scss/page/product';
 </style>

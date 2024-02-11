@@ -57,20 +57,11 @@ const router = createRouter({
       meta:{title: '商品總覽 | Cara Car',}
     },
     {
-      path: '/Product',
+      path: '/Product/:pro_id',
       name: 'Product',
       component: () => import('../views/ProductView.vue'),
       meta:{
-        title: '商品明細 | Cara Car',
-        // 這個要想辦法改成品名做為title
-      }
-    },
-    {
-      path: '/Producttest/:pro_id',
-      name: 'Producttest',
-      component: () => import('../views/Producttest.vue'),
-      meta:{
-        title: '商品明細 | Cara Car',
+        title: '商品 | Cara Car',
         // 這個要想辦法改成品名做為title
       }
     },
