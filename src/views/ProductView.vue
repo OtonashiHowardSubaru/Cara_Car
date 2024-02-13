@@ -4,17 +4,12 @@
   import MainHeader from '@/components/MainHeader.vue';
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
-  import {cartStore} from '@/stores/cart'
-  import {useProductStore} from '@/stores/product'
-  import { useRoute } from 'vue-router';
-  import { computed,ref } from 'vue';
 
   export default{
     components:{
         ProCardSwiper,
         MainHeader,
         ProCardSwiper,
-        MainHeader,
         NumberSelect,
         ProductIntroCard,
     },
