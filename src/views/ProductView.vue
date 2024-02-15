@@ -9,10 +9,8 @@
     components:{
         ProCardSwiper,
         MainHeader,
-        ProCardSwiper,
-        MainHeader,
-        NumberSelect,
         ProductIntroCard,
+        NumberSelect,
     },
     data(){
         return {
@@ -69,6 +67,13 @@
         const bigImg = document.getElementById('bigImg');
         bigImg.src = clickedImgSrc;
       },
+
+      // 轉換pro_intro到比較合適的版型
+      replaceLineBreaks(text) {
+        return text.replace(/\r\n/g, "<br>");
+      }
+
+      
     }
   }
 </script>
@@ -93,9 +98,9 @@
       </div>
     </div>
     <div class="col-12 col-md-6 intro">
-      <div class="price">{{ thisProduct.pro_price}}</div>
-      <div class="intro_tet">
-        {{ thisProduct.pro_intro }}
+      <div class="price">${{ thisProduct.pro_price}}</div>
+      <!-- 採用v-html顯示內容(而非顯示字串)，再利用涵式轉換\r\n為<br>，最後利用v-if確保涵式運作的順序在讀取到資料之後-->
+      <div class="intro_tet" v-if="thisProduct.pro_intro" v-html="replaceLineBreaks(thisProduct.pro_intro)">
       </div>
       <div class="pro_functions">
         <form class="numberChoice" name="numberChoice" action="#">
@@ -132,6 +137,9 @@
         <button type="button" id="buyNowBtn">直接購買</button>
         <button type="button" id="addToCartBtn" @click="addToCart(product,1)">加入購物車</button>
       </div>
+    </div>
+    <div class="col-12">
+      <ProductIntroCard />
     </div>
   </div>
 </main>

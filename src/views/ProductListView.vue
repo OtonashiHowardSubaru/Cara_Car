@@ -7,41 +7,33 @@
   import BtnFilter from '@/components/btn/BtnFilter.vue';
   import MainHeader from '@/components/MainHeader.vue';
 
-  import product01 from '@/assets/imgs/product/product_1.png';
-  import product02 from '@/assets/imgs/product/product_2.png';
-  import product03 from '@/assets/imgs/product/product_3.png';
-  import product04 from '@/assets/imgs/product/product_4.png';
-  import product05 from '@/assets/imgs/product/product_5.png';
-  import product06 from '@/assets/imgs/product/product_6.png';
-  import product07 from '@/assets/imgs/product/product_7.png';
-  import product08 from '@/assets/imgs/product/product_8.png';
-  import product09 from '@/assets/imgs/product/product_9.png';
-
   export default {
     components:{
-      ProductCard, PriceSorter, CardShProcess, PageNumber, BtnFilter, MainHeader,
+      ProductCard,
+      PriceSorter,
+      CardShProcess,
+      PageNumber,
+      BtnFilter,
+      MainHeader,
     },
     data(){
       return {
         newSort: '',
         filter: [
           {
-            filterId: "",
-            filterName: "促銷中",
-          },
-          {
-            filterId: "",
+            filterId: "electricCar",
             filterName: "電動車",
           },
           {
-            filterId: "",
+            filterId: "Accessory",
             filterName: "配件",
           },
           {
-            filterId: "",
+            filterId: "ModelCar",
             filterName: "模型車",
           },
         ],
+        activeFilter: '',
         responseData : [],
         displayData: [],
         sh_contact: [
@@ -67,38 +59,53 @@
       }
     },
     created() {
-      this.axiosGetData();
+      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          // console.log(response.data)
+          this.responseData = response.data;
+          this.displayData = response.data;
+      })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
     },
     methods: {
-      axiosGetData(){
-        axios.get('https://tibamef2e.com/cgd103/g1/api/getProducts.php?order=prod_name&limit=9&page=1')
-          .then( res=> {
-            console.log(res)
-            if(res && res.data && res.data.prods){
-              this.responseData = res.data.prods
-              this.displayData = res.data.prods
-              //由於res是一整個方法，這個方法內有好幾個小東西，其中一個就是資料(data)
-              //所以要取值才是res.data，而學長姐的api預設有prods與prodCount
-              //所以才是displayData = res.data.prods
-            }else{
-              console.log('資料沒有回傳到displayData喔')
-            }
-          })
-      },
+      // 目前有個小bug，我懶得修，是價格篩選器再返還至預設值時，類別篩選要重新啟動
+      // 價格排序的涵式
       handleSortChange(newSort){
         if (newSort === "0") {
           this.displayData = this.responseData
         } else if (newSort === "desc") {
-          this.displayData.sort((a, b) => b.prod_price - a.prod_price);
+          this.displayData.sort((a, b) => b.pro_price - a.pro_price);
         } else if (newSort === "asc"){
-          this.displayData.sort((a, b) => a.prod_price - b.prod_price);
+          this.displayData.sort((a, b) => a.pro_price - b.pro_price);
         };
       },
-      handleFilter(){ //這是老師的標題搜尋範例，先留著也許哪天用的到
-        this.displayData = this.responseData.filter((item)=>{
-          // console.log(item);
-          return item.title.includes(this.search)
-        })
+
+      // 商品種類的篩選(共兩個函式，一個切換啟動關閉、一個過濾)
+      handleToggleFilter(filterName, isActive) {
+        // 如果按鈕是啟動的，將過濾單位加入過濾器activeFilter 內；否則，從中刪除
+        if (isActive) {
+          this.activeFilter = filterName;
+        } else {
+          this.activeFilter = '';
+        }
+        // 在這裡更新過濾邏輯，可能需要重新運行過濾
+        this.updateFilter(); // 這裡需要定義 updateFilter 方法
+      },
+      updateFilter(){
+        if (this.activeFilter == '') {
+          this.displayData = this.responseData;
+        } else {
+          // 當有按鈕被啟動時，篩選資料
+          this.displayData = this.responseData.filter(item => {
+            return item.pro_category.includes(this.activeFilter)
+          });
+        }
       },
     },
   }
@@ -123,6 +130,7 @@
             :filterId="item.filterId"
             :filterName="item.filterName"
             :key="item"
+            @toggleFilter="handleToggleFilter"
           />
         </div>
         <div class="pro_card_list col-md-10">
@@ -132,7 +140,7 @@
         </div>
       </div>
     </div>
-<PageNumber />
+  <PageNumber />
 
   <CardShProcess/>
 </template>
