@@ -6,7 +6,7 @@ import lightBoxStore from "@/stores/lightBox.js";
 import LoginBox from '@/components/LoginBox.vue';
 import ProductCard from "@/components/ProductCard.vue";
 import CardShProcess from '@/components/card/CardShProcess.vue';
-// import bannerCanvas from "@/components/Canvas.vue";
+import bannerCanvas from "@/components/Canvas.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
@@ -24,7 +24,7 @@ export default {
   components: {
     EventCardSlider, LoginBox, ProductCard, CardShProcess,SingleCloud,
     DoubleCloud,
-    // bannerCanvas,
+    bannerCanvas,
   },
   data() {
     return {
@@ -50,7 +50,7 @@ export default {
       img: [
         { i: 'nav/nav-icon-01.png' },
         { i: 'nav/nav-icon-02.png' },
-        { i: 'nav/nav-icon-03.png' },
+        { i: 'nav/nav-icon-07.png' },
         { i: 'nav/nav-icon-04.png' },
         { i: 'nav/nav-icon-05.png' },
         { i: 'nav/nav-icon-06.png' },
@@ -66,6 +66,7 @@ export default {
       namePh: [
         '/ProductList',
         '/SecondHandList',
+        '/Game',
         '/ShopInformation',
         '/MemberCenter',
         '/Cart',
@@ -73,6 +74,7 @@ export default {
       imgPh: [
           { i: 'nav/nav-icon-01.png' },
           { i: 'nav/nav-icon-02.png' },
+          { i: 'nav/nav-icon-07.png' },
           { i: 'nav/nav-icon-04.png' },
           { i: 'nav/nav-icon-05.png' },
           { i: 'nav/nav-icon-06.png' },
@@ -80,6 +82,7 @@ export default {
       titlePh: [
           { ph: 'PRODUCT' },
           { ph: '2nd HAND' },
+          { ph: 'GAME' },
           { ph: 'SHOP INFO' },
           { ph: 'MEMBER' },
           { ph: 'MY CART' },
@@ -243,7 +246,8 @@ export default {
   </Transition>
 
   <div class="indexBannerGroup">
-    <img src="../assets/imgs/Home/indexBannerImg.svg" alt="" class="indexBannerImg">
+    <bannerCanvas class="bannerCanvas"/>
+    <!-- <img src="../assets/imgs/Home/indexBannerImg.svg" alt="" class="indexBannerImg"> -->
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
@@ -353,8 +357,8 @@ export default {
     </div> -->
   </div>
   </div>
-  <CardShProcess class=""/>
-  <!-- <bannerCanvas/> -->
+  <CardShProcess class="CardShProcess"/>
+  
 </template>
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';

@@ -137,21 +137,12 @@ methods: {
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
             </div>
-            <!-- <div class="item_container" >
-                <div id="Cart">
-                    <div class="productCard">
-                        <img src="../assets/imgs/cart/cart_product_img.png" alt="ProductImage">
-                        <div class="proCardP">
-                            <p class="pro_name">閃電漂移車</p>
-                            <p class="pro_price">$2500</p>
-                        </div>
-                        <div class="countButton">
-                            <button>-</button>
-                            <input type="number" value="1">
-                            <button>+</button>
-                        </div>
-                        <p class="proCount">$3,000</p>
-                    </div>
+            <!-- 這裡是購物車內容 -->
+            <!-- <div class="productCard" v-for="item in cart" :key="item.id">
+                <div class="countButton">
+                    <button>-</button>
+                    {{ item.count }}
+                    <button @click="addCart(item)">+</button>
                 </div>
             </div> -->
             <div class="productCard">
@@ -167,7 +158,7 @@ methods: {
                     </div>
                     <p class="proCount">$3,000</p>
             </div>
-
+            <!-- 結束 -->
             <div class="cartContent">
                 <span class="custom">客製化</span>
             </div>
@@ -227,7 +218,6 @@ methods: {
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInput"> 
                 <p class="cartInputTitle">備註欄</p>
                 <textarea name="remark" id="remark" cols="20" rows="5"></textarea>
-                <!-- <input type="textarea" size="100" class="remark"> -->
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
         </form>
