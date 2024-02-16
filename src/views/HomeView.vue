@@ -1,6 +1,7 @@
 <!-- 疑問疑問 ↓↓小龜老師看這裡 ↓↓ 疑問疑問-->
 <!-- 在這頁中有引用燈箱的store和component，這頁的header是手機板的nav，但在HomeView.vue檔中引用燈箱和MainHeader.vue就會變成有兩個燈箱，而且我修改燈箱的css他會影分身成兩個 -->
 <script>
+import axios from 'axios'; //引入函式庫
 import EventCardSlider from '@/components/card/EventCardSlider.vue';
 import lightBoxStore from "@/stores/lightBox.js";
 import LoginBox from '@/components/LoginBox.vue';
@@ -9,16 +10,6 @@ import CardShProcess from '@/components/card/CardShProcess.vue';
 import bannerCanvas from "@/components/Canvas.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
-
-
-import product01 from '@/assets/imgs/product/product_1.png';
-import product02 from '@/assets/imgs/product/product_2.png';
-import product03 from '@/assets/imgs/product/product_3.png';
-import product04 from '@/assets/imgs/product/product_4.png';
-import product05 from '@/assets/imgs/product/product_5.png';
-import product06 from '@/assets/imgs/product/product_6.png';
-import product07 from '@/assets/imgs/product/product_7.png';
-import product08 from '@/assets/imgs/product/product_8.png';
 
 export default {
   components: {
@@ -88,58 +79,22 @@ export default {
           { ph: 'MEMBER' },
           { ph: 'MY CART' },
       ],
-      productList:[
-        {
-              prod_img1:product01,
-              prod_name:"起始玩家",
-              prod_price:"5000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product02,
-              prod_name:"賓士少爺",
-              prod_price:"10000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product03,
-              prod_name:"賓士少爺二代",
-              prod_price:"12000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product04,
-              prod_name:"敞篷輕旅",
-              prod_price:"12000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product05,
-              prod_name:"野貓戰機",
-              prod_price:"8000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product06,
-              prod_name:"敞篷輕旅二代",
-              prod_price:"14000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product07,
-              prod_name:"赤色風暴",
-              prod_price:"8000",
-              linkwhere:"/Product"
-            },
-            {
-              prod_img1:product08,
-              prod_name:"英倫經典",
-              prod_price:"10000",
-              linkwhere:"/Product"
-            },
-      ],
+      displayData: [],
     }
   },
+  created() {
+      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          this.displayData = response.data.slice(0,8);
+      })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
+    },
   methods: {
     getImageUrl(paths) {
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
@@ -280,7 +235,7 @@ export default {
     </div>
     <div class="indexDisplayProducts">
       <ProductCard 
-        :displayData="productList"
+        :displayData="displayData"
       />
     </div>
   </div>
