@@ -1,19 +1,19 @@
 <script>
   import axios from 'axios'; //引入函式庫
-  import ProCardSwiper from '@/components/ProCardSwiper.vue';
+  import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
+  import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
   import MainHeader from '@/components/MainHeader.vue';
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 
   export default{
     components:{
-        ProCardSwiper,
+        ProCardSwiper1,
+        ProCardSwiper2,
         MainHeader,
-        ProCardSwiper,
         MainHeader,
         NumberSelect,
         ProductIntroCard,
-        NumberSelect,
     },
     data(){
         return {
