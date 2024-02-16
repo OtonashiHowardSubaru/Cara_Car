@@ -78,6 +78,7 @@
             </div>
 
         </section>
+        <div class="mountainpic"><img src="../assets/imgs/draw/person_mountain.png" alt="mountain"></div>
         <section class="infoTextSale">
 
             <div class="InfoTextCards">
@@ -96,7 +97,7 @@
             <div @click="openBtnSaleCar">填寫表格</div>
         </div> -->
         <div class="SellCarFormButton">
-        <button @click="openLightbox">填寫表格2</button>
+        <button id="SellCarFormButtonPic" @click="openLightbox"><img src="../assets/imgs/SecondHandSale/BtnSaleCar.svg" alt=""></button>
     </div>
         <Transition name="fade">
             <BtnSaleCar v-if="lightBoxForm.showLightbox"/>
