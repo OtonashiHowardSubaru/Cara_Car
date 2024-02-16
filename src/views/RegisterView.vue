@@ -1,10 +1,18 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue'
+
+import apiInstance from '@/stores/auth'
+
 export default {
     data() {
         return {
-            psw7777: '',
-            psw8888: '',
+            name: '',
+            birthday: '',
+            email: '',
+            phone: '',
+            address: '',
+            psw666: '',
+            psw666again: '',
             passwordVisibleLeft: false,
             passwordVisibleRight: false,
         }
@@ -21,6 +29,43 @@ export default {
             // console.log(togglePswVisbility)
             this.passwordVisibleRight = !this.passwordVisibleRight;
         },
+
+        // 註冊事件
+        register(){
+        if(this.psw666 !== this.psw666again){
+            alert('請確認密碼')
+
+        }else if(this.psw666.length < 8 && this.psw666.length < 8){
+            alert('密碼至少8個字')
+
+        }else{
+            const bodyFormData = new FormData();
+            bodyFormData.append('m_name', this.name);
+            bodyFormData.append('m_birthday', this.birthday);
+            bodyFormData.append('m_email', this.email);
+            bodyFormData.append('m_phone', this.phone);
+            bodyFormData.append('m_address', this.address);
+            bodyFormData.append('member_psw', this.psw666);
+
+
+
+            apiInstance({
+                method: 'post',
+                url: `${import.meta.env.VITE_CARA_URL}/register.php`, // 改成我們的php
+                headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
+                data: bodyFormData
+            }).then(res=>{
+                console.log(res);
+                if(res && res.data && res.data.msg === '會員註冊成功'){
+                    alert("註冊成功")
+                }else{
+                    alert('註冊失敗')
+                }
+            }).catch(error=>{
+                console.log(error);
+            })
+        }
+    },
     },
     mounted() {
 
@@ -43,31 +88,31 @@ export default {
                 <div class="name_birth">
                     <div class="space">
                         <p>會員姓名</p>
-                        <input type="text" placeholder="輸入您的姓名">
+                        <input v-model="name" type="text" placeholder="輸入您的姓名">
                     </div>
                     <div class="space">
                         <p>會員生日</p>
-                        <input type="date" placeholder="2024/01/01">
+                        <input v-model="birthday" type="date" placeholder="2024/01/01">
                     </div>
                 </div>
                 <div class="email_tel">
                     <div class="space">
                         <p>電子郵件</p>
-                        <input type="email" placeholder="cara_car@gmail.com">
+                        <input v-model="email" type="email" placeholder="cara_car@gmail.com">
                     </div>
                     <div class="space">
                         <p>連絡電話</p>
-                        <input type="tel" placeholder="0912345678" maxlength="10">
+                        <input v-model="phone" type="tel" placeholder="0912345678" maxlength="10">
                     </div>
                 </div>
                 <div class="address">
                     <p>會員地址</p>
-                    <input type="address" placeholder="桃園市中壢區復興路46號">
+                    <input v-model="address" type="address" placeholder="桃園市中壢區復興路46號">
                 </div>
                 <div class="register_psw">
                     <div class="keyin_psw">
                         <p>輸入密碼</p>
-                        <input :type="passwordVisibleLeft ? 'text' : 'password'" v-model="psw7777" placeholder="請輸入密碼"
+                        <input :type="passwordVisibleLeft ? 'text' : 'password'" v-model="psw666" placeholder="請輸入密碼"
                             maxlength="12">
                         <img v-if="passwordVisibleLeft" src="../assets/imgs/register/open-eye.svg" alt="closeEye" class="eye1"
                             @click="togglePswLeft">
@@ -76,7 +121,7 @@ export default {
                     </div>
                     <div class="confirm_psw">
                         <p>確認密碼</p>
-                        <input :type="passwordVisibleRight ? 'text' : 'password'" v-model="psw8888" placeholder="確認密碼"
+                        <input :type="passwordVisibleRight ? 'text' : 'password'" v-model="psw666again" placeholder="確認密碼"
                             maxlength="12">
                         <img v-if="passwordVisibleRight" src="../assets/imgs/register/open-eye.svg" alt="closeEye" class="eye2"
                             @click="togglePswRight">
@@ -97,7 +142,7 @@ export default {
             </div>
             <div class="register_btn">
                 <!-- <button @click.prevent="signup">送出並成為會員</button> -->
-                <button>送出並成為會員</button>
+                <button @click="register">送出並成為會員</button>
                 <RouterLink to="/">已經是會員了嗎? 在此登入</RouterLink>
             </div>
             <div class="other_register">

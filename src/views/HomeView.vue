@@ -30,6 +30,7 @@ export default {
     return {
       lightBoxStore: lightBoxStore(),
       showLightbox: false,
+      isLoggedIn: false,
       currentTitle: '',
       currentHoverIndex: -1,
       currentTitlePh: '',
@@ -170,6 +171,13 @@ export default {
       // this.showLightbox = false;
       this.lightBoxStore.closeLightbox()
     },
+    confirmLogout() {
+      if (confirm('確定要登出嗎？')) {
+          // 执行登出邏輯
+          this.isLoggedIn = false;
+          // 其他登出邏輯...
+      }
+    },
     handleClick(e) {
       if (e.target.id === 'loginOverlay') {
         this.closeLightbox();
@@ -219,9 +227,13 @@ export default {
           </RouterLink>
         </li>
         <div class="line"></div>
-        <div class="indexHeaderLogin">
-          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
-            @click="openLightbox">
+        <div class="indexHeaderLogin" v-if="!isLoggedIn">
+            <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
+                @click="openLightbox">
+        </div>
+        <div class="indexHeaderLogin" v-else>
+            <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin"
+                @click="confirmLogout">
         </div>
       </ul>
       <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">

@@ -30,15 +30,28 @@
     .footerLogo {
         width: 100%;
         z-index: 3;
-        // display: flex;
+        display: flex;
         // justify-content: center;
         position: absolute;
         top: -100px;
         left: 5%;
         // background-color: #aaa;
+
+        @media (min-width : 768px) {
+            justify-content: start;
+            position: absolute;
+            left: 5%;
+            top: -100px;
+        }
+
         img {
-            width: 20%;
+            width: 40%;
             margin: auto;
+
+            @media (min-width : 768px) {
+                width: 20%;
+                margin: 0;
+            }
             
         }
     }
