@@ -23,6 +23,11 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
     },
     data(){
       return {
+        // 頁數切換
+        activeTab: "",
+        currentPage: 1,
+        perPage: 9,
+
         search: '',
         priceSorter: '',
         responseData : [],
@@ -106,6 +111,23 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
             this.sh_product_list.sort((a, b) => a.prod_price - b.prod_price);
           };
       },
+      currentSidebar(item) {
+          this.activeTab = item
+      },
+      changePage(page) {
+          this.currentPage = page;
+      },
+    },
+    computed:{
+      // 頁數切換
+      paginated(){
+        const start = (this.currentPage - 1) * this.perPage; //將當前頁數-1再乘以頁面顯示內容筆數得到start值
+        const end = start + this.perPage;//計算此頁面中的內容是否達到perPage中的數字最後索引值來得到end值
+        return this.sh_product_list.slice(start, end);//用JS的.slice()方法獲取vue data中的member陣列內容顯示內容
+      },
+      totalPages() {
+        return Math.ceil(this.sh_product_list.length / this.perPage);//用Math.ceil()無條件進位，值則是用member陣列物件長度除以顯示內容筆數取得
+      },
     },
 }
 </script>
@@ -143,7 +165,7 @@ import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
       </div>
     </div>
     <div class="paginator">
-        <PageNumber/>
+      <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
     </div>
 
     <div class="iwantsellCar">

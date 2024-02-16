@@ -1,5 +1,12 @@
+.number.active {
+    background-color: $lightBlue; /* 替換成您想要的顏色 */
+}
 .page_number{
-    position: relative;
+    width: 100%;
+    // position: absolute;
+    // left: 50%;
+    // transform: translateX(-45%);
+    // bottom: 0;
     z-index: 2;
     display: flex;
     align-items: center;
@@ -16,6 +23,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
         .arrow_rtl{
             border: $blackWord solid;
             border-width: 2px 0 0 2px;
@@ -35,14 +43,12 @@
 }
 button.number{
     width: 40px;
-    height: 60px;
+    height: 40px;
     margin: 10px;
     border: none;
     border-radius: $borr2;
     background-color: $grey_1;
-}
-.page_chooser li:first-child button {
-    background-color: $lightBlue;
+    cursor: pointer;
 }
 .bgImg01{
     width: 6%;
@@ -56,10 +62,10 @@ button.number{
     }
 }
 .bgImg02{
-    width: 6%;
+    width: 4.5%;
     position: absolute;
     z-index: -1;
-    right: 34.5%;
+    right: 33.5%;
     bottom: 60%;
     img{
         width: 100%;

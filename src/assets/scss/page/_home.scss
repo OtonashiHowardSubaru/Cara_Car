@@ -12,6 +12,7 @@
     margin: 22% 0px 10% 0px;
     padding-left: 10%;
 }
+
 .indexBannerTitle{
     // font-family: 'Kosugi Maru';
     letter-spacing: 5px;
@@ -514,19 +515,177 @@
 }
 
 .CardShProcess{
-    margin-top: 150px;
+    margin-top: 180px;
 }
 
 //indexGame
 .indexGameGroup{
-    display: none;
+    display: flex;
+    max-width: 1280px;
+    flex-direction: column;
 }
+.indexGameTitle{
+    width: 380px;
+    margin: 0 auto;
+}
+.game{
+    position: relative;
+}
+.indexGameBackground{
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    top: -70%;
+}
+.indexGameImg{
+    width: 450px;
+    height: 250px;
+    margin-top: 50px;
+
+}
+.indexGameButton{
+    width: 200px;
+    height: 200px;
+    border-radius: $borr5;
+    background-color: $blackWord;
+    border: $bor2 solid $whiteWord;
+    cursor: pointer;
+    z-index: 7;
+    position: absolute;
+    top:25%;
+    right: 20%;
+}
+.indexGameButton:hover{
+    .indexGameButton2{
+        background-color: $blue;
+    }
+    // .gameButtonText img{
+    //     transform: rotate(360deg); 
+    //     transition: transform 5s linear infinite;
+    // }
+}
+.gameButtonText{
+    position: absolute;
+    top: 15%;
+    left: 47%;
+}
+// .rotate{
+//     transition: transform 5s;
+//     transform: rotate(360deg);
+// }
+.gameButtonText img.rotate{
+    animation:  rotate 5s linear infinite;
+}
+.indexGameButton:not(:hover) .gameButtonText img {
+    animation: rotateBack 5s linear forwards;
+}
+@keyframes rotate {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotateBack {
+    from{
+        transform: rotate(360deg);
+    }
+    to{
+        transform: rotate(0deg);
+    }
+}
+.indexGameButton2{
+    width: 160px;
+    height: 160px;
+    border-radius: $borr5;
+    background-color: $blackWord;
+    border: $bor3 solid $whiteWord;
+    cursor: pointer;
+    z-index:8;
+}
+.indexGameButtonTitle{
+    display: inline-block;
+    font-size: $h1;
+    color: $whiteWord;
+    text-align: center;
+    font-family: 'Single Day', cursive;
+    cursor: pointer;
+    z-index: 9;
+}
+.circular {
+    // margin: 0 auto;
+    width: 10em;
+    height: 10em;
+    font-family: 'Single Day', cursive;
+    font-size: $h5;
+    margin-left: 70%;
+    position: absolute;
+    top:38%;
+    right: 24.5%;
+    
+}
+.circular path { 
+    fill: none; 
+    // z-index: -4;
+}
+    
+.circular svg {
+display: block;
+overflow: visible;
+// border: 1px solid red;
+// z-index: -4;
+}
+// :root {
+//     --start-offset-value: 0;
+// }
+.text-path{
+    transition: transform 0.3s ease; 
+}
+
+
+@keyframes rotateAnimation {
+    from {
+      transform: rotate(0deg); /* 開始時的角度 */
+    }
+    to {
+      transform: rotate(360deg); /* 結束時的角度 */
+    }
+
+}
+// @keyframes initial-state {
+// to {
+//     startOffset: var(--start-offset-value);
+//     }
+// }
+
+@keyframes move {
+to {
+    startOffset: 360;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 @media (min-width:768px) {
     .indexBannerImg{
         // width: 100%;
         // height: 100%;
         margin: 2% 0px 0px 0px;
         padding-left: 30%;
+    }
+    .bannerCanvas{
+        width: 100%;
+        // padding-left: 2%;
+
     }
     .indexBannerTitle{
         writing-mode: vertical-rl;
@@ -556,12 +715,12 @@
     }
     .DoubleCloud{
         position: absolute;
-        left: 16%;
-        bottom: 24%;
+        left: 11%;
+        bottom: 22%;
     }
     
 }
-@media (width >= 1280px) {
+@media (min-width:768px) {
     .indexGameGroup{
         // position: relative;
         display: flex;
