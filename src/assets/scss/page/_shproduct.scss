@@ -117,13 +117,25 @@
 
 
 // 二手商品內頁
-
+.headerbg{
+  img{
+    width: 100vw;
+    margin-top: 80px;
+    margin-bottom: -150px;
+  }
+  .cloud{
+    position: absolute;
+    right: 60px;
+    top: 110px;
+  }
+}
 .sh_product_wrap{
   width: 80%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   margin-top: 100px;
+  
 }
 
 // 商品小圖換大圖
@@ -141,6 +153,7 @@
     width: 500px;
     img{
       width: 50%;
+      cursor: pointer;
     }
   }
 }
@@ -193,7 +206,14 @@
 }
 
 .productIntro{
-  background-image: url(/src/assets/imgs/product/info_bg.png);
+  position: relative;
+  
+  img{
+    width: 100vw;
+    z-index: -1;
+    position: absolute;
+    top: -170px;
+  }
 }
 
 
@@ -263,11 +283,6 @@
       width: 100%;
     }
   }
-}
-
-.sh_process{
-  background-image: url(/src/assets//imgs/product/sh_bg.png);
-  
 }
 
 .iwantsellCarbutton{
@@ -393,4 +408,18 @@
       margin-top: -30px;
     }
 }
+}
+
+.sh_process{
+  position: relative;
+  .shbg{
+    img{
+      position: absolute;
+      width: 100vw;
+      height: 750px;
+      top: -120px;
+      z-index: -1;
+    }
+    
+  }
 }
