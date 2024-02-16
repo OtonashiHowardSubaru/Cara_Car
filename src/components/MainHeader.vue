@@ -1,6 +1,10 @@
 <script>
 import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
+import { mapState, mapActions } from 'pinia'
+import userStore from '@/stores/user'
+
+
 export default {
     components: {
         LoginBox,
@@ -11,11 +15,13 @@ export default {
             username: '',
             psw6666: '',
             showLightbox: false,
+            isLoggedIn: false,
             //header v-for v-show
             currentTitle: '',
             currentHoverIndex: -1,
             currentTitlePh: '',
             currentHoverIndexPh: -1,
+
             name: [
                 '/ProductList',
                 '/SecondHandList',
@@ -63,6 +69,10 @@ export default {
             ],
         }
     },
+    created(){
+        // 判斷有沒有登入過
+        this.checkLogin()
+    },
     methods: {
         getImageUrl(paths) {
             return new URL(`../assets/imgs/${paths}`, import.meta.url).href
@@ -94,6 +104,24 @@ export default {
             // this.showLightbox = false;
             this.lightBoxStore.closeLightbox()
         },
+        // confirmLogout() {
+        //     if (confirm('確定要登出嗎？')) {
+        //         // 执行登出邏輯
+        //         this.isLoggedIn = false;
+        //         // 其他登出邏輯...
+        //     }
+        // },
+        ...mapActions(userStore, ['checkLogin', 'updateToken']),
+        logout(){
+            // 調用pinia的updateToken
+            this.updateToken('')
+            if(!this.token){
+            confirm('確定要登出嗎？')
+            this.isLoggedIn = false;
+            //清除Token後回到登入頁
+            this.$router.push('/')
+            }
+        },
         handleClick(e) {
             if (e.target.id === 'loginOverlay') {
                 this.closeLightbox();
@@ -119,6 +147,11 @@ export default {
     mounted(){
         document.addEventListener('scroll',this.onScroll);
     },
+    computed: {
+         //使用 mapState 輔助函數將/src/stores/user裡的state/data 映射在這裡
+        // !!!要寫在computed
+        ...mapState(userStore, ['token'])
+    },
     beforeDestroy(){
         document.removeEventListener('scroll', this.onScroll)
     },
@@ -142,9 +175,17 @@ export default {
                     </RouterLink>
                 </li>
                 <div class="line"></div>
-                <div class="indexHeaderLogin">
+                <!-- <div class="indexHeaderLogin">
                     <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
                         @click="openLightbox">
+                </div> -->
+                <div class="indexHeaderLogin" v-if="!isLoggedIn">
+                    <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
+                        @click="openLightbox">
+                </div>
+                <div class="indexHeaderLogin" v-else>
+                    <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin"
+                        @click="confirmLogout">
                 </div>
             </ul>
         </nav>

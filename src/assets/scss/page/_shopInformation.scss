@@ -83,12 +83,14 @@
                 margin: 80px 0 80px 0;
             }
             h1{
-              line-height: 0; //使盒子大小與內容物相同
+                margin-top: 20px;
+                line-height: 0; //使盒子大小與內容物相同
                 white-space: nowrap;
                 overflow: hidden;
                 text-indent:101%;
                 width: 100%;
-                background-image: url(../../imgs/product/productList_title.svg);
+                background-image: url(../../imgs/shopInfo/infoTitle.svg);
+                background-size:contain;
                 background-repeat: no-repeat;
                 background-position: bottom;
             }

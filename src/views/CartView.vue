@@ -2,7 +2,8 @@
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/MainHeader.vue';
 // import TitleViewed from '@/components/TitleViewed.vue';
-import ProCardSwiper from '@/components/ProCardSwiper.vue';
+import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
+import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
 
 import product01 from '@/assets/imgs/product/product_1.png';
 import product02 from '@/assets/imgs/product/product_2.png';
@@ -16,7 +17,7 @@ import product09 from '@/assets/imgs/product/product_9.png';
 
 export default {
 components:{
-    MainHeader,ProCardSwiper,
+    MainHeader,ProCardSwiper1,ProCardSwiper2,
 },
 data(){
     return {
@@ -222,8 +223,8 @@ methods: {
             </div>
         </form>
     </main>
-    <ProCardSwiper :displayData="productList" />
-    <ProCardSwiper :displayData="productList" />
+    <ProCardSwiper1 :displayData="productList" />
+    <ProCardSwiper2 :displayData="productList" />
 </template>
 
 <style lang="scss">

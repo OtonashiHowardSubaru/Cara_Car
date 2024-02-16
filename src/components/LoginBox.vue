@@ -3,13 +3,17 @@ import lightBoxStore from "@/stores/lightBox.js"
 import axios from 'axios';
 import { mapActions } from 'pinia'; // mapActions pinia的方法，取得api的
 import userStore from '@/stores/user.js'
+import apiInstance from '@/stores/auth'
+
+
 export default {
     data() {
         return {
             lightBoxStore: lightBoxStore(),
-            username: 'mor_2314',
-            psw6666: '83r5^_',
+            username: '',
+            psw666: '',
             pswVisible: false,
+            isLoggedIn: false,
         };
     },
     created() {
@@ -17,8 +21,8 @@ export default {
         const user = this.checkLogin()
         if (user) {
             //有登入資訊就關閉燈箱並跳轉到首頁
-            this.closeLightbox()
-            this.$router.push('/')
+            // this.closeLightbox()
+            // this.$router.push('/')
         }
     },
     methods: {
@@ -41,29 +45,60 @@ export default {
         },
         // ...在JS中是展開運算符，可以把一組的東西變成單獨的元素或屬性；
         //在Vue.js中是展開對象的屬性，使用mapActions通常包含多個 action 函式的對象展開為函式的列表
-        ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin']),
-        signin() {
-            axios.post('https://fakestoreapi.com/auth/login', {
-                username: this.username,
-                password: this.psw6666
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => {
-                    if (response.data && response.data.token) {
-                        localStorage.setItem('token', response.data.token)
-                        this.updateToken(response.data.token)
-                        // console.log(response.data.token);
-                        this.closeLightbox()
-                        this.$router.push('/')
+        ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),
+        // signin() {
+        //     axios.post(`${import.meta.env.VITE_CARA_URL}/memberCenterLogin.php`, {
+        //         username: this.username,
+        //         password: this.psw666
+        //     }, {
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     })
+        //         .then(response => {
+        //             if (response.data && response.data.token) {
+        //                 localStorage.setItem('token', response.data.token)
+        //                 this.updateToken(response.data.token)
+        //                 // console.log(response.data.token);
+        //                 this.closeLightbox()
+        //                 this.$router.push('/')
+        //             }
+        //         })
+        //         .catch(error => console.error(error));
+        // },
+
+        signin(){
+            const bodyFormData = new FormData();
+            bodyFormData.append('m_email', this.username);
+            bodyFormData.append('member_psw', this.psw666);
+
+            // 請記得將php埋入跨域
+            apiInstance({
+                method: 'post',
+                url: `${import.meta.env.VITE_CARA_URL}/front/memberLogin.php`,
+                headers: { "Content-Type": "multipart/form-data" },
+                data: bodyFormData
+                }).then(res=>{
+                // console.log(res);
+                    if(res && res.data){
+                        if(res.data.code == 1){
+                            this.updateToken(res.data.session_id)
+                            this.updateUserData(res.data.memInfo)
+                            alert('登入成功, 歡迎來到Cara-Car~')
+                            this.isLoggedIn = true; // 登入成功後將 isLoggedIn 設置為 true
+                            // this.$router.push('/')
+                            this.closeLightbox();
+
+                        }else{
+                            alert('登入失敗, 請在試看看哦~')
+                        }
                     }
-                })
-                .catch(error => console.error(error));
+                }).catch(error=>{
+                console.log(error);
+            })
         },
     }
-    }
+}
 </script>
 
 <template>
@@ -77,14 +112,14 @@ export default {
                     <div class="email">
                         <p>帳號</p>
                         <label for="email">email</label>
-                        <input type="email" id="email" v-model="username" placeholder="電子郵件">
+                        <input type="email" id="email" v-model="username" placeholder="請輸入電子郵件">
                     </div>
                     <div class="psw">
                         <p>密碼</p>
                         <label for="email"></label>
                         <div class="psw_input">
-                            <input :type="pswVisible ? 'text' : 'password'" v-model="psw6666" placeholder="●●●●●●●●"
-                                maxlength="12">
+                            <input :type="pswVisible ? 'text' : 'password'" v-model="psw666" placeholder="請輸入密碼"
+                            minlength="8" maxlength="12">
                             <img v-if="pswVisible" src="../assets/imgs/login/open-eye.svg" alt="openEye" class="eye"
                                 @click="togglePsw">
                             <img v-else src="../assets/imgs/login/close-eye.svg" alt="closeEye" class="eye"
