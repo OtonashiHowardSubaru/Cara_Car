@@ -16,6 +16,7 @@ export default {
 </script>
 <template>
     
+
     <div class="introduction">
         <div id="searchItem" class="searchItem">
             <ul>
@@ -218,9 +219,10 @@ export default {
                 </div>
                 </li><!-- no.3 -->
             </ul>
+            </div>
+            <img class="hello" src="/src/assets/imgs/product/product_detail_hello.png" alt="">
+            <img class="hike" src="/src/assets/imgs/product/hike.png" alt="">
         </div>
-        <img src="/src/assets/imgs/product/product_detail_hello.png" alt="">
-    </div>
 </div>
 
 </template>

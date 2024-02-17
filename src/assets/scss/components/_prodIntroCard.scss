@@ -8,9 +8,10 @@
       display: flex;
       justify-content: center;
       li{
-        background-color: $yellow;
+        background-color: #efefef;
         padding: 15px 25px;
         border-radius: 20px 20px 0 0;
+        
         cursor: pointer;
         a{
           color: $blackWord;
@@ -21,8 +22,8 @@
   
     //詳情區塊
   .sh_detail{
-    width: 60%;
-    background-color: $yellow;
+    width: 70%;
+    background-color: #efefef;
     border-radius: 20px;
     padding: 50px 60px;
     margin: 0 auto;
@@ -32,6 +33,7 @@
 
     .sh_detail_content{
       display: flex;
+      justify-content: end;
     }
     h2{
       margin-bottom: 30px;
@@ -47,11 +49,17 @@
     .articler{
       width: 50%;
     }
-    img{
+    .hello{
       width: 80px;
       position: absolute;
       left: -75px;
       top: 20%;
+    }
+    .hike{
+      width: 280px;
+      position: absolute;
+      right: 25px;
+      bottom: 30px;
     }
   }
 }

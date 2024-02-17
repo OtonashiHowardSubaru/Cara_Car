@@ -1,10 +1,40 @@
-.fade-enter-active, .fade-leave-active {
-    transition:opacity 0.5s;
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
     opacity: 0;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 50px;
+    // right: 100px;
+}
+
+::-webkit-scrollbar-track {
+    background: $grey_2;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $grey_1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $grey_3;
+}
+
+.scroll {
+    overflow: auto;
+
+    @media (min-width : 768px) {
+        width: 70%;
+    }
+
+}
+
 #SellCarFormOverlay {
     display: block;
     position: fixed;
@@ -13,9 +43,10 @@
     z-index: 999;
     width: 100vw;
     height: 100vh;
-    background-color:rgba($grey_3,0.8);
+    background-color: rgba($grey_3, 0.8);
 }
-#SellCarFormModal{
+
+#SellCarFormModal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,92 +58,273 @@
     background-color: $grey_2;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
     z-index: 1000;
-    overflow: auto;
     width: 100%;
     max-width: 500px;
     max-height: 90vh;
-}
-@media (min-width:320px){
-    #SellCarFormModal {
-        min-width: 375px;
-        max-width: 1920px;
-    }
-    .close {
-        position: absolute;
-        top: 5%;
-        right: 5%;
-        font-size: 40px;
-        cursor: pointer;
-    }
-    
-    .SellCarForm_container{
-        width: 60%;
-        margin: auto;
-        padding-top: 10px;
-    }
 
-    .SellCarForm_textarea{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        border-style: none;
-        & h2{
-            font-size: 18px;
-            text-align: center;
-            margin-block: 15px;
-        }
-        & .email{
-            margin-bottom: 10px;
-        }
-        & .sex{
-            display: flex;
-
-        }
-        & input{
-            position: relative;
-            width: 100%;
-            padding: 5px 15px;
-            border-radius: $borr2;
-            font-size: $mh6;
-        }
-        & button{
-            height: 50px;
-            width: 100%;
-            font-size: $p;
-            margin-block: 5px;
-            color: $whiteWord;
-            // border-radius: $borr2;
-            cursor: pointer;
-            text-align: center;
-            transition: 0.3s linear;
-            background-color: $lightGreen;
-            &:hover{background-color: #9baa7a;}
-        }
-        & p{
-            font-size: 15px;
-        }
+    @media (min-width : 768px) {
+        max-width: 60%;
     }
+}
 
-}
-.SellCarFormItem{
-    width: 100%;   
-}
-.other_SellCarForm{
-    .SellCarForm_upload{
+.SellCarForm_container {
     width: 100%;
-    background-color: rgba($grey_3,0.8);
-    .SellCarForm_upload_video{
-        width: 50%;
-        background-color: #9baa7a;
+    height: 95vw;
+    // overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10%;
+
+    @media (min-width : 768px) {
+        height: 50vw;
+        padding: 3% 0;
+
     }
-}
+
+
+    h2 {
+        // position: absolute;
+        margin: 25px 10px 10px;
+    }
+
+    .SellCarForm_textarea {
+        width: 98%;
+
+        .SellCarFormItemName {
+            display: flex;
+            align-items: end;
+
+            .ContactName {
+                width: 75%;
+            }
+
+            #ContactName {
+                width: 100%;
+                margin: 2px;
+                padding: 2%;
+                border-radius: $borr2;
+                border-style: none;
+            }
+
+            .sex {
+                width: 48%;
+                margin: 0 10px;
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+
+        .SellCarFormItem {
+            width: 100%;
+            // margin: 2%;
+
+            .ContactEmail {
+                width: 100%;
+            }
+
+            #email,
+            #ContactPhone,
+            #ContactTime,
+            #residence,
+            #carNum,
+            #carColor {
+                width: 100%;
+                margin: 2px;
+                padding: 2%;
+                border-radius: $borr2;
+                border-style: none;
+            }
+        }
+    }
+
+    @media (min-width : 768px) {
+        .SellCarForm_textarea {
+            width: 95%;
+
+            .SellCarFormItemName {
+                width: 100%;
+                display: flex;
+                align-items: end;
+                justify-content: space-evenly;
+                margin: 10px;
+                // margin: 2%;
+
+                .ContactName {
+                    width: 48%;
+                }
+
+                #ContactName {
+                    width: 100%;
+                    margin: 2px;
+                    padding: 2%;
+                    border-radius: $borr1;
+                    border-style: none;
+                }
+
+                .sex {
+                    width: 45%;
+                    margin: 0 10px;
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+            }
+
+            .SellCarFormItem {
+                width: 100%;
+                // margin: 2%;
+                display: flex;
+                justify-content: space-evenly;
+                margin: 10px;
+
+
+                .ContactEmail,
+                .phone,
+                .ContactTime,
+                .residenceS,
+                .carNumS,
+                .carColor {
+                    width: 48%;
+                }
+
+                #email,
+                #ContactPhone,
+                #ContactTime,
+                #residence,
+                #carNum,
+                #carColor {
+                    border-radius: $borr1;
+
+                }
+
+            }
+
+        }
+    }
+
+
+    .other_SellCarForm {
+        .SellCarForm_upload {
+            width: 98%;
+            padding: 2%;
+            background-color: rgba($lightBlue, 0.8);
+            border-radius: $borr2;
+
+            .SellCarForm_uploadCC {
+                width: 100%;
+                display: flex;
+
+                .SellCarForm_upload_video,
+                .SellCarForm_upload_pic {
+                    width: 50%;
+
+
+                    img {
+                        height: 70px;
+                        width: auto;
+                        display: flex;
+                        margin: 10px auto;
+                        padding: 10% 30%;
+                        background-color: $grey_1;
+                        border-radius: $borr1;
+
+                        @media (min-width : 768px) {
+                            height: 85px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .formFooter {
+            display: flex;
+            align-items: center;
+            width: 98%;
+
+            .SellCarForm_price {
+                width: 70%;
+                margin: 15px;
+                display: flex;
+                align-items: center;
+
+                .SellCarForm_priceExpect {
+                    width: 35%;
+                    padding: 5px;
+
+                    @media (min-width : 768px) {
+                        width: 32%;
+                        padding: 1px;
+                    }
+                }
+
+                .SellCarForm_priceExpectIn {
+                    width: 100%;
+
+                    #SellCarForm_priceExpect {
+                        width: 75%;
+                        padding: 6%;
+                        margin: 5px;
+                        border-radius: $borr1;
+                        border-style: none;
+                    }
+                }
+            }
+
+            .submit {
+                width: 60%;
+
+                .btnSubmit {
+                    width: 100%;
+                    padding: 5%;
+                    border-radius: $borr1;
+                    border-style: none;
+                    background-color: $grass_2;
+                    color: $whiteWord;
+
+                    &:hover {
+                        background-color: #9baa7a;
+                    }
+
+                    p {}
+                }
+            }
+
+        }
+
+        .SellCarForm_notice {
+            margin: 1% 5% 5%;
+            padding: 5px;
+        }
+
+        @media (min-width : 768px) {
+
+            #SellCarFormModal {
+                min-width: 375px;
+                max-width: 1920px;
+            }
+
+            .close {
+                position: absolute;
+                top: 5%;
+                right: 5%;
+                font-size: 40px;
+                cursor: pointer;
+            }
+
+            .SellCarForm_container {
+                width: 60%;
+                margin: auto;
+                padding-top: 10px;
+            }
+
+        }
+
+    }
+
 
 }
 
-@media (min-width:768px){
-    #SellCarFormModal {
-        padding: 40px;
-        width: 50%;
-        // min-width: 768px;
-    }
+.foo {
+    padding: 10px;
 }
