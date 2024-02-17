@@ -42,7 +42,7 @@ export default {
       name: [
         '/ProductList',
         '/SecondHandList',
-        '/Game',
+        '/News',
         '/ShopInformation',
         '/MemberCenter',
         '/Cart',
@@ -58,7 +58,7 @@ export default {
       title: [
         { p: 'PRODUCT' },
         { p: '2nd HAND' },
-        { p: 'GAME' },
+        { p: 'EVENTS' },
         { p: 'SHOP INFO' },
         { p: 'MEMBER' },
         { p: 'MY CART' },
@@ -66,7 +66,7 @@ export default {
       namePh: [
         '/ProductList',
         '/SecondHandList',
-        '/Game',
+        '/News',
         '/ShopInformation',
         '/MemberCenter',
         '/Cart',
@@ -82,7 +82,7 @@ export default {
       titlePh: [
           { ph: 'PRODUCT' },
           { ph: '2nd HAND' },
-          { ph: 'GAME' },
+          { ph: 'EVENTS' },
           { ph: 'SHOP INFO' },
           { ph: 'MEMBER' },
           { ph: 'MY CART' },
