@@ -25,7 +25,7 @@ export default {
             name: [
                 '/ProductList',
                 '/SecondHandList',
-                '/Game',
+                '/News',
                 '/ShopInformation',
                 '/MemberCenter',
                 '/Cart',
@@ -33,7 +33,7 @@ export default {
             img: [
                 { i: 'nav/nav-icon-01.png' },
                 { i: 'nav/nav-icon-02.png' },
-                { i: 'nav/nav-icon-03.png' },
+                { i: 'nav/nav-icon-07.png' },
                 { i: 'nav/nav-icon-04.png' },
                 { i: 'nav/nav-icon-05.png' },
                 { i: 'nav/nav-icon-06.png' },
@@ -41,7 +41,7 @@ export default {
             title: [
                 { p: 'PRODUCT' },
                 { p: '2nd HAND' },
-                { p: 'GAME' },
+                { p: 'EVENTS' },
                 { p: 'SHOP INFO' },
                 { p: 'MEMBER' },
                 { p: 'MY CART' },
@@ -49,6 +49,7 @@ export default {
             namePh: [
                 '/ProductList',
                 '/SecondHandList',
+                '/News',
                 '/ShopInformation',
                 '/MemberCenter',
                 '/Cart',
@@ -56,6 +57,7 @@ export default {
             imgPh: [
                 { i: 'nav/nav-icon-01.png' },
                 { i: 'nav/nav-icon-02.png' },
+                { i: 'nav/nav-icon-07.png' },
                 { i: 'nav/nav-icon-04.png' },
                 { i: 'nav/nav-icon-05.png' },
                 { i: 'nav/nav-icon-06.png' },
@@ -63,6 +65,7 @@ export default {
             titlePh: [
                 { ph: 'PRODUCT' },
                 { ph: '2nd HAND' },
+                { ph: 'EVENTS' },
                 { ph: 'SHOP INFO' },
                 { ph: 'MEMBER' },
                 { ph: 'MY CART' },

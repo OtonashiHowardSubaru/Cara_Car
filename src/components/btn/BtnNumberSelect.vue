@@ -2,14 +2,27 @@
 export default {
   data() {
     return {
-      qtyValue: 1,
+      // qtyValue: '',
     };
   },
+  // props: {
+  //   qtyValue: {
+  //     type: Number,
+  //     required: true
+  //   }
+  // },
+  props:[
+  'qtyValue'
+  ],
+    
   methods: {
     handleQtyChange(increment) {
       let qtyValue = parseInt(this.$refs.qtyInput.value);
       qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
       this.$refs.qtyInput.value = qtyValue;
+      this.qtyValue = qtyValue;
+      this.$emit('qtyValue',this.qtyValue);
+      this.$emit('change',this.qtyValue);
     },
   },
 };

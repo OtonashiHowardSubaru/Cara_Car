@@ -12,7 +12,7 @@ export default {
             pic2: new Image(),
             pic4: new Image(),
             x: 400,
-            y: 260,
+            y: 240,
             startX: 400,
             speedX: 1.5,
             speedY: 0,
@@ -78,7 +78,7 @@ methods: {
     };
 
     let pic2 = this.pic2;
-    pic2.src = 'src/assets/imgs/Home/IMG_0970.png';
+    pic2.src = 'src/assets/imgs/Home/indexBannerImg2.svg';
     pic2.onload = () => {
         console.log('pic2 loaded successfully');
         this.pic2 = pic2;
@@ -167,7 +167,7 @@ methods: {
     y += speedY;
 
     context.drawImage(this.pic4, x, y, 200, 150);
-    context.drawImage(this.pic2, 400, 182, 375, 350);
+    context.drawImage(this.pic2, 286, 80, 1010, 965);
 
     if (y > 400) {
         y = 260;
