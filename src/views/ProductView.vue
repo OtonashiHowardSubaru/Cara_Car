@@ -18,11 +18,11 @@
     },
     data(){
         return {
-          cart: [],
           allProducts:[],
           thisProduct:[],
           ImgsName:[],
           activeTab: 0,
+          qtyValue: '',
         }
     },
     created() {//在頁面載入時同時載入function
@@ -75,9 +75,38 @@
       // 轉換pro_intro到比較合適的版型
       replaceLineBreaks(text) {
         return text.replace(/\r\n/g, "<br>");
-      }
+      },
+      handleqtyValue(thisProductQty){
+        this.qtyValue = thisProductQty;
+      },
+      addToCart(){
+        const product = {
+          id: this.thisProduct.pro_id,
+          name: this.thisProduct.pro_name,
+          price: this.thisProduct.pro_price,
+          imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
+          quantity: parseInt(this.qtyValue),
+        };
+        // 从本地存储中获取已有的购物车数据，如果没有则初始化为空数组
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-      
+        // 将当前商品添加到购物车数据中，重复商品时更新数量
+        let existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+        if (existingProductIndex !== -1) {
+          // 如果购物车中已有相同商品，则更新其数量
+          cartItems[existingProductIndex].quantity += product.quantity;
+        } else {
+          // 否则将商品添加到购物车
+          cartItems.push(product);
+        }
+
+        // cartItems.push(product);
+        // 将更新后的购物车数据保存到本地存储
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // 提示用户已成功添加到购物车（可选）
+        alert('商品已添加到购物车！');
+      }
     }
   }
 </script>
@@ -88,7 +117,8 @@
   <div class="row">
     <!-- <div v-if="item" :product="item" @addCard="addCart">
     </div> -->
-    <div class="col-12 col-md-12 pro_title">
+    <!-- <div v-for="product in products" :key="product.id"></div> -->
+    <div class="col-12 col-md-12 pro_title" >
       <h1>{{ thisProduct.pro_name }}</h1>
       <h2>{{ thisProduct.pro_en_name }}</h2>
     </div>
@@ -111,7 +141,9 @@
       <div class="pro_functions">
         <form class="numberChoice" name="numberChoice" action="#">
           <label for="">數量</label>
-          <NumberSelect />
+          <NumberSelect 
+          @qtyValue="handleqtyValue"
+          />
         </form>
         <form class="additional_pro">
           <label for="">加購</label>

@@ -6,29 +6,30 @@ import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
-import mainImage from "@/assets/imgs/product/sh_products/sh_product_mainpic.png";
+import mainImage from "@/assets/imgs/product/sh_products/product.png";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import ProCardSwiper from "@/components/ProCardSwiper.vue"
+import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
-import product01 from '@/assets/imgs/product/sh_product_1.png';
-import product02 from '@/assets/imgs/product/sh_product_2.png';
-import product03 from '@/assets/imgs/product/sh_product_3.png';
-import product04 from '@/assets/imgs/product/sh_product_4.png';
-import product05 from '@/assets/imgs/product/sh_product_5.png';
-import product06 from '@/assets/imgs/product/sh_product_6.png';
-import product07 from '@/assets/imgs/product/sh_product_7.png';
-import product08 from '@/assets/imgs/product/sh_product_8.png';
-import product09 from '@/assets/imgs/product/sh_product_9.png';
+import product01 from '@/assets/imgs/product/sh_products/product001.jpg';
+import product02 from '@/assets/imgs/product/sh_products/product002.jpg';
+import product03 from '@/assets/imgs/product/sh_products/product003.jpg';
+import product04 from '@/assets/imgs/product/sh_products/product004.jpg';
+import product05 from '@/assets/imgs/product/sh_products/product005.jpg';
+import product06 from '@/assets/imgs/product/sh_products/product006.jpg';
+import product07 from '@/assets/imgs/product/sh_products/product007.jpg';
+import product08 from '@/assets/imgs/product/sh_products/product008.jpg';
+import product09 from '@/assets/imgs/product/sh_products/product009.jpg';
 
 
 
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,product01,product02,product03,product04,product05,product06,product07,product08,product09
+    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,DoubleCloud
 },
     data(){
       return {
@@ -94,7 +95,7 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
         activeTab: 0,
         mainImage: mainImage, 
         littleImages: [
-          {img: 'sh_product_mainpic.png'},
+          {img: 'product.png'},
           {img: 'product001_001.png'},
           {img: 'product001_002.png'},
           {img: 'product001_003.png'},
@@ -156,8 +157,17 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
 
 <template>
   <MainHeader />
+  <div class="headerbg">
+    <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
+    <div class="cloud">
+      <DoubleCloud/>
+    </div>
+    
+  </div>
 <div class="sh_product_wrap">
+  <img src="../assets//imgs/product/" alt="">
     <div class="intromq">
+      
       <h1>超強小車車</h1>
       <h2>AMERICAN CLASSIC</h2>
     </div>
@@ -172,8 +182,8 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
       
     </div>
     <div class="intro">
-        <h1>超強小車車</h1>
-        <h2>AMERICAN CLASSIC</h2>
+        <h1>AMERICAN CLASSIC</h1>
+        <h2>超強小車車</h2>
         <div class="year price">
             <span>$ 10,000</span>
             <span>車輛年份: 2019</span>
@@ -193,18 +203,25 @@ import product09 from '@/assets/imgs/product/sh_product_9.png';
         </div>
     </div>
 </div>
+<div class="productIntro">
+  <img src="../assets//imgs/product/info_bg.png" alt="">
+  <ProductIntroCard/>
+</div>
 
-<ProductIntroCard/>
 
 <div class="recommand">
   
   <ProCardSwiper :displayData="sh_product_list" />
-  <ProCardSwiper :displayData="sh_product_list" />
 </div>
 
 
+<div class="sh_process">
+  <div class="shbg">
+    <img src="../assets/imgs/product/sh_bg.png" alt="">
+  </div>
+  <CardShProcess/> 
+</div>
 
-<CardShProcess/> 
 </template>
   
   <style lang="scss" scoped>

@@ -27,6 +27,7 @@
     justify-content: center;
   }
   .store_name{
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 30px 20px;
@@ -35,6 +36,22 @@
       font-size: $h2;
       height: fit-content;
     }
+  }
+  .gbird{
+    position: absolute;
+    top: -90px;
+    right: 70px;
+  }
+
+  .bbird{
+    position: absolute;
+    right: 20px;
+    top: -140px;
+  }
+  .ybird{
+    position: absolute;
+    right: -50px;
+    top: -100px;
   }
 }
 
@@ -100,13 +117,25 @@
 
 
 // 二手商品內頁
-
+.headerbg{
+  img{
+    width: 100vw;
+    margin-top: 80px;
+    margin-bottom: -150px;
+  }
+  .cloud{
+    position: absolute;
+    right: 60px;
+    top: 110px;
+  }
+}
 .sh_product_wrap{
   width: 80%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   margin-top: 100px;
+  
 }
 
 // 商品小圖換大圖
@@ -124,6 +153,7 @@
     width: 500px;
     img{
       width: 50%;
+      cursor: pointer;
     }
   }
 }
@@ -137,6 +167,19 @@
   width: 100%;
   line-height: 2;
   padding: 90px 30px;
+  h1{
+    background-color: $navy;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 3px solid #000;
+    margin-bottom: 15px;
+  }
+  h2{
+    display: flex;
+    justify-content: center;
+  }
   .year{
     margin-top: 20px;
     padding-bottom: 20px;
@@ -152,7 +195,7 @@
   #purchase_btn{
     // margin-top: 40px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     a{
         color: #fff;
         background-color: $grass_1;
@@ -162,6 +205,16 @@
   }
 }
 
+.productIntro{
+  position: relative;
+  
+  img{
+    width: 100vw;
+    z-index: -1;
+    position: absolute;
+    top: -170px;
+  }
+}
 
 
 // 推薦商品區
@@ -230,8 +283,6 @@
       width: 100%;
     }
   }
-  
-  
 }
 
 .iwantsellCarbutton{
@@ -357,4 +408,18 @@
       margin-top: -30px;
     }
 }
+}
+
+.sh_process{
+  position: relative;
+  .shbg{
+    img{
+      position: absolute;
+      width: 100vw;
+      height: 750px;
+      top: -120px;
+      z-index: -1;
+    }
+    
+  }
 }
