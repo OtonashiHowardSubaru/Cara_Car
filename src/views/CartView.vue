@@ -6,19 +6,19 @@ import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
 import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
 import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 
-import shProduct01 from '@/assets/imgs/product/sh_product_1.png'
-import shProduct02 from '@/assets/imgs/product/sh_product_2.png'
-import shProduct03 from '@/assets/imgs/product/sh_product_3.png'
-import shProduct04 from '@/assets/imgs/product/sh_product_4.png'
-import shProduct05 from '@/assets/imgs/product/sh_product_5.png'
-import shProduct06 from '@/assets/imgs/product/sh_product_6.png'
-import shProduct07 from '@/assets/imgs/product/sh_product_7.png'
-import shProduct08 from '@/assets/imgs/product/sh_product_8.png'
-import shProduct09 from '@/assets/imgs/product/sh_product_9.png'
+import product01 from '@/assets/imgs/product/product_1.png'
+import product02 from '@/assets/imgs/product/product_2.png'
+import product03 from '@/assets/imgs/product/product_3.png'
+import product04 from '@/assets/imgs/product/product_4.png'
+import product05 from '@/assets/imgs/product/product_5.png'
+import product06 from '@/assets/imgs/product/product_6.png'
+import product07 from '@/assets/imgs/product/product_7.png'
+import product08 from '@/assets/imgs/product/product_8.png'
+import product09 from '@/assets/imgs/product/product_9.png'
 
 export default {
 components:{
-    MainHeader,NumberSelect,ProCardSwiper1,ProCardSwiper2,
+    MainHeader,NumberSelect,ProCardSwiper1,ProCardSwiper2
 },
 data(){
     return {
@@ -47,61 +47,61 @@ data(){
             {c:'宜蘭縣'},
             {c:'澎湖縣'},
         ],
-        sh_product_list: [
-            {
-                prod_img1:shProduct01,
-                prod_name:"極光追逐者",
-                prod_price:"3000",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct02,
-                prod_name:"極速閃電車",
-                prod_price:"5000",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct03,
-                prod_name:"太空探險車",
-                prod_price:"8000",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct04,
-                prod_name:"科技漂移車",
-                prod_price:"6000",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct05,
-                prod_name:"爆炸速度狂飆車",
-                prod_price:"4000",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct06,
-                prod_name:"魔法變形賽車",
-                prod_price:"6000",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct07,
-                prod_name:"閃電漂移車",
-                prod_price:"2500",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct08,
-                prod_name:"太空漫步車",
-                prod_price:"3500",
-                linkwhere:"/SecondHand"
-            },
-            {
-                prod_img1:shProduct09,
-                prod_name:"磁浮飛行車",
-                prod_price:"5500",
-                linkwhere:"/SecondHand"
-            },
+        productList:[
+        {
+            prod_img1:product01,
+            prod_name:"起始玩家",
+            prod_price:"5000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product02,
+            prod_name:"賓士少爺",
+            prod_price:"10000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product03,
+            prod_name:"賓士少爺二代",
+            prod_price:"12000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product04,
+            prod_name:"敞篷輕旅",
+            prod_price:"12000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product05,
+            prod_name:"野貓戰機",
+            prod_price:"8000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product06,
+            prod_name:"敞篷輕旅二代",
+            prod_price:"14000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product07,
+            prod_name:"赤色風暴",
+            prod_price:"8000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product08,
+            prod_name:"英倫經典",
+            prod_price:"10000",
+            linkwhere:"/Product"
+        },
+        {
+            prod_img1:product09,
+            prod_name:"F1一代",
+            prod_price:"18000",
+            linkwhere:"/Product"
+        },
         ],
         
     }
@@ -243,8 +243,8 @@ methods: {
             </div>
         </form>
     </main>
-    <ProCardSwiper1 :displayData="sh_product_list" />
-    <ProCardSwiper2 :displayData="sh_product_list" />
+    <ProCardSwiper1 :displayData="productList" />
+    <ProCardSwiper2 :displayData="productList" />
 </template>
 
 <style lang="scss">
