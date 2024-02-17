@@ -75,7 +75,7 @@ export default {
             // 請記得將php埋入跨域
             apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/memberLogin.php`,
+                url: `${import.meta.env.VITE_CARA_URL}/front/memberLogin.php`,
                 headers: { "Content-Type": "multipart/form-data" },
                 data: bodyFormData
                 }).then(res=>{
@@ -85,12 +85,11 @@ export default {
                             this.updateToken(res.data.session_id)
                             this.updateUserData(res.data.memInfo)
                             alert('登入成功, 歡迎來到Cara-Car~')
-                            this.isLoggedIn = true; // 登入成功後將 isLoggedIn 設置為 true
                             // this.$router.push('/')
                             this.closeLightbox();
 
                         }else{
-                            alert('登入失敗, 請在試看看哦~')
+                            alert('登入失敗, 請再試看看哦~')
                         }
                     }
                 }).catch(error=>{

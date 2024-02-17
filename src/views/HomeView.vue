@@ -2,6 +2,8 @@
 <!-- 在這頁中有引用燈箱的store和component，這頁的header是手機板的nav，但在HomeView.vue檔中引用燈箱和MainHeader.vue就會變成有兩個燈箱，而且我修改燈箱的css他會影分身成兩個 -->
 <script>
 import axios from 'axios'; //引入函式庫
+import { mapState, mapActions } from 'pinia'
+import userStore from '@/stores/user'
 import EventCardSlider from '@/components/card/EventCardSlider.vue';
 import lightBoxStore from "@/stores/lightBox.js";
 import LoginBox from '@/components/LoginBox.vue';
@@ -13,15 +15,15 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
 export default {
   components: {
-    EventCardSlider, LoginBox, ProductCard, CardShProcess,SingleCloud,
+    EventCardSlider, LoginBox, ProductCard, CardShProcess, SingleCloud,
     DoubleCloud,
     bannerCanvas,
   },
   data() {
     return {
+      userStoreData: userStore(),
       lightBoxStore: lightBoxStore(),
       showLightbox: false,
-      isLoggedIn: false,
       currentTitle: '',
       currentHoverIndex: -1,
       currentTitlePh: '',
@@ -29,7 +31,6 @@ export default {
       rotateFrom: "0 60 60",
       rotateTo: "360 60 60",
       duration: "10s",
-      // isRotating: false,
       isHovered: false,
       name: [
         '/ProductList',
@@ -64,37 +65,37 @@ export default {
         '/Cart',
       ],
       imgPh: [
-          { i: 'nav/nav-icon-01.png' },
-          { i: 'nav/nav-icon-02.png' },
-          { i: 'nav/nav-icon-07.png' },
-          { i: 'nav/nav-icon-04.png' },
-          { i: 'nav/nav-icon-05.png' },
-          { i: 'nav/nav-icon-06.png' },
+        { i: 'nav/nav-icon-01.png' },
+        { i: 'nav/nav-icon-02.png' },
+        { i: 'nav/nav-icon-07.png' },
+        { i: 'nav/nav-icon-04.png' },
+        { i: 'nav/nav-icon-05.png' },
+        { i: 'nav/nav-icon-06.png' },
       ],
       titlePh: [
-          { ph: 'PRODUCT' },
-          { ph: '2nd HAND' },
-          { ph: 'GAME' },
-          { ph: 'SHOP INFO' },
-          { ph: 'MEMBER' },
-          { ph: 'MY CART' },
+        { ph: 'PRODUCT' },
+        { ph: '2nd HAND' },
+        { ph: 'GAME' },
+        { ph: 'SHOP INFO' },
+        { ph: 'MEMBER' },
+        { ph: 'MY CART' },
       ],
       displayData: [],
     }
   },
   created() {
-      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
-      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-      axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php`)
-        .then((response) => {
-          // 成功取得資料後，將資料存入陣列
-          this.displayData = response.data.slice(0,8);
+    //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+    // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+    axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php`)
+      .then((response) => {
+        // 成功取得資料後，將資料存入陣列
+        this.displayData = response.data.slice(0, 8);
       })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
-    },
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+      });
+  },
   methods: {
     getImageUrl(paths) {
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
@@ -107,31 +108,31 @@ export default {
       this.currentHoverIndex = -1;
     },
     changeImageTitlePh($index) {
-        console.log('Index:', $index);
-        console.log('titlePh[index]:', this.titlePh[$index]);
+      console.log('Index:', $index);
+      console.log('titlePh[index]:', this.titlePh[$index]);
 
-        if (this.titlePh[$index]) {
-            this.currentTitle = this.titlePh[$index].ph;
-            this.currentHoverIndexPh = $index;
-        }
-        },
-        resetImageTitlePh() {
-        this.currentHoverIndexPh = -1;
+      if (this.titlePh[$index]) {
+        this.currentTitle = this.titlePh[$index].ph;
+        this.currentHoverIndexPh = $index;
+      }
+    },
+    resetImageTitlePh() {
+      this.currentHoverIndexPh = -1;
     },
     openLightbox() {
-      // this.showLightbox = true;
       this.lightBoxStore.openLightbox()
     },
     closeLightbox() {
-      // this.showLightbox = false;
       this.lightBoxStore.closeLightbox()
     },
-    confirmLogout() {
-      if (confirm('確定要登出嗎？')) {
-          // 执行登出邏輯
-          this.isLoggedIn = false;
-          // 其他登出邏輯...
-      }
+    ...mapActions(userStore, ['checkLogin', 'updateToken']),
+    logout() {
+      // 調用pinia的updateToken
+      confirm('確定要登出嗎？')
+      this.updateToken('')
+      //清除Token後回到登入頁
+      this.$router.push('/')
+
     },
     handleClick(e) {
       if (e.target.id === 'loginOverlay') {
@@ -158,11 +159,15 @@ export default {
       this.isHovered = !this.isHovered;
     },
     resetRotation() {
-    this.isHovered = false;
+      this.isHovered = false;
+    },
+  },
+  computed: {
+    isLoggedIn() {
+      return !!this.userStoreData.token
     },
   },
   mounted() {
-    // this.setupAnimation();
   },
 }
 </script>
@@ -183,37 +188,36 @@ export default {
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin" v-if="!isLoggedIn">
-            <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
-                @click="openLightbox">
+          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
+            @click="openLightbox">
         </div>
         <div class="indexHeaderLogin" v-else>
-            <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin"
-                @click="confirmLogout">
+          <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin" @click="logout">
         </div>
       </ul>
       <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
   <!-- 手機板haeder -->
-            <ul class="indexHeaderNavPh">
-                <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
-                    <RouterLink :to="namePh[$index]">
-                        <img :src="getImageUrl(item.i)" class="indexHeaderButtonIconPh">
-                        <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
-                    </RouterLink>
-                </li>
-                <div class="linePh"></div>
-                <div class="indexHeaderLoginPh">
-                    <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
-                        @click="openLightbox">
-                </div>
-            </ul>
+  <ul class="indexHeaderNavPh">
+    <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
+      <RouterLink :to="namePh[$index]">
+        <img :src="getImageUrl(item.i)" class="indexHeaderButtonIconPh">
+        <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
+      </RouterLink>
+    </li>
+    <div class="linePh"></div>
+    <div class="indexHeaderLoginPh">
+      <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
+        @click="openLightbox">
+    </div>
+  </ul>
   <Transition name="fade">
     <LoginBox v-if="lightBoxStore.showLightbox" />
   </Transition>
 
   <div class="indexBannerGroup">
-    <bannerCanvas class="bannerCanvas"/>
+    <bannerCanvas class="bannerCanvas" />
     <!-- <img src="../assets/imgs/Home/indexBannerImg.svg" alt="" class="indexBannerImg"> -->
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
@@ -221,8 +225,8 @@ export default {
       <img src="../assets/imgs/Home/index-logo.svg" alt="" class="indexLogo">
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
-    <SingleCloud class="SingleCloud"/>
-    <DoubleCloud class="DoubleCloud"/>
+    <SingleCloud class="SingleCloud" />
+    <DoubleCloud class="DoubleCloud" />
   </div>
 
   <div class="indexProductGroup">
@@ -234,9 +238,7 @@ export default {
       </RouterLink>
     </div>
     <div class="indexDisplayProducts">
-      <ProductCard 
-        :displayData="displayData"
-      />
+      <ProductCard :displayData="displayData" />
     </div>
   </div>
 
@@ -285,28 +287,29 @@ export default {
         <div class="AboutLink">了解更多</div>
       </RouterLink>
     </div>
-    </div>
-    
-      
-    
+  </div>
+
+
+
   <div class="indexGameGroup">
     <img src="../assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
     <div class="game">
       <img src="../assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
       <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
       <RouterLink class="RouterLink" to="/Game">
-        <button class="indexGameButton" @mouseover="toggleHover" @mouseout="resetRotation" :class="{ 'hovered': isHovered }">
+        <button class="indexGameButton" @mouseover="toggleHover" @mouseout="resetRotation"
+          :class="{ 'hovered': isHovered }">
           <button class="indexGameButton2">
             <p class="indexGameButtonTitle">Get<br>Start</p>
           </button>
         </button>
       </RouterLink>
-    <div class="gameButtonText">
-      <transition name="rotate">
-        <img :class="{ 'rotate': isHovered }" src="../assets/imgs/Home/Make Your own cara car3.svg" alt="buttonText">
-      </transition>
-    </div>
-    <!-- <div class="circular">
+      <div class="gameButtonText">
+        <transition name="rotate">
+          <img :class="{ 'rotate': isHovered }" src="../assets/imgs/Home/Make Your own cara car3.svg" alt="buttonText">
+        </transition>
+      </div>
+      <!-- <div class="circular">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
         <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
         <text>
@@ -322,10 +325,9 @@ export default {
         </text>
       </svg>
     </div> -->
+    </div>
   </div>
-  </div>
-  <CardShProcess class="CardShProcess"/>
-  
+  <CardShProcess class="CardShProcess" />
 </template>
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
