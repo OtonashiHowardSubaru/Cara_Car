@@ -11,11 +11,11 @@ export default {
     },
     data() {
         return {
+            userStoreData: userStore(),
             lightBoxStore: lightBoxStore(),
             username: '',
             psw6666: '',
             showLightbox: false,
-            isLoggedIn: false,
             //header v-for v-show
             currentTitle: '',
             currentHoverIndex: -1,
@@ -100,30 +100,19 @@ export default {
             this.currentHoverIndexPh = -1;
         },
         openLightbox() {
-            // this.showLightbox = true;
             this.lightBoxStore.openLightbox()
         },
         closeLightbox() {
-            // this.showLightbox = false;
             this.lightBoxStore.closeLightbox()
         },
-        // confirmLogout() {
-        //     if (confirm('確定要登出嗎？')) {
-        //         // 执行登出邏輯
-        //         this.isLoggedIn = false;
-        //         // 其他登出邏輯...
-        //     }
-        // },
         ...mapActions(userStore, ['checkLogin', 'updateToken']),
         logout(){
             // 調用pinia的updateToken
-            this.updateToken('')
-            if(!this.token){
-            confirm('確定要登出嗎？')
-            this.isLoggedIn = false;
-            //清除Token後回到登入頁
+                confirm('確定要登出嗎？')
+                this.updateToken('')
+                //清除Token後回到登入頁
             this.$router.push('/')
-            }
+            
         },
         handleClick(e) {
             if (e.target.id === 'loginOverlay') {
@@ -151,9 +140,9 @@ export default {
         document.addEventListener('scroll',this.onScroll);
     },
     computed: {
-         //使用 mapState 輔助函數將/src/stores/user裡的state/data 映射在這裡
-        // !!!要寫在computed
-        ...mapState(userStore, ['token'])
+        isLoggedIn() {
+        return !!this.userStoreData.token
+    },
     },
     beforeDestroy(){
         document.removeEventListener('scroll', this.onScroll)
@@ -188,7 +177,7 @@ export default {
                 </div>
                 <div class="indexHeaderLogin" v-else>
                     <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin"
-                        @click="confirmLogout">
+                        @click="logout">
                 </div>
             </ul>
         </nav>
@@ -214,5 +203,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';
-// @import '@/assets/scss/layout/login.scss';
 </style>
