@@ -4,25 +4,34 @@ import MainHeader from '@/components/MainHeader.vue';
 // import TitleViewed from '@/components/TitleViewed.vue';
 import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
 import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
+// import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
+import DoubleCloud from "@/components/animation/DoubleCloud.vue";
+import BlueBird from "@/components/animation/BlueBird.vue";
+import GreenBird from "@/components/animation/GreenBird.vue";
+import YellowBird from "@/components/animation/YellowBird.vue";
 
-import product01 from '@/assets/imgs/product/product_1.png';
-import product02 from '@/assets/imgs/product/product_2.png';
-import product03 from '@/assets/imgs/product/product_3.png';
-import product04 from '@/assets/imgs/product/product_4.png';
-import product05 from '@/assets/imgs/product/product_5.png';
-import product06 from '@/assets/imgs/product/product_6.png';
-import product07 from '@/assets/imgs/product/product_7.png';
-import product08 from '@/assets/imgs/product/product_8.png';
-import product09 from '@/assets/imgs/product/product_9.png';
+
+import product01 from '@/assets/imgs/product/product_1.png'
+import product02 from '@/assets/imgs/product/product_2.png'
+import product03 from '@/assets/imgs/product/product_3.png'
+import product04 from '@/assets/imgs/product/product_4.png'
+import product05 from '@/assets/imgs/product/product_5.png'
+import product06 from '@/assets/imgs/product/product_6.png'
+import product07 from '@/assets/imgs/product/product_7.png'
+import product08 from '@/assets/imgs/product/product_8.png'
+import product09 from '@/assets/imgs/product/product_9.png'
 
 export default {
 components:{
-    MainHeader,ProCardSwiper1,ProCardSwiper2,
+    MainHeader,ProCardSwiper1,ProCardSwiper2,DoubleCloud,BlueBird,GreenBird,YellowBird,
+    // NumberSelect,
 },
 data(){
     return {
+        qtyValue:'',
         count: 1,
         expanded:false,
+        cartItems: [],
         city:[
             {c:'台北市'},
             {c:'新北市'},
@@ -101,26 +110,62 @@ data(){
             linkwhere:"/Product"
         },
         ],
+        
     }
 },
 created() {
-    
+   // 從LocalStorage中讀取購物車資料
+    const cartData = JSON.parse(localStorage.getItem('cart'));
+    if (cartData) {
+        this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
+    }; 
+},
+computed: {
+    subtotal() {
+    let total = 0;
+    for (let item of this.cartItems) {
+      total += item.price * item.quantity;
+    }
+    return total;
+    },
+    subFreight(){
+        const baseSubFreight = 120;
+        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+        return baseSubFreight * totalQuantity;
+    },
+    total(){
+        return this.subtotal + this.subFreight;
+    },
 },
 methods: {
-    minus(){
-        if(this.count>1){
-            this.count--;
-        }
-    },
-    add(){
-        this.count++;
-    },
-    updataCount(){
-
+    handleQtyChange(index,increment) {
+        let qtyValue = parseInt(this.cartItems[index].quantity);
+        qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
+        // this.$refs['qtyInput_' + index][0].value = qtyValue;
+        this.updateQuantity(index, qtyValue)
     },
     toggleCartContent(){
         this.expanded = !this.expanded;
-    }
+    },
+    updateQuantity(index, newQuantity){
+        // 更新购物车内商品数量
+        if (newQuantity < 1) {
+            // 如果数量小于1，则从购物车中删除该商品
+            this.cartItems.splice(index, 1);
+        } else {
+            this.cartItems[index].quantity = newQuantity;
+            //更新商品總金額
+            this.updateTotalPrice(index);
+        }
+        this.saveCartData();
+    },
+    updateTotalPrice(index){
+        const item = this.cartItems[index];
+        item.total = item.price * item.quantity;
+    },
+    saveCartData() {
+        localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    },
 },
 }
 </script>
@@ -130,27 +175,30 @@ methods: {
     <main>
         <section class="cart">
             <div class="cartTitle">
-                <h1>購物車
-                </h1>
+                <h2>購物車
+                </h2>
+                <div class="cartBird">
+                <BlueBird class="cartBlueBird"/>
+                <GreenBird class="cartGreenBird"/>
+                <YellowBird class="cartYellowBird"/>
             </div>
-            <div class="progress">
-                <div class="part1">
-                    <span>1</span>
-                    <p>您的訂單</p>
-                </div>
-                <div class="hr"></div>
-                <div class="part2">
-                    <span>2</span>
-                    <p>填寫資料</p>
-                </div>
-                <div class="hr" id="hrGrey"></div>
-                <div class="part3">
-                    <span>3</span>
-                    <p>完成訂單</p>
-                </div>
             </div>
+            <DoubleCloud class="cartCloud"/>
+            
+            <div class="cartProcess1">
+                <div class="cartProcessCircle" id="circle1">1</div>
+                <div class="cartLine"></div>
+                <div class="cartProcessCircle" id="circle2">2</div>
+                <div class="cartLine"></div>
+                <div class="cartProcessCircle">3</div>
+            </div>
+            <div class="cartProcess2">
+                <span class="cartProcessname" id="process1">你的訂單</span>
+                <span class="cartProcessname" id="process2">填寫資料</span>
+                <span class="cartProcessname">完成訂單</span>
+            </div>
+
         </section>
-        
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
@@ -169,31 +217,61 @@ methods: {
                     </select>
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>
-                <input type="text" placeholder="OO路O段O號O樓" class="cartInput"> 
+                <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad"> 
                 <p class="cartInputTitle">備註欄</p>
                 <textarea name="remark" id="remark" cols="20" rows="5"></textarea>
-                <router-link to="/CartPart3">
+                <span class="informationTitle">
+                    填寫付款資訊
+                </span>
+                <p class="cartInputTitle">信用卡卡號</p>
+                <div class="allCardNumber">
+                    <input type="text" name="cardNumber" class="cardNumber">
+                    <input type="text" name="cardNumber" class="cardNumber">
+                    <input type="text" name="cardNumber" class="cardNumber">
+                    <input type="text" name="cardNumber" class="cardNumber">
+                </div>
+                <p class="cartInputTitle">持卡人姓名</p>
+                <input type="text" name="name" class="cartInput">
+                <p class="cartInputTitle">帳單地址</p>
+                <div class="col66">
+                    <select name="city" id="city" >
+                        <option value="">請選擇縣市</option>
+                        <option v-for="item in city" :key="item">{{ (item).c }}</option>
+                    </select>
+                    <input type="text" placeholder=" 中正區"  class="area">
+                </div>
+                <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
+                <router-link to="/cartPart3">
                     <button type="submit" class="subButton">確認並送出訂單</button>
                 </router-link>
-                
             </div>
         </form>
+        <router-link to="/cart">
+            <button class="backButton">
+                回上一頁修改
+            </button>
+        </router-link>
     </main>
     <ProCardSwiper1 :displayData="productList" />
     <ProCardSwiper2 :displayData="productList" />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/assets/scss/page/cart.scss';
-@import '@/assets/scss/page/cartPart2.scss';
-.progress{
-   .part3{
-        span{
-            background-color: transparent;
-            border: 2px solid $grey_3;
-            color: $grey_3;
-        }
-    } 
+// @import '@/assets/scss/page/cartPart2.scss';
+#circle2{
+    background-color: #C0AA88;
+    border:none;
+    color: $whiteWord;
 }
 
+#process2{
+    color: $blackWord;
+}
+.backButton{
+    background-color: $grass_2;
+    color: $whiteWord;
+    position: absolute;
+    left: 20%;
+}
 </style>

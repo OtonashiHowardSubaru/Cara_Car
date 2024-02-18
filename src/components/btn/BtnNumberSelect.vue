@@ -1,16 +1,16 @@
 <script>
 export default {
-  // data() {
-  //   return {
-  //     qtyValue: 1,
-  //   };
-  // },
-  props: {
-    qtyValue: {
-      type: Number,
-      default: 1,
-    }
+  data() {
+    return {
+      qtyValue: 1,
+    };
   },
+  // props: {
+  //   qtyValue: {
+  //     type: Number,
+  //     default: 1,
+  //   }
+  // },
   // props:[
   // // 'qtyValue'
   // ],
