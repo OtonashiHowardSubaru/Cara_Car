@@ -34,67 +34,79 @@ import shProduct09 from '@/assets/imgs/product/sh_products/product009.jpg';
         responseData : [],
         displayData: [],
         productDisplayList: [],
-        sh_product_list: [
-            {
-              img_name:"shProduct001",
-              prod_name:"極光追逐者",
-              prod_price:"3000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct02,
-              prod_name:"極速閃電車",
-              prod_price:"5000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct03,
-              prod_name:"太空探險車",
-              prod_price:"8000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct04,
-              prod_name:"科技漂移車",
-              prod_price:"6000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct05,
-              prod_name:"爆炸速度狂飆車",
-              prod_price:"4000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct06,
-              prod_name:"魔法變形賽車",
-              prod_price:"6000",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct07,
-              prod_name:"閃電漂移車",
-              prod_price:"2500",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct08,
-              prod_name:"太空漫步車",
-              prod_price:"3500",
-              linkwhere:"/SecondHand"
-            },
-            {
-              prod_img1:shProduct09,
-              prod_name:"磁浮飛行車",
-              prod_price:"5500",
-              linkwhere:"/SecondHand"
-            },
-        ],
+        // sh_product_list: [
+        //     {
+        //       img_name:"shProduct001",
+        //       prod_name:"極光追逐者",
+        //       prod_price:"3000",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct02,
+        //       prod_name:"極速閃電車",
+        //       prod_price:"5000",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct03,
+        //       prod_name:"太空探險車",
+        //       prod_price:"8000",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct04,
+        //       prod_name:"科技漂移車",
+        //       prod_price:"6000",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct05,
+        //       prod_name:"爆炸速度狂飆車",
+        //       prod_price:"4000",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct06,
+        //       prod_name:"魔法變形賽車",
+        //       prod_price:"6000",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct07,
+        //       prod_name:"閃電漂移車",
+        //       prod_price:"2500",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct08,
+        //       prod_name:"太空漫步車",
+        //       prod_price:"3500",
+        //       linkwhere:"/SecondHand"
+        //     },
+        //     {
+        //       prod_img1:shProduct09,
+        //       prod_name:"磁浮飛行車",
+        //       prod_price:"5500",
+        //       linkwhere:"/SecondHand"
+        //     },
+        // ],
 
       }
     },
     created() {
-      // this.axiosGetData();
+      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+      axios.get(`${import.meta.env.VITE_PHP_URL}shProductList.php`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          console.log(response.data)
+          this.responseData = response.data;
+          this.displayData = response.data;
+      })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
     },
     methods: {
       handleFilter() {
@@ -161,7 +173,7 @@ import shProduct09 from '@/assets/imgs/product/sh_products/product009.jpg';
       
       <div class="sh_pro_card_list col-9 col-md-10">
         <ProductCard
-        :displayData = "sh_product_list"
+        :displayData = this.displayData
         />
       </div>
     </div>

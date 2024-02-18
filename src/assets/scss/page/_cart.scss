@@ -194,6 +194,8 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: $mh6;
 }
 .subButton{
+    display: flex;
+    justify-content: center;
     font-size: $mh4;
     width: 72%;
     padding: 10px 0;
@@ -262,6 +264,27 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .CartContent.show{
     display: block;
+}
+.cartBtn{
+    display: flex;
+    justify-content: end;
+    margin-right: 120px;
+    margin-top: -90px;
+    button{
+        cursor: pointer;
+        background-color: transparent;
+        width: 180px;
+        height: 50px;
+        margin: 0 20px;
+        border-radius: 15px;
+        border: 3px solid $grass_1;
+        color: $grass_1;
+    }
+    .pay{
+        background-color: $grass_1;
+        color: #fff;
+    }
+    
 }
 @media (min-width : 768px) {
     .cartContent{

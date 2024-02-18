@@ -217,31 +217,16 @@ methods: {
                     <p>客戶支援： 提供客戶支援服務，處理問題和查詢。</p>
                 </div>
             </div>
-        </section>
-        <form class="cartReceiptInformation">
-            <div class="receiptnformation">
-                <span class="informationTitle">
-                    填寫收件人資料
-                    <span class="informationTitle2"><input type="checkbox" class="cartCheckbox">同會員資料</span>
-                </span>
-                <p class="cartInputTitle">收件人姓名</p>
-                <input type="text" name="name" class="cartInput">
-                <p class="cartInputTitle">連絡電話</p>
-                <input type="tel" minlength="10" maxlength="10" class="cartInput">
-                <p class="cartInputTitle">收件地址</p>
-                <div class="col66">
-                    <select name="city" id="city" >
-                        <option value="">請選擇縣市</option>
-                        <option v-for="item in city" :key="item">{{ (item).c }}</option>
-                    </select>
-                    <input type="text" placeholder=" 中正區"  class="area">
-                </div>
-                <input type="text" placeholder="OO路O段O號O樓" class="cartInput"> 
-                <p class="cartInputTitle">備註欄</p>
-                <textarea name="remark" id="remark" cols="20" rows="5"></textarea>
-                <button type="submit" class="subButton">確認並送出訂單</button>
+            <div class="cartBtn">
+                <router-link to="/ProductList">
+                    <button class="continue">繼續購物</button>
+                </router-link>
+                <router-link to="/CartPart2">
+                    <button class="pay">直接結帳</button>
+                </router-link>
             </div>
-        </form>
+        </section>
+       
     </main>
     <ProCardSwiper1 :displayData="productList" />
     <ProCardSwiper2 :displayData="productList" />

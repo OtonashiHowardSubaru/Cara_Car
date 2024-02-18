@@ -125,6 +125,18 @@ const router = createRouter({
       component: () => import('@/views/NewsArticleView.vue'),
       meta:{title: '最新消息 | Cara Car',}
     },
+    {
+      path: '/CartPart2',
+      name: 'CartPart2',
+      component: () => import('@/views/CartPart2View.vue'),
+      meta:{title: '填寫資料 | Cara Car',}
+    },
+    {
+      path: '/CartPart3',
+      name: 'CartPart3',
+      component: () => import('@/views/CartPart3View.vue'),
+      meta:{title: '完成訂單 | Cara Car',}
+    },
     // {
     //   path: '/BackLogin',
     //   name: 'BackLogin',
