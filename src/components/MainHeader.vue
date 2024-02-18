@@ -198,9 +198,13 @@ export default {
                     </RouterLink>
                 </li>
                 <div class="linePh"></div>
-                <div class="indexHeaderLoginPh">
+                <div class="indexHeaderLoginPh" v-if="!isLoggedIn">
                     <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
                         @click="openLightbox">
+                </div>
+                <div class="indexHeaderLoginPh" v-else>
+                    <img src="../assets/imgs/nav/nav-icon-Logout-Ph.png" alt="logout" class="indexHeaderButtonLoginPh"
+                        @click="logout">
                 </div>
             </ul>
     <Transition name="fade">
