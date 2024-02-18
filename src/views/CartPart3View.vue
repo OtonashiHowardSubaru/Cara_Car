@@ -15,14 +15,21 @@ import product07 from '@/assets/imgs/product/product_7.png';
 import product08 from '@/assets/imgs/product/product_8.png';
 import product09 from '@/assets/imgs/product/product_9.png';
 
+import DoubleCloud from "@/components/animation/DoubleCloud.vue";
+import BlueBird from "@/components/animation/BlueBird.vue";
+import GreenBird from "@/components/animation/GreenBird.vue";
+import YellowBird from "@/components/animation/YellowBird.vue";
+
 export default {
 components:{
-    MainHeader,ProCardSwiper1,ProCardSwiper2,
+    MainHeader,ProCardSwiper1,ProCardSwiper2,DoubleCloud,BlueBird,GreenBird,YellowBird,
 },
 data(){
     return {
+        qtyValue:'',
         count: 1,
         expanded:false,
+        cartItems: [],
         city:[
             {c:'台北市'},
             {c:'新北市'},
@@ -104,23 +111,58 @@ data(){
     }
 },
 created() {
-
+    // 從LocalStorage中讀取購物車資料
+    const cartData = JSON.parse(localStorage.getItem('cart'));
+    if (cartData) {
+        this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
+    }; 
+},
+computed: {
+    subtotal() {
+    let total = 0;
+    for (let item of this.cartItems) {
+      total += item.price * item.quantity;
+    }
+    return total;
+    },
+    subFreight(){
+        const baseSubFreight = 120;
+        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+        return baseSubFreight * totalQuantity;
+    },
+    total(){
+        return this.subtotal + this.subFreight;
+    },
 },
 methods: {
-    minus(){
-        if(this.count>1){
-            this.count--;
-        }
-    },
-    add(){
-        this.count++;
-    },
-    updataCount(){
-
+    handleQtyChange(index,increment) {
+        let qtyValue = parseInt(this.cartItems[index].quantity);
+        qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
+        // this.$refs['qtyInput_' + index][0].value = qtyValue;
+        this.updateQuantity(index, qtyValue)
     },
     toggleCartContent(){
         this.expanded = !this.expanded;
-    }
+    },
+    updateQuantity(index, newQuantity){
+        // 更新购物车内商品数量
+        if (newQuantity < 1) {
+            // 如果数量小于1，则从购物车中删除该商品
+            this.cartItems.splice(index, 1);
+        } else {
+            this.cartItems[index].quantity = newQuantity;
+            //更新商品總金額
+            this.updateTotalPrice(index);
+        }
+        this.saveCartData();
+    },
+    updateTotalPrice(index){
+        const item = this.cartItems[index];
+        item.total = item.price * item.quantity;
+    },
+    saveCartData() {
+        localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    },
 },
 }
 </script>
@@ -130,58 +172,32 @@ methods: {
     <main>
         <section class="cart">
             <div class="cartTitle">
-                <h1>購物車
-                </h1>
+                <h2>購物車
+                </h2>
+                <div class="cartBird">
+                <BlueBird class="cartBlueBird"/>
+                <GreenBird class="cartGreenBird"/>
+                <YellowBird class="cartYellowBird"/>
             </div>
-            <div class="progress">
-                <div class="part1">
-                    <span>1</span>
-                    <p>您的訂單</p>
-                </div>
-                <div class="hr"></div>
-                <div class="part2">
-                    <span>2</span>
-                    <p>填寫資料</p>
-                </div>
-                <div class="hr"></div>
-                <div class="part3">
-                    <span>3</span>
-                    <p>完成訂單</p>
-                </div>
             </div>
-            <div class="orderDetail">
-                <div class="title">
-                    <h1>訂單資訊</h1>
-                </div>
-                <div class="list">
-                    <span>訂單編號</span>
-                    <span>訂單日期</span>
-                    <span>付款方式</span>
-                    <span>訂單狀態</span>
-                    <span>收件人</span>
-                    <span>連絡電話</span>
-                    <span>配送地址</span>
-                    <span>備註訊息</span>
-                </div>
-
+            <DoubleCloud class="cartCloud"/>
+            
+            <div class="cartProcess1" id="cartProcessTop">
+                <div class="cartProcessCircle" id="circle1">1</div>
+                <div class="cartLine"></div>
+                <div class="cartProcessCircle" id="circle2">2</div>
+                <div class="cartLine"></div>
+                <div class="cartProcessCircle" id="circle3">3</div>
             </div>
-            <!-- <div class="productCard">
-                    <img src="../assets/imgs/cart/cart_product_img.png" alt="ProductImage">
-                    <div class="proCardP">
-                        <p class="pro_name">閃電漂移車</p>
-                        <p class="pro_price">$2500</p>
-                    </div>
-                    <div class="countButton">
-                        <button @click="minus">-</button>
-                        <input type="number" v-model="count" @input="updataCount">
-                        <button @click="add">+</button>
-                    </div>
-                    <p class="proCount">$3,000</p>
-            </div> -->
-            <!-- 結束 -->
+            <div class="cartProcess2">
+                <span class="cartProcessname" id="process1">你的訂單</span>
+                <span class="cartProcessname" id="process2">填寫資料</span>
+                <span class="cartProcessname" id="process3">完成訂單</span>
+            </div>
 
         </section>
-        <section class="cartFunction">
+
+        <!-- <section class="cartFunction">
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
                 <span class="cartFunctionTitle">$3,000</span>
@@ -191,8 +207,22 @@ methods: {
                 <span class="cartFunctionTitle">運費計算參考</span>
             </div>
             <p class="cartCountTotal">合計金額：$3,500</p>
+        </section> -->
+
+        <section class="cartFunction">
+            <div class="cartPrice">
+                <span class="cartFunctionTitle">小計</span>
+                <!-- 這裡要算小計 -->
+                <span class="cartFunctionTitle">${{subtotal}}</span>
+            </div>
+            <div class="cartPrice">
+                <span class="cartFunctionTitle">運費</span>
+                <span class="cartFunctionTitle">運費計算參考</span>
+            </div>
+            <!-- 這裡要算加運費的總金額 -->
+            <p class="cartCountTotal">合計金額：${{total}}</p>
+            
         </section>
-        
     </main>
     <ProCardSwiper1 :displayData="productList" />
     <ProCardSwiper2 :displayData="productList" />
@@ -200,5 +230,26 @@ methods: {
 
 <style lang="scss">
 @import '@/assets/scss/page/cart.scss';
-@import '@/assets/scss/page/cartPart2.scss';
+// @import '@/assets/scss/page/cartPart2.scss';
+// #cartProcessTop{
+//     margin-top: 90px;
+// }
+#circle2{
+    background-color: #C0AA88;
+    border:none;
+    color: $whiteWord;
+}
+
+#process2{
+    color: $blackWord;
+}
+#circle3{
+    background-color: #C0AA88;
+    border:none;
+    color: $whiteWord;
+}
+
+#process3{
+    color: $blackWord;
+}
 </style>

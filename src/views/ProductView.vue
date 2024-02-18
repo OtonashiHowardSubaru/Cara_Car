@@ -87,7 +87,7 @@
           name: this.thisProduct.pro_name,
           price: this.thisProduct.pro_price,
           imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
-          quantity: parseInt(this.qtyValue),
+          quantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
         };
         // 从本地存储中获取已有的购物车数据，如果没有则初始化为空数组
         let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -100,15 +100,16 @@
         } else {
           // 否则将商品添加到购物车
           cartItems.push(product);
-        }
+        };
 
         // cartItems.push(product);
         // 将更新后的购物车数据保存到本地存储
         localStorage.setItem('cart', JSON.stringify(cartItems));
 
         // 提示用户已成功添加到购物车（可选）
-        alert('商品已添加到购物车！');
-      }
+        alert('商品已加入到購物車！');
+      },
+      
     }
   }
 </script>

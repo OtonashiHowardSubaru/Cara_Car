@@ -118,7 +118,24 @@ created() {
     const cartData = JSON.parse(localStorage.getItem('cart'));
     if (cartData) {
         this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
+    }; 
+},
+computed: {
+    subtotal() {
+    let total = 0;
+    for (let item of this.cartItems) {
+      total += item.price * item.quantity;
     }
+    return total;
+    },
+    subFreight(){
+        const baseSubFreight = 120;
+        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+        return baseSubFreight * totalQuantity;
+    },
+    total(){
+        return this.subtotal + this.subFreight;
+    },
 },
 methods: {
     handleQtyChange(index,increment) {
@@ -148,7 +165,7 @@ methods: {
     },
     saveCartData() {
         localStorage.setItem('cart', JSON.stringify(this.cartItems));
-    }
+    },
 },
 }
 </script>
@@ -169,14 +186,14 @@ methods: {
             <DoubleCloud class="cartCloud"/>
             
             <div class="cartProcess1">
-                <div class="cartProcessCircle">1</div>
+                <div class="cartProcessCircle" id="circle1">1</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">2</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">3</div>
             </div>
             <div class="cartProcess2">
-                <span class="cartProcessname">你的訂單</span>
+                <span class="cartProcessname" id="process1">你的訂單</span>
                 <span class="cartProcessname">填寫資料</span>
                 <span class="cartProcessname">完成訂單</span>
             </div>
@@ -220,14 +237,14 @@ methods: {
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
                 <!-- 這裡要算小計 -->
-                <span class="cartFunctionTitle">$3,000</span>
+                <span class="cartFunctionTitle">${{subtotal}}</span>
             </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">運費</span>
                 <span class="cartFunctionTitle">運費計算參考</span>
             </div>
             <!-- 這裡要算加運費的總金額 -->
-            <p class="cartCountTotal">合計金額：$3,500</p>
+            <p class="cartCountTotal">合計金額：${{total}}</p>
             <div class="cartMatter" @click="toggleCartContent">
                 <span class="cartFunctionTitle">運費計算及注意事項</span>
                 <i class="fa-solid fa-caret-down" :class="{ rotated: expanded }"></i>
@@ -256,11 +273,15 @@ methods: {
         </section> -->
     
             <div class="cartButton">
-                <button type="button" id="goToProduct">繼續購買</button>
-                <button type="button" id="goToCart">前往結帳</button>
+                <router-link to="/ProductList">
+                    <button type="button" id="goToProduct">繼續購買</button>
+                </router-link>
+                <router-link to="/CartPart2">
+                    <button type="button" id="goToCart">前往結帳</button>
+                </router-link>
             </div>
         </section>
-        <form class="cartReceiptInformation">
+        <!-- <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
                     填寫收件人資料
@@ -304,7 +325,7 @@ methods: {
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
-        </form>
+        </form> -->
         
     </main>
     <ProCardSwiper1 :displayData="productList" />
