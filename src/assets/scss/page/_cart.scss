@@ -10,7 +10,7 @@
     background-image: url(../../imgs/draw/greeting_illust.svg);
     background-position: center bottom -30px;
     height: 130px;
-    h1{
+    h2{
         line-height: 0; //使盒子大小與內容物相同
         white-space: nowrap;
         overflow: hidden;
@@ -20,6 +20,47 @@
         background-repeat: no-repeat;
         background-position: bottom;
     }
+}
+.cartCloud{
+    display: none;
+}
+.cartBird{
+    display: none;
+    
+}
+.cartProcess1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.cartProcessCircle{
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    line-height: 65px;
+    border-radius:$borr4;
+    border: $bor2 solid $grey_2;
+    color: $grey_3;
+    // background-color: $grey_1;
+    font-size: $mh5;
+}
+.cartLine{
+    height: 2px;
+    width: 70px;
+    background-color: $grey_2;
+    margin: 0px 15px;
+}
+.cartProcess2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.cartProcessname{
+    padding: 0px 58px;
+    font-size: 12px;
+    color: $grey_3;
 }
 .cartContent{
     font-family:'Noto Sans' ;
@@ -35,6 +76,7 @@
     width: 35%;
     border-bottom: $bor1 solid $blackWord;
     padding-left: 5%;
+    text-align: center;
 }
 .count{
     width: 25%;
@@ -61,7 +103,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    width: 22%;
+    width: 20%;
 }
 .pro_name{
     font-size: $mh6;
@@ -72,6 +114,9 @@
     font-size: $mh6;
     display: inline-block;
     padding: 1% 0;
+}
+.number_select{
+    width: 28%;
 }
 .countButton{
     background-color: $grey_1;
@@ -100,7 +145,8 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: $borr2;
 }
 .proCount{
-    width: 5%;
+    padding-left: 10px;
+    width: 1%;
     margin: 0 auto;
     font-family:'Noto Sans' ;
 }
@@ -112,7 +158,7 @@ input[type=number]::-webkit-outer-spin-button {
 .customPlate{
     width:80%;
     background-color: $grey_1;
-    border-radius: $borr2;
+    border-radius: 12px;
     margin: 3% auto;
     padding: 1% 0 1% 2%;
 }
@@ -122,7 +168,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .customNumber{
     border-style: none;
-    border-radius: $borr2;
+    border-radius: 12px;
     float: right;
     margin-right: 4%;
     text-indent: 8px;
@@ -133,16 +179,18 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
     font-family: 'Kosugi Maru';
+    
 }
 .receiptnformation{
     width: 80%;
-    height: 650px;
+    height: 1200px;
     border-radius: $borr2;
     background-color: $grey_2;
     display: flex;
     flex-direction: column;
     letter-spacing: 2px;
     margin-bottom: 80px;
+    margin-top: 20px;
 }
 .informationTitle{
     font-size: $mh5;
@@ -163,35 +211,55 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .cartInput{
     border-style: none;
-    border-radius: $borr1;
+    border-radius: 12px;
     width: 72%;
     height: 6%;
-    margin: 15px auto;
+    margin: 15px auto 10px auto;
     text-indent: 8px;
 }
 #city{
     border-style: none;
-    border-radius: $borr1;
+    border-radius: 10px;
     width: 72%;
-    height: 40%;
+    height: 50%;
     margin: 10px 2% 5px 14%;
 }
 .area{
     border-style: none;
-    border-radius: $borr1;
+    border-radius: 10px;
     width: 72%;
-    height: 40%;
-    margin: 5px 2% 20px 14%;
+    height: 50%;
+    margin: 10px 2% 20px 14%;
+    text-indent: 8px;
+}
+.cartInputRoad{
+    border-style: none;
+    border-radius: 12px;
+    width: 72%;
+    height: 8%;
+    margin: 40px auto 10px auto;
     text-indent: 8px;
 }
 #remark{
     border-style: none;
-    border-radius: $borr1;
+    border-radius: $borr2;
     width: 72%;
-    height: 20%;
+    height: 16%;
     margin: 10px auto;
     text-indent: 8px;
     font-size: $mh6;
+}
+.allCardNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardNumber{
+    width: 17%;
+    height: 30px;
+    border-style: none;
+    border-radius: 12px;
+    margin: 8px 5px;
 }
 .subButton{
     font-size: $mh4;
@@ -199,9 +267,41 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 10px 0;
     margin: 15px auto 25px auto;
     border-style: none;
-    border-radius: $borr2;
+    border-radius: 16px;
     background-color: $grass_2;
     color: $whiteWord;
+    cursor: pointer;
+}
+.cartButton{
+    position: relative;
+    // margin-top: 20px;
+}
+button{
+    border-style: none;
+    // border-radius: $borr2;
+    border-radius: 15px;
+    font-size: $mh6;
+    width: 36%;
+    color: #fff;
+    // padding: 10px;
+}
+#goToProduct{
+    position: absolute;
+    left: 12%;
+    bottom: 5%;
+    border: 2px solid $grass_2;
+    padding: 12px 50px;
+    background-color: #fff;
+    color: $grass_1;
+    // margin-right: 16%;
+    cursor: pointer;
+}
+#goToCart{
+    position: absolute;
+    right: 12%;
+    bottom: 5%;
+    background-color: $grass_2;
+    padding: 14px 50px;
     cursor: pointer;
 }
 .cartPrice{
@@ -209,7 +309,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 600;
     width:80%;
     background-color: $grey_2;
-    border-radius: $borr1;
+    border-radius: 12px;
     margin: 3% auto;
     padding: 1% 0;
 }
@@ -222,7 +322,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .cartCountTotal{
     float: right;
-    padding-right: 16%;
+    padding-right: 12%;
     font-family:'Noto Sans' ;
     font-size: $mh5;
     font-weight: 600;
@@ -232,7 +332,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 600;
     width:80%;
     background-color: $grey_2;
-    border-radius: $borr1;
+    border-radius: 18px;
     margin: 10% auto;
     padding: 3% 0;
     cursor: pointer;
@@ -264,17 +364,40 @@ input[type=number]::-webkit-outer-spin-button {
     display: block;
 }
 @media (min-width : 768px) {
+    .cartCloud{
+        display: block;
+        margin: -50px 0px 0px 100px;
+    }
+    .cartBird{
+        display: block;
+        // position: relative;
+    }
+    .cartBlueBird{
+        position: absolute;
+        top:60%;
+        right:15%;
+    }
+    .cartGreenBird{
+        position: absolute;
+        top:90%;
+        right:20%;
+    }
+    .cartYellowBird{
+        position: absolute;
+        top:95%;
+        right:10%;
+    }
     .cartContent{
         font-size: $h4;
     }
     .productCard img{
-        width: 13%;
-    }
-    .proCardP{
-        width: 11%;
+        width: 15%;
     }
     .pro_name{
         font-size: $mh5;
+    }
+    .number_select{
+        width: 25%;
     }
     .countButton{
         width: 90px;
@@ -290,7 +413,6 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .proCount{
         font-size: $h5;
-        width: 0;
     }
     .customContent{
         font-size: $h4;
@@ -324,5 +446,14 @@ input[type=number]::-webkit-outer-spin-button {
         width: 35%;
         height: 90%;
         margin: 10px 0 20px 0;
+    }
+    #remark{
+        border-style: none;
+        border-radius: $borr1;
+        width: 72%;
+        height: 20%;
+        margin: 10px auto;
+        text-indent: 8px;
+        font-size: $mh6;
     }
 }
