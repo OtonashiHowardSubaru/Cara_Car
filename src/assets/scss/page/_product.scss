@@ -137,6 +137,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-content: space-around;
+        cursor: pointer;
         span:first-of-type{
             margin-right: auto;
         }
@@ -154,6 +155,13 @@
             border-radius: $borr1;
             color: $grey_3;
             font-size: $mh6;
+        }
+    }
+    .btn_buy_additional:hover{
+        color: $whiteWord;
+        background-color:$grass_2;
+        span:nth-of-type(3){
+            color: $whiteWord;
         }
     }
 }
@@ -183,16 +191,13 @@
         border: 2px solid $grass_1;
         padding: 12px 50px;
         background-color: #fff;
-        a{
-            color: $grass_1;
-        }
+        color: $grass_1;
+        cursor: pointer;
     }
     #buyNowBtn{
         background-color: $grass_1;
         padding: 14px 50px;
-        a{
-            color: #fff;
-        }
+        cursor: pointer;
     }
 }
     

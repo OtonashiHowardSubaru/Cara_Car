@@ -76,9 +76,11 @@
       replaceLineBreaks(text) {
         return text.replace(/\r\n/g, "<br>");
       },
+      //抓取數量
       handleqtyValue(thisProductQty){
         this.qtyValue = thisProductQty;
       },
+      //加入購物車
       addToCart(){
         const product = {
           id: this.thisProduct.pro_id,
@@ -148,7 +150,7 @@
         <form class="additional_pro">
           <label for="">加購</label>
           <div class="choose_additional_pro">
-            <button type="button" class="btn_buy_additional">
+            <button type="button" class="btn_buy_additional" >
               <span>客製化車牌</span>
               <span>(+$300)</span>
               <span>專屬於你的個性化車牌</span>

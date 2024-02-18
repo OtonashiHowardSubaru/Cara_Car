@@ -1,19 +1,19 @@
 <script>
 export default {
-  data() {
-    return {
-      // qtyValue: '',
-    };
-  },
-  // props: {
-  //   qtyValue: {
-  //     type: Number,
-  //     required: true
-  //   }
+  // data() {
+  //   return {
+  //     qtyValue: 1,
+  //   };
   // },
-  props:[
-  'qtyValue'
-  ],
+  props: {
+    qtyValue: {
+      type: Number,
+      default: 1,
+    }
+  },
+  // props:[
+  // // 'qtyValue'
+  // ],
     
   methods: {
     handleQtyChange(increment) {
@@ -22,7 +22,7 @@ export default {
       this.$refs.qtyInput.value = qtyValue;
       this.qtyValue = qtyValue;
       this.$emit('qtyValue',this.qtyValue);
-      this.$emit('change',this.qtyValue);
+      this.$emit('change', this.qtyValue);
     },
   },
 };
