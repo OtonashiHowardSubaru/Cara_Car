@@ -6,6 +6,7 @@
     align-items: center;
 
     .newsTitle {
+        width: 100%;
         display: flex;
         justify-content: center;
         //   margin: 80px 0 0 0;
@@ -200,7 +201,7 @@
                 .newsCardImg {
                     width: 100%;
                     border-radius: $borr5;
-                    overflow: hidden;
+                    // overflow: hidden;
 
                     @media (min-width : 768px) {
                         height: 230px;  
@@ -233,17 +234,28 @@
                     line-height: 20px;
                     letter-spacing: 1px;
                     position: absolute;
-                    bottom: 16%;
                     
                     @media (max-width : 450px) {
-                        bottom: 20%;
+                        bottom: 0%;
                         
                     }
 
                     @media (min-width : 768px) {
-                        padding: 5px 15px;
-                        bottom: 20%;
+                        padding: 5px 10px;
+                        bottom: 40%;
                         
+                    }
+                    @media (min-width : 850px) {
+                        bottom: 30%;  
+                    }
+                    @media (min-width : 950px) {
+                        bottom: 20%;  
+                    }
+                    @media (min-width : 1024px) {
+                        bottom: 15%;  
+                    }
+                    @media (min-width : 1200px) {
+                        bottom: 3%;  
                     }
                     
                 }
@@ -270,6 +282,101 @@
     }
     
 }
-@media (min-width : 768px) {
+.newsCardList {
+    // width: 90%;
+
+    @media (min-width : 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .newsCard {
+        width: 100%;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        
+
+        @media (min-width : 768px) {
+            width: 30%;
+            box-sizing: border-box;
+            
+        }
+
+        .newsCardImg {
+            width: 100%;
+            border-radius: $borr5;
+            position: relative;
+
+            @media (min-width : 768px) {
+                // height: 230px;  
+            }
+
+            .newsInfoImg {
+                width: 100%;
+                aspect-ratio: 3 / 2;
+                border-radius: $borr5;
+                overflow: hidden;
+            }
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: .3s ease-in-out;
+
+                @media (min-width : 768px) {
+                    // aspect-ratio: 16 /11;
+
+                    
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+
+            .timingTag {
+                width: 120px;
+                padding: 10px 25px;
+                color: $whiteWord;
+                background-color: $grass_1;
+                border: $bor2 solid $grass_2;
+                border-radius: $borr2;
+                text-align: center;
+                line-height: 20px;
+                letter-spacing: 1px;
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                z-index: 10;
+                transform: translate(-50%,50%);
+
+                
+
     
+                @media (min-width : 768px) {
+                    padding: 5px 15px;
+                    // bottom: 20%;
+                    
+                }
+                
+            }
+        }
+
+        .newsCardText {
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            text-align: center;
+            color: $blackWord;
+
+            .cardTitle {
+                margin-top: 20px;
+            }
+
+        }
+    }
 }
