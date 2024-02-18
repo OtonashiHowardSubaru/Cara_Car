@@ -254,7 +254,7 @@ methods: {
                 </router-link>
             </div>
         </section> -->
-       
+    
             <div class="cartButton">
                 <button type="button" id="goToProduct">繼續購買</button>
                 <button type="button" id="goToCart">前往結帳</button>
