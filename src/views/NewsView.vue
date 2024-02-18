@@ -13,6 +13,7 @@
 
         </header>
         <section class="newsOverview">
+            <div class="newsCardListDecoBg"></div>
             <div class="selector">
                 <div class="space"></div>
                 <div class="btnTag">
@@ -28,10 +29,10 @@
             </div>
 
             <div class="newsCardList">
-                <router-link to="/NewsArticle" class="newsCard" v-for="(newsInfo, index) in paginated" :key="index">
+                <RouterLink :to="'/NewsArticle/' + newsInfo.news_id" class="newsCard" v-for="(newsInfo, index) in paginated" :key="index">
                     <div class="newsCardImg">
                         <div class="newsInfoImg">
-                            <img :src="getProductImgSrc(newsInfo.img_path)" alt="newsInfo.img">
+                            <img :src="getNewsImgSrc(newsInfo.img_path)" alt="newsInfo.img">
                         </div>
                         <span class="timingTag" :style="{ backgroundColor: getBackgroundColor(newsInfo), borderColor: getBorderColor(newsInfo) }">{{ calculateDateStatus(newsInfo) }}</span>
                     </div>
@@ -41,7 +42,7 @@
                         </div>
                         <p>{{ newsInfo.news_start_date }} ~ {{ newsInfo.news_end_date }}</p>
                     </div>
-                </router-link>
+                </RouterLink>
             </div>
 
     <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
@@ -96,6 +97,7 @@ export default {
             selectedTag: '' // 添加一個變量保存當前所選的按鈕標籤
         }
     },
+
     created() {
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       // 取得全部商品資料用作商品資料，以及swiper用的所有資料
@@ -113,7 +115,7 @@ export default {
     },
     methods: {
         // 取得圖片的路徑函式
-        getProductImgSrc(imgName){
+        getNewsImgSrc(imgName){
             return new URL(`../assets/imgs/event/${imgName}`, import.meta.url).href
         },
          // 頁數切換

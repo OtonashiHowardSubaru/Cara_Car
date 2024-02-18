@@ -2,15 +2,29 @@
 <template>
     <MainHeader />
     <main class="newsArticle">
-        <article v-for="newsInfo in newsCard" :key="newsInfo.title" class="infoInner">
+        <div class="topDecoBg"></div>
+        <article v-if="thisNews" :key="thisNews.news_id" class="infoInner">
             <header>
                 <div class="infoImg">
-                    <img :src="newsInfo.img" alt="newsInfo.img"></div>
+                    <img :src="getNewsImgSrc(thisNews.img_path)" alt="thisNews.img">
+                </div>
                 <div class="infoInnerText">
+                    <div class="decoBirdGroup">
+                        <GreenBird class="GreenBird" />
+                        <YellowBird class="YellowBird" />
+                        <BlueBird class="BlueBird" />
+                    </div>
                     <div class="infoInnerTextTitle">
-                        <h1>【{{ newsInfo.activeTag }}】{{ newsInfo.title }}</h1>
-                        <p class="timingTag">{{ newsInfo.timingTag }}</p>
-                        <span class="beginTime">活動期間 {{ newsInfo.beginTime }}</span>
+                        <h1>【{{ thisNews.news_category == '0' ? '優惠' : '活動'}}】{{ thisNews.news_title }}
+                        </h1>
+                        <p class="timingTag" :style="{ backgroundColor: getBackgroundColor(thisNews), borderColor: getBorderColor(thisNews) }">
+                            {{ calculateDateStatus(thisNews) }}
+                        </p>
+                        <span class="beginTime">
+                            活動期間 
+                            {{ thisNews.news_start_date }} ~ 
+                            {{ thisNews.news_end_date }}
+                        </span>
                     </div>
                     <div class="infoInnerTextScroll">
                         <span class="scrollText">SCROLL</span>
@@ -18,44 +32,11 @@
                     </div>
                 </div>
             </header>
-
+            <div class="newsCardListDecoBg"></div>
             <div class="infoTextWord">
-            <!-- <div class="infoTextWord" v-if="newsInfo.infoText1 && newsInfo.infoText2 && newsInfo.infoText3"> -->
-                <!-- <p>{{ newsInfo.infoText1 }}</p>
-                <p>{{ newsInfo.infoText2 }}</p>
-                <p>{{ newsInfo.infoText3 }}</p> -->
-                <p>
-                    準備好讓你的玩具車閃耀舞台了嗎？ <br>
-                    我們邀請你和你的小車夥伴們參加這場充滿樂趣和創意的攝影比賽！
-                </p>
-                <p>
-                    用你的相機捕捉最美的瞬間，參賽作品將由專業評審評選，並有豐富獎品等你拿！
-                </p>
-                <p>
-                    【參與方式】<br>
-                    Facebook、Instagram： <br>
-                    活動期間，發表符合要求的攝影作品附上Hashtag「#Cara-Car」並將投稿貼文和投稿平臺的個人帳號設為公開，即視爲投稿成功！
-
-                </p>
-                <p>
-                    【活動規則】<br>
-                    參與活動的作品須為近三個月內拍攝的作品。
-                </p>
-                <p>
-                    【活動獎勵】<br>
-                    一等獎（1名） : 3000NTD 禮品券<br>
-                    二等獎（3名） : 1500NTD 禮品券<br>
-                    三等獎（5名） : 1000NTD 禮品券<br>
-                    最佳人氣獎（1名） : 價值 800NTD 的周邊商品
-                </p>
-                <p>
-                    【活動時間】<br>
-                    2024/2/1 ~ 2024/4/1 23:59 <br>
-                    結果公告：2024/4/20 12:00
-                </p>
+                <p>{{ thisNews.news_content }}</p>
             </div>
-            
-            <!-- <RouterLink to="/NewsArticle" class="">立即前往報名</RouterLink> -->
+
         </article>
 
         <div class="otherEvent">
@@ -73,34 +54,102 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue'
 import EventCardSlider from '@/components/card/EventCardSlider.vue'
-import NewCardImage03 from "@/assets/imgs/event/infoCard03.jpg"
+
+import YellowBird from '@/components/animation/YellowBird.vue'
+import BlueBird from '@/components/animation/BlueBird.vue'
+import GreenBird from '@/components/animation/GreenBird.vue'
+
+import axios from 'axios'; //引入函式庫
+
 export default {
     components:{
         MainHeader,
         EventCardSlider,
+        YellowBird,
+        BlueBird,
+        GreenBird,
         
     },
     data() {
         return{
-            newsCard:[
-                {
-                    img: NewCardImage03,
-                    title: "玩具車攝影比賽",
-                    timingTag: "進行中",
-                    activeTag: "活動",
-                    beginTime: " 2024/2/1 ~ 2024/4/1",
-                    // infoText1: "為了迎接2024年而推出的特別優惠!",
-                    // infoText2: "如購買任何電動車即可享受9折優惠，",
-                    // infoText3: "並贈送小型玩具車模型。",
-                
-                },
-            ]
+            // 資料
+            allNews : [],
+            thisNews: {},
         }
     },
-    methods:{
+    created() {
+        //在頁面載入時同時載入function
+        // 定義頁碼
+        const pageId = this.$route.params.news_id
+        // console.log(pageId)
+        
+        //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+        // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+        axios.get(`${import.meta.env.VITE_CARA_URL}/front/frontNewsInfo.php`)
+        .then((response) => {
+            // console.log(response.data)
+            // 成功取得資料後，將資料存入陣列
+            this.allNews = response.data;
+            // 找到相符合的news並設置給 thisNews
+            this.thisNews = this.allNews.find((thisNews) =>thisNews.news_id == pageId)
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+            this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
     },
-    mounted() {
-    }
+    methods: {
+        // 取得圖片的路徑函式
+        getNewsImgSrc(imgName){
+            return new URL(`../assets/imgs/event/${imgName}`, import.meta.url).href
+        },
+
+        // 更改timing tag的背景顏色
+        getBackgroundColor(thisNews) {
+            const status = this.calculateDateStatus(thisNews);
+            switch (status) {
+                case '進行中':
+                    return '#008673';
+                case '即將舉辦':
+                    return '#C0AA88';
+                case '已結束':
+                    return '#A3A3A3';
+            }
+        },
+        // 更改timing tag的border顏色
+        getBorderColor(thisNews) {
+            const status = this.calculateDateStatus(thisNews);
+            switch (status) {
+                case '進行中':
+                    return '#016B5C';
+                case '即將舉辦':
+                    return '#B99D73';
+                case '已結束':
+                    return '#DBDFE4';
+            }
+        },
+    },
+    computed: {
+        // 新增的 computed 屬性用來計算日期狀態
+        calculateDateStatus() {
+            return (thisNews) => {
+                const currentDate = new Date();
+                const startDate = new Date(thisNews.news_start_date);
+                const endDate = new Date(thisNews.news_end_date);
+                
+                // 檢查當前日期是否在指定範圍內
+                if (currentDate >= startDate && currentDate <= endDate) {
+                    return '進行中';
+                } else if (currentDate > startDate) {
+                    return '已結束';
+                } else {
+                    return '即將舉辦';
+                }
+            };
+        },
+    },
+
+
 }
 </script>
 

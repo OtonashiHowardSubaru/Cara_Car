@@ -120,7 +120,7 @@ const router = createRouter({
       meta:{title: '最新消息 | Cara Car',}
     },
     {
-      path: '/NewsArticle',
+      path: '/NewsArticle/:news_id',
       name: 'NewsArticle',
       component: () => import('@/views/NewsArticleView.vue'),
       meta:{title: '最新消息 | Cara Car',}
@@ -157,4 +157,6 @@ router.beforeEach(async (to, from) => {
       document.title = to.meta.title
   }
 })
+
+
 export default router
