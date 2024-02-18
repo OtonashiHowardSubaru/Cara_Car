@@ -108,10 +108,17 @@ export default {
         ...mapActions(userStore, ['checkLogin', 'updateToken']),
         logout(){
             // 調用pinia的updateToken
-                confirm('確定要登出嗎？')
+            const confirmLogout = confirm('確定要登出嗎？');
+
+            if(confirmLogout){
                 this.updateToken('')
+                
                 //清除Token後回到登入頁
-            this.$router.push('/')
+                // this.$router.push('/')
+            }else {
+
+            }
+        
             
         },
         handleClick(e) {

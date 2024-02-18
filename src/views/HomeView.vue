@@ -128,10 +128,16 @@ export default {
     ...mapActions(userStore, ['checkLogin', 'updateToken']),
     logout() {
       // 調用pinia的updateToken
-      confirm('確定要登出嗎？')
-      this.updateToken('')
-      //清除Token後回到登入頁
-      this.$router.push('/')
+      const confirmLogout = confirm('確定要登出嗎？');
+
+      if(confirmLogout){
+          this.updateToken('')
+          
+          //清除Token後回到登入頁
+          // this.$router.push('/')
+      }else {
+
+      }
 
     },
     handleClick(e) {
@@ -207,9 +213,13 @@ export default {
       </RouterLink>
     </li>
     <div class="linePh"></div>
-    <div class="indexHeaderLoginPh">
+    <div class="indexHeaderLoginPh" v-if="!isLoggedIn">
       <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
         @click="openLightbox">
+    </div>
+    <div class="indexHeaderLoginPh" v-else>
+      <img src="../assets/imgs/nav/nav-icon-Logout-PH.png" alt="login" class="indexHeaderButtonLoginPh"
+        @click="logout">
     </div>
   </ul>
   <Transition name="fade">
