@@ -76,7 +76,9 @@
             width: 100%;
             position: relative;
             background-image: url(../../imgs/draw/greeting_illust.svg);
-            background-position: center bottom -30px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center bottom;
             height: 130px;
             
             @media (min-width: 768px) {

@@ -2,6 +2,39 @@
     width: 100%;
     margin: 100px auto;
 
+    .topDecoBg {
+        width: 100%;
+        height: 100px;
+        background-image: url(../../imgs/draw/greeting_illust.svg);
+        position: absolute;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 10%;
+        z-index: 0;
+    }
+
+    .decoBirdGroup {
+        display: none;
+        
+        @media (min-width : 768px) {
+            display: block;
+            position: absolute;
+            top: -60%;
+            left: 25%;
+        }
+        .YellowBird {
+            position: relative;
+            top: 20px;
+            right: -200px;
+        }
+        .BlueBird {
+            position: relative;
+            right: -50px;
+            bottom: -200px;
+        }
+        
+
+    }
 
     .infoInner {
         width: 100%;
@@ -19,24 +52,28 @@
 
             .infoImg {
                 width: 100%;
+                height: 60vh;
                 display: flex;
                 justify-content: end;
+                margin-top: 30px;
+
+                @media (min-width : 768px) {
+                    width: 65%;
+                    height: 45vw;        
+                    order: 1;
+                }
+
                 img {
-                    width: 95%;
+                    width: 90%;
+                    object-fit: cover;
                     border-radius: $borr1 0 0 $borr1;
 
                     @media (min-width : 768px) {
                         border-radius: $borr2 0 0 $borr2;
-                                    
+                        margin-top: 50px;          
                     }
                     
-                }
-
-                @media (min-width : 768px) {
-                    width: 70%;
-                    order: 1;
-                            
-                }
+                }      
             }
 
             .infoInnerText {
@@ -46,7 +83,7 @@
                 display: flex;
 
                 @media (min-width : 768px) {
-                    width: 30%;
+                    width: 35%;
                     height: 100%;
                     order: 0;
                     // background-color: #aaa;
@@ -140,6 +177,20 @@
                 }
             }
         }
+        .newsCardListDecoBg {
+            display: none;
+            @media (min-width : 768px) {
+                display: block;
+                width: 100%;
+                height: 150%;
+                background-image: url(../../imgs/event/newsArticlebg01.svg),url(../../imgs/event/newsArticlebg02.svg);
+                background-repeat: no-repeat;
+                background-position: top left, bottom right;
+                top: 80%;
+                position: absolute;
+                z-index: -1;
+            }
+        }
 
         .infoTextWord {
             width: 90%;
@@ -217,6 +268,7 @@
             .otherEventCard {
                 width: 100%;
                 margin: 30px auto 100px;
+                // background-color: #aaa;
             }
 
         }

@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-
+    // background-color: #aaa;
 
 
     .swiper-button-prev {
@@ -16,17 +16,17 @@
 
     position: absolute;
     top: 85%;
-    left: 35%;
+    left: 30%;
 
         @media (min-width : 450px) {
-            left: 37%;
+            // left: 35%;
         }
         @media (min-width : 700px) {
-            left: 42%;
+            // left: 42%;
         }
         @media (min-width : 768px) {
-            top: 30%;
-            left: 10px;
+            top: 25%;
+            left: 0;
         }
 
     }
@@ -67,18 +67,20 @@
 
     position: absolute;
     top: 85%;
-    left: 55%;
+    left: auto;
+    right: 30%;
 
-    @media (min-width : 450px) {
-        left: 57%;
-    }
-    @media (min-width : 700px) {
-        left: 52%;
-    }
-    @media (min-width : 768px) {
-        top: 30%;
-        left: 95%;
-    }
+        @media (min-width : 450px) {
+            // left: 57%;
+        }
+        @media (min-width : 700px) {
+            // left: 52%;
+        }
+        @media (min-width : 768px) {
+            top: 25%;
+            right: 0;
+            left: auto;
+        }
     }
 
     .swiper-button-next:hover {
