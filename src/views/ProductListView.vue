@@ -23,6 +23,7 @@
         currentPage: 1,
         perPage: 9,
         newSort: '',
+
         filter: [
           {
             filterId: "electricCar",
@@ -37,7 +38,9 @@
             filterName: "模型車",
           },
         ],
-        activeFilter: '',
+        filterActiveState: false,
+        activeFilterValue: '',
+        
         responseData : [],
         displayData: [],
         sh_contact: [
@@ -91,23 +94,29 @@
       },
 
       // 商品種類的篩選(共兩個函式，一個切換啟動關閉、一個過濾)
-      handleToggleFilter(filterName, isActive) {
-        // 如果按鈕是啟動的，將過濾單位加入過濾器activeFilter 內；否則，從中刪除
-        if (isActive) {
-          this.activeFilter = filterName;
-        } else {
-          this.activeFilter = '';
+      handleToggleFilter(filterName) {
+        // 如果按鈕是啟動的，將過濾單位加入過濾器activeFilterValue 內；否則，從中刪除
+        if (!(this.filterActiveState)) {
+          console.log(this.filterActiveState);
+          this.filterActiveState = !(this.filterActiveState)
+          this.activeFilterValue = filterName;
+        } else if (this.filterActiveState && (filterName != this.activeFilterValue)) {
+          this.activeFilterValue = filterName;
+        }
+        else if (this.filterActiveState && (filterName = this.activeFilterValue)){
+          this.activeFilterValue = '';
+          this.filterActiveState = !(this.filterActiveState)
         }
         // 在這裡更新過濾邏輯，可能需要重新運行過濾
         this.updateFilter(); // 這裡需要定義 updateFilter 方法
       },
       updateFilter(){
-        if (this.activeFilter == '') {
+        if (this.activeFilterValue == '') {
           this.displayData = this.responseData;
         } else {
           // 當有按鈕被啟動時，篩選資料
           this.displayData = this.responseData.filter(item => {
-            return item.pro_category.includes(this.activeFilter)
+            return item.pro_category.includes(this.activeFilterValue)
           });
         }
       },

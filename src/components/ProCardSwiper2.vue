@@ -42,13 +42,13 @@ export default{
 <div class="recommand">
   <div class="recommand_box">
     <h4>也許你會喜歡</h4>
-    <div class="swiper-button-next" ref="nextButton"></div>
+    <div class="swiper-next" ref="nextButton"></div>
     <swiper 
     :slidesPerView="slidesPerView"
     :spaceBetween="30"
     :navigation="{
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-next',
+      prevEl: '.swiper-prev',
     }"
     :modules="modules"
     class="mySwiper"
@@ -67,7 +67,7 @@ export default{
         </div>
       </swiper-slide>
     </swiper>
-    <div class="swiper-button-prev" ref="prevButton"></div>
+    <div class="swiper-prev" ref="prevButton"></div>
   </div>
 </div>
 

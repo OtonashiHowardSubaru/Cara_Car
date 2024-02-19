@@ -1,5 +1,6 @@
 main{
   margin: 0 0 50px 0;
+  --gameMargin: 50px auto 100px auto;
 }
 //分頁標題css起點
 .game_title{
@@ -24,7 +25,9 @@ main{
   }
 }
 .slogan{
-  margin: 30px auto;
+  margin: 30px 0;
+  text-align: center;
+  font-size: $h2;
 }
 .main_art{
   img{
@@ -32,9 +35,78 @@ main{
   }
 }
 .start_game{
-  margin: 50px auto 100px auto;
+  margin: var(--gameMargin);
+  width: fit-content;
+}
+.quetionGame{
+  margin: var(--gameMargin);
 }
 .quetionBox{
+  width: 100%;
+  aspect-ratio: 1.5/1;
+  background-image: url(../../imgs/game/question_box.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  h3{
+    font-size: clamp(64px,10vw,120px);
+    // font-size: 64px;
+    font-family: 'Single Day';
+    letter-spacing: 2px;
+    margin-top: 5%;
+  }
+  p{
+    font-size: clamp(18px,5vw,36px);
+    letter-spacing: 2px;
+    margin-top: 10px;
+    padding: 0 12%;
+    @media (min-width:425px){
+      margin-top: 8%;
+    }
+  }
+}
+.answerBox{
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  button{
+    width: 75%;
+    color: $blackWord;
+    background-color: $grey_1;
+    border-radius: $borr2;
+    border: none;
+    font-size: $h4;
+    padding: 20px 0;
+    margin: 30px 0 0 0;
+  }
+  button:hover{
+    background-color: $green;
+    color: $whiteWord;
+  }
+}
+.finishGame{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5% 10%;
+  margin: var(--gameMargin);
+  aspect-ratio: 1.5/1;
+  background-image: url(../../imgs/game/question_box.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
   
+  h3{
+    width: 100%;
+    text-align: center;
+    font-size: $h3;
+  }
+
 }
 //分頁標題css終點
