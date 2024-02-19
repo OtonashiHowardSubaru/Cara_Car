@@ -3,11 +3,12 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
+import ProductCard from '@/components/ProductCard.vue';
 
 
 export default{
     components:{
-        Swiper, SwiperSlide,
+        Swiper, SwiperSlide, ProductCard,
     },
     data(){
         return{
@@ -19,13 +20,11 @@ export default{
         modules: [Navigation]
       };
     },
-    props:['displayData', ],
-    created() {},
+    props:['displayData', ], //這邊再開一個格子，只存一個物件的資料
+    created() {
+      console.log(this.displayData)
+    },
     methods: {
-        getProductImageUrl(imageFileName) {
-        // 返回完整的URL
-        return `https://tibamef2e.com/cgd103/g1/images/shop/${imageFileName}`;
-        },
         handleResize(){
           this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;
         }
@@ -41,7 +40,6 @@ export default{
 <template>
 <div class="recommand">
   <div class="recommand_box">
-    <h4>別人也逛過</h4>
     <div class="swiper-button-next" ref="nextButton"></div>
     <swiper 
     :slidesPerView="slidesPerView"
@@ -54,18 +52,10 @@ export default{
     :modules="modules"
     class="mySwiper"
     >
-      <swiper-slide  v-for="item in displayData" :key="item.pro_id">
-        <div class="product_card">
-        <RouterLink :to="'/Product/' + item.pro_id">
-          <div class="pro_card_img">
-              <img :src="item.pro_img1" alt="Product Image">
-          </div>
-          <div class="pro_crad_info">
-              <h6>{{ item.pro_name }}</h6>
-              <p>${{ item.pro_price }}</p>
-          </div>
-        </RouterLink>
-        </div>
+      <swiper-slide  v-for="(item,index) in displayData" :key="index">
+        <ProductCard
+        :displayData="item"
+        />
       </swiper-slide>
     </swiper>
     <div class="swiper-button-prev" ref="prevButton"></div>
