@@ -68,7 +68,9 @@
             display: flex;
             flex-direction: column;
             // justify-content: center;
-            
+            strong{
+                font-size: 1.5rem;
+            }
             img{
                 width: 30%;
                 position: absolute;
@@ -84,7 +86,7 @@
                 position: relative;
                 // margin: 0 auto;
                 flex-wrap: wrap;
-
+                
                 // align-items: center;
             }
         }
@@ -92,10 +94,55 @@
     .bottonbtns{
         width: 80%;
         margin: 0 auto 50px;
-
+        
     }
-
+    
 }
+.highlight-container, .highlight {
+    position: relative;
+  }
+  
+  .highlight-container {
+    display: inline-block;
+  }
+  .highlight-container:before {
+    content: " ";
+    display: block;
+    height: 90%;
+    width: 100%;
+    margin-left: -3px;
+    margin-right: -3px;
+    position: absolute;
+    background: $grey_2;
+    transform: rotate(2deg);
+    top: -1px;
+    left: -1px;
+    border-radius: 20% 25% 20% 24%;
+    padding: 10px 3px 3px 10px;
+  }
+
+
+
+
+
+// <span class="highlight">
+// <p>歡迎來到 Cara Car，</p>
+// </span>
+// .highlight p{
+//     // position: relative;
+//     // display: inline;
+//     // padding: 0;
+//     // word-wrap: break-word;
+//     transition-delay: .4s;
+//     padding-bottom: 10px;
+//     background-image: url(../../imgs/about/about_textline01.png);
+//     background-position-y: bottom;
+//     background-repeat: repeat-x;
+//     background-size: auto 100%;
+//     width: 35%;
+// }
+
+
 
 @media (min-width : 768px) {
 .about{

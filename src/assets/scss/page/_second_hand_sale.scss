@@ -29,7 +29,16 @@
         }
     }
     .saleCarSteps{
-        margin: 5%;
+        .bgm{
+            background-image: url(../../imgs/SecondHandSale/bgp.png);
+            width: 100%;
+            background-size: 100% 100%;
+            background-position: center ; // 背景圖片置中
+            margin: 0;
+            position: relative;
+            background-repeat: no-repeat;
+        
+        }
         .saleCarStep{ 
             width: 95%;
             margin: 0 5% 0 10%;
@@ -130,7 +139,7 @@
     width: 15%;
     position: fixed;
     right: 6%;
-    bottom: 10%;
+    bottom: 12%;
     z-index: 100;
     @media (min-width : 768px) {
         width: 8%;
@@ -187,7 +196,7 @@
         }
     
         .saleCarSteps{
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             .saleCarStep{
             
@@ -195,7 +204,7 @@
                 // background-color: $grey_2;
                 flex-direction: row-reverse;
             }    
-                width: 90%;
+                width: 75%;
                 display: flex;
                 margin: 0 auto;
                 padding: 10px;
@@ -203,17 +212,19 @@
                         // width: 50%;
                         height: 50%;
                         img{
-                            width: 100%;
+                            width: 80%;
                             height: auto; 
                             }
                     }
                     .saleCarStepType{
-                        width: 50%;
+                        width: 45%;
                         margin: 15px;
                         display: flex;
                         align-items: center;
                         flex-direction: column;
                         align-items: flex-start;
+                        background-color: white;
+                        border-radius: $borr2;
                         .saleCarStepNum{
                             font-size: $h3;
                             margin: 30px;
