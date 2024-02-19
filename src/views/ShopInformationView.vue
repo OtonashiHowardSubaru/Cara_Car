@@ -3,7 +3,7 @@
     <main class="ShopInformation">
         <div class="infoBg">
             <div class="bgAnime">
-                <img src="/src/assets/imgs/shopInfo/InfoLongImg.png" alt="InfoLongImg">
+                <img src="/src/assets/imgs/shopInfo/longStreetv2.jpg" alt="longStreetv2">
             </div>
         </div>
 
