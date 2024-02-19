@@ -156,7 +156,7 @@
         </div>
         <div class="pro_card_list col-md-10">
           <ProductCard 
-          :displayData="displayData"
+          :displayData="paginated"
           />
         </div>
       </div>
