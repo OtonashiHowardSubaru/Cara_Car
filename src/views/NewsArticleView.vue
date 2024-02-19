@@ -34,7 +34,7 @@
             </header>
             <div class="newsCardListDecoBg"></div>
             <div class="infoTextWord">
-                <p>{{ thisNews.news_content }}</p>
+                <p v-if="thisNews.news_content" v-html="textBreak(thisNews.news_content)"></p>
             </div>
 
         </article>
@@ -77,9 +77,19 @@ export default {
             thisNews: {},
         }
     },
-    created() {
-        //在頁面載入時同時載入function
-        // 定義頁碼
+    created() {//在頁面載入時同時載入function
+        this.fetchData()
+    },
+    watch: {
+        '$route'(to, from) {
+        // 間丁 $route 有變化
+        // 在路徑參數有變化時,執行一次fetchData(抓取資料)
+            this.fetchData();
+        }
+    },
+    methods: {
+        fetchData() {
+             // 定義頁碼
         const pageId = this.$route.params.news_id
         // console.log(pageId)
         
@@ -97,8 +107,11 @@ export default {
             console.error("Error fetching data:", error);
             this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
-    },
-    methods: {
+        },
+        // 文字換行
+        textBreak(text) {
+            return text.replace(/\r\n/g,"<br>");
+        },
         // 取得圖片的路徑函式
         getNewsImgSrc(imgName){
             return new URL(`../assets/imgs/event/${imgName}`, import.meta.url).href
