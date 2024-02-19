@@ -2,6 +2,7 @@
   import axios from 'axios'; //引入函式庫
   import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
   import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
+  import ProCardSwiper3 from '@/components/ProCardSwiperTest.vue';
   import MainHeader from '@/components/MainHeader.vue';
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
@@ -11,6 +12,7 @@
     components:{
         ProCardSwiper1,
         ProCardSwiper2,
+        ProCardSwiper3,
         MainHeader,
         MainHeader,
         NumberSelect,
@@ -26,7 +28,18 @@
         }
     },
     created() {//在頁面載入時同時載入function
-      // 定義頁碼
+      this.fetchData()
+    },
+    watch:{
+      '$route'(to, from) {
+      // 監聽 $route 有變化
+      // 在路徑參數變化時執行一次fetchData(抓取資料)
+      this.fetchData();
+    }
+    },
+    methods: {
+      fetchData(){
+        // 定義頁碼
       const pageId = this.$route.params.pro_id
       // console.log(pageId)
       
@@ -57,8 +70,8 @@
           console.error("Error fetching data:", error);
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
-    },
-    methods: {
+      },
+
       // 取得圖片的路徑函式
       getProductImgSrc(imgName){
         return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
@@ -182,6 +195,13 @@
     </div>
     <div class="col-12">
       <ProductIntroCard />
+      <ProCardSwiper1
+      :displayData="allProducts"
+      />
+      <ProCardSwiper1
+      :displayData="allProducts"
+      />
+      
     </div>
   </div>
 </main>

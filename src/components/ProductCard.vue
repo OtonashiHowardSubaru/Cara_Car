@@ -5,7 +5,9 @@ export default {
     }
   },
   props:[ 'displayData', ],
-  created() {},
+  created() {
+    console.log(this.displayData)
+  },
   methods: {
     // 取得圖片的路徑函式
     getProductImgSrc(imgName){
