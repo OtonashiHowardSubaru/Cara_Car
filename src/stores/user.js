@@ -26,26 +26,30 @@ import { defineStore } from 'pinia'
 export default defineStore('userStore', {
     // 對應 data
     state: () => ({
-        token: localStorage.getItem("token") || "", //
-        name: 'Jenny',
-        wallet: '300'
+        token: localStorage.getItem("token") || "",
+        // token: '',   // 後端僅返回token(通行證/令牌)
+        userData: {} // 可以在login API中返回user資訊
+        
+        // name: '',
+        // wallet: '',
     }),
 
     // 對應 computed (物件形式)
     getters: {
-        getUserName: (state) => `歡迎 ${state.name}`
+        // getUserName: (state) => `歡迎 ${state.name}`
     },
 
     // 對應 methods (物件形式)
     actions: {
         checkLogin() {
-            const storageToken = localStorage.getItem("token");
+            const storageToken = localStorage.getItem("userToken");
             if (this.token) {
-              return this.token; // 如果存儲庫中已經設定了 token，則返回它。
+                return this.token; // 如果存儲庫中已經設定了 token，則返回它。
             } else if (storageToken) {
-              return storageToken; // 如果 localStorage 中存儲有 token，則返回它。
+                this.token = storageToken
+                return storageToken; // 如果 localStorage 中存儲有 token，則返回它。
             } else {
-              return ""; // 如果找不到 token，則返回空字串。
+                return ""; // 如果找不到 token，則返回空字串。
             }
         },
         updateToken(payload) {
