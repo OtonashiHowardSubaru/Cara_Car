@@ -3,50 +3,49 @@
     <main class="pageNews">
         <header class="newsTitle">
             <h1>最新消息</h1>
-
             <GreenBird class="GreenBird" />
             <YellowBird class="YellowBird" />
             <RedBird class="RedBird" />
             <!-- <SingleCloud /> -->
             <!-- <DoubleCloud /> -->
-
-
         </header>
         <section class="newsOverview">
             <div class="newsCardListDecoBg"></div>
             <div class="selector">
                 <div class="space"></div>
                 <div class="btnTag">
-                    <button v-for="tag in buttonTag" :key="tag" @click="setTag(tag)">
-                        <span>{{ tag }}</span>
+                    <button v-for="tag in tagFilter" :filterId="tag.filterId" :filterName="tag.filterName" :key="tag"
+                        @click="handleToggleFilter(tag.filterNum)"
+                        :class="{ 'active': tag.filterNum === activeFilterValue}">
+                        <span>{{ tag.filterName }}</span>
                     </button>
                 </div>
-                <select class="holdingTime">
+                <!-- <select class="holdingTime">
                     <option value="all">請選擇</option>
                     <option value="process">進行中</option>
                     <option value="coming">即將舉辦</option>
-                </select>
+                </select> -->
             </div>
-
             <div class="newsCardList">
-                <RouterLink :to="'/NewsArticle/' + newsInfo.news_id" class="newsCard" v-for="(newsInfo, index) in paginated" :key="index">
+                <RouterLink :to="'/NewsArticle/' + newsInfo.news_id" class="newsCard" v-for="(newsInfo, index) in paginated"
+                    :key="index">
                     <div class="newsCardImg">
                         <div class="newsInfoImg">
                             <img :src="getNewsImgSrc(newsInfo.img_path)" alt="newsInfo.img">
                         </div>
-                        <span class="timingTag" :style="{ backgroundColor: getBackgroundColor(newsInfo), borderColor: getBorderColor(newsInfo) }">{{ calculateDateStatus(newsInfo) }}</span>
+                        <span class="timingTag"
+                            :style="{ backgroundColor: getBackgroundColor(newsInfo), borderColor: getBorderColor(newsInfo) }">{{
+                                calculateDateStatus(newsInfo) }}</span>
                     </div>
                     <div class="newsCardText">
                         <div class="cardTitle">
-                            <h3>【{{ newsInfo.news_category == '0' ? '優惠' : '活動'}}】{{ newsInfo.news_title }}</h3>
+                            <h3>【{{ newsInfo.news_category == '2' ? '優惠' : '活動' }}】{{ newsInfo.news_title }}</h3>
                         </div>
                         <p>{{ newsInfo.news_start_date }} ~ {{ newsInfo.news_end_date }}</p>
                     </div>
                 </RouterLink>
             </div>
-
-    <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
-            
+            <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
         </section>
     </main>
 </template>
@@ -65,7 +64,7 @@ import axios from 'axios'; //引入函式庫
 
 
 export default {
-    components:{
+    components: {
         MainHeader,
         EventCard,
         PageNumber,
@@ -76,9 +75,9 @@ export default {
         SingleCloud,
     },
     data() {
-        return{
+        return {
             // 資料
-            responseData : [],
+            responseData: [],
             displayData: [],
 
             // 頁數切換
@@ -86,39 +85,53 @@ export default {
             currentPage: 1,
             perPage: 6,
 
-            // 活動標籤
-            buttonTag: [
-                '全部',
-                '優惠',
-                '活動',
+            // 活動優惠篩選
+            tagFilter: [
+                {
+                    filterId: "All",
+                    filterName: "全部",
+                    filterNum: '',
+                },
+                {
+                    filterId: "Sales",
+                    filterName: "優惠",
+                    filterNum: 2,
+                },
+                {
+                    filterId: "Activity",
+                    filterName: "活動",
+                    filterNum: 1,
+                },
             ],
-
-            // 活動標籤篩選
-            selectedTag: '' // 添加一個變量保存當前所選的按鈕標籤
+            filterActiveState: false,
+            activeFilterValue: '',
+            isCheckedAll: false,
+            isCheckedSales: false,
+            isCheckedActivity: false,
         }
     },
 
     created() {
-      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
-      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+        //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+        // 取得全部商品資料用作商品資料，以及swiper用的所有資料
         axios.get(`${import.meta.env.VITE_CARA_URL}/front/newsList.php`)
-        .then((response) => {
-            // 成功取得資料後，將資料存入陣列
-            // console.log(response.data)
-            this.responseData = response.data;
-            this.displayData = response.data;
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-            this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
+            .then((response) => {
+                // 成功取得資料後，將資料存入陣列
+                // console.log(response.data)
+                this.responseData = response.data;
+                this.displayData = response.data;
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+            });
     },
     methods: {
         // 取得圖片的路徑函式
-        getNewsImgSrc(imgName){
+        getNewsImgSrc(imgName) {
             return new URL(`../assets/imgs/event/${imgName}`, import.meta.url).href
         },
-         // 頁數切換
+        // 頁數切換
         toggleStatus(index) {
             this.eventsInfo[index].status = !this.eventsInfo[index].status;
         },
@@ -160,12 +173,60 @@ export default {
         // 添加一個方法用来設置所選的按鈕標籤
         setTag(tag) {
             this.selectedTag = tag;
-        }
+        },
+        handleToggleFilter(filterNum) {
+            // 切換按鈕狀態
+            // 根据点击的按钮更新对应的状态属性
+            switch (filterNum) {
+                case '':
+                    this.isCheckedAll = !this.isCheckedAll;
+                    break;
+                case 1:
+                    this.isCheckedActivity = !this.isCheckedActivity;
+                    break;
+                case 2:
+                    this.isCheckedSales = !this.isCheckedSales;
+                    break;
+                default:
+                    break;
+            }
+
+            // 如果按鈕是啟動的，將過濾單位加入過濾器activeFilterValue 內；否則，從中刪除
+            if (!(this.filterActiveState)) {
+                console.log(this.filterActiveState);
+                this.filterActiveState = !(this.filterActiveState)
+                this.activeFilterValue = filterNum;
+            } else if (this.filterActiveState && (filterNum != this.activeFilterValue)) {
+                this.activeFilterValue = filterNum;
+            }
+            else if (this.filterActiveState && (filterNum === this.activeFilterValue)) {
+                this.activeFilterValue = filterNum;
+                this.filterActiveState = !(this.filterActiveState)
+            }
+            // 在這裡更新過濾邏輯，可能需要重新運行過濾
+            this.updateFilter(); // 這裡需要定義 updateFilter 方法
+
+            // 更新選中的標籤編號
+            this.activeFilterValue = filterNum;
+            this.filterActiveState = filterNum !== '';
+        },
+        updateFilter() {
+            if (this.activeFilterValue == '') {
+                this.displayData = this.responseData;
+            } else {
+                // 當有按鈕被啟動時，篩選資料
+                console.log(this.activeFilterValue);
+                this.displayData = this.responseData.filter(tag => {
+                    return tag.news_category == this.activeFilterValue;
+                });
+
+            }
+        },
 
     },
     computed: {
         // 頁數切換
-        paginated(){
+        paginated() {
             // 將已結束的活動放在陣列最後
             const sortedData = this.displayData.slice().sort((a, b) => {
                 // 將已結束的活動放在陣列最後
@@ -187,7 +248,7 @@ export default {
                 const currentDate = new Date();
                 const startDate = new Date(newsInfo.news_start_date);
                 const endDate = new Date(newsInfo.news_end_date);
-                
+
                 // 檢查當前日期是否在指定範圍內
                 if (currentDate >= startDate && currentDate <= endDate) {
                     return '進行中';
@@ -205,7 +266,7 @@ export default {
             } else {
                 // 否則，根據所選的標籤過濾信息
                 return this.displayData.filter(news => {
-                    return news.news_category === (this.selectedTag === '優惠' ? '0' : '1');
+                    return news.news_category === (this.selectedTag === '活動' ? '1' : '2');
                 });
             }
         }
