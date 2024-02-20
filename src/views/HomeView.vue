@@ -156,14 +156,12 @@ export default {
       const confirmLogout = confirm('確定要登出嗎？');
 
       if (confirmLogout) {
-        this.updateToken('')
-
-        //清除Token後回到登入頁
+        //清除token和userData
+        this.userStoreData.updateToken('')
+        this.userStoreData.updateUserData('')
+        //登入是燈箱沒有頁面就不跳轉頁面了
         // this.$router.push('/')
-      } else {
-
       }
-
     },
     handleClick(e) {
       if (e.target.id === 'loginOverlay') {

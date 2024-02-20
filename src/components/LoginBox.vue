@@ -74,28 +74,7 @@ export default {
         },
         // ...在JS中是展開運算符，可以把一組的東西變成單獨的元素或屬性；
         //在Vue.js中是展開對象的屬性，使用mapActions通常包含多個 action 函式的對象展開為函式的列表
-        ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),
-        // signin() {
-        //     axios.post(`${import.meta.env.VITE_CARA_URL}/memberCenterLogin.php`, {
-        //         username: this.username,
-        //         password: this.psw666
-        //     }, {
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //         .then(response => {
-        //             if (response.data && response.data.token) {
-        //                 localStorage.setItem('token', response.data.token)
-        //                 this.updateToken(response.data.token)
-        //                 // console.log(response.data.token);
-        //                 this.closeLightbox()
-        //                 this.$router.push('/')
-        //             }
-        //         })
-        //         .catch(error => console.error(error));
-        // },
-
+        ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData', 'checkUserData']),
         signin(){
             const bodyFormData = new FormData();
             bodyFormData.append('m_email', this.username);
