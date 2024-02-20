@@ -199,7 +199,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
     
   </div>
 <div class="sh_product_wrap">
-  <img src="../assets//imgs/product/" alt="">
+  <!-- <img src="../assets/imgs/product/" alt=""> -->
     <div class="intromq">
       
       <h1>{{thisProduct.sh_pro_en_name}}</h1>
