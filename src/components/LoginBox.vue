@@ -184,9 +184,9 @@ export default {
 
                 // 沒有API先使用寫死資料
                 this.updateUserData({
-                    mem_name: lineNickname,
-                    mem_validation: 1,
-                    mem_state: 1
+                    m_name: lineNickname,
+                    m_validation: 1,
+                    m_state: 1
                 })
                 this.$router.push('/')
             } catch (error) {
