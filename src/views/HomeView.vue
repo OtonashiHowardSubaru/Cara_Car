@@ -150,7 +150,7 @@ export default {
     closeLightbox() {
       this.lightBoxStore.closeLightbox()
     },
-    ...mapActions(userStore, ['checkLogin', 'updateToken']),
+    ...mapActions(userStore, ['checkLogin', 'updateToken','updateUserData']),
     logout() {
       // 調用pinia的updateToken
       const confirmLogout = confirm('確定要登出嗎？');
@@ -269,9 +269,9 @@ export default {
 
         // 沒有API先使用寫死資料
         this.updateUserData({
-          mem_name: lineNickname,
-          mem_validation: 1,
-          mem_state: 1
+          m_name: lineNickname,
+          m_validation: 1,
+          m_state: 1
         })
         this.$router.push('/')
       } catch (error) {
