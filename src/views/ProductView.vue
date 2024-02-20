@@ -5,9 +5,17 @@
   import MainHeader from '@/components/MainHeader.vue';
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
-  
+  import Swal from 'sweetalert2';
+
+  // import { mapState, mapActions } from "pinia";
+  // import cartStore from "@/stores/cart";
 
   export default{
+  //   setup() {    
+  //   return {
+  //     cartStore
+  //   };
+  // },
     components:{
         ProCardSwiper1,
         ProCardSwiper2,
@@ -15,6 +23,7 @@
         MainHeader,
         NumberSelect,
         ProductIntroCard,
+        Swal,
     },
     data(){
         return {
@@ -25,6 +34,11 @@
           qtyValue: '',
         }
     },
+    // computed:{
+    //   nodata(){
+    //     return this.thisProduct && this.thisProduct.pro_id;
+    //   }
+    // },
     created() {//在頁面載入時同時載入function
       // 定義頁碼
       const pageId = this.$route.params.pro_id
@@ -89,27 +103,46 @@
           imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
           quantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
         };
-        // 从本地存储中获取已有的购物车数据，如果没有则初始化为空数组
+        // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
         let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // 将当前商品添加到购物车数据中，重复商品时更新数量
+        // 將當前商品添加到購物車中，重複商品時則更新數量
         let existingProductIndex = cartItems.findIndex(item => item.id === product.id);
         if (existingProductIndex !== -1) {
-          // 如果购物车中已有相同商品，则更新其数量
+          // 如果購物車中已有相同商品，則更新其數量
           cartItems[existingProductIndex].quantity += product.quantity;
         } else {
-          // 否则将商品添加到购物车
+          // 若不是則將商品添加到購物車
           cartItems.push(product);
         };
 
         // cartItems.push(product);
-        // 将更新后的购物车数据保存到本地存储
+        // 將更新後的購物車數據保存到本地端
         localStorage.setItem('cart', JSON.stringify(cartItems));
 
-        // 提示用户已成功添加到购物车（可选）
-        alert('商品已加入到購物車！');
+        // alert('商品已加入到購物車！');
+        return  Swal.fire({
+          title: '已加入購物車!',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        })
       },
-      
+      // ...mapActions(cartStore,["addToCart"]),
+      // addToCart(){
+      //   this.addToCart({ 
+      //     thisProduct: this.thisProduct, 
+      //     qtyValue: parseInt(this.qtyValue === '' ? 1 : this.qtyValue) });
+      //   // this.addToCart(thisProduct, this.qtyValue);
+      //   return  Swal.fire({
+      //     title: '已加入購物車!',
+      //     icon: 'success',
+      //     confirmButtonText: 'OK',
+      //   })
+      // },
+      // addCart(thisProduct) {
+      //   // 调用 Pinia Store 中的 addToCart 方法
+      //   this.addToCart(thisProduct, this.qtyValue);
+      // }
     }
   }
 </script>
@@ -176,7 +209,11 @@
           </svg>
         </div>
         <!-- 加入購物車按鈕 -->
-        <button type="button" id="buyNowBtn">直接購買</button>
+    
+        <button type="button" id="buyNowBtn">
+          直接購買
+            <!-- <router-link to="/cart">直接購買</router-link> -->
+        </button>
         <button type="button" id="addToCartBtn" @click="addToCart">加入購物車</button>
       </div>
     </div>
