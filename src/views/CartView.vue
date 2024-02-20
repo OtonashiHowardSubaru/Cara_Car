@@ -21,6 +21,9 @@ import product07 from '@/assets/imgs/product/product_7.png'
 import product08 from '@/assets/imgs/product/product_8.png'
 import product09 from '@/assets/imgs/product/product_9.png'
 
+// import { mapState, mapActions } from "pinia";
+// import cartStore from "@/stores/cart";
+
 export default {
 components:{
     MainHeader,ProCardSwiper1,ProCardSwiper2,DoubleCloud,BlueBird,GreenBird,YellowBird,
@@ -29,7 +32,7 @@ components:{
 data(){
     return {
         qtyValue:'',
-        count: 1,
+        // count: 1,
         expanded:false,
         cartItems: [],
         city:[
@@ -119,8 +122,17 @@ created() {
     if (cartData) {
         this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
     }; 
+    // this.getLocalCartData();
+
 },
 computed: {
+    // ...mapState(cartStore,[
+    //     "cartItems",
+    //     "subtotal",
+    //     "subFreight",
+    //     "total",
+    // ]),
+
     subtotal() {
     let total = 0;
     for (let item of this.cartItems) {
@@ -148,9 +160,9 @@ methods: {
         this.expanded = !this.expanded;
     },
     updateQuantity(index, newQuantity){
-        // 更新购物车内商品数量
+        // 更新購物車内商品數量
         if (newQuantity < 1) {
-            // 如果数量小于1，则从购物车中删除该商品
+            // 如果數量小於1，則從購物車中删除該商品
             this.cartItems.splice(index, 1);
         } else {
             this.cartItems[index].quantity = newQuantity;
@@ -166,6 +178,13 @@ methods: {
     saveCartData() {
         localStorage.setItem('cart', JSON.stringify(this.cartItems));
     },
+    // ...mapActions(cartStore, [
+    //     "reduceFromCart",
+    //     "increaseFromCart",
+    //     "getLocalCartData",
+
+    // ]),
+
 },
 }
 </script>
@@ -185,20 +204,27 @@ methods: {
             </div>
             <DoubleCloud class="cartCloud"/>
             
-            <div class="cartProcess1">
+            <div class="notInCart" v-show="cartItems.length == 0">
+                <img src="../assets/imgs/draw/cara_sign.png" alt="">
+
+                <h2 class="notInCartP">你尚未購買商品</h2>
+
+            </div>
+
+            <div class="cartProcess1" v-show="cartItems.length !=0">
                 <div class="cartProcessCircle" id="circle1">1</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">2</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">3</div>
             </div>
-            <div class="cartProcess2">
+            <div class="cartProcess2" v-show="cartItems.length !=0">
                 <span class="cartProcessname" id="process1">你的訂單</span>
                 <span class="cartProcessname">填寫資料</span>
                 <span class="cartProcessname">完成訂單</span>
             </div>
 
-            <div class="cartContent">
+            <div class="cartContent" v-show="cartItems.length !=0">
                 <span class="productName">商品名稱與單價</span>
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
@@ -222,18 +248,18 @@ methods: {
             </div>
             <!-- 結束 -->
             <!-- 這是客製化車牌內容 -->
-            <div class="cartContent">
+            <div class="cartContent" v-show="cartItems.length !=0">
                 <span class="custom">客製化</span>
             </div>
-            <form action="">
+            <!-- <form action="">
                 <div class="customPlate">
                     <span class="customPlateNumber">車牌號碼</span>
                     <input type="text" maxlength="8" class="customNumber">
                 </div>
-            </form>
+            </form> -->
             <!-- 結束 -->
         </section>
-        <section class="cartFunction">
+        <section class="cartFunction" v-show="cartItems.length !=0">
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
                 <!-- 這裡要算小計 -->
@@ -272,7 +298,7 @@ methods: {
             </div>
         </section> -->
     
-            <div class="cartButton">
+            <div class="cartButton" v-show="cartItems.length !=0">
                 <router-link to="/ProductList">
                     <button type="button" id="goToProduct">繼續購買</button>
                 </router-link>

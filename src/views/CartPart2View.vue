@@ -28,6 +28,11 @@ components:{
 },
 data(){
     return {
+        name:'',
+        phone:'',
+        area:'',
+        road:'',
+        remark:'',
         qtyValue:'',
         count: 1,
         expanded:false,
@@ -166,6 +171,18 @@ methods: {
     saveCartData() {
         localStorage.setItem('cart', JSON.stringify(this.cartItems));
     },
+    //購買人資料填寫
+    buyDone(){
+        const cartFromData = new cFormData();
+        cartFromData.apped('ord_reciever', this.name);
+        cartFromData.apped('ord_phone', this.phone);
+        cartFromData.apped('ord_district', this.area);
+        cartFromData.apped('ord_address_', this.road);
+        cartFromData.apped('remark', this.remark);
+
+        
+
+    },
 },
 }
 </script>
@@ -206,20 +223,20 @@ methods: {
                     <span class="informationTitle2"><input type="checkbox" class="cartCheckbox">同會員資料</span>
                 </span>
                 <p class="cartInputTitle">收件人姓名</p>
-                <input type="text" name="name" class="cartInput">
+                <input v-model="name" type="text" name="name" class="cartInput">
                 <p class="cartInputTitle">連絡電話</p>
-                <input type="tel" minlength="10" maxlength="10" class="cartInput">
+                <input v-model="phone" type="tel" minlength="10" maxlength="10" class="cartInput">
                 <p class="cartInputTitle">收件地址</p>
                 <div class="col66">
                     <select name="city" id="city" >
                         <option value="">請選擇縣市</option>
                         <option v-for="item in city" :key="item">{{ (item).c }}</option>
                     </select>
-                    <input type="text" placeholder=" 中正區"  class="area">
+                    <input v-model="area" type="text" placeholder=" 中正區"  class="area">
                 </div>
-                <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad"> 
+                <input v-model="road" type="text" placeholder="OO路O段O號O樓" class="cartInputRoad"> 
                 <p class="cartInputTitle">備註欄</p>
-                <textarea name="remark" id="remark" cols="20" rows="5"></textarea>
+                <textarea v-model="remark" name="remark" id="remark" cols="20" rows="5"></textarea>
                 <span class="informationTitle">
                     填寫付款資訊
                 </span>
@@ -242,7 +259,7 @@ methods: {
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
                 <router-link to="/cartPart3">
-                    <button type="submit" class="subButton">確認並送出訂單</button>
+                    <button type="submit" class="subButton" @click="buyDone">確認並送出訂單</button>
                 </router-link>
             </div>
         </form>
