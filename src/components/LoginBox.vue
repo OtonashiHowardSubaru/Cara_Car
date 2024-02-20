@@ -89,14 +89,20 @@ export default {
                 }).then(res=>{
                 // console.log(res);
                     if(res && res.data){
-                        if(res.data.code == 1){
-                            this.updateToken(res.data.session_id)
-                            this.updateUserData(res.data.memInfo)
-                            alert('登入成功, 歡迎來到Cara-Car~')
-                            // this.$router.push('/')
-                            this.closeLightbox();
+                        
+                        if (res.data.code == 1) {
+                            // Check m_state value
+                            if (res.data.memInfo.m_state === 0) {
+                                alert('此帳號為禁用狀態,請聯繫管理人員哦QVQ');
 
-                        }else{
+                            } else if (res.data.memInfo.m_state === 1) {
+                                // Normal login flow for m_state = 1
+                                this.updateToken(res.data.session_id)
+                                this.updateUserData(res.data.memInfo)
+                                alert('登入成功, 歡迎來到Cara-Car~')
+                                this.closeLightbox();
+                            }
+                        } else {
                             alert('登入失敗, 請再試看看哦~')
                         }
                     }
