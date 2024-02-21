@@ -2,6 +2,8 @@
 import axios from 'axios';
 import MainHeader from '@/components/MainHeader.vue'
 import userImage from '@/assets/imgs/memberCenter/userImage(default).png'
+import userStore from '@/stores/user'
+import { mapState, mapActions } from 'pinia'
 export default {
     components: {
         MainHeader,
@@ -20,30 +22,33 @@ export default {
             isDesktop: window.innerWidth >= 768,
             storedImage: '',
             member: [],
+            userStoreData: userStore(),
         }
     },
     created() {
         // 監聽視窗大小變化，更新 isMobile 和 isDesktop 的值
         window.addEventListener('resize', this.updateWindowSize);
         this.updateWindowSize()
-
-        axios.get(`${import.meta.env.VITE_CARA_URL}/memberCenterLogin.php`)
-                .then((response) => {
-                    // 成功取得資料後，將資料存入 member 陣列
-                    this.member = response.data;
-                })
-                .catch((error) => {
-                    console.error("Error fetching data:", error);
-                });
+        this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
+        console.log(this.userData);
+        const member_id = this.userData.member_id
+        axios.get(`${import.meta.env.VITE_CARA_URL}/front/getMemberName.php?member_id=${member_id}`)
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
     },
+
     computed: {
         imagePreviewUrl() {
             return this.storedImage || userImage
         },
+        ...mapState(userStore, ['token', 'userData'])
     },
+
     beforeUnmount() {
         window.removeEventListener('resize', this.updateWindowSize);
     },
+
     methods: {
         updateWindowSize() {
             this.isMobile = window.innerWidth >= 325 && window.innerWidth < 768;
@@ -79,7 +84,8 @@ export default {
                 this.storedImage = reader.result
             }
             reader.readAsDataURL(file);
-        }
+        },
+        ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData']),
     },
     mounted() {
         document.getElementById("upFile").addEventListener("change", this.showFile);
@@ -125,7 +131,7 @@ export default {
                 </div>
                 <div class="welcome">
                     <h3>
-                        您好{{member.m_name}}，歡迎光臨<br>Cara Car官網購物帳號
+                        您好{{ this.userStoreData.userData.m_name }}，歡迎光臨<br>Cara Car官網購物帳號
                     </h3>
                     <div class="user_image" v-if="isDesktop">
                         <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
@@ -154,7 +160,8 @@ export default {
                         <p>會員基本資料</p>
                     </div>
                     <div class="collect">
-                        <img src="../assets/imgs/memberCenter/collect.svg" alt="collect_icon" @click="showProfile('collect')">
+                        <img src="../assets/imgs/memberCenter/collect.svg" alt="collect_icon"
+                            @click="showProfile('collect')">
                         <p>我的收藏</p>
                     </div>
                 </div>
@@ -198,15 +205,18 @@ export default {
                         </div>
                         <div class="table">
                             <p>原密碼　</p>
-                            <input type="password" name="memOldPsw" id="memOldPsw" autocomplete="current-password" placeholder="請輸入原密碼">
+                            <input type="password" name="memOldPsw" id="memOldPsw" autocomplete="current-password"
+                                placeholder="請輸入原密碼">
                         </div>
                         <div class="table">
                             <p>新密碼　</p>
-                            <input type="password" name="memNewPsw" id="memNewPsw" autocomplete="current-password" placeholder="請輸入新密碼">
+                            <input type="password" name="memNewPsw" id="memNewPsw" autocomplete="current-password"
+                                placeholder="請輸入新密碼">
                         </div>
                         <div class="table">
                             <p>確認密碼</p>
-                            <input type="password" name="memConPsw" id="memConPsw" autocomplete="current-password" placeholder="請再次輸入新密碼">
+                            <input type="password" name="memConPsw" id="memConPsw" autocomplete="current-password"
+                                placeholder="請再次輸入新密碼">
                         </div>
                     </form>
                     <input id="send" type="submit" name="button" value="我要修改">
@@ -286,23 +296,23 @@ export default {
                 </RouterLink>
             </div>
             <div class="mb_member_sidebar" v-if="isMobile">
-                    <nav>
-                        <ul>
-                            <li @click="toggleSubMenu">
-                                會員專區
-                                <transition name="fade">
-                                    <ul v-if="showSubMenu">
-                                        <li class="subMenu" @click="showProfile('default')">會員中心</li>
-                                        <li class="subMenu" @click="showProfile('basic')">基本資料</li>
-                                    </ul>
-                                </transition>
-                            </li>
-                            <li @click="showProfile('order')">購買訂單</li>
-                            <li @click="showProfile('return')">退貨申請</li>
-                            <li @click="showProfile('collect')">收藏清單</li>
-                        </ul>
-                    </nav>
-                </div>
+                <nav>
+                    <ul>
+                        <li @click="toggleSubMenu">
+                            會員專區
+                            <transition name="fade">
+                                <ul v-if="showSubMenu">
+                                    <li class="subMenu" @click="showProfile('default')">會員中心</li>
+                                    <li class="subMenu" @click="showProfile('basic')">基本資料</li>
+                                </ul>
+                            </transition>
+                        </li>
+                        <li @click="showProfile('order')">購買訂單</li>
+                        <li @click="showProfile('return')">退貨申請</li>
+                        <li @click="showProfile('collect')">收藏清單</li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </template>
@@ -313,5 +323,4 @@ export default {
 @import '@/assets/scss/layout/memberCenterBasic.scss';
 @import '@/assets/scss/layout/memberCenterOrder.scss';
 @import '@/assets/scss/layout/memberCenterReturn.scss';
-@import '@/assets/scss/layout/memberCenterCollect.scss';
-</style>
+@import '@/assets/scss/layout/memberCenterCollect.scss';</style>

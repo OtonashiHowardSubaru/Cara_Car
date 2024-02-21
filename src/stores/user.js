@@ -28,9 +28,8 @@ export default defineStore('userStore', {
     state: () => ({
         token: localStorage.getItem("token") || "",
         // token: '',   // 後端僅返回token(通行證/令牌)
-        userData: {} // 可以在login API中返回user資訊
-        
-        // name: '',
+        userData: {}, // 可以在login API中返回user資訊
+        name: '',
         // wallet: '',
     }),
 
@@ -63,33 +62,36 @@ export default defineStore('userStore', {
               localStorage.removeItem("token"); // 從 localStorage 中刪除 token。
             }
         },
-        updateName(payload) {
-            // 定義一個名為 updateName 的方法，接受一個 payload 作為參數。
-            this.name = payload; // 使用提供的 payload 更新存儲庫中的名稱。
-        },
-        // updateUserData(val) {
-        //     console.log(val);
-        //     // 不把全部資訊紀錄
-        //     this.userData = {
-        //         name: val.mem_name,
-        //         // email驗證狀況1|0
-        //         validation: val.mem_validation,
-        //         // 封鎖狀況1|0
-        //         state: val.mem_state,
-        //         // 如果有權限可以把權限角色記載資料庫
-        //         role: "editor",
-        //     };
-        //     localStorage.setItem("userData", JSON.stringify(this.userData));
+        // updateName(val) {
+        //     // 定義一個名為 updateName 的方法，接受一個 payload 作為參數。
+        //     this.name = val.m_name; // 使用提供的 payload 更新存儲庫中的名稱。
+        //     localStorage.setItem('userName',JSON.stringify(this.name));
         // },
-        updateUserData(payload) {
+        updateUserData(val) {
+            // console.log(val);
             this.userData = {
-                name: payload.mem_name,
-                validation: payload.mem_validation,
-                state: payload.mem_state,
+                id: val.member_id,
+                name: val.m_name,
+                phone: val.m_phone,
+                email: val.m_email,
+                birthday: val.m_birthday,
+                address: val.m_city+val.m_district+val.m_address,
+                state: val.m_state,
+                imgUrl: val.img_path,
+                // 如果有權限可以把權限角色記載資料庫
                 role: "editor",
             };
             localStorage.setItem("userData", JSON.stringify(this.userData));
         },
+        // updateUserData(payload) {
+        //     this.userData = {
+        //         name: payload.mem_name,
+        //         validation: payload.mem_validation,
+        //         state: payload.mem_state,
+        //         role: "editor",
+        //     };
+        //     localStorage.setItem("userData", JSON.stringify(this.userData));
+        // },
         checkUserData() {
             const storageUserData = localStorage.getItem("userData");
             console.log(Object.keys(this.userData).length);

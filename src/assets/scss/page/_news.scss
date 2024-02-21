@@ -145,10 +145,14 @@
                                 border: $bor2 solid $green;
                                 color: $whiteWord;
                             }
+                            &:first-child.active {
+                                background-color: $green;
+                                border: $bor2 solid $green;
+                                color: $whiteWord;
+                            }
                         }
-
-                        
                     }
+                    
                     &:nth-child(2) {
                         background-color: $navy;
                         border: $bor2 solid $navy;
@@ -160,6 +164,11 @@
                             color: $blackWord; 
 
                             &:hover {
+                                background-color: $navy;
+                                border: $bor2 solid $navy;
+                                color: $whiteWord;
+                            }
+                            &:nth-child(2).active {
                                 background-color: $navy;
                                 border: $bor2 solid $navy;
                                 color: $whiteWord;
@@ -176,6 +185,11 @@
                             border: $bor2 solid $grey_2;
                             color: $blackWord; 
                             &:hover {
+                                background-color: $redBean;
+                                border: $bor2 solid $redBean;
+                                color: $whiteWord;
+                            }
+                            &:nth-child(3).active {
                                 background-color: $redBean;
                                 border: $bor2 solid $redBean;
                                 color: $whiteWord;
@@ -207,7 +221,7 @@
             @media (min-width : 768px) {
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: space-between;
+                justify-content: start;
             }
 
             
@@ -222,7 +236,8 @@
 
                 @media (min-width : 768px) {
                     flex-basis: calc(33.33% - 25px);
-                    box-sizing: border-box;   
+                    box-sizing: border-box;
+                    margin: 20px 12px;
                 }
 
                 .newsCardImg {

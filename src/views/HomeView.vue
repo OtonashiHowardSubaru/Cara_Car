@@ -150,20 +150,18 @@ export default {
     closeLightbox() {
       this.lightBoxStore.closeLightbox()
     },
-    ...mapActions(userStore, ['checkLogin', 'updateToken']),
+    ...mapActions(userStore, ['checkLogin', 'updateToken','updateUserData']),
     logout() {
       // 調用pinia的updateToken
       const confirmLogout = confirm('確定要登出嗎？');
 
       if (confirmLogout) {
-        this.updateToken('')
-
-        //清除Token後回到登入頁
+        //清除token和userData
+        this.userStoreData.updateToken('')
+        this.userStoreData.updateUserData('')
+        //登入是燈箱沒有頁面就不跳轉頁面了
         // this.$router.push('/')
-      } else {
-
       }
-
     },
     handleClick(e) {
       if (e.target.id === 'loginOverlay') {
@@ -271,9 +269,9 @@ export default {
 
         // 沒有API先使用寫死資料
         this.updateUserData({
-          mem_name: lineNickname,
-          mem_validation: 1,
-          mem_state: 1
+          m_name: lineNickname,
+          m_validation: 1,
+          m_state: 1
         })
         this.$router.push('/')
       } catch (error) {

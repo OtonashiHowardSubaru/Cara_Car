@@ -74,28 +74,7 @@ export default {
         },
         // ...在JS中是展開運算符，可以把一組的東西變成單獨的元素或屬性；
         //在Vue.js中是展開對象的屬性，使用mapActions通常包含多個 action 函式的對象展開為函式的列表
-        ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),
-        // signin() {
-        //     axios.post(`${import.meta.env.VITE_CARA_URL}/memberCenterLogin.php`, {
-        //         username: this.username,
-        //         password: this.psw666
-        //     }, {
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //         .then(response => {
-        //             if (response.data && response.data.token) {
-        //                 localStorage.setItem('token', response.data.token)
-        //                 this.updateToken(response.data.token)
-        //                 // console.log(response.data.token);
-        //                 this.closeLightbox()
-        //                 this.$router.push('/')
-        //             }
-        //         })
-        //         .catch(error => console.error(error));
-        // },
-
+        ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData', 'checkUserData']),
         signin(){
             const bodyFormData = new FormData();
             bodyFormData.append('m_email', this.username);
@@ -110,14 +89,20 @@ export default {
                 }).then(res=>{
                 // console.log(res);
                     if(res && res.data){
-                        if(res.data.code == 1){
-                            this.updateToken(res.data.session_id)
-                            this.updateUserData(res.data.memInfo)
-                            alert('登入成功, 歡迎來到Cara-Car~')
-                            // this.$router.push('/')
-                            this.closeLightbox();
+                        
+                        if (res.data.code == 1) {
+                            // Check m_state value
+                            if (res.data.memInfo.m_state === 0) {
+                                alert('此帳號為禁用狀態,請聯繫管理人員哦QVQ');
 
-                        }else{
+                            } else if (res.data.memInfo.m_state === 1) {
+                                // Normal login flow for m_state = 1
+                                this.updateToken(res.data.session_id)
+                                this.updateUserData(res.data.memInfo)
+                                alert('登入成功, 歡迎來到Cara-Car~')
+                                this.closeLightbox();
+                            }
+                        } else {
                             alert('登入失敗, 請再試看看哦~')
                         }
                     }
@@ -205,9 +190,9 @@ export default {
 
                 // 沒有API先使用寫死資料
                 this.updateUserData({
-                    mem_name: lineNickname,
-                    mem_validation: 1,
-                    mem_state: 1
+                    m_name: lineNickname,
+                    m_validation: 1,
+                    m_state: 1
                 })
                 this.$router.push('/')
             } catch (error) {

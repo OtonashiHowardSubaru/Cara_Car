@@ -23,7 +23,7 @@
         object-fit: cover;
         position: absolute;
         top: -50px;
-        z-index: 2;
+        z-index: 1;
 
     }
 
@@ -197,7 +197,7 @@
             }
         }        
         .footerGame {
-            display: none;
+            // display: none;
 
             @media (min-width : 768px) {
                 display: block;

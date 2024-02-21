@@ -51,7 +51,7 @@
             <RouterLink class="RouterLink" to="/ShopInformation">> 門市資訊</RouterLink>
           </li>
           <li class="footerGame">
-            <RouterLink class="RouterLink" to="/Game">> 賽車小遊戲</RouterLink>
+            <RouterLink class="RouterLink" to="/Game">> 小遊戲</RouterLink>
           </li>
         </ul>
     </div>

@@ -72,7 +72,7 @@ export default {
             ],
         }
     },
-    created(){
+    created() {
         // 判斷有沒有登入過
         this.checkLogin()
     },
@@ -95,8 +95,8 @@ export default {
                 this.currentTitle = this.titlePh[$index].ph;
                 this.currentHoverIndexPh = $index;
             }
-            },
-            resetImageTitlePh() {
+        },
+        resetImageTitlePh() {
             this.currentHoverIndexPh = -1;
         },
         openLightbox() {
@@ -106,20 +106,17 @@ export default {
             this.lightBoxStore.closeLightbox()
         },
         ...mapActions(userStore, ['checkLogin', 'updateToken']),
-        logout(){
+        logout() {
             // 調用pinia的updateToken
             const confirmLogout = confirm('確定要登出嗎？');
 
-            if(confirmLogout){
-                this.updateToken('')
-                
-                //清除Token後回到登入頁
+            if (confirmLogout) {
+                //清除token和userData
+                this.userStoreData.updateToken('')
+                this.userStoreData.updateUserData('')
+                //登入是燈箱沒有頁面就不跳轉頁面了
                 // this.$router.push('/')
-            }else {
-
             }
-        
-            
         },
         handleClick(e) {
             if (e.target.id === 'loginOverlay') {
@@ -129,29 +126,29 @@ export default {
                 this.closeLightbox();
             }
         },
-        onScroll(){
+        onScroll() {
             const scrollTop = document.documentElement.scrollTop + document.body.scrollTop
             const headerDom = this.$refs.header
-            if(headerDom){
-                if(scrollTop >= 100){
-                    if(!headerDom.classList.contains('hidden')){
+            if (headerDom) {
+                if (scrollTop >= 100) {
+                    if (!headerDom.classList.contains('hidden')) {
                         headerDom.classList.add('hidden');
                     }
-                }else{
+                } else {
                     headerDom.classList.remove('hidden');
                 }
             }
         }
     },
-    mounted(){
-        document.addEventListener('scroll',this.onScroll);
+    mounted() {
+        document.addEventListener('scroll', this.onScroll);
     },
     computed: {
         isLoggedIn() {
-        return !!this.userStoreData.token
+            return !!this.userStoreData.token
+        },
     },
-    },
-    beforeDestroy(){
+    beforeDestroy() {
         document.removeEventListener('scroll', this.onScroll)
     },
 }
@@ -190,23 +187,23 @@ export default {
         </nav>
     </header>
     <!-- 手機板haeder -->
-            <ul class="indexHeaderNavPh">
-                <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
-                    <RouterLink :to="namePh[$index]">
-                        <img :src="getImageUrl(item.i)" class="indexHeaderButtonIconPh">
-                        <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
-                    </RouterLink>
-                </li>
-                <div class="linePh"></div>
-                <div class="indexHeaderLoginPh" v-if="!isLoggedIn">
-                    <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
-                        @click="openLightbox">
-                </div>
-                <div class="indexHeaderLoginPh" v-else>
-                    <img src="../assets/imgs/nav/nav-icon-Logout-Ph.png" alt="logout" class="indexHeaderButtonLoginPh"
-                        @click="logout">
-                </div>
-            </ul>
+    <ul class="indexHeaderNavPh">
+        <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
+            <RouterLink :to="namePh[$index]">
+                <img :src="getImageUrl(item.i)" class="indexHeaderButtonIconPh">
+                <div class="indexHeaderButtonPhP">{{ titlePh[$index].ph }}</div>
+            </RouterLink>
+        </li>
+        <div class="linePh"></div>
+        <div class="indexHeaderLoginPh" v-if="!isLoggedIn">
+            <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
+                @click="openLightbox">
+        </div>
+        <div class="indexHeaderLoginPh" v-else>
+            <img src="../assets/imgs/nav/nav-icon-Logout-Ph.png" alt="logout" class="indexHeaderButtonLoginPh"
+                @click="logout">
+        </div>
+    </ul>
     <Transition name="fade">
         <LoginBox v-if="lightBoxStore.showLightbox" />
     </Transition>

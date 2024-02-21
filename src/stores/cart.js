@@ -1,48 +1,133 @@
-import{defineStore} from 'pinia';
+import { defineStore } from 'pinia';
 
-export const useCartStore = defineStore('cartStore',{
-    state:()=>{
-        return{
-            cartList: JSON.parse(localStorage.getItem("items")) || [],
-            userInput:'',
-
-
-        }
+export default defineStore("cartStore", {
+    state: () => ({
+        cartItems: [],
+        
+    }),
+    getters: {
+        subtotal() {
+        return this.cartItems.reduce(
+            (total, item) => total + item.price * item.quantity,0
+        );
+        // let total = 0;
+        // for (let item of this.cartItems) {
+        //     total += item.price * item.quantity;
+        // }
+        // return total;
+        },
+        subFreight() {
+        const baseSubFreight = 120;
+        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+        return baseSubFreight * totalQuantity;
+        },
+        total() {
+        return this.subtotal + this.subFreight;
+        },
     },
-    actions:{
-        addToCart(product){
-            // console.log('Adding to cart:', product);
-            // if (!product || typeof product.prod_img1 === 'undefined') {
-            // console.error('Invalid product object or missing prod_img1 property');
-            // return;
-            // }
+    actions: {
+        getLocalCartData(){
+            let localCartData = localStorage["cartItems"];
+            if(localCartData){
+                this.cartItems = JSON.parse(localCartData);
+            }
+        },
+        // initializeCart() {
+        // const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+        // this.cartItems = cartData;
+        // },
 
-            //判斷商品是否已在購物車
-            const index = this.cartList.findIndex(p=>p.id===product.id)
-            if(index !== -1){
-                const cartItem = this.cartList.find(item=>item.id === product.id)
-                if(cartItem){
-                    cartItem.quantity += product.quantity;
-                }
+        //加入購物車
+        addToCart(thisProduct, qtyValue = 1){
+            const existingProductIndex = this.cartItems.findIndex((item) => {
+                return item.id == thisProduct.product.id;
+            });
+            if (existingProductIndex < 0){
+                this.cartItems.push({
+                    id: thisProduct.pro_id,
+                    name: thisProduct.pro_name,
+                    price: thisProduct.pro_price,
+                    imageUrl: getProductImgSrc(ImgsName[0].img_name),
+                    quantity: qtyValue,
+                })
             }else{
-                this.cartList.push(product)
-            };
-            this.saveLocalstorage();
-    },
-    newQuantityUpdate(id, action){
-        //判斷是否已在購物車中
-        const cartItem = this.cartList.find(item => item.id === id)
-        if(!cartItem) return;
-        if(action === 'increment'){
-            cartItem.quantity += 1
-        }else if(action === 'decrement'&& cartItem.quantity>1){
-            cartItem.quantity -= 1
-        }
-        this.saveLocalstorage();
-    },
-    saveLocalstorage(){
-        localStorage.setItem("item",JSON.stringify(this.cartList))
-    },
-}
-})
+                const oldCount = this.cartItems[existingProductIndex]["quantity"];
+                this.cartItems[existingProductIndex] = {
+                    ...this.cartItems[existingProductIndex],
+                    quantity: oldCount + qtyValue,
+                };
+            }
+            localStorage["cartItems"] = JSON.stringify(this.cartItems);
+            console.log(this.cartItems);
+            // const product = {
+            // id: this.thisProduct.pro_id,
+            // name: this.thisProduct.pro_name,
+            // price: this.thisProduct.pro_price,
+            // imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
+            // quantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
+            // };
+            // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
+            // let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
+            // 將當前商品添加到購物車中，重複商品時則更新數量
+            // let existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+            // if (existingProductIndex !== -1) {
+            // // 如果購物車中已有相同商品，則更新其數量
+            // cartItems[existingProductIndex].quantity += product.quantity;
+            // } else {
+            // // 若不是則將商品添加到購物車
+            // cartItems.push(product);
+            // };
+
+            // cartItems.push(product);
+            // 將更新後的購物車數據保存到本地端
+            // localStorage.setItem('cart', JSON.stringify(cartItems));
+            
+            // alert('商品已加入到購物車！');
+        },
+        reduceFromCart(thisProduct){
+            const productIndex = this.cartItems.findIndex(
+                (item) => item.id == thisProduct.id
+            );
+            if(this.cartItems[productIndex]){
+                if(this.cartItems[productIndex]["quantity"]>1){
+                    this.cartItems[productIndex]={
+                        ...this.cartItems[productIndex],
+                        quantity: this.cartItems[productIndex]["quantity"] - 1,
+                    };
+                }
+            }
+            localStorage["cartItems"] = JSON.stringify(this.cartItems);
+        },
+        increaseFromCart(thisProduct){
+            const productIndex = this.cartItems.findIndex(
+                (item) => item.id == thisProduct.id
+            );
+            if(this.cartItems[productIndex]){
+                if(this.cartItems[productIndex]["quantity"]>1){
+                    this.cartItems[productIndex]={
+                        ...this.cartItems[productIndex],
+                        quantity: this.cartItems[productIndex]["quantity"] + 1,
+                    };
+                }
+            }
+            localStorage["cartItems"] = JSON.stringify(this.cartItems);
+        },
+        clearCartData(){
+            this.cartItems = [];
+        },
+
+
+        // updateQuantity(index, newQuantity) {
+        // if (newQuantity < 1) {
+        //     this.cartItems.splice(index, 1);
+        // } else {
+        //     this.cartItems[index].quantity = newQuantity;
+        // }
+        // this.saveCartData();
+        // },
+        // saveCartData() {
+        // localStorage.setItem('cart', JSON.stringify(this.cartItems));
+        // },
+    },
+});
