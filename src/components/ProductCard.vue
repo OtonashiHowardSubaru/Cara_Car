@@ -6,7 +6,6 @@ export default {
   },
   props:[ 'displayData', ],
   created() {
-    console.log(this.displayData)
   },
   methods: {
     // 取得圖片的路徑函式

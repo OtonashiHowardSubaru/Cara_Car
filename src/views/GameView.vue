@@ -125,7 +125,7 @@ export default {
     </div>
     <div class="container">
       <div class="row">
-        <div class="gameMenu col-12" v-if="!(active)">
+        <div class="gameMenu col-9" v-if="!(active)">
           <div class="main_art">
             <h2 class="slogan">來測驗看看你最適合什麼樣的小汽車吧 !</h2>
             <img src="@/assets/imgs/game/game_main_art.png" alt="最適合你的車車">
@@ -134,7 +134,7 @@ export default {
             <button id="btnStartGame" @click="startGame">開始測驗</button>
           </div>
         </div>
-        <div class="quetionGame col-12 col-md-10" v-if="active && process < questionBank.length">
+        <div class="quetionGame col-8" v-if="active && process < questionBank.length">
           <div class="quetionBox">
             <h3>Quetion {{process + 1}}</h3>
             <p>{{ questionBank[process].title }}</p>
@@ -145,10 +145,10 @@ export default {
             <button @click="clickanswer(0)">{{questionBank[process].answer3}}</button>
           </div>
         </div>
-        <div v-if="active && process >= questionBank.length" class="finishGame">
+        <div v-if="active && process >= questionBank.length" class="col-8 finishGame">
           <h3>\ 看看這個是不是你喜歡的吧！ /</h3>
           <ProCardSwiper
-          :displayData="displayData"
+          :displayData="displayData.slice(0,3)"
           />
         </div>
       </div>
