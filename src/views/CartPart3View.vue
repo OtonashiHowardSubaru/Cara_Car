@@ -209,7 +209,75 @@ methods: {
             <p class="cartCountTotal">合計金額：$3,500</p>
         </section> -->
 
+        <div class="orderList">
+            <div class="listTitle">
+                <h1>訂單資訊</h1>
+            </div>
+            <div class="listContent">
+                <div class="left">
+                    <ul>
+                        <div class="row">
+                            <li class="order">訂單編號</li>
+                            <span>111</span>
+                        </div>
+                        <div class="row">
+                            <li class="order">訂單日期</li>
+                            <span>2024.02.21</span>
+                        </div>
+                        <div class="row">
+                            <li class="order">付款方式</li>
+                            <span>線上信用卡</span>
+                        </div>
+                        <div class="row">
+                            <li class="order">訂單狀態</li>
+                            <span>未出貨</span>
+                        </div>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul>
+                        <div class="row">
+                            <li class="order">收件人</li>
+                            <span>阿明</span>
+                        </div>
+                        <div class="row">
+                            <li class="order">連絡電話</li>
+                            <span>0923736473</span>
+                        </div>
+                        <div class="row">
+                            <li class="order">配送地址</li>
+                            <span>桃園市中壢區復興路46號8樓</span>
+                        </div>
+                        <div class="row">
+                            <li class="order">備註訊息</li>
+                            <span>無</span>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="count">
+                <span>訂單金額 : </span>
+            </div> -->
+        </div>
+
         <section class="cartFunction">
+            <!-- 這裡是商品內容 -->
+            <div class="productCard" v-for="(item, index) in cartItems" :key="index">
+                <img :src="(item.imageUrl)" alt="ProductImage">
+                    <div class="proCardP">
+                        <p class="pro_name">{{ item.name }}</p>
+                        <p class="pro_price">${{ item.price }}</p>
+                    </div>
+                    <!-- <NumberSelect
+                    :qtyValue="item.quantity" @change="updateQuantity(index, $event)"
+                    /> -->
+                    <div class="number_select">
+                        <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index,-1)">
+                        <input type="text" name="quantity" :value="item.quantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
+                        <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
+                    </div>
+                    <p class="proCount">{{ item.price*item.quantity}}</p>
+            </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
                 <!-- 這裡要算小計 -->
@@ -251,5 +319,57 @@ methods: {
 
 #process3{
     color: $blackWord;
+}
+.orderList{
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 60px;
+    h1{
+        font-size: 20px;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+    .left{
+        width: 50%;
+        margin-left: 10px;
+    }
+    .right{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+    .listContent{
+        display: flex;
+        border-bottom: 1px solid #222;
+        padding-bottom: 15px;
+        // justify-content: space-between;
+        .row{
+            display: flex;
+            align-items: center;
+        }
+        li{
+            font-weight: 600;
+            width: 70px;
+            line-height: 30px;
+            margin-right: 35px;
+        }
+    }
+    .count{
+        span{
+            border: none;
+        }
+    }
+}
+.cartFunction{
+    border-radius: 20px;
+    padding: 50px 0 80px;
+    width: 50%;
+    margin: 0 auto;
+    background-color: $grey_1;
+    .productCard{
+        padding-bottom: 20px;
+        border-bottom: 1px solid #222;
+    }
 }
 </style>

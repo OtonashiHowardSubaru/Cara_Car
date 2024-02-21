@@ -1,6 +1,6 @@
 .cart{
     width: 100%;
-    margin: 0 0 100px 0;
+    margin: 0 0 50px 0;
 }
 .cartTitle{
     display: flex;
@@ -26,7 +26,19 @@
 }
 .cartBird{
     display: none;
-    
+}
+.notInCart {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.notInCartP{
+    display: inline-block;
+    margin-top: 10px;
+    letter-spacing: 3px;
+
 }
 .cartProcess1{
     display: flex;
@@ -346,7 +358,7 @@ button{
     width:80%;
     background-color: $grey_2;
     border-radius: 18px;
-    margin: 10% auto;
+    margin: 10% auto 20% auto;
     padding: 3% 0;
     cursor: pointer;
 }
@@ -462,24 +474,27 @@ button{
         padding: 2% 3% 2% 0;
         font-size: $mh5;
     }
+    .cartMatter{
+        margin: 10% auto 13% auto;
+    }
     .cartButton{
         position: relative;
         // margin-top: 20px;
-    }
-    button{
-        border-style: none;
-        border-radius: 15px;
-        font-size: $mh5;
-        width: 20%;
-        color: #fff;
-        letter-spacing: 3px;
+        button{
+            border-style: none;
+            border-radius: 15px;
+            font-size: $mh5;
+            width: 25%;
+            color: #fff;
+            letter-spacing: 3px;
+        }
     }
     #goToProduct{
         position: absolute;
-        left:48%;
+        left:38%;
         bottom: 5%;
         border: 2px solid $grass_2;
-        padding: 12px 46px;
+        // padding: 12px 40px;
         background-color: #fff;
         color: $grass_1;
         font-weight: 550;
@@ -490,7 +505,7 @@ button{
         right: 10%;
         bottom: 5%;
         background-color: $grass_2;
-        padding: 14px 50px;
+        // padding: 14px 40px;
         cursor: pointer;
     }
     .receiptnformation{

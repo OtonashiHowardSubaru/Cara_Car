@@ -1,13 +1,31 @@
 <template>
-    <button @click="show = !show">客服小幫手</button>
+    <button @click="show = !show" class="chatBoxBird"><img src="../../assets/imgs/draw/ChatBoxBird.png" alt=""></button>
     <Transition>
         <!-- 消息顯示區域 -->
-        <div id="app" >
+        <!-- <div v-if="show" :class="{'--is-show': show}"> -->
+        <div v-if="show" class="afterChatBird">
+            <section class="chatBoxTop">
+                <div class="chatBoxTitle">Cara Car 客服小幫手</div>
+                <span class="close" @click.stop="closeBox">&times;</span>
+            </section>
             <section ref="chatArea" class="chat-area">
-                <p v-for="message in messages" :key="message.body" class="message"
-                    :class="{ 'message-out': message.author === 'you', 'message-in': message.author !== 'you' }">
-                    {{ message.body }}
-                </p>
+                <div class="newsSpeaker">
+                    <i class="fa-solid fa-bullhorn" style="color: #6f7f9b;"></i>
+                    <div class="marqueee">
+                        <div class="marquee">
+                            <p>\Cara Car快報/\Cara Car快報/\Cara Car快報/\Cara Car快報/\Cara Car快報/</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="newsSpeaker"></div>
+                <div v-for="message in messages" :key="message.body" class="HeadMess">
+                    <div class="avatar"><img src="../../assets/imgs/draw/ChatBoxAvatar.png" alt=""></div>
+                    <p class="message"
+                        :class="{ 'message-out': message.author === 'you', 'message-in': message.author !== 'you' }">
+                        {{ message.body }}
+                    </p>
+                    <!-- <div v-if="isUser" >ICON</div> -->
+                </div>
             </section>
             <section class="chat-inputs">
                 <form @submit.prevent="sendMessage('in')" id="person1-form">
@@ -19,7 +37,7 @@
                 <form @submit.prevent="sendMessage('out')" id="person2-form">
                     <label for="person2-input"></label>
                     <input v-model="youMessage" id="person2-input" type="text" placeholder="Type your message">
-                    <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+                    <button type="submit"><i class="fa-regular fa-paper-plane fa-xl"></i></button>
                 </form>
             </section>
         </div>
@@ -48,6 +66,8 @@ export default {
                 author: 'Cara',
             },
         ]);
+
+        const chatArea = ref()
 
         const sendMessage = (direction) => {
             if (!youMessage.value && !CaraMessage.value) {
@@ -84,8 +104,7 @@ export default {
             }
 
             nextTick(() => {
-                const messageDisplay = this.$refs.chatArea;
-                messageDisplay.scrollTop = messageDisplay.scrollHeight;
+                chatArea.value.scrollTop = chatArea.value.scrollHeight;
             });
         };
 
@@ -94,6 +113,8 @@ export default {
         };
 
         return {
+            chatArea,
+            show,
             CaraMessage,
             youMessage,
             messages,
@@ -101,6 +122,7 @@ export default {
             clearAllMessages,
         };
     },
+
 };
 </script>
   

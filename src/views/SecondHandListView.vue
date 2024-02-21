@@ -3,24 +3,15 @@ import axios from 'axios'; //引入函式庫
 import CardShProcess from "@/components/card/CardShProcess.vue";
 import MainHeader from '@/components/MainHeader.vue';
 import PageNumber from "@/components/btn/PageNumber.vue"
-import ProductCard from "@/components/ProductCard.vue"
+import shProductCard from "@/components/shProductCard.vue"
 import PriceSorter from '@/components/PriceSorter.vue';
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 
-import shProduct01 from '@/assets/imgs/product/sh_products/product001.jpg';
-import shProduct02 from '@/assets/imgs/product/sh_products/product002.jpg';
-import shProduct03 from '@/assets/imgs/product/sh_products/product003.jpg';
-import shProduct04 from '@/assets/imgs/product/sh_products/product004.jpg';
-import shProduct05 from '@/assets/imgs/product/sh_products/product005.jpg';
-import shProduct06 from '@/assets/imgs/product/sh_products/product006.jpg';
-import shProduct07 from '@/assets/imgs/product/sh_products/product007.jpg';
-import shProduct08 from '@/assets/imgs/product/sh_products/product008.jpg';
-import shProduct09 from '@/assets/imgs/product/sh_products/product009.jpg';
   export default {
     components:{
-      CardShProcess,MainHeader,PageNumber,ProductCard,PriceSorter,GreenBird,BlueBird,YellowBird,shProduct09,shProduct08,shProduct07,shProduct06,shProduct05,shProduct04,shProduct03,shProduct02,shProduct01
+      CardShProcess,MainHeader,PageNumber,shProductCard,PriceSorter,GreenBird,BlueBird,YellowBird,
     },
     data(){
       return {
@@ -96,7 +87,7 @@ import shProduct09 from '@/assets/imgs/product/sh_products/product009.jpg';
     created() {
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-      axios.get(`${import.meta.env.VITE_PHP_URL}shProductList.php`)
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/shProductList.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           console.log(response.data)
@@ -117,11 +108,11 @@ import shProduct09 from '@/assets/imgs/product/sh_products/product009.jpg';
       },
       handleSortChange(newSort){
           if (newSort === "0") {
-            this.sh_product_list = this.responseData
+            this.displayData = this.responseData
           } else if (newSort === "desc") {
-            this.sh_product_list.sort((a, b) => b.prod_price - a.prod_price);
+            this.displayData.sort((a, b) => b.sh_pro_price - a.sh_pro_price);
           } else if (newSort === "asc"){
-            this.sh_product_list.sort((a, b) => a.prod_price - b.prod_price);
+            this.displayData.sort((a, b) => a.sh_pro_price - b.sh_pro_price);
           };
       },
       currentSidebar(item) {
@@ -148,10 +139,8 @@ import shProduct09 from '@/assets/imgs/product/sh_products/product009.jpg';
   <MainHeader />
   
   <div class="sh_pro_list_title">
-      <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
-      <h1><img src="../assets/imgs/product/sh_product_list_title.png" alt="used car 二手車"></h1>
-      
-    </div>
+      <h1>二手專區</h1>
+  </div>
   <div class="container">
     <div class="row">
       <div class="store_name col-12">
@@ -172,8 +161,8 @@ import shProduct09 from '@/assets/imgs/product/sh_products/product009.jpg';
       </div>
       
       <div class="sh_pro_card_list col-9 col-md-10">
-        <ProductCard
-        :displayData = this.displayData
+        <shProductCard
+        :displayData = "displayData"
         />
       </div>
     </div>

@@ -72,7 +72,7 @@ const router = createRouter({
       meta:{title: '二手專區 | Cara Car',}
     },
     {
-      path: '/SecondHand',
+      path: '/SecondHand/:sh_pro_id',
       name: 'SecondHand',
       component: () => import('@/views/SecondHandView.vue'),
       meta:{title: '二手專區 | Cara Car',}
