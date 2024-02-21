@@ -11,6 +11,17 @@
             }
         }
     }
+    //遊戲特化調整
+    .recommand_box{
+        .product_card{
+            width: 50%;
+        }
+        @media (min-width:768px) {
+            .product_card{
+                width: 100%;
+            }
+        }
+    }
 
 
 //商品卡css起點

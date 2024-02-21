@@ -13,6 +13,7 @@ import qs from 'qs'
 export default {
     data() {
         return {
+            userStoreData: userStore(),
             lightBoxStore: lightBoxStore(),
             username: '',
             psw666: '',
@@ -97,10 +98,11 @@ export default {
 
                             } else if (res.data.memInfo.m_state === 1) {
                                 // Normal login flow for m_state = 1
-                                this.updateToken(res.data.session_id)
-                                this.updateUserData(res.data.memInfo)
+                                this.userStoreData.updateToken(res.data.session_id)
+                                this.userStoreData.updateUserData(res.data.memInfo)
                                 alert('登入成功, 歡迎來到Cara-Car~')
                                 this.closeLightbox();
+                                location.reload()
                             }
                         } else {
                             alert('登入失敗, 請再試看看哦~')
