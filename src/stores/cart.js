@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
+import Swal from 'sweetalert2';
 
 export default defineStore("cartStore", {
     state: () => ({
         cartItems: [],
-        
+        Swal,
     }),
     getters: {
         subtotal() {
@@ -40,14 +41,14 @@ export default defineStore("cartStore", {
         //加入購物車
         addToCart(thisProduct, qtyValue = 1){
             const existingProductIndex = this.cartItems.findIndex((item) => {
-                return item.id == thisProduct.product.id;
+                return item.id === product.id;
             });
             if (existingProductIndex < 0){
                 this.cartItems.push({
                     id: thisProduct.pro_id,
                     name: thisProduct.pro_name,
                     price: thisProduct.pro_price,
-                    imageUrl: getProductImgSrc(ImgsName[0].img_name),
+                    // imageUrl: getProductImgSrc(ImgsName[0].img_name),
                     quantity: qtyValue,
                 })
             }else{
@@ -83,7 +84,11 @@ export default defineStore("cartStore", {
             // 將更新後的購物車數據保存到本地端
             // localStorage.setItem('cart', JSON.stringify(cartItems));
             
-            // alert('商品已加入到購物車！');
+            return  Swal.fire({
+                    title: '已加入購物車!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                })
         },
         reduceFromCart(thisProduct){
             const productIndex = this.cartItems.findIndex(
@@ -104,7 +109,7 @@ export default defineStore("cartStore", {
                 (item) => item.id == thisProduct.id
             );
             if(this.cartItems[productIndex]){
-                if(this.cartItems[productIndex]["quantity"]>1){
+                if(this.cartItems[productIndex]){
                     this.cartItems[productIndex]={
                         ...this.cartItems[productIndex],
                         quantity: this.cartItems[productIndex]["quantity"] + 1,
