@@ -21,8 +21,8 @@ import product07 from '@/assets/imgs/product/product_7.png'
 import product08 from '@/assets/imgs/product/product_8.png'
 import product09 from '@/assets/imgs/product/product_9.png'
 
-// import { mapState, mapActions } from "pinia";
-// import cartStore from "@/stores/cart";
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 
 export default {
 components:{
@@ -31,10 +31,11 @@ components:{
 },
 data(){
     return {
-        qtyValue:'',
+        qtyValue: 0,
         // count: 1,
         expanded:false,
-        cartItems: [],
+        // cartItems: [],
+        cartStore: cartStore(),
         city:[
             {c:'台北市'},
             {c:'新北市'},
@@ -113,49 +114,50 @@ data(){
             linkwhere:"/Product"
         },
         ],
-        
+        cartStore: cartStore(),
     }
 },
 created() {
+    this.getLocalCartData();
    // 從LocalStorage中讀取購物車資料
-    const cartData = JSON.parse(localStorage.getItem('cart'));
-    if (cartData) {
-        this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
-    }; 
+    // const cartData = JSON.parse(localStorage.getItem('cart'));
+    // if (cartData) {
+    //     this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
+    // }; 
     // this.getLocalCartData();
 
 },
 computed: {
-    // ...mapState(cartStore,[
-    //     "cartItems",
-    //     "subtotal",
-    //     "subFreight",
-    //     "total",
-    // ]),
+    ...mapState(cartStore,[
+        "cartItems",
+        "subtotal",
+        "subFreight",
+        "total",
+    ]),
 
-    subtotal() {
-    let total = 0;
-    for (let item of this.cartItems) {
-      total += item.price * item.quantity;
-    }
-    return total;
-    },
-    subFreight(){
-        const baseSubFreight = 120;
-        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
-        return baseSubFreight * totalQuantity;
-    },
-    total(){
-        return this.subtotal + this.subFreight;
-    },
+    // subtotal() {
+    // let total = 0;
+    // for (let item of this.cartItems) {
+    //   total += item.price * item.quantity;
+    // }
+    // return total;
+    // },
+    // subFreight(){
+    //     const baseSubFreight = 120;
+    //     const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    //     return baseSubFreight * totalQuantity;
+    // },
+    // total(){
+    //     return this.subtotal + this.subFreight;
+    // },
 },
 methods: {
-    handleQtyChange(index,increment) {
-        let qtyValue = parseInt(this.cartItems[index].quantity);
-        qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
-        // this.$refs['qtyInput_' + index][0].value = qtyValue;
-        this.updateQuantity(index, qtyValue)
-    },
+    // handleQtyChange(index,increment) {
+    //     let qtyValue = parseInt(this.cartItems[index].quantity);
+    //     qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
+    //     // this.$refs['qtyInput_' + index][0].value = qtyValue;
+    //     this.updateQuantity(index, qtyValue)
+    // },
     toggleCartContent(){
         this.expanded = !this.expanded;
     },
@@ -171,19 +173,20 @@ methods: {
         }
         this.saveCartData();
     },
-    updateTotalPrice(index){
-        const item = this.cartItems[index];
-        item.total = item.price * item.quantity;
-    },
-    saveCartData() {
-        localStorage.setItem('cart', JSON.stringify(this.cartItems));
-    },
-    // ...mapActions(cartStore, [
-    //     "reduceFromCart",
-    //     "increaseFromCart",
-    //     "getLocalCartData",
-
-    // ]),
+    // updateTotalPrice(index){
+    //     const item = this.cartItems[index];
+    //     item.total = item.price * item.quantity;
+    // },
+    // saveCartData() {
+    //     localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    // },
+    ...mapActions(cartStore, [
+        "reduceFromCart",
+        "increaseFromCart",
+        "getLocalCartData",
+        "addToCart",
+        "getProductImgSrc",
+    ]),
 
 },
 }
@@ -192,6 +195,7 @@ methods: {
 <template>
     <MainHeader />
     <main>
+        <!-- {{ this.cartStore.ImgsName }} -->
         <section class="cart">
             <div class="cartTitle">
                 <h2>購物車
@@ -240,9 +244,9 @@ methods: {
                     :qtyValue="item.quantity" @change="updateQuantity(index, $event)"
                     /> -->
                     <div class="number_select">
-                        <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index,-1)">
+                        <input type="button" value="-" class="qtyMinus" @click="reduceFromCart(item)">
                         <input type="text" name="quantity" :value="item.quantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
-                        <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
+                        <input type="button" value="+" class="qtyPlus" @click="increaseFromCart(item)">
                     </div>
                     <p class="proCount">{{ item.price*item.quantity}}</p>
             </div>

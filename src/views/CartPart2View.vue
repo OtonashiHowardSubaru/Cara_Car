@@ -22,6 +22,7 @@ import product08 from '@/assets/imgs/product/product_8.png'
 import product09 from '@/assets/imgs/product/product_9.png'
 
 import apiInstance from '@/stores/auth'
+import userStore from '@/stores/user'
 
 export default {
 components:{
@@ -40,6 +41,8 @@ data(){
         count: 1,
         expanded:false,
         // cartItems: [],
+        memInfo:[],
+        userStoreData:userStore(),
         city:[
             {c:'台北市'},
             {c:'新北市'},
@@ -122,6 +125,7 @@ data(){
     }
 },
 created() {
+    this.axiosGet()
    // 從LocalStorage中讀取購物車資料
     const cartData = JSON.parse(localStorage.getItem('cart'));
     if (cartData) {
@@ -146,6 +150,16 @@ computed: {
     },
 },
 methods: {
+    axiosGet(){
+        axios.get(`${import.meta.env.VITE_CARA_URL}/back/backMember.php`)
+        .then(res=>{
+            this.memInfo = res.data
+            console.log(this.memInfo);
+        })
+        .catch(error=> {
+            console.error("Error:", error);
+        });
+    },
     handleQtyChange(index,increment) {
         let qtyValue = parseInt(this.cartItems[index].quantity);
         qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
@@ -234,6 +248,7 @@ methods: {
             </div>
 
         </section>
+        {{ this.userStoreData.userData.m_name }}
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
@@ -241,9 +256,9 @@ methods: {
                     <span class="informationTitle2"><input type="checkbox" class="cartCheckbox">同會員資料</span>
                 </span>
                 <p class="cartInputTitle">收件人姓名</p>
-                <input v-model="name" type="text" name="name" class="cartInput">
+                <input v-model="memInfo.m_name" type="text" name="name" class="cartInput">
                 <p class="cartInputTitle">連絡電話</p>
-                <input v-model="phone" type="tel" minlength="10" maxlength="10" class="cartInput">
+                <input v-model="memInfo.m_phone" type="tel" minlength="10" maxlength="10" class="cartInput">
                 <p class="cartInputTitle">收件地址</p>
                 <div class="col66">
                     <select name="city" id="city" >

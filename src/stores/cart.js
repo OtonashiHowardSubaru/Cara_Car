@@ -4,7 +4,8 @@ import Swal from 'sweetalert2';
 export default defineStore("cartStore", {
     state: () => ({
         cartItems: [],
-        Swal,
+        // ImgsName: [],
+        // Swal,
     }),
     getters: {
         subtotal() {
@@ -27,10 +28,15 @@ export default defineStore("cartStore", {
         },
     },
     actions: {
+        getProductImgSrc(imgName){
+            return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+        },
         getLocalCartData(){
-            let localCartData = localStorage["cartItems"];
+            let cartImg = localStorage.getItem("cartImg")
+            let localCartData = localStorage.getItem("cartItems");
             if(localCartData){
                 this.cartItems = JSON.parse(localCartData);
+                this.cartImg = JSON.stringify(cartImg);
             }
         },
         // initializeCart() {
@@ -39,26 +45,29 @@ export default defineStore("cartStore", {
         // },
 
         //加入購物車
-        addToCart(thisProduct, qtyValue = 1){
+        addToCart(thisProduct, ImgsName, qtyValue = 1){
             const existingProductIndex = this.cartItems.findIndex((item) => {
-                return item.id === product.id;
+                return item.id === thisProduct.pro_id;
             });
-            if (existingProductIndex < 0){
+            if (existingProductIndex === -1){
                 this.cartItems.push({
                     id: thisProduct.pro_id,
                     name: thisProduct.pro_name,
                     price: thisProduct.pro_price,
-                    // imageUrl: getProductImgSrc(ImgsName[0].img_name),
+                    // imageUrl:ImgsName.img_id,
+                    imageUrl:ImgsName.img_name,
                     quantity: qtyValue,
                 })
             }else{
+                // this.cartItems[existingProductIndex].quantity += qtyValue;
+
                 const oldCount = this.cartItems[existingProductIndex]["quantity"];
                 this.cartItems[existingProductIndex] = {
                     ...this.cartItems[existingProductIndex],
                     quantity: oldCount + qtyValue,
                 };
             }
-            localStorage["cartItems"] = JSON.stringify(this.cartItems);
+            localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
             console.log(this.cartItems);
             // const product = {
             // id: this.thisProduct.pro_id,
@@ -102,7 +111,7 @@ export default defineStore("cartStore", {
                     };
                 }
             }
-            localStorage["cartItems"] = JSON.stringify(this.cartItems);
+            localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
         },
         increaseFromCart(thisProduct){
             const productIndex = this.cartItems.findIndex(
@@ -116,7 +125,7 @@ export default defineStore("cartStore", {
                     };
                 }
             }
-            localStorage["cartItems"] = JSON.stringify(this.cartItems);
+            localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
         },
         clearCartData(){
             this.cartItems = [];
