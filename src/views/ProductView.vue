@@ -1,3 +1,4 @@
+
 <script>
   import axios from 'axios'; //引入函式庫
   import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
@@ -8,15 +9,10 @@
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
   import Swal from 'sweetalert2';
 
-  // import { mapState, mapActions } from "pinia";
-  // import cartStore from "@/stores/cart";
+  import { mapState, mapActions } from "pinia";
+  import cartStore from "@/stores/cart";
 
   export default{
-  //   setup() {    
-  //   return {
-  //     cartStore
-  //   };
-  // },
     components:{
         ProCardSwiper1,
         ProCardSwiper2,
@@ -36,11 +32,11 @@
           qtyValue: '',
         }
     },
-    // computed:{
-    //   nodata(){
-    //     return this.thisProduct && this.thisProduct.pro_id;
-    //   }
-    // },
+    computed:{
+      ...mapState(cartStore,
+        ['cartItems']
+      )
+    },
     created() {//在頁面載入時同時載入function
       this.fetchData()
     },
@@ -108,39 +104,39 @@
         this.qtyValue = thisProductQty;
       },
       //加入購物車
-      addToCart(){
-        const product = {
-          id: this.thisProduct.pro_id,
-          name: this.thisProduct.pro_name,
-          price: this.thisProduct.pro_price,
-          imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
-          quantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
-        };
-        // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
-        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      // addToCart(){
+      //   const product = {
+      //     id: this.thisProduct.pro_id,
+      //     name: this.thisProduct.pro_name,
+      //     price: this.thisProduct.pro_price,
+      //     imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
+      //     quantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
+      //   };
+      //   // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
+      //   let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // 將當前商品添加到購物車中，重複商品時則更新數量
-        let existingProductIndex = cartItems.findIndex(item => item.id === product.id);
-        if (existingProductIndex !== -1) {
-          // 如果購物車中已有相同商品，則更新其數量
-          cartItems[existingProductIndex].quantity += product.quantity;
-        } else {
-          // 若不是則將商品添加到購物車
-          cartItems.push(product);
-        };
+      //   // 將當前商品添加到購物車中，重複商品時則更新數量
+      //   let existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+      //   if (existingProductIndex !== -1) {
+      //     // 如果購物車中已有相同商品，則更新其數量
+      //     cartItems[existingProductIndex].quantity += product.quantity;
+      //   } else {
+      //     // 若不是則將商品添加到購物車
+      //     cartItems.push(product);
+      //   };
 
-        // cartItems.push(product);
-        // 將更新後的購物車數據保存到本地端
-        localStorage.setItem('cart', JSON.stringify(cartItems));
+      //   // cartItems.push(product);
+      //   // 將更新後的購物車數據保存到本地端
+      //   localStorage.setItem('cart', JSON.stringify(cartItems));
 
-        // alert('商品已加入到購物車！');
-        return  Swal.fire({
-          title: '已加入購物車!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        })
-      },
-      // ...mapActions(cartStore,["addToCart"]),
+      //   // alert('商品已加入到購物車！');
+      //   return  Swal.fire({
+      //     title: '已加入購物車!',
+      //     icon: 'success',
+      //     confirmButtonText: 'OK',
+      //   })
+      // },
+      ...mapActions(cartStore,["addToCart"]),
       // addToCart(){
       //   this.addToCart({ 
       //     thisProduct: this.thisProduct, 
@@ -164,8 +160,6 @@
 <MainHeader />
 <main class="container">
   <div class="row">
-    <!-- <div v-if="item" :product="item" @addCard="addCart">
-    </div> -->
     <!-- <div v-for="product in products" :key="product.id"></div> -->
     <div class="col-12 col-md-12 pro_title" >
       <h1>{{ thisProduct.pro_name }}</h1>

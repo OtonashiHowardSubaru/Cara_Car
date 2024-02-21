@@ -21,6 +21,8 @@ import product07 from '@/assets/imgs/product/product_7.png'
 import product08 from '@/assets/imgs/product/product_8.png'
 import product09 from '@/assets/imgs/product/product_9.png'
 
+import apiInstance from '@/stores/auth'
+
 export default {
 components:{
     MainHeader,ProCardSwiper1,ProCardSwiper2,DoubleCloud,BlueBird,GreenBird,YellowBird,
@@ -30,13 +32,14 @@ data(){
     return {
         name:'',
         phone:'',
+        city:'',
         area:'',
         road:'',
         remark:'',
         qtyValue:'',
         count: 1,
         expanded:false,
-        cartItems: [],
+        // cartItems: [],
         city:[
             {c:'台北市'},
             {c:'新北市'},
@@ -173,14 +176,29 @@ methods: {
     },
     //購買人資料填寫
     buyDone(){
-        const cartFromData = new cFormData();
-        cartFromData.apped('ord_reciever', this.name);
-        cartFromData.apped('ord_phone', this.phone);
-        cartFromData.apped('ord_district', this.area);
-        cartFromData.apped('ord_address_', this.road);
-        cartFromData.apped('remark', this.remark);
+        const cartFromData = new FormData();
+        cartFromData.append('ord_reciever', this.name);
+        cartFromData.append('ord_phone', this.phone);
+        // cartFromData.append('ord_city', this.city);
+        cartFromData.append('ord_district', this.area);
+        cartFromData.append('ord_address_', this.road);
+        cartFromData.append('remark', this.remark);
 
-        
+        apiInstance({
+                method: 'post',
+                url: `${import.meta.env.VITE_CARA_URL}/front/buyDone.php`, // 改成我們的php
+                headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
+                data: cartFromData
+            }).then(res=>{
+                console.log(res);
+                if(res && res.data && res.data.msg === '已完成訂購'){
+                    alert("訂購完成")
+                }else{
+                    alert('訂購失敗')
+                }
+            }).catch(error=>{
+                console.log(error);
+            })
 
     },
 },
@@ -229,7 +247,7 @@ methods: {
                 <p class="cartInputTitle">收件地址</p>
                 <div class="col66">
                     <select name="city" id="city" >
-                        <option value="">請選擇縣市</option>
+                        <option value="" >請選擇縣市</option>
                         <option v-for="item in city" :key="item">{{ (item).c }}</option>
                     </select>
                     <input v-model="area" type="text" placeholder=" 中正區"  class="area">
@@ -242,10 +260,10 @@ methods: {
                 </span>
                 <p class="cartInputTitle">信用卡卡號</p>
                 <div class="allCardNumber">
-                    <input type="text" name="cardNumber" class="cardNumber">
-                    <input type="text" name="cardNumber" class="cardNumber">
-                    <input type="text" name="cardNumber" class="cardNumber">
-                    <input type="text" name="cardNumber" class="cardNumber">
+                    <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
+                    <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
+                    <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
+                    <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
                 </div>
                 <p class="cartInputTitle">持卡人姓名</p>
                 <input type="text" name="name" class="cartInput">

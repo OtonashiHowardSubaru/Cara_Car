@@ -12,11 +12,11 @@ export default {
             pic2: new Image(),
             pic4: new Image(),
             x: 400,
-            y: 240,
+            y: 235,
             startX: 400,
-            speedX: 1.5,
+            speedX: 0.8,
             speedY: 0,
-            startMovingYAtX: 500,
+            startMovingYAtX: 550,
             gap: 40,
             range: 0,
         };
@@ -25,6 +25,7 @@ export default {
     },
 mounted() {
     this.bannerCanvas();
+    this.animate();
     window.addEventListener('resize', this.handleResize);
 },
 beforeDestroy() {
@@ -33,7 +34,7 @@ beforeDestroy() {
 methods: {
     handleResize(){
         this.setCanvasWidth();
-        this.animate();
+        // this.animate();
     },
     setCanvasWidth(){
         const canvas = this.$refs.canvas;
