@@ -209,6 +209,33 @@ methods: {
             <p class="cartCountTotal">合計金額：$3,500</p>
         </section> -->
 
+        <div class="orderList">
+            <div class="listTitle">
+                <h1>訂單資訊</h1>
+            </div>
+            <div class="listContent">
+                <div class="left">
+                    <ul>
+                        <li class="order">訂單編號</li>
+                        <li>訂單日期</li>
+                        <li>付款方式</li>
+                        <li>訂單狀態</li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul>
+                        <li>收件人</li>
+                        <li>連絡電話</li>
+                        <li>配送地址</li>
+                        <li>備註訊息</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="count">
+                <span>訂單金額 : </span>
+            </div> -->
+        </div>
+
         <section class="cartFunction">
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
@@ -251,5 +278,38 @@ methods: {
 
 #process3{
     color: $blackWord;
+}
+.orderList{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 60px;
+    h1{
+        font-size: 20px;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+    .listContent{
+        display: flex;
+        border-bottom: 1px solid #222;
+        padding-bottom: 15px;
+        justify-content: space-between;
+        
+        li{
+            line-height: 30px;
+        }
+    }
+    .count{
+        span{
+            border: none;
+        }
+    }
+}
+.cartFunction{
+    border-radius: 20px;
+    padding: 50px 0 80px;
+    width: 50%;
+    margin: 0 auto;
+    background-color: $grey_1;
 }
 </style>
