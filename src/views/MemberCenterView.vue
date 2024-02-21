@@ -22,6 +22,7 @@ export default {
             isDesktop: window.innerWidth >= 768,
             storedImage: '',
             member: [],
+            // storageMember: [],
             userStoreData: userStore(),
         }
     },
@@ -29,10 +30,17 @@ export default {
         // 監聽視窗大小變化，更新 isMobile 和 isDesktop 的值
         window.addEventListener('resize', this.updateWindowSize);
         this.updateWindowSize()
-        this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
-        console.log(this.userData);
+        // this.userData.member_id = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id : "";
+        // this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
+        // this.userData.m_phone = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).phone : "";
+        // this.userData.m_email = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).email : "";
+        // this.userData.m_address = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).address : "";
+        console.log(this.userData.member_id);
         const member_id = this.userData.member_id
         axios.get(`${import.meta.env.VITE_CARA_URL}/front/getMemberName.php?member_id=${member_id}`)
+        .then(res =>{
+            this.member = res.data
+        })
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
@@ -85,18 +93,40 @@ export default {
             }
             reader.readAsDataURL(file);
         },
+        updateMemProfile() {
+            const postData = {
+                member_id: this.userData.member_id,
+                m_name: this.userData.m_name,
+                m_phone: this.userData.m_phone,
+                m_birthday: this.userData.m_birthday,
+                m_email: this.userData.m_email,
+                m_address: this.userData.m_address,
+            }
+            console.log(this.userData.m_address);
+                axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberProfile.php`, postData, {
+                    headers: { "Content-Type": "multipart/form-data" },
+                })
+                .then(res =>{
+                    console.log(postData);
+                    // console.log(this.userData.m_address);
+                    alert('已更新會員資料！')
+                    this.updateUserData(this.userData)
+                    location.reload();
+                })
+                
+        },
         ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData']),
     },
     mounted() {
         document.getElementById("upFile").addEventListener("change", this.showFile);
         this.storedImage = localStorage.getItem('imagePreview');
+        this.userStoreData.userData = localStorage.getItem('userData');
     },
 }
 </script>
 
 <template>
     <MainHeader />
-
     <div class="memberCenter">
         <div class="memberTitle">
             <h1>新品專區
@@ -130,6 +160,7 @@ export default {
                     <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                 </div>
                 <div class="welcome">
+                    <!-- {{member}} -->
                     <h3>
                         您好{{ this.userStoreData.userData.m_name }}，歡迎光臨<br>Cara Car官網購物帳號
                     </h3>
@@ -187,39 +218,39 @@ export default {
 
                 <div class="user_profile">
                     <form action="" method="post" name="" id="">
+                    <!-- <form @submit.prevent="updateMemProfile"> -->
                         <div class="table">
                             <p>會員姓名</p>
-                            <input type="text" name="memName" id="memName" placeholder="Cara Car">
+                            <input type="text" name="m_name" id="m_name" v-model="userData.m_name">
                         </div>
                         <div class="table">
                             <p>連絡電話</p>
-                            <input type="tel" name="memTel" id="memTel" placeholder="00-12345678">
+                            <input type="tel" name="m_phone" id="m_phone" v-model="userData.m_phone">
+                        </div>
+                        <div class="table">
+                            <p>會員生日</p>
+                            <input type="date" name="m_birthday" id="m_birthday" v-model="userData.m_birthday">
                         </div>
                         <div class="table">
                             <p>電子郵件</p>
-                            <input type="email" name="memEmail" id="memEmail" placeholder="cara_car@mail.com">
+                            <input type="email" name="m_email" id="m_email" v-model="userData.m_email">
                         </div>
                         <div class="table">
                             <p>會員地址</p>
-                            <input type="address" name="memAddress" id="memAddress" placeholder="桃園市中壢區復興路46號">
+                            <input type="address" name="m_address" id="m_address" v-model="userData.m_address">
                         </div>
-                        <div class="table">
-                            <p>原密碼　</p>
-                            <input type="password" name="memOldPsw" id="memOldPsw" autocomplete="current-password"
-                                placeholder="請輸入原密碼">
-                        </div>
-                        <div class="table">
+                        <!-- <div class="table">
                             <p>新密碼　</p>
                             <input type="password" name="memNewPsw" id="memNewPsw" autocomplete="current-password"
-                                placeholder="請輸入新密碼">
-                        </div>
-                        <div class="table">
+                                placeholder="請輸入新密碼" v-model="this.memNewPsw">
+                        </div> -->
+                        <!-- <div class="table">
                             <p>確認密碼</p>
                             <input type="password" name="memConPsw" id="memConPsw" autocomplete="current-password"
-                                placeholder="請再次輸入新密碼">
-                        </div>
+                                placeholder="請再次輸入新密碼" v-model="this.memConPsw">
+                        </div> -->
                     </form>
-                    <input id="send" type="submit" name="button" value="我要修改">
+                    <input id="send" type="submit" name="button" @click="updateMemProfile()" value="我要修改">
                 </div>
 
             </div>
