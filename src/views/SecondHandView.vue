@@ -39,71 +39,6 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         ImgsName:[],
         thisProduct:[],
         allProducts:[],
-        // sh_product_list: [
-        //     {
-        //       prod_img1:product01,
-        //       prod_name:"極光追逐者",
-        //       prod_price:"3000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product02,
-        //       prod_name:"極速閃電車",
-        //       prod_price:"5000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product03,
-        //       prod_name:"太空探險車",
-        //       prod_price:"8000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product04,
-        //       prod_name:"科技漂移车",
-        //       prod_price:"6000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product05,
-        //       prod_name:"爆炸速度狂飆车",
-        //       prod_price:"4000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product06,
-        //       prod_name:"魔法變形賽車",
-        //       prod_price:"6000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product07,
-        //       prod_name:"閃電漂移車",
-        //       prod_price:"2500",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product08,
-        //       prod_name:"太空漫步車",
-        //       prod_price:"3500",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:product09,
-        //       prod_name:"磁浮飛行車",
-        //       prod_price:"5500",
-        //       linkwhere:"/SecondHand"
-        //     },
-        // ],
-        // displayData: [],
-        // activeTab: 0,
-        // mainImage: mainImage, 
-        // littleImages: [
-        //   {img: 'product.png'},
-        //   {img: 'product001_001.png'},
-        //   {img: 'product001_002.png'},
-        //   {img: 'product001_003.png'},
-        // ],
 
       }
     },
@@ -157,29 +92,52 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
       },
 
       showLarge(e) {
-        // console.log('Clicked on image:', e.target.src);
-    //     if (e.target.tagName === 'IMG' && e.target.src) {
-    //       this.mainImage = e.target.src;
-    // }
         const clickedImgSrc = e.target.src;
         // console.log('Clicked on image:', clickedImgSrc);
         const bigImg = document.getElementById('mainpic');
         bigImg.src = clickedImgSrc;
         console.log(bigImg);
       },
-      // init() {
-      //   const smalls = this.$refs.littlepicImgs;
-
-      //   for (let i = 0; i < smalls.length; i++) {
-      //     smalls[i].addEventListener("click", this.showLarge);
-      //   }
-      // },
+      
       changeTab(tabIndex) {
         // 頁籤跳轉
         this.activeTab = tabIndex;
       },
       changeMainImage(image) {
         this.mainImage = image;
+      },
+      //加入購物車
+      addToCart(){
+        const product = {
+          id: this.thisProduct.pro_id,
+          name: this.thisProduct.pro_name,
+          price: this.thisProduct.pro_price,
+          imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
+          quantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
+        };
+        // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // 將當前商品添加到購物車中，重複商品時則更新數量
+        let existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+        if (existingProductIndex !== -1) {
+          // 如果購物車中已有相同商品，則更新其數量
+          cartItems[existingProductIndex].quantity += product.quantity;
+        } else {
+          // 若不是則將商品添加到購物車
+          cartItems.push(product);
+        };
+
+        // cartItems.push(product);
+        // 將更新後的購物車數據保存到本地端
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // alert('商品已加入到購物車！');
+        return  Swal.fire({
+          title: '已加入購物車!',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        })
       },
     },
     mounted() {
@@ -232,7 +190,8 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         </div>
 
         <div class="purchase_btn" id="purchase_btn">
-          <a href="./CartView.vue">直接購買</a>
+          <!-- <a href="./CartView.vue">直接購買</a> -->
+          <button type="button" id="addToCartBtn" @click="addToCart"><a href="./CartView.vue">直接購買</a></button>
         </div>
     </div>
 </div>
