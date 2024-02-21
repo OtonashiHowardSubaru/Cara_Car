@@ -52,29 +52,28 @@
         // 定義頁碼
       const pageId = this.$route.params.pro_id
       // console.log(pageId)
-      
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
-      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-      axios.get(`${import.meta.env.VITE_CARA_URL}/front/frontProductinfo.php`)
+      
+      // 取得所有商品資料用做本頁資料以及swiper
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/frontProductinfo.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
           this.allProducts = response.data;
           this.thisProduct = response.data.find((item) =>{
-          return item.pro_id == pageId
+            return item.pro_id == pageId
+          })
         })
-        // console.log(this.thisProduct)
-      })
         .catch((error) => {
           console.error("Error fetching data:", error);
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
-      
+
       // 取得這一份商品的全部圖片名稱
       axios.get(`${import.meta.env.VITE_CARA_URL}/front/thisproductimgs.php?pageId=${pageId}`)
         .then((response) => {
           this.ImgsName = response.data;
-          // console.log(this.ImgsName);
+          console.log(this.ImgsName);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -229,7 +228,7 @@
       <ProCardSwiper1
       :displayData="allProducts"
       />
-      <ProCardSwiper1
+      <ProCardSwiper2
       :displayData="allProducts"
       />
       
