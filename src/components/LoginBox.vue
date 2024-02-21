@@ -13,6 +13,7 @@ import qs from 'qs'
 export default {
     data() {
         return {
+            userStoreData: userStore(),
             lightBoxStore: lightBoxStore(),
             username: '',
             psw666: '',
@@ -90,11 +91,12 @@ export default {
                 // console.log(res);
                     if(res && res.data){
                         if(res.data.code == 1){
-                            this.updateToken(res.data.session_id)
-                            this.updateUserData(res.data.memInfo)
+                            this.userStoreData.updateToken(res.data.session_id)
+                            this.userStoreData.updateUserData(res.data.memInfo)
                             alert('登入成功, 歡迎來到Cara-Car~')
-                            // this.$router.push('/')
+                            //登入成功關燈箱並重整頁面
                             this.closeLightbox();
+                            location.reload();
 
                         }else{
                             alert('登入失敗, 請再試看看哦~')

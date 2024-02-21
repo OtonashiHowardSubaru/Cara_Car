@@ -76,6 +76,7 @@ export default defineStore('userStore', {
                 email: val.m_email,
                 birthday: val.m_birthday,
                 address: val.m_city+val.m_district+val.m_address,
+                // address: val.m_city,
                 state: val.m_state,
                 imgUrl: val.img_path,
                 // 如果有權限可以把權限角色記載資料庫
@@ -83,15 +84,6 @@ export default defineStore('userStore', {
             };
             localStorage.setItem("userData", JSON.stringify(this.userData));
         },
-        // updateUserData(payload) {
-        //     this.userData = {
-        //         name: payload.mem_name,
-        //         validation: payload.mem_validation,
-        //         state: payload.mem_state,
-        //         role: "editor",
-        //     };
-        //     localStorage.setItem("userData", JSON.stringify(this.userData));
-        // },
         checkUserData() {
             const storageUserData = localStorage.getItem("userData");
             console.log(Object.keys(this.userData).length);
