@@ -10,26 +10,33 @@ export default {
     },
     data() {
         return {
+            //呼叫登入Pinia取得登入資訊至localStorage
+            userStoreData: userStore(),
+            // userDataFromStorage: JSON.parse(localStorage.getItem("userData")) || {},
+            // 放localStorage也放這陣列裡面
+            member: [],
+            //會員頭像存放格
+            storedImage: '',
+            //sidebar收合
             showSubMenu: false,
+            //content顯示切換
             currentProfile: 'default',
+            //會員訂單顯示切換
             currentOrder: 'noPay',
             activeTab: 'noPay',
+            //退貨申請顯示切換
             currentReturn: 'default2',
             activeTab2: 'default2',
-            imageUrl: null,
-            selectedFile: null,
-            isMobile: window.innerWidth >= 325 && window.innerWidth < 768,
-            isDesktop: window.innerWidth >= 768,
-            storedImage: '',
-            member: [],
-            userStoreData: userStore(),
+            //created載入時啟動function抓視窗width
+            isMobile: '',
+            isDesktop: '',
         }
     },
     created() {
         // 監聽視窗大小變化，更新 isMobile 和 isDesktop 的值
         window.addEventListener('resize', this.updateWindowSize);
         this.updateWindowSize()
-
+        //get在localStorage裡面的key & value
         this.userData.member_id = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id : "";
         this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
         this.userData.m_phone = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).phone : "";
@@ -37,23 +44,27 @@ export default {
         this.userData.m_city = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).city : "";
         this.userData.m_district = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).district : "";
         this.userData.m_address = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).address : "";
-
-        const member_id = this.userData.member_id
-        console.log(this.userData.member_id);
-
-        axios.get(`${import.meta.env.VITE_CARA_URL}/front/getMemberName.php?member_id=${member_id}`)
-            .then(res => {
-                this.member = res.data
-                console.log(this.member);
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
+        this.userData.img_path = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).imgUrl : "";
+        this.axiosGetMem()
+        // const userDataFromStorage = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : {};
+        // this.userData = {
+        //     member_id: userDataFromStorage.id || "",
+        //     m_name: userDataFromStorage.name || "",
+        //     m_phone: userDataFromStorage.phone || "",
+        //     m_email: userDataFromStorage.email || "",
+        //     m_city: userDataFromStorage.city || "",
+        //     m_district: userDataFromStorage.district || "",
+        //     m_address: userDataFromStorage.address || "",
+        //     img_path: userDataFromStorage.imgUrl || "",
+        // };
+        // console.log(userDataFromStorage);
     },
 
     computed: {
         imagePreviewUrl() {
+            //可以是讀取localStorage內的照片，如果沒有就讀取預設的userImage
             return this.storedImage || userImage
+            // return this.userDataFromStorage.imgUrl ||this.storedImage || userImage
         },
         ...mapState(userStore, ['token', 'userData'])
     },
@@ -74,12 +85,25 @@ export default {
             this.currentProfile = profile;
         },
         orderState(order) {
+            console.log(order);
             this.currentOrder = order;
             this.activeTab = order;
         },
         returnState(ret) {
+            console.log(ret);
             this.currentReturn = ret;
             this.activeTab2 = ret;
+        },
+        axiosGetMem(){
+            const member_id = this.userData.member_id
+            axios.get(`${import.meta.env.VITE_CARA_URL}/front/getMemberName.php?member_id=${member_id}`)
+            .then(res => {
+                this.member = res.data
+                console.log(this.member);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
         },
         changeFile() {
             document.getElementById('upFile').click();
@@ -91,7 +115,23 @@ export default {
             }
             const file = files[0];
             const reader = new FileReader();
-
+            // const formData = new FormData();
+            // formData.append('img_path',file)
+            // try{
+            //     const res = await axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberImg.php?`,formData, {
+            //         headers: {
+            //             'Content-Type': 'multipart/form-data'
+            //         }
+            //     });
+            //     if (!res.data.success) {
+            //         console.log(res);
+            //         throw new Error('照片上傳失敗');
+            //     }
+            //     const imageUrl = res.data.imageUrl;
+            //     this.storedImage = imageUrl;
+            // } catch(error){
+            //     console.error('錯誤', error);
+            // }
             reader.onload = () => {
                 localStorage.setItem('imagePreview', reader.result);
                 this.storedImage = reader.result
@@ -125,19 +165,24 @@ export default {
     mounted() {
         document.getElementById("upFile").addEventListener("change", this.showFile);
         this.storedImage = localStorage.getItem('imagePreview');
+
+        
     },
 }
 </script>
 
 <template>
-    <MainHeader />
-    <div class="memberCenter">
-        <div class="memberTitle">
-            <h1>新品專區
-            </h1>
-        </div>
-        <div class="memberContent">
 
+    <MainHeader />
+
+    <div class="memberCenter">
+
+        <div class="memberTitle">
+            <h1></h1>
+        </div>
+
+        <div class="memberContent">
+            <!-- PC左側sidebar -->
             <div class="member_sidebar" v-if="isDesktop">
                 <h2>我的Cara Car</h2>
                 <nav>
@@ -159,28 +204,32 @@ export default {
             </div>
 
             <div class="member_profile" v-show="currentProfile === 'default'">
-
+                <!-- MB會員預設頭貼位置 -->
                 <div class="mb_user_image" v-if="isMobile">
                     <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                 </div>
                 <div class="welcome">
                     <h3>
-                        您好{{ this.userStoreData.userData.m_name }}，歡迎光臨<br>Cara Car官網購物帳號
+                        您好{{ userData.m_name }}，歡迎光臨<br>Cara Car官網購物帳號
                     </h3>
+                    <!-- PC會員預設頭貼位置 -->
                     <div class="user_image" v-if="isDesktop">
                         <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                     </div>
                 </div>
 
                 <div class="currentOrder">
+
                     <div class="state">
                         <p id="count1">0</p>
                         <p class="state_name">待出貨</p>
                     </div>
+
                     <div class="state">
                         <p id="count2">1</p>
                         <p class="state_name">已出貨</p>
                     </div>
+
                     <div class="state">
                         <p id="count3">3</p>
                         <p class="state_name">待取貨</p>
@@ -199,8 +248,8 @@ export default {
                         <p>我的收藏</p>
                     </div>
                 </div>
-
             </div>
+            <!-- 會員資料 -->
             <div class="basic" v-show="currentProfile === 'basic'">
 
                 <div class="sub_title">
@@ -254,7 +303,7 @@ export default {
                 </div>
 
             </div>
-
+            <!-- 會員訂單 -->
             <div class="order" v-show="currentProfile === 'order'">
 
                 <div class="sub_title">
@@ -294,9 +343,9 @@ export default {
                 <div class="return_filter">
                     <nav>
                         <ul>
-                            <li :class="{ active: activeTab2 === 'handle2' }" @click="returnState('handle2')">處理中</li>
-                            <li :class="{ active: activeTab2 === 'refund' }" @click="returnState('refund')">已退款</li>
-                            <li :class="{ active: activeTab2 === 'unRefund' }" @click="returnState('unRefund')">不同意退款</li>
+                            <li :class="{ active2: activeTab2 === 'handle2' }" @click="returnState('handle2')">處理中</li>
+                            <li :class="{ active2: activeTab2 === 'refund' }" @click="returnState('refund')">已退款</li>
+                            <li :class="{ active2: activeTab2 === 'unRefund' }" @click="returnState('unRefund')">不同意退款</li>
                         </ul>
                     </nav>
                     <div class="sub_title_line"></div>
