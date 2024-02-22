@@ -1,4 +1,4 @@
-.about{
+.about {
     width: 100%;
 
     .aboutTitle {
@@ -8,76 +8,155 @@
         background-image: url(../../imgs/draw/greeting_illust.svg);
         background-position: center bottom -30px;
         height: 130px;
-        h1{
+
+        h1 {
             line-height: 0; //使盒子大小與內容物相同
             white-space: nowrap;
             overflow: hidden;
-            text-indent:101%;
+            text-indent: 101%;
         }
-        img{
+
+        img {
             max-width: 100%;
             max-height: 100%;
         }
     }
-    
-    .topPics{
+
+    @mixin media($max) {
+        @media (max-width: $max + px) {
+            @content;
+        }
+    }
+    .topPics {
         display: flex;
         align-items: center;
+        background-color: none;
         // flex-wrap: wrap;
-        width: 100%;
-        overflow: hidden;
-            img{
+        .topPicsView {
+            overflow: hidden;
+            width: 100%;
+
+            .topPicContainer {
+                display: flex;
+                animation: marquee 60s infinite linear;
+                align-items: center;
+
+                .topPicsImg {
+                    flex-basis: 20%;
+                    flex-shrink: 0;
+                    height: 100%;
+                    margin: 1%;
+
+                    @include media(1024) {
+                        flex-basis: 25%;
+                    }
+
+                    @include media(768) {
+                        flex-basis: 33.33%;
+                    }
+                }
+            }
+
+            img {
                 padding: 1%;
-                margin: 0 auto;
-                width: 45%;
+                margin: 1% auto;
                 // height: auto;
                 // object-fit: cover;
                 // overflow: hidden;  //注意
+                width: 100%;
+                vertical-align: middle;
+
             }
-    }
-    
-    .bgcPic{
-        background-image: url(../../imgs/SecondHandSale/bgp.png);
-        background-size: cover; // 背景圖片覆蓋整個區域
-        background-position: center center; // 背景圖片置中
-        margin: 0;
-        img{
-            width: 100%;
-            margin-top: -50px;
+
+        }
         
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+    
+            100% {
+                transform: translateX(-(20% * 5));
+            }
+        }
+    
+        @include media(1024) {
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0);
+                }
+    
+                100% {
+                    transform: translateX(-(25% * 5));
+                }
+            }
+        }
+    
+        @include media(768) {
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0);
+                }
+    
+                100% {
+                    transform: translateX(-(33.33% * 5));
+                }
+            }
         }
     }
-    
-    .aboutUsContents{
+
+    .bgcPic {
+        background-image: url(../../imgs/SecondHandSale/bgp.png);
+        background-size: 100%; 
+        // background-position: center center; // 背景圖片置中
+        margin: 0;
+        background-repeat: repeat;
+
+        img {
+            width: 100%;
+            margin-top: -50px;
+
+        }
+        @media (min-width : 768px) {
+            background-size: cover; // 背景圖片覆蓋整個區域
+            background-position: center center; // 背景圖片置中
+            margin: 0;
+        }
+    }
+
+    .aboutUsContents {
         padding: 2% 0 0;
         // height: 720px;
         // display: flex;
         margin: auto;
-        img{
+
+        img {
             padding: 3%;
             display: flex;
             margin: 0 auto;
             width: 90%;
         }
 
-        .aboutUsContent{
+        .aboutUsContent {
             box-sizing: border-box;
             width: 100%;
             padding: 3%;
             // background-color: $grey_2;
             display: flex;
             flex-direction: column;
+
             // justify-content: center;
-            strong{
+            strong {
                 font-size: 1.5rem;
             }
-            img{
+
+            img {
                 width: 30%;
                 position: absolute;
                 right: 8%;
             }
-            
-            p{
+
+            p {
                 font-size: $p;
                 font-family: 'Kosugi Maru';
                 line-height: 40px;
@@ -86,26 +165,30 @@
                 position: relative;
                 // margin: 0 auto;
                 flex-wrap: wrap;
-                
+
                 // align-items: center;
             }
         }
     }
-    .bottonbtns{
+
+    .bottonbtns {
         width: 80%;
         margin: 0 auto 50px;
-        
+
     }
-    
+
 }
-.highlight-container, .highlight {
+
+.highlight-container,
+.highlight {
     position: relative;
-  }
-  
-  .highlight-container {
+}
+
+.highlight-container {
     display: inline-block;
-  }
-  .highlight-container:before {
+}
+
+.highlight-container:before {
     content: " ";
     display: block;
     height: 90%;
@@ -119,7 +202,7 @@
     left: -1px;
     border-radius: 20% 25% 20% 24%;
     padding: 10px 3px 3px 10px;
-  }
+}
 
 
 
@@ -145,49 +228,59 @@
 
 
 @media (min-width : 768px) {
-.about{
-    width: 100%;
-    
-    .topPics{
-        display: flex;
-        align-items: center;
-        overflow: hidden;
+    .about {
         width: 100%;
-        // height: 15vh;
-            img{
+
+        .topPics {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+
+            // height: 15vh;
+            img {
                 padding: 1%;
                 width: 30%;
                 height: 25%;
             }
-    }
-    
-    .aboutUsContents{
-        // width: 100%;
-        padding: 10px 0;
-        // height: 720px;
-        display: flex;
-        margin: 20px 60px 10px 0;
+        }
+
+        .aboutUsContents {
+            // width: 100%;
+            padding: 10px 0;
+            // height: 720px;
+            display: flex;
+            margin: 20px 60px 10px 0;
+
             &:nth-child(odd) {
                 // background-color: $grey_2;
             }
+
             &:nth-child(even) {
                 // background-color: $grey_1;
                 flex-direction: row-reverse;
                 margin: 20px 0 10px 60px;
-                .aboutUsContentsPic{
+
+                .aboutUsContentsPic {
                     padding: 20px 60px 20px 0px;
-                }
-                .aboutUsContent{
+                    img{
+                        border-radius: $borr2;
                     
+                    }
+                }
+
+                .aboutUsContent {
+
                     position: relative;
 
-                    .car_caraPic{
+                    .car_caraPic {
                         // display: none;
                         position: absolute;
                         width: 150%;
                         top: 0;
                         right: -10%;
-                        }
+                    }
+
                     // .car_caraPic2 {
                     //     position: absolute;
                     //     // bottom: 0;
@@ -198,32 +291,38 @@
                     //         // width: 25%;
                     //         // right: 50;
                     //         // top: 50;
-                            
+
                     //     }
                     // }                
                 }
 
             }
-            .aboutUsContentsPic{
+
+            .aboutUsContentsPic {
                 padding: 20px 0px 20px 60px;
                 display: flex;
                 margin: 0 auto;
                 width: 80%;
                 height: 80%;
+                img{
+                    border-radius: $borr2;
+                
+                }
             }
-            .aboutUsContent{
+
+            .aboutUsContent {
                 width: 100%;
                 display: flex;
                 // flex-direction: column;
                 justify-content: center;
 
-                img{
+                img {
                     width: 25%;
                     height: auto;
                     top: 80%;
                 }
-                
-                p{
+
+                p {
                     font-size: $p;
                     font-family: 'Kosugi Maru';
                     line-height: 40px;
@@ -233,17 +332,19 @@
                 }
 
             }
-            .car_caraPic{
+
+            .car_caraPic {
                 width: 50%;
                 position: absolute;
                 top: 100;
             }
-    }
-    .bottonbtns{
-        width: 70%;
-        margin: 0 auto 100px;
+        }
 
-    }
+        .bottonbtns {
+            width: 70%;
+            margin: 0 auto 100px;
+
+        }
 
 
     }

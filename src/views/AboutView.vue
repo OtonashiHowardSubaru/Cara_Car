@@ -29,10 +29,22 @@ export default {
       <img src="../assets/imgs/about/aboutTitle.svg" alt="關於CaRa Car">
     </div>
     <div class="topPics">
-      <img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG">
-      <img src="../assets/imgs/about/aboutTop2.png" alt="aboutIMG">
-      <img src="../assets/imgs/about/aboutTop3.png" alt="aboutIMG">
-      <img src="../assets/imgs/about/aboutTop4.png" alt="aboutIMG">
+      <div class="topPicsView">
+        <div class="topPicContainer">
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop2.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop3.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop4.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop5.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop6.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop2.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop3.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop4.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop5.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop6.png" alt="aboutIMG"></div>
+        </div>
+      </div>
     </div>
     <div class="bgcPic">
       <div class="aboutUsContents">
