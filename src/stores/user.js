@@ -1,25 +1,3 @@
-// import { defineStore } from "pinia";
-// export default defineStore("userStore", {
-// 對應 data
-// state: () => ({
-// 
-// token: "",
-// name: "",
-// userData:{}
-// }),
-// 對應 computed (物件形式)
-// getters: {
-// getUserName: (state) => `歡迎 ${state.name}`,
-// },
-// 對應 methods (物件形式)
-// actions: {
-//         updateToken(val){
-//             console.log(val);
-//             this.token = val;
-//         }
-//     },
-// });
-
 // https://pinia.vuejs.org/core-concepts/state.html
 import { defineStore } from 'pinia'
 
@@ -27,16 +5,13 @@ export default defineStore('userStore', {
     // 對應 data
     state: () => ({
         token: localStorage.getItem("token") || "",
-        // token: '',   // 後端僅返回token(通行證/令牌)
         userData: {}, // 可以在login API中返回user資訊
-        name: '',
-        // wallet: '',
     }),
 
     // 對應 computed (物件形式)
-    getters: {
-        // getUserName: (state) => `歡迎 ${state.name}`
-    },
+    // getters: {
+        
+    // },
 
     // 對應 methods (物件形式)
     actions: {
@@ -62,25 +37,18 @@ export default defineStore('userStore', {
               localStorage.removeItem("token"); // 從 localStorage 中刪除 token。
             }
         },
-        // updateName(val) {
-        //     // 定義一個名為 updateName 的方法，接受一個 payload 作為參數。
-        //     this.name = val.m_name; // 使用提供的 payload 更新存儲庫中的名稱。
-        //     localStorage.setItem('userName',JSON.stringify(this.name));
-        // },
         updateUserData(val) {
-            // console.log(val);
-            this.userData = {
+            this.userData = { //登入時將登入資訊存入localStorage
                 id: val.member_id,
                 name: val.m_name,
                 phone: val.m_phone,
                 email: val.m_email,
                 birthday: val.m_birthday,
-                address: val.m_city+val.m_district+val.m_address,
-                // address: val.m_city,
+                city: val.m_city,
+                district: val.m_district,
+                address: val.m_address,
                 state: val.m_state,
                 imgUrl: val.img_path,
-                // 如果有權限可以把權限角色記載資料庫
-                role: "editor",
             };
             localStorage.setItem("userData", JSON.stringify(this.userData));
         },

@@ -23,7 +23,7 @@ export default {
             // line login
             line_channel_id: '2003656111',    // Line Channel ID
             line_channel_secret: 'e5e6e6e88c5a96b4adebf8fc6f0b0cef',// Line Channel Secret
-            line_redirect_uri: 'http://localhost:5174/',  // Line developer Callback URL
+            line_redirect_uri: 'http://localhost:5173/',  // Line developer Callback URL
         };
     },
     created() {

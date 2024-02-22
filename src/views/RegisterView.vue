@@ -10,6 +10,8 @@ export default {
             birthday: '',
             email: '',
             phone: '',
+            city: '',
+            district: '',
             address: '',
             psw666: '',
             psw666again: '',
@@ -17,7 +19,7 @@ export default {
             passwordVisibleRight: false,
         }
     },
-    components:{
+    components: {
         MainHeader
     },
     methods: {
@@ -31,41 +33,44 @@ export default {
         },
 
         // 註冊事件
-        register(){
-        if(this.psw666 !== this.psw666again){
-            alert('請確認密碼')
+        register() {
+            if (this.psw666 !== this.psw666again) {
+                alert('請確認密碼')
 
-        }else if(this.psw666.length < 8 && this.psw666.length < 8){
-            alert('密碼至少8個字')
+            } else if (this.psw666.length < 8 && this.psw666.length < 8) {
+                alert('密碼至少8個字')
 
-        }else{
-            const bodyFormData = new FormData();
-            bodyFormData.append('m_name', this.name);
-            bodyFormData.append('m_birthday', this.birthday);
-            bodyFormData.append('m_email', this.email);
-            bodyFormData.append('m_phone', this.phone);
-            bodyFormData.append('m_address', this.address);
-            bodyFormData.append('member_psw', this.psw666);
+            } else {
+                const bodyFormData = new FormData();
+                bodyFormData.append('m_name', this.name);
+                bodyFormData.append('m_birthday', this.birthday);
+                bodyFormData.append('m_email', this.email);
+                bodyFormData.append('m_phone', this.phone);
+                bodyFormData.append('m_city', this.city);
+                bodyFormData.append('m_district', this.district);
+                bodyFormData.append('m_address', this.address);
+                bodyFormData.append('member_psw', this.psw666);
 
 
 
-            apiInstance({
-                method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/front/register.php`, // 改成我們的php
-                headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
-                data: bodyFormData
-            }).then(res=>{
-                console.log(res);
-                if(res && res.data && res.data.msg === '會員註冊成功'){
-                    alert("註冊成功")
-                }else{
-                    alert('註冊失敗')
-                }
-            }).catch(error=>{
-                console.log(error);
-            })
-        }
-    },
+                apiInstance({
+                    method: 'post',
+                    url: `${import.meta.env.VITE_CARA_URL}/front/register.php`, // 改成我們的php
+                    headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
+                    data: bodyFormData
+                }).then(res => {
+                    console.log(res);
+                    if (res && res.data && res.data.msg === '會員註冊成功') {
+                        alert("註冊成功")
+                        location.reload();
+                    } else {
+                        alert('註冊失敗')
+                    }
+                }).catch(error => {
+                    console.log(error);
+                })
+            }
+        },
     },
     mounted() {
 
@@ -106,16 +111,24 @@ export default {
                     </div>
                 </div>
                 <div class="address">
-                    <p>會員地址</p>
-                    <input v-model="address" type="address" placeholder="桃園市中壢區復興路46號">
+                    <div class="space">
+                        <p>聯絡地址</p>
+                        <input v-model="city" type="address" placeholder="桃園市">
+                    </div>
+                    <div class="space">
+                        <p>　　　　</p>
+                        <input v-model="district" type="address" placeholder="中壢區">
+                    </div>
+                    <p>　　　　</p>
+                    <input v-model="address" type="address" placeholder="復興路46號">
                 </div>
                 <div class="register_psw">
                     <div class="keyin_psw">
                         <p>輸入密碼</p>
                         <input :type="passwordVisibleLeft ? 'text' : 'password'" v-model="psw666" placeholder="請輸入密碼"
                             maxlength="12">
-                        <img v-if="passwordVisibleLeft" src="../assets/imgs/register/open-eye.svg" alt="closeEye" class="eye1"
-                            @click="togglePswLeft">
+                        <img v-if="passwordVisibleLeft" src="../assets/imgs/register/open-eye.svg" alt="closeEye"
+                            class="eye1" @click="togglePswLeft">
                         <img v-else src="../assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye1"
                             @click="togglePswLeft">
                     </div>
@@ -123,8 +136,8 @@ export default {
                         <p>確認密碼</p>
                         <input :type="passwordVisibleRight ? 'text' : 'password'" v-model="psw666again" placeholder="確認密碼"
                             maxlength="12">
-                        <img v-if="passwordVisibleRight" src="../assets/imgs/register/open-eye.svg" alt="closeEye" class="eye2"
-                            @click="togglePswRight">
+                        <img v-if="passwordVisibleRight" src="../assets/imgs/register/open-eye.svg" alt="closeEye"
+                            class="eye2" @click="togglePswRight">
                         <img v-else src="../assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye2"
                             @click="togglePswRight">
                     </div>
@@ -167,4 +180,6 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped>@import '@/assets/scss/page/register.scss'</style>
+<style lang="scss" scoped>
+@import '@/assets/scss/page/register.scss'
+</style>
