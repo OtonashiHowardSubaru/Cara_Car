@@ -1,29 +1,36 @@
 <template>
-    <button @click="show = !show" class="chatBoxBird"><img src="../../assets/imgs/draw/ChatBoxBird.png" alt=""></button>
+    <button @click="show = !show" class="chatBoxBird">
+        <div class="birdCloud">
+            <div class="bird"><img src="../../assets/imgs/draw/ChatBoxBird1.png" alt=""></div>
+            <div class="cloud"><img src="../../assets/imgs/draw/ChatBoxCloud.png" alt=""></div>
+        </div>
+    </button>
+    <!-- <button @click="show = !show" class="chatBoxBird"><img src="../../assets/imgs/draw/ChatBoxBird.png" alt=""></button> -->
     <Transition>
         <!-- 消息顯示區域 -->
         <!-- <div v-if="show" :class="{'--is-show': show}"> -->
         <div v-if="show" class="afterChatBird">
             <section class="chatBoxTop">
-                <div class="chatBoxTitle">Cara Car 客服小幫手</div>
-                <span class="close" @click.stop="closeBox">&times;</span>
+                <div class="chatBoxTitle">\ Cara Car 客服小幫手 /</div>
+                <div class="close" @click.stop="closeBox">&times;</div>
             </section>
             <section ref="chatArea" class="chat-area">
                 <div class="newsSpeaker">
                     <i class="fa-solid fa-bullhorn" style="color: #6f7f9b;"></i>
                     <div class="marqueee">
                         <div class="marquee">
-                            <p>\Cara Car快報/\Cara Car快報/\Cara Car快報/\Cara Car快報/\Cara Car快報/</p>
+                            <p> \新年快樂/!!親愛的CaRa Car顧客：新的一年開始，CaRa Car將帶給您嶄新的驚喜！我們推出了「網上預訂折扣」活動，讓您在2024年的第一天即可享受購物的超讚優惠。</p>
                         </div>
                     </div>
                 </div>
                 <div class="newsSpeaker"></div>
                 <div v-for="message in messages" :key="message.body" class="HeadMess">
                     <div class="avatar"><img src="../../assets/imgs/draw/ChatBoxAvatar.png" alt=""></div>
+                    <div class="avatar2"><img src="../../assets/imgs/draw/ChatBoxAvatar2.png" alt=""></div>
                     <p class="message"
-                        :class="{ 'message-out': message.author === 'you', 'message-in': message.author !== 'you' }">
-                        {{ message.body }}
-                    </p>
+                    :class="{ 'message-out': message.author === 'you', 'message-in': message.author !== 'you' }">
+                    {{ message.body }}
+                </p>
                     <!-- <div v-if="isUser" >ICON</div> -->
                 </div>
             </section>
@@ -54,15 +61,15 @@ export default {
         const youMessage = ref('');
         const messages = ref([
             {
-                body: 'Welcome to the Cara Car, I\'m Cara!',
+                body: '歡迎來到 Cara Car, I\'m Cara!',
                 author: 'Cara',
             },
             {
-                body: 'Thank you, Cara!',
+                body: 'Hello, Cara! 我有問題想要發問!',
                 author: 'you',
             },
             {
-                body: 'You\'re most welcome.',
+                body: '很高興為您服務!儘管提問吧!',
                 author: 'Cara',
             },
         ]);
@@ -111,6 +118,9 @@ export default {
         const clearAllMessages = () => {
             messages.value = [];
         };
+        const closeBox = () => {
+            show.value = false;
+        };
 
         return {
             chatArea,
@@ -120,6 +130,7 @@ export default {
             messages,
             sendMessage,
             clearAllMessages,
+            closeBox,
         };
     },
 
