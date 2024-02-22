@@ -1,8 +1,6 @@
 <script>
   import axios from 'axios'; //引入函式庫
-  import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
-  import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
-  import ProCardSwiper3 from '@/components/ProCardSwiperTest.vue';
+  import ProCardSwiper from '@/components/ProCardSwiper.vue';
   import MainHeader from '@/components/MainHeader.vue';
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
@@ -18,9 +16,7 @@
   //   };
   // },
     components:{
-        ProCardSwiper1,
-        ProCardSwiper2,
-        ProCardSwiper3,
+        ProCardSwiper,
         MainHeader,
         MainHeader,
         NumberSelect,
@@ -59,7 +55,7 @@
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       
       // 取得所有商品資料用做本頁資料以及swiper
-      axios.get(`${import.meta.env.VITE_CARA_URL}/front/frontProductinfo.php?`)
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -67,6 +63,7 @@
           this.thisProduct = response.data.find((item) =>{
             return item.pro_id == pageId
           })
+          console.log(this.allProducts);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -77,7 +74,7 @@
       axios.get(`${import.meta.env.VITE_CARA_URL}/front/thisproductimgs.php?pageId=${pageId}`)
         .then((response) => {
           this.ImgsName = response.data;
-          console.log(this.ImgsName);
+          // console.log(this.ImgsName);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -231,13 +228,12 @@
     </div>
     <div class="col-12">
       <ProductIntroCard />
-      <ProCardSwiper1
+      <ProCardSwiper
       :displayData="allProducts"
       />
-      <ProCardSwiper2
+      <ProCardSwiper
       :displayData="allProducts"
       />
-      
     </div>
   </div>
 </main>

@@ -66,6 +66,10 @@ const router = createRouter({
       }
     },
     {
+      path:'/Product',
+      redirect:'/ProductList'
+    },
+    {
       path: '/SecondHandList',
       name: 'SecondHandList',
       component: () => import('@/views/SecondHandListView.vue'),
@@ -76,6 +80,10 @@ const router = createRouter({
       name: 'SecondHand',
       component: () => import('@/views/SecondHandView.vue'),
       meta:{title: '二手專區 | Cara Car',}
+    },
+    {
+      path:'/SecondHand',
+      redirect:'/SecondHandList'
     },
     {
       path: '/SecondHandSale',
