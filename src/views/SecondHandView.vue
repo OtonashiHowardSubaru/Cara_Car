@@ -60,7 +60,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
       },
       fetchData(){
         const pageId = this.$route.params.sh_pro_id
-        axios.get(`${import.meta.env.VITE_CARA_URL}/front/frontShProductinfo.php`)
+        axios.get(`${import.meta.env.VITE_CARA_URL}/front/shProductList.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           console.log(response.data)
@@ -191,7 +191,10 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
         <div class="purchase_btn" id="purchase_btn">
           <!-- <a href="./CartView.vue">直接購買</a> -->
-          <button type="button" id="addToCartBtn" @click="addToCart"><a href="./CartView.vue">直接購買</a></button>
+          <router-link to="/cart">
+            <button type="button" id="addToCartBtn">直接購買</button>
+          </router-link>
+          
         </div>
     </div>
 </div>
