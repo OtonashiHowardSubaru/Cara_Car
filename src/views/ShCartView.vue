@@ -19,6 +19,8 @@ components:{
 data(){
     return {
         allProducts:[],
+        shCartItems:[],
+        cart:'',
         name:'',
         phone:'',
         city:'',
@@ -53,16 +55,17 @@ data(){
             {c:'宜蘭縣'},
             {c:'澎湖縣'},
         ],
-        
+        L: 40,
     }
 },
 created() {
     this.axiosGet();
+    this.fetchData();
     
-   // 從LocalStorage中讀取購物車資料
-    const cartData = JSON.parse(localStorage.getItem('cart'));
-    if (cartData) {
-        this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
+    //從LocalStorage中讀取購物車資料
+    const shCartData = JSON.parse(localStorage.getItem('cart'));
+    if (shCartData) {
+        this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
     }; 
 },
 computed: {
@@ -117,34 +120,16 @@ methods: {
             console.error("Error:", error);
         });
     },
-    handleQtyChange(index,increment) {
-        let qtyValue = parseInt(this.cartItems[index].quantity);
-        qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
-        // this.$refs['qtyInput_' + index][0].value = qtyValue;
-        this.updateQuantity(index, qtyValue)
-    },
     toggleCartContent(){
         this.expanded = !this.expanded;
     },
-    updateQuantity(index, newQuantity){
-        // 更新购物车内商品数量
-        if (newQuantity < 1) {
-            // 如果数量小于1，则从购物车中删除该商品
-            this.cartItems.splice(index, 1);
-        } else {
-            this.cartItems[index].quantity = newQuantity;
-            //更新商品總金額
-            this.updateTotalPrice(index);
-        }
-        this.saveCartData();
+    //抓取圖片路徑
+    getProductImgSrc(imgName){
+        return new URL(`../assets/imgs/product/sh_products/${imgName}`, import.meta.url).href
     },
-    updateTotalPrice(index){
-        const item = this.cartItems[index];
-        item.total = item.price * item.quantity;
-    },
-    saveCartData() {
-        localStorage.setItem('cart', JSON.stringify(this.cartItems));
-    },
+    // saveCartData() {
+    //     localStorage.setItem('cart', JSON.stringify(this.shCartItems));
+    // },
     //購買人資料填寫
     buyDone(){
         const cartFromData = new FormData();
@@ -177,6 +162,12 @@ methods: {
             })
 
     },
+    clearshCartData(){
+        this.shCartItems = [];
+        this.cart = [];
+        localStorage.setItem('cart', JSON.stringify(this.shCartItems));
+        console.log('清除購物車',this.cart);
+    },
 },
 }
 </script>
@@ -208,7 +199,24 @@ methods: {
                 <span class="cartProcessname" id="process2">填寫資料</span>
                 <span class="cartProcessname">完成訂單</span>
             </div>
-
+            <div class="cartContent">
+                <span class="productName">商品名稱與單價</span>
+                <span class="count">數量</span>
+                <span class="countTotal">合計</span>
+            </div>
+            <!-- 這是二手商品內容 -->
+            <div class="productCard" v-for="(item, index) in shCartItems" :key="index">
+                <img :src=" getProductImgSrc(item.shimageUrl)" alt="ProductImage">
+                    <div class="proCardP">
+                        <p class="pro_name">{{ item.shname }}</p>
+                        <p class="pro_price">${{ item.shprice }}</p>
+                    </div>
+                    <div class="number_select">
+                        <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent v-bind:style="{margin: L + 'px'}">
+                    </div>
+                    <p class="proCount">${{ item.shprice}}</p>
+            </div>
+            <!-- 結束 -->
         </section>
         {{ this.userStoreData.userData.m_name }}
         <form class="cartReceiptInformation">
@@ -256,13 +264,11 @@ methods: {
                 <router-link to="/cartPart3">
                     <button type="submit" class="subButton" @click="buyDone">確認並送出訂單</button>
                 </router-link>
+                <router-link to="/secondHand">
+                    <button type="submit" class="subButton2"  @click="clearshCartData">取消購買訂單</button>
+                </router-link>
             </div>
         </form>
-        <router-link to="/cart">
-            <button class="backButton">
-                回上一頁修改
-            </button>
-        </router-link>
     </main>
     <ProCardSwiper
     :displayData="allProducts"
@@ -291,5 +297,19 @@ methods: {
     color: $whiteWord;
     position: absolute;
     left: 20%;
+}
+.subButton2{
+    background-color: $whiteWord;
+    color: $grass_2;
+    border: 2px solid $grass_2;
+    display: flex;
+    justify-content: center;
+    font-size: $mh4;
+    width: 72%;
+    padding: 10px 0;
+    margin: 15px auto 25px auto;
+    // border-style: none;
+    border-radius: 16px;
+    cursor: pointer;
 }
 </style>
