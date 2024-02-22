@@ -28,7 +28,6 @@ data(){
         qtyValue:'',
         count: 1,
         expanded:false,
-        // cartItems: [],
         memInfo:[],
         userStoreData:userStore(),
         cityOption:[
@@ -58,7 +57,8 @@ data(){
 },
 created() {
     this.axiosGet();
-    
+    this.fetchData();
+
    // 從LocalStorage中讀取購物車資料
     const cartData = JSON.parse(localStorage.getItem('cart'));
     if (cartData) {
