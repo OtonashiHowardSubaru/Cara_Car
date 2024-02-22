@@ -97,7 +97,7 @@
       handleToggleFilter(filterName) {
         // 如果按鈕是啟動的，將過濾單位加入過濾器activeFilterValue 內；否則，從中刪除
         if (!(this.filterActiveState)) {
-          console.log(this.filterActiveState);
+          // console.log(this.filterActiveState);
           this.filterActiveState = !(this.filterActiveState)
           this.activeFilterValue = filterName;
         } else if (this.filterActiveState && (filterName != this.activeFilterValue)) {

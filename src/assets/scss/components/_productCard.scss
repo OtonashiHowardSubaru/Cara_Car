@@ -19,6 +19,9 @@
         @media (min-width:768px) {
             .product_card{
                 width: 100%;
+                h6{
+                    font-size: $h5;
+                }
             }
         }
     }
