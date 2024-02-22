@@ -224,9 +224,11 @@
       <ProductIntroCard />
       <ProCardSwiper
       :displayData="allProducts"
+      :title="'也許你會喜歡'"
       />
       <ProCardSwiper
       :displayData="allProducts"
+      :title="'別人也逛過'"
       />
     </div>
   </div>

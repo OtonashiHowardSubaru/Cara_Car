@@ -13,6 +13,7 @@ export default{
       return{
         slidesPerView: 3,
         thisSwiperId:`swiper-${new Date().getTime()}`,
+        shuffleDisplayData: [],
       }
     },
     setup() {
@@ -20,20 +21,37 @@ export default{
         modules: [Navigation]
       };
     },
-    props:['displayData', ],
+    props:['displayData', 'title'],
     created() {
+      // this.shuffleDisplayDataAsync();
+    },
+    watch:{
+      displayData: {
+            immediate: true,
+            handler(newVal, oldVal) {
+                if (newVal !== oldVal) {
+                    this.shuffleDisplayDataAsync();
+                }
+            },
+        },
     },
     methods: {
-        getProductImgSrc(imgName){
-          return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
-        },
-        handleResize(){
-          this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;
-        }
+      getProductImgSrc(imgName){
+        return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+      },
+      handleResize(){
+        this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;
+      },
+      async shuffleDisplayDataAsync(){
+        await this.$nextTick(); 
+        const shuffled = this.displayData.sort(()=> 0.5 - Math.random());
+        this.shuffleDisplayData = shuffled.slice(0, 5);
+      }
     },
     mounted() {
       window.addEventListener('resize',this.handleResize);
       this.handleResize();
+      // this.shuffleDisplayDataAsync();
     },
 }
 
@@ -42,7 +60,7 @@ export default{
 <template>
 <div class="recommand" :id="thisSwiperId">
   <div class="recommand_box">
-    <h4>別人也逛過</h4>
+    <h4>{{title}}</h4>
     <div class="swiper-button-next" ref="nextButton"></div>
     <swiper 
     :slidesPerView="slidesPerView"
@@ -56,7 +74,7 @@ export default{
     :modules="modules"
     class="mySwiper"
     >
-      <swiper-slide  v-for="item in displayData" :key="item.pro_id">
+      <swiper-slide  v-for="item in shuffleDisplayData" :key="item.pro_id">
         <div class="product_card">
         <RouterLink :to="'/Product/' + item.pro_id">
           <div class="pro_card_img">
