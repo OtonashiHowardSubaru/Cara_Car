@@ -22,7 +22,6 @@ export default {
             isDesktop: window.innerWidth >= 768,
             storedImage: '',
             member: [],
-            // storageMember: [],
             userStoreData: userStore(),
         }
     },
@@ -30,17 +29,23 @@ export default {
         // 監聽視窗大小變化，更新 isMobile 和 isDesktop 的值
         window.addEventListener('resize', this.updateWindowSize);
         this.updateWindowSize()
-        // this.userData.member_id = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id : "";
-        // this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
-        // this.userData.m_phone = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).phone : "";
-        // this.userData.m_email = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).email : "";
-        // this.userData.m_address = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).address : "";
-        console.log(this.userData.member_id);
+
+        this.userData.member_id = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id : "";
+        this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
+        this.userData.m_phone = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).phone : "";
+        this.userData.m_email = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).email : "";
+        this.userData.m_city = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).city : "";
+        this.userData.m_district = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).district : "";
+        this.userData.m_address = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).address : "";
+
         const member_id = this.userData.member_id
+        console.log(this.userData.member_id);
+
         axios.get(`${import.meta.env.VITE_CARA_URL}/front/getMemberName.php?member_id=${member_id}`)
-        .then(res =>{
-            this.member = res.data
-        })
+            .then(res => {
+                this.member = res.data
+                console.log(this.member);
+            })
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
@@ -100,27 +105,26 @@ export default {
                 m_phone: this.userData.m_phone,
                 m_birthday: this.userData.m_birthday,
                 m_email: this.userData.m_email,
+                m_city: this.userData.m_city,
+                m_district: this.userData.m_district,
                 m_address: this.userData.m_address,
             }
-            console.log(this.userData.m_address);
-                axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberProfile.php`, postData, {
-                    headers: { "Content-Type": "multipart/form-data" },
-                })
-                .then(res =>{
-                    console.log(postData);
-                    // console.log(this.userData.m_address);
+            axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberProfile.php`, postData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            })
+                .then(res => {
+                    console.log(postData); //傳送出去的資料
                     alert('已更新會員資料！')
-                    this.updateUserData(this.userData)
+                    this.updateUserData(this.userData) //更新localStorage的資料
                     location.reload();
                 })
-                
+
         },
         ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData']),
     },
     mounted() {
         document.getElementById("upFile").addEventListener("change", this.showFile);
         this.storedImage = localStorage.getItem('imagePreview');
-        this.userStoreData.userData = localStorage.getItem('userData');
     },
 }
 </script>
@@ -160,7 +164,6 @@ export default {
                     <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview">
                 </div>
                 <div class="welcome">
-                    <!-- {{member}} -->
                     <h3>
                         您好{{ this.userStoreData.userData.m_name }}，歡迎光臨<br>Cara Car官網購物帳號
                     </h3>
@@ -218,7 +221,6 @@ export default {
 
                 <div class="user_profile">
                     <form action="" method="post" name="" id="">
-                    <!-- <form @submit.prevent="updateMemProfile"> -->
                         <div class="table">
                             <p>會員姓名</p>
                             <input type="text" name="m_name" id="m_name" v-model="userData.m_name">
@@ -236,19 +238,17 @@ export default {
                             <input type="email" name="m_email" id="m_email" v-model="userData.m_email">
                         </div>
                         <div class="table">
-                            <p>會員地址</p>
+                            <p>聯絡地址</p>
+                            <input type="address" name="m_city" id="m_city" v-model="userData.m_city">
+                        </div>
+                        <div class="table">
+                            <p>　　　　</p>
+                            <input type="address" name="m_district" id="m_district" v-model="userData.m_district">
+                        </div>
+                        <div class="table">
+                            <p>　　　　</p>
                             <input type="address" name="m_address" id="m_address" v-model="userData.m_address">
                         </div>
-                        <!-- <div class="table">
-                            <p>新密碼　</p>
-                            <input type="password" name="memNewPsw" id="memNewPsw" autocomplete="current-password"
-                                placeholder="請輸入新密碼" v-model="this.memNewPsw">
-                        </div> -->
-                        <!-- <div class="table">
-                            <p>確認密碼</p>
-                            <input type="password" name="memConPsw" id="memConPsw" autocomplete="current-password"
-                                placeholder="請再次輸入新密碼" v-model="this.memConPsw">
-                        </div> -->
                     </form>
                     <input id="send" type="submit" name="button" @click="updateMemProfile()" value="我要修改">
                 </div>
@@ -354,4 +354,5 @@ export default {
 @import '@/assets/scss/layout/memberCenterBasic.scss';
 @import '@/assets/scss/layout/memberCenterOrder.scss';
 @import '@/assets/scss/layout/memberCenterReturn.scss';
-@import '@/assets/scss/layout/memberCenterCollect.scss';</style>
+@import '@/assets/scss/layout/memberCenterCollect.scss';
+</style>
