@@ -145,6 +145,12 @@ const router = createRouter({
       component: () => import('@/views/CartPart3View.vue'),
       meta:{title: '完成訂單 | Cara Car',}
     },
+    {
+      path: '/ShCart',
+      name: 'ShCart',
+      component: () => import('@/views/ShCartView.vue'),
+      meta:{title: '填寫資料 | Cara Car',}
+    },
     // {
     //   path: '/BackLogin',
     //   name: 'BackLogin',
