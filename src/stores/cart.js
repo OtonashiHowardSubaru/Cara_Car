@@ -55,7 +55,7 @@ export default defineStore("cartStore", {
                     name: thisProduct.pro_name,
                     price: thisProduct.pro_price,
                     // imageUrl:ImgsName.img_id,
-                    imageUrl:ImgsName.img_name,
+                    imageUrl:thisProduct.img_name,
                     quantity: qtyValue,
                 })
             }else{

@@ -234,6 +234,7 @@ methods: {
                 <span class="countTotal">合計</span>
             </div>
             <!-- 這裡是商品內容 -->
+            
             <div class="productCard" v-for="(item, index) in cartItems" :key="index">
                 <img :src="(item.imageUrl)" alt="ProductImage">
                     <div class="proCardP">

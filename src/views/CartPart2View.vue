@@ -10,6 +10,8 @@ import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 
 import product01 from '@/assets/imgs/product/product_1.png'
 import product02 from '@/assets/imgs/product/product_2.png'
@@ -43,7 +45,7 @@ data(){
         // cartItems: [],
         memInfo:[],
         userStoreData:userStore(),
-        city:[
+        cityOption:[
             {c:'台北市'},
             {c:'新北市'},
             {c:'基隆市'},
@@ -193,10 +195,15 @@ methods: {
         const cartFromData = new FormData();
         cartFromData.append('ord_reciever', this.name);
         cartFromData.append('ord_phone', this.phone);
-        // cartFromData.append('ord_city', this.city);
+        cartFromData.append('ord_city', this.city);
         cartFromData.append('ord_district', this.area);
-        cartFromData.append('ord_address_', this.road);
+        cartFromData.append('ord_address', this.road);
         cartFromData.append('remark', this.remark);
+        cartFromData.append('member_id', 1);
+        cartFromData.append('ord_ship', 4);
+        cartFromData.append('ord_total', 1000);
+        cartFromData.append('ord_del_state', 1);
+
 
         apiInstance({
                 method: 'post',
@@ -205,7 +212,7 @@ methods: {
                 data: cartFromData
             }).then(res=>{
                 console.log(res);
-                if(res && res.data && res.data.msg === '已完成訂購'){
+                if(res && res.data && res.data.msg === '完成訂購'){
                     alert("訂購完成")
                 }else{
                     alert('訂購失敗')
@@ -256,14 +263,14 @@ methods: {
                     <span class="informationTitle2"><input type="checkbox" class="cartCheckbox">同會員資料</span>
                 </span>
                 <p class="cartInputTitle">收件人姓名</p>
-                <input v-model="memInfo.m_name" type="text" name="name" class="cartInput">
+                <input v-model="name" type="text" name="name" class="cartInput">
                 <p class="cartInputTitle">連絡電話</p>
-                <input v-model="memInfo.m_phone" type="tel" minlength="10" maxlength="10" class="cartInput">
+                <input v-model="phone" type="tel" minlength="10" maxlength="10" class="cartInput">
                 <p class="cartInputTitle">收件地址</p>
                 <div class="col66">
-                    <select name="city" id="city" >
+                    <select v-model="city" name="city" id="city" >
                         <option value="" >請選擇縣市</option>
-                        <option v-for="item in city" :key="item">{{ (item).c }}</option>
+                        <option v-for="item in cityOption" :key="item">{{ (item).c }}</option>
                     </select>
                     <input v-model="area" type="text" placeholder=" 中正區"  class="area">
                 </div>
@@ -286,7 +293,7 @@ methods: {
                 <div class="col66">
                     <select name="city" id="city" >
                         <option value="">請選擇縣市</option>
-                        <option v-for="item in city" :key="item">{{ (item).c }}</option>
+                        <option v-for="item in cityOption" :key="item">{{ (item).c }}</option>
                     </select>
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>
