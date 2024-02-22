@@ -2,7 +2,7 @@
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/MainHeader.vue';
 import ProductCard from '@/components/ProductCard.vue';
-import ProCardSwiper from '@/components/ProCardSwiperTest.vue'
+import ProCardSwiper from '@/components/ProCardSwiperForGame.vue'
 
 
 export default {
@@ -13,7 +13,7 @@ export default {
     return {
       active: false,
       process: 0,
-      value: 1,//選取商品的起始值，就是第1樣商品開始就對了
+      value: 0,//選取商品的起始值，就是第1樣商品開始就對了
       responseData : [],
       displayData: [],
       questionBank: [
@@ -110,9 +110,10 @@ export default {
       this.active = true;
       this.process = 0;//確保遊戲開始時機制重整
     },
-    clickanswer(){
+    clickanswer(choosedValue){
       this.process++; //追蹤進度
-
+      this.value += choosedValue
+      console.log(this.value);
     }
   }
 }
@@ -140,15 +141,15 @@ export default {
             <p>{{ questionBank[process].title }}</p>
           </div>
           <div class="answerBox">
-            <button @click="clickanswer(1)">{{questionBank[process].answer1}}</button>
+            <button @click="clickanswer(0)">{{questionBank[process].answer1}}</button>
             <button @click="clickanswer(2)">{{questionBank[process].answer2}}</button>
-            <button @click="clickanswer(0)">{{questionBank[process].answer3}}</button>
+            <button @click="clickanswer(1)">{{questionBank[process].answer3}}</button>
           </div>
         </div>
         <div v-if="active && process >= questionBank.length" class="col-8 finishGame">
           <h3>\ 看看這個是不是你喜歡的吧！ /</h3>
           <ProCardSwiper
-          :displayData="displayData.slice(0,3)"
+          :displayData="displayData.slice(this.value,(this.value)+ 3)"
           />
         </div>
       </div>

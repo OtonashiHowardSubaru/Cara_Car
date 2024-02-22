@@ -1,8 +1,9 @@
-.recommand {
+.recommand, .gameResult {
     margin: 0;
     width: 100%;
+    margin-bottom: 100px;
 
-    .recommand_box{
+    .recommand_box, .gameResultBox{
         width: 100%;
         h4{
         width: 100%;
@@ -15,9 +16,7 @@
     }
     
 }
-.recommand{
-    margin-bottom: 100px;
-}
+
 
 //輪替套件
 .mySwiper {
