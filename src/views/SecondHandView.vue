@@ -11,8 +11,8 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import ProCardSwiper1 from "@/components/ProCardSwiper1.vue"
-import ProCardSwiper2 from "@/components/ProCardSwiper2.vue"
+// import ProCardSwiper1 from "@/components/ProCardSwiper1.vue"
+// import ProCardSwiper2 from "@/components/ProCardSwiper2.vue"
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
 // import product01 from '@/assets/imgs/product/sh_products/product001.jpg';
@@ -30,7 +30,9 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper1,DoubleCloud,ProCardSwiper2
+    ProductCard, MainHeader,ProductIntroCard,Swiper,DoubleCloud,
+    // ProCardSwiper2,
+    // ProCardSwiper1,
 },
     data(){
       return {
@@ -191,7 +193,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
         <div class="purchase_btn" id="purchase_btn">
           <!-- <a href="./CartView.vue">直接購買</a> -->
-          <router-link to="/cart">
+          <router-link to="/ShCart">
             <button type="button" id="addToCartBtn" @click="addToShCart">直接購買</button>
           </router-link>
         </div>
