@@ -39,7 +39,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         ImgsName:[],
         thisProduct:[],
         allProducts:[],
-
+        qtyValue: 1,
       }
     },
     setup() {
@@ -107,30 +107,30 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         this.mainImage = image;
       },
       //加入購物車
-      addToCart(){
+      addToShCart(){
         const product = {
-          id: this.thisProduct.pro_id,
-          name: this.thisProduct.pro_name,
-          price: this.thisProduct.pro_price,
-          imageUrl: this.getProductImgSrc(this.ImgsName[0].img_name),
-          quantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
+          id: this.thisProduct.sh_pro_id,
+          shname: this.thisProduct.sh_pro_name,
+          shprice: this.thisProduct.sh_pro_price,
+          shimageUrl:  this.thisProduct.img_name,
+          shquantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
         };
         // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
-        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        let shCartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
         // 將當前商品添加到購物車中，重複商品時則更新數量
-        let existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+        let existingProductIndex = shCartItems.findIndex(item => item.id === product.id);
         if (existingProductIndex !== -1) {
           // 如果購物車中已有相同商品，則更新其數量
           cartItems[existingProductIndex].quantity += product.quantity;
         } else {
           // 若不是則將商品添加到購物車
-          cartItems.push(product);
+          shCartItems.push(product);
         };
 
         // cartItems.push(product);
         // 將更新後的購物車數據保存到本地端
-        localStorage.setItem('cart', JSON.stringify(cartItems));
+        localStorage.setItem('cart', JSON.stringify(shCartItems));
 
         // alert('商品已加入到購物車！');
         return  Swal.fire({
@@ -192,9 +192,8 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         <div class="purchase_btn" id="purchase_btn">
           <!-- <a href="./CartView.vue">直接購買</a> -->
           <router-link to="/cart">
-            <button type="button" id="addToCartBtn">直接購買</button>
+            <button type="button" id="addToCartBtn" @click="addToShCart">直接購買</button>
           </router-link>
-          
         </div>
     </div>
 </div>

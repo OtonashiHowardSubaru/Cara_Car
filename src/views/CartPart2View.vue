@@ -10,6 +10,8 @@ import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 
 import product01 from '@/assets/imgs/product/product_1.png'
 import product02 from '@/assets/imgs/product/product_2.png'
@@ -22,6 +24,7 @@ import product08 from '@/assets/imgs/product/product_8.png'
 import product09 from '@/assets/imgs/product/product_9.png'
 
 import apiInstance from '@/stores/auth'
+import userStore from '@/stores/user'
 
 export default {
 components:{
@@ -40,7 +43,9 @@ data(){
         count: 1,
         expanded:false,
         // cartItems: [],
-        city:[
+        memInfo:[],
+        userStoreData:userStore(),
+        cityOption:[
             {c:'台北市'},
             {c:'新北市'},
             {c:'基隆市'},
@@ -122,6 +127,7 @@ data(){
     }
 },
 created() {
+    this.axiosGet()
    // 從LocalStorage中讀取購物車資料
     const cartData = JSON.parse(localStorage.getItem('cart'));
     if (cartData) {
@@ -146,6 +152,16 @@ computed: {
     },
 },
 methods: {
+    axiosGet(){
+        axios.get(`${import.meta.env.VITE_CARA_URL}/back/backMember.php`)
+        .then(res=>{
+            this.memInfo = res.data
+            console.log(this.memInfo);
+        })
+        .catch(error=> {
+            console.error("Error:", error);
+        });
+    },
     handleQtyChange(index,increment) {
         let qtyValue = parseInt(this.cartItems[index].quantity);
         qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
@@ -179,10 +195,15 @@ methods: {
         const cartFromData = new FormData();
         cartFromData.append('ord_reciever', this.name);
         cartFromData.append('ord_phone', this.phone);
-        // cartFromData.append('ord_city', this.city);
+        cartFromData.append('ord_city', this.city);
         cartFromData.append('ord_district', this.area);
-        cartFromData.append('ord_address_', this.road);
+        cartFromData.append('ord_address', this.road);
         cartFromData.append('remark', this.remark);
+        cartFromData.append('member_id', 1);
+        cartFromData.append('ord_ship', 4);
+        cartFromData.append('ord_total', 1000);
+        cartFromData.append('ord_del_state', 1);
+
 
         apiInstance({
                 method: 'post',
@@ -191,7 +212,7 @@ methods: {
                 data: cartFromData
             }).then(res=>{
                 console.log(res);
-                if(res && res.data && res.data.msg === '已完成訂購'){
+                if(res && res.data && res.data.msg === '完成訂購'){
                     alert("訂購完成")
                 }else{
                     alert('訂購失敗')
@@ -234,6 +255,7 @@ methods: {
             </div>
 
         </section>
+        {{ this.userStoreData.userData.m_name }}
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
@@ -246,9 +268,9 @@ methods: {
                 <input v-model="phone" type="tel" minlength="10" maxlength="10" class="cartInput">
                 <p class="cartInputTitle">收件地址</p>
                 <div class="col66">
-                    <select name="city" id="city" >
+                    <select v-model="city" name="city" id="city" >
                         <option value="" >請選擇縣市</option>
-                        <option v-for="item in city" :key="item">{{ (item).c }}</option>
+                        <option v-for="item in cityOption" :key="item">{{ (item).c }}</option>
                     </select>
                     <input v-model="area" type="text" placeholder=" 中正區"  class="area">
                 </div>
@@ -271,7 +293,7 @@ methods: {
                 <div class="col66">
                     <select name="city" id="city" >
                         <option value="">請選擇縣市</option>
-                        <option v-for="item in city" :key="item">{{ (item).c }}</option>
+                        <option v-for="item in cityOption" :key="item">{{ (item).c }}</option>
                     </select>
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>

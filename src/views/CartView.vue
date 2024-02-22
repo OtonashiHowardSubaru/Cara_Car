@@ -21,8 +21,8 @@ import product07 from '@/assets/imgs/product/product_7.png'
 import product08 from '@/assets/imgs/product/product_8.png'
 import product09 from '@/assets/imgs/product/product_9.png'
 
-// import { mapState, mapActions } from "pinia";
-// import cartStore from "@/stores/cart";
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 
 export default {
 components:{
@@ -31,10 +31,11 @@ components:{
 },
 data(){
     return {
-        qtyValue:'',
+        cart:'',
+        qtyValue: 0,
         // count: 1,
         expanded:false,
-        cartItems: [],
+        cartStore: cartStore(),
         city:[
             {c:'台北市'},
             {c:'新北市'},
@@ -113,49 +114,54 @@ data(){
             linkwhere:"/Product"
         },
         ],
-        
     }
 },
 created() {
-   // 從LocalStorage中讀取購物車資料
-    const cartData = JSON.parse(localStorage.getItem('cart'));
-    if (cartData) {
-        this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
+    this.getLocalCartData();
+
+   //從LocalStorage中讀取購物車資料
+    const shCartData = JSON.parse(localStorage.getItem('cart'));
+    if (shCartData) {
+        this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
     }; 
-    // this.getLocalCartData();
+    this.getLocalCartData();
 
 },
 computed: {
-    // ...mapState(cartStore,[
-    //     "cartItems",
-    //     "subtotal",
-    //     "subFreight",
-    //     "total",
-    // ]),
+    ...mapState(cartStore,[
+        "cartItems",
+        "subtotal",
+        "subFreight",
+        "total",
+    ]),
 
-    subtotal() {
-    let total = 0;
-    for (let item of this.cartItems) {
-      total += item.price * item.quantity;
-    }
-    return total;
-    },
-    subFreight(){
-        const baseSubFreight = 120;
-        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
-        return baseSubFreight * totalQuantity;
-    },
-    total(){
-        return this.subtotal + this.subFreight;
-    },
+    // subtotal() {
+    // let total = 0;
+    // for (let item of this.cartItems) {
+    //   total += item.price * item.quantity;
+    // }
+    // return total;
+    // },
+    // subFreight(){
+    //     const baseSubFreight = 120;
+    //     const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    //     return baseSubFreight * totalQuantity;
+    // },
+    // total(){
+    //     return this.subtotal + this.subFreight;
+    // },
 },
 methods: {
-    handleQtyChange(index,increment) {
-        let qtyValue = parseInt(this.cartItems[index].quantity);
-        qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
-        // this.$refs['qtyInput_' + index][0].value = qtyValue;
-        this.updateQuantity(index, qtyValue)
-    },
+    // handleQtyChange(index,increment) {
+    //     let qtyValue = parseInt(this.cartItems[index].quantity);
+    //     qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
+    //     // this.$refs['qtyInput_' + index][0].value = qtyValue;
+    //     this.updateQuantity(index, qtyValue)
+    // },
+    //抓取圖片路徑
+    // getProductImgSrc(imgName){
+    //     return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+    // },
     toggleCartContent(){
         this.expanded = !this.expanded;
     },
@@ -171,19 +177,20 @@ methods: {
         }
         this.saveCartData();
     },
-    updateTotalPrice(index){
-        const item = this.cartItems[index];
-        item.total = item.price * item.quantity;
-    },
+    // updateTotalPrice(index){
+    //     const item = this.cartItems[index];
+    //     item.total = item.price * item.quantity;
+    // },
     saveCartData() {
-        localStorage.setItem('cart', JSON.stringify(this.cartItems));
+        localStorage.setItem('cart', JSON.stringify(this.shCartItems));
     },
-    // ...mapActions(cartStore, [
-    //     "reduceFromCart",
-    //     "increaseFromCart",
-    //     "getLocalCartData",
-
-    // ]),
+    ...mapActions(cartStore, [
+        "reduceFromCart",
+        "increaseFromCart",
+        "getLocalCartData",
+        "addToCart",
+        "getProductImgSrc",
+    ]),
 
 },
 }
@@ -204,47 +211,57 @@ methods: {
             </div>
             <DoubleCloud class="cartCloud"/>
             
-            <div class="notInCart" v-show="cartItems.length == 0">
+            <div class="notInCart" v-show="cartItems.length == 0 ">
                 <img src="../assets/imgs/draw/cara_sign.png" alt="">
 
                 <h2 class="notInCartP">你尚未購買商品</h2>
 
             </div>
 
-            <div class="cartProcess1" v-show="cartItems.length !=0">
+            <div class="cartProcess1" v-show="cartItems.length !=0 ">
                 <div class="cartProcessCircle" id="circle1">1</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">2</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">3</div>
             </div>
-            <div class="cartProcess2" v-show="cartItems.length !=0">
+            <div class="cartProcess2" v-show="cartItems.length !=0 ">
                 <span class="cartProcessname" id="process1">你的訂單</span>
                 <span class="cartProcessname">填寫資料</span>
                 <span class="cartProcessname">完成訂單</span>
             </div>
 
-            <div class="cartContent" v-show="cartItems.length !=0">
+            <div class="cartContent" v-show="cartItems.length !=0 ">
                 <span class="productName">商品名稱與單價</span>
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
             </div>
             <!-- 這裡是商品內容 -->
             <div class="productCard" v-for="(item, index) in cartItems" :key="index">
-                <img :src="(item.imageUrl)" alt="ProductImage">
+                <img :src=" getProductImgSrc(item.imageUrl)" alt="ProductImage">
                     <div class="proCardP">
                         <p class="pro_name">{{ item.name }}</p>
                         <p class="pro_price">${{ item.price }}</p>
                     </div>
-                    <!-- <NumberSelect
-                    :qtyValue="item.quantity" @change="updateQuantity(index, $event)"
-                    /> -->
                     <div class="number_select">
-                        <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index,-1)">
+                        <input type="button" value="-" class="qtyMinus" @click="reduceFromCart(item)">
                         <input type="text" name="quantity" :value="item.quantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
-                        <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
+                        <input type="button" value="+" class="qtyPlus" @click="increaseFromCart(item)">
                     </div>
                     <p class="proCount">{{ item.price*item.quantity}}</p>
+            </div>
+            <!-- 結束 -->
+            <!-- 這是二手商品內容 -->
+            <div class="productCard" v-for="(item, index) in shCartItems" :key="index">
+                <img :src=" getProductImgSrc(item.shimageUrl)" alt="ProductImage">
+                    <div class="proCardP">
+                        <p class="pro_name">{{ item.shname }}</p>
+                        <p class="pro_price">${{ item.shprice }}</p>
+                    </div>
+                    <div class="number_select">
+                        <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
+                    </div>
+                    <p class="proCount">${{ item.shprice}}</p>
             </div>
             <!-- 結束 -->
             <!-- 這是客製化車牌內容 -->

@@ -25,7 +25,7 @@
           thisProduct:[],
           ImgsName:[],
           activeTab: 0,
-          qtyValue: '',
+          qtyValue: 1,
         }
     },
     computed:{
@@ -34,7 +34,9 @@
       )
     },
     created() {//在頁面載入時同時載入function
-      this.fetchData()
+      this.fetchData();
+      
+      this.getLocalCartData();
     },
     watch:{
       '$route'(to, from) {
@@ -61,6 +63,8 @@
           })
           console.log(this.allProducts);
         })
+        // console.log("========",this.thisProduct)
+      // })
         .catch((error) => {
           console.error("Error fetching data:", error);
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
@@ -132,7 +136,8 @@
       //     confirmButtonText: 'OK',
       //   })
       // },
-      ...mapActions(cartStore,["addToCart"]),
+      ...mapActions(cartStore,["addToCart","getLocalCartData"]),
+      
       // addToCart(){
       //   this.addToCart({ 
       //     thisProduct: this.thisProduct, 
@@ -156,7 +161,9 @@
 <MainHeader />
 <main class="container">
   <div class="row">
-    <!-- <div v-for="product in products" :key="product.id"></div> -->
+    <!-- {{ ImgsName }} -->
+    <!-- {{ thisProduct }} -->
+   
     <div class="col-12 col-md-12 pro_title" >
       <h1>{{ thisProduct.pro_name }}</h1>
       <h2>{{ thisProduct.pro_en_name }}</h2>
@@ -217,7 +224,7 @@
           直接購買
             <!-- <router-link to="/cart">直接購買</router-link> -->
         </button>
-        <button type="button" id="addToCartBtn" @click="addToCart">加入購物車</button>
+        <button type="button" id="addToCartBtn" @click="addToCart(thisProduct, qtyValue)">加入購物車</button>
       </div>
     </div>
     <div class="col-12">
