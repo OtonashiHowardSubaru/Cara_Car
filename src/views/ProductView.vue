@@ -57,7 +57,7 @@
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       
       // 取得所有商品資料用做本頁資料以及swiper
-      axios.get(`${import.meta.env.VITE_CARA_URL}/front/frontProductinfo.php?`)
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -164,10 +164,9 @@
 <MainHeader />
 <main class="container">
   <div class="row">
-    
-    <!-- {{ thisProduct }}
-    {{ ImgsName }} -->
-    <!-- <div v-for="product in products" :key="product.id"></div> -->
+    <!-- {{ ImgsName }} -->
+    <!-- {{ thisProduct }} -->
+   
     <div class="col-12 col-md-12 pro_title" >
       <h1>{{ thisProduct.pro_name }}</h1>
       <h2>{{ thisProduct.pro_en_name }}</h2>
@@ -228,7 +227,7 @@
           直接購買
             <!-- <router-link to="/cart">直接購買</router-link> -->
         </button>
-        <button type="button" id="addToCartBtn" @click="addToCart(thisProduct, ImgsName, qtyValue)">加入購物車</button>
+        <button type="button" id="addToCartBtn" @click="addToCart(thisProduct, qtyValue)">加入購物車</button>
       </div>
     </div>
     <div class="col-12">

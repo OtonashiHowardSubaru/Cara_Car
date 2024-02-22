@@ -28,16 +28,17 @@ mounted() {
     this.animate();
     window.addEventListener('resize', this.handleResize);
 },
-beforeDestroy() {
-    window.removeEventListener('resize', this.handleResize);
-},
+// beforeDestroy() {
+//     window.removeEventListener('resize', this.handleResize);
+// },
 methods: {
     handleResize(){
         this.setCanvasWidth();
-        // this.animate();
+        // this.animateR();
     },
     setCanvasWidth(){
         const canvas = this.$refs.canvas;
+
         canvas.width = document.documentElement.clientWidth;
         canvas.height = 1100;
     },
@@ -130,57 +131,86 @@ methods: {
     };
     },
     animate() {
-    let gap = 40;
-    // let range;
-    let canvas = this.$refs.canvas;
-    let context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
+        // let gap = 40;
+        // let range;
+        let canvas = this.$refs.canvas;
+        let context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (let i = 0; i <= 100; i++) {
-        let interval = i * 40;
 
-        context.moveTo(0, interval);
-        context.lineTo(canvas.width, interval);
+        if (this.pic1) {
+            context.drawImage(this.pic1, 280, 80, 1000, 965);
+            
+        }
 
-        context.moveTo(interval, 0);
-        context.lineTo(interval, canvas.height);
-    }
-    context.strokeStyle = 'rgba(0,0,0,0.3)';
+        let x = this.x;  // 使用 this.x 取得資料
+        let y = this.y;
+        let startX = this.startX;
+        let speedX = this.speedX;
+        let speedY = this.speedY;
+        let startMovingYAtX = this.startMovingYAtX;
 
-    if (this.pic1) {
-        context.drawImage(this.pic1, 280, 80, 1000, 965);
-        
-    }
+        x += speedX;
 
-    let x = this.x;  // 使用 this.x 取得資料
-    let y = this.y;
-    let startX = this.startX;
-    let speedX = this.speedX;
-    let speedY = this.speedY;
-    let startMovingYAtX = this.startMovingYAtX;
+        if (x >= startX + startMovingYAtX) {
+            speedY = 0.5;
+        }
 
-    x += speedX;
+        y += speedY;
 
-    if (x >= startX + startMovingYAtX) {
-        speedY = 0.5;
-    }
+        context.drawImage(this.pic4, x, y, 200, 150);
+        context.drawImage(this.pic2, 286, 80, 1010, 965);
 
-    y += speedY;
+        if (y > 400) {
+            y = 260;
+            x = startX;
+            speedY = 0;
+        }
 
-    context.drawImage(this.pic4, x, y, 200, 150);
-    context.drawImage(this.pic2, 286, 80, 1010, 965);
+        this.x = x;  // 更新資料
+        this.y = y;
+        this.speedY = speedY;
 
-    if (y > 400) {
-        y = 260;
-        x = startX;
-        speedY = 0;
-    }
+        requestAnimationFrame(this.animate.bind(this));
+    },
+    animateR() {
+        let canvas = this.$refs.canvas;
+        let context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
-    this.x = x;  // 更新資料
-    this.y = y;
-    this.speedY = speedY;
+        if (this.pic1) {
+            context.drawImage(this.pic1, 280*0.5, 80*0.5, 1000*0.5, 965*0.5);
+        }
 
-    requestAnimationFrame(this.animate.bind(this));
+        let x = this.x*0.5;  // 使用 this.x 取得資料
+        let y = this.y*0.5;
+        let startX = this.startX*0.5;
+        let speedX = this.speedX-0.5;
+        let speedY = this.speedY;
+        let startMovingYAtX = this.startMovingYAtX*0.5;
+
+        x += speedX;
+
+        if (x >= startX + startMovingYAtX) {
+            speedY = 0.5;
+        }
+
+        y += speedY;
+
+        context.drawImage(this.pic4, x, y, 200*0.5, 150*0.5);
+        context.drawImage(this.pic2, 286*0.5, 80*0.5, 1010*0.5, 965*0.5);
+
+        if (y > 400) {
+            y = 260;
+            x = startX;
+            speedY = 0;
+        }
+
+        this.x = x;  // 更新資料
+        this.y = y;
+        this.speedY = speedY;
+
+        requestAnimationFrame(this.animate.bind(this));
     },
 },
 };
