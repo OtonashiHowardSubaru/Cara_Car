@@ -37,6 +37,7 @@ p {
     border: none;
     cursor: pointer;
     position: fixed;
+    z-index: 101;
     right: 5px;
     bottom: 80px;
     .birdCloud{
@@ -108,7 +109,7 @@ p {
 }
 
 .afterChatBird {
-    // z-index: 100;
+    z-index: 101;
     position: fixed;
     // right: 19%;
     bottom: 3%;
