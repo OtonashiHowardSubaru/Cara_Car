@@ -2,12 +2,11 @@
     <!-- 我要賣車的表格按鈕lightbox -->
     <div id="SellCarFormOverlay" @click="handleClick">
         <div id="SellCarFormModal">
-            <span class="close" @click.stop="closeLightbox">&times;</span>
+            <span class="close" @click.stop="confirmCloseLightbox">&times;</span>
             <div class="SellCarForm_container">
                 <h2>我要賣車</h2>
                 <div class="scroll">
                     <div class="SellCarForm_textarea">
-                        <!-- @submit.prevent="sign_up" id="sign_up_form" method="post" -->
                         <div class="SellCarFormItemName">
                             <div class="ContactName">
                                 <p>聯絡人姓名</p>
@@ -143,7 +142,7 @@
                             <div class="submit">
                                 <!-- <div class="submit_input"> -->
                                 <input type="submit" id="submit" name="submit" placeholder="" style="display: none;">
-                                <Button class="btnSubmit" type="" @click="closeLightbox"
+                                <Button class="btnSubmit" type="" @click="confirmSubmit"
                                     style="cursor: pointer;">確認並送出</Button>
                                 <!-- </div> -->
                             </div>
@@ -175,24 +174,46 @@ export default {
             residence: '',
             carNum: '',
             carColor: '',
-            SellCarForm_priceExpect:'',
+            SellCarForm_priceExpect: '',
         };
     },
     methods: {
+        //關閉燈箱
         closeLightbox() {
-            alert('已完成送出，請待客服聯絡');
             this.lightBoxForm.closeLightbox()
         },
+        closeLightbox(showConfirmation = false) {
+            if (showConfirmation) {
+                // 顯示確認對話框
+                const isConfirmed = window.confirm('您確定要提交嗎？');
 
+                // 如果用戶確認，關閉燈箱
+                if (isConfirmed) {
+                    alert('已完成送出，請待客服聯絡');
+                    this.lightBoxForm.closeLightbox();
+                }
+                // 如果用戶取消，什麼都不做或進行相應的處理
+            } else {
+                // 直接關閉燈箱
+                this.lightBoxForm.closeLightbox();
+            }
+        },
+        confirmCloseLightbox(showConfirmation = false) {
+            const isConfirmed = showConfirmation;  // 直接使用 showConfirmation 表示確認
+            if (isConfirmed) {
+                // 不顯示 alert，僅關閉燈箱
+                this.lightBoxForm.closeLightbox();
+            }
+        },
+        confirmSubmit() {
+            // 調用 closeLightbox 方法，傳遞 true 以顯示確認對話框
+            this.closeLightbox(true);
+        },
         handleClick(e) {
-            // console.log(e)
             if (e.target.id === 'SellCarFormOverlay') {
+                // 調用 confirmCloseLightbox 方法，傳遞 false 以僅關閉燈箱
                 this.closeLightbox();
             }
-            // else if (e.target.tagName === 'A' && e.target.href.endsWith('/Register')) {
-            //     this.$router.push('/Register');
-            //     this.closeLightbox();
-            // }
         },
     },
 }
