@@ -36,7 +36,7 @@ export default {
         // 監聽視窗大小變化，更新 isMobile 和 isDesktop 的值
         window.addEventListener('resize', this.updateWindowSize);
         this.updateWindowSize()
-        //get在localStorage裡面的key & value
+        //get在localStorage裡面
         this.userData.member_id = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id : "";
         this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
         this.userData.m_phone = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).phone : "";
@@ -64,7 +64,7 @@ export default {
         imagePreviewUrl() {
             //可以是讀取localStorage內的照片，如果沒有就讀取預設的userImage
             return this.storedImage || userImage
-            // return this.userDataFromStorage.imgUrl ||this.storedImage || userImage
+            // return `${import.meta.env.VITE_IMAGES_BASE_URL}` + image
         },
         ...mapState(userStore, ['token', 'userData'])
     },
@@ -115,23 +115,25 @@ export default {
             }
             const file = files[0];
             const reader = new FileReader();
-            // const formData = new FormData();
-            // formData.append('img_path',file)
-            // try{
-            //     const res = await axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberImg.php?`,formData, {
-            //         headers: {
-            //             'Content-Type': 'multipart/form-data'
-            //         }
-            //     });
-            //     if (!res.data.success) {
-            //         console.log(res);
-            //         throw new Error('照片上傳失敗');
-            //     }
-            //     const imageUrl = res.data.imageUrl;
-            //     this.storedImage = imageUrl;
-            // } catch(error){
-            //     console.error('錯誤', error);
-            // }
+            const formData = new FormData();
+            formData.append('img_path',file)
+            formData.append('member_id',this.userData.member_id)
+            axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberImg.php?`,formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                })
+                .then((res) =>{
+                    console.log("上傳成功！", this.userData.img_path);
+                    console.log(formData); //傳送出去的資料
+                    alert('已更新會員頭像！')
+                    // this.updateUserData(this.userData.img_path) //更新localStorage的資料
+                    // location.reload();
+
+                })
+                .catch((error) =>{
+                    console.error('錯誤', error);
+                });
             reader.onload = () => {
                 localStorage.setItem('imagePreview', reader.result);
                 this.storedImage = reader.result
@@ -160,13 +162,11 @@ export default {
                 })
 
         },
-        ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData']),
+        ...mapActions(userStore, ['updateUserData']),
     },
     mounted() {
         document.getElementById("upFile").addEventListener("change", this.showFile);
         this.storedImage = localStorage.getItem('imagePreview');
-
-        
     },
 }
 </script>
@@ -174,7 +174,6 @@ export default {
 <template>
 
     <MainHeader />
-
     <div class="memberCenter">
 
         <div class="memberTitle">
@@ -266,6 +265,7 @@ export default {
                         <input type="file" name="upFile" id="upFile" style="display:none;">
                     </label>
                     <button class="change_user_image" @click="changeFile">+上傳檔案</button>
+                    <!-- <button class="change_user_image" @click="showFile">+上傳檔案</button> -->
                 </div>
 
                 <div class="user_profile">
