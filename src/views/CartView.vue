@@ -2,8 +2,7 @@
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/MainHeader.vue';
 // import TitleViewed from '@/components/TitleViewed.vue';
-import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
-import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
+import ProCardSwiper from '@/components/ProCardSwiper.vue';
 // import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
@@ -26,7 +25,7 @@ import cartStore from "@/stores/cart";
 
 export default {
 components:{
-    MainHeader,ProCardSwiper1,ProCardSwiper2,DoubleCloud,BlueBird,GreenBird,YellowBird,
+    MainHeader,ProCardSwiper,DoubleCloud,BlueBird,GreenBird,YellowBird,
     // NumberSelect,
 },
 data(){
@@ -371,8 +370,7 @@ methods: {
         </form> -->
         
     </main>
-    <ProCardSwiper1 :displayData="productList" />
-    <ProCardSwiper2 :displayData="productList" />
+    <ProCardSwiper :displayData="productList" />
 </template>
 
 <style lang="scss">

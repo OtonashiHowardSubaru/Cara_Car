@@ -1,20 +1,10 @@
 <script>
 import axios from 'axios'; //引入函式庫
+import { mapState, mapActions } from 'pinia';
 import MainHeader from '@/components/MainHeader.vue';
 // import TitleViewed from '@/components/TitleViewed.vue';
-import ProCardSwiper1 from '@/components/ProCardSwiper1.vue';
-import ProCardSwiper2 from '@/components/ProCardSwiper2.vue';
-
-import product01 from '@/assets/imgs/product/product_1.png';
-import product02 from '@/assets/imgs/product/product_2.png';
-import product03 from '@/assets/imgs/product/product_3.png';
-import product04 from '@/assets/imgs/product/product_4.png';
-import product05 from '@/assets/imgs/product/product_5.png';
-import product06 from '@/assets/imgs/product/product_6.png';
-import product07 from '@/assets/imgs/product/product_7.png';
-import product08 from '@/assets/imgs/product/product_8.png';
-import product09 from '@/assets/imgs/product/product_9.png';
-
+import ProCardSwiper from '@/components/ProCardSwiper.vue';
+import ordInfoStore from '@/stores/cartInfo'
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
@@ -22,7 +12,7 @@ import YellowBird from "@/components/animation/YellowBird.vue";
 
 export default {
 components:{
-    MainHeader,ProCardSwiper1,ProCardSwiper2,DoubleCloud,BlueBird,GreenBird,YellowBird,
+    MainHeader,ProCardSwiper,DoubleCloud,BlueBird,GreenBird,YellowBird,
 },
 data(){
     return {
@@ -52,62 +42,8 @@ data(){
             {c:'宜蘭縣'},
             {c:'澎湖縣'},
         ],
-        productList:[
-        {
-            prod_img1:product01,
-            prod_name:"起始玩家",
-            prod_price:"5000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product02,
-            prod_name:"賓士少爺",
-            prod_price:"10000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product03,
-            prod_name:"賓士少爺二代",
-            prod_price:"12000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product04,
-            prod_name:"敞篷輕旅",
-            prod_price:"12000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product05,
-            prod_name:"野貓戰機",
-            prod_price:"8000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product06,
-            prod_name:"敞篷輕旅二代",
-            prod_price:"14000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product07,
-            prod_name:"赤色風暴",
-            prod_price:"8000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product08,
-            prod_name:"英倫經典",
-            prod_price:"10000",
-            linkwhere:"/Product"
-        },
-        {
-            prod_img1:product09,
-            prod_name:"F1一代",
-            prod_price:"18000",
-            linkwhere:"/Product"
-        },
-        ],
+        productList:[],
+        ordInfoStoreData: ordInfoStore(),
     }
 },
 created() {
@@ -116,6 +52,14 @@ created() {
     if (cartData) {
         this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
     }; 
+
+    this.userData.ord_id = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).id : "";
+    this.userData.m_name = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).name : "";
+    this.userData.m_phone = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).phone : "";
+    this.userData.m_email = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).email : "";
+    this.userData.m_city = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).city : "";
+    this.userData.m_district = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).district : "";
+    this.userData.m_address = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).address : "";
 },
 computed: {
     subtotal() {
@@ -133,6 +77,7 @@ computed: {
     total(){
         return this.subtotal + this.subFreight;
     },
+    ...mapState(ordInfoStore, ['token', 'ordInfoData'])
 },
 methods: {
     handleQtyChange(index,increment) {
@@ -163,6 +108,7 @@ methods: {
     saveCartData() {
         localStorage.setItem('cart', JSON.stringify(this.cartItems));
     },
+    ...mapActions(ordInfoStore, ['checkLogin', 'updateToken', 'updateUserData']),
 },
 }
 </script>
@@ -218,7 +164,7 @@ methods: {
                     <ul>
                         <div class="row">
                             <li class="order">訂單編號</li>
-                            <span>111</span>
+                            <input type="text" name="order" id="order" v-model="userData.m_name">
                         </div>
                         <div class="row">
                             <li class="order">訂單日期</li>
@@ -292,8 +238,7 @@ methods: {
             
         </section>
     </main>
-    <ProCardSwiper1 :displayData="productList" />
-    <ProCardSwiper2 :displayData="productList" />
+    <ProCardSwiper :displayData="productList" />
 </template>
 
 <style lang="scss">

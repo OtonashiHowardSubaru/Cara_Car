@@ -4,14 +4,6 @@
     flex-direction: column;
     width: 100%;
 }
-.collect_icon{
-    width: 20%;
-    padding-top: 20px;
-    img{
-        width: 100%;
-        vertical-align: top;
-    }
-}
 .sub_title h3.collect_title{
     margin: 40px 0 10px 0 ;
 }
@@ -58,10 +50,23 @@
     //     }
     // }
 }
-p.collect_none{
-    padding-block: 10px;
-    // color: $blackWord;
-    font-size: $mh4;
+.collect_none{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    p{
+        padding-block: 10px;
+        font-size: $mh5;
+    }
+    .collect_icon{
+        width: 50%;
+        padding-top: 20px;
+        img{
+            width: 100%;
+            vertical-align: top;
+        }
+    }
 }
 @media(min-width:768px){
     .collect_content{

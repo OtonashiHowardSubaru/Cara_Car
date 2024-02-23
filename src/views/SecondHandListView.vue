@@ -19,68 +19,11 @@ import BlueBird from "@/components/animation/BlueBird.vue";
         activeTab: "",
         currentPage: 1,
         perPage: 9,
-
         search: '',
         priceSorter: '',
         responseData : [],
         displayData: [],
         productDisplayList: [],
-        // sh_product_list: [
-        //     {
-        //       img_name:"shProduct001",
-        //       prod_name:"極光追逐者",
-        //       prod_price:"3000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct02,
-        //       prod_name:"極速閃電車",
-        //       prod_price:"5000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct03,
-        //       prod_name:"太空探險車",
-        //       prod_price:"8000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct04,
-        //       prod_name:"科技漂移車",
-        //       prod_price:"6000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct05,
-        //       prod_name:"爆炸速度狂飆車",
-        //       prod_price:"4000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct06,
-        //       prod_name:"魔法變形賽車",
-        //       prod_price:"6000",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct07,
-        //       prod_name:"閃電漂移車",
-        //       prod_price:"2500",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct08,
-        //       prod_name:"太空漫步車",
-        //       prod_price:"3500",
-        //       linkwhere:"/SecondHand"
-        //     },
-        //     {
-        //       prod_img1:shProduct09,
-        //       prod_name:"磁浮飛行車",
-        //       prod_price:"5500",
-        //       linkwhere:"/SecondHand"
-        //     },
-        // ],
 
       }
     },
