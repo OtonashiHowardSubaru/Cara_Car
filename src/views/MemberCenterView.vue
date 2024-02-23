@@ -33,6 +33,9 @@ export default {
             favoriteProducts: [],// 收藏清單
             imgName: '', 
             currentIndex: 0,
+            favoriteProducts: [],// 收藏清單
+            imgName: '', 
+            currentIndex: 0,
         }
     },
     created() {
