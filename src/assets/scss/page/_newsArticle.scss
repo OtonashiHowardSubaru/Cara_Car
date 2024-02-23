@@ -195,6 +195,7 @@
         .infoTextWord {
             width: 90%;
             margin: 30px auto 50px;
+            white-space: pre-wrap;
             
 
             @media (min-width : 768px) {

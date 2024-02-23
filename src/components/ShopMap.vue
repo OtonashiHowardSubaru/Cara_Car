@@ -13,7 +13,7 @@ import L from 'leaflet'
 export default {
     data(){
         return {
-            zoom: 16,
+            zoom: 18,
         }
     },
     methods: {
@@ -39,7 +39,7 @@ export default {
         var marker = new L.marker([24.957672860339283, 121.22503247550222],{ icon: blackIcon }).addTo(map);
         
         marker.bindPopup("<b>Cara - Car</b><br>桃園市中壢區復興路46號8樓").openPopup();
-        // 疑問 : marker在打包出去後,圖就遺失了, 不知道要怎麼確認路徑QUQ
+        
     },
 }
 
