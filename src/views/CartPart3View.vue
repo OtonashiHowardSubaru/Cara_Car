@@ -2,9 +2,7 @@
 import axios from 'axios'; //引入函式庫
 import { mapState, mapActions } from 'pinia';
 import MainHeader from '@/components/MainHeader.vue';
-// import TitleViewed from '@/components/TitleViewed.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
-import ordInfoStore from '@/stores/cartInfo'
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
@@ -12,13 +10,11 @@ import YellowBird from "@/components/animation/YellowBird.vue";
 
 export default {
 components:{
-    MainHeader,ProCardSwiper,DoubleCloud,BlueBird,GreenBird,YellowBird,
+    MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,
 },
 data(){
     return {
-        qtyValue:'',
-        count: 1,
-        expanded:false,
+        allProducts:[],
         cartItems: [],
         city:[
             {c:'台北市'},
@@ -42,73 +38,40 @@ data(){
             {c:'宜蘭縣'},
             {c:'澎湖縣'},
         ],
-        productList:[],
-        ordInfoStoreData: ordInfoStore(),
     }
 },
 created() {
-    // 從LocalStorage中讀取購物車資料
-    const cartData = JSON.parse(localStorage.getItem('cart'));
-    if (cartData) {
-        this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
-    }; 
-
-    this.userData.ord_id = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).id : "";
-    this.userData.m_name = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).name : "";
-    this.userData.m_phone = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).phone : "";
-    this.userData.m_email = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).email : "";
-    this.userData.m_city = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).city : "";
-    this.userData.m_district = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).district : "";
-    this.userData.m_address = localStorage.getItem("ordInfoStoreData") ? JSON.parse(localStorage.getItem("ordInfoStoreData")).address : "";
+    this.fetchData();
+    
 },
 computed: {
-    subtotal() {
-    let total = 0;
-    for (let item of this.cartItems) {
-      total += item.price * item.quantity;
-    }
-    return total;
-    },
-    subFreight(){
-        const baseSubFreight = 120;
-        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
-        return baseSubFreight * totalQuantity;
-    },
-    total(){
-        return this.subtotal + this.subFreight;
-    },
-    ...mapState(ordInfoStore, ['token', 'ordInfoData'])
+    
 },
 methods: {
-    handleQtyChange(index,increment) {
-        let qtyValue = parseInt(this.cartItems[index].quantity);
-        qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
-        // this.$refs['qtyInput_' + index][0].value = qtyValue;
-        this.updateQuantity(index, qtyValue)
+    fetchData(){
+        // 定義頁碼
+        const pageId = this.$route.params.pro_id
+    
+        // 取得所有商品資料用做本頁資料以及swiper
+        axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php?`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          // console.log(response.data)
+        this.allProducts = response.data;
+        this.thisProduct = response.data.find((item) =>{
+            return item.pro_id == pageId
+        })
+        console.log(this.allProducts);
+        })
+        // console.log("========",this.thisProduct)
+      // })
+        .catch((error) => {
+        console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
+
     },
-    toggleCartContent(){
-        this.expanded = !this.expanded;
-    },
-    updateQuantity(index, newQuantity){
-        // 更新购物车内商品数量
-        if (newQuantity < 1) {
-            // 如果数量小于1，则从购物车中删除该商品
-            this.cartItems.splice(index, 1);
-        } else {
-            this.cartItems[index].quantity = newQuantity;
-            //更新商品總金額
-            this.updateTotalPrice(index);
-        }
-        this.saveCartData();
-    },
-    updateTotalPrice(index){
-        const item = this.cartItems[index];
-        item.total = item.price * item.quantity;
-    },
-    saveCartData() {
-        localStorage.setItem('cart', JSON.stringify(this.cartItems));
-    },
-    ...mapActions(ordInfoStore, ['checkLogin', 'updateToken', 'updateUserData']),
+    
 },
 }
 </script>
@@ -238,10 +201,17 @@ methods: {
             
         </section>
     </main>
-    <ProCardSwiper :displayData="productList" />
+    <ProCardSwiper
+    :displayData="allProducts"
+    :title="'別人也逛過'"
+    />
+    <ProCardSwiper
+    :displayData="allProducts"
+    :title="'也許你會喜歡'"
+    />
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/scss/page/cart.scss';
 // @import '@/assets/scss/page/cartPart2.scss';
 // #cartProcessTop{
