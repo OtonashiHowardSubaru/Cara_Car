@@ -11,8 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import ProCardSwiper1 from "@/components/ProCardSwiper1.vue"
-import ProCardSwiper2 from "@/components/ProCardSwiper2.vue"
+import ProCardSwiper from "@/components/ProCardSwiper.vue"
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
 // import product01 from '@/assets/imgs/product/sh_products/product001.jpg';
@@ -30,7 +29,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper1,DoubleCloud,ProCardSwiper2
+    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,DoubleCloud
 },
     data(){
       return {
@@ -39,6 +38,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         ImgsName:[],
         thisProduct:[],
         allProducts:[],
+        newProducts:[],
 
       }
     },
@@ -80,6 +80,21 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         .then((response) => {
           this.ImgsName = response.data;
           console.log(this.ImgsName);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
+        // 取得所有商品資料用做本頁資料以及swiper
+      axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php?`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          // console.log(response.data)
+          this.newProducts = response.data;
+          this.thisNewProduct = response.data.find((item) =>{
+            return item.pro_id == pageId
+          })
+          console.log(this.allProducts);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -206,7 +221,14 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
 <div class="recommand">
   
-  <!-- <ProCardSwiper1 :displayData="displayData" /> -->
+  <ProCardSwiper
+      :displayData="newProducts"
+      :title="'也許你會喜歡'"
+      />
+      <ProCardSwiper
+      :displayData="newProducts"
+      :title="'別人也逛過'"
+      />
 </div>
 
 
