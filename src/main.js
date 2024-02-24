@@ -18,10 +18,12 @@ import router from './router'
 /*  創建一個vue應用程式(主要配置在app.vue)
     原先預設vueApp是app，但這邊只是單純為了好理解所以先改名
     未來基本上不做更動 */
-const vueApp = createApp(App)
+const vueApp = createApp(App);
+const pinia = createPinia();
 
-vueApp.use(createPinia())
-vueApp.use(router)
+
+vueApp.use(createPinia());
+vueApp.use(router);
 
 // vueApp.component('Button', Button) //這是示範
 
