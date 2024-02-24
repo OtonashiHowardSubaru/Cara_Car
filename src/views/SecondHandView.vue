@@ -49,7 +49,7 @@ import Swal from 'sweetalert2';
       },
       fetchData(){
         const pageId = this.$route.params.sh_pro_id
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/shProductList.php`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/front/shProductList.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           console.log(response.data)
@@ -65,7 +65,7 @@ import Swal from 'sweetalert2';
         });
       
       // 取得這一份商品的全部圖片名稱
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/shProductimgs.php?pageId=${pageId}`)
+      axios.get(`${import.meta.env.VITE_PHP_URL}/front/shProductimgs.php?pageId=${pageId}`)
         .then((response) => {
           this.ImgsName = response.data;
           console.log(this.ImgsName);
@@ -75,7 +75,7 @@ import Swal from 'sweetalert2';
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
         // 取得所有商品資料用做本頁資料以及swiper
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
+      axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -92,7 +92,7 @@ import Swal from 'sweetalert2';
       },
       
       getProductImgSrc(imgName){
-        return new URL(`../assets/imgs/product/sh_products/${imgName}`, import.meta.url).href
+        return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/sh_products/${imgName}`).href
       },
 
       showLarge(e) {
@@ -166,7 +166,7 @@ import Swal from 'sweetalert2';
 <template>
   <MainHeader />
   <div class="headerbg">
-    <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
+    <img src="@/assets/imgs/draw/greeting_illust.svg" alt="">
     <div class="cloud">
       <DoubleCloud/>
     </div>
@@ -213,7 +213,7 @@ import Swal from 'sweetalert2';
     </div>
 </div>
 <div class="productIntro">
-  <img src="../assets//imgs/product/info_bg.png" alt="">
+  <img src="@/assets//imgs/product/info_bg.png" alt="">
   <ProductIntroCard/>
 </div>
 
@@ -233,7 +233,7 @@ import Swal from 'sweetalert2';
 
 <div class="sh_process">
   <div class="shbg">
-    <img src="../assets/imgs/product/sh_bg.png" alt="">
+    <img src="@/assets/imgs/product/sh_bg.png" alt="">
   </div>
   <CardShProcess/> 
 </div>
@@ -242,6 +242,6 @@ import Swal from 'sweetalert2';
   
   <style lang="scss" scoped>
   
-  @import '../assets/scss/page/shproduct';
+  @import '@/assets/scss/page/shproduct';
   
   </style>

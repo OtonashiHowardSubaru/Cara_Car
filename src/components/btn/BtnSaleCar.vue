@@ -84,30 +84,14 @@
                                 <div class="SellCarForm_upload_video">
                                     <input type="file" id="video" name="uploadVideo" placeholder="" style="display: none;">
                                     <label for="video">
-                                        <img src="../../assets/imgs/SecondHandSale/uploadVideo.png" alt="upFile"
+                                        <img src="@/assets/imgs/SecondHandSale/uploadVideo.png" alt="upFile"
                                             style="cursor: pointer;">
                                     </label>
                                 </div>
                                 <div class="SellCarForm_upload_pic">
                                     <input type="file" id="picture" name="uploadPic" placeholder="" style="display: none;">
                                     <label for="picture">
-                                        <img src="../../assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
-                                            style="cursor: pointer;">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="SellCarForm_uploadCC">
-                                <div class="SellCarForm_upload_pic">
-                                    <input type="file" id="picture" name="uploadPic" placeholder="" style="display: none;">
-                                    <label for="picture">
-                                        <img src="../../assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
-                                            style="cursor: pointer;">
-                                    </label>
-                                </div>
-                                <div class="SellCarForm_upload_pic">
-                                    <input type="file" id="picture" name="uploadPic" placeholder="" style="display: none;">
-                                    <label for="picture">
-                                        <img src="../../assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
+                                        <img src="@/assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
                                             style="cursor: pointer;">
                                     </label>
                                 </div>
@@ -116,14 +100,30 @@
                                 <div class="SellCarForm_upload_pic">
                                     <input type="file" id="picture" name="uploadPic" placeholder="" style="display: none;">
                                     <label for="picture">
-                                        <img src="../../assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
+                                        <img src="@/assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
                                             style="cursor: pointer;">
                                     </label>
                                 </div>
                                 <div class="SellCarForm_upload_pic">
                                     <input type="file" id="picture" name="uploadPic" placeholder="" style="display: none;">
                                     <label for="picture">
-                                        <img src="../../assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
+                                        <img src="@/assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
+                                            style="cursor: pointer;">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="SellCarForm_uploadCC">
+                                <div class="SellCarForm_upload_pic">
+                                    <input type="file" id="picture" name="uploadPic" placeholder="" style="display: none;">
+                                    <label for="picture">
+                                        <img src="@/assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
+                                            style="cursor: pointer;">
+                                    </label>
+                                </div>
+                                <div class="SellCarForm_upload_pic">
+                                    <input type="file" id="picture" name="uploadPic" placeholder="" style="display: none;">
+                                    <label for="picture">
+                                        <img src="@/assets/imgs/SecondHandSale/uploadPic.png" alt="upFile"
                                             style="cursor: pointer;">
                                     </label>
                                 </div>

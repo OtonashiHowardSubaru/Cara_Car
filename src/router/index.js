@@ -59,7 +59,7 @@ const router = createRouter({
     {
       path: '/Product/:pro_id',
       name: 'Product',
-      component: () => import('../views/ProductView.vue'),
+      component: () => import('@/views/ProductView.vue'),
       meta:{
         title: '商品 | Cara Car',
         // 這個要想辦法改成品名做為title

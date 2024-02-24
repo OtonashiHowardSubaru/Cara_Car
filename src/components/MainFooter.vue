@@ -1,7 +1,7 @@
 <template>
   <footer class="mainFooter">
     <RouterLink class="footerLogo" to="/">
-      <img src="../assets/imgs/MainFooter/logo.png" alt="logo">
+      <img src="@/assets/imgs/MainFooter/logo.png" alt="logo">
     </RouterLink>
     <div class="footerDecoBg"></div>
     <div class="footerbg"></div>
@@ -59,17 +59,17 @@
       <div class="footerSection3Follow">
         <p>Follow Us</p>
         <RouterLink class="RouterLink" to="/">
-          <img src="../assets/imgs/MainFooter/icon_fb.png" alt="icon_fb">
+          <img src="@/assets/imgs/MainFooter/icon_fb.png" alt="icon_fb">
         </RouterLink>
         
         <RouterLink class="RouterLink" to="/">
-          <img src="../assets/imgs/MainFooter/icon_ig.png" alt="icon_ig">
+          <img src="@/assets/imgs/MainFooter/icon_ig.png" alt="icon_ig">
         </RouterLink>
         
       </div>
       <div class="footerSection3Top" @click="toTop">
-        <img class="toTopCat" src="../assets/imgs/draw/cat2.png" alt="cat2.png">
-        <img class="toTopGrass" src="../assets/imgs/draw/bushSmall.png" alt="bushSmall.png">
+        <img class="toTopCat" src="@/assets/imgs/draw/cat2.png" alt="cat2.png">
+        <img class="toTopGrass" src="@/assets/imgs/draw/bushSmall.png" alt="bushSmall.png">
         <p>TOP</p>
       </div>
     </div>

@@ -37,7 +37,7 @@ export default{
     },
     methods: {
       getProductImgSrc(imgName){
-        return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+        return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/new_products/${imgName}`).href
       },
       handleResize(){
         this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;

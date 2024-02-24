@@ -3,7 +3,7 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import qs from 'qs' // 引入qs模組
-import { mapState, mapActions } from 'pinia'
+import { mapActions } from 'pinia'
 import userStore from '@/stores/user'
 import EventCardSlider from '@/components/card/EventCardSlider.vue';
 import lightBoxStore from "@/stores/lightBox.js";
@@ -46,12 +46,12 @@ export default {
         '/Cart',
       ],
       img: [
-        { i: 'nav/nav-icon-01.png' },
-        { i: 'nav/nav-icon-02.png' },
-        { i: 'nav/nav-icon-07.png' },
-        { i: 'nav/nav-icon-04.png' },
-        { i: 'nav/nav-icon-05.png' },
-        { i: 'nav/nav-icon-06.png' },
+        { i: 'nav-icon-01.png' },
+        { i: 'nav-icon-02.png' },
+        { i: 'nav-icon-07.png' },
+        { i: 'nav-icon-04.png' },
+        { i: 'nav-icon-05.png' },
+        { i: 'nav-icon-06.png' },
       ],
       title: [
         { p: 'PRODUCT' },
@@ -70,12 +70,12 @@ export default {
         '/Cart',
       ],
       imgPh: [
-        { i: 'nav/nav-icon-01.png' },
-        { i: 'nav/nav-icon-02.png' },
-        { i: 'nav/nav-icon-07.png' },
-        { i: 'nav/nav-icon-04.png' },
-        { i: 'nav/nav-icon-05.png' },
-        { i: 'nav/nav-icon-06.png' },
+        { i: 'nav-icon-01.png' },
+        { i: 'nav-icon-02.png' },
+        { i: 'nav-icon-07.png' },
+        { i: 'nav-icon-04.png' },
+        { i: 'nav-icon-05.png' },
+        { i: 'nav-icon-06.png' },
       ],
       titlePh: [
         { ph: 'PRODUCT' },
@@ -93,7 +93,7 @@ export default {
     console.log('getLineConnectionInfo');
     //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
     // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-    axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php`)
+    axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php`)
       .then((response) => {
         // 成功取得資料後，將資料存入陣列
         this.displayData = response.data.slice(0, 8);
@@ -126,7 +126,7 @@ export default {
   methods: {
     // 取得第三方登入連線資訊
     getLineConnectionInfo() {
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/getLineConnectionInfo.php`)
+      axios.get(`${import.meta.env.VITE_PHP_URL}/front/getLineConnectionInfo.php`)
         .then(({ data }) => {
           this.line_channel_id = data[0].channelId
           this.line_channel_secret = data[0].channelSecret
@@ -142,7 +142,7 @@ export default {
         });
     },
     getImageUrl(paths) {
-      return new URL(`../assets/imgs/${paths}`, import.meta.url).href
+      return new URL(`../assets/imgs/nav/${paths}`, import.meta.url).href
     },
     changeImageTitle(index) {
       this.currentTitle = this.title[index].p;
@@ -283,7 +283,7 @@ export default {
           picture: user.picture,
         }
 
-        axios.post(`${import.meta.env.VITE_LPHP_URL}/front/lineMemberLogin.php`, lineTokenRes, {
+        axios.post(`${import.meta.env.VITE_PHP_URL}/front/lineMemberLogin.php`, lineTokenRes, {
           headers: { "Content-Type": "multipart/form-data" },
         })
           .then(res => {
@@ -328,14 +328,14 @@ export default {
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin" v-if="!isLoggedIn">
-          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
+          <img src="@/assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
             @click="openLightbox">
         </div>
         <div class="indexHeaderLogin" v-else>
-          <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin" @click="logout">
+          <img src="@/assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin" @click="logout">
         </div>
       </ul>
-      <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">
+      <img src="@/assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
   <!-- 手機板haeder -->
@@ -348,11 +348,11 @@ export default {
     </li>
     <div class="linePh"></div>
     <div class="indexHeaderLoginPh" v-if="!isLoggedIn">
-      <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
+      <img src="@/assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
         @click="openLightbox">
     </div>
     <div class="indexHeaderLoginPh" v-else>
-      <img src="../assets/imgs/nav/nav-icon-Logout-PH.png" alt="login" class="indexHeaderButtonLoginPh" @click="logout">
+      <img src="@/assets/imgs/nav/nav-icon-Logout-PH.png" alt="login" class="indexHeaderButtonLoginPh" @click="logout">
     </div>
   </ul>
   <Transition name="fade">
@@ -360,11 +360,10 @@ export default {
   </Transition>
   <div class="indexBannerGroup">
     <bannerCanvas class="bannerCanvas" />
-    <!-- <img src="../assets/imgs/Home/indexBannerImg.svg" alt="" class="indexBannerImg"> -->
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
-      <img src="../assets/imgs/Home/index-logo.svg" alt="" class="indexLogo">
+      <img src="@/assets/imgs/Home/index-logo.svg" alt="" class="indexLogo">
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
     <SingleCloud class="SingleCloud" />
@@ -372,7 +371,7 @@ export default {
   </div>
   <div class="indexProductGroup">
     <div class="indexProductTitle">
-      <img src="../assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
+      <img src="@/assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
       <RouterLink to="/productList" class="linkToProductList">
         <!-- <div class="decoLine"></div> -->
         <div class="productListLink">商品一覽</div>
@@ -383,23 +382,23 @@ export default {
     </div>
   </div>
   <div class="decoTrainAnimation">
-    <img src="../assets/imgs/Home/index-grass-background.svg" alt="grass.svg" class="decoGrass">
-    <img src="../assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
+    <img src="@/assets/imgs/Home/index-grass-background.svg" alt="grass.svg" class="decoGrass">
+    <img src="@/assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
     <div class="decoTrainAnima">
       <div class="decoTrain">
-        <img src="../assets/imgs/draw/train.svg" alt="train.svg" class="decoTrainImg">
+        <img src="@/assets/imgs/draw/train.svg" alt="train.svg" class="decoTrainImg">
       </div>
-      <img src="../assets/imgs/draw/rail.svg" alt="rail.svg" class="decoRail">
+      <img src="@/assets/imgs/draw/rail.svg" alt="rail.svg" class="decoRail">
     </div>
   </div>
   <div class="indexEventGroup">
     <div class="indexEventTitle">
-      <img src="../assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
+      <img src="@/assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
       <RouterLink to="/News" class="linkToEvent">
         <!-- <div class="decoLine"></div> -->
         <div class="eventLink">消息一覽</div>
       </RouterLink>
-      <img class="decoImg" src="../assets/imgs/draw/person_sit.PNG" alt="person_sit">
+      <img class="decoImg" src="@/assets/imgs/draw/person_sit.png" alt="person_sit">
     </div>
     <div class="otherEventCards">
       <EventCardSlider class="otherEventCard" />
@@ -408,12 +407,12 @@ export default {
   <div class="indexAboutUsGroup">
     <div class="indexAboutBlock"></div>
     <div class="indexAboutUsImg">
-      <img src="../assets/imgs/Home/indexAboutUsImg.png" alt="indexAboutUsImg">
+      <img src="@/assets/imgs/Home/indexAboutUsImg.png" alt="indexAboutUsImg">
     </div>
     <div class="indexAboutUsContent">
       <div class="indexAboutUsTitle">
-        <img src="../assets/imgs/Home/indexAboutUsTitle.svg" alt="">
-        <img class="decoImg" src="../assets/imgs/draw/person_ballon.PNG" alt="person_sit">
+        <img src="@/assets/imgs/Home/indexAboutUsTitle.svg" alt="">
+        <img class="decoImg" src="@/assets/imgs/draw/person_ballon.png" alt="person_sit">
       </div>
       <div class="indexAboutText">
         <p>我們致力於提供各種特色的玩具車， 讓每個孩子都能擁有專屬的玩具車， 展開一場屬於他們獨特的冒險旅程。</p>
@@ -425,10 +424,10 @@ export default {
     </div>
   </div>
   <div class="indexGameGroup">
-    <img src="../assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
+    <img src="@/assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
     <div class="game">
-      <img src="../assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
-      <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
+      <img src="@/assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
+      <img src="@/assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
       <RouterLink class="RouterLink" to="/Game">
         <button class="indexGameButton" @mouseover="toggleHover" @mouseout="resetRotation"
           :class="{ 'hovered': isHovered }">
@@ -439,7 +438,7 @@ export default {
       </RouterLink>
       <div class="gameButtonText">
         <transition name="rotate">
-          <img :class="{ 'rotate': isHovered }" src="../assets/imgs/Home/Make Your own cara car3.svg" alt="buttonText">
+          <img :class="{ 'rotate': isHovered }" src="@/assets/imgs/Home/Make Your own cara car3.svg" alt="buttonText">
         </transition>
       </div>
       <!-- <div class="circular">

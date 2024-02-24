@@ -55,7 +55,7 @@ export default {
 
                 apiInstance({
                     method: 'post',
-                    url: `${import.meta.env.VITE_LPHP_URL}/front/register.php`, // 改成我們的php
+                    url: `${import.meta.env.VITE_PHP_URL}/front/register.php`, // 改成我們的php
                     headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                     data: bodyFormData
                 }).then(res => {
@@ -84,7 +84,7 @@ export default {
         <div class="registerTitle">
             <!-- <div class="line"></div> -->
             <div class="title">
-                <img src="../assets/imgs/login/JoinUsTitle.png" alt="title">
+                <img src="@/assets/imgs/login/JoinUsTitle.png" alt="title">
             </div>
             <div class="line"></div>
         </div>
@@ -127,18 +127,18 @@ export default {
                         <p>輸入密碼</p>
                         <input :type="passwordVisibleLeft ? 'text' : 'password'" v-model="psw666" placeholder="請輸入密碼"
                             maxlength="12">
-                        <img v-if="passwordVisibleLeft" src="../assets/imgs/register/open-eye.svg" alt="closeEye"
+                        <img v-if="passwordVisibleLeft" src="@/assets/imgs/register/open-eye.svg" alt="closeEye"
                             class="eye1" @click="togglePswLeft">
-                        <img v-else src="../assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye1"
+                        <img v-else src="@/assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye1"
                             @click="togglePswLeft">
                     </div>
                     <div class="confirm_psw">
                         <p>確認密碼</p>
                         <input :type="passwordVisibleRight ? 'text' : 'password'" v-model="psw666again" placeholder="確認密碼"
                             maxlength="12">
-                        <img v-if="passwordVisibleRight" src="../assets/imgs/register/open-eye.svg" alt="closeEye"
+                        <img v-if="passwordVisibleRight" src="@/assets/imgs/register/open-eye.svg" alt="closeEye"
                             class="eye2" @click="togglePswRight">
-                        <img v-else src="../assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye2"
+                        <img v-else src="@/assets/imgs/register/close-eye.svg" alt="closeOpen" class="eye2"
                             @click="togglePswRight">
                     </div>
                 </div>
@@ -166,13 +166,13 @@ export default {
                 </div>
                 <div class="register_group">
                     <a href="#">
-                        <img src="../assets/imgs/login/loginGoogle.png" alt="otherRegister">
+                        <img src="@/assets/imgs/login/loginGoogle.png" alt="otherRegister">
                     </a>
                     <a href="#">
-                        <img src="../assets/imgs/login/loginFacebbok.png" alt="otherRegister">
+                        <img src="@/assets/imgs/login/loginFacebbok.png" alt="otherRegister">
                     </a>
                     <a href="#">
-                        <img src="../assets/imgs/login/loginLine.png" alt="otherRegister">
+                        <img src="@/assets/imgs/login/loginLine.png" alt="otherRegister">
                     </a>
                 </div>
             </div>

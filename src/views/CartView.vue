@@ -89,7 +89,7 @@ methods: {
         const pageId = this.$route.params.pro_id
     
         // 取得所有商品資料用做本頁資料以及swiper
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -116,7 +116,7 @@ methods: {
     // },
     //抓取圖片路徑
     // getProductImgSrc(imgName){
-    //     return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+    // return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/new_products/${imgName}`).href
     // },
     toggleCartContent(){
         this.expanded = !this.expanded;

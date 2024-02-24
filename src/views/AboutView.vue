@@ -26,33 +26,33 @@ export default {
   <div class="about">
     <div class="aboutTitle">
       <h1>關於CaRa Car</h1>
-      <img src="../assets/imgs/about/aboutTitle.svg" alt="關於CaRa Car">
+      <img src="@/assets/imgs/about/aboutTitle.svg" alt="關於CaRa Car">
     </div>
     <div class="topPics">
       <div class="topPicsView">
         <div class="topPicContainer">
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop2.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop3.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop4.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop5.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop6.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop1.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop2.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop3.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop4.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop5.png" alt="aboutIMG"></div>
-          <div class="topPicsImg"><img src="../assets/imgs/about/aboutTop6.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop1.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop2.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop3.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop4.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop5.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop6.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop1.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop2.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop3.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop4.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop5.png" alt="aboutIMG"></div>
+          <div class="topPicsImg"><img src="@/assets/imgs/about/aboutTop6.png" alt="aboutIMG"></div>
         </div>
       </div>
     </div>
     <div class="bgcPic">
       <div class="aboutUsContents">
         <div class="aboutUsContentsPic">
-          <img src="../assets/imgs/about/aboutUsC1.png" alt="">
+          <img src="@/assets/imgs/about/aboutUsC1.png" alt="">
         </div>
         <div class="container aboutUsContent">
-          <img src="../assets/imgs/draw/person_love.png" alt="">
+          <img src="@/assets/imgs/draw/person_love.png" alt="">
           <span class="highlight">
             <p><span class="highlight-container"><span class="highlight"><strong>歡迎來到 Cara Car，</strong></span></span></p>
           </span>
@@ -69,10 +69,10 @@ export default {
       </div>
       <div class="aboutUsContents">
         <div class="aboutUsContentsPic">
-          <img src="../assets/imgs/about/aboutUsC2.png" alt="">
+          <img src="@/assets/imgs/about/aboutUsC2.png" alt="">
         </div>
         <div class="container aboutUsContent">
-          <div class="car_caraPic"><img src="../assets/imgs/draw/car_caracar.png" alt=""></div>
+          <div class="car_caraPic"><img src="@/assets/imgs/draw/car_caracar.png" alt=""></div>
           <span class="highlight">
             <p><span class="highlight-container"><span class="highlight">我們致力於提供各種特色的玩具車，</span></span></p>
           </span>

@@ -15,8 +15,8 @@ export default {
         return {
             userStoreData: userStore(),
             lightBoxStore: lightBoxStore(),
-            username: '',
-            psw666: '',
+            username: 'Yee12@hotmail.com',
+            psw666: 'chd10412',
             pswVisible: false,
             isLoggedIn: false,
 
@@ -59,7 +59,7 @@ export default {
     methods: {
         // 取得第三方登入連線資訊
         getLineConnectionInfo() {
-            axios.get(`${import.meta.env.VITE_LPHP_URL}/front/getLineConnectionInfo.php`)
+            axios.get(`${import.meta.env.VITE_PHP_URL}/front/getLineConnectionInfo.php`)
                 .then(({data}) => {
                     this.line_channel_id = data[0].channelId
                     this.line_channel_secret = data[0].channelSecret
@@ -98,7 +98,7 @@ export default {
             // 請記得將php埋入跨域
             apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_LPHP_URL}/front/memberLogin.php`,
+                url: `${import.meta.env.VITE_PHP_URL}/front/memberLogin.php`,
                 headers: { "Content-Type": "multipart/form-data" },
                 data: bodyFormData
             }).then(res => {
@@ -232,9 +232,9 @@ export default {
                         <div class="psw_input">
                             <input :type="pswVisible ? 'text' : 'password'" v-model="psw666" placeholder="請輸入密碼"
                                 minlength="8" maxlength="12">
-                            <img v-if="pswVisible" src="../assets/imgs/login/open-eye.svg" alt="openEye" class="eye"
+                            <img v-if="pswVisible" src="@/assets/imgs/login/open-eye.svg" alt="openEye" class="eye"
                                 @click="togglePsw">
-                            <img v-else src="../assets/imgs/login/close-eye.svg" alt="closeEye" class="eye"
+                            <img v-else src="@/assets/imgs/login/close-eye.svg" alt="closeEye" class="eye"
                                 @click="togglePsw">
                         </div>
                     </div>
@@ -254,13 +254,13 @@ export default {
                     </div>
                     <div class="login_group">
                         <a href="#">
-                            <img src="../assets/imgs/login/loginGoogle.png" alt="otherLogin">
+                            <img src="@/assets/imgs/login/loginGoogle.png" alt="otherLogin">
                         </a>
                         <a href="#">
-                            <img src="../assets/imgs/login/loginFacebbok.png" alt="otherLogin">
+                            <img src="@/assets/imgs/login/loginFacebbok.png" alt="otherLogin">
                         </a>
                         <a href="#">
-                            <img src="../assets/imgs/login/loginLine.png" alt="otherLogin" @click="lineLoginEvent">
+                            <img src="@/assets/imgs/login/loginLine.png" alt="otherLogin" @click="lineLoginEvent">
                         </a>
                     </div>
                 </div>
