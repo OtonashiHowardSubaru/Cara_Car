@@ -110,7 +110,7 @@ export default {
         },
         axiosGetMem(){
             const member_id = this.userData.member_id
-            axios.get(`${import.meta.env.VITE_CARA_URL}/front/getMemberName.php?member_id=${member_id}`)
+            axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/getMemberName.php?member_id=${member_id}`)
             .then(res => {
                 this.member = res.data
                 console.log(this.member);
@@ -132,7 +132,7 @@ export default {
             const formData = new FormData();
             formData.append('img_path',file)
             formData.append('member_id',this.userData.member_id)
-            axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberImg.php?`,formData, {
+            axios.post(`${import.meta.env.VITE_CARA_URL}/api/front/updateMemberImg.php?`,formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },
@@ -165,7 +165,7 @@ export default {
                 m_district: this.userData.m_district,
                 m_address: this.userData.m_address,
             }
-            axios.post(`${import.meta.env.VITE_CARA_URL}/front/updateMemberProfile.php`, postData, {
+            axios.post(`${import.meta.env.VITE_CARA_URL}/api/front/updateMemberProfile.php`, postData, {
                 headers: { "Content-Type": "multipart/form-data" },
             })
                 .then(res => {
