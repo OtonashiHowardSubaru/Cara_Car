@@ -30,7 +30,7 @@ import BlueBird from "@/components/animation/BlueBird.vue";
     created() {
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-      axios.get(`${import.meta.env.VITE_CARA_URL}/front/shProductList.php`)
+      axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/shProductList.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           console.log(response.data)
@@ -70,10 +70,10 @@ import BlueBird from "@/components/animation/BlueBird.vue";
       paginated(){
         const start = (this.currentPage - 1) * this.perPage; //將當前頁數-1再乘以頁面顯示內容筆數得到start值
         const end = start + this.perPage;//計算此頁面中的內容是否達到perPage中的數字最後索引值來得到end值
-        return this.sh_product_list.slice(start, end);//用JS的.slice()方法獲取vue data中的member陣列內容顯示內容
+        return this.displayData.slice(start, end);//用JS的.slice()方法獲取vue data中的member陣列內容顯示內容
       },
       totalPages() {
-        return Math.ceil(this.sh_product_list.length / this.perPage);//用Math.ceil()無條件進位，值則是用member陣列物件長度除以顯示內容筆數取得
+        return Math.ceil(this.displayData.length / this.perPage);//用Math.ceil()無條件進位，值則是用member陣列物件長度除以顯示內容筆數取得
       },
     },
 }
@@ -105,7 +105,7 @@ import BlueBird from "@/components/animation/BlueBird.vue";
       
       <div class="sh_pro_card_list col-9 col-md-10">
         <shProductCard
-        :displayData = "displayData"
+        :displayData = "paginated"
         />
       </div>
     </div>
