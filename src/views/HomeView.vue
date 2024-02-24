@@ -34,9 +34,9 @@ export default {
       duration: "10s",
       isHovered: false,
       // line login
-      line_channel_id: '2003656111',    // Line Channel ID
-      line_channel_secret: 'e5e6e6e88c5a96b4adebf8fc6f0b0cef',// Line Channel Secret
-      line_redirect_uri: 'http://localhost:5173/',  // Line developer Callback URL
+      line_channel_id: '',    // Line Channel ID
+      line_channel_secret: '',// Line Channel Secret
+      line_redirect_uri: '',  // Line developer Callback URL
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -89,6 +89,8 @@ export default {
     }
   },
   created() {
+
+    console.log('getLineConnectionInfo');
     //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
     // 取得全部商品資料用作商品資料，以及swiper用的所有資料
     axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php`)
@@ -104,13 +106,13 @@ export default {
   async mounted() {
     // 使用 window.location.search 和 urlParams 獲取當前網頁 URL 中的查詢參數
     const queryString = window.location.search;
-
     if (queryString) {
-      const urlParams = new URLSearchParams(queryString);
+
       // 使用 get 方法從 urlParams 實例中獲取名為 code 的參數的值。(授權碼，通常由用戶在身份驗證流程中獲得)
       // 如果查詢字串中存在名為 code 的參數，code 變數將被賦值為該參數的值；否則，code 變數將為 null。
-      const code = urlParams.get('code');
-      await this.lineLoginRedirect(code)
+      this.getLineConnectionInfo();
+      // const code = urlParams.get('code');
+      // await this.lineLoginRedirect(code);
     } else {
       // 判斷有沒有登入過，如果沒有token等同於沒有登入
       const user = this.checkLogin()
@@ -122,6 +124,23 @@ export default {
     }
   },
   methods: {
+    // 取得第三方登入連線資訊
+    getLineConnectionInfo() {
+      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/getLineConnectionInfo.php`)
+        .then(({ data }) => {
+          this.line_channel_id = data[0].channelId
+          this.line_channel_secret = data[0].channelSecret
+          this.line_redirect_uri = data[0].redirectUri
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const code = urlParams.get('code');
+          this.lineLoginRedirect(code);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
+    },
     getImageUrl(paths) {
       return new URL(`../assets/imgs/${paths}`, import.meta.url).href
     },
@@ -150,7 +169,7 @@ export default {
     closeLightbox() {
       this.lightBoxStore.closeLightbox()
     },
-    ...mapActions(userStore, ['checkLogin', 'updateToken','updateUserData']),
+    ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData']),
     logout() {
       // 調用pinia的updateToken
       const confirmLogout = confirm('確定要登出嗎？');
@@ -253,26 +272,32 @@ export default {
         /*
             根據需求，可以在登入後的處理中進行相應的操作，例如驗證用戶資訊、儲存登入狀態等。
         */
-        console.log(userInfoResponse.data);
-        const lineUserId = userInfoResponse.data.sub;
-        const lineNickname = userInfoResponse.data.name;
-        const lineUSerImgURL = userInfoResponse.data.picture;
-        const lineAccountTypeID = 1;
+        const user = userInfoResponse.data
+        const sub = user.sub;
+        const name = user.name;
+        const picture = user.picture;
 
-        // 可以在這邊寫回資料庫
-        // const response = await axios.post(`${API_URL}lineLogin.php`, {
-        //     userId: lineUserId,
-        //     nickname: lineNickname,
-        //     accountTypeID: lineAccountTypeID
-        // });
-        this.updateToken(lineUserId)
+        const lineTokenRes = {
+          sub: user.sub,
+          name: user.name,
+          picture: user.picture,
+        }
 
-        // 沒有API先使用寫死資料
-        this.updateUserData({
-          m_name: lineNickname,
-          m_validation: 1,
-          m_state: 1
+        axios.post(`${import.meta.env.VITE_LPHP_URL}/front/lineMemberLogin.php`, lineTokenRes, {
+          headers: { "Content-Type": "multipart/form-data" },
         })
+          .then(res => {
+            const member = res.data[0]
+            this.updateUserData({
+              m_name: member.m_name,
+              img_path: member.img_path,
+              member_id: member.member_id
+            })
+          })
+
+
+        this.updateToken(lineTokenRes.sub)
+
         this.$router.push('/')
       } catch (error) {
         console.error(error);
