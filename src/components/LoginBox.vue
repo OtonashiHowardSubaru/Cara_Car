@@ -84,7 +84,7 @@ export default {
             // 請記得將php埋入跨域
             apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_PHP_URL}/api/front/memberLogin.php`,
+                url: `${import.meta.env.VITE_LPHP_URL}/front/memberLogin.php`,
                 headers: { "Content-Type": "multipart/form-data" },
                 data: bodyFormData
                 }).then(res=>{
