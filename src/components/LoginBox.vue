@@ -21,41 +21,55 @@ export default {
             isLoggedIn: false,
 
             // line login
-            line_channel_id: '2003656111',    // Line Channel ID
-            line_channel_secret: 'e5e6e6e88c5a96b4adebf8fc6f0b0cef',// Line Channel Secret
-            line_redirect_uri: 'http://localhost:5173/',  // Line developer Callback URL
+            line_channel_id: '',    // Line Channel ID
+            line_channel_secret: '',// Line Channel Secret
+            line_redirect_uri: '',  // Line developer Callback URL
         };
     },
     created() {
         // 判斷有沒有登入過，如果沒有token等同於沒有登入
+        this.getLineConnectionInfo();
         const user = this.checkLogin()
-        if (user) {
+        // if (user) {
             //有登入資訊就關閉燈箱並跳轉到首頁
             // this.closeLightbox()
             // this.$router.push('/')
-        }
+        // }
     },
-    async mounted(){
+    async mounted() {
         // 使用 window.location.search 和 urlParams 獲取當前網頁 URL 中的查詢參數
         const queryString = window.location.search;
 
-        if(queryString){
+        if (queryString) {
             const urlParams = new URLSearchParams(queryString);
             // 使用 get 方法從 urlParams 實例中獲取名為 code 的參數的值。(授權碼，通常由用戶在身份驗證流程中獲得)
             // 如果查詢字串中存在名為 code 的參數，code 變數將被賦值為該參數的值；否則，code 變數將為 null。
             const code = urlParams.get('code');
             await this.lineLoginRedirect(code)
-        }else{
+        } else {
             // 判斷有沒有登入過，如果沒有token等同於沒有登入
             const user = this.checkLogin()
             console.log(user);
-            if(user){
+            if (user) {
                 //有登入資訊轉到首頁
                 this.$router.push('/')
             }
         }
     },
     methods: {
+        // 取得第三方登入連線資訊
+        getLineConnectionInfo() {
+            axios.get(`${import.meta.env.VITE_LPHP_URL}/front/getLineConnectionInfo.php`)
+                .then(({data}) => {
+                    this.line_channel_id = data[0].channelId
+                    this.line_channel_secret = data[0].channelSecret
+                    this.line_redirect_uri = data[0].redirectUri
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                    this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+                });
+        },
         //關閉燈箱
         closeLightbox() {
             this.lightBoxStore.closeLightbox()
@@ -76,7 +90,7 @@ export default {
         // ...在JS中是展開運算符，可以把一組的東西變成單獨的元素或屬性；
         //在Vue.js中是展開對象的屬性，使用mapActions通常包含多個 action 函式的對象展開為函式的列表
         ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData', 'checkUserData']),
-        signin(){
+        signin() {
             const bodyFormData = new FormData();
             bodyFormData.append('m_email', this.username);
             bodyFormData.append('member_psw', this.psw666);
@@ -87,40 +101,40 @@ export default {
                 url: `${import.meta.env.VITE_LPHP_URL}/front/memberLogin.php`,
                 headers: { "Content-Type": "multipart/form-data" },
                 data: bodyFormData
-                }).then(res=>{
+            }).then(res => {
                 // console.log(res);
-                    if(res && res.data){
-                        
-                        if (res.data.code == 1) {
-                            // Check m_state value
-                            if (res.data.memInfo.m_state === 0) {
-                                alert('此帳號為禁用狀態,請聯繫管理人員哦QVQ');
+                if (res && res.data) {
 
-                            } else if (res.data.memInfo.m_state === 1) {
-                                // Normal login flow for m_state = 1
-                                this.userStoreData.updateToken(res.data.session_id)
-                                this.userStoreData.updateUserData(res.data.memInfo)
-                                alert('登入成功, 歡迎來到Cara-Car~')
-                                this.closeLightbox();
-                                location.reload()
-                            }
-                        } else {
-                            alert('登入失敗, 請再試看看哦~')
+                    if (res.data.code == 1) {
+                        // Check m_state value
+                        if (res.data.memInfo.m_state === 0) {
+                            alert('此帳號為禁用狀態,請聯繫管理人員哦QVQ');
+
+                        } else if (res.data.memInfo.m_state === 1) {
+                            // Normal login flow for m_state = 1
+                            this.userStoreData.updateToken(res.data.session_id)
+                            this.userStoreData.updateUserData(res.data.memInfo)
+                            alert('登入成功, 歡迎來到Cara-Car~')
+                            this.closeLightbox();
+                            location.reload()
                         }
+                    } else {
+                        alert('登入失敗, 請再試看看哦~')
                     }
-                }).catch(error=>{
+                }
+            }).catch(error => {
                 console.log(error);
             })
         },
 
         // line登入
-        lineLoginEvent(){
-        // 根據指定的 client_id、redirect_uri、scope 等參數組合出一個 LINE 登入的連結
-        const link = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${this.line_channel_id}&redirect_uri=${this.line_redirect_uri}&state=login&scope=openid%20profile`;
-        // 將頁面重新導向到該連結
-        window.location.href = link;
+        lineLoginEvent() {
+            // 根據指定的 client_id、redirect_uri、scope 等參數組合出一個 LINE 登入的連結
+            const link = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${this.line_channel_id}&redirect_uri=${this.line_redirect_uri}&state=login&scope=openid%20profile`;
+            // 將頁面重新導向到該連結
+            window.location.href = link;
         },
-        async lineLoginRedirect(code){
+        async lineLoginRedirect(code) {
             try {
                 /*
                     使用 Axios 發送 HTTP POST 請求到指定的 URL
@@ -177,25 +191,19 @@ export default {
                     根據需求，可以在登入後的處理中進行相應的操作，例如驗證用戶資訊、儲存登入狀態等。
                 */
                 console.log(userInfoResponse.data);
-                const lineUserId = userInfoResponse.data.sub;
-                const lineNickname = userInfoResponse.data.name;
-                const lineUSerImgURL = userInfoResponse.data.picture;
-                const lineAccountTypeID = 1;
+                const user = userInfoResponse.data
+                const sub = user.sub;
+                const name = user.name;
+                const picture = user.picture;
 
-                // 可以在這邊寫回資料庫
-                // const response = await axios.post(`${API_URL}lineLogin.php`, {
-                //     userId: lineUserId,
-                //     nickname: lineNickname,
-                //     accountTypeID: lineAccountTypeID
-                // });
-                this.updateToken(lineUserId)
+                this.updateToken(sub)
 
                 // 沒有API先使用寫死資料
-                this.updateUserData({
-                    m_name: lineNickname,
-                    m_validation: 1,
-                    m_state: 1
-                })
+                // this.updateUserData({
+                //     m_name: lineNickname,
+                //     m_validation: 1,
+                //     m_state: 1
+                // })
                 this.$router.push('/')
             } catch (error) {
                 console.error(error);
@@ -223,7 +231,7 @@ export default {
                         <label for="email"></label>
                         <div class="psw_input">
                             <input :type="pswVisible ? 'text' : 'password'" v-model="psw666" placeholder="請輸入密碼"
-                            minlength="8" maxlength="12">
+                                minlength="8" maxlength="12">
                             <img v-if="pswVisible" src="../assets/imgs/login/open-eye.svg" alt="openEye" class="eye"
                                 @click="togglePsw">
                             <img v-else src="../assets/imgs/login/close-eye.svg" alt="closeEye" class="eye"
