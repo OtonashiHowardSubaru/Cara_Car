@@ -53,11 +53,10 @@ created() {
     this.fetchData();
 
    //從LocalStorage中讀取購物車資料
-    // const shCartData = JSON.parse(localStorage.getItem('cart'));
-    // if (shCartData) {
-    //     this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
+    // const localCartData = JSON.parse(localStorage.getItem('cartItems'));
+    // if (localCartData) {
+    //     this.cartItems = localCartData; // 將資料存儲在Vue的data屬性中
     // }; 
-    // this.getLocalCartData();
 
 },
 computed: {

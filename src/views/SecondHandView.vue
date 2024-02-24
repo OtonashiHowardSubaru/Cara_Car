@@ -128,11 +128,11 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         // localStorage.setItem('cart', JSON.stringify(shCartItems));
 
         // alert('商品已加入到購物車！');
-        return  Swal.fire({
-          title: '已加入購物車!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        })
+        // return  Swal.fire({
+        //   title: '已加入購物車!',
+        //   icon: 'success',
+        //   confirmButtonText: 'OK',
+        // })
       },
     },
     mounted() {

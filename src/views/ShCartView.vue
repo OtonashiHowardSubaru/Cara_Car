@@ -67,7 +67,7 @@ created() {
     //從LocalStorage中讀取購物車資料
     const shCartData = JSON.parse(localStorage.getItem('cart'));
     if (shCartData) {
-        this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
+        this.shCartItems = [shCartData]; // 將資料存儲在Vue的data屬性中
     }; 
 },
 computed: {
