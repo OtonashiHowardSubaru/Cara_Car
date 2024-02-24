@@ -12,7 +12,7 @@ import userStore from '@/stores/user'
 
 import apiInstance from '@/stores/auth'
 import { mapState, mapActions } from "pinia";
-import cartStore from "@/stores/cart";
+// import cartStore from "@/stores/cart";
 
 export default {
 components:{
@@ -23,7 +23,7 @@ data(){
     return {
         allProducts:[],
         shCartItems:[],
-        cart:'',
+        cart:[],
         name:'',
         phone:'',
         city:'',
