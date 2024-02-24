@@ -53,7 +53,7 @@ methods: {
         const pageId = this.$route.params.pro_id
     
         // 取得所有商品資料用做本頁資料以及swiper
-        axios.get(`${import.meta.env.VITE_PHP_URL}/api/front/productlist.php?`)
+        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)

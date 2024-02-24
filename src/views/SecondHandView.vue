@@ -48,7 +48,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
       },
       fetchData(){
         const pageId = this.$route.params.sh_pro_id
-        axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/shProductList.php`)
+        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/shProductList.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           console.log(response.data)
@@ -64,7 +64,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         });
       
       // 取得這一份商品的全部圖片名稱
-      axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/shProductimgs.php?pageId=${pageId}`)
+      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/shProductimgs.php?pageId=${pageId}`)
         .then((response) => {
           this.ImgsName = response.data;
           console.log(this.ImgsName);
@@ -74,7 +74,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
         // 取得所有商品資料用做本頁資料以及swiper
-      axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/productlist.php?`)
+      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)

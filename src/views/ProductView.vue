@@ -56,7 +56,7 @@
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       
       // 取得所有商品資料用做本頁資料以及swiper
-      axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/productlist.php?`)
+      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -74,7 +74,7 @@
         });
 
       // 取得這一份商品的全部圖片名稱
-      axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/thisproductimgs.php?pageId=${pageId}`)
+      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/thisproductimgs.php?pageId=${pageId}`)
         .then((response) => {
           this.ImgsName = response.data;
           // console.log(this.ImgsName);

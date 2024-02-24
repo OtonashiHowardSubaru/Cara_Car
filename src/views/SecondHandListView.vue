@@ -30,7 +30,7 @@ import BlueBird from "@/components/animation/BlueBird.vue";
     created() {
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-      axios.get(`${import.meta.env.VITE_CARA_URL}/api/front/shProductList.php`)
+      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/shProductList.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           console.log(response.data)
