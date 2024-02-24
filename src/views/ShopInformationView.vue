@@ -2,9 +2,7 @@
     <MainHeader />
     <main class="ShopInformation">
         <div class="infoBg">
-            <div class="bgAnime">
-                <img src="/src/assets/imgs/shopInfo/longStreetv2.jpg" alt="longStreetv2">
-            </div>
+            <ShopInfoAnimation />
         </div>
 
         <section class="infoText">
@@ -32,6 +30,7 @@ import BtnEvent from '@/components/btn/BtnEvent.vue'
 import MainHeader from '@/components/MainHeader.vue';
 import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
+import ShopInfoAnimation from '@/components/animation/ShopInfoAnimation.vue'
 
 
 export default {
@@ -41,6 +40,7 @@ export default {
         MainHeader,
         ShopMap,
         InfoTextCards,
+        ShopInfoAnimation,
     },
     data() {
         return{

@@ -1,7 +1,6 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/MainHeader.vue';
-// import TitleViewed from '@/components/TitleViewed.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 // import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
