@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios'; //引入函式庫
+import { mapState, mapActions } from 'pinia';
 import MainHeader from '@/components/MainHeader.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
@@ -126,7 +127,7 @@ methods: {
                     <ul>
                         <div class="row">
                             <li class="order">訂單編號</li>
-                            <span>111</span>
+                            <input type="text" name="order" id="order" v-model="userData.m_name">
                         </div>
                         <div class="row">
                             <li class="order">訂單日期</li>
