@@ -13,11 +13,12 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import ProCardSwiper from "@/components/ProCardSwiper.vue"
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
+import Swal from 'sweetalert2';
 
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,DoubleCloud
+    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,DoubleCloud,Swal
 },
     data(){
       return {
@@ -111,31 +112,42 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
       },
       //加入購物車
       addToShCart(){
-        const product = {
-          id: this.thisProduct.sh_pro_id,
-          shname: this.thisProduct.sh_pro_name,
-          shprice: this.thisProduct.sh_pro_price,
-          shimageUrl:  this.thisProduct.img_name,
-          shquantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
-        };
-        // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
-        let shCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        console.log('addToCart');
+        try{
+              const product = {
+              id: this.thisProduct.sh_pro_id,
+              shname: this.thisProduct.sh_pro_name,
+              shprice: this.thisProduct.sh_pro_price,
+              shimageUrl:  this.thisProduct.img_name,
+              shquantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
+          };
+          console.log(JSON.stringify(product));
+        
+          const productList = [];
+          productList.push(product);
+          // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
+          localStorage.setItem('cart',JSON.stringify(productList));
+        }catch(e){
+          console.error(e);
+        }
+        
+        // let shCartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // 將當前商品添加到購物車中，重複商品時則更新數量
-        let existingProductIndex = shCartItems.findIndex(item => item.id === product.id);
-        if (existingProductIndex !== -1) {
-          // 如果購物車中已有相同商品，則更新其數量
-          cartItems[existingProductIndex].quantity += product.quantity;
-        } else {
-          // 若不是則將商品添加到購物車
-          shCartItems.push(product);
-        };
+        // // 將當前商品添加到購物車中，重複商品時則更新數量
+        // let existingProductIndex = shCartItems.findIndex(item => item.id === product.id);
+        // if (existingProductIndex !== -1) {
+        //   // 如果購物車中已有相同商品，則更新其數量
+        //   cartItems[existingProductIndex].quantity += product.quantity;
+        // } else {
+        //   // 若不是則將商品添加到購物車
+          // shCartItems.push(product);
+        // };
 
-        // cartItems.push(product);
+        // shCartItems.push(product);
         // 將更新後的購物車數據保存到本地端
-        localStorage.setItem('cart', JSON.stringify(shCartItems));
+        // localStorage.setItem('cart', JSON.stringify(shCartItems));
 
-        // alert('商品已加入到購物車！');
+        alert('商品已加入到購物車！');
         return  Swal.fire({
           title: '已加入購物車!',
           icon: 'success',
@@ -192,10 +204,9 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
           </ul> -->
         </div>
 
-        <div class="purchase_btn" id="purchase_btn">
-          <!-- <a href="./CartView.vue">直接購買</a> -->
+        <div class="purchase_btn" id="purchase_btn" @click="addToShCart">
           <router-link to="/ShCart">
-            <button type="button" id="purchase_btn" @click="addToShCart">直接購買</button>
+            <button type="button" id="purchase_btn">直接購買</button>
           </router-link>
         </div>
     </div>

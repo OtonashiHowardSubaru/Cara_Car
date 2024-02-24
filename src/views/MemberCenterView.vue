@@ -191,7 +191,7 @@ export default {
         },
         // 取得圖片的路徑函式
         getProductImgSrc(imgName) {
-            return new URL(`${import.meta.env.VITE_IMG_URL}/product/new_products/${imgName}`, import.meta.url).href
+            return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/sh_product/${imgName}`, import.meta.url).href
         },
         updateImgName() {
             // 自动更新imgName为favoriteProducts数组中的下一个值

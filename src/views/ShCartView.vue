@@ -24,6 +24,7 @@ data(){
         allProducts:[],
         shCartItems:[],
         cart:'',
+        // id:'',
         name:'',
         phone:'',
         city:'',
@@ -90,7 +91,7 @@ computed: {
 methods: {
     fetchData(){
         // 定義頁碼
-        const pageId = this.$route.params.pro_id
+        const pageId = this.$route.params.sh_pro_id
     
         // 取得所有商品資料用做本頁資料以及swiper
         axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
@@ -139,7 +140,9 @@ methods: {
         alert('請填寫完整資訊才能完成訂購');
         return; // 阻止 API 调用
         }
+        const sh_pro_id = JSON.parse(localStorage.getItem('cart'))[0].id 
         const cartFromData = new FormData();
+        cartFromData.append('sh_pro_id', sh_pro_id);
         cartFromData.append('sh_ord_reciever', this.name);
         cartFromData.append('sh_ord_phone', this.phone);
         cartFromData.append('sh_ord_city', this.city);
@@ -160,22 +163,6 @@ methods: {
                 data: cartFromData
             }).then(res=>{
                 console.log(res);
-                if(res && res.data && res.data.msg === '完成訂購'){
-                    alert("訂購完成")
-                }else{
-                    alert('訂購失敗')
-                }
-            }).catch(error=>{
-                console.log(error);
-            })
-        apiInstance({
-                method: 'post',
-                url: `${import.meta.env.VITE_LPHP_URL}/front/shBuyDone.php`, // 改成我們的php
-                //是要設不童的function和php還是同一個?
-                headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
-                data: cartFromData
-            }).then(res=>{
-                console.log(cartFromData);
                 if(res && res.data && res.data.msg === '完成訂購'){
                     alert("訂購完成")
                 }else{
@@ -289,10 +276,11 @@ methods: {
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
-                <!-- <router-link to="/cartPart3"> -->
+                <router-link to="/ShcartPart3">
                     <!-- <button type="submit" class="subButton" @click="subOrder">確認並送出訂單</button> -->
-                <!-- </router-link> -->
-                <input type="button" class="subButton" @click="subOrder" value="確認並送出訂單">
+                    <input type="button" class="subButton" @click="subOrder" value="確認並送出訂單">
+                </router-link>
+                
                 <router-link to="/secondHand">
                     <button type="submit" class="subButton2"  @click="clearshCartData">取消購買訂單</button>
                 </router-link>
