@@ -14,18 +14,6 @@ import { Navigation } from 'swiper/modules';
 import ProCardSwiper from "@/components/ProCardSwiper.vue"
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
-// import product01 from '@/assets/imgs/product/sh_products/product001.jpg';
-// import product02 from '@/assets/imgs/product/sh_products/product002.jpg';
-// import product03 from '@/assets/imgs/product/sh_products/product003.jpg';
-// import product04 from '@/assets/imgs/product/sh_products/product004.jpg';
-// import product05 from '@/assets/imgs/product/sh_products/product005.jpg';
-// import product06 from '@/assets/imgs/product/sh_products/product006.jpg';
-// import product07 from '@/assets/imgs/product/sh_products/product007.jpg';
-// import product08 from '@/assets/imgs/product/sh_products/product008.jpg';
-// import product09 from '@/assets/imgs/product/sh_products/product009.jpg';
-
-
-
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,

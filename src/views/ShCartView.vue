@@ -147,7 +147,7 @@ methods: {
 
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/front/buyDone.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_CARA_URL}/front/sh_buyDone.php`, // 改成我們的php
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res=>{
@@ -168,6 +168,13 @@ methods: {
         localStorage.setItem('cart', JSON.stringify(this.shCartItems));
         console.log('清除購物車',this.cart);
     },
+    ...mapActions(cartStore, [
+        "reduceFromCart",
+        "increaseFromCart",
+        "getLocalCartData",
+        "addToCart",
+        "getProductImgSrc",
+    ]),
 },
 }
 </script>
@@ -212,7 +219,7 @@ methods: {
                         <p class="pro_price">${{ item.shprice }}</p>
                     </div>
                     <div class="number_select">
-                        <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent v-bind:style="{margin: L + 'px'}">
+                        <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent v-bind:style="{margin: L + 'px'}" readonly>
                     </div>
                     <p class="proCount">${{ item.shprice}}</p>
             </div>

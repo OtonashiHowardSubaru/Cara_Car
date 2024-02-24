@@ -127,7 +127,7 @@ methods: {
                     <ul>
                         <div class="row">
                             <li class="order">訂單編號</li>
-                            <input type="text" name="order" id="order" v-model="userData.m_name">
+                            <span>1</span>
                         </div>
                         <div class="row">
                             <li class="order">訂單日期</li>
