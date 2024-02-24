@@ -54,7 +54,7 @@ methods: {
         const pageId = this.$route.params.sh_pro_id
     
         // 取得所有商品資料用做本頁資料以及swiper
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/back/backShOrder.php?`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/back/backShOrder.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)

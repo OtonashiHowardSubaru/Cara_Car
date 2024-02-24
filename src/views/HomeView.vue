@@ -93,7 +93,7 @@ export default {
     console.log('getLineConnectionInfo');
     //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
     // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-    axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php`)
+    axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php`)
       .then((response) => {
         // 成功取得資料後，將資料存入陣列
         this.displayData = response.data.slice(0, 8);
@@ -126,7 +126,7 @@ export default {
   methods: {
     // 取得第三方登入連線資訊
     getLineConnectionInfo() {
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/getLineConnectionInfo.php`)
+      axios.get(`${import.meta.env.VITE_PHP_URL}/front/getLineConnectionInfo.php`)
         .then(({ data }) => {
           this.line_channel_id = data[0].channelId
           this.line_channel_secret = data[0].channelSecret
@@ -283,7 +283,7 @@ export default {
           picture: user.picture,
         }
 
-        axios.post(`${import.meta.env.VITE_LPHP_URL}/front/lineMemberLogin.php`, lineTokenRes, {
+        axios.post(`${import.meta.env.VITE_PHP_URL}/front/lineMemberLogin.php`, lineTokenRes, {
           headers: { "Content-Type": "multipart/form-data" },
         })
           .then(res => {

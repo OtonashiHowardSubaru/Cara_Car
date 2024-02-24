@@ -55,7 +55,7 @@ export default {
 
                 apiInstance({
                     method: 'post',
-                    url: `${import.meta.env.VITE_LPHP_URL}/front/register.php`, // 改成我們的php
+                    url: `${import.meta.env.VITE_PHP_URL}/front/register.php`, // 改成我們的php
                     headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                     data: bodyFormData
                 }).then(res => {

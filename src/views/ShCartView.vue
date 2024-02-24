@@ -93,7 +93,7 @@ methods: {
         const pageId = this.$route.params.sh_pro_id
     
         // 取得所有商品資料用做本頁資料以及swiper
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -113,7 +113,7 @@ methods: {
     },
 
     axiosGet(){
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/back/backMember.php`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/back/backMember.php`)
         .then(res=>{
             this.memInfo = res.data
             console.log(this.memInfo);
@@ -127,7 +127,7 @@ methods: {
     },
     //抓取圖片路徑
     getProductImgSrc(imgName){
-        return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/sh_products/${imgName}`).href
+        return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/sh_products/${imgName}`).href
     },
     saveCartData() {
         localStorage.setItem('cart', JSON.stringify(this.shCartItems));
@@ -157,7 +157,7 @@ methods: {
 
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_LPHP_URL}/front/shBuyDone.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_PHP_URL}/front/shBuyDone.php`, // 改成我們的php
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res=>{

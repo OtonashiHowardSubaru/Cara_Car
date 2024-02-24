@@ -59,7 +59,7 @@ export default {
     methods: {
         // 取得第三方登入連線資訊
         getLineConnectionInfo() {
-            axios.get(`${import.meta.env.VITE_LPHP_URL}/front/getLineConnectionInfo.php`)
+            axios.get(`${import.meta.env.VITE_PHP_URL}/front/getLineConnectionInfo.php`)
                 .then(({data}) => {
                     this.line_channel_id = data[0].channelId
                     this.line_channel_secret = data[0].channelSecret
@@ -98,7 +98,7 @@ export default {
             // 請記得將php埋入跨域
             apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_LPHP_URL}/front/memberLogin.php`,
+                url: `${import.meta.env.VITE_PHP_URL}/front/memberLogin.php`,
                 headers: { "Content-Type": "multipart/form-data" },
                 data: bodyFormData
             }).then(res => {
