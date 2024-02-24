@@ -52,7 +52,7 @@
 </template>
   
 <script>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, watch } from 'vue';
 
 export default {
     setup() {
@@ -74,7 +74,14 @@ export default {
             },
         ]);
 
+        
         const chatArea = ref()
+        
+        watch(show, () => {
+            nextTick(() => {
+                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+            });
+        })
 
         const sendMessage = (direction) => {
             if (!youMessage.value && !CaraMessage.value) {
@@ -109,7 +116,7 @@ export default {
             } else {
                 alert('something went wrong');
             }
-
+            //受sendMessage影響
             nextTick(() => {
                 chatArea.value.scrollTop = chatArea.value.scrollHeight;
             });
