@@ -121,7 +121,7 @@ export default {
       axios
         .get(
           `${
-            import.meta.env.VITE_PHP_URL
+            import.meta.env.VITE_LPHP_URL
           }/front/getMemberName.php?member_id=${member_id}`
         )
         .then((res) => {
@@ -147,7 +147,7 @@ export default {
       formData.append("member_id", this.userData.member_id);
       axios
         .post(
-          `${import.meta.env.VITE_PHP_URL}/front/updateMemberImg.php?`,
+          `${import.meta.env.VITE_LPHP_URL}/front/updateMemberImg.php?`,
           formData,
           {
             headers: {
@@ -184,7 +184,7 @@ export default {
       };
       axios
         .post(
-          `${import.meta.env.VITE_PHP_URL}/front/updateMemberProfile.php`,
+          `${import.meta.env.VITE_LPHP_URL}/front/updateMemberProfile.php`,
           postData,
           {
             headers: { "Content-Type": "multipart/form-data" },
@@ -215,7 +215,7 @@ export default {
     },
     // 取得圖片的路徑函式
     getProductImgSrc(imgName) {
-      return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/new_products/${imgName}`).href
+      return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/new_products/${imgName}`).href
     },
     updateImgName() {
       // 自动更新imgName为favoriteProducts数组中的下一个值

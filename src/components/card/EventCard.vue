@@ -110,7 +110,7 @@ export default {
     created() {
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-        axios.get(`${import.meta.env.VITE_PHP_URL}/front/newsList.php`)
+        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/newsList.php`)
         .then((response) => {
             // 成功取得資料後，將資料存入陣列
             // console.log(response.data)
@@ -125,7 +125,7 @@ export default {
     methods: {
         // 取得圖片的路徑函式
         getProductImgSrc(imgName){
-            return new URL(`${VITE_IMG_BASE_URL}/event/${imgName}`, import.meta.url).href
+            return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/event/${imgName}`).href
         },
          // 頁數切換
         toggleStatus(index) {
