@@ -131,37 +131,42 @@ methods: {
     //     localStorage.setItem('cart', JSON.stringify(this.shCartItems));
     // },
     //購買人資料填寫
-    buyDone(){
-        const cartFromData = new FormData();
-        cartFromData.append('ord_reciever', this.name);
-        cartFromData.append('ord_phone', this.phone);
-        cartFromData.append('ord_city', this.city);
-        cartFromData.append('ord_district', this.area);
-        cartFromData.append('ord_address', this.road);
-        cartFromData.append('remark', this.remark);
-        cartFromData.append('member_id', 1);
-        cartFromData.append('ord_ship', 4);
-        cartFromData.append('ord_total', 1000);
-        cartFromData.append('ord_del_state', 1);
+    // buyDone(){
+    //     if (!this.name || !this.phone || !this.city || !this.area || !this.road) {
+    //     alert('請填寫完整資訊才能完成訂購');
+    //     return; // 阻止 API 调用
+    //     }
+    //     const cartFromData = new FormData();
+    //     cartFromData.append('ord_reciever', this.name);
+    //     cartFromData.append('ord_phone', this.phone);
+    //     cartFromData.append('ord_city', this.city);
+    //     cartFromData.append('ord_district', this.area);
+    //     cartFromData.append('ord_address', this.road);
+    //     cartFromData.append('remark', this.remark);
+    //     cartFromData.append('member_id', 1);
+    //     cartFromData.append('ord_ship', 4);
+    //     cartFromData.append('ord_total', 1000);
+    //     cartFromData.append('ord_del_state', 1);
 
 
-        apiInstance({
-                method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/front/buyDone.php`, // 改成我們的php
-                headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
-                data: cartFromData
-            }).then(res=>{
-                console.log(res);
-                if(res && res.data && res.data.msg === '完成訂購'){
-                    alert("訂購完成")
-                }else{
-                    alert('訂購失敗')
-                }
-            }).catch(error=>{
-                console.log(error);
-            })
+    //     apiInstance({
+    //             method: 'post',
+    //             url: `${import.meta.env.VITE_CARA_URL}/front/buyDone.php`, // 改成我們的php
+    //             //是要設不童的function和php還是同一個?
+    //             headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
+    //             data: cartFromData
+    //         }).then(res=>{
+    //             console.log(res);
+    //             if(res && res.data && res.data.msg === '完成訂購'){
+    //                 alert("訂購完成")
+    //             }else{
+    //                 alert('訂購失敗')
+    //             }
+    //         }).catch(error=>{
+    //             console.log(error);
+    //         })
 
-    },
+    // },
     clearshCartData(){
         this.shCartItems = [];
         this.cart = [];
