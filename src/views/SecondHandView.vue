@@ -148,12 +148,12 @@ import Swal from 'sweetalert2';
         // localStorage.setItem('cart', JSON.stringify(shCartItems));
         // localStorage.setItem('cart', JSON.stringify(shCartItems));
 
-        alert('商品已加入到購物車！');
-        return  Swal.fire({
-          title: '已加入購物車!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        })
+        // alert('商品已加入到購物車！');
+        // return  Swal.fire({
+        //   title: '已加入購物車!',
+        //   icon: 'success',
+        //   confirmButtonText: 'OK',
+        // })
       },
     },
     mounted() {
