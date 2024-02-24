@@ -187,7 +187,6 @@ methods: {
                 <span class="cartProcessname">填寫資料</span>
                 <span class="cartProcessname">完成訂單</span>
             </div>
-
             <div class="cartContent" v-show="cartItems.length !=0 ">
                 <span class="productName">商品名稱與單價</span>
                 <span class="count">數量</span>

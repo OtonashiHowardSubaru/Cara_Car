@@ -17,7 +17,7 @@ export default defineStore("cartStore", {
         return baseSubFreight * totalQuantity;
         },
         total() {
-        return this.subtotal + this.subFreight;
+            return this.subtotal + this.subFreight;
         },
     },
     actions: {

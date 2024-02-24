@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios'; //引入函式庫
+// import { router } from '@/router'; 
 import MainHeader from '@/components/MainHeader.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 // import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
@@ -9,7 +10,8 @@ import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 
 import apiInstance from '@/stores/auth'
-import userStore from '@/stores/user'
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 
 export default {
 components:{
@@ -29,7 +31,7 @@ data(){
         count: 1,
         expanded:false,
         memInfo:[],
-        userStoreData:userStore(),
+        cartStore: cartStore(),
         cityOption:[
             {c:'台北市'},
             {c:'新北市'},
@@ -58,29 +60,42 @@ data(){
 created() {
     this.axiosGet();
     this.fetchData();
-
+    this.getLocalCartData();
+    //要抓取localStorage裡面cartItems的JSON裡面第一個物件的陣列，取不出來
+    
+    // this.cartItems.id = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).id : "";
+    // this.cartItems.name = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).name: ""; 
+    // this.cartItems.price = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).price: ""; 
+    // this.cartItems.imageUrl = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).imageUrl: ""; 
+    // this.cartItems.quantity = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).quantity: ""; 
    // 從LocalStorage中讀取購物車資料
-    const cartData = JSON.parse(localStorage.getItem('cart'));
-    if (cartData) {
-        this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
-    }; 
+    // const cartData = JSON.parse(localStorage.getItem('cart'));
+    // if (cartData) {
+    //     this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
+    // }; 
 },
 computed: {
-    subtotal() {
-    let total = 0;
-    for (let item of this.cartItems) {
-      total += item.price * item.quantity;
-    }
-    return total;
-    },
-    subFreight(){
-        const baseSubFreight = 120;
-        const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
-        return baseSubFreight * totalQuantity;
-    },
-    total(){
-        return this.subtotal + this.subFreight;
-    },
+    ...mapState(cartStore,[
+        "cartItems",
+        "subtotal",
+        "subFreight",
+        "total",
+    ]),
+    // subtotal() {
+    // let total = 0;
+    // for (let item of this.cartItems) {
+    //   total += item.price * item.quantity;
+    // }
+    // return total;
+    // },
+    // subFreight(){
+    //     const baseSubFreight = 120;
+    //     const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    //     return baseSubFreight * totalQuantity;
+    // },
+    // total(){
+    //     return this.subtotal + this.subFreight;
+    // },
 },
 methods: {
     fetchData(){
@@ -117,15 +132,15 @@ methods: {
             console.error("Error:", error);
         });
     },
-    handleQtyChange(index,increment) {
-        let qtyValue = parseInt(this.cartItems[index].quantity);
-        qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
-        // this.$refs['qtyInput_' + index][0].value = qtyValue;
-        this.updateQuantity(index, qtyValue)
-    },
-    toggleCartContent(){
-        this.expanded = !this.expanded;
-    },
+    // handleQtyChange(index,increment) {
+    //     let qtyValue = parseInt(this.cartItems[index].quantity);
+    //     qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
+    //     // this.$refs['qtyInput_' + index][0].value = qtyValue;
+    //     this.updateQuantity(index, qtyValue)
+    // },
+    // toggleCartContent(){
+    //     this.expanded = !this.expanded;
+    // },
     updateQuantity(index, newQuantity){
         // 更新购物车内商品数量
         if (newQuantity < 1) {
@@ -145,8 +160,42 @@ methods: {
     saveCartData() {
         localStorage.setItem('cart', JSON.stringify(this.cartItems));
     },
+    ...mapActions(cartStore, [
+        "reduceFromCart",
+        "increaseFromCart",
+        "getLocalCartData",
+        "addToCart",
+        "getProductImgSrc",
+    ]),
+    //抓取商品資料
+    getProduct(){
+        const cartBuyData = new FormData();
+        cartBuyData.append('pro_name',cartItems.name);
+
+        apiInstance({
+                method: 'post',
+                url: `${import.meta.env.VITE_CARA_URL}/front/getProduct.php`, // 改成我們的php
+                headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
+                data: cartBuyData
+            }).then(res=>{
+                console.log(cartBuyData);
+                if(res && res.data && res.data.msg === '已抓取商品資訊'){
+                    alert("成功");
+                    this.$router.push('/CartPart3');
+                }else{
+                    alert('失敗')
+                }
+            }).catch(error=>{
+                console.log(error);
+            })
+
+    },
     //購買人資料填寫
     buyDone(){
+        if (!this.name || !this.phone || !this.city || !this.area || !this.road) {
+        alert('請填寫完整資訊才能完成訂購');
+        return; // 阻止 API 调用
+        }
         const cartFromData = new FormData();
         cartFromData.append('ord_reciever', this.name);
         cartFromData.append('ord_phone', this.phone);
@@ -154,11 +203,13 @@ methods: {
         cartFromData.append('ord_district', this.area);
         cartFromData.append('ord_address', this.road);
         cartFromData.append('remark', this.remark);
-        cartFromData.append('member_id', 1);
-        cartFromData.append('ord_ship', 4);
-        cartFromData.append('ord_total', 1000);
+        cartFromData.append('member_id', 10);
+        cartFromData.append('ord_ship', 240);
+        cartFromData.append('ord_sum', 20000);
+        cartFromData.append('ord_total', 3500);
         cartFromData.append('ord_del_state', 1);
 
+        
 
         apiInstance({
                 method: 'post',
@@ -166,9 +217,10 @@ methods: {
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res=>{
-                console.log(res);
+                console.log(cartFromData);
                 if(res && res.data && res.data.msg === '完成訂購'){
-                    alert("訂購完成")
+                    alert("訂購完成");
+                    this.$router.push('/CartPart3');
                 }else{
                     alert('訂購失敗')
                 }
@@ -177,6 +229,10 @@ methods: {
             })
 
     },
+    subOrder(){
+        this.buyDone();
+        // this.getProduct();
+    }
 },
 }
 </script>
@@ -210,7 +266,10 @@ methods: {
             </div>
 
         </section>
-        {{ this.userStoreData.userData.m_name }}
+        {{ cartStore.cartItems }}
+        <!-- {{ subFreight }} -->
+        <!-- {{ subtotal}} -->
+        <!-- {{ this.userStoreData.userData.m_name }} -->
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
@@ -253,9 +312,9 @@ methods: {
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
-                <router-link to="/cartPart3">
-                    <button type="submit" class="subButton" @click="buyDone">確認並送出訂單</button>
-                </router-link>
+                <!-- <router-link to="/cartPart3"> -->
+                    <input type="button" class="subButton" @click="subOrder" value="確認並送出訂單">
+                <!-- </router-link> -->
             </div>
         </form>
         <router-link to="/cart">
