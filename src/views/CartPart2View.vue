@@ -103,7 +103,7 @@ methods: {
         const pageId = this.$route.params.pro_id
     
         // 取得所有商品資料用做本頁資料以及swiper
-        axios.get(`${import.meta.env.VITE_CARA_URL}/front/productlist.php?`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/api/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -123,7 +123,7 @@ methods: {
     },
 
     axiosGet(){
-        axios.get(`${import.meta.env.VITE_CARA_URL}/back/backMember.php`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/api/back/backMember.php`)
         .then(res=>{
             this.memInfo = res.data
             console.log(this.memInfo);
@@ -174,7 +174,7 @@ methods: {
 
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/front/getProduct.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_PHP_URL}/api/front/getProduct.php`, // 改成我們的php
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartBuyData
             }).then(res=>{
@@ -213,7 +213,7 @@ methods: {
 
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/front/buyDone.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_PHP_URL}/api/front/buyDone.php`, // 改成我們的php
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res=>{

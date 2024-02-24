@@ -30,7 +30,6 @@ data(){
         qtyValue:'',
         count: 1,
         expanded:false,
-        // cartItems: [],
         memInfo:[],
         userStoreData:userStore(),
         cityOption:[
@@ -63,10 +62,10 @@ created() {
     this.fetchData();
     
     //從LocalStorage中讀取購物車資料
-    const shCartData = JSON.parse(localStorage.getItem('cart'));
-    if (shCartData) {
-        this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
-    }; 
+    // const shCartData = JSON.parse(localStorage.getItem('cart'));
+    // if (shCartData) {
+    //     this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
+    // }; 
 },
 computed: {
     subtotal() {
@@ -111,7 +110,7 @@ methods: {
     },
 
     axiosGet(){
-        axios.get(`${import.meta.env.VITE_CARA_URL}/back/backMember.php`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/api/back/backMember.php`)
         .then(res=>{
             this.memInfo = res.data
             console.log(this.memInfo);
@@ -188,13 +187,6 @@ methods: {
         localStorage.setItem('cart', JSON.stringify(this.shCartItems));
         console.log('清除購物車',this.cart);
     },
-    ...mapActions(cartStore, [
-        "reduceFromCart",
-        "increaseFromCart",
-        "getLocalCartData",
-        "addToCart",
-        "getProductImgSrc",
-    ]),
 },
 }
 </script>
