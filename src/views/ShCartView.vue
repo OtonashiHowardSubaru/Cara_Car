@@ -12,7 +12,7 @@ import userStore from '@/stores/user'
 
 import apiInstance from '@/stores/auth'
 import { mapState, mapActions } from "pinia";
-import cartStore from "@/stores/cart";
+// import cartStore from "@/stores/cart";
 
 export default {
 components:{
@@ -23,7 +23,7 @@ data(){
     return {
         allProducts:[],
         shCartItems:[],
-        cart:'',
+        cart:[],
         name:'',
         phone:'',
         city:'',
@@ -34,7 +34,7 @@ data(){
         count: 1,
         expanded:false,
         memInfo:[],
-        userStoreData:userStore(),
+        // userStoreData:userStore(),
         cityOption:[
             {c:'台北市'},
             {c:'新北市'},
@@ -65,10 +65,10 @@ created() {
     this.fetchData();
     
     //從LocalStorage中讀取購物車資料
-    // const shCartData = JSON.parse(localStorage.getItem('cart'));
-    // if (shCartData) {
-    //     this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
-    // }; 
+    const shCartData = JSON.parse(localStorage.getItem('cart'));
+    if (shCartData) {
+        this.shCartItems = [shCartData]; // 將資料存儲在Vue的data屬性中
+    }; 
 },
 computed: {
     subtotal() {
@@ -245,7 +245,7 @@ methods: {
             </div>
             <!-- 結束 -->
         </section>
-        {{ this.userStoreData.userData.m_name }}
+        <!-- {{ this.userStoreData.userData.m_name }} -->
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
