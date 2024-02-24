@@ -34,7 +34,7 @@ data(){
         count: 1,
         expanded:false,
         memInfo:[],
-        userStoreData:userStore(),
+        // userStoreData:userStore(),
         cityOption:[
             {c:'台北市'},
             {c:'新北市'},
@@ -65,10 +65,10 @@ created() {
     this.fetchData();
     
     //從LocalStorage中讀取購物車資料
-    // const shCartData = JSON.parse(localStorage.getItem('cart'));
-    // if (shCartData) {
-    //     this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
-    // }; 
+    const shCartData = JSON.parse(localStorage.getItem('cart'));
+    if (shCartData) {
+        this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
+    }; 
 },
 computed: {
     subtotal() {
@@ -140,21 +140,22 @@ methods: {
         return; // 阻止 API 调用
         }
         const cartFromData = new FormData();
-        cartFromData.append('ord_reciever', this.name);
-        cartFromData.append('ord_phone', this.phone);
-        cartFromData.append('ord_city', this.city);
-        cartFromData.append('ord_district', this.area);
-        cartFromData.append('ord_address', this.road);
+        cartFromData.append('sh_ord_reciever', this.name);
+        cartFromData.append('sh_ord_phone', this.phone);
+        cartFromData.append('sh_ord_city', this.city);
+        cartFromData.append('sh_ord_district', this.area);
+        cartFromData.append('sh_ord_address', this.road);
         cartFromData.append('remark', this.remark);
         cartFromData.append('member_id', 1);
-        cartFromData.append('ord_ship', 4);
-        cartFromData.append('ord_total', 1000);
+        cartFromData.append('sh_ord_ship', 4);
+        cartFromData.append('sh_ord_sum', 2000);
+        cartFromData.append('sh_ord_total', 1000);
         cartFromData.append('ord_del_state', 1);
 
 
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/api/front/sh_buyDone.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_LPHP_URL}/front/shBuyDone.php`, // 改成我們的php
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res=>{
@@ -169,12 +170,12 @@ methods: {
             })
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_CARA_URL}/api/front/buyDone.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_LPHP_URL}/front/shBuyDone.php`, // 改成我們的php
                 //是要設不童的function和php還是同一個?
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res=>{
-                console.log(res);
+                console.log(cartFromData);
                 if(res && res.data && res.data.msg === '完成訂購'){
                     alert("訂購完成")
                 }else{
@@ -245,7 +246,7 @@ methods: {
             </div>
             <!-- 結束 -->
         </section>
-        {{ this.userStoreData.userData.m_name }}
+        <!-- {{ this.userStoreData.userData.m_name }} -->
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
@@ -288,9 +289,10 @@ methods: {
                     <input type="text" placeholder=" 中正區"  class="area">
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
-                <router-link to="/cartPart3">
-                    <button type="submit" class="subButton" @click="buyDone">確認並送出訂單</button>
-                </router-link>
+                <!-- <router-link to="/cartPart3"> -->
+                    <!-- <button type="submit" class="subButton" @click="subOrder">確認並送出訂單</button> -->
+                <!-- </router-link> -->
+                <input type="button" class="subButton" @click="subOrder" value="確認並送出訂單">
                 <router-link to="/secondHand">
                     <button type="submit" class="subButton2"  @click="clearshCartData">取消購買訂單</button>
                 </router-link>

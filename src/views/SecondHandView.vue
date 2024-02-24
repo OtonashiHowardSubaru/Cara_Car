@@ -195,7 +195,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         <div class="purchase_btn" id="purchase_btn">
           <!-- <a href="./CartView.vue">直接購買</a> -->
           <router-link to="/ShCart">
-            <button type="button" id="addToCartBtn" @click="addToShCart">直接購買</button>
+            <button type="button" id="purchase_btn" @click="addToShCart">直接購買</button>
           </router-link>
         </div>
     </div>

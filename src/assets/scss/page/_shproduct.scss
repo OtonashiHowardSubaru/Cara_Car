@@ -201,14 +201,14 @@
     margin-bottom: 25px;
   }
   #purchase_btn{
-    // margin-top: 40px;
     display: flex;
     justify-content: center;
-    a{
+    button{
         color: #fff;
         background-color: $grass_1;
-        padding: 10px 70px;
         border-radius: 15px;
+        border: none;
+        cursor: pointer;
     }
   }
 }
