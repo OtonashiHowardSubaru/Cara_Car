@@ -92,7 +92,7 @@ import Swal from 'sweetalert2';
       },
       
       getProductImgSrc(imgName){
-        return new URL(`../assets/imgs/product/sh_products/${imgName}`, import.meta.url).href
+        return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/product/sh_products/${imgName}`).href
       },
 
       showLarge(e) {
@@ -166,7 +166,7 @@ import Swal from 'sweetalert2';
 <template>
   <MainHeader />
   <div class="headerbg">
-    <img src="../assets/imgs/draw/greeting_illust.svg" alt="">
+    <img src="@/assets/imgs/draw/greeting_illust.svg" alt="">
     <div class="cloud">
       <DoubleCloud/>
     </div>
@@ -213,7 +213,7 @@ import Swal from 'sweetalert2';
     </div>
 </div>
 <div class="productIntro">
-  <img src="../assets//imgs/product/info_bg.png" alt="">
+  <img src="@/assets//imgs/product/info_bg.png" alt="">
   <ProductIntroCard/>
 </div>
 
@@ -233,7 +233,7 @@ import Swal from 'sweetalert2';
 
 <div class="sh_process">
   <div class="shbg">
-    <img src="../assets/imgs/product/sh_bg.png" alt="">
+    <img src="@/assets/imgs/product/sh_bg.png" alt="">
   </div>
   <CardShProcess/> 
 </div>
@@ -242,6 +242,6 @@ import Swal from 'sweetalert2';
   
   <style lang="scss" scoped>
   
-  @import '../assets/scss/page/shproduct';
+  @import '@/assets/scss/page/shproduct';
   
   </style>

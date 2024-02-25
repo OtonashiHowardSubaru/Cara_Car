@@ -2,9 +2,12 @@ import { defineStore } from 'pinia';
 import Swal from 'sweetalert2';
 
 export default defineStore("cartStore", {
-    state: () => ({
-        cartItems: [],
-    }),
+    state: () => {
+        // cartItems: []
+        return{
+            cartItems: []
+        }
+    },
     getters: {
         subtotal() {
         return this.cartItems.reduce(
@@ -22,10 +25,12 @@ export default defineStore("cartStore", {
     },
     actions: {
         getProductImgSrc(imgName){
-            return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+            return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/product/new_products/${imgName}`).href
         },
         getLocalCartData(){
+            console.log('getLocalCartData in')
             let localCartData = localStorage.getItem("cartItems");
+            console.log(localCartData);
             if(localCartData){
                 this.cartItems = JSON.parse(localCartData);
             }

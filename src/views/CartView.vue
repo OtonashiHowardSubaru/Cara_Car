@@ -53,11 +53,10 @@ created() {
     this.fetchData();
 
    //從LocalStorage中讀取購物車資料
-    // const shCartData = JSON.parse(localStorage.getItem('cart'));
-    // if (shCartData) {
-    //     this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
+    // const localCartData = JSON.parse(localStorage.getItem('cartItems'));
+    // if (localCartData) {
+    //     this.cartItems = localCartData; // 將資料存儲在Vue的data屬性中
     // }; 
-    // this.getLocalCartData();
 
 },
 computed: {
@@ -117,7 +116,7 @@ methods: {
     // },
     //抓取圖片路徑
     // getProductImgSrc(imgName){
-    //     return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+    // return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/new_products/${imgName}`).href
     // },
     toggleCartContent(){
         this.expanded = !this.expanded;

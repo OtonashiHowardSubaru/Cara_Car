@@ -69,7 +69,7 @@ created() {
     const shCartData = JSON.parse(localStorage.getItem('cart'));
     console.log(JSON.stringify(shCartData));
     if (shCartData) {
-        this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
+        this.shCartItems = [shCartData]; // 將資料存儲在Vue的data屬性中
     }; 
 },
 computed: {
@@ -129,7 +129,7 @@ methods: {
     },
     //抓取圖片路徑
     getProductImgSrc(imgName){
-        return new URL(`../assets/imgs/product/sh_products/${imgName}`, import.meta.url).href
+        return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/product/sh_products/${imgName}`).href
     },
     saveCartData() {
         localStorage.setItem('cart', JSON.stringify(this.shCartItems));

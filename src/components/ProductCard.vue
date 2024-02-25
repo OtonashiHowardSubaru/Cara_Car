@@ -10,7 +10,7 @@ export default {
   methods: {
     // 取得圖片的路徑函式
     getProductImgSrc(imgName){
-    return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+    return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/product/new_products/${imgName}`).href
     },
   }
 }

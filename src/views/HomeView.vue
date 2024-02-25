@@ -3,7 +3,7 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import qs from 'qs' // 引入qs模組
-import { mapState, mapActions } from 'pinia'
+import { mapActions } from 'pinia'
 import userStore from '@/stores/user'
 import EventCardSlider from '@/components/card/EventCardSlider.vue';
 import lightBoxStore from "@/stores/lightBox.js";
@@ -34,9 +34,9 @@ export default {
       duration: "10s",
       isHovered: false,
       // line login
-      line_channel_id: '2003656111',    // Line Channel ID
-      line_channel_secret: 'e5e6e6e88c5a96b4adebf8fc6f0b0cef',// Line Channel Secret
-      line_redirect_uri: 'http://localhost:5173/',  // Line developer Callback URL
+      line_channel_id: '',    // Line Channel ID
+      line_channel_secret: '',// Line Channel Secret
+      line_redirect_uri: '',  // Line developer Callback URL
       name: [
         '/ProductList',
         '/SecondHandList',
@@ -46,12 +46,12 @@ export default {
         '/Cart',
       ],
       img: [
-        { i: 'nav/nav-icon-01.png' },
-        { i: 'nav/nav-icon-02.png' },
-        { i: 'nav/nav-icon-07.png' },
-        { i: 'nav/nav-icon-04.png' },
-        { i: 'nav/nav-icon-05.png' },
-        { i: 'nav/nav-icon-06.png' },
+        { i: 'nav-icon-01.png' },
+        { i: 'nav-icon-02.png' },
+        { i: 'nav-icon-07.png' },
+        { i: 'nav-icon-04.png' },
+        { i: 'nav-icon-05.png' },
+        { i: 'nav-icon-06.png' },
       ],
       title: [
         { p: 'PRODUCT' },
@@ -70,12 +70,12 @@ export default {
         '/Cart',
       ],
       imgPh: [
-        { i: 'nav/nav-icon-01.png' },
-        { i: 'nav/nav-icon-02.png' },
-        { i: 'nav/nav-icon-07.png' },
-        { i: 'nav/nav-icon-04.png' },
-        { i: 'nav/nav-icon-05.png' },
-        { i: 'nav/nav-icon-06.png' },
+        { i: 'nav-icon-01.png' },
+        { i: 'nav-icon-02.png' },
+        { i: 'nav-icon-07.png' },
+        { i: 'nav-icon-04.png' },
+        { i: 'nav-icon-05.png' },
+        { i: 'nav-icon-06.png' },
       ],
       titlePh: [
         { ph: 'PRODUCT' },
@@ -89,6 +89,8 @@ export default {
     }
   },
   created() {
+
+    console.log('getLineConnectionInfo');
     //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
     // 取得全部商品資料用作商品資料，以及swiper用的所有資料
     axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php`)
@@ -104,13 +106,13 @@ export default {
   async mounted() {
     // 使用 window.location.search 和 urlParams 獲取當前網頁 URL 中的查詢參數
     const queryString = window.location.search;
-
     if (queryString) {
-      const urlParams = new URLSearchParams(queryString);
+
       // 使用 get 方法從 urlParams 實例中獲取名為 code 的參數的值。(授權碼，通常由用戶在身份驗證流程中獲得)
       // 如果查詢字串中存在名為 code 的參數，code 變數將被賦值為該參數的值；否則，code 變數將為 null。
-      const code = urlParams.get('code');
-      await this.lineLoginRedirect(code)
+      this.getLineConnectionInfo();
+      // const code = urlParams.get('code');
+      // await this.lineLoginRedirect(code);
     } else {
       // 判斷有沒有登入過，如果沒有token等同於沒有登入
       const user = this.checkLogin()
@@ -122,8 +124,25 @@ export default {
     }
   },
   methods: {
+    // 取得第三方登入連線資訊
+    getLineConnectionInfo() {
+      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/getLineConnectionInfo.php`)
+        .then(({ data }) => {
+          this.line_channel_id = data[0].channelId
+          this.line_channel_secret = data[0].channelSecret
+          this.line_redirect_uri = data[0].redirectUri
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const code = urlParams.get('code');
+          this.lineLoginRedirect(code);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
+    },
     getImageUrl(paths) {
-      return new URL(`../assets/imgs/${paths}`, import.meta.url).href
+      return new URL(`../assets/imgs/nav/${paths}`, import.meta.url).href
     },
     changeImageTitle(index) {
       this.currentTitle = this.title[index].p;
@@ -150,7 +169,7 @@ export default {
     closeLightbox() {
       this.lightBoxStore.closeLightbox()
     },
-    ...mapActions(userStore, ['checkLogin', 'updateToken','updateUserData']),
+    ...mapActions(userStore, ['checkLogin', 'updateToken', 'updateUserData']),
     logout() {
       // 調用pinia的updateToken
       const confirmLogout = confirm('確定要登出嗎？');
@@ -253,26 +272,32 @@ export default {
         /*
             根據需求，可以在登入後的處理中進行相應的操作，例如驗證用戶資訊、儲存登入狀態等。
         */
-        console.log(userInfoResponse.data);
-        const lineUserId = userInfoResponse.data.sub;
-        const lineNickname = userInfoResponse.data.name;
-        const lineUSerImgURL = userInfoResponse.data.picture;
-        const lineAccountTypeID = 1;
+        const user = userInfoResponse.data
+        const sub = user.sub;
+        const name = user.name;
+        const picture = user.picture;
 
-        // 可以在這邊寫回資料庫
-        // const response = await axios.post(`${API_URL}lineLogin.php`, {
-        //     userId: lineUserId,
-        //     nickname: lineNickname,
-        //     accountTypeID: lineAccountTypeID
-        // });
-        this.updateToken(lineUserId)
+        const lineTokenRes = {
+          sub: user.sub,
+          name: user.name,
+          picture: user.picture,
+        }
 
-        // 沒有API先使用寫死資料
-        this.updateUserData({
-          m_name: lineNickname,
-          m_validation: 1,
-          m_state: 1
+        axios.post(`${import.meta.env.VITE_LPHP_URL}/front/lineMemberLogin.php`, lineTokenRes, {
+          headers: { "Content-Type": "multipart/form-data" },
         })
+          .then(res => {
+            const member = res.data[0]
+            this.updateUserData({
+              m_name: member.m_name,
+              img_path: member.img_path,
+              member_id: member.member_id
+            })
+          })
+
+
+        this.updateToken(lineTokenRes.sub)
+
         this.$router.push('/')
       } catch (error) {
         console.error(error);
@@ -303,14 +328,14 @@ export default {
         </li>
         <div class="line"></div>
         <div class="indexHeaderLogin" v-if="!isLoggedIn">
-          <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
+          <img src="@/assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
             @click="openLightbox">
         </div>
         <div class="indexHeaderLogin" v-else>
-          <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin" @click="logout">
+          <img src="@/assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin" @click="logout">
         </div>
       </ul>
-      <img src="../assets/imgs/Home/signboard.png" alt="" class="broad">
+      <img src="@/assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
   <!-- 手機板haeder -->
@@ -323,11 +348,11 @@ export default {
     </li>
     <div class="linePh"></div>
     <div class="indexHeaderLoginPh" v-if="!isLoggedIn">
-      <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
+      <img src="@/assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
         @click="openLightbox">
     </div>
     <div class="indexHeaderLoginPh" v-else>
-      <img src="../assets/imgs/nav/nav-icon-Logout-PH.png" alt="login" class="indexHeaderButtonLoginPh" @click="logout">
+      <img src="@/assets/imgs/nav/nav-icon-Logout-PH.png" alt="login" class="indexHeaderButtonLoginPh" @click="logout">
     </div>
   </ul>
   <Transition name="fade">
@@ -335,11 +360,10 @@ export default {
   </Transition>
   <div class="indexBannerGroup">
     <bannerCanvas class="bannerCanvas" />
-    <!-- <img src="../assets/imgs/Home/indexBannerImg.svg" alt="" class="indexBannerImg"> -->
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
-      <img src="../assets/imgs/Home/index-logo.svg" alt="" class="indexLogo">
+      <img src="@/assets/imgs/Home/index-logo.svg" alt="" class="indexLogo">
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
     <SingleCloud class="SingleCloud" />
@@ -347,7 +371,7 @@ export default {
   </div>
   <div class="indexProductGroup">
     <div class="indexProductTitle">
-      <img src="../assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
+      <img src="@/assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
       <RouterLink to="/productList" class="linkToProductList">
         <!-- <div class="decoLine"></div> -->
         <div class="productListLink">商品一覽</div>
@@ -358,23 +382,23 @@ export default {
     </div>
   </div>
   <div class="decoTrainAnimation">
-    <img src="../assets/imgs/Home/index-grass-background.svg" alt="grass.svg" class="decoGrass">
-    <img src="../assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
+    <img src="@/assets/imgs/Home/index-grass-background.svg" alt="grass.svg" class="decoGrass">
+    <img src="@/assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
     <div class="decoTrainAnima">
       <div class="decoTrain">
-        <img src="../assets/imgs/draw/train.svg" alt="train.svg" class="decoTrainImg">
+        <img src="@/assets/imgs/draw/train.svg" alt="train.svg" class="decoTrainImg">
       </div>
-      <img src="../assets/imgs/draw/rail.svg" alt="rail.svg" class="decoRail">
+      <img src="@/assets/imgs/draw/rail.svg" alt="rail.svg" class="decoRail">
     </div>
   </div>
   <div class="indexEventGroup">
     <div class="indexEventTitle">
-      <img src="../assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
+      <img src="@/assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
       <RouterLink to="/News" class="linkToEvent">
         <!-- <div class="decoLine"></div> -->
         <div class="eventLink">消息一覽</div>
       </RouterLink>
-      <img class="decoImg" src="../assets/imgs/draw/person_sit.PNG" alt="person_sit">
+      <img class="decoImg" src="@/assets/imgs/draw/person_sit.png" alt="person_sit">
     </div>
     <div class="otherEventCards">
       <EventCardSlider class="otherEventCard" />
@@ -383,12 +407,12 @@ export default {
   <div class="indexAboutUsGroup">
     <div class="indexAboutBlock"></div>
     <div class="indexAboutUsImg">
-      <img src="../assets/imgs/Home/indexAboutUsImg.png" alt="indexAboutUsImg">
+      <img src="@/assets/imgs/Home/indexAboutUsImg.png" alt="indexAboutUsImg">
     </div>
     <div class="indexAboutUsContent">
       <div class="indexAboutUsTitle">
-        <img src="../assets/imgs/Home/indexAboutUsTitle.svg" alt="">
-        <img class="decoImg" src="../assets/imgs/draw/person_ballon.PNG" alt="person_sit">
+        <img src="@/assets/imgs/Home/indexAboutUsTitle.svg" alt="">
+        <img class="decoImg" src="@/assets/imgs/draw/person_ballon.png" alt="person_sit">
       </div>
       <div class="indexAboutText">
         <p>我們致力於提供各種特色的玩具車， 讓每個孩子都能擁有專屬的玩具車， 展開一場屬於他們獨特的冒險旅程。</p>
@@ -400,10 +424,10 @@ export default {
     </div>
   </div>
   <div class="indexGameGroup">
-    <img src="../assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
+    <img src="@/assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
     <div class="game">
-      <img src="../assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
-      <img src="../assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
+      <img src="@/assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
+      <img src="@/assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
       <RouterLink class="RouterLink" to="/Game">
         <button class="indexGameButton" @mouseover="toggleHover" @mouseout="resetRotation"
           :class="{ 'hovered': isHovered }">
@@ -414,7 +438,7 @@ export default {
       </RouterLink>
       <div class="gameButtonText">
         <transition name="rotate">
-          <img :class="{ 'rotate': isHovered }" src="../assets/imgs/Home/Make Your own cara car3.svg" alt="buttonText">
+          <img :class="{ 'rotate': isHovered }" src="@/assets/imgs/Home/Make Your own cara car3.svg" alt="buttonText">
         </transition>
       </div>
       <!-- <div class="circular">

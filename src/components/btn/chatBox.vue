@@ -1,11 +1,10 @@
 <template>
     <button @click="show = !show" class="chatBoxBird">
         <div class="birdCloud">
-            <div class="bird"><img src="../../assets/imgs/draw/ChatBoxBird1.png" alt=""></div>
-            <div class="cloud"><img src="../../assets/imgs/draw/ChatBoxCloud.png" alt=""></div>
+            <div class="bird"><img src="@/assets/imgs/draw/ChatBoxBird1.png" alt=""></div>
+            <div class="cloud"><img src="@/assets/imgs/draw/ChatBoxCloud.png" alt=""></div>
         </div>
     </button>
-    <!-- <button @click="show = !show" class="chatBoxBird"><img src="../../assets/imgs/draw/ChatBoxBird.png" alt=""></button> -->
     <Transition>
         <!-- 消息顯示區域 -->
         <!-- <div v-if="show" :class="{'--is-show': show}"> -->
@@ -25,8 +24,8 @@
                 </div>
                 <div class="newsSpeaker"></div>
                 <div v-for="message in messages" :key="message.body" class="HeadMess">
-                    <div class="avatar"><img src="../../assets/imgs/draw/ChatBoxAvatar.png" alt=""></div>
-                    <div class="avatar2"><img src="../../assets/imgs/draw/ChatBoxAvatar2.png" alt=""></div>
+                    <div class="avatar"><img src="@/assets/imgs/draw/ChatBoxAvatar.png" alt=""></div>
+                    <div class="avatar2"><img src="@/assets/imgs/draw/ChatBoxAvatar2.png" alt=""></div>
                     <p class="message"
                     :class="{ 'message-out': message.author === 'you', 'message-in': message.author !== 'you' }">
                     {{ message.body }}

@@ -27,7 +27,7 @@ export default {
             <!-- </RouterLink> -->
         </div>
         <div class="bImg">
-            <img src="../../public/imgs/chooseBG.jpg" alt="bg">
+            <img src="@/public/imgs/chooseBG.jpg" alt="bg">
         </div>
         <div class="btnRight">
             <!-- <RouterLink to="/BackLogin"> -->
@@ -79,13 +79,13 @@ export default {
             background-color: rgb(142, 163, 194);;
         }
         #frontButton:hover{
-            background-image: url('../../public/imgs/choose-lion.svg');
+            background-image: url('@/public/imgs/choose-lion.svg');
             background-size: contain;
             background-repeat: no-repeat;
             color: transparent
         }
         #backButton:hover{
-            background-image: url('../../public/imgs/choose-lion\(left\).svg');
+            background-image: url('@/public/imgs/choose-lion\(left\).svg');
             background-size: contain;
             background-repeat: no-repeat;
             color: transparent;

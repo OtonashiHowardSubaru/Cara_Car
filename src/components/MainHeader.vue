@@ -1,7 +1,7 @@
 <script>
 import lightBoxStore from "@/stores/lightBox.js"
 import LoginBox from '@/components/LoginBox.vue'
-import { mapState, mapActions } from 'pinia'
+import { mapActions } from 'pinia'
 import userStore from '@/stores/user'
 
 
@@ -114,7 +114,9 @@ export default {
                 //清除token和userData
                 this.userStoreData.updateToken('')
                 this.userStoreData.updateUserData('')
+                localStorage.removeItem("imagePreview")
                 //登入是燈箱沒有頁面就不跳轉頁面了
+                location.reload()
                 // this.$router.push('/')
             }
         },
@@ -160,7 +162,7 @@ export default {
             <!-- 電腦版header -->
             <!-- 內頁才有這個LOGO圖 -->
             <RouterLink to="/">
-                <img src="../assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
+                <img src="@/assets/imgs/nav/nav-logo.png" alt="caraCarLogo" class="indexNavLogo">
             </RouterLink>
             <ul class="indexHeaderNav">
                 <li class="indexHeaderButton" v-for="(item, index) in img" :key="item" @mouseenter="changeImageTitle(index)"
@@ -171,16 +173,12 @@ export default {
                     </RouterLink>
                 </li>
                 <div class="line"></div>
-                <!-- <div class="indexHeaderLogin">
-                    <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
-                        @click="openLightbox">
-                </div> -->
                 <div class="indexHeaderLogin" v-if="!isLoggedIn">
-                    <img src="../assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
+                    <img src="@/assets/imgs/nav/nav-icon-Login.png" alt="login" class="indexHeaderButtonLogin"
                         @click="openLightbox">
                 </div>
                 <div class="indexHeaderLogin" v-else>
-                    <img src="../assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin"
+                    <img src="@/assets/imgs/nav/nav-icon-Logout.png" alt="Logout" class="indexHeaderButtonLogin"
                         @click="logout">
                 </div>
             </ul>
@@ -196,11 +194,11 @@ export default {
         </li>
         <div class="linePh"></div>
         <div class="indexHeaderLoginPh" v-if="!isLoggedIn">
-            <img src="../assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
+            <img src="@/assets/imgs/nav/nav-icon-Login-Ph.png" alt="login" class="indexHeaderButtonLoginPh"
                 @click="openLightbox">
         </div>
         <div class="indexHeaderLoginPh" v-else>
-            <img src="../assets/imgs/nav/nav-icon-Logout-Ph.png" alt="logout" class="indexHeaderButtonLoginPh"
+            <img src="@/assets/imgs/nav/nav-icon-Logout-Ph.png" alt="logout" class="indexHeaderButtonLoginPh"
                 @click="logout">
         </div>
     </ul>

@@ -21,6 +21,7 @@ components:{
 data(){
     return {
         allProducts:[],
+        // cartItems:[],
         name:'',
         phone:'',
         city:'',
@@ -61,6 +62,7 @@ created() {
     this.axiosGet();
     this.fetchData();
     this.getLocalCartData();
+    // console.log(cartItems);
     //要抓取localStorage裡面cartItems的JSON裡面第一個物件的陣列，取不出來
     
     // this.cartItems.id = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).id : "";
@@ -111,7 +113,7 @@ methods: {
         this.thisProduct = response.data.find((item) =>{
             return item.pro_id == pageId
         })
-        console.log(this.allProducts);
+        // console.log(this.allProducts);
         })
         // console.log("========",this.thisProduct)
       // })
@@ -170,11 +172,35 @@ methods: {
     //抓取商品資料
     getProduct(){
         const cartBuyData = new FormData();
-        cartBuyData.append('pro_name',cartItems.name);
+
+        let cartArray = []
+        if (this.cartItems.length > 0){
+            for (let i= 0; i < this.cartItems.length; i++){
+                const item = this.cartItems[i]
+                const cart = {
+                    'pro_id' : item.id,
+                    'pro_name' : item.name,
+                    'pro_price' : item.price,
+                    'ord_qty' : item.quantity,
+                    'promo_ratio' : 1,
+                    'pro_sale' : item.price * 1 ,
+                    'ord_sum' : item.price * 1 * item.quantity
+                }
+                cartArray.push(cart)
+            }
+        }
+        console.log(cartArray)
+
+        const cartArrayJSON = JSON.stringify(cartArray);
+        cartBuyData.append('cartArray',cartArrayJSON);
+
+
+        // console.log(cartStore.cartItems);
+        // cartBuyData.append('pro_name',cartStore.cartItems[0].name);
 
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_PHP_URL}/api/front/getProduct.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_LPHP_URL}/front/getProduct.php`, // 改成我們的php
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartBuyData
             }).then(res=>{
@@ -203,17 +229,17 @@ methods: {
         cartFromData.append('ord_district', this.area);
         cartFromData.append('ord_address', this.road);
         cartFromData.append('remark', this.remark);
-        cartFromData.append('member_id', 10);
+        cartFromData.append('member_id', 9);
         cartFromData.append('ord_ship', 240);
-        cartFromData.append('ord_sum', 20000);
-        cartFromData.append('ord_total', 3500);
-        cartFromData.append('ord_del_state', 1);
+        cartFromData.append('ord_sum', 8000);
+        cartFromData.append('ord_total', total);
+        cartFromData.append('ord_del_state', 0);
 
         
 
         apiInstance({
                 method: 'post',
-                url: `${import.meta.env.VITE_PHP_URL}/api/front/buyDone.php`, // 改成我們的php
+                url: `${import.meta.env.VITE_LPHP_URL}/front/buyDone.php`, // 改成我們的php
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res=>{
@@ -231,7 +257,7 @@ methods: {
     },
     subOrder(){
         this.buyDone();
-        // this.getProduct();
+        this.getProduct();
     }
 },
 }
@@ -266,7 +292,10 @@ methods: {
             </div>
 
         </section>
-        {{ cartStore.cartItems }}
+        <!-- {{ cartItems }} -->
+        <!-- [1].name -->
+        <!-- {{ cartStore.cartItems }} -->
+        <!-- {{ cartStore.cartItems.length }} -->
         <!-- {{ subFreight }} -->
         <!-- {{ subtotal}} -->
         <!-- {{ this.userStoreData.userData.m_name }} -->

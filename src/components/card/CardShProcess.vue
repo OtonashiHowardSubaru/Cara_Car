@@ -64,7 +64,7 @@ export default {
         
       </router-link>
       <div class="phone">
-        <img src="../../assets/imgs/product/sh_process_contact.png" alt="">
+        <img src="@/assets/imgs/product/sh_process_contact.png" alt="">
         <div class="tel">
           <div class="contact_detail">
             <div class="tel_title">
@@ -72,7 +72,7 @@ export default {
               <span>連絡電話</span>
             </div>
             <div class="phoneNumber">
-              <img src="../../assets/imgs/product/sh_process_tel.png" alt="">
+              <img src="@/assets/imgs/product/sh_process_tel.png" alt="">
               <span>03 425 1108</span>
             </div>
           </div>

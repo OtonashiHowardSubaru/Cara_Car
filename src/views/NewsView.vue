@@ -129,7 +129,7 @@ export default {
     methods: {
         // 取得圖片的路徑函式
         getNewsImgSrc(imgName) {
-            return new URL(`../../../imgs/event/${imgName}`, import.meta.url).href
+            return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/event/${imgName}`).href
         },
         // 頁數切換
         toggleStatus(index) {
