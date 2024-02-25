@@ -4,11 +4,9 @@ import MainHeader from "@/components/MainHeader.vue";
 import userImage from "@/assets/imgs/memberCenter/userImage(default).png";
 import userStore from "@/stores/user";
 import { mapState, mapActions } from "pinia";
-import OrderDetailBox from "@/components/OrderDetailBox.vue";
 export default {
   components: {
     MainHeader,
-    OrderDetailBox,
   },
   data() {
     return {
@@ -30,8 +28,8 @@ export default {
       isMobile: "",
       isDesktop: "",
       favoriteProducts: [], // 收藏清單
-      imgName: "",
-      currentIndex: 0,
+      imgName: "", //收藏的圖片名稱
+      currentIndex: 0, //
       showOrderbox: false,
       orderList: [], //接訂單資料
       currentOrderData: [],
@@ -68,19 +66,7 @@ export default {
     this.userData.img_path = localStorage.getItem("userData")
       ? JSON.parse(localStorage.getItem("userData")).imgUrl
       : "";
-    // this.axiosGetMem();
-    // const userDataFromStorage = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : {};
-    // this.userData = {
-    //     member_id: userDataFromStorage.id || "",
-    //     m_name: userDataFromStorage.name || "",
-    //     m_phone: userDataFromStorage.phone || "",
-    //     m_email: userDataFromStorage.email || "",
-    //     m_city: userDataFromStorage.city || "",
-    //     m_district: userDataFromStorage.district || "",
-    //     m_address: userDataFromStorage.address || "",
-    //     img_path: userDataFromStorage.imgUrl || "",
-    // };
-    // console.log(userDataFromStorage);
+    // this.axiosGetOrder();
 
     // 加載收藏清單
     this.loadFavoriteProducts();
@@ -98,37 +84,24 @@ export default {
   },
 
   methods: {
+    //拿來判斷視窗大小顯示sidebar用，寫methods當觸發時會觸發beforeUnmount內remove
     updateWindowSize() {
       this.isMobile = window.innerWidth >= 325 && window.innerWidth < 768;
       this.isDesktop = window.innerWidth >= 768;
     },
+    //密碼顯示
     toggleSubMenu() {
       this.showSubMenu = !this.showSubMenu;
     },
+    //切換顯示會員中心container
     showProfile(profile) {
       this.currentProfile = profile;
     },
+    //切換訂單頁面尚未付款、處理中、待取貨、已完成、已取消顯示內容
     orderState(order) {
-      console.log(order);
-      this.currentOrder = order;
-      this.activeTab = order;
+      this.currentOrder = order; //內容顯示
+      this.activeTab = order; //點擊後更改css樣式
     },
-    // axiosGetMem() {
-    //   const member_id = this.userData.member_id;
-    //   axios
-    //     .get(
-    //       `${
-    //         import.meta.env.VITE_LPHP_URL
-    //       }/front/getMemberName.php?member_id=${member_id}`
-    //     )
-    //     .then((res) => {
-    //       this.member = res.data;
-    //       console.log(this.member);
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error fetching data:", error);
-    //     });
-    // },
     changeFile() {
       document.getElementById("upFile").click();
     },
@@ -191,7 +164,7 @@ export default {
           }
         )
         .then((res) => {
-          console.log(postData); //傳送出去的資料
+          //console.log(postData); //傳送出去的資料
           alert("已更新會員資料！");
           this.updateUserData(this.userData); //更新localStorage的資料
           location.reload();
@@ -218,33 +191,30 @@ export default {
       return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/product/new_products/${imgName}`).href
     },
     updateImgName() {
-      // 自动更新imgName为favoriteProducts数组中的下一个值
-      // if (this.favoriteProducts.length === 0) return; // 防止数组为空时出现错误
-      // this.currentIndex = (this.currentIndex + 1) % this.favoriteProducts.length;
-      // this.imgName = this.favoriteProducts[this.currentIndex].img_name;
+      // 自動更新在this.favoriteProducts中的imgName(自動+1)
       this.imgName = this.favoriteProducts[this.currentIndex];
     },
     checkOrderDetail() {
-      this.showOrderbox = true;
+      this.showOrderbox = !this.showOrderbox;
       console.log("我有抓到");
     },
 
     // -------------------- 20240226 雲  ------------------------//
 
     /* 取得會員圖片
-        - 若為line首次登入並從未修改過圖片 則帶入園先line頭像之圖片 (http....)
+        - 若為line首次登入並從未修改過圖片 則帶入原先line頭像之圖片 (http....)
         - 若更改過圖片 則帶入DB存去之路經圖片
     */
     getMemberImagePath() {
-      console.log(this.userData.img_path)
+      // console.log(this.userData.img_path)
       return this.userData.img_path
         ? (this.userData.img_path.startsWith("http")
           ? this.userData.img_path
-          : new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/memberImg/${this.userData.img_path}.jpg`).href)
+          : new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/memberImg/${this.userData.img_path}`).href)
         : userImage;
     },
     uploadImg(e) {
-      console.log(e.target.files[0])
+      // console.log(e.target.files[0])
       if (e.target.files[0]) {
         const formData = new FormData();
         formData.append('file', e.target.files[0]);
@@ -269,7 +239,7 @@ export default {
             if (res.data.trim() === 'Y') {
 
               alert("已更新會員頭像！");
-              this.userData.img_path = `member_img_${this.userData.member_id}`
+              this.userData.img_path = `member_img_${this.userData.member_id}.jpg`
 
               // 更新圖
               const currentUserData = JSON.parse(localStorage.getItem("userData")) || {};
@@ -286,17 +256,11 @@ export default {
       }
     }
   },
-  // watch:{
-  //   'userData.img_path': function(newVal, oldVal){
-
-  //   }
-  // },
   mounted() {
-
     document.getElementById("upFile").addEventListener("change", this.uploadImg);
-    // this.storedImage = localStorage.getItem("imagePreview");
   },
-};
+}
+
 </script>
 
 <template>
@@ -486,7 +450,34 @@ export default {
             <button class="order_detail" @click="checkOrderDetail">
               查看細節
             </button>
-            <OrderDetailBox v-if="showOrderbox" />
+
+            <!--  ↓訂單燈箱↓  -->
+            <Transition name="fade">
+              <div id="orderOverlay" v-if="showOrderbox" @click="checkOrderDetail"></div>
+            </Transition>
+            <Transition name="fade">
+              <div id="orderModal" v-if="showOrderbox">
+                <span class="close" @click="checkOrderDetail">&times;</span>
+                <div class="detail_card">
+                  <div class="detail_proImg">
+                    <img src="@/assets/imgs/product/product_1.png" alt="" />
+                  </div>
+                  <h2>商品名稱</h2>
+                </div>
+                <div class="detail_card">
+                  <div class="detail_proImg">
+                    <img src="@/assets/imgs/product/product_2.png" alt="" />
+                  </div>
+                  <h2>商品名稱</h2>
+                </div>
+                <div class="detail_card">
+                  <div class="detail_proImg">
+                    <img src="@/assets/imgs/product/product_3.png" alt="" />
+                  </div>
+                  <h2>商品名稱</h2>
+                </div>
+              </div>
+            </Transition>
           </div>
         </div>
       </div>
