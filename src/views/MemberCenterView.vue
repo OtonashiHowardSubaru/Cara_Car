@@ -268,6 +268,11 @@ export default {
           if(res.data.trim() === 'Y'){
             alert("已更新會員頭像！");
             this.userData.img_path = `member_img_${this.userData.member_id}`
+
+            // 更新圖
+            currentUserData = JSON.parse(localStorage.getItem("userData")) || {};
+            currentUserData.imgUrl = `member_img_${this.userData.member_id}`
+            localStorage.setItem("userData", JSON.stringify(currentUserData));
           }else{
             alert("更新會員頭像失敗！");
           }
