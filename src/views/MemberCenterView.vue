@@ -35,6 +35,7 @@ export default {
       showOrderbox: false,
       orderList: [], //接訂單資料
       currentOrderData: [],
+      selectedFile:null
     };
   },
   created() {
@@ -66,7 +67,7 @@ export default {
     this.userData.img_path = localStorage.getItem("userData")
       ? JSON.parse(localStorage.getItem("userData")).imgUrl
       : "";
-    this.axiosGetMem();
+    // this.axiosGetMem();
     // const userDataFromStorage = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : {};
     // this.userData = {
     //     member_id: userDataFromStorage.id || "",
@@ -88,11 +89,6 @@ export default {
   },
 
   computed: {
-    imagePreviewUrl() {
-      //可以是讀取localStorage內的照片，如果沒有就讀取預設的userImage
-      return this.storedImage || userImage;
-      // return `${import.meta.env.VITE_IMAGES_BASE_URL}` + image
-    },
     ...mapState(userStore, ["token", "userData"]),
   },
 
@@ -116,22 +112,22 @@ export default {
       this.currentOrder = order;
       this.activeTab = order;
     },
-    axiosGetMem() {
-      const member_id = this.userData.member_id;
-      axios
-        .get(
-          `${
-            import.meta.env.VITE_LPHP_URL
-          }/front/getMemberName.php?member_id=${member_id}`
-        )
-        .then((res) => {
-          this.member = res.data;
-          console.log(this.member);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    },
+    // axiosGetMem() {
+    //   const member_id = this.userData.member_id;
+    //   axios
+    //     .get(
+    //       `${
+    //         import.meta.env.VITE_LPHP_URL
+    //       }/front/getMemberName.php?member_id=${member_id}`
+    //     )
+    //     .then((res) => {
+    //       this.member = res.data;
+    //       console.log(this.member);
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error fetching data:", error);
+    //     });
+    // },
     changeFile() {
       document.getElementById("upFile").click();
     },
@@ -143,6 +139,9 @@ export default {
       const file = files[0];
       const reader = new FileReader();
       const formData = new FormData();
+
+      // 統一規範檔名為userImg_userId
+
       formData.append("img_path", file);
       formData.append("member_id", this.userData.member_id);
       axios
@@ -228,9 +227,59 @@ export default {
       this.showOrderbox = true;
       console.log("我有抓到");
     },
+
+    // -------------------- 20240226 雲  ------------------------//
+
+    /* 取得會員圖片
+        - 若為line首次登入並從未修改過圖片 則帶入園先line頭像之圖片 (http....)
+        - 若更改過圖片 則帶入DB存去之路經圖片
+    */
+    getMemberImagePath() {
+      console.log(this.userData.img_path)
+      return this.userData.img_path
+        ? (this.userData.img_path.startsWith("http")
+          ? this.userData.img_path
+          : new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/memberImg/${this.userData.img_path}.jpg`).href)
+        : userImage;
+    },
+    uploadImg(e) {
+      console.log(e.target.files[0])
+      if(e.target.files[0]){
+        const formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        formData.append("member_id", this.userData.member_id);
+        // 統一規範檔名為member_img_userId
+        formData.append('img_path', `member_img_${this.userData.member_id}.jpg`);
+
+
+        // call api
+        axios
+        .post(
+          `${import.meta.env.VITE_LPHP_URL}/front/uploadMemberImg.php?`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res)
+          if(res.data.trim() === 'Y'){
+            alert("已更新會員頭像！");
+            this.userData.img_path = `member_img_${this.userData.member_id}`
+          }else{
+            alert("更新會員頭像失敗！");
+          }
+        })
+        .catch((error) => {
+          console.error("錯誤", error);
+        });
+      }
+    }
   },
   mounted() {
-    document.getElementById("upFile").addEventListener("change", this.showFile);
+    document.getElementById("upFile").addEventListener("change", this.uploadImg);
     this.storedImage = localStorage.getItem("imagePreview");
   },
 };
@@ -272,7 +321,7 @@ export default {
       <div class="member_profile" v-show="currentProfile === 'default'">
         <!-- MB會員預設頭貼位置 -->
         <div class="mb_user_image" v-if="isMobile">
-          <img :src="imagePreviewUrl" alt="User Avatar" class="imagePreview" />
+          <img :src="getMemberImagePath()" alt="User Avatar" class="imagePreview" />
         </div>
         <div class="welcome">
             <!-- {{ favoriteProducts }} -->
@@ -280,7 +329,7 @@ export default {
           <!-- PC會員預設頭貼位置 -->
           <div class="user_image" v-if="isDesktop">
             <img
-              :src="imagePreviewUrl"
+              :src="getMemberImagePath()"
               alt="User Avatar"
               class="imagePreview"
             />
@@ -337,7 +386,7 @@ export default {
         <div class="user_edit">
           <div class="user_image">
             <img
-              :src="imagePreviewUrl"
+              :src="getMemberImagePath()"
               alt="User Avatar"
               class="imagePreview"
             />
@@ -348,12 +397,12 @@ export default {
               name="upFile"
               id="upFile"
               style="display: none"
+              accept="image/*"
             />
           </label>
           <button class="change_user_image" @click="changeFile">
             +上傳檔案
           </button>
-          <!-- <button class="change_user_image" @click="showFile">+上傳檔案</button> -->
         </div>
 
         <div class="user_profile">
