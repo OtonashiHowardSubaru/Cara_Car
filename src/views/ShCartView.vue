@@ -11,6 +11,7 @@ import YellowBird from "@/components/animation/YellowBird.vue";
 import userStore from '@/stores/user'
 
 import apiInstance from '@/stores/auth'
+import { nextTick } from 'vue'
 import { mapState, mapActions } from "pinia";
 // import cartStore from "@/stores/cart";
 
@@ -64,8 +65,9 @@ created() {
     this.axiosGet();
     this.fetchData();
     
-    //從LocalStorage中讀取購物車資料
+    // //從LocalStorage中讀取購物車資料
     const shCartData = JSON.parse(localStorage.getItem('cart'));
+    console.log(JSON.stringify(shCartData));
     if (shCartData) {
         this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
     }; 
@@ -216,6 +218,7 @@ methods: {
             <div class="cartContent">
                 <span class="productName">商品名稱與單價</span>
                 <span class="count">數量</span>
+                <span>運費</span>
                 <span class="countTotal">合計</span>
             </div>
             <!-- 這是二手商品內容 -->
@@ -228,8 +231,10 @@ methods: {
                     <div class="number_select">
                         <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent v-bind:style="{margin: L + 'px'}" readonly>
                     </div>
+                    <p>$120</p>
                     <p class="proCount">${{ item.shprice}}</p>
             </div>
+            <div class="total"></div>
             <!-- 結束 -->
         </section>
         <!-- {{ this.userStoreData.userData.m_name }} -->

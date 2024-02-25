@@ -125,8 +125,9 @@ import Swal from 'sweetalert2';
         
           const productList = [];
           productList.push(product);
-          // 從本地端中獲取已有的購物車內容，如果没有則初始化為空值
+          // 從本地端中獲取已有的購物車內容
           localStorage.setItem('cart',JSON.stringify(productList));
+          this.$router.push({ path: '/ShCart' }) //為了要先送資料才跳轉頁面
         }catch(e){
           console.error(e);
         }
@@ -148,7 +149,6 @@ import Swal from 'sweetalert2';
         // localStorage.setItem('cart', JSON.stringify(shCartItems));
         // localStorage.setItem('cart', JSON.stringify(shCartItems));
 
-        alert('商品已加入到購物車！');
         return  Swal.fire({
           title: '已加入購物車!',
           icon: 'success',
@@ -206,9 +206,9 @@ import Swal from 'sweetalert2';
         </div>
 
         <div class="purchase_btn" id="purchase_btn" @click="addToShCart">
-          <router-link to="/ShCart">
+          <!-- <router-link to="/ShCart"> -->
             <button type="button" id="purchase_btn">直接購買</button>
-          </router-link>
+          <!-- </router-link> -->
         </div>
     </div>
 </div>
