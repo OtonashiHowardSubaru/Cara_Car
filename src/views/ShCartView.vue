@@ -8,11 +8,11 @@ import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 
-import userStore from '@/stores/user'
+// import userStore from '@/stores/user'
 
 import apiInstance from '@/stores/auth'
 import { nextTick } from 'vue'
-import { mapState, mapActions } from "pinia";
+// import { mapState, mapActions } from "pinia";
 // import cartStore from "@/stores/cart";
 
 export default {
@@ -69,7 +69,7 @@ created() {
     const shCartData = JSON.parse(localStorage.getItem('cart'));
     console.log(JSON.stringify(shCartData));
     if (shCartData) {
-        this.shCartItems = [shCartData]; // 將資料存儲在Vue的data屬性中
+        this.shCartItems = shCartData; // 將資料存儲在Vue的data屬性中
     }; 
 },
 computed: {
@@ -218,7 +218,7 @@ methods: {
             <div class="cartContent">
                 <span class="productName">商品名稱與單價</span>
                 <span class="count">數量</span>
-                <span>運費</span>
+                <span >運費</span>
                 <span class="countTotal">合計</span>
             </div>
             <!-- 這是二手商品內容 -->

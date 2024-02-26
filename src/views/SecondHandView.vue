@@ -13,12 +13,13 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import ProCardSwiper from "@/components/ProCardSwiper.vue"
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,DoubleCloud,Swal
+    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,DoubleCloud,
+    // Swal,
 },
     data(){
       return {
@@ -149,11 +150,11 @@ import Swal from 'sweetalert2';
         // localStorage.setItem('cart', JSON.stringify(shCartItems));
         // localStorage.setItem('cart', JSON.stringify(shCartItems));
 
-        return  Swal.fire({
-          title: '已加入購物車!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        })
+        // return  Swal.fire({
+        //   title: '已加入購物車!',
+        //   icon: 'success',
+        //   confirmButtonText: 'OK',
+        // })
       },
     },
     mounted() {
