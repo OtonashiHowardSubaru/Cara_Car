@@ -11,6 +11,7 @@ import LoginBox from '@/components/LoginBox.vue';
 import ProductCard from "@/components/ProductCard.vue";
 import CardShProcess from '@/components/card/CardShProcess.vue';
 import bannerCanvas from "@/components/Canvas.vue";
+import bannerCanvas2 from "@/components/Canvas2.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
@@ -19,6 +20,7 @@ export default {
     EventCardSlider, LoginBox, ProductCard, CardShProcess, SingleCloud,
     DoubleCloud,
     bannerCanvas,
+    bannerCanvas2,
   },
   data() {
     return {
@@ -360,6 +362,7 @@ export default {
   </Transition>
   <div class="indexBannerGroup">
     <bannerCanvas class="bannerCanvas" />
+    <bannerCanvas2 class="bannerCanvas2" />
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">

@@ -8,6 +8,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
+import Swal from 'sweetalert2';
 
 import apiInstance from '@/stores/auth'
 import { mapState, mapActions } from "pinia";
@@ -17,6 +18,7 @@ export default {
 components:{
     MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,
     // NumberSelect,
+    Swal,
 },
 data(){
     return {
@@ -65,11 +67,6 @@ created() {
     // console.log(cartItems);
     //要抓取localStorage裡面cartItems的JSON裡面第一個物件的陣列，取不出來
     
-    // this.cartItems.id = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).id : "";
-    // this.cartItems.name = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).name: ""; 
-    // this.cartItems.price = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).price: ""; 
-    // this.cartItems.imageUrl = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).imageUrl: ""; 
-    // this.cartItems.quantity = localStorage.getItem("cartItems") ?JSON.parse(localStorage.getItem("cartItems")).quantity: ""; 
    // 從LocalStorage中讀取購物車資料
     // const cartData = JSON.parse(localStorage.getItem('cart'));
     // if (cartData) {
@@ -83,21 +80,6 @@ computed: {
         "subFreight",
         "total",
     ]),
-    // subtotal() {
-    // let total = 0;
-    // for (let item of this.cartItems) {
-    //   total += item.price * item.quantity;
-    // }
-    // return total;
-    // },
-    // subFreight(){
-    //     const baseSubFreight = 120;
-    //     const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
-    //     return baseSubFreight * totalQuantity;
-    // },
-    // total(){
-    //     return this.subtotal + this.subFreight;
-    // },
 },
 methods: {
     fetchData(){
@@ -134,15 +116,7 @@ methods: {
             console.error("Error:", error);
         });
     },
-    // handleQtyChange(index,increment) {
-    //     let qtyValue = parseInt(this.cartItems[index].quantity);
-    //     qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
-    //     // this.$refs['qtyInput_' + index][0].value = qtyValue;
-    //     this.updateQuantity(index, qtyValue)
-    // },
-    // toggleCartContent(){
-    //     this.expanded = !this.expanded;
-    // },
+    
     updateQuantity(index, newQuantity){
         // 更新购物车内商品数量
         if (newQuantity < 1) {
@@ -207,8 +181,9 @@ methods: {
                 console.log(cartBuyData);
                 if(res && res.data && res.data.msg === '已抓取商品資訊'){
                     alert("成功");
-                    this.$router.push('/CartPart3');
+                    // this.$router.push('/CartPart3');
                 }else{
+                    
                     alert('失敗')
                 }
             }).catch(error=>{
@@ -219,9 +194,17 @@ methods: {
     //購買人資料填寫
     buyDone(){
         if (!this.name || !this.phone || !this.city || !this.area || !this.road) {
-        alert('請填寫完整資訊才能完成訂購');
+        Swal.fire({
+        icon: "error",
+        text: '請填寫完整資訊才能完成訂購',
+        });
+        // alert('請填寫完整資訊才能完成訂購');
         return; // 阻止 API 调用
         }
+        const subtotal = this.subtotal;
+        const subFreight = this.subFreight;
+        const total = this.total;
+        
         const cartFromData = new FormData();
         cartFromData.append('ord_reciever', this.name);
         cartFromData.append('ord_phone', this.phone);
@@ -229,9 +212,9 @@ methods: {
         cartFromData.append('ord_district', this.area);
         cartFromData.append('ord_address', this.road);
         cartFromData.append('remark', this.remark);
-        cartFromData.append('member_id', 9);
-        cartFromData.append('ord_ship', 240);
-        cartFromData.append('ord_sum', 8000);
+        cartFromData.append('member_id', 18);
+        cartFromData.append('ord_ship', subFreight);
+        cartFromData.append('ord_sum', subtotal);
         cartFromData.append('ord_total', total);
         cartFromData.append('ord_del_state', 0);
 
@@ -258,6 +241,16 @@ methods: {
     subOrder(){
         this.buyDone();
         this.getProduct();
+    
+        //將總金額傳遞到後端
+        // const subtotal = this.subtotal;
+        // axios.post('後端接口URL',{subtotal: subtotal})
+        // .then(response => {
+        //     console.log(response);
+        // })
+        // .catch(error =>{
+        //     console.error('Error:', error);
+        // });
     }
 },
 }
@@ -293,12 +286,8 @@ methods: {
 
         </section>
         <!-- {{ cartItems }} -->
-        <!-- [1].name -->
-        <!-- {{ cartStore.cartItems }} -->
-        <!-- {{ cartStore.cartItems.length }} -->
         <!-- {{ subFreight }} -->
         <!-- {{ subtotal}} -->
-        <!-- {{ this.userStoreData.userData.m_name }} -->
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">

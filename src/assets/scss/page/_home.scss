@@ -12,7 +12,14 @@
     margin: 22% 0px 10% 0px;
     padding-left: 10%;
 }
-
+.bannerCanvas{
+    display: none;
+}
+.bannerCanva2{
+    width: 100%;
+    display: block;
+    // margin-right: 10%;
+}
 .indexBannerTitle{
     // font-family: 'Kosugi Maru';
     letter-spacing: 5px;
@@ -684,8 +691,11 @@ to {
     }
     .bannerCanvas{
         width: 100%;
+        display: block;
         // padding-left: 2%;
-
+    }
+    .bannerCanvas2{
+        display: none;
     }
     .indexBannerTitle{
         writing-mode: vertical-rl;

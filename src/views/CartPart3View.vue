@@ -14,33 +14,13 @@ components:{
 },
 data(){
     return {
+        orderList:[],
         allProducts:[],
         cartItems: [],
-        city:[
-            {c:'台北市'},
-            {c:'新北市'},
-            {c:'基隆市'},
-            {c:'基隆縣'},
-            {c:'桃園市'},
-            {c:'新竹市'},
-            {c:'新竹縣'},
-            {c:'苗栗縣'},
-            {c:'台中市'},
-            {c:'彰化縣'},
-            {c:'南投縣'},
-            {c:'雲林縣'},
-            {c:'嘉義縣'},
-            {c:'台南市'},
-            {c:'高雄市'},
-            {c:'屏東縣'},
-            {c:'台東縣'},
-            {c:'花蓮縣'},
-            {c:'宜蘭縣'},
-            {c:'澎湖縣'},
-        ],
     }
 },
 created() {
+    this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
     this.fetchData();
     
 },
@@ -61,15 +41,34 @@ methods: {
         this.thisProduct = response.data.find((item) =>{
             return item.pro_id == pageId
         })
-        console.log(this.allProducts);
+        // console.log(this.allProducts);
         })
         // console.log("========",this.thisProduct)
-      // })
+        // })
         .catch((error) => {
         console.error("Error fetching data:", error);
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
 
+        // const pageId2 = this.$route.params.pro_id
+        //取得該筆訂單資訊
+        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/frontOrder.php?`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          // console.log(response.data)
+        this.orderList = response.data;
+        this.thisOrderList = response.data.find((item) =>{
+            return item.pro_id == pageId
+        })
+        console.log(this.orderList);
+        console.log(this.thisOrderList);
+        })
+        // console.log("========",this.thisProduct)
+        // })
+        .catch((error) => {
+        console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
     },
     
 },
@@ -118,20 +117,20 @@ methods: {
             <p class="cartCountTotal">合計金額：$3,500</p>
         </section> -->
 
-        <div class="orderList">
+        <div class="orderList" v-if="orderList.length > 0">
             <div class="listTitle">
                 <h1>訂單資訊</h1>
             </div>
             <div class="listContent">
-                <div class="left">
+                <div class="left" >
                     <ul>
                         <div class="row">
                             <li class="order">訂單編號</li>
-                            <span>1</span>
+                            <span>{{ orderList[orderList.length - 1].ord_id }}</span>
                         </div>
                         <div class="row">
                             <li class="order">訂單日期</li>
-                            <span>2024.02.21</span>
+                            <span>{{ orderList[orderList.length - 1].ord_date }}</span>
                         </div>
                         <div class="row">
                             <li class="order">付款方式</li>
@@ -147,19 +146,21 @@ methods: {
                     <ul>
                         <div class="row">
                             <li class="order">收件人</li>
-                            <span>阿明</span>
+                            <span>{{ orderList[orderList.length - 1].ord_reciever }}</span>
                         </div>
                         <div class="row">
                             <li class="order">連絡電話</li>
-                            <span>0923736473</span>
+                            <span>{{ orderList[orderList.length - 1].ord_phone }}</span>
                         </div>
                         <div class="row">
                             <li class="order">配送地址</li>
-                            <span>桃園市中壢區復興路46號8樓</span>
+                            <span>{{ orderList[orderList.length - 1].ord_city}}</span>
+                            <span>{{ orderList[orderList.length - 1].ord_district}}</span>
+                            <span>{{ orderList[orderList.length - 1].ord_address}}</span>
                         </div>
                         <div class="row">
                             <li class="order">備註訊息</li>
-                            <span>無</span>
+                            <span>{{ orderList[orderList.length - 1].remark }}</span>
                         </div>
                     </ul>
                 </div>
@@ -169,35 +170,35 @@ methods: {
             </div> -->
         </div>
 
-        <section class="cartFunction">
+        <section class="cartFunction" v-if="orderList.length > 0">
             <!-- 這裡是商品內容 -->
-            <div class="productCard" v-for="(item, index) in cartItems" :key="index">
-                <img :src="(item.imageUrl)" alt="ProductImage">
+            <div class="productCard" >
+                <!-- <img :src="(item.imageUrl)" alt="ProductImage"> -->
                     <div class="proCardP">
-                        <p class="pro_name">{{ item.name }}</p>
-                        <p class="pro_price">${{ item.price }}</p>
+                        <p class="pro_name">{{ orderList[orderList.length - 1].pro_name}}</p>
+                        <p class="pro_price">${{ orderList[orderList.length - 1].pro_price}}</p>
                     </div>
                     <!-- <NumberSelect
                     :qtyValue="item.quantity" @change="updateQuantity(index, $event)"
                     /> -->
-                    <div class="number_select">
-                        <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index,-1)">
-                        <input type="text" name="quantity" :value="item.quantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
-                        <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
-                    </div>
-                    <p class="proCount">{{ item.price*item.quantity}}</p>
+                    <!-- <div class="number_select">
+                        <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index,-1)"> -->
+                        <input type="text" name="quantity" :value="orderList[orderList.length - 1].ord_qty" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
+                        <!-- <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
+                    </div> -->
+                    <p class="proCount">${{orderList[orderList.length - 1].pro_sale}}</p>
             </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
                 <!-- 這裡要算小計 -->
-                <span class="cartFunctionTitle">${{subtotal}}</span>
+                <span class="cartFunctionTitle">${{orderList[orderList.length - 1].ord_sum}}</span>
             </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">運費</span>
-                <span class="cartFunctionTitle">運費計算參考</span>
+                <span class="cartFunctionTitle">${{orderList[orderList.length - 1].ord_ship}}</span>
             </div>
             <!-- 這裡要算加運費的總金額 -->
-            <p class="cartCountTotal">合計金額：${{total}}</p>
+            <p class="cartCountTotal">合計金額：${{orderList[orderList.length - 1].ord_total}}</p>
             
         </section>
     </main>
