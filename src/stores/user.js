@@ -48,7 +48,7 @@ export default defineStore('userStore', {
                 district: val.m_district,
                 address: val.m_address,
                 state: val.m_state,
-                imgUrl: val.img_path,
+                img_path: val.img_path,
             };
             localStorage.setItem("userData", JSON.stringify(this.userData));
         },

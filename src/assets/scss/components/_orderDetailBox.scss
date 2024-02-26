@@ -1,0 +1,77 @@
+// ord_list
+.order_detail{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.order_card{
+    padding: 8px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.card_intro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    h3{
+        padding: 10px 0 0 10px;
+        }
+}
+.order_proImg{
+    width: 30%;
+    img{
+        width: 100%;
+        vertical-align: top;
+    }
+}
+h3{
+    padding-right: 10px;
+}
+button.order_detail{
+    width: 25%;
+    font-size: $p;
+    margin-block: 5px;
+    padding: 15px 5px;
+    color: $whiteWord;
+    border: none;
+    border-radius: $borr2;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: border 0.1s ease-in-out;
+    background-color: $grass_1;
+    &:hover{
+        border: solid;
+        box-shadow: rgba(102, 102, 102, 0.35) 0px 5px 20px;
+    }
+}
+
+// ord_content
+.fade-enter-active, .fade-leave-active {
+    transition:opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+.detail_card{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    h2{
+        padding: 10px;
+    }
+}
+.detail_proImg{
+    width: 20%;
+    img{
+        width: 100%;
+        vertical-align: top;
+    }
+}
+.detail_text{
+    display: flex;
+    
+}
