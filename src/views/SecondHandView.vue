@@ -93,7 +93,7 @@ export default {
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
 
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/frontShProductInfo.php?`)
+      axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontShProductInfo.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -110,7 +110,7 @@ export default {
     },
 
     getProductImgSrc(imgName) {
-      return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/product/sh_products/${imgName}`).href
+      return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/product/sh_products/${imgName}`).href
     },
 
     showLarge(e) {
