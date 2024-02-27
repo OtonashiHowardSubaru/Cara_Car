@@ -19,40 +19,55 @@
     .footerDecoBg {
         width: 100%;
         height: 100%;
-        background: url(../../imgs/MainFooter/footerDecoBg.svg) no-repeat;
+        background: url(../../imgs/MainFooter/footerDecoBg.svg);
+        background-repeat: repeat-x;
         object-fit: cover;
         position: absolute;
-        top: -50px;
+        top: -54px;
         z-index: 1;
-
-    }
-
-    .footerLogo {
-        width: 95%;
-        z-index: 3;
-        display: flex;
-        // justify-content: center;
-        position: absolute;
-        top: -100px;
-        left: 5%;
-        // background-color: #aaa;
-
         @media (min-width : 768px) {
-            justify-content: start;
-            position: absolute;
-            left: 5%;
-            top: -100px;
+            top: -10%;
+
         }
 
-        img {
+    }
+    .footerLogoArea{
+        padding: 5% 0;
+        .footerLogo {
             width: 40%;
-            margin: auto;
-
+            z-index: 3;
+            display: flex;
+            // justify-content: center;
+            position: absolute;
+            top: -2%;
+            left: 28%;
+            // background-color: #aaa;
+    
             @media (min-width : 768px) {
-                width: 20%;
-                margin: 0;
+                justify-content: start;
+                position: absolute;
+                top: -1%;
+                left: 10%;
+
             }
-            
+            @media (min-width : 1024px) {
+                justify-content: start;
+                position: absolute;
+                left: 12%;
+                top: -8%;
+
+            }
+    
+            img {
+                width: 100%;
+                margin: auto;
+    
+                @media (min-width : 768px) {
+                    width: 40%;
+                    margin: 0;
+                }
+                
+            }
         }
     }
 
@@ -93,7 +108,7 @@
         flex-direction: column;
         justify-content: center;
         position: relative;
-        top: -50px;
+        top: 1px;
         
         @media (min-width : 768px) {
             width: 35%;
@@ -137,7 +152,7 @@
         width: 100%;
         // height: 60%;
         display: flex;
-        margin: -30px auto 50px;
+        margin: -34px auto -18px;
         font-size: clamp($mp,1.5vw,$p);
         font-family: 'Kosugi Maru';
         justify-content: start;
@@ -148,15 +163,16 @@
         @media (min-width : 768px) {
             width: 35%;
             height: 60%;
-            margin: 0;
+            margin: 2% -5%;
             justify-content: space-evenly;
             align-items: center;
         }
 
         .mainMenu {
-            width: 49%;
+            width: 40%;
 
             @media (min-width : 768px) {
+                width: 100%;
                 height: 70%;
             }
         }
@@ -211,6 +227,7 @@
         display: flex;
         justify-content: end;
         position: relative;
+        top: 10px;
         // background-color: #aaa;
 
         @media (min-width : 768px) {
@@ -256,7 +273,6 @@
             .RouterLink img {
                 width: 20px;
                 height: 20px;    
-
                 @media (min-width : 768px) {
                     width: 25px;
                     height: 25px;
@@ -278,8 +294,7 @@
 
                 &:hover {
                     .toTopCat {
-    
-                        top: -13px;
+                        top: -16px;
                     }
     
                 }
