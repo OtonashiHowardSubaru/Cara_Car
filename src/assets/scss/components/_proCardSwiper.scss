@@ -96,11 +96,14 @@
       align-items: center;
   
   }
+  .pro_crad_info{
+    margin-top: -1.5vw;
+  }
 
 
 @media(max-width: 768px){
     .mySwiper {
-        width: 70%;
+        width: 100%;
         
     }
     .swiper-button-prev, .swiper-prev{

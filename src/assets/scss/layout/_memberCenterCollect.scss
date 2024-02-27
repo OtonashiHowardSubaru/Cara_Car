@@ -1,16 +1,26 @@
 .collect_content{
     display: flex;
-    align-items: center;
+    // align-items: center;
     flex-direction: column;
     width: 100%;
     li{
         display: flex;
+        justify-content: space-around;
         align-items: center;
+        margin-top: 3vw;
         img{
-            width: 200px;
+            width: 12vw;
+        }
+        h3{
+            width: 50vw;
+            margin: 0 2vw;
+        }
+        p{
+            width: 150vw;
+            
         }
         svg{
-            width: 20px;
+            width: 10vw;
         }
     }
 }
