@@ -52,9 +52,9 @@ export default {
               <div class="item_text">
                 <p>{{ item.shSubtitle }}</p>
                 <p>{{ item.context }}</p>
+                <img :src="item.arrowImg" alt="" class="arrow">
               </div>
                 
-              <img :src="item.arrowImg" alt="" class="arrow">
             </div>
           </router-link>
         </div>

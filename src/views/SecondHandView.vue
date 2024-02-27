@@ -5,7 +5,7 @@ import TitleMaybeYouLike from "@/components/TitleMaybeYouLike.vue";
 import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/MainHeader.vue";
-import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
+import ShProductIntroCard from "@/components/card/ShProductIntroCard.vue";
 // import mainImage from "@/assets/imgs/product/sh_products/product.png";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
@@ -18,7 +18,7 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
   export default {
     components:{
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader,ProductIntroCard,Swiper,ProCardSwiper,DoubleCloud,
+    ProductCard, MainHeader,ShProductIntroCard,Swiper,ProCardSwiper,DoubleCloud,
     // Swal,
 },
     data(){
@@ -29,6 +29,8 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
         thisProduct:[],
         allProducts:[],
         newProducts:[],
+        newProductInfo:[],
+        productInfo:[],
         qtyValue: 1,
       }
     },
@@ -85,6 +87,21 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
             return item.pro_id == pageId
           })
           console.log(this.allProducts);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
+
+        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/frontShProductInfo.php?`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          // console.log(response.data)
+          this.productInfo = response.data;
+          this.thisProductInfo = response.data.find((item) =>{
+            return item.pro_id == pageId
+          })
+          console.log(this.productInfo);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -215,12 +232,12 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 </div>
 <div class="productIntro">
   <img src="@/assets//imgs/product/info_bg.png" alt="">
-  <ProductIntroCard/>
+  <ShProductIntroCard 
+    :productInfo="allProducts"/>
 </div>
 
 
 <div class="recommand">
-  
   <ProCardSwiper
       :displayData="newProducts"
       :title="'也許你會喜歡'"

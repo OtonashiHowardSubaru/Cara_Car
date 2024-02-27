@@ -14,7 +14,7 @@ export default {
     },
     computed: {
         activeInfo() {
-          return   this.productInfo.find(v => v.pro_id === +this.$route.params.pro_id) || {}
+          return   this.productInfo.find(v => v.sh_pro_id === +this.$route.params.sh_pro_id) || {}
         },
     },
     methods: {
@@ -63,9 +63,9 @@ export default {
                 <li v-show="activeTab === 0">
                 <div>
                     <div class="form">
-                    <h2>{{activeInfo.pro_name}}</h2>
+                    <h2>{{activeInfo.sh_pro_name}}</h2>
                     <div :style="{display: 'flex', flexDirection: 'column'}"  class="sh_detail_content">
-                        {{activeInfo.pro_info }}
+                        {{activeInfo.sh_pro_info }}
                     <!-- <div class="articlel">  -->
                          <!-- <p> -->
                         <!-- <span>產品規格：</span> -->

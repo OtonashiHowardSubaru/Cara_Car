@@ -88,7 +88,10 @@ export default {
     <div class="row">
       <div class="store_name col-12">
         <h2>USED CAR</h2>
-        <PriceSorter @sortChange="handleSortChange" />
+        
+        <PriceSorter 
+        @sortChange="handleSortChange" 
+        id:priceSorter/>
         <div class="gbird">
           <GreenBird />
         </div>
@@ -101,7 +104,7 @@ export default {
 
       </div>
 
-      <div class="sh_pro_card_list col-9 col-md-10">
+      <div class="sh_pro_card_list col-9 col-md-10 list">
         <shProductCard :displayData="paginated" />
       </div>
     </div>
@@ -116,8 +119,12 @@ export default {
             
         </div>
   </div>
-
-  <CardShProcess />
+  <div class="sh_process">
+    <div class="shbg">
+      <img src="@/assets/imgs/product/sh_bg.png" alt="">
+    </div>
+    <CardShProcess />
+  </div>
 
   <!-- <svg width="100%" height="100%" viewBox="0 0 1818 832" fill="none" xmlns="http://www.w3.org/2000/svg"> 
     A

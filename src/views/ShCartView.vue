@@ -218,7 +218,7 @@ methods: {
             <div class="cartContent">
                 <span class="productName">商品名稱與單價</span>
                 <span class="count">數量</span>
-                <span >運費</span>
+                <span class="ship">運費</span>
                 <span class="countTotal">合計</span>
             </div>
             <!-- 這是二手商品內容 -->
@@ -231,7 +231,7 @@ methods: {
                     <div class="number_select">
                         <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent v-bind:style="{margin: L + 'px'}" readonly>
                     </div>
-                    <p>$120</p>
+                    <p class="shipment">$120</p>
                     <p class="proCount">${{ item.shprice}}</p>
             </div>
             <div class="total"></div>
@@ -281,7 +281,6 @@ methods: {
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
                 <router-link to="/ShcartPart3">
-                    <!-- <button type="submit" class="subButton" @click="subOrder">確認並送出訂單</button> -->
                     <input type="button" class="subButton" @click="subOrder" value="確認並送出訂單">
                 </router-link>
                 
@@ -309,7 +308,12 @@ methods: {
     border:none;
     color: $whiteWord;
 }
-
+.ship{
+    border-bottom: 1px solid #222;
+}
+.shipment{
+    font-size: 20px;
+}
 #process2{
     color: $blackWord;
 }

@@ -81,7 +81,7 @@
 
 
 .sh_pro_card_list {
-  margin: 60px auto;
+  margin: 6vw auto;
   display: flex;
   flex-wrap: wrap;
   row-gap: 20px;
@@ -120,9 +120,6 @@
     margin-bottom: 60px;
   }
   
-  .sh_pro_card_list{
-    margin: 0
-  }
   #priceSorter{
       width: 300px;
       height: 40px;
