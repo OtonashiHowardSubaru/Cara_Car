@@ -1,6 +1,7 @@
 .ShopInformation {
     width: 100%;
-    height: 1800px;
+    // height: 1800px;
+    height: 5200px;
     margin-bottom: 100px;
     position: relative;
     padding-top: 10%;
@@ -9,11 +10,12 @@
     // background-color: #aaa;
 
     @media (min-width : 450px) {
-        height: 1800px;
+        // height: 1800px;
+        height: 2800px;
     }
     @media (min-width : 768px) {
-        height: 4200px;
-        // height: 1600px;
+        // height: 4200px;
+        height: 1600px;
         display: flex;
         padding-top: 0;
         // height: 150vh;
@@ -21,17 +23,19 @@
 
     .infoBg {
         width: 100%;
+        height: 50vw;
         // height: 100vh;
         // height: initial;
-        overflow: hidden;
+        // overflow: hidden;
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 1;
         
 
         @media (min-width : 768px) {
             width: 50%;
-            // position: fixed;
+            position: fixed;
             z-index: -1;
             bottom: 0;
         }
@@ -49,8 +53,11 @@
         position: absolute;
         top: 55vh;
         bottom: 0;
-        z-index: 1;
+        z-index: 20;
         background-color: #fff;
+
+
+        opacity: 0;
 
         @media (min-width : 768px) {
             width: 50%;

@@ -35,13 +35,20 @@ font-family: 'Noto Sans';
         overflow: hidden;
         border-radius: $borr4;
         border: $bor1 solid $blackWord;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         & img{
-            width: 100%;
+            width: 150%;
             // height: 100%;
-            vertical-align: top;
+            // vertical-align: top;
+            // object-fit: cover;
+            // object-position: 80% 80%;
+
         }
     }
 }
+
 .change_user_image{
     cursor: pointer;
     color: $whiteWord;
