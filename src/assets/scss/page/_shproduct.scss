@@ -293,31 +293,6 @@
   }
 }
 
-.iwantsellCarbutton{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: $green;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 700;
-  a{
-    color: #fff;
-    p{
-      font-size: $p;
-    }
-  }
-  
-}
 
 
 @media (max-width:768px){
@@ -381,18 +356,7 @@
   
   
 
-  .iwantsellCarbutton{
-    width: 50px;
-    height: 50px;
-    bottom: 90px;
-    right: 10px;
-    a{
-      p{
-        font-size: 12px;
-      }
-    }
-  }
-
+  
   .recommand{
     .product_card{
       width: 80%;
@@ -415,7 +379,7 @@
       margin-left: -20px;
       margin-top: -30px;
     }
-}
+  }
 }
 
 .sh_process{
@@ -431,3 +395,37 @@
     
   }
 }
+
+//賣車手按鈕
+.iwantsellCar {
+  width: 15%;
+  position: fixed;
+  right: 2%;
+  bottom: 12%;
+  z-index: 100;
+  @media (min-width : 768px) {
+    width: 8%;
+    position: fixed;
+    right: 4.5%;
+    bottom: 1%;
+  }
+  button {
+    width: 100%; // 按鈕寬度佔滿父元素
+    height: 100%; // 按鈕高度佔滿父元素
+    padding: 0; // 移除按鈕的內邊距
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    
+    &:hover {
+          width: 110%;
+        }
+        
+        img {
+          width: 100%; // 圖片寬度佔滿按鈕
+          height: auto; // 高度自適應，保持比例
+          display: block; // 讓圖片置中顯示
+          margin: 0 auto; // 圖片水平置中
+        }
+      }
+    }
