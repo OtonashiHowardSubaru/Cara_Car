@@ -7,14 +7,14 @@ import ProCardSwiper from '@/components/ProCardSwiperForGame.vue'
 
 export default {
   components: {
-    MainHeader,ProductCard, ProCardSwiper
+    MainHeader, ProductCard, ProCardSwiper
   },
   data() {
     return {
       active: false,
       process: 0,
       value: 0,//選取商品的起始值，就是第1樣商品開始就對了
-      responseData : [],
+      responseData: [],
       displayData: [],
       questionBank: [
         {
@@ -90,27 +90,27 @@ export default {
       ],
     };
   },
-  created(){
-      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
-      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php`)
-        .then((response) => {
-          // 成功取得資料後，將資料存入陣列
-          // console.log(response.data)
-          this.responseData = response.data;
-          this.displayData = response.data;
+  created() {
+    //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+    // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+    axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php`)
+      .then((response) => {
+        // 成功取得資料後，將資料存入陣列
+        // console.log(response.data)
+        this.responseData = response.data;
+        this.displayData = response.data;
       })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+      });
   },
-  methods:{
-    startGame(){
+  methods: {
+    startGame() {
       this.active = true;
       this.process = 0;//確保遊戲開始時機制重整
     },
-    clickanswer(choosedValue){
+    clickanswer(choosedValue) {
       this.process++; //追蹤進度
       this.value += choosedValue
       console.log(this.value);
@@ -137,20 +137,18 @@ export default {
         </div>
         <div class="quetionGame col-8" v-if="active && process < questionBank.length">
           <div class="quetionBox">
-            <h3>Quetion {{process + 1}}</h3>
+            <h3>Quetion {{ process + 1 }}</h3>
             <p>{{ questionBank[process].title }}</p>
           </div>
           <div class="answerBox">
-            <button @click="clickanswer(0)">{{questionBank[process].answer1}}</button>
-            <button @click="clickanswer(2)">{{questionBank[process].answer2}}</button>
-            <button @click="clickanswer(1)">{{questionBank[process].answer3}}</button>
+            <button @click="clickanswer(0)">{{ questionBank[process].answer1 }}</button>
+            <button @click="clickanswer(2)">{{ questionBank[process].answer2 }}</button>
+            <button @click="clickanswer(1)">{{ questionBank[process].answer3 }}</button>
           </div>
         </div>
         <div v-if="active && process >= questionBank.length" class="col-8 finishGame">
           <h3>\ 看看這個是不是你喜歡的吧！ /</h3>
-          <ProCardSwiper
-          :displayData="displayData.slice(this.value,(this.value)+ 3)"
-          />
+          <ProCardSwiper :displayData="displayData.slice(this.value, (this.value) + 3)" />
         </div>
       </div>
     </div>

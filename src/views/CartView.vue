@@ -12,143 +12,143 @@ import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
 
 export default {
-components:{
-    MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,
-    // NumberSelect,
-},
-data(){
-    return {
-        allProducts:[],
-        // cart:'',
-        qtyValue: 0,
-        // count: 1,
-        expanded:false,
-        cartStore: cartStore(),
-        // city:[
-        //     {c:'台北市'},
-        //     {c:'新北市'},
-        //     {c:'基隆市'},
-        //     {c:'基隆縣'},
-        //     {c:'桃園市'},
-        //     {c:'新竹市'},
-        //     {c:'新竹縣'},
-        //     {c:'苗栗縣'},
-        //     {c:'台中市'},
-        //     {c:'彰化縣'},
-        //     {c:'南投縣'},
-        //     {c:'雲林縣'},
-        //     {c:'嘉義縣'},
-        //     {c:'台南市'},
-        //     {c:'高雄市'},
-        //     {c:'屏東縣'},
-        //     {c:'台東縣'},
-        //     {c:'花蓮縣'},
-        //     {c:'宜蘭縣'},
-        //     {c:'澎湖縣'},
-        // ],
-    }
-},
-created() {
-    this.getLocalCartData();
-    this.fetchData();
-
-   //從LocalStorage中讀取購物車資料
-    // const localCartData = JSON.parse(localStorage.getItem('cartItems'));
-    // if (localCartData) {
-    //     this.cartItems = localCartData; // 將資料存儲在Vue的data屬性中
-    // }; 
-
-},
-computed: {
-    ...mapState(cartStore,[
-        "cartItems",
-        "subtotal",
-        "subFreight",
-        "total",
-    ]),
-
-    // subtotal() {
-    // let total = 0;
-    // for (let item of this.cartItems) {
-    //   total += item.price * item.quantity;
-    // }
-    // return total;
-    // },
-    // subFreight(){
-    //     const baseSubFreight = 120;
-    //     const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
-    //     return baseSubFreight * totalQuantity;
-    // },
-    // total(){
-    //     return this.subtotal + this.subFreight;
-    // },
-},
-methods: {
-    fetchData(){
-        // 定義頁碼
-        const pageId = this.$route.params.pro_id
-    
-        // 取得所有商品資料用做本頁資料以及swiper
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
-        .then((response) => {
-          // 成功取得資料後，將資料存入陣列
-          // console.log(response.data)
-        this.allProducts = response.data;
-        this.thisProduct = response.data.find((item) =>{
-            return item.pro_id == pageId
-        })
-        console.log(this.allProducts);
-        })
-        // console.log("========",this.thisProduct)
-      // })
-        .catch((error) => {
-        console.error("Error fetching data:", error);
-          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
-
+    components: {
+        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,
+        // NumberSelect,
     },
-
-    // handleQtyChange(index,increment) {
-    //     let qtyValue = parseInt(this.cartItems[index].quantity);
-    //     qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
-    //     // this.$refs['qtyInput_' + index][0].value = qtyValue;
-    //     this.updateQuantity(index, qtyValue)
-    // },
-    //抓取圖片路徑
-    // getProductImgSrc(imgName){
-    // return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/new_products/${imgName}`).href
-    // },
-    toggleCartContent(){
-        this.expanded = !this.expanded;
-    },
-    updateQuantity(index, newQuantity){
-        // 更新購物車内商品數量
-        if (newQuantity < 1) {
-            // 如果數量小於1，則從購物車中删除該商品
-            this.cartItems.splice(index, 1);
-        } else {
-            this.cartItems[index].quantity = newQuantity;
-            //更新商品總金額
-            this.updateTotalPrice(index);
+    data() {
+        return {
+            allProducts: [],
+            // cart:'',
+            qtyValue: 0,
+            // count: 1,
+            expanded: false,
+            cartStore: cartStore(),
+            // city:[
+            //     {c:'台北市'},
+            //     {c:'新北市'},
+            //     {c:'基隆市'},
+            //     {c:'基隆縣'},
+            //     {c:'桃園市'},
+            //     {c:'新竹市'},
+            //     {c:'新竹縣'},
+            //     {c:'苗栗縣'},
+            //     {c:'台中市'},
+            //     {c:'彰化縣'},
+            //     {c:'南投縣'},
+            //     {c:'雲林縣'},
+            //     {c:'嘉義縣'},
+            //     {c:'台南市'},
+            //     {c:'高雄市'},
+            //     {c:'屏東縣'},
+            //     {c:'台東縣'},
+            //     {c:'花蓮縣'},
+            //     {c:'宜蘭縣'},
+            //     {c:'澎湖縣'},
+            // ],
         }
-        this.saveCartData();
     },
-    // updateTotalPrice(index){
-    //     const item = this.cartItems[index];
-    //     item.total = item.price * item.quantity;
-    // },
-    // saveCartData() {
-    //     localStorage.setItem('cart', JSON.stringify(this.shCartItems));
-    // },
-    ...mapActions(cartStore, [
-        "reduceFromCart",
-        "increaseFromCart",
-        "getLocalCartData",
-        "addToCart",
-        "getProductImgSrc",
-    ]),
+    created() {
+        this.getLocalCartData();
+        this.fetchData();
 
-},
+        //從LocalStorage中讀取購物車資料
+        // const localCartData = JSON.parse(localStorage.getItem('cartItems'));
+        // if (localCartData) {
+        //     this.cartItems = localCartData; // 將資料存儲在Vue的data屬性中
+        // }; 
+
+    },
+    computed: {
+        ...mapState(cartStore, [
+            "cartItems",
+            "subtotal",
+            "subFreight",
+            "total",
+        ]),
+
+        // subtotal() {
+        // let total = 0;
+        // for (let item of this.cartItems) {
+        //   total += item.price * item.quantity;
+        // }
+        // return total;
+        // },
+        // subFreight(){
+        //     const baseSubFreight = 120;
+        //     const totalQuantity = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+        //     return baseSubFreight * totalQuantity;
+        // },
+        // total(){
+        //     return this.subtotal + this.subFreight;
+        // },
+    },
+    methods: {
+        fetchData() {
+            // 定義頁碼
+            const pageId = this.$route.params.pro_id
+
+            // 取得所有商品資料用做本頁資料以及swiper
+            axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php?`)
+                .then((response) => {
+                    // 成功取得資料後，將資料存入陣列
+                    // console.log(response.data)
+                    this.allProducts = response.data;
+                    this.thisProduct = response.data.find((item) => {
+                        return item.pro_id == pageId
+                    })
+                    console.log(this.allProducts);
+                })
+                // console.log("========",this.thisProduct)
+                // })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                    this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+                });
+
+        },
+
+        // handleQtyChange(index,increment) {
+        //     let qtyValue = parseInt(this.cartItems[index].quantity);
+        //     qtyValue = isNaN(qtyValue) || qtyValue < 1 ? 1 : qtyValue + increment;
+        //     // this.$refs['qtyInput_' + index][0].value = qtyValue;
+        //     this.updateQuantity(index, qtyValue)
+        // },
+        //抓取圖片路徑
+        // getProductImgSrc(imgName){
+        // return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/new_products/${imgName}`).href
+        // },
+        toggleCartContent() {
+            this.expanded = !this.expanded;
+        },
+        updateQuantity(index, newQuantity) {
+            // 更新購物車内商品數量
+            if (newQuantity < 1) {
+                // 如果數量小於1，則從購物車中删除該商品
+                this.cartItems.splice(index, 1);
+            } else {
+                this.cartItems[index].quantity = newQuantity;
+                //更新商品總金額
+                this.updateTotalPrice(index);
+            }
+            this.saveCartData();
+        },
+        // updateTotalPrice(index){
+        //     const item = this.cartItems[index];
+        //     item.total = item.price * item.quantity;
+        // },
+        // saveCartData() {
+        //     localStorage.setItem('cart', JSON.stringify(this.shCartItems));
+        // },
+        ...mapActions(cartStore, [
+            "reduceFromCart",
+            "increaseFromCart",
+            "getLocalCartData",
+            "addToCart",
+            "getProductImgSrc",
+        ]),
+
+    },
 }
 </script>
 
@@ -160,55 +160,56 @@ methods: {
                 <h2>購物車
                 </h2>
                 <div class="cartBird">
-                <BlueBird class="cartBlueBird"/>
-                <GreenBird class="cartGreenBird"/>
-                <YellowBird class="cartYellowBird"/>
+                    <BlueBird class="cartBlueBird" />
+                    <GreenBird class="cartGreenBird" />
+                    <YellowBird class="cartYellowBird" />
+                </div>
             </div>
-            </div>
-            <DoubleCloud class="cartCloud"/>
-            
-            <div class="notInCart" v-show="cartItems.length == 0 ">
+            <DoubleCloud class="cartCloud" />
+
+            <div class="notInCart" v-show="cartItems.length == 0">
                 <img src="../assets/imgs/draw/cara_sign.png" alt="">
 
                 <h2 class="notInCartP">你尚未購買商品</h2>
 
             </div>
 
-            <div class="cartProcess1" v-show="cartItems.length !=0 ">
+            <div class="cartProcess1" v-show="cartItems.length != 0">
                 <div class="cartProcessCircle" id="circle1">1</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">2</div>
                 <div class="cartLine"></div>
                 <div class="cartProcessCircle">3</div>
             </div>
-            <div class="cartProcess2" v-show="cartItems.length !=0 ">
+            <div class="cartProcess2" v-show="cartItems.length != 0">
                 <span class="cartProcessname" id="process1">你的訂單</span>
                 <span class="cartProcessname">填寫資料</span>
                 <span class="cartProcessname">完成訂單</span>
             </div>
-            <div class="cartContent" v-show="cartItems.length !=0 ">
+            <div class="cartContent" v-show="cartItems.length != 0">
                 <span class="productName">商品名稱與單價</span>
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
             </div>
             <!-- 這裡是商品內容 -->
             <div class="productCard" v-for="(item, index) in cartItems" :key="index">
-                <img :src=" getProductImgSrc(item.imageUrl)" alt="ProductImage">
-                    <div class="proCardP">
-                        <p class="pro_name">{{ item.name }}</p>
-                        <p class="pro_price">${{ item.price }}</p>
-                    </div>
-                    <div class="number_select">
-                        <input type="button" value="-" class="qtyMinus" @click="reduceFromCart(item)">
-                        <input type="text" name="quantity" :value="item.quantity" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
-                        <input type="button" value="+" class="qtyPlus" @click="increaseFromCart(item)">
-                    </div>
-                    <p class="proCount">{{ item.price*item.quantity}}</p>
+                <img :src="getProductImgSrc(item.imageUrl)" alt="ProductImage">
+                <div class="proCardP">
+                    <p class="pro_name">{{ item.name }}</p>
+                    <p class="pro_price">${{ item.price }}</p>
+                </div>
+                <div class="number_select">
+                    <input type="button" value="-" class="qtyMinus" @click="reduceFromCart(item)">
+                    <input type="text" name="quantity" :value="item.quantity" class="qty" ref="`qtyInput_${index}`"
+                        @keydown.enter.prevent>
+                    <input type="button" value="+" class="qtyPlus" @click="increaseFromCart(item)">
+                </div>
+                <p class="proCount">{{ item.price * item.quantity }}</p>
             </div>
             <!-- 結束 -->
-            
+
             <!-- 這是客製化車牌內容 -->
-            <div class="cartContent" v-show="cartItems.length !=0">
+            <div class="cartContent" v-show="cartItems.length != 0">
                 <span class="custom">客製化</span>
             </div>
             <!-- <form action="">
@@ -219,18 +220,18 @@ methods: {
             </form> -->
             <!-- 結束 -->
         </section>
-        <section class="cartFunction" v-show="cartItems.length !=0">
+        <section class="cartFunction" v-show="cartItems.length != 0">
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
                 <!-- 這裡要算小計 -->
-                <span class="cartFunctionTitle">${{subtotal}}</span>
+                <span class="cartFunctionTitle">${{ subtotal }}</span>
             </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">運費</span>
                 <span class="cartFunctionTitle">運費計算參考</span>
             </div>
             <!-- 這裡要算加運費的總金額 -->
-            <p class="cartCountTotal">合計金額：${{total}}</p>
+            <p class="cartCountTotal">合計金額：${{ total }}</p>
             <div class="cartMatter" @click="toggleCartContent">
                 <span class="cartFunctionTitle">運費計算及注意事項</span>
                 <i class="fa-solid fa-caret-down" :class="{ rotated: expanded }"></i>
@@ -257,8 +258,8 @@ methods: {
                 </router-link>
             </div>
         </section> -->
-    
-            <div class="cartButton" v-show="cartItems.length !=0">
+
+            <div class="cartButton" v-show="cartItems.length != 0">
                 <router-link to="/ProductList">
                     <button type="button" id="goToProduct">繼續購買</button>
                 </router-link>
@@ -312,16 +313,10 @@ methods: {
                 <button type="submit" class="subButton">確認並送出訂單</button>
             </div>
         </form> -->
-        
+
     </main>
-    <ProCardSwiper
-    :displayData="allProducts"
-    :title="'別人也逛過'"
-    />
-    <ProCardSwiper
-    :displayData="allProducts"
-    :title="'也許你會喜歡'"
-    />
+    <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
+    <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
 </template>
 
 <style lang="scss" scoped>

@@ -5,11 +5,13 @@
                 <div class="newsInfoImg">
                     <img :src="getProductImgSrc(newsInfo.img_path)" alt="newsInfo.img">
                 </div>
-                <span class="timingTag" :style="{ backgroundColor: getBackgroundColor(newsInfo), borderColor: getBorderColor(newsInfo) }">{{ calculateDateStatus(newsInfo) }}</span>
+                <span class="timingTag"
+                    :style="{ backgroundColor: getBackgroundColor(newsInfo), borderColor: getBorderColor(newsInfo) }">{{
+                        calculateDateStatus(newsInfo) }}</span>
             </div>
             <div class="newsCardText">
                 <div class="cardTitle">
-                    <h3>【{{ newsInfo.news_category == '0' ? '優惠' : '活動'}}】{{ newsInfo.news_title }}</h3>
+                    <h3>【{{ newsInfo.news_category == '0' ? '優惠' : '活動' }}】{{ newsInfo.news_title }}</h3>
                 </div>
                 <p>{{ newsInfo.news_start_date }} ~ {{ newsInfo.news_end_date }}</p>
             </div>
@@ -25,13 +27,13 @@
 import axios from 'axios'; //引入函式庫
 import PageNumber from "@/components/btn/PageNumber.vue";
 
-export default { 
+export default {
     components: {
         PageNumber,
 
     },
     data() {
-        return{
+        return {
             // newsCard:[
             //     {
             //         img: NewCardImage01,
@@ -98,7 +100,7 @@ export default {
             //     },
             // ]
             //資料
-            responseData : [],
+            responseData: [],
             displayData: [],
 
             // 頁數切換
@@ -108,26 +110,26 @@ export default {
         }
     },
     created() {
-      //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
-      // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/newsList.php`)
-        .then((response) => {
-            // 成功取得資料後，將資料存入陣列
-            // console.log(response.data)
-            this.responseData = response.data;
-            this.displayData = response.data;
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-            this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
+        //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+        // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+        axios.get(`${import.meta.env.VITE_PHP_URL}/front/newsList.php`)
+            .then((response) => {
+                // 成功取得資料後，將資料存入陣列
+                // console.log(response.data)
+                this.responseData = response.data;
+                this.displayData = response.data;
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+            });
     },
     methods: {
         // 取得圖片的路徑函式
-        getProductImgSrc(imgName){
-            return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/event/${imgName}`).href
+        getProductImgSrc(imgName) {
+            return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/event/${imgName}`).href
         },
-         // 頁數切換
+        // 頁數切換
         toggleStatus(index) {
             this.eventsInfo[index].status = !this.eventsInfo[index].status;
         },
@@ -154,23 +156,23 @@ export default {
         },
         // 更改timing tag的border顏色
         getBorderColor(newsInfo) {
-        const status = this.calculateDateStatus(newsInfo);
-        switch (status) {
-            case '進行中':
-                return '#016B5C'; // 綠色邊框
-            case '即將舉辦':
-                return '#B99D73'; // 紅色邊框
-            case '已結束':
-                return '#DBDFE4'; // 灰色邊框
-            default:
-                return 'black'; // 預設為黑色邊框
+            const status = this.calculateDateStatus(newsInfo);
+            switch (status) {
+                case '進行中':
+                    return '#016B5C'; // 綠色邊框
+                case '即將舉辦':
+                    return '#B99D73'; // 紅色邊框
+                case '已結束':
+                    return '#DBDFE4'; // 灰色邊框
+                default:
+                    return 'black'; // 預設為黑色邊框
+            }
         }
-    }
 
     },
-    computed:{
-      // 頁數切換
-        paginated(){
+    computed: {
+        // 頁數切換
+        paginated() {
             // 將已結束的活動放在陣列最後
             const sortedData = this.displayData.slice().sort((a, b) => {
                 // 將已結束的活動放在陣列最後
@@ -192,7 +194,7 @@ export default {
                 const currentDate = new Date();
                 const startDate = new Date(newsInfo.news_start_date);
                 const endDate = new Date(newsInfo.news_end_date);
-                
+
                 // 檢查當前日期是否在指定範圍內
                 if (currentDate >= startDate && currentDate <= endDate) {
                     return '進行中';
@@ -207,6 +209,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import '@/assets/scss/components/eventCard.scss';
-</style>
+<style lang="scss" scoped>@import '@/assets/scss/components/eventCard.scss';</style>

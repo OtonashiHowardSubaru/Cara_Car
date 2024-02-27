@@ -15,14 +15,15 @@
                         <BlueBird class="BlueBird" />
                     </div>
                     <div class="infoInnerTextTitle">
-                        <h1>【{{ thisNews.news_category == '0' ? '優惠' : '活動'}}】{{ thisNews.news_title }}
+                        <h1>【{{ thisNews.news_category == '0' ? '優惠' : '活動' }}】{{ thisNews.news_title }}
                         </h1>
-                        <p class="timingTag" :style="{ backgroundColor: getBackgroundColor(thisNews), borderColor: getBorderColor(thisNews) }">
+                        <p class="timingTag"
+                            :style="{ backgroundColor: getBackgroundColor(thisNews), borderColor: getBorderColor(thisNews) }">
                             {{ calculateDateStatus(thisNews) }}
                         </p>
                         <span class="beginTime">
-                            活動期間 
-                            {{ thisNews.news_start_date }} ~ 
+                            活動期間
+                            {{ thisNews.news_start_date }} ~
                             {{ thisNews.news_end_date }}
                         </span>
                     </div>
@@ -62,18 +63,18 @@ import GreenBird from '@/components/animation/GreenBird.vue'
 import axios from 'axios'; //引入函式庫
 
 export default {
-    components:{
+    components: {
         MainHeader,
         EventCardSlider,
         YellowBird,
         BlueBird,
         GreenBird,
-        
+
     },
     data() {
-        return{
+        return {
             // 資料
-            allNews : [],
+            allNews: [],
             thisNews: {},
         }
     },
@@ -82,39 +83,39 @@ export default {
     },
     watch: {
         '$route'(to, from) {
-        // 間丁 $route 有變化
-        // 在路徑參數有變化時,執行一次fetchData(抓取資料)
+            // 間丁 $route 有變化
+            // 在路徑參數有變化時,執行一次fetchData(抓取資料)
             this.fetchData();
         }
     },
     methods: {
         fetchData() {
-             // 定義頁碼
-        const pageId = this.$route.params.news_id
-        // console.log(pageId)
-        
-        //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
-        // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/frontNewsInfo.php`)
-        .then((response) => {
-            // console.log(response.data)
-            // 成功取得資料後，將資料存入陣列
-            this.allNews = response.data;
-            // 找到相符合的news並設置給 thisNews
-            this.thisNews = this.allNews.find((thisNews) =>thisNews.news_id == pageId)
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-            this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
+            // 定義頁碼
+            const pageId = this.$route.params.news_id
+            // console.log(pageId)
+
+            //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
+            // 取得全部商品資料用作商品資料，以及swiper用的所有資料
+            axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontNewsInfo.php`)
+                .then((response) => {
+                    // console.log(response.data)
+                    // 成功取得資料後，將資料存入陣列
+                    this.allNews = response.data;
+                    // 找到相符合的news並設置給 thisNews
+                    this.thisNews = this.allNews.find((thisNews) => thisNews.news_id == pageId)
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                    this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+                });
         },
         // 文字換行
         textBreak(text) {
-            return text.replace(/\r\n/g,"<br>");
+            return text.replace(/\r\n/g, "<br>");
         },
         // 取得圖片的路徑函式
-        getNewsImgSrc(imgName){
-            return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/event/${imgName}`).href
+        getNewsImgSrc(imgName) {
+            return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/event/${imgName}`).href
         },
 
         // 更改timing tag的背景顏色
@@ -149,7 +150,7 @@ export default {
                 const currentDate = new Date();
                 const startDate = new Date(thisNews.news_start_date);
                 const endDate = new Date(thisNews.news_end_date);
-                
+
                 // 檢查當前日期是否在指定範圍內
                 if (currentDate >= startDate && currentDate <= endDate) {
                     return '進行中';
