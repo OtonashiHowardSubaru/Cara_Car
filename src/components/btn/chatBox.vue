@@ -41,7 +41,7 @@
                 </div>
             </section>
             <section class="chat-inputs">
-                <div class="swiperQ" @wheel="handleWheel" @mousedown="startDrag" @mousemove="handleDrag" @mouseup="endDrag">
+                <div class="swiperQ" ref="swiperQ" @wheel="handleWheel" @mousedown="startDrag" @mousemove="handleDrag" @mouseup="endDrag">
                     <div class="QButton">
                         <div class="QButton1">
                             <button @click="askDefaultQuestion1">了解更多<br>Cara Car</button>
@@ -126,10 +126,12 @@ export default {
             // 檢查是否有 deltaX 或 deltaY 屬性，若無則設置為 0
             const delta = event?.deltaX || event?.deltaY || 0;
 
-            console.log("handleWheel 轉動喔喔");
-
+            // console.log("handleWheel 轉動?", delta);
+            
+             // 阻止滾輪事件的默認行為，防止其他滾輪的滾動
+            event.preventDefault();
             // 根據滾輪的滾動方向調整 swiperQ 容器的左右滾動位置
-            if (swiperQ?.value) {
+            if (swiperQ.value) {
                 swiperQ.value.scrollLeft -= delta;
             }
         };
@@ -153,7 +155,9 @@ export default {
             });
             // 滾動到聊天室底部
             nextTick(() => {
-                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                if (chatArea.value) {
+                    chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                }
             });
 
         };
@@ -170,7 +174,9 @@ export default {
                 routerLink: "/News",
             });
             nextTick(() => {
-                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                if (chatArea.value) {
+                    chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                }
             });
 
         };
@@ -185,7 +191,9 @@ export default {
                 author: 'Cara',
             });
             nextTick(() => {
-                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                if (chatArea.value) {
+                    chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                }
             });
 
         };
@@ -200,7 +208,9 @@ export default {
                 author: 'Cara',
             });
             nextTick(() => {
-                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                if (chatArea.value) {
+                    chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                }
             });
 
         };
@@ -217,7 +227,9 @@ export default {
                 routerLink: "/MemberCenter",
             });
             nextTick(() => {
-                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                if (chatArea.value) {
+                    chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                }
             });
 
         };
@@ -234,13 +246,14 @@ export default {
                 routerLink: "/Game",
             });
             nextTick(() => {
-                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                if (chatArea.value) {
+                    chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                }
             });
 
         };
 
         const chatArea = ref()
-        // 在组件初始化时滚动到底部
         // onMounted(() => {
         //     nextTick(() => {
         //         chatArea.value.scrollTop = chatArea.value.scrollHeight;
@@ -289,7 +302,9 @@ export default {
             }
             //受sendMessage影響
             nextTick(() => {
-                chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                if (chatArea.value) {
+                    chatArea.value.scrollTop = chatArea.value.scrollHeight;
+                }
             });
         };
 
@@ -301,6 +316,7 @@ export default {
         };
 
         return {
+            swiperQ,
             chatArea,
             show,
             CaraMessage,
