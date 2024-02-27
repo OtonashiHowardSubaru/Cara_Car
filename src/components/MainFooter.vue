@@ -1,8 +1,10 @@
 <template>
   <footer class="mainFooter">
-    <RouterLink class="footerLogo" to="/">
-      <img src="@/assets/imgs/MainFooter/logo.png" alt="logo">
-    </RouterLink>
+    <div class="footerLogoArea">
+      <RouterLink class="footerLogo" to="/">
+        <img src="@/assets/imgs/MainFooter/logo.png" alt="logo">
+      </RouterLink>
+    </div>
     <div class="footerDecoBg"></div>
     <div class="footerbg"></div>
     <div class="footerSection1">
@@ -62,15 +64,14 @@
           <img src="@/assets/imgs/MainFooter/icon_fb.png" alt="icon_fb">
         </RouterLink>
         
-        <RouterLink class="RouterLink" to="/">
+        <RouterLink class="RouterLink" to="/"    >
           <img src="@/assets/imgs/MainFooter/icon_ig.png" alt="icon_ig">
         </RouterLink>
         
       </div>
       <div class="footerSection3Top" @click="toTop">
         <img class="toTopCat" src="@/assets/imgs/draw/cat2.png" alt="cat2.png">
-        <img class="toTopGrass" src="@/assets/imgs/draw/bushSmall.png" alt="bushSmall.png">
-        <p>TOP</p>
+        <img class="toTopGrass" src="@/assets/imgs/draw/bushSmallTop.png" alt="bushSmall.png">
       </div>
     </div>
     <div class="footerSection4">
