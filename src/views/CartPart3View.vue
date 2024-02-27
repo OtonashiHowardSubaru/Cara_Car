@@ -61,7 +61,7 @@ methods: {
             return item.pro_id == pageId
         })
         console.log(this.orderList);
-        console.log(this.thisOrderList);
+        // console.log(this.thisOrderList);
         })
         // console.log("========",this.thisProduct)
         // })
