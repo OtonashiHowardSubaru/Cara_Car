@@ -71,7 +71,7 @@
       axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
-          // console.log(response.data)
+          console.log(response.data)
           this.responseData = response.data;
           this.displayData = response.data;
       })
@@ -87,15 +87,17 @@
         if (newSort === "0") {
           this.displayData = this.responseData
         } else if (newSort === "desc") {
-          this.displayData.sort((a, b) => b.pro_price - a.pro_price);
+          this.displayData.sort((a, b) => b.pro_sale - a.pro_sale);
         } else if (newSort === "asc"){
-          this.displayData.sort((a, b) => a.pro_price - b.pro_price);
+          this.displayData.sort((a, b) => a.pro_sale - b.pro_sale);
         };
       },
 
       // 商品種類的篩選(共兩個函式，一個切換啟動關閉、一個過濾)
       handleToggleFilter(filterName) {
-        // 如果按鈕是啟動的，將過濾單位加入過濾器activeFilterValue 內；否則，從中刪除
+        // 如果篩選器未啟動，將其啟動並將點擊對象的篩選關鍵字放入篩選值內
+        // 如果篩選器已啟動且篩選值不等於點擊對象的篩選關鍵字，則更新篩選值
+        // 如果篩選器已啟動且篩選值等於點擊對象的篩選關鍵字，則關閉篩選器並清空篩選值
         if (!(this.filterActiveState)) {
           // console.log(this.filterActiveState);
           this.filterActiveState = !(this.filterActiveState)
@@ -113,11 +115,13 @@
       updateFilter(){
         if (this.activeFilterValue == '') {
           this.displayData = this.responseData;
+          this.currentPage = 1;
         } else {
           // 當有按鈕被啟動時，篩選資料
           this.displayData = this.responseData.filter(item => {
             return item.pro_category.includes(this.activeFilterValue)
           });
+          this.currentPage = 1;
         }
       },
       currentSidebar(item) {

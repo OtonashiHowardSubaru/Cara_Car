@@ -57,9 +57,16 @@
 .intro{
     padding: 0 12.5%;
     margin: 0 auto 100px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     .price{
         font-size: $mh2;
         padding: 20px 0;
+        p{
+            display: flex;
+            justify-content: space-between;
+        }
     }
     .intro_tet{
         border-top: $bor1 solid $blackWord;

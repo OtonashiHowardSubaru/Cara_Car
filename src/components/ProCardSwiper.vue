@@ -14,6 +14,7 @@ export default{
         slidesPerView: 3,
         thisSwiperId:`swiper-${new Date().getTime()}`,
         shuffleDisplayData: [],
+        howManyPro_cardInSwiper: 6,
       }
     },
     setup() {
@@ -37,7 +38,7 @@ export default{
     },
     methods: {
       getProductImgSrc(imgName){
-        return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+        return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/new_products/${imgName}`, import.meta.url).href
       },
       handleResize(){
         this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;
@@ -45,7 +46,7 @@ export default{
       async shuffleDisplayDataAsync(){
         await this.$nextTick(); 
         const shuffled = this.displayData.sort(()=> 0.5 - Math.random());
-        this.shuffleDisplayData = shuffled.slice(0, 5);
+        this.shuffleDisplayData = shuffled.slice(0, this.howManyPro_cardInSwiper);
       }
     },
     mounted() {
@@ -82,7 +83,9 @@ export default{
           </div>
           <div class="pro_crad_info">
               <h6>{{ item.pro_name }}</h6>
-              <p>${{ item.pro_price }}</p>
+              <p :style="{ color: item.promo_state === 1 ? 'red' : 'black' }">
+              ${{ item.promo_state === 1 ? item.pro_sale : item.pro_price }}
+            </p>
           </div>
         </RouterLink>
         </div>

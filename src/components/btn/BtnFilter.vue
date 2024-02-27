@@ -33,7 +33,7 @@ export default {
           button.style.right = '0';
           button.style.fontWeight = 'normal';
           const otherArrows = button.querySelector('.arrow_ltr');
-          console.log(otherArrows);
+          // console.log(otherArrows);
           otherArrows.style.transform = `rotate(45deg)`; 
         }
       });

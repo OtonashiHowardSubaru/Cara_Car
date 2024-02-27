@@ -10,7 +10,7 @@ export default {
   methods: {
     // 取得圖片的路徑函式
     getProductImgSrc(imgName){
-    return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+      return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/new_products/${imgName}`, import.meta.url).href
     },
   }
 }
@@ -24,29 +24,13 @@ export default {
         </div>
         <div class="pro_crad_info">
             <h6>{{ item.pro_name }}</h6>
-            <p>${{ item.pro_price }}</p>
+            <p :style="{ color: item.promo_state === 1 ? 'red' : 'black' }">
+              ${{ item.promo_state === 1 ? item.pro_sale : item.pro_price }}
+            </p>
         </div>
       </RouterLink>
     </div>
 </template>
 <style lang="scss" scoped>
     // @import '@/assets/scss/components/_productCard.scss';
-    
-    .product_card{
-      margin-top: -40px;
-      padding: 15px;
-      // .pro_card_img{
-        // overflow: visible; 
-        // 用hidden會切到圖邊，圖片待改
-      //     &:hover{
-      //       transition: 1s ;
-      //       scale: 1.05; 
-      //     }
-      //   }
-      }
-      
-      .pro_crad_info{
-        margin-top: -25px;
-      }
-    
 </style>

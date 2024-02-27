@@ -63,8 +63,10 @@ export default{
                 <img :src="getProductImgSrc(item.img_name)" alt="Product Image">
             </div>
             <div class="pro_crad_info">
-                <h6>{{ item.pro_name }}</h6>
-                <p>${{ item.pro_price }}</p>
+              <h6>{{ item.pro_name }}</h6>
+              <p :style="{ color: item.promo_state === 1 ? 'red' : 'black' }">
+                ${{ item.promo_state === 1 ? item.pro_sale : item.pro_price }}
+              </p>
             </div>
           </RouterLink>
         </div>

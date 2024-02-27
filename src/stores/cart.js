@@ -40,7 +40,7 @@ export default defineStore("cartStore", {
                 this.cartItems.push({
                     id: thisProduct.pro_id,
                     name: thisProduct.pro_name,
-                    price: thisProduct.pro_price,
+                    price: thisProduct.pro_sale,
                     imageUrl:thisProduct.img_name,
                     quantity: qtyValue,
                 })

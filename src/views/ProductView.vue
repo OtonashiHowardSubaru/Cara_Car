@@ -64,7 +64,7 @@
           this.thisProduct = response.data.find((item) =>{
             return item.pro_id == pageId
           })
-          console.log(this.allProducts);
+          console.log(this.thisProduct);
         })
         // console.log("========",this.thisProduct)
       // })
@@ -87,7 +87,7 @@
 
       // 取得圖片的路徑函式
       getProductImgSrc(imgName){
-        return new URL(`../assets/imgs/product/new_products/${imgName}`, import.meta.url).href
+        return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/new_products/${imgName}`, import.meta.url).href
       },
 
       // 大圖換小圖
@@ -198,9 +198,6 @@
 <MainHeader />
 <main class="container">
   <div class="row">
-    <!-- {{ ImgsName }} -->
-    <!-- {{ thisProduct }} -->
-   
     <div class="col-12 col-md-12 pro_title" >
       <h1>{{ thisProduct.pro_name }}</h1>
       <h2>{{ thisProduct.pro_en_name }}</h2>
@@ -217,7 +214,12 @@
       </div>
     </div>
     <div class="col-12 col-md-6 intro">
-      <div class="price">${{ thisProduct.pro_price}}</div>
+      <div class="price" :style="{ color: thisProduct.promo_state === 1 ? 'red' : 'black' }">
+        <p>
+          <span>{{ thisProduct.promo_name }}</span>
+          <span>${{ thisProduct.pro_sale}}</span>
+        </p>
+      </div>
       <!-- 採用v-html顯示內容(而非顯示字串)，再利用涵式轉換\r\n為<br>，最後利用v-if確保涵式運作的順序在讀取到資料之後-->
       <div class="intro_tet" v-if="thisProduct.pro_intro" v-html="replaceLineBreaks(thisProduct.pro_intro)">
       </div>
@@ -269,6 +271,7 @@
       <ProCardSwiper
       :displayData="allProducts"
       :title="'也許你會喜歡'"
+      
       />
       <ProCardSwiper
       :displayData="allProducts"

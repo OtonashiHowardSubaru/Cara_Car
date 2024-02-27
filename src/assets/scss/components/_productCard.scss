@@ -29,8 +29,9 @@
 
 //商品卡css起點
 .product_card{
-    padding: 0 5px;
+    padding: 0 15px;
     width: 50%;
+    margin-top: 15px;
 }
 @media (min-width:768px) {
     .product_card{
@@ -40,14 +41,14 @@
 .pro_card_img img{
     vertical-align: top;
     width: 100%;
-    aspect-ratio: 1/1;
-    object-fit:contain;
+    aspect-ratio: 1.31/1;
+    object-fit: contain;
     overflow: hidden;
 }
 .pro_crad_info *{
     width: fit-content;
     color: $blackWord;
-    margin: auto;
+    margin: 10px auto;
 }
 .pro_crad_info h6{
     font-size: $h4;
