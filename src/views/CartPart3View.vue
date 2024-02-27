@@ -9,69 +9,69 @@ import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 
 export default {
-components:{
-    MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,
-},
-data(){
-    return {
-        orderList:[],
-        allProducts:[],
-        cartItems: [],
-    }
-},
-created() {
-    this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
-    this.fetchData();
-    
-},
-computed: {
-    
-},
-methods: {
-    fetchData(){
-        // 定義頁碼
-        const pageId = this.$route.params.pro_id
-    
-        // 取得所有商品資料用做本頁資料以及swiper
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php?`)
-        .then((response) => {
-          // 成功取得資料後，將資料存入陣列
-          // console.log(response.data)
-        this.allProducts = response.data;
-        this.thisProduct = response.data.find((item) =>{
-            return item.pro_id == pageId
-        })
-        // console.log(this.allProducts);
-        })
-        // console.log("========",this.thisProduct)
-        // })
-        .catch((error) => {
-        console.error("Error fetching data:", error);
-          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
-
-        // const pageId2 = this.$route.params.pro_id
-        //取得該筆訂單資訊
-        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/frontOrder.php?`)
-        .then((response) => {
-          // 成功取得資料後，將資料存入陣列
-          // console.log(response.data)
-        this.orderList = response.data;
-        this.thisOrderList = response.data.find((item) =>{
-            return item.pro_id == pageId
-        })
-        console.log(this.orderList);
-        console.log(this.thisOrderList);
-        })
-        // console.log("========",this.thisProduct)
-        // })
-        .catch((error) => {
-        console.error("Error fetching data:", error);
-          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
+    components: {
+        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,
     },
-    
-},
+    data() {
+        return {
+            orderList: [],
+            allProducts: [],
+            cartItems: [],
+        }
+    },
+    created() {
+        this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
+        this.fetchData();
+
+    },
+    computed: {
+
+    },
+    methods: {
+        fetchData() {
+            // 定義頁碼
+            const pageId = this.$route.params.pro_id
+
+            // 取得所有商品資料用做本頁資料以及swiper
+            axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php?`)
+                .then((response) => {
+                    // 成功取得資料後，將資料存入陣列
+                    // console.log(response.data)
+                    this.allProducts = response.data;
+                    this.thisProduct = response.data.find((item) => {
+                        return item.pro_id == pageId
+                    })
+                    // console.log(this.allProducts);
+                })
+                // console.log("========",this.thisProduct)
+                // })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                    this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+                });
+
+            // const pageId2 = this.$route.params.pro_id
+            //取得該筆訂單資訊
+            axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontOrder.php?`)
+                .then((response) => {
+                    // 成功取得資料後，將資料存入陣列
+                    // console.log(response.data)
+                    this.orderList = response.data;
+                    this.thisOrderList = response.data.find((item) => {
+                        return item.pro_id == pageId
+                    })
+                    console.log(this.orderList);
+                    console.log(this.thisOrderList);
+                })
+                // console.log("========",this.thisProduct)
+                // })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                    this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+                });
+        },
+
+    },
 }
 </script>
 
@@ -83,13 +83,13 @@ methods: {
                 <h2>購物車
                 </h2>
                 <div class="cartBird">
-                <BlueBird class="cartBlueBird"/>
-                <GreenBird class="cartGreenBird"/>
-                <YellowBird class="cartYellowBird"/>
+                    <BlueBird class="cartBlueBird" />
+                    <GreenBird class="cartGreenBird" />
+                    <YellowBird class="cartYellowBird" />
+                </div>
             </div>
-            </div>
-            <DoubleCloud class="cartCloud"/>
-            
+            <DoubleCloud class="cartCloud" />
+
             <div class="cartProcess1" id="cartProcessTop">
                 <div class="cartProcessCircle" id="circle1">1</div>
                 <div class="cartLine"></div>
@@ -122,7 +122,7 @@ methods: {
                 <h1>訂單資訊</h1>
             </div>
             <div class="listContent">
-                <div class="left" >
+                <div class="left">
                     <ul>
                         <div class="row">
                             <li class="order">訂單編號</li>
@@ -154,9 +154,9 @@ methods: {
                         </div>
                         <div class="row">
                             <li class="order">配送地址</li>
-                            <span>{{ orderList[orderList.length - 1].ord_city}}</span>
-                            <span>{{ orderList[orderList.length - 1].ord_district}}</span>
-                            <span>{{ orderList[orderList.length - 1].ord_address}}</span>
+                            <span>{{ orderList[orderList.length - 1].ord_city }}</span>
+                            <span>{{ orderList[orderList.length - 1].ord_district }}</span>
+                            <span>{{ orderList[orderList.length - 1].ord_address }}</span>
                         </div>
                         <div class="row">
                             <li class="order">備註訊息</li>
@@ -172,120 +172,126 @@ methods: {
 
         <section class="cartFunction" v-if="orderList.length > 0">
             <!-- 這裡是商品內容 -->
-            <div class="productCard" >
+            <div class="productCard">
                 <!-- <img :src="(item.imageUrl)" alt="ProductImage"> -->
-                    <div class="proCardP">
-                        <p class="pro_name">{{ orderList[orderList.length - 1].pro_name}}</p>
-                        <p class="pro_price">${{ orderList[orderList.length - 1].pro_price}}</p>
-                    </div>
-                    <!-- <NumberSelect
+                <div class="proCardP">
+                    <p class="pro_name">{{ orderList[orderList.length - 1].pro_name }}</p>
+                    <p class="pro_price">${{ orderList[orderList.length - 1].pro_price }}</p>
+                </div>
+                <!-- <NumberSelect
                     :qtyValue="item.quantity" @change="updateQuantity(index, $event)"
                     /> -->
-                    <!-- <div class="number_select">
+                <!-- <div class="number_select">
                         <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index,-1)"> -->
-                        <input type="text" name="quantity" :value="orderList[orderList.length - 1].ord_qty" class="qty" ref="`qtyInput_${index}`" @keydown.enter.prevent>
-                        <!-- <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
+                <input type="text" name="quantity" :value="orderList[orderList.length - 1].ord_qty" class="qty"
+                    ref="`qtyInput_${index}`" @keydown.enter.prevent>
+                <!-- <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
                     </div> -->
-                    <p class="proCount">${{orderList[orderList.length - 1].pro_sale}}</p>
+                <p class="proCount">${{ orderList[orderList.length - 1].pro_sale }}</p>
             </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">小計</span>
                 <!-- 這裡要算小計 -->
-                <span class="cartFunctionTitle">${{orderList[orderList.length - 1].ord_sum}}</span>
+                <span class="cartFunctionTitle">${{ orderList[orderList.length - 1].ord_sum }}</span>
             </div>
             <div class="cartPrice">
                 <span class="cartFunctionTitle">運費</span>
-                <span class="cartFunctionTitle">${{orderList[orderList.length - 1].ord_ship}}</span>
+                <span class="cartFunctionTitle">${{ orderList[orderList.length - 1].ord_ship }}</span>
             </div>
             <!-- 這裡要算加運費的總金額 -->
-            <p class="cartCountTotal">合計金額：${{orderList[orderList.length - 1].ord_total}}</p>
-            
+            <p class="cartCountTotal">合計金額：${{ orderList[orderList.length - 1].ord_total }}</p>
+
         </section>
     </main>
-    <ProCardSwiper
-    :displayData="allProducts"
-    :title="'別人也逛過'"
-    />
-    <ProCardSwiper
-    :displayData="allProducts"
-    :title="'也許你會喜歡'"
-    />
+    <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
+    <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/page/cart.scss';
+
 // @import '@/assets/scss/page/cartPart2.scss';
 // #cartProcessTop{
 //     margin-top: 90px;
 // }
-#circle2{
+#circle2 {
     background-color: #C0AA88;
-    border:none;
+    border: none;
     color: $whiteWord;
 }
 
-#process2{
+#process2 {
     color: $blackWord;
 }
-#circle3{
+
+#circle3 {
     background-color: #C0AA88;
-    border:none;
+    border: none;
     color: $whiteWord;
 }
 
-#process3{
+#process3 {
     color: $blackWord;
 }
-.orderList{
+
+.orderList {
     width: 47%;
     display: flex;
     flex-direction: column;
     margin: 0 auto 60px;
-    h1{
+
+    h1 {
         font-size: 20px;
         padding-bottom: 10px;
         margin-bottom: 15px;
     }
-    .left{
+
+    .left {
         width: 50%;
         margin-left: 10px;
     }
-    .right{
+
+    .right {
         width: 50%;
         display: flex;
         justify-content: center;
     }
-    .listContent{
+
+    .listContent {
         display: flex;
         border-bottom: 1px solid #222;
         padding-bottom: 15px;
+
         // justify-content: space-between;
-        .row{
+        .row {
             display: flex;
             align-items: center;
         }
-        li{
+
+        li {
             font-weight: 600;
             width: 70px;
             line-height: 30px;
             margin-right: 35px;
         }
     }
-    .count{
-        span{
+
+    .count {
+        span {
             border: none;
         }
     }
 }
-.cartFunction{
+
+.cartFunction {
     border-radius: 20px;
     padding: 50px 0 80px;
     width: 50%;
     margin: 0 auto;
     background-color: $grey_1;
-    .productCard{
+
+    .productCard {
         padding-bottom: 20px;
         border-bottom: 1px solid #222;
     }
-}
-</style>
+}</style>

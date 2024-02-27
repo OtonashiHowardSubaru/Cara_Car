@@ -150,7 +150,7 @@ export default {
       };
       axios
         .post(
-          `${import.meta.env.VITE_LPHP_URL}/front/updateMemberProfile.php`,
+          `${import.meta.env.VITE_PHP_URL}/front/updateMemberProfile.php`,
           postData,
           {
             headers: { "Content-Type": "multipart/form-data" },
@@ -181,7 +181,7 @@ export default {
     },
     // 取得圖片的路徑函式
     getProductImgSrc(imgName) {
-      return new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/product/new_products/${imgName}`).href
+      return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/product/new_products/${imgName}`).href
     },
     updateImgName() {
       // 自動更新在this.favoriteProducts中的imgName(自動+1)
@@ -199,7 +199,7 @@ export default {
       return this.userData.img_path
         ? (this.userData.img_path.startsWith("http")
           ? this.userData.img_path
-          : new URL(`${import.meta.env.VITE_LIMG_BASE_URL}/memberImg/${this.userData.img_path}`).href)
+          : new URL(`${import.meta.env.VITE_IMG_BASE_URL}/memberImg/${this.userData.img_path}`).href)
         : userImage;
     },
     uploadImg(e) {
@@ -215,7 +215,7 @@ export default {
         // call api
         axios
           .post(
-            `${import.meta.env.VITE_LPHP_URL}/front/uploadMemberImg.php?`,
+            `${import.meta.env.VITE_PHP_URL}/front/uploadMemberImg.php?`,
             formData,
             {
               headers: {
@@ -244,7 +244,7 @@ export default {
       }
     },
     axiosGetOrder() {
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/frontOrder.php`)
+      axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontOrder.php`)
         .then((res) => {
           // 成功取得資料後，將資料存入陣列
           console.log(res.data)
@@ -459,7 +459,7 @@ export default {
           <h3 class="collect_title">收藏清單</h3>
           <div class="sub_title_line"></div>
         </div>
-  
+
         <div v-if="favoriteProducts.length > 0">
           <div class="favorite-product">
             <ul>
