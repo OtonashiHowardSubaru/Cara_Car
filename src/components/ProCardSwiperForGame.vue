@@ -55,6 +55,7 @@ export default {
             <RouterLink :to="'/Product/' + item.pro_id">
               <div class="pro_card_img">
                 <img :src="getProductImgSrc(item.img_name)" alt="Product Image">
+<<<<<<< HEAD
               </div>
               <div class="pro_crad_info">
                 <h6>{{ item.pro_name }}</h6>
@@ -66,6 +67,20 @@ export default {
       </swiper>
       <div class="swiper-button-prev" ref="prevButton"></div>
     </div>
+=======
+            </div>
+            <div class="pro_crad_info">
+              <h6>{{ item.pro_name }}</h6>
+              <p :style="{ color: item.promo_state === 1 ? 'red' : 'black' }">
+                ${{ item.promo_state === 1 ? item.pro_sale : item.pro_price }}
+              </p>
+            </div>
+          </RouterLink>
+        </div>
+      </swiper-slide>
+    </swiper>
+    <div class="swiper-button-prev" ref="prevButton"></div>
+>>>>>>> subaru
   </div>
 </template>
 <style scoped lang="scss">
