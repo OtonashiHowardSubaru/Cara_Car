@@ -50,28 +50,28 @@ export default {
                     this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
                 });
 
-            // const pageId2 = this.$route.params.pro_id
-            //取得該筆訂單資訊
-            axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontOrder.php?`)
-                .then((response) => {
-                    // 成功取得資料後，將資料存入陣列
-                    // console.log(response.data)
-                    this.orderList = response.data;
-                    this.thisOrderList = response.data.find((item) => {
-                        return item.pro_id == pageId
-                    })
-                    console.log(this.orderList);
-                    console.log(this.thisOrderList);
-                })
-                // console.log("========",this.thisProduct)
-                // })
-                .catch((error) => {
-                    console.error("Error fetching data:", error);
-                    this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-                });
-        },
-
+        // const pageId2 = this.$route.params.pro_id
+        //取得該筆訂單資訊
+        axios.get(`${import.meta.env.VITE_LPHP_URL}/front/frontOrder.php?`)
+        .then((response) => {
+          // 成功取得資料後，將資料存入陣列
+          // console.log(response.data)
+        this.orderList = response.data;
+        this.thisOrderList = response.data.find((item) =>{
+            return item.pro_id == pageId
+        })
+        console.log(this.orderList);
+        // console.log(this.thisOrderList);
+        })
+        // console.log("========",this.thisProduct)
+        // })
+        .catch((error) => {
+        console.error("Error fetching data:", error);
+          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+        });
     },
+    
+},
 }
 </script>
 
