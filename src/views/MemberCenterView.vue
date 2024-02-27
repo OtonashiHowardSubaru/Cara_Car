@@ -310,6 +310,7 @@ export default {
         </div>
         <div class="welcome">
           <!-- {{ favoriteProducts }} -->
+          <!-- {{ favoriteProducts }} -->
           <h3>您好{{ userData.m_name }}，歡迎光臨<br />Cara Car官網購物帳號</h3>
           <!-- PC會員預設頭貼位置 -->
           <div class="user_image" v-if="isDesktop && imgShow">
