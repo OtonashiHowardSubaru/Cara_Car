@@ -20,20 +20,6 @@ export default {
         },
     },
     computed:{
-        porductDetailHeight(){
-            // 如果是詳細資料頁，計算高度
-            if (this.activeTab === 0) {
-            // 計算pro_info內有幾組斷行字符
-            const lineBreaksCount = (this.thisProductInfo.pro_info.match(/[\r\n]/g) || []).length;
-            // 每多一組斷行字符就多30px
-            const heightIncrement = lineBreaksCount * 30;
-            // 回傳基礎高度+計算高度
-            return (150 + heightIncrement) + 'px';
-            } else {
-                // 如果不是詳細資料頁，固定高度1000px
-                return '1100px';
-            }
-        }
     },
     mounted() {
     }
@@ -49,14 +35,18 @@ export default {
                 <li :class="{ 'onSearch': activeTab === 2 }" @click="changeTab(2)">常見問題</li>
             </ul>
         </div>
-        <div class="sh_detail" :style="{ height: porductDetailHeight }">
+        <div class="detail">
             <div id="searchCont" class="searchCont">
                 <ul>
                     <li v-show="activeTab === 0">
                         <div>
                             <div class="form">
                                 <h2>{{ thisProductInfo.pro_name }}</h2>
-                                <div v-if="thisProductInfo.pro_info" v-html="replaceLineBreaks(thisProductInfo.pro_info)">
+                                <div 
+                                v-if="thisProductInfo.pro_info" 
+                                class="productInfoBox"
+                                >
+                                    {{thisProductInfo.pro_info}}
                                 </div>
 
                             </div>
@@ -187,11 +177,5 @@ export default {
     </div>
 </template>
 <style lang="scss" scope>
-@import '@/assets/scss/components/prodIntroCard.scss';
+@import '@/assets/scss/components/productInfoCard.scss';
 </style>
-
-
-
-
-
-

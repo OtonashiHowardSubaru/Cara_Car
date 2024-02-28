@@ -85,7 +85,7 @@ export default {
       // 價格排序的涵式
       handleSortChange(newSort){
         if (newSort === "0") {
-          this.displayData = this.responseData
+          this.displayData.sort((a,b) => a.pro_id - b.pro_id)
         } else if (newSort === "desc") {
           this.displayData.sort((a, b) => b.pro_price - a.pro_price);
         } else if (newSort === "asc"){
