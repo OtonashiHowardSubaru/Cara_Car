@@ -5,9 +5,11 @@ import userImage from "@/assets/imgs/memberCenter/userImage(default).png";
 import userStore from "@/stores/user";
 import { mapState, mapActions } from "pinia";
 import OrderDetailBox from "@/components/OrderDetailBox.vue"
+import chatBox from '@/components/btn/chatBox.vue'
+
 export default {
   components: {
-    MainHeader, OrderDetailBox,
+    MainHeader, OrderDetailBox, chatBox,
   },
   data() {
     return {
@@ -522,6 +524,7 @@ export default {
         </ul>
       </nav>
     </div>
+    <chatBox />
   </div>
 </template>
 

@@ -2,6 +2,7 @@
 import MainHeader from '@/components/MainHeader.vue'
 
 import apiInstance from '@/stores/auth'
+import chatBox from '@/components/btn/chatBox.vue'
 
 export default {
     data() {
@@ -17,10 +18,12 @@ export default {
             psw666again: '',
             passwordVisibleLeft: false,
             passwordVisibleRight: false,
+            
+
         }
     },
     components: {
-        MainHeader
+        MainHeader, chatBox,
     },
     methods: {
         togglePswLeft() {
@@ -178,6 +181,7 @@ export default {
             </div>
         </div>
     </div>
+    <chatBox />
 </template>
 
 <style lang="scss" scoped>

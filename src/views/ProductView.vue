@@ -9,6 +9,8 @@
 
   import { mapState, mapActions } from "pinia";
   import cartStore from "@/stores/cart";
+  import chatBox from '@/components/btn/chatBox.vue'
+
 
   export default{
     components:{
@@ -17,6 +19,7 @@
         MainHeader,
         NumberSelect,
         ProductIntroCard,
+        chatBox,
         Swal,
     },
     data(){
@@ -276,6 +279,8 @@
       />
     </div>
   </div>
+  <chatBox />
+
 </main>
 </template>
 <style lang="scss" scoped>

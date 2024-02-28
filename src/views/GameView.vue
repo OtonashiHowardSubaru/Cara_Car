@@ -3,11 +3,13 @@ import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/MainHeader.vue';
 import ProductCard from '@/components/ProductCard.vue';
 import ProCardSwiper from '@/components/ProCardSwiperForGame.vue'
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 
 export default {
   components: {
-    MainHeader, ProductCard, ProCardSwiper
+    MainHeader, ProductCard, ProCardSwiper, chatBox
   },
   data() {
     return {
@@ -153,6 +155,7 @@ export default {
       </div>
     </div>
   </main>
+  <chatBox />
 </template>
 
 <style lang="scss">
