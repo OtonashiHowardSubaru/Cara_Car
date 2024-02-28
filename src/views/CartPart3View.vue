@@ -70,7 +70,12 @@ export default {
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
     },
-    
+    clearCartData() {
+            this.cartItems = [];
+            // this.cart = [];
+            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+            console.log('清除購物車', this.cartItems);
+    },
 },
 }
 </script>
@@ -202,6 +207,9 @@ export default {
             <p class="cartCountTotal">合計金額：${{ orderList[orderList.length - 1].ord_total }}</p>
 
         </section>
+        <router-link to="/">
+            <button type="button" class="subButton" id="goToHome" @click="clearCartData">返回首頁</button>
+        </router-link>
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
@@ -214,6 +222,9 @@ export default {
 // #cartProcessTop{
 //     margin-top: 90px;
 // }
+#goToHome{
+    width:35%;
+}
 #circle2 {
     background-color: #C0AA88;
     border: none;

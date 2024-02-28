@@ -11,13 +11,13 @@
                 pic1:'',
                 pic2: new Image(),
                 pic4: new Image(),
-                x: 340,
-                y: 160,
-                startX: 340,
-                startY: 160,
-                speedX: 0.5,
+                x: 980,
+                y: 270,
+                startX: 980,
+                startY: 270,
+                speedX: 0.8,
                 speedY: 0,
-                startMovingYAtX: 280,
+                startMovingYAtX: 560,
                 gap: 40,
                 range: 0,
             };
@@ -27,17 +27,24 @@
     mounted() {
         this.bannerCanvas();
         this.animate();
-        
+        // window.addEventListener('resize', this.handleResize);
     },
-
+    // beforeDestroy() {
+    //     window.removeEventListener('resize', this.handleResize);
+    // },
     methods: {
-
         bannerCanvas() {
         let canvas = this.$refs.canvas;
         let context = canvas.getContext('2d');
     
         canvas.width = document.documentElement.clientWidth;
-        canvas.height = 650;
+        // canvas.height = 1100;
+        canvas.height = 1200;
+        // context.translate(300, 80);
+        // matchMedia
+        
+        // imgWidth =  document.documentElement.clientWidth;;
+        // imgHeight = document.documentElement.clientWidth * 0.965;
     
         let gap = 40;
         let range;
@@ -103,7 +110,7 @@
             let canvas = this.$refs.canvas;
             let context = canvas.getContext('2d');
             context.clearRect(0, 0, canvas.width, canvas.height);
-    
+            // context.translate(-300, -80);
     
     
             let x = this.x;  // 使用 this.x 取得資料
@@ -118,28 +125,28 @@
             let startMovingYAtX = this.startMovingYAtX;    
     
             if (x >= startX + startMovingYAtX) {
-                speedY = 0.2;
+                speedY = 0.4;
             }
     
             y += speedY;
     
     
             if (this.pic1) {
-                context.drawImage(this.pic1, 280, 80, 500, 483);
+                context.drawImage(this.pic1, 800, 80, 1200, 1050);
                 
             }
     
-            context.drawImage(this.pic4, x, y, 100, 75);
-            context.drawImage(this.pic2, 280, 80, 500, 483);
+            context.drawImage(this.pic4, x, y, 180, 120);
+            context.drawImage(this.pic2, 800, 80, 1200, 1050);
     
-            if (y > 340) {
-                y = 170;
+            if (y > 980) {
+                y = 280;
                 x = startX;
                 speedY = 0;
-
-                if(y>=170){
-                y = startY;
-            }
+    
+                if(y>=280){
+                    y = startY;
+                }
             }
     
             this.x = x;  // 更新資料

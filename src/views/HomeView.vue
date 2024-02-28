@@ -12,6 +12,7 @@ import ProductCard from "@/components/ProductCard.vue";
 import CardShProcess from '@/components/card/CardShProcess.vue';
 import bannerCanvas from "@/components/Canvas.vue";
 import bannerCanvas2 from "@/components/Canvas2.vue";
+import bannerCanvas3 from "@/components/Canvas3.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 
@@ -21,6 +22,7 @@ export default {
     DoubleCloud,
     bannerCanvas,
     bannerCanvas2,
+    bannerCanvas3,
   },
   data() {
     return {
@@ -363,6 +365,7 @@ export default {
   <div class="indexBannerGroup">
     <bannerCanvas class="bannerCanvas" />
     <bannerCanvas2 class="bannerCanvas2" />
+    <bannerCanvas3 class="bannerCanvas3" />
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
@@ -415,7 +418,7 @@ export default {
     <div class="indexAboutUsContent">
       <div class="indexAboutUsTitle">
         <img src="@/assets/imgs/Home/indexAboutUsTitle.svg" alt="">
-        <img class="decoImg" src="@/assets/imgs/draw/person_ballon.png" alt="person_sit">
+        <img class="decoImg" id="personBallon" src="@/assets/imgs/draw/person_ballon.png" alt="person_sit">
       </div>
       <div class="indexAboutText">
         <p>我們致力於提供各種特色的玩具車， 讓每個孩子都能擁有專屬的玩具車， 展開一場屬於他們獨特的冒險旅程。</p>
