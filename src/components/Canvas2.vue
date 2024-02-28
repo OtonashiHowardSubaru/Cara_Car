@@ -64,7 +64,7 @@
         let pic1 = new Image();
         pic1.src = 'src/assets/imgs/Home/indexBannerImg.svg';
         pic1.onload = () => {
-            console.log('pic1 loaded successfully');
+            // console.log('pic1 loaded successfully');
             this.pic1 = pic1;
             this.animate();
         };
@@ -72,14 +72,14 @@
         let pic2 = this.pic2;
         pic2.src = 'src/assets/imgs/Home/indexBannerImg2.svg';
         pic2.onload = () => {
-            console.log('pic2 loaded successfully');
+            // console.log('pic2 loaded successfully');
             this.pic2 = pic2;
         };
     
         let pic4 = this.pic4;
         pic4.src = 'src/assets/imgs/Home/CaraCar.svg';
         pic4.onload = () => {
-            console.log('pic4 loaded successfully');
+            // console.log('pic4 loaded successfully');
             this.pic4 = pic4;
         };
     
