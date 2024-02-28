@@ -15,6 +15,8 @@ import bannerCanvas2 from "@/components/Canvas2.vue";
 import bannerCanvas3 from "@/components/Canvas3.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 export default {
   components: {
@@ -23,6 +25,7 @@ export default {
     bannerCanvas,
     bannerCanvas2,
     bannerCanvas3,
+    chatBox,
   },
   data() {
     return {
@@ -466,6 +469,7 @@ export default {
     </div>
   </div>
   <CardShProcess class="CardShProcess" />
+  <chatBox />
 </template>
 <style lang="scss" scoped>
 @import '@/assets/scss/layout/header.scss';

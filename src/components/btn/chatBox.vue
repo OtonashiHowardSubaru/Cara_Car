@@ -18,7 +18,7 @@
                     <i class="fa-solid fa-bullhorn" style="color: #6f7f9b;"></i>
                     <div class="marqueee">
                         <div class="marquee">
-                            <p> \新年快樂/!!親愛的CaRa Car顧客：新的一年開始，CaRa Car將帶給您嶄新的驚喜！我們推出了「網上預訂折扣」活動，讓您在2024年的第一天即可享受購物的超讚優惠。</p>
+                            <p> 新年快樂!!親愛的CaRa Car顧客：新的一年開始，CaRa Car將帶給您嶄新的驚喜！我們推出了「網上預訂折扣」活動，讓您在2024年的第一天即可享受購物的超讚優惠。</p>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
 </template>
   
 <script>
-import { ref, nextTick, watch, onMounted } from 'vue';
+import { ref, nextTick, watch } from 'vue';
 
 export default {
     setup() {
@@ -202,7 +202,7 @@ export default {
                 body: "我想知道購物流程。",
                 author: 'you',
             });
-            const defaultAnswer1 = "加入購物車：點擊加入購物車，確認購物內容。結帳：進入結帳頁面，填寫收件資訊及選擇付款方式。付款：選擇適合的付款方式完成交易。確認訂單：完成付款後，確認訂單明細及付款資訊。寄送商品：等待Cara Car寄送商品到您指定的地址。";
+            const defaultAnswer1 = "1.加入購物車：點擊加入購物車，確認購物內容。2.結帳：進入結帳頁面，填寫收件資訊及選擇付款方式。3.付款：選擇適合的付款方式完成交易。4.確認訂單：完成付款後，確認訂單明細及付款資訊。5.寄送商品：等待Cara Car寄送商品到您指定的地址。";
             messages.value.push({
                 body: defaultAnswer1,
                 author: 'Cara',
