@@ -265,9 +265,9 @@
       </div>
     </div>
     <div class="col-12">
-      <ShProductIntroCard 
-      :productInfo="allProducts"/>
-      
+      <ProductIntroCard 
+      :thisProductInfo="thisProduct"
+      />
       <ProCardSwiper
       :displayData="allProducts"
       :title="'也許你會喜歡'"

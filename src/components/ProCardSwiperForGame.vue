@@ -29,7 +29,7 @@ export default {
       ).href;
     },
     handleResize() {
-      this.slidesPerView = window.innerWidth >= 768 ? 3 : 1;
+      this.slidesPerView = window.innerWidth >= 1024 ? 3 : 1;
     },
   },
   mounted() {

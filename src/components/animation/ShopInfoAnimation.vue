@@ -1,5 +1,8 @@
 <template>
 
+    <div class="bgCover" v-show="showBgCover">
+        <img src="../../assets/imgs/Home/index-logo.svg" alt="logo" class="bgCoveLogo">
+    </div>
     <div class="bgAnime">
         <img src="/src/assets/imgs/shopInfo/longStreetv2.jpg" alt="longStreetv2" class="longStreetv2">
         <img src="/src/assets/imgs/shopInfo/longStreet2v2.png" alt="longStreet2v2" class="longStreet2v2">
@@ -8,7 +11,7 @@
             <img src="/src/assets/imgs/shopInfo/animaPic/car.png" alt="car" class="animaImg-car">
             <img src="/src/assets/imgs/shopInfo/animaPic/ship.png" alt="ship" class="animaImg-ship">
             <img src="/src/assets/imgs/shopInfo/animaPic/train.png" alt="train" class="animaImg-train">
-            <img src="/src/assets/imgs/shopInfo/animaPic/balloon.png" alt="balloon" class="animaImg-balloon">
+            <!-- <img src="/src/assets/imgs/shopInfo/animaPic/balloon.png" alt="balloon" class="animaImg-balloon"> -->
             <img src="/src/assets/imgs/shopInfo/animaPic/sale.png" alt="sale" class="animaImg-sale">
             <div class="animaImg-boyDoze"></div>
             <div class="animaImg-grandpama"></div>
@@ -33,7 +36,7 @@
             <img src="/src/assets/imgs/shopInfo/animaPic/car.png" alt="car" class="animaImg-car2">
             <img src="/src/assets/imgs/shopInfo/animaPic/ship.png" alt="ship" class="animaImg-ship2">
             <img src="/src/assets/imgs/shopInfo/animaPic/train.png" alt="train" class="animaImg-train2">
-            <img src="/src/assets/imgs/shopInfo/animaPic/balloon.png" alt="balloon" class="animaImg-balloon2">
+            <!-- <img src="/src/assets/imgs/shopInfo/animaPic/balloon.png" alt="balloon" class="animaImg-balloon2"> -->
             <img src="/src/assets/imgs/shopInfo/animaPic/sale.png" alt="sale" class="animaImg-sale2">
             <div class="animaImg-boyDoze2"></div>
             <div class="animaImg-grandpama2"></div>
@@ -65,10 +68,14 @@
 
 <script>
 import gsap from 'gsap';
-import { onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
     setup() {
+        // 使用ref追踪是否显示bgCover
+        const showBgCover = ref(false);
+        const coverColor = ref('#000'); // 初始背景颜色
+
         onMounted(() => {
 
             // 設定底圖動畫
@@ -83,11 +90,24 @@ export default {
                 y: "-410%", // 向下移動100%的高度
                 ease: "linear", // 使用線性緩動
                 delay:5,
+
+                onComplete: () => {
+                    // 使用GSAP动画实现背景渐变
+                    tl.to(coverColor, { 
+                        // delay:1,
+                        duration: 5, 
+                        value: '#000', 
+
+
+                        onComplete: () => {
+                            showBgCover.value = true;
+                            image.style.display = 'none'; // 隐藏.bgAnime
+                            
+                        } 
+                    });
+                },
             });
-            tl.to(image, {
-                // duration: 20, // 動畫持續時間
-                delay:8,
-            });
+
 
             // 調整視口高度以匹配圖片高度
             gsap.set(document.body, { height: image.offsetHeight });
@@ -100,13 +120,13 @@ export default {
             
 
             // 車車 animaImg-car
-            gsap.timeline()
+            gsap.timeline({repeat:-1})
             .to(".animaImg-car",{
                 duration: 0.2,
                 // x: "-300px",
                 y: "1.5px",
                 // ease: "linear",
-                delay:2,
+                delay:3,
             })
             .to(".animaImg-car",{
                 duration: 0.5,
@@ -122,8 +142,11 @@ export default {
                 ease: "linear",
                 delay:1,
             })
+            .to(".animaImg-car",{
+                delay:10,
+            })
 
-            gsap.timeline()
+            gsap.timeline({repeat:-1})
             .to(".animaImg-car2",{
                 duration: 0.2,
                 // x: "-300px",
@@ -144,6 +167,9 @@ export default {
                 y: "-50px",
                 ease: "linear",
                 delay:1,
+            })
+            .to(".animaImg-car",{
+                delay:10,
             })
 
 
@@ -154,20 +180,21 @@ export default {
                 x: "0px",
                 y: "-200px",
                 ease: "linear",
+                // delay:8,
                 
             },{
                 duration: 2.5,
                 x: "1300px",
                 y: "300px",
                 ease: "linear",
-                delay:1,
+                delay:8,
             })
             .to(".animaImg-train", {
-                duration: 4,
+                duration: 5,
                 x: "-1300px",
                 y: "-700px",
                 ease: "linear",
-                delay:3,
+                delay:8,
             })
 
             gsap.timeline({repeat:-1})
@@ -176,21 +203,21 @@ export default {
                 x: "0px",
                 y: "-200px",
                 ease: "linear",
-                delay:20,
+                // delay:8,
                 
             },{
                 duration: 3,
                 x: "1300px",
                 y: "300px",
                 ease: "linear",
-                delay:1,
+                delay:8,
             })
             .to(".animaImg-train2", {
-                duration: 4,
+                duration: 5,
                 x: "-1300px",
                 y: "-700px",
                 ease: "linear",
-                delay:3,
+                delay:8,
             })
 
             // 船 animaImg-ship
@@ -243,15 +270,16 @@ export default {
             })
 
             // 散步爺爺奶奶 animaImg-grandpama
-            gsap.timeline()
+            gsap.timeline({repeat: -1})
             .to(".animaImg-grandpama",{
-                x:"10px",
+                x:"15px",
                 y:"-20px",
                 duration: 2, 
                 ease: "none",  
+                delay: 1,
             })
             .to(".animaImg-grandpama",{
-                x:"40px",
+                x:"50px",
                 y:"-80px",
                 duration: 6, 
                 ease: "none",   
@@ -269,43 +297,58 @@ export default {
                 ease: "none",   
             })
             .to(".animaImg-grandpama",{
-                x:"-110px",
-                y:"-190px",
+                x:"-60px",
+                y:"-180px",
                 duration: 8, 
                 ease: "none",   
             })
-
-            gsap.timeline()
-            .to(".animaImg-grandpama2",{
-                x:"10px",
-                y:"-20px",
-                duration: 2, 
-                ease: "none",
-                delay:20,  
-            })
-            .to(".animaImg-grandpama2",{
-                x:"40px",
-                y:"-80px",
+            .to(".animaImg-grandpama",{
+                x:"-130px",
+                y:"-200px",
                 duration: 6, 
                 ease: "none",   
+            })
+            .to(".animaImg-grandpama",{
+                delay: 5,
+            })
+
+            gsap.timeline({repeat: -1})
+            .to(".animaImg-grandpama2",{
+                x:"15px",
+                y:"-20px",
+                duration: 2, 
+                ease: "none", 
+                // delay:20,  
+            })
+            .to(".animaImg-grandpama2",{
+                x:"50px",
+                y:"-80px",
+                duration: 6, 
+                ease: "none", 
             })
             .to(".animaImg-grandpama2",{
                 x:"30px",
                 y:"-130px",
                 duration: 6, 
-                ease: "none",   
+                ease: "none",  
             })
             .to(".animaImg-grandpama2",{
                 x:"20px",
-                y:"-140px",
+                y:"-160px",
                 duration: 3, 
                 ease: "none",   
             })
             .to(".animaImg-grandpama2",{
-                x:"-110px",
+                x:"-60px",
                 y:"-180px",
                 duration: 8, 
                 ease: "none",   
+            })
+            .to(".animaImg-grandpama2",{
+                x:"-130px",
+                y:"-200px",
+                duration: 6, 
+                ease: "none",    
             })
 
             // 足球少年
@@ -440,7 +483,7 @@ export default {
             .to(".animaImg-catWalk",{
                 x:"-80px",
                 // y:"-3px",
-                duration: 2, 
+                duration: 3, 
                 ease: "none", 
                 // delay:20,
             })
@@ -450,17 +493,17 @@ export default {
             })
             .to(".animaImg-catWalk",{
                 x:"0px",
-                duration: 2, 
+                duration: 3, 
                 ease: "none",           
             })
             .to(".animaImg-catWalk",{
-                delay:8,             
+                delay:5,             
             })
 
             gsap.timeline({repeat:-1})
             .to(".animaImg-catWalk2",{
                 x:"-80px",
-                duration: 2, 
+                duration: 3, 
                 ease: "none", 
             })
             .to(".animaImg-catWalk2",{
@@ -469,31 +512,31 @@ export default {
             })
             .to(".animaImg-catWalk2",{
                 x:"0px",
-                duration: 2, 
+                duration: 3, 
                 ease: "none",              
             })
             .to(".animaImg-catWalk2",{
-                delay:8,                   
+                delay:5,                   
             })
 
             // 魚
             gsap.timeline({repeat:-1})
             .to(".animaImg-dogging",{
                 x:"180px",
-                y:"-15px",
-                duration: 5, 
+                y:"-17px",
+                duration: 6, 
                 ease: "none", 
             })
             .to(".animaImg-dogging",{
                 x:"250px",
-                y:"-20px",
+                y:"-18px",
                 duration: 2, 
                 ease: "none", 
             })
             .to(".animaImg-dogging",{
-                x:"310px",
-                y:"-10px",
-                duration: 2, 
+                x:"340px",
+                y:"-5px",
+                duration: 3, 
                 ease: "none", 
             })
             .to(".animaImg-dogging",{
@@ -501,7 +544,7 @@ export default {
                 delay: 1,
             })
             .to(".animaImg-dogging",{
-                x:"200px",
+                x:"240px",
                 y:"-20px",
                 duration: 4, 
                 ease: "none", 
@@ -509,30 +552,30 @@ export default {
             .to(".animaImg-dogging",{
                 x:"-10px",
                 y:"10px",
-                duration: 5, 
+                duration: 10, 
                 ease: "none", 
             })
             .to(".animaImg-dogging",{
-                // delay:10,
+                delay:5,
             })
 
             gsap.timeline({repeat:-1})
             .to(".animaImg-dogging2",{
                 x:"180px",
                 y:"-15px",
-                duration: 5, 
+                duration: 6, 
                 ease: "none", 
             })
             .to(".animaImg-dogging2",{
                 x:"250px",
-                y:"-20px",
+                y:"-18px",
                 duration: 2, 
                 ease: "none", 
             })
             .to(".animaImg-dogging2",{
-                x:"310px",
-                y:"-10px",
-                duration: 2, 
+                x:"340px",
+                y:"-5px",
+                duration: 3, 
                 ease: "none", 
             })
             .to(".animaImg-dogging2",{
@@ -540,19 +583,25 @@ export default {
                 delay: 1,
             })
             .to(".animaImg-dogging2",{
-                x:"200px",
+                x:"280px",
+                y:"-18px",
+                duration: 3, 
+                ease: "none", 
+            })
+            .to(".animaImg-dogging2",{
+                x:"240px",
                 y:"-20px",
-                duration: 4, 
+                duration: 2, 
                 ease: "none", 
             })
             .to(".animaImg-dogging2",{
                 x:"-10px",
                 y:"10px",
-                duration: 5, 
+                duration: 10, 
                 ease: "none", 
             })
             .to(".animaImg-dogging2",{
-                delay:10,
+                delay:5,
             })
 
 
@@ -561,13 +610,13 @@ export default {
             .to(".animaImg-walkBoy",{
                 x:"-20px",
                 y:"350%",
-                duration: 6, 
+                duration: 5, 
                 ease: "none", 
             })
             .to(".animaImg-walkBoy",{
                 x:"-20px",
                 y:"1100%",
-                duration: 20, 
+                duration: 19, 
                 ease: "none", 
             })
             .to(".animaImg-walkBoy",{
@@ -602,13 +651,14 @@ export default {
             })
             .to(".animaImg-walkBoy",{
                 x:"-10px",
-                y:"3800%",
-                duration: 6, 
+                y:"4000%",
+                duration: 8, 
                 ease: "none", 
             })
 
 
         });
+
 
         onUnmounted(() => {
             // Cleanup code if needed
@@ -617,6 +667,10 @@ export default {
                 // Your event listener removal logic
             });
         });
+
+        return {
+            showBgCover,
+        }
     }
 }
 </script>
@@ -627,3 +681,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/components/animation/shopInfoAnimation.scss';
 </style>
+
+
+<!-- background-size 的寬度值設為 N ×100%
+background-position 的結束位置為 100% + (100 ÷(N - 1))% -->

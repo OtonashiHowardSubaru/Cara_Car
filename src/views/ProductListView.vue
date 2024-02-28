@@ -68,7 +68,7 @@ export default {
     created() {
       //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
       // 取得全部商品資料用作商品資料，以及swiper用的所有資料
-      axios.get(`${import.meta.env.VITE_LPHP_URL}/front/productlist.php`)
+      axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -85,7 +85,7 @@ export default {
       // 價格排序的涵式
       handleSortChange(newSort){
         if (newSort === "0") {
-          this.displayData = this.responseData
+          this.displayData.sort((a,b) => a.pro_id - b.pro_id)
         } else if (newSort === "desc") {
           this.displayData.sort((a, b) => b.pro_price - a.pro_price);
         } else if (newSort === "asc"){
