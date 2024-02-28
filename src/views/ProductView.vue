@@ -268,7 +268,9 @@ export default {
       </div>
     </div>
     <div class="col-12">
-      <ProductIntroCard />
+      <ProductIntroCard 
+      :thisProductInfo="thisProduct"
+      />
       <ProCardSwiper
       :displayData="allProducts"
       :title="'也許你會喜歡'"

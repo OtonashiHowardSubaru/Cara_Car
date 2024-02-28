@@ -92,25 +92,35 @@ main{
   button:hover{
     background-color: $green;
     color: $whiteWord;
+    ::after{
+      content: '';
+      width: 56px;
+      height: 56px;
+    }
   }
 }
 .finishGame{
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  padding: 3% 0%;
+  padding: 3% 5%;
   margin: var(--gameMargin);
-  // aspect-ratio: 2/1;
-  background-image: url(../../imgs/game/question_box.svg);
-  background-size: contain;
+  aspect-ratio: 0.8/1;
+  background-image: url(../../imgs/game/result_box_mobile.svg);
+  background-size: cover;
   background-repeat: no-repeat;
-  
+  @media(min-width: 1024px){
+    padding: 6% 0%;
+    aspect-ratio: 1.53/1;
+    background-size: contain;
+    background-image: url(../../imgs/game/result_box_pc.svg);
+  }
   h3{
     width: 100%;
     text-align: center;
     font-size: $mh4;
     vertical-align: bottom;
-    @media(min-width: 768px){
+    @media(min-width: 1024px){
       font-size: $h4;
     }
   }
