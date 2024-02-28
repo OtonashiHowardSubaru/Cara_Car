@@ -10,7 +10,7 @@ import BlueBird from '@/components/animation/BlueBird.vue';
 import YellowBird from '@/components/animation/YellowBird.vue';
 import GreenBird from '@/components/animation/GreenBird.vue';
 import chatBox from '@/components/btn/chatBox.vue'
-
+import loading from '@/components/loading.vue'
 
 export default {
   components: {
@@ -24,6 +24,7 @@ export default {
     GreenBird,
     YellowBird,
     chatBox,
+    loading,
 },
   data() {
     return {
@@ -182,6 +183,7 @@ export default {
         />
       </div>
       <div class="col-md-10 pro_card_list ">
+        <!-- <loading /> -->
         <ProductCard 
         :displayData="paginated"
         />
