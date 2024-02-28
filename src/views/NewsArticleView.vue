@@ -50,6 +50,7 @@
             </div>
         </div>
     </main>
+    <chatBox />
 </template>
 
 <script>
@@ -61,6 +62,7 @@ import BlueBird from '@/components/animation/BlueBird.vue'
 import GreenBird from '@/components/animation/GreenBird.vue'
 
 import axios from 'axios'; //引入函式庫
+import chatBox from '@/components/btn/chatBox.vue'
 
 export default {
     components: {
@@ -69,6 +71,7 @@ export default {
         YellowBird,
         BlueBird,
         GreenBird,
+        chatBox
 
     },
     data() {

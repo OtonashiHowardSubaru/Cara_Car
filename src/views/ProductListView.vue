@@ -9,6 +9,8 @@ import MainHeader from '@/components/MainHeader.vue';
 import BlueBird from '@/components/animation/BlueBird.vue';
 import YellowBird from '@/components/animation/YellowBird.vue';
 import GreenBird from '@/components/animation/GreenBird.vue';
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 export default {
   components: {
@@ -21,6 +23,7 @@ export default {
     BlueBird,
     GreenBird,
     YellowBird,
+    chatBox,
 },
   data() {
     return {
@@ -190,6 +193,8 @@ export default {
     <img src="@/assets/imgs/product/sh_bg.png" alt="">
   </div>
   <CardShProcess />
+  <chatBox />
+
 </template>
 
 <style lang="scss">

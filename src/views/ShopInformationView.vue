@@ -22,6 +22,7 @@
             </div>
         </section>
     </main>
+    <chatBox />
 </template>
 
 <script>
@@ -31,6 +32,8 @@ import MainHeader from '@/components/MainHeader.vue';
 import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
 import ShopInfoAnimation from '@/components/animation/ShopInfoAnimation.vue'
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 
 export default {
@@ -41,6 +44,8 @@ export default {
         ShopMap,
         InfoTextCards,
         ShopInfoAnimation,
+        chatBox
+
     },
     data() {
         return{
