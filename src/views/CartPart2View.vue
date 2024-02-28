@@ -283,16 +283,15 @@ methods: {
                     <input type="text" placeholder=" 中正區" class="area">
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
-                <!-- <router-link to="/cartPart3"> -->
                     <input type="button" class="subButton" @click="buyDone" value="確認並送出訂單">
-                <!-- </router-link> -->
+                <router-link to="/cart">
+                    <button class="subButton" id="backButton">
+                        回上一頁修改
+                    </button>
+                </router-link>
             </div>
         </form>
-        <router-link to="/cart">
-            <button class="backButton">
-                回上一頁修改
-            </button>
-        </router-link>
+        
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
@@ -312,10 +311,12 @@ methods: {
     color: $blackWord;
 }
 
-.backButton {
-    background-color: $grass_2;
-    color: $whiteWord;
-    position: absolute;
-    left: 20%;
+#backButton {
+    background-color: $whiteWord;
+    color: $grass_2;
+    font-weight: 600;
+}
+#backButton:hover{
+    text-decoration: underline;
 }
 </style>

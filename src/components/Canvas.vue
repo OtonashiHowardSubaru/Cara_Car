@@ -11,13 +11,13 @@ export default {
             pic1:'',
             pic2: new Image(),
             pic4: new Image(),
-            x: 400,
-            y: 235,
-            startX: 400,
-            startY: 235,
+            x: 460,
+            y: 250,
+            startX: 460,
+            startY: 250,
             speedX: 0.8,
             speedY: 0,
-            startMovingYAtX: 565,
+            startMovingYAtX: 600,
             gap: 40,
             range: 0,
         };
@@ -50,8 +50,8 @@ methods: {
     canvas.width = document.documentElement.clientWidth;
     // canvas.height = 1100;
     canvas.height =  document.documentElement.clientWidth * 0.965;
-    context.translate(300, 80);
-    matchMedia
+    // context.translate(300, 80);
+    // matchMedia
     
     // imgWidth =  document.documentElement.clientWidth;;
     // imgHeight = document.documentElement.clientWidth * 0.965;
@@ -94,7 +94,7 @@ methods: {
     };
 
     let pic4 = this.pic4;
-    pic4.src = 'src/assets/imgs/Home/IMG_0946.svg';
+    pic4.src = 'src/assets/imgs/Home/CaraCar.svg';
     pic4.onload = () => {
         console.log('pic4 loaded successfully');
         this.pic4 = pic4;
@@ -142,14 +142,13 @@ methods: {
 
 
         if (this.pic1) {
-            context.drawImage(this.pic1, 0, 0, 1000, 965);
+            context.drawImage(this.pic1, 390, 80, 1020, 965);
             
         }
+        context.drawImage(this.pic4, x, y, 180, 120);
+        context.drawImage(this.pic2, 390, 80, 1020, 965);
 
-        context.drawImage(this.pic4, x, y, 200, 150);
-        context.drawImage(this.pic2, 0, 0, 1010, 965);
-
-        if (y > 400) {
+        if (y > 460) {
             y = 270;
             x = startX;
             speedY = 0;

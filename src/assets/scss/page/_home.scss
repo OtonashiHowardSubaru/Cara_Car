@@ -15,10 +15,13 @@
 .bannerCanvas{
     display: none;
 }
-.bannerCanva2{
+.bannerCanvas2{
     width: 100%;
     display: block;
     // margin-right: 10%;
+}
+.bannerCanvas3{
+    display: none;
 }
 .indexBannerTitle{
     // font-family: 'Kosugi Maru';
@@ -54,13 +57,13 @@
 }
 .SingleCloud {
     position: absolute;
-    left: 6%;
-    bottom: 28%;
+    left: 8%;
+    bottom: 26%;
 }
 .DoubleCloud{
     position: absolute;
-    left: 18%;
-    bottom: 13%;
+    left: 16%;
+    bottom: 7%;
 }
 
 
@@ -361,7 +364,7 @@
 
         .decoImg {
             display: none;
-
+            
 
             @media (min-width:768px) {
                 display: block;
@@ -369,8 +372,16 @@
                 position: relative;
                 bottom: -10px;
                 left: 40px;
+                animation: shake2 12s infinite;
             }
         }
+        @keyframes shake2 {
+            0%, 100%{transform: rotate(0deg);}
+            10%,30%,50%,70%,90%{transform: rotate(-1deg);}
+            20%, 40%, 60%, 80%{transform: rotate(1deg);}
+        
+        }
+        
     }
 
     .otherEventCards {
@@ -425,6 +436,9 @@
                 width: 60%;
             }
 
+        }
+        #personBallon{
+            animation: shake2 12s infinite;
         }
         .indexAboutText{
             width: 100%;
@@ -697,6 +711,9 @@ to {
     .bannerCanvas2{
         display: none;
     }
+    .bannerCanvas3{
+        display: none;
+    }
     .indexBannerTitle{
         writing-mode: vertical-rl;
         left: 10%;
@@ -730,6 +747,19 @@ to {
     }
     
 }
+@media (min-width:1440px) {
+    .bannerCanvas{
+        display: none;
+    }
+    .bannerCanvas2{
+        display: none;
+    }
+    .bannerCanvas3{
+        display: block;
+
+    }
+}
+
 @media (min-width:768px) {
     .indexGameGroup{
         // position: relative;
@@ -783,8 +813,8 @@ to {
     .gameButtonText{
         position: absolute;
         // width: 100px;
-        top: 35%;
-        left: 53%;
+        top: 34%;
+        left: 49%;
     }
     // .rotate{
     //     transition: transform 5s;
