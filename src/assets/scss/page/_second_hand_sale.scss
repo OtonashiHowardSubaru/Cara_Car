@@ -1,113 +1,169 @@
-.SecondHandSale{
+.SecondHandSale {
     width: 100%;
     margin-bottom: 100px;
 
-    .SecondHandSaleTitle{
+    .SecondHandSaleTitle {
         margin-top: 110px;
         padding-bottom: 25px;
         border-bottom: 1px solid $blackWord;
-        h2{
+
+        h2 {
             text-align: center;
         }
     }
-    .saleCarStepTopText{
-        width: 95%;
+
+    .saleCarStepTopText {
+        width: 100%;
         margin: 0 auto;
-        p{
+
+        p {
             font-size: $p;
-            font-family: 'Kosugi Maru';
+            // font-family: 'Kosugi Maru';
             line-height: 40px;
             padding: 20px 60px;
         }
-        .drawPic{
-            img{
-                width: 20%;
+
+        .drawPic {
+            img {
+                width: 32%;
                 position: absolute;
-                right: 5%;
-                top: 12%;
+                right: 2%;
+                top: 15%;
+                z-index: 2;
+                animation: sway 3s ease-in-out infinite;
             }
         }
     }
-    .saleCarSteps{
-        .bgm{
+
+    @keyframes sway {
+        0% {
+            transform: translateX(0);
+        }
+
+        50% {
+            transform: translateX(5%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    .saleCarSteps {
+        .bgm {
             background-image: url(../../imgs/SecondHandSale/bgp.png);
             width: 100%;
             background-size: 100% 100%;
-            background-position: center ; // 背景圖片置中
+            background-position: center; // 背景圖片置中
             margin: 0;
             position: relative;
             background-repeat: no-repeat;
-        
+
         }
-        .saleCarStep{ 
+
+        .saleCarStep {
             width: 85%;
-            margin: 0 5% 0 10%;
+            margin: 0 3% 0 8%;
             display: flex;
             align-items: center;
             justify-content: center;
-                .saleCarStepImg{
-                    width: 45%;
-                    img{
-                        width: 100%;
-                        height: auto; 
-                        }
+
+            .saleCarStepImg {
+                width: 45%;
+
+                img {
+                    width: 95%;
+                    height: auto;
                 }
-                .saleCarStepType{
-                    width: 55%;
-                    display: flex;
-                    align-items: start;
-                    flex-direction: column;
-                    margin: 2% 5%;
-                    .saleCarStepNum{
-                        font-size: $h3;
-                        margin: 10px 15px;
-                        font-family: "Single DAY";
-                    }
-                    
-                }
-                .saleCarStepContent{
+            }
+
+            .saleCarStepType {
+                width: 70%;
+                display: flex;
+                align-items: start;
+                flex-direction: column;
+                margin: 2%;
+                opacity: 0;
+                transform: translateY(50px);
+                transition: opacity 0.5s, transform 0.5s;
+                animation: fadeInUp 1s ease-out forwards;
+
+                .saleCarStepNum {
                     font-size: $h3;
-                    p{
-                        display: none;
+                    margin: -2px 10px;
+                    font-family: "Single DAY";
+                }
+
+
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(50px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
                     }
                 }
+            }
+
+            .saleCarStepContent {
+                font-size: $h4;
+                letter-spacing: 1.5px;
+
+                h5 {
+                    margin: 0 0px;
+                }
+
+                p {
+                    display: none;
+                }
+            }
         }
-    
+
     }
-    .infoTextSale{
+
+    .infoTextSale {
         // height: 900px;
         width: 90%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         margin: 0 auto;
-        .InfoTextCards{
+
+        .InfoTextCards {
             width: 80%;
             margin: 0 auto;
             padding-top: 0px;
+
             // border-top: 1px solid $blackWord;
-            .InfoTextText{
+            .InfoTextText {
                 width: 100%;
             }
+
             .shopInfoMapSale {
                 width: 100%;
                 margin: 0 auto;
             }
         }
-        .AboutUsBtnSale{
+
+        .AboutUsBtnSale {
             width: 80%;
             margin: 0 auto;
         }
     }
+
     @media (min-width : 768px) {
-        .infoTextSale{
+        .infoTextSale {
             // height: 900px;
             width: 90%;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
             margin: 0 auto;
-            .InfoTextCards{
+
+            .InfoTextCards {
                 width: 80%;
                 margin: 0;
                 padding-top: 0px;
@@ -116,37 +172,44 @@
         }
     }
 }
-.mountainpic{
+
+.mountainpic {
     display: flex;
     justify-content: flex-end;
     margin: 0 auto;
-    img{
+
+    img {
         width: 40%;
     }
 }
+
 @media (min-width : 768px) {
-    .mountainpic{
+    .mountainpic {
         display: flex;
         justify-content: flex-start;
         margin: 0 auto;
         margin: 0 0 -3% 12%;
-        img{
+
+        img {
             width: 40%;
         }
     }
 }
+
 .SellCarFormButton {
-    width: 15%;
+    width: 24%;
     position: fixed;
-    right: 6%;
+    right: 2%;
     bottom: 12%;
     z-index: 100;
+
     @media (min-width : 768px) {
         width: 8%;
         position: fixed;
-        right: 6%;
+        right: 2%;
         bottom: 1%;
     }
+
     button {
         width: 100%; // 按鈕寬度佔滿父元素
         height: 100%; // 按鈕高度佔滿父元素
@@ -169,14 +232,16 @@
 }
 
 @media (min-width : 768px) {
-    .SecondHandSale{
+    .SecondHandSale {
         width: 100%;
-        h2{
+
+        h2 {
             margin-top: 100px;
-    
+
         }
-        .saleCarStepTopText{
-            p{  
+
+        .saleCarStepTopText {
+            p {
                 width: 50%;
                 font-size: $p;
                 font-family: 'Kosugi Maru';
@@ -185,8 +250,9 @@
                 text-align: center;
                 margin: auto;
             }
-            .drawPic{
-                img{
+
+            .drawPic {
+                img {
                     width: 20%;
                     position: absolute;
                     right: 5%;
@@ -194,109 +260,126 @@
                 }
             }
         }
-    
-        .saleCarSteps{
+
+        .saleCarSteps {
             width: 100%;
             margin: 0 auto;
-            .saleCarStep{
-            
-            &:nth-child(even) {
-                // background-color: $grey_2;
-                flex-direction: row-reverse;
-            }    
+
+            .saleCarStep {
+
+                &:nth-child(even) {
+                    // background-color: $grey_2;
+                    flex-direction: row-reverse;
+                }
+
                 width: 75%;
                 display: flex;
                 margin: 0 auto;
                 padding: 10px;
-                    .saleCarStepImg{
-                        // width: 50%;
-                        height: 50%;
-                        img{
-                            width: 80%;
-                            height: auto; 
-                            }
+
+                .saleCarStepImg {
+                    // width: 50%;
+                    height: 50%;
+
+                    img {
+                        width: 80%;
+                        height: auto;
                     }
-                    .saleCarStepType{
-                        width: 45%;
-                        margin: 15px;
-                        display: flex;
-                        align-items: center;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        background-color: white;
-                        border-radius: $borr2;
-                        .saleCarStepNum{
-                            font-size: $h3;
-                            margin: 30px;
-                        }
-                        
+                }
+
+                .saleCarStepType {
+                    width: 45%;
+                    margin: 15px;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    background-color: white;
+                    border-radius: $borr2;
+
+                    .saleCarStepNum {
+                        font-size: $h1;
+                        margin: 3% 0 1% 6%;
                     }
-                    .saleCarStepContent{
-                        font-size: $h3;
-                    h5{
-                        margin: 10px 30px;
-                    }    
-                    p{
+
+                }
+
+                .saleCarStepContent {
+                    font-size: $h3;
+
+                    h5 {
+                        margin: 2% 30px;
+                    }
+
+                    p {
                         display: block;
-                        font-size: $p;
+                        font-size: 1rem;
                         // font-family: 'Kosugi Maru';
                         line-height: 40px;
-                        padding: 20px 30px;
+                        padding: 20px 40px;
+                        letter-spacing: 2px;
+                        text-align: justify;
                     }
-                    }
+                }
             }
-        
+
         }
-        .infoTextSale{
+
+        .infoTextSale {
             // height: 900px;
             width: 90%;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
             margin: 0 auto;
-            .InfoTextCards{
+
+            .InfoTextCards {
                 display: flex;
                 align-items: center;
                 width: 80%;
                 margin: 0 auto;
-                .InfoTextText{
+
+                .InfoTextText {
                     width: 90%;
                     margin: 20px;
                 }
+
                 .shopInfoMapSale {
                     width: 100%;
                     margin: 0 auto;
                 }
             }
-            .AboutUsBtnSale{
+
+            .AboutUsBtnSale {
                 width: 80%;
                 margin: 10px auto;
             }
         }
-        // .iwantsellCar{
-        //     position: relative;
-            // .SellCarFormButton{
-            //     position: fixed;
-            //     top: 0;
-            //     right: 20px;
-            //     background-color: $green;
-            //     color: white;
-            //     border: none;
-            //     border-radius: 50%;
-            //     font-size: 24px;
-            //     cursor: pointer;
-            //     width: 80px;
-            //     height: 80px;
-            //     display: flex;
-            //     align-items: center;
-            //     justify-content: center;
-            //     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            //     z-index: 700;
-            //     p{
-            //     font-size: $p;
-            //     }
-            // }
-        // }
     }
 
 }
+
+// .iwantsellCar{
+//     position: relative;
+// .SellCarFormButton{
+//     position: fixed;
+//     top: 0;
+//     right: 20px;
+//     background-color: $green;
+//     color: white;
+//     border: none;
+//     border-radius: 50%;
+//     font-size: 24px;
+//     cursor: pointer;
+//     width: 80px;
+//     height: 80px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+//     z-index: 700;
+//     p{
+//     font-size: $p;
+//     }
+// }
+// }

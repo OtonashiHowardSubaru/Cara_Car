@@ -27,10 +27,13 @@
             @content;
         }
     }
+
+    //圖片輪播-start
     .topPics {
         display: flex;
         align-items: center;
         background-color: none;
+
         // flex-wrap: wrap;
         .topPicsView {
             overflow: hidden;
@@ -69,35 +72,35 @@
             }
 
         }
-        
+
         @keyframes marquee {
             0% {
                 transform: translateX(0);
             }
-    
+
             100% {
                 transform: translateX(-(20% * 5));
             }
         }
-    
+
         @include media(1024) {
             @keyframes marquee {
                 0% {
                     transform: translateX(0);
                 }
-    
+
                 100% {
                     transform: translateX(-(25% * 5));
                 }
             }
         }
-    
+
         @include media(768) {
             @keyframes marquee {
                 0% {
                     transform: translateX(0);
                 }
-    
+
                 100% {
                     transform: translateX(-(33.33% * 5));
                 }
@@ -105,9 +108,12 @@
         }
     }
 
+    //圖片輪播-end
+
+    //背景設定-start
     .bgcPic {
         background-image: url(../../imgs/SecondHandSale/bgp.png);
-        background-size: 100%; 
+        background-size: 100%;
         // background-position: center center; // 背景圖片置中
         margin: 0;
         background-repeat: repeat;
@@ -117,6 +123,7 @@
             margin-top: -50px;
 
         }
+
         @media (min-width : 768px) {
             background-size: cover; // 背景圖片覆蓋整個區域
             background-position: center center; // 背景圖片置中
@@ -124,6 +131,9 @@
         }
     }
 
+    //背景設定-end
+
+    //文字內容設定
     .aboutUsContents {
         padding: 2% 0 0;
         // height: 720px;
@@ -136,37 +146,53 @@
             margin: 0 auto;
             width: 90%;
         }
-
+        
         .aboutUsContent {
             box-sizing: border-box;
             width: 100%;
             padding: 3%;
-            // background-color: $grey_2;
             display: flex;
             flex-direction: column;
-
-            // justify-content: center;
+            
             strong {
                 font-size: 1.5rem;
             }
-
+            
             img {
                 width: 30%;
                 position: absolute;
-                right: 8%;
+                right: 2.5%;
+                @media (min-width : 768px) {
+                    right: 8%;
+                }
             }
-
+            
             p {
-                font-size: $p;
+                font-size: 1rem;
                 font-family: 'Kosugi Maru';
                 line-height: 40px;
-                padding: 20px 60px;
+                padding: 3% 6%;
                 display: flex;
                 position: relative;
-                // margin: 0 auto;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
 
-                // align-items: center;
+                @media (min-width : 768px) {
+                    font-size: $p;
+                    padding: 20px 60px;
+                    display: flex;
+                    position: relative;
+                    flex-wrap: wrap;
+                }
+            }
+            .car_caraPic {
+                width: 100%;
+                position: relative;
+                right: -5%;
+                @media (min-width : 768px) {
+                    width: 180%;
+                    position: relative;
+                    right: 55%;
+                }
             }
         }
     }
@@ -263,37 +289,11 @@
 
                 .aboutUsContentsPic {
                     padding: 20px 60px 20px 0px;
-                    img{
+
+                    img {
                         border-radius: $borr2;
-                    
+
                     }
-                }
-
-                .aboutUsContent {
-
-                    position: relative;
-
-                    .car_caraPic {
-                        // display: none;
-                        position: absolute;
-                        width: 150%;
-                        top: 0;
-                        right: -10%;
-                    }
-
-                    // .car_caraPic2 {
-                    //     position: absolute;
-                    //     // bottom: 0;
-                    //     left: 0;
-                    //     width: 100%;
-
-                    //     & img{
-                    //         // width: 25%;
-                    //         // right: 50;
-                    //         // top: 50;
-
-                    //     }
-                    // }                
                 }
 
             }
@@ -304,9 +304,10 @@
                 margin: 0 auto;
                 width: 80%;
                 height: 80%;
-                img{
+
+                img {
                     border-radius: $borr2;
-                
+
                 }
             }
 
@@ -331,12 +332,6 @@
                     // align-items: center;
                 }
 
-            }
-
-            .car_caraPic {
-                width: 50%;
-                position: absolute;
-                top: 100;
             }
         }
 
