@@ -274,8 +274,7 @@ main{
 
 //詳情區塊
 .birdbox{
-    position: absolute;
-    top: -75px;
+    display: none;
     .blueBird{
         position: relative;
         left: 75%;
@@ -291,7 +290,9 @@ main{
         top: -30px;
     }
     @media (min-width:768px) {
-        top: 75px
+        display: block;
+        top: 25px;
+        position: absolute;
     }
 }
 //詳情區塊
