@@ -25,7 +25,7 @@ export default {
   methods: {
     getProductImgSrc(imgName) {
       return new URL(
-        `${import.meta.env.VITE_IMG_BASE_URL}/product/new_products/${imgName}`
+        `${import.meta.env.VITE_IMG_BASE_URL}/new_products/${imgName}`
       ).href;
     },
     handleResize() {

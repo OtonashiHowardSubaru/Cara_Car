@@ -22,7 +22,7 @@
 
 
 //商店名css起點
-.store_name{
+#store_name{
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -67,7 +67,7 @@
 }
 
 @media (min-width:768px){
-  .store_name{
+  #store_name{
     margin: 0 8.333%;
   }
 }

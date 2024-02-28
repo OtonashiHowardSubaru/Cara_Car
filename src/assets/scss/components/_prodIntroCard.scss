@@ -1,16 +1,20 @@
 .introduction{
   position: relative;
-    .searchItem{
+  .searchItem{
     position: absolute;
     bottom: 100%;
-    right: 38%;
+    right: calc(50% - 150px);
     ul{
+      width: 300px;
       display: flex;
       justify-content: center;
       li{
-        background-color: $grass_1;
-        padding: 15px 25px;
+        box-sizing: border-box;
+        width: 100px;
+        padding: 20px 0;
+        text-align: center;
         border-radius: 20px 20px 0 0;
+        background-color: $grass_1;
         color: white;
         cursor: pointer;
         a{
@@ -25,9 +29,8 @@
 }
   
     //詳情區塊
-  .sh_detail{
+  .detail{
     width: 70%;
-    height: 70vw;
     background-color: #efefef;
     border-radius: 20px;
     padding: 50px 60px;
@@ -35,8 +38,11 @@
     margin-top: 170px;
     line-height: 2;
     position: relative;
-
-    .sh_detail_content{
+    .productInfoBox{
+      white-space: pre-wrap;
+      padding: 0 0 150px 0;
+    }
+    .detail_content{
       display: flex;
       justify-content: end;
     }
@@ -77,14 +83,13 @@
     }
     .searchItem{
       position: absolute;
-      left: 37%;
       ul{
         display: flex;
         // flex-direction: column;
         justify-content: center;
         li{
-          background-color: $yellow;
-          padding: 10px 35px;
+          background-color: $grass_1;
+          // padding: 10px 35px;
           border-radius: 20px 20px 0 0;
           text-align: center;
           line-height: 15px;
@@ -97,10 +102,10 @@
       }
     }
 
-    .sh_detail{
+    .detail{
       width: 75%;
       margin-top: 60px;
-      .sh_detail_content{
+      .detail_content{
         display: flex;
         flex-direction: column;
         h2{

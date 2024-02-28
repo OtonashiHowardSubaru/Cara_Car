@@ -129,7 +129,7 @@ export default {
         },
         //抓取圖片路徑
         getProductImgSrc(imgName) {
-            return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/product/sh_products/${imgName}`).href
+            return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/sh_products/${imgName}`).href
         },
         saveCartData() {
             localStorage.setItem('cart', JSON.stringify(this.shCartItems));

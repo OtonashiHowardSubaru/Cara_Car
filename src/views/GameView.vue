@@ -126,7 +126,7 @@ export default {
     </div>
     <div class="container">
       <div class="row">
-        <div class="gameMenu col-10 col-md-7" v-if="!(active)">
+        <div class="col-10 col-md-7 gameMenu" v-if="!(active)">
           <div class="main_art">
             <h2 class="slogan">來測驗看看你最適合什麼樣的小汽車吧 !</h2>
             <img src="@/assets/imgs/game/game_main_art.png" alt="最適合你的車車">
@@ -135,7 +135,7 @@ export default {
             <button id="btnStartGame" @click="startGame">開始測驗</button>
           </div>
         </div>
-        <div class="quetionGame col-10 col-md-7" v-if="active && process < questionBank.length">
+        <div class="col-10 col-md-7 quetionGame" v-if="active && process < questionBank.length">
           <div class="quetionBox">
             <h3>Quetion {{ process + 1 }}</h3>
             <p>{{ questionBank[process].title }}</p>

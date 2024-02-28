@@ -86,7 +86,7 @@ export default {
   </div>
   <div class="container">
     <div class="row">
-      <div class="store_name col-12">
+      <div class="col-12" id="store_name">
         <h2>USED CAR</h2>
         
         <PriceSorter 

@@ -5,7 +5,7 @@ main{
     position: relative;
     background-image: url(../../imgs/draw/greeting_illust.svg);
     background-position: center bottom -30px;
-    padding: 30px 0 0 0;
+    margin:0 0 15px 0;
     height: 130px;
     display: flex;
     .titleBackGround{
@@ -26,28 +26,44 @@ main{
             text-align: center;
             z-index: 5;
         }
+        h2::before{
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            transform: rotate(-45deg);        
+            background-color: $navy;
+            border-bottom: 5px solid white;
+            border-left: 5px solid white;
+            right: calc(50% - 15px);
+            top: calc(100% - 12px);
+            z-index: -1;
+        }
+        h2::after{
+            content: '';
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            transform: rotate(-45deg);
+            border-bottom: 4px solid black;
+            border-left: 4px solid black;
+            right: calc(50% - 18px);
+            top: calc(100% - 13px);
+            z-index: -1;
+        }
     }
     .titleBackGround::after{
         content: '';
         position: absolute;
-        width: 20px;
-        height: 20px;
-        transform: rotate(-45deg);        
-        background-color: $navy;
-        right: calc(50% - 10px);
-        top: calc(100% - 10px);
-        z-index: 1;
+        width: 100%;
+        border: 3px solid black;
+        left: 0;
+        top: calc(100% + 3px);
     }
-    .titleBackGround::before{
-        content: '';
+    .doubleCloud{
         position: absolute;
-        width: 30px;
-        height: 30px;
-        transform: rotate(-45deg);        
-        background-color: $whiteWord;
-        right: calc(50% - 15px);
-        top: calc(100% - 15px);
-        z-index: 1;
+        top: 20px;
+        right: 5%;
     }
 }
 
@@ -257,35 +273,25 @@ main{
 
 
 //詳情區塊
-.detail_selecter{
-    margin: 100px auto 0 auto;
-    width: fit-content;
-    button{
-        box-sizing: border-box;
-        width: fit-content;
-        padding: 10px;
-        border-radius: $borr2 $borr2 0 0;
-        border: none;
-        text-align: center;
-        font-size: $mh5;
-        background-color: $lightYellow;
+.birdbox{
+    position: absolute;
+    top: -75px;
+    .blueBird{
+        position: relative;
+        left: 75%;
+        top: 5px;
     }
-}
-.pro_detail{
-    box-sizing: border-box;
-    width: 90%;
-    background-color: $yellow;
-    border-radius: $borr2;
-    padding: 50px 10%;
-    margin: 0 5% 100px 5%;
-    line-height: 1.7;
-    position: relative;
-    h2{
-        margin-bottom: 20px;
-        text-align-last: center;
+    .yellowBird{
+        position: relative;
+        left: 10px;
     }
-    .articlel{
-        font-size: $mh5;
+    .greenBird{
+        position: relative;
+        left: 125%;
+        top: -30px;
+    }
+    @media (min-width:768px) {
+        top: 75px
     }
 }
 //詳情區塊
