@@ -55,12 +55,12 @@ export default {
       axios.get(`${import.meta.env.VITE_PHP_URL}/front/shProductList.php`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
-          console.log(response.data)
+          // console.log(response.data)
           this.allProducts = response.data;
           this.thisProduct = response.data.find((item) => {
             return item.sh_pro_id == pageId
           })
-          console.log(this.thisProduct)
+          // console.log(this.thisProduct)
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -71,7 +71,7 @@ export default {
       axios.get(`${import.meta.env.VITE_PHP_URL}/front/shProductimgs.php?pageId=${pageId}`)
         .then((response) => {
           this.ImgsName = response.data;
-          console.log(this.ImgsName);
+          // console.log(this.ImgsName);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -86,7 +86,7 @@ export default {
           this.thisNewProduct = response.data.find((item) => {
             return item.pro_id == pageId
           })
-          console.log(this.allProducts);
+          // console.log(this.allProducts);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -101,7 +101,7 @@ export default {
           this.thisProductInfo = response.data.find((item) => {
             return item.pro_id == pageId
           })
-          console.log(this.productInfo);
+          // console.log(this.productInfo);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -110,8 +110,8 @@ export default {
     },
 
     getProductImgSrc(imgName) {
-      return new URL(`https://tibamef2e.com/chd104/g6/imgs/product/sh_products/${imgName}`).href
-      // return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/product/sh_products/${imgName}`).href
+      // return new URL(`https://tibamef2e.com/chd104/g6/imgs/sh_products/${imgName}`).href
+      return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/sh_products/${imgName}`).href
     },
 
     showLarge(e) {
@@ -119,7 +119,7 @@ export default {
       // console.log('Clicked on image:', clickedImgSrc);
       const bigImg = document.getElementById('mainpic');
       bigImg.src = clickedImgSrc;
-      console.log(bigImg);
+      // console.log(bigImg);
     },
 
     changeTab(tabIndex) {
@@ -131,7 +131,7 @@ export default {
     },
     //加入購物車
     addToShCart() {
-      console.log('addToCart');
+      // console.log('addToCart');
       try {
         const product = {
           id: this.thisProduct.sh_pro_id,
@@ -140,7 +140,7 @@ export default {
           shimageUrl: this.thisProduct.img_name,
           shquantity: parseInt(this.qtyValue === '' ? 1 : this.qtyValue),
         };
-        console.log(JSON.stringify(product));
+        // console.log(JSON.stringify(product));
 
         const productList = [];
         productList.push(product);
