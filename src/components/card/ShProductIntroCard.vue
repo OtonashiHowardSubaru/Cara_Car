@@ -1,47 +1,25 @@
 <script>
 export default {
-    props: {
-        productInfo: {
-            type: Array,
-            default: () => []
-        },
-    },
+    props: [
+        'thisProductInfo',
+    ],
     data() {
         return {
             activeTab: 0,
-            thisProductInfo: [],
         }
-    },
-    computed: {
-        activeInfo() {
-            return this.productInfo.find(v => v.sh_pro_id === +this.$route.params.sh_pro_id) || {}
-        },
     },
     methods: {
         changeTab(tabIndex) {
             // 頁籤跳轉
             this.activeTab = tabIndex;
         },
+        // 轉換pro_info到比較合適的版型
         replaceLineBreaks(text) {
+            console.log(text);
             return text.replace(/\r\n/g, "<br>");
         },
-        // fetchData(){
-        //     const pageId = this.$route.params.sh_pro_id
-        //     axios.get(`${import.meta.env.VITE_PHP_URL}/front/shProductList.php`)
-        //     .then((response) => {
-        //     // 成功取得資料後，將資料存入陣列
-        //     console.log(response.data)
-        //     this.productInfo = response.data;
-        //     this.thisProductInfo = response.data.find((item) =>{
-        //     return item.sh_pro_id == pageId
-        //     })
-        //     console.log(this.productInfo)
-        // })
-        //     .catch((error) => {
-        //     console.error("Error fetching data:", error);
-        //     this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        //     });
-        // }
+    },
+    computed:{
     },
     mounted() {
     }
@@ -57,76 +35,17 @@ export default {
                 <li :class="{ 'onSearch': activeTab === 2 }" @click="changeTab(2)">常見問題</li>
             </ul>
         </div>
-        <div class="sh_detail">
+        <div class="detail">
             <div id="searchCont" class="searchCont">
                 <ul>
                     <li v-show="activeTab === 0">
                         <div>
                             <div class="form">
-                                <h2>{{ activeInfo.sh_pro_name }}</h2>
-                                <div :style="{ display: 'flex', flexDirection: 'column' }" class="sh_detail_content">
-                                    {{ activeInfo.sh_pro_info }}
-                                    <!-- <div class="articlel">  -->
-                                    <!-- <p> -->
-                                    <!-- <span>產品規格：</span> -->
-                                    <!-- <ul> -->
-                                    <!-- <li> -->
-                                    <!-- <span>尺寸與重量：</span> -->
-                                    <!-- {{ activeInfo.sh_pro_info }} -->
-                                    <!-- </li> -->
-                                    <!-- <li> -->
-                                    <!-- <span>電池與續航：</span>
-                                <ul>
-                                <li>-電池類型：鋰離子電池。</li>
-                                <li>-充電時間：約2-3小時。</li>
-                                <li>-續航能力：每次充滿電可行駛約1-2小時（視使用條件而定）。</li>
-                                </ul>
-                            </li>
-                            <li>
-                            <span>速度與控制：</span>
-                            <ul>
-                                <li>-最高速度：每小時5-6公里。</li>
-                                <li>-加速控制：腳踏式加速器。</li>
-                                <li>-方向控制：方向盤操作。</li>
-                                <li>-遙控器：2.4G無線遙控，控制範圍約20-30米。</li>
-                            </ul>
-                            </li>
-                            <li>
-                            <span>安全設計：</span>
-                            <ul>
-                                <li>-安全帶：可調節五點式安全帶。</li>
-                                <li>-制動系統：電子制動系統，腳離開加速器即自動減速停車。</li>
-                            </ul>
-                            </li>
-                            <li>
-                            <span>附加功能：</span>
-                            <ul>
-                                <li>-音響系統：USB/MP3接口，內建小喇叭。</li>
-                                <li>-燈光系統：前後LED照明燈。</li>
-                                <li>-輪胎：耐磨防滑塑膠輪胎。</li>
-                            </ul>
-                            </li>
-                            <li>
-                            <span>適用年齡與承重：</span>
-                            <ul>
-                                <li>-適用年齡：3至8歲。</li>
-                                <li>-最大承重：約30公斤。</li>
-                            </ul>
-                            </li> -->
-                                    <!-- </ul> -->
-                                    <!-- </p> -->
-                                    <!-- </div> -->
-                                    <!-- <div class="articler">
-                        <ul>
-                            <span>產品特點：</span>
-                            <li>-可透過遙控器控制車輛，確保兒童安全。</li>
-                            <li>-高效能馬達，提供平穩駕駛體驗。</li>
-                            <li>-堅固的車身結構，耐用且易於維護。</li>
-                            <li>-內建音樂播放器，提升兒童駕駛樂趣。</li>
-                            <li>-幫助兒童學習基本的駕駛技巧和交通安全知識。</li>
-                            <li>-運行時噪音小，適合室內外使用。</li>
-                        </ul>
-                    </div> -->
+                                <h2>{{ thisProductInfo.sh_pro_name }}</h2>
+                                <div 
+                                class="productInfoBox"
+                                >
+                                    {{thisProductInfo.sh_pro_info}}
                                 </div>
 
                             </div>
@@ -257,11 +176,5 @@ export default {
     </div>
 </template>
 <style lang="scss" scope>
-@import '@/assets/scss/components/prodIntroCard.scss';
+@import '@/assets/scss/components/productInfoCard.scss';
 </style>
-
-
-
-
-
-

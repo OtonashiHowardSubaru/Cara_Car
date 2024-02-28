@@ -158,7 +158,7 @@ export default {
     </div>
     <div class="container">
       <div class="row">
-        <div class="store_name col-12">
+        <div class="col-12" id="store_name">
           <h2>CARA CAR</h2>
           <PriceSorter 
           @sortChange="handleSortChange"
@@ -169,7 +169,7 @@ export default {
             <GreenBird />
           </div>
         </div>
-        <div class="pro_list_filter col-12 col-md-1">
+        <div class="col-12 col-md-1 pro_list_filter">
           <BtnFilter 
             v-for="item in filter"
             :filterId="item.filterId"
@@ -178,7 +178,7 @@ export default {
             @toggleFilter="handleToggleFilter"
           />
         </div>
-        <div class="pro_card_list col-md-10">
+        <div class="col-md-10 pro_card_list ">
           <ProductCard 
           :displayData="paginated"
           />

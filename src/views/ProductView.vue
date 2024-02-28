@@ -6,6 +6,10 @@
   import ProductIntroCard from "@/components/card/ProductIntroCard.vue";
   import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
   import Swal from 'sweetalert2';
+  import DoubleCloud from '@/components/animation/DoubleCloud.vue';
+  import BlueBird from '@/components/animation/BlueBird.vue';
+  import YellowBird from '@/components/animation/YellowBird.vue';
+  import GreenBird from '@/components/animation/GreenBird.vue';
 
   import { mapState, mapActions } from "pinia";
   import cartStore from "@/stores/cart";
@@ -18,6 +22,10 @@
         NumberSelect,
         ProductIntroCard,
         Swal,
+        DoubleCloud,
+        BlueBird,
+        YellowBird,
+        GreenBird,
     },
     data(){
         return {
@@ -86,7 +94,7 @@
 
       // 取得圖片的路徑函式
       getProductImgSrc(imgName){
-        return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/product/new_products/${imgName}`).href
+        return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/new_products/${imgName}`).href
       },
 
       // 大圖換小圖
@@ -202,6 +210,7 @@
         <h1>{{ thisProduct.pro_name }}</h1>
         <h2>{{ thisProduct.pro_en_name }}</h2>
       </div>
+      <DoubleCloud />
     </div>
     <div class="col-12 col-md-6 pro_img_switcher">
       <div class="bigImgBox">
@@ -262,7 +271,12 @@
         <button type="button" id="addToCartBtn" @click="addToCart(thisProduct, qtyValue)">加入購物車</button>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-12" style="position: relative;">
+      <div class="birdbox">
+            <BlueBird />
+            <YellowBird />
+            <GreenBird />
+          </div>
       <ProductIntroCard 
       :thisProductInfo="thisProduct"
       />

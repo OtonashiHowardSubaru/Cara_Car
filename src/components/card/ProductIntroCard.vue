@@ -43,7 +43,6 @@ export default {
                             <div class="form">
                                 <h2>{{ thisProductInfo.pro_name }}</h2>
                                 <div 
-                                v-if="thisProductInfo.pro_info" 
                                 class="productInfoBox"
                                 >
                                     {{thisProductInfo.pro_info}}
@@ -56,7 +55,7 @@ export default {
                     <li v-show="activeTab === 1">
                         <div class="form">
                             <h2>購物須知</h2>
-                            <div class="sh_detail_content">
+                            <div class="detail_content">
                                 <div class="articlel">
                                     <ul>
                                         <li>
@@ -116,7 +115,7 @@ export default {
                     <li v-show="activeTab === 2">
                         <div class="form">
                             <h2>常見問題</h2>
-                            <div class="sh_detail_content">
+                            <div class="detail_content">
                                 <div class="articlel">
                                     <ul>
                                         <li>
