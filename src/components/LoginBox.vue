@@ -15,8 +15,8 @@ export default {
         return {
             userStoreData: userStore(),
             lightBoxStore: lightBoxStore(),
-            username: 'Yee12@hotmail.com',
-            psw666: 'chd10412',
+            username: '',
+            psw666: '',
             pswVisible: false,
             isLoggedIn: false,
 
