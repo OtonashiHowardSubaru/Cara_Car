@@ -4,11 +4,12 @@ import BtnEvent from '@/components/btn/BtnEvent.vue'
 import BtnShopInfo from '@/components/btn/BtnShopInfo.vue'
 import MainHeader from '@/components/MainHeader.vue'
 import chatBox from '@/components/btn/chatBox.vue'
+import loading from '@/components/card/loading.vue'
 
 
 export default {
   components: {
-    BtnEvent, BtnShopInfo, MainHeader, chatBox
+    BtnEvent, BtnShopInfo, MainHeader, chatBox, loading,
   },
   data() {
     return {
@@ -44,6 +45,7 @@ export default {
 </script>
 
 <template>
+  <loading />
   <MainHeader />
   <div class="about">
     <div class="aboutTitle">

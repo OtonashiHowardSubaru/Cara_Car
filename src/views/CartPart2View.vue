@@ -13,10 +13,11 @@ import Swal from 'sweetalert2';
 import apiInstance from '@/stores/auth'
 import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
+import chatBox from '@/components/btn/chatBox.vue'
 
 export default {
 components:{
-    MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,
+    MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,chatBox,
     // NumberSelect,
     Swal,
 },
@@ -295,6 +296,8 @@ methods: {
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
+    <chatBox />
+
 </template>
 
 <style lang="scss" scoped>

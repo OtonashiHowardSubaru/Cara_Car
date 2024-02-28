@@ -48,6 +48,7 @@
             <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
         </section>
     </main>
+    <chatBox />
 </template>
 
 <script>
@@ -60,6 +61,8 @@ import GreenBird from '@/components/animation/GreenBird.vue'
 import DoubleCloud from '@/components/animation/DoubleCloud.vue'
 import SingleCloud from '@/components/animation/SingleCloud.vue'
 import axios from 'axios'; //引入函式庫
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 
 
@@ -73,6 +76,8 @@ export default {
         GreenBird,
         DoubleCloud,
         SingleCloud,
+        chatBox
+
     },
     data() {
         return {

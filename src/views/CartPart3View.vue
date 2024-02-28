@@ -1,22 +1,25 @@
 <script>
 import axios from 'axios'; //引入函式庫
 import { mapState, mapActions } from 'pinia';
+import cartStore from "@/stores/cart";
 import MainHeader from '@/components/MainHeader.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 export default {
     components: {
-        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,
+        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,chatBox,
     },
     data() {
         return {
             orderList: [],
             allProducts: [],
-            cartItems: [],
+            // cartItems: [],
         }
     },
     created() {
@@ -25,7 +28,9 @@ export default {
 
     },
     computed: {
-
+        ...mapState(cartStore, [
+            "cartItems",
+        ]),
     },
     methods: {
         fetchData() {
@@ -49,10 +54,11 @@ export default {
                     console.error("Error fetching data:", error);
                     this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
                 });
+                
 
         // const pageId2 = this.$route.params.pro_id
         //取得該筆訂單資訊
-        axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontOrder.php?`)
+        axios.get(`${import.meta.env.VITE_PHP_URL}/back/backOrder.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
           // console.log(response.data)
@@ -60,7 +66,7 @@ export default {
         this.thisOrderList = response.data.find((item) =>{
             return item.pro_id == pageId
         })
-        console.log(this.orderList);
+        // console.log(this.orderList);
         // console.log(this.thisOrderList);
         })
         // console.log("========",this.thisProduct)
@@ -70,12 +76,15 @@ export default {
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
     },
-    clearCartData() {
-            this.cartItems = [];
-            // this.cart = [];
-            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-            console.log('清除購物車', this.cartItems);
-    },
+    ...mapActions(cartStore, [
+            "getLocalCartData",
+            "getProductImgSrc",
+            "clearCartData",
+        ]),
+    // clearCartData() {
+    //         localStorage.removeItem('cartItems');
+    //         console.log('清除購物車', this.cartItems);
+    // },
 },
 }
 </script>
@@ -175,36 +184,34 @@ export default {
             </div> -->
         </div>
 
-        <section class="cartFunction" v-if="orderList.length > 0">
+        <section class="cartFunction" >
             <!-- 這裡是商品內容 -->
-            <div class="productCard">
-                <!-- <img :src="(item.imageUrl)" alt="ProductImage"> -->
+            <!-- {{ cartItems }} -->
+            <div class="productCard" v-for="(pro, index) in cartItems" :key="index">
+                <img :src="getProductImgSrc(pro.imageUrl)" alt="ProductImage">
                 <div class="proCardP">
-                    <p class="pro_name">{{ orderList[orderList.length - 1].pro_name }}</p>
-                    <p class="pro_price">${{ orderList[orderList.length - 1].pro_price }}</p>
+                    <p class="pro_name">{{ pro.name }}</p>
+                    <p class="pro_price">${{ pro.price }}</p>
                 </div>
-                <!-- <NumberSelect
-                    :qtyValue="item.quantity" @change="updateQuantity(index, $event)"
-                    /> -->
-                <!-- <div class="number_select">
-                        <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index,-1)"> -->
-                <input type="text" name="quantity" :value="orderList[orderList.length - 1].ord_qty" class="qty"
+                
+                <input type="text" name="quantity" :value="pro.quantity" class="qty"
                     ref="`qtyInput_${index}`" @keydown.enter.prevent>
-                <!-- <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index,1)">
-                    </div> -->
-                <p class="proCount">${{ orderList[orderList.length - 1].pro_sale }}</p>
+                
+                <p class="proCount">${{ pro.price * pro.quantity }}</p>
             </div>
-            <div class="cartPrice">
-                <span class="cartFunctionTitle">小計</span>
-                <!-- 這裡要算小計 -->
-                <span class="cartFunctionTitle">${{ orderList[orderList.length - 1].ord_sum }}</span>
+            <div v-if="orderList.length > 0">
+                <div class="cartPrice">
+                    <span class="cartFunctionTitle">小計</span>
+                    <!-- 這裡要算小計 -->
+                    <span class="cartFunctionTitle">${{ orderList[orderList.length - 1].ord_sum }}</span>
+                </div>
+                <div class="cartPrice">
+                    <span class="cartFunctionTitle">運費</span>
+                    <span class="cartFunctionTitle">${{ orderList[orderList.length - 1].ord_ship }}</span>
+                </div>
+                <!-- 這裡要算加運費的總金額 -->
+                <p class="cartCountTotal">合計金額：${{ orderList[orderList.length - 1].ord_total }}</p>
             </div>
-            <div class="cartPrice">
-                <span class="cartFunctionTitle">運費</span>
-                <span class="cartFunctionTitle">${{ orderList[orderList.length - 1].ord_ship }}</span>
-            </div>
-            <!-- 這裡要算加運費的總金額 -->
-            <p class="cartCountTotal">合計金額：${{ orderList[orderList.length - 1].ord_total }}</p>
 
         </section>
         <router-link to="/">
@@ -213,6 +220,8 @@ export default {
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
+    <chatBox />
+
 </template>
 
 <style lang="scss" scoped>
