@@ -110,7 +110,8 @@ export default {
     },
 
     getProductImgSrc(imgName) {
-      return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/product/sh_products/${imgName}`).href
+      return new URL(`https://tibamef2e.com/chd104/g6/imgs/product/sh_products/${imgName}`).href
+      // return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/product/sh_products/${imgName}`).href
     },
 
     showLarge(e) {

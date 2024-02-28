@@ -91,30 +91,6 @@
 }
 
 
-//商品卡css起點
-.sh_product_card{
-  box-sizing: border-box;
-  text-align: center;
-} 
-  .sh_pro_card_img img{ 
-    vertical-align: top;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 15px;
-  }
-  .sh_pro_crad_info{
-      margin-bottom: 20px;
-  }
-  .sh_pro_crad_info h6{ 
-    font-size: $h4; 
-  } 
-  .sh_pro_crad_info p{ 
-    font-size: $p; 
-  } 
-
-
-//商品卡css終點
-
  @media screen and   (min-width:768px) and  (max-width:1270px) {
   .pro_list_sorter{
     margin-bottom: 60px;

@@ -32,19 +32,8 @@ export default {
 // @import '@/assets/scss/components/_productCard.scss';
 
 .product_card {
-  margin-top: -40px;
-  padding: 15px;
-  // .pro_card_img{
-  // overflow: visible; 
-  // 用hidden會切到圖邊，圖片待改
-  //     &:hover{
-  //       transition: 1s ;
-  //       scale: 1.05; 
-  //     }
-  //   }
-}
-
-.pro_crad_info {
-  margin-top: -25px;
+  .pro_card_img{
+    margin-bottom: 25px;
+      }
 }
 </style>
