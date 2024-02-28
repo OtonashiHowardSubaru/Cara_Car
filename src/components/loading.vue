@@ -1,8 +1,18 @@
 <!-- YourComponent.vue -->
 <template>
-    <div>
-      <div v-if="isLoading" class="loading-spinner"></div>
-      <!-- Your component content goes here -->
+  <div>
+    <div class="container">
+  <div class="container1">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="container2">
+    <div class="dot shadow"></div>
+    <div class="dot shadow"></div>
+    <div class="dot shadow"></div>
+  </div>
+  </div>
     </div>
   </template>
   
@@ -27,3 +37,6 @@
     },
   };
   </script>
+<style>
+
+</style>
