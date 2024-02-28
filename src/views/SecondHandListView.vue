@@ -18,7 +18,7 @@ export default {
       // 頁數切換
       activeTab: "",
       currentPage: 1,
-      perPage: 9,
+      perPage: 6,
       search: '',
       priceSorter: '',
       responseData: [],
