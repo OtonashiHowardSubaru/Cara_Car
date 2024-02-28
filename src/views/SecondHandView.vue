@@ -193,9 +193,10 @@ export default {
   </div>
   <div class="sh_product_wrap">
     <div class="intromq">
-
-      <h1>{{ thisProduct.sh_pro_en_name }}</h1>
-      <h2>{{ thisProduct.sh_pro_name }}</h2>
+      <div class="titleBackGround">
+        <h1>{{ thisProduct.sh_pro_en_name }}</h1>
+        <h2>{{ thisProduct.sh_pro_name }}</h2>
+      </div> 
     </div>
     <div class="prodpic">
       <div class="mainpic">
@@ -208,8 +209,10 @@ export default {
 
     </div>
     <div class="intro">
-      <h1>{{ thisProduct.sh_pro_en_name }}</h1>
-      <h2>{{ thisProduct.sh_pro_name }}</h2>
+      <div class="titleBackGround">
+        <h1>{{ thisProduct.sh_pro_en_name }}</h1>
+        <h2>{{ thisProduct.sh_pro_name }}</h2>
+      </div>
       <div class="year price">
         <span>${{ thisProduct.sh_pro_price }}</span>
         <span>車輛年份: 2019</span>
