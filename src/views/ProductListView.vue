@@ -6,6 +6,9 @@ import CardShProcess from "@/components/card/CardShProcess.vue";
 import PageNumber from "@/components/btn/PageNumber.vue";
 import BtnFilter from '@/components/btn/BtnFilter.vue';
 import MainHeader from '@/components/MainHeader.vue';
+import BlueBird from '@/components/animation/BlueBird.vue';
+import YellowBird from '@/components/animation/YellowBird.vue';
+import GreenBird from '@/components/animation/GreenBird.vue';
 
 export default {
   components: {
@@ -15,7 +18,10 @@ export default {
     PageNumber,
     BtnFilter,
     MainHeader,
-  },
+    BlueBird,
+    GreenBird,
+    YellowBird,
+},
   data() {
     return {
       // 頁數切換
@@ -157,6 +163,11 @@ export default {
           <PriceSorter 
           @sortChange="handleSortChange"
           />
+          <div class="birdbox">
+            <BlueBird />
+            <YellowBird />
+            <GreenBird />
+          </div>
         </div>
         <div class="pro_list_filter col-12 col-md-1">
           <BtnFilter 

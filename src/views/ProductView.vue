@@ -198,12 +198,11 @@
 <MainHeader />
 <main class="container">
   <div class="row">
-    <!-- {{ ImgsName }} -->
-    <!-- {{ thisProduct }} -->
-   
-    <div class="col-12 col-md-12 pro_title" >
-      <h1>{{ thisProduct.pro_name }}</h1>
-      <h2>{{ thisProduct.pro_en_name }}</h2>
+    <div class="col-12 col-md-12 pro_title">
+      <div class="titleBackGround">
+        <h1>{{ thisProduct.pro_name }}</h1>
+        <h2>{{ thisProduct.pro_en_name }}</h2>
+      </div>
     </div>
     <div class="col-12 col-md-6 pro_img_switcher">
       <div class="bigImgBox">

@@ -23,13 +23,46 @@
 
 //商店名css起點
 .store_name{
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 30px 20px;
   border-bottom: $bor2 solid $blackWord;
   h2{
+    text-align: start;
     font-size: $h2;
     height: fit-content;
+    // padding: 0 0 0 50px;
+    width: 230px;
+    background-image: url(../../imgs/product/productListSubTitleCloudMobile.svg);
+    background-size: cover;
+    @media (min-width:768px) {
+      background-image: url(../../imgs/product/productListSubTitleCloud.svg);
+      width: 350px;
+      text-align: center;
+    }
+  }
+  //商店名稱旁邊的鳥
+  .birdbox{
+    display: none;
+    @media (min-width:768px) {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      right: -8.33%;
+      top: -20px;
+    }
+    .blueBird{
+      position: relative;
+      right: 100%;
+    }
+    .yellowBird{
+      position: relative;
+    }
+    .greenBird{
+      position: relative;
+      right: 50%;
+    }
   }
 }
 
