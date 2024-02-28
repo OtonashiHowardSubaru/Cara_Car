@@ -126,10 +126,15 @@
 
             h4 {
                 font-size: clamp($h5,2vw,$h4);
-                line-height: 50px;
+                line-height: 36px;
                 text-align: center;
-                margin: 20px auto 20px;
+                margin: 20px auto 32px;
                 text-wrap: nowrap;
+                @media (min-width : 768px) {
+                    line-height: 50px;
+                    margin: 20px auto 20px;
+
+                }
             }  
             .shopInfo {
                 display: none;
@@ -161,7 +166,7 @@
         // background-color: #aaa;
 
         @media (min-width : 768px) {
-            width: 35%;
+            width: 40%;
             height: 60%;
             margin: 2% -5%;
             justify-content: space-evenly;
@@ -169,7 +174,7 @@
         }
 
         .mainMenu {
-            width: 40%;
+            width: 42%;
 
             @media (min-width : 768px) {
                 width: 100%;
@@ -192,7 +197,7 @@
         }
 
         .mainMenu>li {
-            width: 50%;
+            width: 59%;
             margin: 20px auto 0;
 
             @media (min-width : 768px) {
