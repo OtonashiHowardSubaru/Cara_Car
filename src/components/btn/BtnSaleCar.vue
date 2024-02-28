@@ -41,7 +41,7 @@
                                 <p>聯絡時間</p>
                                 <select type="date" id="ContactTime" name="ContactTime" placeholder="聯絡時間"
                                     v-model="ContactTime">
-                                    <option disabled value="聯絡時間">請選擇</option>
+                                    <option disabled value="" style="font-size: .5rem;">請選擇時間</option>
                                     <option>10:00-11:00</option>
                                     <option>11:00-12:00</option>
                                     <option>12:00-13:30</option>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="other_SellCarForm">
-                        <h2>照片及影片上傳</h2>
+                        <h3>照片及影片上傳</h3>
                         <div class="SellCarForm_upload">
                             <div class="SellCarForm_uploadCC">
                                 <div class="SellCarForm_upload_video">
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="SellCarForm_notice">
-                            <p>注意事項 : 請注意車輛照片及影片的清晰度，想好之後再送出，謝謝您。</p>
+                            <p>注意事項 : 請注意車輛照片及影片的清晰度，並且想好之後再送出，謝謝您。</p>
                         </div>
                     </div>
                 </div>
