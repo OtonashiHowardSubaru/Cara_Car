@@ -8,10 +8,12 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 export default {
     components: {
-        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,
+        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,chatBox,
     },
     data() {
         return {
@@ -208,7 +210,7 @@ export default {
                     <span class="cartFunctionTitle">${{ orderList[orderList.length - 1].ord_ship }}</span>
                 </div>
                 <!-- 這裡要算加運費的總金額 -->
-                <p class="cartCountTotal">合計金額：${{ orderList[orderList.length - 1].ord_total }}</p>
+                <p class="cartCountTotal" id="cart3Total">合計金額：${{ orderList[orderList.length - 1].ord_total }}</p>
             </div>
 
         </section>
@@ -218,6 +220,8 @@ export default {
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
+    <chatBox />
+
 </template>
 
 <style lang="scss" scoped>
@@ -251,7 +255,7 @@ export default {
 }
 
 .orderList {
-    width: 47%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     margin: 0 auto 60px;
@@ -263,12 +267,12 @@ export default {
     }
 
     .left {
-        width: 50%;
+        width: 40%;
         margin-left: 10px;
     }
 
     .right {
-        width: 50%;
+        width: 60%;
         display: flex;
         justify-content: center;
     }
@@ -277,18 +281,20 @@ export default {
         display: flex;
         border-bottom: 1px solid #222;
         padding-bottom: 15px;
-
+        // border:1px solid red;
         // justify-content: space-between;
         .row {
             display: flex;
             align-items: center;
+            width: 100%;
+            margin: 2px 0px;
         }
 
         li {
             font-weight: 600;
-            width: 70px;
+            width: 40%;
             line-height: 30px;
-            margin-right: 35px;
+            margin-right: 30px;
         }
     }
 
@@ -310,4 +316,8 @@ export default {
         padding-bottom: 20px;
         border-bottom: 1px solid #222;
     }
-}</style>
+}
+#cart3Total{
+    margin-right: 3%;
+}
+</style>

@@ -13,6 +13,8 @@
 
   import { mapState, mapActions } from "pinia";
   import cartStore from "@/stores/cart";
+  import chatBox from '@/components/btn/chatBox.vue'
+
 
   export default{
     components:{
@@ -21,6 +23,7 @@
         MainHeader,
         NumberSelect,
         ProductIntroCard,
+        chatBox,
         Swal,
         DoubleCloud,
         BlueBird,
@@ -204,15 +207,15 @@
 
 <template>
 <MainHeader />
+<div class="pro_title">
+  <div class="titleBackGround">
+    <h1>{{ thisProduct.pro_name }}</h1>
+    <h2>{{ thisProduct.pro_en_name }}</h2>
+  </div>
+  <DoubleCloud />
+</div>
 <main class="container">
   <div class="row">
-    <div class="col-12 col-md-12 pro_title">
-      <div class="titleBackGround">
-        <h1>{{ thisProduct.pro_name }}</h1>
-        <h2>{{ thisProduct.pro_en_name }}</h2>
-      </div>
-      <DoubleCloud />
-    </div>
     <div class="col-12 col-md-6 pro_img_switcher">
       <div class="bigImgBox">
         <!-- 第一圖片 -->
@@ -225,7 +228,12 @@
       </div>
     </div>
     <div class="col-12 col-md-6 intro">
-      <div class="price">${{ thisProduct.pro_price}}</div>
+      <div class="price" :style="{ color: thisProduct.promo_state === 1 ? 'red' : 'black' }">
+        <p>
+          <span>{{ thisProduct.promo_name }}</span>
+          <span>${{ thisProduct.pro_sale}}</span>
+        </p>
+      </div>
       <!-- 採用v-html顯示內容(而非顯示字串)，再利用涵式轉換\r\n為<br>，最後利用v-if確保涵式運作的順序在讀取到資料之後-->
       <div class="intro_tet" v-if="thisProduct.pro_intro" v-html="replaceLineBreaks(thisProduct.pro_intro)">
       </div>
@@ -291,6 +299,8 @@
       />
     </div>
   </div>
+  <chatBox />
+
 </main>
 </template>
 <style lang="scss" scoped>

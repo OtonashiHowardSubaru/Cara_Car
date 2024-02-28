@@ -7,13 +7,15 @@ import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
 
 export default {
     components: {
-        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,
+        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,chatBox
         // NumberSelect,
     },
     data() {
@@ -317,6 +319,7 @@ export default {
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
+    <chatBox />
 </template>
 
 <style lang="scss" scoped>

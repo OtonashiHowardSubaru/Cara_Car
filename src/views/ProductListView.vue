@@ -9,6 +9,8 @@ import MainHeader from '@/components/MainHeader.vue';
 import BlueBird from '@/components/animation/BlueBird.vue';
 import YellowBird from '@/components/animation/YellowBird.vue';
 import GreenBird from '@/components/animation/GreenBird.vue';
+import chatBox from '@/components/btn/chatBox.vue'
+import loading from '@/components/loading.vue'
 
 export default {
   components: {
@@ -21,6 +23,8 @@ export default {
     BlueBird,
     GreenBird,
     YellowBird,
+    chatBox,
+    loading,
 },
   data() {
     return {
@@ -179,6 +183,7 @@ export default {
         />
       </div>
       <div class="col-md-10 pro_card_list ">
+        <!-- <loading /> -->
         <ProductCard 
         :displayData="paginated"
         />
@@ -190,6 +195,8 @@ export default {
     <img src="@/assets/imgs/product/sh_bg.png" alt="">
   </div>
   <CardShProcess />
+  <chatBox />
+
 </template>
 
 <style lang="scss">

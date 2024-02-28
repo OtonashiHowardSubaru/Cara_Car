@@ -14,10 +14,11 @@ import apiInstance from '@/stores/auth'
 import { nextTick } from 'vue'
 // import { mapState, mapActions } from "pinia";
 // import cartStore from "@/stores/cart";
+import chatBox from '@/components/btn/chatBox.vue'
 
 export default {
     components: {
-        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,
+        MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,chatBox,
         // NumberSelect,
     },
     data() {
@@ -233,7 +234,7 @@ export default {
                         @keydown.enter.prevent v-bind:style="{ margin: L + 'px' }" readonly>
                 </div>
                 <p class="shipment">$120</p>
-                <p class="proCount">${{ item.shprice }}</p>
+                <p class="proCount">${{ item.shprice + 120 }}</p>
             </div>
             <div class="total"></div>
             <!-- 結束 -->
@@ -293,6 +294,8 @@ export default {
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
+    <chatBox />
+
 </template>
 
 <style lang="scss" scoped>
