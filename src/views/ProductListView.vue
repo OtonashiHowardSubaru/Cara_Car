@@ -150,43 +150,45 @@ export default {
     }
   }
   </script>
-  <template>
-    <MainHeader />
-    <div class="pro_list_title">
-      <h1>新品專區
-      </h1>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12" id="store_name">
-          <h2>CARA CAR</h2>
-          <PriceSorter 
-          @sortChange="handleSortChange"
-          />
-          <div class="birdbox">
-            <BlueBird />
-            <YellowBird />
-            <GreenBird />
-          </div>
-        </div>
-        <div class="col-12 col-md-1 pro_list_filter">
-          <BtnFilter 
-            v-for="item in filter"
-            :filterId="item.filterId"
-            :filterName="item.filterName"
-            :key="item"
-            @toggleFilter="handleToggleFilter"
-          />
-        </div>
-        <div class="col-md-10 pro_card_list ">
-          <ProductCard 
-          :displayData="paginated"
-          />
+<template>
+  <MainHeader />
+  <div class="pro_list_title">
+    <h1>新品專區
+    </h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12" id="store_name">
+        <h2>CARA CAR</h2>
+        <PriceSorter 
+        @sortChange="handleSortChange"
+        />
+        <div class="birdbox">
+          <BlueBird />
+          <YellowBird />
+          <GreenBird />
         </div>
       </div>
+      <div class="col-12 col-md-1 pro_list_filter">
+        <BtnFilter 
+          v-for="item in filter"
+          :filterId="item.filterId"
+          :filterName="item.filterName"
+          :key="item"
+          @toggleFilter="handleToggleFilter"
+        />
+      </div>
+      <div class="col-md-10 pro_card_list ">
+        <ProductCard 
+        :displayData="paginated"
+        />
+      </div>
     </div>
-    <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
-
+  </div>
+  <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
+  <div class="CardShProcessBG">
+    <img src="@/assets/imgs/product/sh_bg.png" alt="">
+  </div>
   <CardShProcess />
 </template>
 

@@ -110,3 +110,13 @@
 //商品卡css終點
 
 // 二手流程
+.CardShProcessBG{
+  position: absolute;
+  img{
+    position: relative;
+    width: 100%;
+    height: 750px;
+    // top: -120px;
+    z-index: -1;
+  }
+}
