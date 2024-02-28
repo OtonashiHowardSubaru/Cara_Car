@@ -1,11 +1,12 @@
 <script>
 export default {
-  props: ["orderList"],
+  props: ["orderList","detailList"],
   data() {
     return {
       active: "",
     };
   },
+
   methods: {
     checkOrderDetail(ord_id) {
       this.active = this.active === ord_id ? null : ord_id;
@@ -38,7 +39,7 @@ export default {
       <Transition name="fade">
 
         <div class="detail_card_content" v-if="active === orderItems.ord_id">
-            <div class="detail_card" v-for="detail in orderList" :key="detail.ord_id">
+            <div class="detail_card" v-for="detail in detailList" :key="detail.ord_id">
                 <div class="detail_proImg">
                     <img src="@/assets/imgs/product/product_1.png" alt="" />
                 </div>
@@ -46,7 +47,7 @@ export default {
                     <h2>商品名稱：{{ detail.pro_name }}</h2>
                     <h2>商品單價：{{ detail.pro_sale }}</h2>
                     <h2>商品數量：{{ detail.ord_qty }}</h2>
-                    <h2>運費：{{ detail.ord_ship }}</h2>
+                    <h2>運費：{{ 120 * detail.ord_qty }}</h2>
                     <h2>商品總額：{{ detail.ord_sum }}</h2>
                 </div>
             </div>
