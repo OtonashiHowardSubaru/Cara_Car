@@ -97,16 +97,13 @@
 
         </section>
 
-        <!-- <div class="iWantSellCarButton">
-            <div @click="openBtnSaleCar">填寫表格</div>
-        </div> -->
         <div class="SellCarFormButton">
-        <button id="SellCarFormButtonPic" @click="openLightbox"><img src="@/assets/imgs/SecondHandSale/BtnSaleCar.svg" alt=""></button>
-    </div>
+            <button id="SellCarFormButtonPic" @click="openLightbox"><img src="@/assets/imgs/SecondHandSale/BtnSaleCar.svg" alt=""></button>
+        </div>
+
         <Transition name="fade">
             <BtnSaleCar v-if="lightBoxForm.showLightbox"/>
         </Transition>
-        <!-- <BtnSaleCar/> -->
         
     </div>
     
@@ -148,11 +145,9 @@ export default {
     },
     methods: {
         openLightbox() {
-          // this.showLightbox = true;
             this.lightBoxForm.openLightbox()
         },
         closeLightbox() {
-          // this.showLightbox = false;
             this.lightBoxForm.closeLightbox()
         },
     },

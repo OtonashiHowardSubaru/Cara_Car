@@ -28,9 +28,9 @@ export default defineStore("cartStore", {
             return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/new_products/${imgName}`).href
         },
         getLocalCartData(){
-            console.log('getLocalCartData in')
+            // console.log('getLocalCartData in')
             let localCartData = localStorage.getItem("cartItems");
-            console.log(localCartData);
+            // console.log(localCartData);
             if(localCartData){
                 this.cartItems = JSON.parse(localCartData);
             }
@@ -59,7 +59,7 @@ export default defineStore("cartStore", {
                 // };
             }
             localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
-            console.log(this.cartItems);
+            // console.log(this.cartItems);
             
             return  Swal.fire({
                     title: '已加入購物車!',
@@ -99,7 +99,7 @@ export default defineStore("cartStore", {
 
         clearCartData(){
             localStorage.removeItem('cartItems');
-            console.log('清除購物車', this.cartItems);
+            // console.log('清除購物車', this.cartItems);
         },
 
     },

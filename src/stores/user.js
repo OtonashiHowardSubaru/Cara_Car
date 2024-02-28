@@ -27,7 +27,7 @@ export default defineStore('userStore', {
             }
         },
         updateToken(payload) {
-            console.log(payload);
+            // console.log(payload);
             // 定義一個名為 updateToken 的方法，接受一個 payload 作為參數。
             if (payload) {
               this.token = payload; // 將存儲庫中的 token 設定為提供的 payload。
@@ -54,7 +54,7 @@ export default defineStore('userStore', {
         },
         checkUserData() {
             const storageUserData = localStorage.getItem("userData");
-            console.log(Object.keys(this.userData).length);
+            // console.log(Object.keys(this.userData).length);
             if (Object.keys(this.userData).length > 0) {
                 return this.userData;
             } else if (storageUserData) {

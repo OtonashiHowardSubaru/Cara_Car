@@ -245,11 +245,11 @@ export default {
           this.payedUnShipList = this.orderList.filter(item => {
             return item.ord_del_state === 0;
           })
-          console.log(this.payedUnShipList)
+          // console.log(this.payedUnShipList)
           this.payedAndShipList = this.orderList.filter(item => {
             return item.ord_del_state === 1;
           })
-          console.log(this.payedAndShipList)
+          // console.log(this.payedAndShipList)
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -267,9 +267,9 @@ export default {
       let member_id = userData.id;
       axios.get(`${import.meta.env.VITE_PHP_URL}/front/getOrderDetail.php?member_id=${member_id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.detailList = res.data
-        console.log(this.detailList);
+        // console.log(this.detailList);
       })
       .catch((error)=>{
         console.error("Error fetching data:", error)

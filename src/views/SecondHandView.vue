@@ -6,20 +6,17 @@ import TitleViewed from "@/components/TitleViewed.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import ShProductIntroCard from "@/components/card/ShProductIntroCard.vue";
-// import mainImage from "@/assets/imgs/product/sh_products/product.png";
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Swiper} from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import ProCardSwiper from "@/components/ProCardSwiper.vue"
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
-// import Swal from 'sweetalert2';
 
 export default {
   components: {
     CardShProcess, TitleMaybeYouLike, TitleViewed,
     ProductCard, MainHeader, ShProductIntroCard, Swiper, ProCardSwiper, DoubleCloud,
-    // Swal,
   },
   data() {
     return {
@@ -93,20 +90,6 @@ export default {
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
 
-      axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontShProductInfo.php?`)
-        .then((response) => {
-          // 成功取得資料後，將資料存入陣列
-          // console.log(response.data)
-          this.productInfo = response.data;
-          this.thisProductInfo = response.data.find((item) => {
-            return item.pro_id == pageId
-          })
-          // console.log(this.productInfo);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
     },
 
     getProductImgSrc(imgName) {
@@ -131,7 +114,6 @@ export default {
     },
     //加入購物車
     addToShCart() {
-      // console.log('addToCart');
       try {
         const product = {
           id: this.thisProduct.sh_pro_id,
@@ -176,7 +158,6 @@ export default {
     },
   },
   mounted() {
-    // this.init();
 
   }
 }

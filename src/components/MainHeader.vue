@@ -88,8 +88,8 @@ export default {
             this.currentHoverIndex = -1;
         },
         changeImageTitlePh($index) {
-            console.log('Index:', $index);
-            console.log('titlePh[index]:', this.titlePh[$index]);
+            // console.log('Index:', $index);
+            // console.log('titlePh[index]:', this.titlePh[$index]);
 
             if (this.titlePh[$index]) {
                 this.currentTitle = this.titlePh[$index].ph;

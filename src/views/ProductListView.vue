@@ -154,14 +154,20 @@ export default {
     }
   }
   </script>
+
 <template>
+
   <MainHeader />
+
   <div class="pro_list_title">
     <h1>新品專區
     </h1>
   </div>
+
   <div class="container">
+
     <div class="row">
+
       <div class="col-12" id="store_name">
         <h2>CARA CAR</h2>
         <PriceSorter 
@@ -173,6 +179,7 @@ export default {
           <GreenBird />
         </div>
       </div>
+
       <div class="col-12 col-md-1 pro_list_filter">
         <BtnFilter 
           v-for="item in filter"
@@ -182,6 +189,7 @@ export default {
           @toggleFilter="handleToggleFilter"
         />
       </div>
+      
       <div class="col-md-10 pro_card_list ">
         <!-- <loading /> -->
         <ProductCard 
@@ -189,12 +197,17 @@ export default {
         />
       </div>
     </div>
+
   </div>
+
   <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
+
   <div class="CardShProcessBG">
     <img src="@/assets/imgs/product/sh_bg.png" alt="">
   </div>
+
   <CardShProcess />
+
   <chatBox />
 
 </template>

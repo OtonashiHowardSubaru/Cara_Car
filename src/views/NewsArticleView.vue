@@ -86,7 +86,7 @@ export default {
     },
     watch: {
         '$route'(to, from) {
-            // 間丁 $route 有變化
+            // 監聽 $route 有變化
             // 在路徑參數有變化時,執行一次fetchData(抓取資料)
             this.fetchData();
         }

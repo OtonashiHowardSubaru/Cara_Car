@@ -140,9 +140,6 @@ export default {
         toggleStatus(index) {
             this.eventsInfo[index].status = !this.eventsInfo[index].status;
         },
-        currentSidebar(item) {
-            this.activeTab = item
-        },
         changePage(page) {
             this.currentPage = page;
         },

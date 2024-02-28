@@ -49,7 +49,7 @@ export default {
         } else {
             // 判斷有沒有登入過，如果沒有token等同於沒有登入
             const user = this.checkLogin()
-            console.log(user);
+            // console.log(user);
             if (user) {
                 //有登入資訊轉到首頁
                 this.$router.push('/')
@@ -190,7 +190,7 @@ export default {
                 /*
                     根據需求，可以在登入後的處理中進行相應的操作，例如驗證用戶資訊、儲存登入狀態等。
                 */
-                console.log(userInfoResponse.data);
+                // console.log(userInfoResponse.data);
                 const user = userInfoResponse.data
                 const sub = user.sub;
                 const name = user.name;
