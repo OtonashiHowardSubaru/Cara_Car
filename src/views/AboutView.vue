@@ -1,4 +1,5 @@
 <script>
+import gsap from 'gsap';
 import BtnEvent from '@/components/btn/BtnEvent.vue'
 import BtnShopInfo from '@/components/btn/BtnShopInfo.vue'
 import MainHeader from '@/components/MainHeader.vue'
@@ -15,9 +16,30 @@ export default {
     }
   },
   methods: {
+    startAnimation() {
+      // 使用 GSAP
+      gsap.to(this.$refs.animated, {
+        duration: 1, // 動畫持續時間(秒)
+        x: -6, //位置
+        yoyo: true, //反彈效果
+        repeat: -1,
+        // scale: 1.2, // 縮放
+        ease: 'power2.inOut' // 緩動效果
+      });
+      gsap.to(this.$refs.animated2, {
+        duration: 1,
+        x: -6,
+        yoyo: true,
+        repeat: -1,
+        ease: 'linear' 
+      });
+    }
+
   },
   mounted() {
-  }
+    // 在組件加載後開始動畫
+    this.startAnimation();
+  },
 }
 </script>
 
@@ -52,7 +74,7 @@ export default {
           <img src="@/assets/imgs/about/aboutUsC1.png" alt="">
         </div>
         <div class="container aboutUsContent">
-          <img src="@/assets/imgs/draw/person_love.png" alt="">
+          <img ref="animated" src="@/assets/imgs/draw/person_love.png" alt="">
           <span class="highlight">
             <p><span class="highlight-container"><span class="highlight"><strong>歡迎來到 Cara Car，</strong></span></span></p>
           </span>
@@ -72,7 +94,7 @@ export default {
           <img src="@/assets/imgs/about/aboutUsC2.png" alt="">
         </div>
         <div class="container aboutUsContent">
-          <div class="car_caraPic"><img src="@/assets/imgs/draw/car_caracar.png" alt=""></div>
+          <div ref="animated2" class="car_caraPic"><img src="@/assets/imgs/draw/car_caracar.png" alt=""></div>
           <span class="highlight">
             <p><span class="highlight-container"><span class="highlight">我們致力於提供各種特色的玩具車，</span></span></p>
           </span>
