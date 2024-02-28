@@ -15,466 +15,926 @@
 .longStreet2v2 {
     z-index: 10;
 }
+.bgCover {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $blue;
+    transition: ease 1s;
+    animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* 从完全透明开始 */
+    }
+    to {
+        opacity: 1; /* 渐入至完全不透明 */
+    }
+}
+.bgCoveLogo {
+    width: 50%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: moveWord 2s 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    
+
+    @media (min-width : 768px) {
+        top: 50%;
+    }
+}
+@keyframes moveWord {
+    0% {
+        transform: translate(-50%, -50%); /* 开始位置 */
+    }
+    50% {
+        transform: translate(-50%, -10%); /* 中间位置 */
+    }
+    100% {
+        transform: translate(-50%, -50%); /* 结束位置 */
+    }
+}
 .animaImg {
 
     .animaImg-boyDoze {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/boy-doze.svg');
+        background: url('../../../imgs/shopInfo/animaPic/boy-doze.png');
+        background-repeat: no-repeat;
+        background-size: 700%;
         width: 80px;
         height: 82px;
         top: 72%;
-        left: 24%;
+        left: 23%;
         animation: dozeBoy 7s steps(7) infinite; 
+
+        @media (max-width : 768px) {
+            top: 150%;
+        }
+        @media (max-width : 550px) {
+            width: 50px;
+            height: 51.37px;
+            top: 148%;
+        }
     }
     .animaImg-boyDoze2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/boy-doze.svg');
+        background: url('../../../imgs/shopInfo/animaPic/boy-doze.png');
+        background-repeat: no-repeat;
+        background-size: 700%;
         width: 80px;
         height: 82px;
         top: 346%;
         left: 19%;
         animation: dozeBoy 7s steps(7) infinite; 
+
+        @media (max-width : 768px) {
+            top: 705%;
+        }
+        @media (max-width : 550px) {
+            width: 50px;
+            height: 51.37px;
+        }
     }
     @keyframes dozeBoy {
         100% {
-            background-position: -560px 0;
+            background-position: 116.666% 0;
         }
     }
     .animaImg-car {
         width: 70px;
         top: 53%;
         left: 30%;
+
+        @media (max-width : 768px) {
+            top: 109%;
+        }
+        @media (max-width : 550px) {
+            width: 45px;
+            top: 107%;
+        }
     }
     .animaImg-car2 {
         width: 70px;
         top: 317%;
         left: 30%;
+
+        @media (max-width : 768px) {
+            top: 645%;
+        }
+        @media (max-width : 550px) {
+            width: 45px;
+            top: 643%;
+        }
     }
     .animaImg-ship {
         width: 100px;
         left: 90%;
         top: 145%;
+
+        @media (max-width : 768px) {
+            top: 300%;
+        }
+        @media (max-width : 550px) {
+            width: 80px;
+        }
     }
     .animaImg-ship2 {
         width: 100px;
         left: 90%;
         top: 409%;
+
+        @media (max-width : 768px) {
+            top: 830%;
+        }
+        @media (max-width : 550px) {
+            width: 80px;
+        }
     }
     .animaImg-train {
         width: 500px;
         left: -500px;
         top: 161%;
         z-index: 15;
+
+        @media (max-width : 768px) {
+            top: 330%;
+        }
+        @media (max-width : 550px) {
+            width: 350px;
+        }
     }
     .animaImg-train2 {
         width: 500px;
         left: -500px;
         top: 425%;
         z-index: 15;
+
+        @media (max-width : 768px) {
+            top: 865%;
+        }
+        @media (max-width : 550px) {
+            width: 350px;
+        }
     }
-    .animaImg-balloon {
-        width: 80px;
-    }
-    .animaImg-balloon2 {
-        width: 80px;
-    }
+    // .animaImg-balloon {
+    //     width: 80px;
+    // }
+    // .animaImg-balloon2 {
+    //     width: 80px;
+    // }
     .animaImg-sale {
         width: 30px;
         top: 57%;
         left: 81%;
+
+        @media (max-width : 768px) {
+            top: 116%;
+        }
+        @media (max-width : 550px) {
+            width: 17px;
+            left: 81%;
+        }
     }
     .animaImg-sale2 {
         width: 30px;
         top: 321%;
         left: 82%;
+
+        @media (max-width : 768px) {
+            top: 651%;
+        }
+        @media (max-width : 550px) {
+            width: 17px;
+            left: 81%;
+        }
     }
     .animaImg-football {
         width: 30px;
         top: 143%;
         left: 23%;
+
+        @media (max-width : 768px) {
+            top: 290%;
+        }
+        @media (max-width : 550px) {
+            width: 20px;
+        }
     }
     .animaImg-football2 {
         width: 30px;
         top: 406%;
         left: 23%;
+
+        @media (max-width : 768px) {
+            top: 825%;
+        }
+        @media (max-width : 550px) {
+            width: 20px;
+        }
     }
     .animaImg-grandpama {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/grandpama.svg');
+        background: url('../../../imgs/shopInfo/animaPic/grandpama.png');
+        background-repeat: no-repeat;
+        background-size: 200%;
         width: 73px;
         height: 94px;
         top: 80%;
-        left: 7%;
+        left: 6%;
         animation: grandpama 2s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 156%;
+        }
+        @media (max-width : 550px) {
+            width: 50px;
+            height: 64.38px;
+            top: 175%;
+            left: 1%;
+        }
     }
     .animaImg-grandpama2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/grandpama.svg');
+        background: url('../../../imgs/shopInfo/animaPic/grandpama.png');
+        background-repeat: no-repeat;
+        background-size: 200%;
         width: 73px;
         height: 94px;
         top: 343%;
-        left: 7%;
+        left: 6%;
         animation: grandpama 2s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 695%;
+        }
+        @media (max-width : 550px) {
+            width: 50px;
+            height: 64.38px;
+            top: 710%;
+            left: 1%;
+        }
     }
     @keyframes grandpama {
         100% {
-            background-position: -146px 0;
+            background-position: 200% 0;
         }
     }
     .animaImg-girl {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/girl.svg');
+        background: url('../../../imgs/shopInfo/animaPic/girl.png');
+        background-repeat: no-repeat;
+        background-size: 200%;
         width: 48px;
         height: 80px;
         top: 27%;
         left: 60%;
         animation: girl 3s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 55%;
+        }
+        @media (max-width : 550px) {
+            width: 34px;
+            height: 56.9px;
+            top: 51%;
+        }
     }
     .animaImg-girl2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/girl.svg');
+        background: url('../../../imgs/shopInfo/animaPic/girl.png');
+        background-repeat: no-repeat;
+        background-size: 200%;
         width: 48px;
         height: 80px;
         top: 290%;
         left: 60%;
         animation: girl 3s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 590%;
+        }
+        @media (max-width : 550px) {
+            width: 34px;
+            height: 56.9px;
+            top: 586%;
+        }
     }
     @keyframes girl {
         100% {
-            background-position: -96px 0;
+            background-position: 200% 0;
         }
     }
     .animaImg-breading {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/breading.svg');
+        background: url('../../../imgs/shopInfo/animaPic/breading.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 45px;
         height: 85px;
         top: 63%;
         left: 62%;
         animation: breading 5s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 130%;
+        }
+        @media (max-width : 550px) {
+            width: 32px;
+            height: 60.44px;
+        }
     }
     .animaImg-breading2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/breading.svg');
+        background: url('../../../imgs/shopInfo/animaPic/breading.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 45px;
         height: 85px;
         top: 328%;
         left: 62%;
         animation: breading 5s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 670%;
+        }
+        @media (max-width : 550px) {
+            width: 32px;
+            height: 60.44px;
+            top: 665%;
+        }
     }
     @keyframes breading {
         100% {
-            background-position: -180px 0;
+            background-position: 133.33% 0;
         }
     }
     .animaImg-shopping {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/shopping.svg');
+        background: url('../../../imgs/shopInfo/animaPic/shopping.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 78px;
         height: 98.49px;
         top: 80%;
         left: 58%;
         animation: shopping 4s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 156%;
+        }
+        @media (max-width : 550px) {
+            width: 56px;
+            height: 70.71px;
+            left: 56%;
+        }
     }
     .animaImg-shopping2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/shopping.svg');
+        background: url('../../../imgs/shopInfo/animaPic/shopping.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 78px;
         height: 98.49px;
         top: 342%;
         left: 58%;
         animation: shopping 4s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 700%;
+        }
+        @media (max-width : 550px) {
+            width: 56px;
+            height: 70.71px;
+            top: 692%;
+            left: 56%;
+        }
     }
     @keyframes shopping {
         100% {
-            background-position: -312px 0;
+            background-position: 133.33% 0;
         }
     }
     .animaImg-purchasing {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/purchasing.svg');
+        background: url('../../../imgs/shopInfo/animaPic/purchasing.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 44px;
         height: 66.5px;
         top: 58%;
         left: 83%;
         animation: purchasing 4s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 117%;
+        }
+        @media (max-width : 550px) {
+            width: 29px;
+            height: 43.83x;
+            top: 118%;
+            left: 82%;
+        }
     }
-    .animaImg-purchasing {
+    .animaImg-purchasing2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/purchasing.svg');
+        background: url('../../../imgs/shopInfo/animaPic/purchasing.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 44px;
         height: 66.5px;
         top: 322%;
         left: 83%;
         animation: purchasing 4s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 653%;
+        }
+        @media (max-width : 550px) {
+            width: 29px;
+            height: 43.83x;
+            top: 652%;
+            left: 82%;
+        }
     }
     @keyframes purchasing {
         100% {
-            background-position: -176px 0;
+            background-position: 133.33% 0;
         }
     }
     .animaImg-balloonBoy {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/balloonBoy.svg');
+        background: url('../../../imgs/shopInfo/animaPic/balloonBoy.png');
+        background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 89.9px;
         top: 75%;
         left: 80%;
         animation: balloonBoy 3s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 155%;
+        }
+        @media (max-width : 550px) {
+            width: 35px;
+            height: 62.86px;
+            top: 150%;
+            left: 78%;
+        }
     }
     .animaImg-balloonBoy2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/balloonBoy.svg');
+        background: url('../../../imgs/shopInfo/animaPic/balloonBoy.png');
+        background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 89.9px;
         top: 340%;
         left: 80%;
         animation: balloonBoy 3s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 692%;
+        }
+        @media (max-width : 550px) {
+            width: 35px;
+            height: 62.86px;
+            top: 687%;
+            left: 78%;
+        }
     }
     @keyframes balloonBoy {
         100% {
-            background-position: -100px 0;
+            background-position: 200% 0;
         }
     }
     .animaImg-chatFamily {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/chatFamily.svg');
+        background: url('../../../imgs/shopInfo/animaPic/chatFamily.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 75px;
         height: 95px;
         top: 98%;
         left: 60%;
         animation: chatFamily 5s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 198%;
+        }
+        @media (max-width : 550px) {
+            width: 56px;
+            height: 71.17px;
+            top: 192%;
+        }
     }
     .animaImg-chatFamily2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/chatFamily.svg');
+        background: url('../../../imgs/shopInfo/animaPic/chatFamily.png');
+        background-repeat: no-repeat;
+        background-size: 400%;
         width: 75px;
         height: 95px;
         top: 361%;
         left: 60%;
         animation: chatFamily 5s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 730%;
+        }
+        @media (max-width : 550px) {
+            width: 56px;
+            height: 71.17px;
+            top: 727%;
+        }
     }
     @keyframes chatFamily {
         100% {
-            background-position: -300px 0;
+            background-position: 133.33% 0;
         }
     }
     .animaImg-sportBoy {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/sportBoy.svg');
+        background: url('../../../imgs/shopInfo/animaPic/sportBoy.png');
         background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 52px;
         top: 137%;
         left: 26%;
         animation: sportBoy 1s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 278%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 41.94px;
+        }
     }
     .animaImg-sportBoy2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/sportBoy.svg');
+        background: url('../../../imgs/shopInfo/animaPic/sportBoy.png');
         background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 52px;
         top: 401%;
         left: 26%;
         animation: sportBoy 1s steps(2) infinite;
+        @media (max-width : 768px) {
+            top: 814%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 41.94px;
+        }
     }
     @keyframes sportBoy {
         100% {
-            background-position: -100px 0;
+            background-position: 200% 0;
         }
     }
     .animaImg-sportGirl {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/sportGirl.svg');
+        background: url('../../../imgs/shopInfo/animaPic/sportGirl.png');
         background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 52px;
         top: 148%;
         left: 18%;
         animation: sportGirl 1s steps(2) infinite;
         z-index: 2;
+
+        @media (max-width : 768px) {
+            top: 300%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 41.94px;
+        }
     }
     .animaImg-sportGirl2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/sportGirl.svg');
+        background: url('../../../imgs/shopInfo/animaPic/sportGirl.png');
         background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 52px;
         top: 413%;
         left: 18%;
         animation: sportGirl 1s steps(2) infinite;
         z-index: 2;
+
+        @media (max-width : 768px) {
+            top: 835%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 41.94px;
+        }
     }
     @keyframes sportGirl {
         100% {
-            background-position: -100px 0;
+            background-position: 200% 0;
         }
     }
     .animaImg-mermaid {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/mermaid.svg');
+        background: url('../../../imgs/shopInfo/animaPic/mermaid.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 80px;
         height: 54.19px;
         top: 135%;
         left: 78%;
         animation: mermaid 6s steps(6) infinite;
+
+        @media (max-width : 768px) {
+            top: 275%;
+        }
+        @media (max-width : 550px) {
+            width: 60px;
+            height: 40.65px;
+            top: 270%;
+        }
     }
     .animaImg-mermaid2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/mermaid.svg');
+        background: url('../../../imgs/shopInfo/animaPic/mermaid.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 80px;
         height: 54.19px;
         top: 400%;
-        left: 78%;
+        left: 79%;
         animation: mermaid 6s steps(6) infinite;
+
+        @media (max-width : 768px) {
+            top: 807%;
+        }
+        @media (max-width : 550px) {
+            width: 60px;
+            height: 40.65px;
+            top: 804%;
+        }
     }
     @keyframes mermaid {
         100% {
-            background-position: -480px 0;
+            background-position: 120% 0;
         }
     }
     .animaImg-fish {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/fish.svg');
+        background: url('../../../imgs/shopInfo/animaPic/fish.png');
         background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 42.86px;
         top: 144%;
         left: 75%;
         animation: fish 2s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 293%;
+        }
+        @media (max-width : 550px) {
+            width: 30px;
+            height: 25.71px;
+        }
     }
     .animaImg-fish2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/fish.svg');
+        background: url('../../../imgs/shopInfo/animaPic/fish.png');
         background-repeat: no-repeat;
+        background-size: 200%;
         width: 50px;
         height: 42.86px;
         top: 409%;
         left: 75%;
         animation: fish 2s steps(2) infinite;
+
+        @media (max-width : 768px) {
+            top: 827%;
+        }
+        @media (max-width : 550px) {
+            width: 30px;
+            height: 25.71px;
+        }
     }
     @keyframes fish {
         100% {
-            background-position: -100px 0;
+            background-position: 200% 0;
         }
     }
     .animaImg-surfboardBoy {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/surfboardBoy.svg');
+        background: url('../../../imgs/shopInfo/animaPic/surfboardBoy.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 57px;
         height: 89.41px;
         top: 161%;
         left: 59%;
         animation: surfboardBoy 6s steps(6) infinite;
+
+        @media (max-width : 768px) {
+            top: 330%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 62.75px;
+            top: 325%;
+        }
     }
     .animaImg-surfboardBoy2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/surfboardBoy.svg');
+        background: url('../../../imgs/shopInfo/animaPic/surfboardBoy.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 57px;
         height: 89.41px;
         top: 426%;
         left: 59%;
         animation: surfboardBoy 6s steps(6) infinite;
+
+        @media (max-width : 768px) {
+            top: 865%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 62.75px;
+            top: 860%;
+        }
     }
     @keyframes surfboardBoy {
         100% {
-            background-position: -342px 0;
+            background-position: 120% 0;
         }
     }
     .animaImg-chattingCP {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/chattingCP.svg');
+        background: url('../../../imgs/shopInfo/animaPic/chattingCP.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 110px;
         height: 103.4px;
         top: 214%;
         left: 29%;
         animation: chattingCP 8s steps(6) infinite;
         z-index: 15;
+
+        @media (max-width : 768px) {
+            top: 435%;
+        }
+        @media (max-width : 550px) {
+            width: 64px;
+            height: 60.16px;
+        }
     }
     .animaImg-chattingCP2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/chattingCP.svg');
+        background: url('../../../imgs/shopInfo/animaPic/chattingCP.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 110px;
         height: 103.4px;
         top: 478%;
         left: 29%;
         animation: chattingCP 8s steps(6) infinite;
         z-index: 15;
+
+        @media (max-width : 768px) {
+            top: 972%;
+        }
+        @media (max-width : 550px) {
+            width: 64px;
+            height: 60.16px;
+        }
     }
     @keyframes chattingCP {
         100% {
-            background-position: -660px 0;
+            background-position: 120% 0;
         }
     }
     .animaImg-dogging {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/dogging.svg');
+        background: url('../../../imgs/shopInfo/animaPic/dogging.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 90px;
         height: 91.14px;
         top: 222%;
         left: -20%;
-        animation: dogging 6s steps(6) infinite;
+        animation: dogging 5s steps(6) infinite;
         z-index: 15;
+
+        @media (max-width : 768px) {
+            top: 451%;
+        }
+        @media (max-width : 550px) {
+            width: 60px;
+            height: 60.76px;
+            left: -50%;
+        }
+
+
     }
     .animaImg-dogging2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/dogging.svg');
+        background: url('../../../imgs/shopInfo/animaPic/dogging.png');
         background-repeat: no-repeat;
+        background-size: 600%;
         width: 90px;
         height: 91.14px;
-        top: 486%;
+        top: 485%;
         left: -20%;
-        animation: dogging 6s steps(6) infinite;
+        animation: dogging 5s steps(6) infinite;
         z-index: 15;
+
+        @media (max-width : 768px) {
+            top: 987%;
+        }
+        @media (max-width : 550px) {
+            width: 60px;
+            height: 60.76px;
+            left: -50%;
+            // top: 986%;
+        }
     }
     @keyframes dogging {
         100% {
-            background-position: -540px 0;
+            background-position: 120% 0;
         }
     }
     .animaImg-catWalk {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/catWalk.svg');
+        background: url('../../../imgs/shopInfo/animaPic/catWalk.png');
         background-repeat: no-repeat;
+        background-size: 400%;
         width: 50px;
         height: 43.75px;
         top: 225%;
         left: 75%;
-        animation: catWalk 5s steps(4) infinite;
+        animation: catWalk 4s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 455%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 35px;
+            left: 82%;
+        }
     }
     .animaImg-catWalk2 {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/catWalk.svg');
+        background: url('../../../imgs/shopInfo/animaPic/catWalk.png');
         background-repeat: no-repeat;
+        background-size: 400%;
         width: 50px;
         height: 43.75px;
         top: 490%;
         left: 75%;
         animation: catWalk 5s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            top: 989%;
+        }
+        @media (max-width : 550px) {
+            width: 40px;
+            height: 35px;
+            left: 82%;
+        }
     }
     @keyframes catWalk {
         100% {
-            background-position: -200px 0;
+            background-position: 133.33% 0;
         }
     }
     .animaImg-watering {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/watering.svg');
+        background: url('../../../imgs/shopInfo/animaPic/watering.png');
         background-repeat: no-repeat;
         background-size: 400%;
         width: 96px;
         height: 87.65px;
         top: 271%;
         left: 34%;
-        animation: watering 5s steps(4) infinite;
+        animation: watering 4s steps(4) infinite;
+
+        @media (max-width : 768px) {
+            left: 36%;
+            top: 552%;
+        }
+        @media (max-width : 550px) {
+            width: 60px;
+            height: 55px;
+        }
     }
     @keyframes watering {
         100% {
@@ -483,7 +943,7 @@
     }
     .animaImg-walkBoy {
         position: absolute;
-        background: url('../../../imgs/shopInfo/animaPic/walkBoy2.svg');
+        background: url('../../../imgs/shopInfo/animaPic/walkBoy.png');
         background-repeat: no-repeat;
         background-size: 200%;
         width: 65px;
@@ -492,9 +952,11 @@
         left: 48%;
         animation: walkBoy 1.5s steps(2) infinite;
 
-        @media (max-width : 450px) {
+        @media (max-width : 550px) {
             width: 40px;
             height: 58.75px;
+            left: 50%;
+            top: -50%;
         }
     }
     @keyframes walkBoy {
