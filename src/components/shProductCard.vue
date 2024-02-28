@@ -31,9 +31,4 @@ export default {
 <style lang="scss" scoped>
 // @import '@/assets/scss/components/_productCard.scss';
 
-.product_card {
-  .pro_card_img{
-    margin-bottom: 25px;
-      }
-}
 </style>
