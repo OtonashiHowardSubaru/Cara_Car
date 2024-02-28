@@ -30,8 +30,7 @@ export default defineConfig({
     },
   },
   server:{
-<<<<<<< HEAD
-    port: '5173',
+    // port: '5173',
     // 開發環境可以指定run的port，這樣.env檔內設定的路徑大家開發就一定不會有讀取問題。
     // host:'192.168.1.107' //億
 =======

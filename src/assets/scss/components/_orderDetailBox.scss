@@ -6,6 +6,8 @@
     flex-direction: column;
 }
 .order_card{
+    background-color: $grey_1;
+    border-radius: 0 0 $borr2 $borr2;
     padding: 8px;
     width: 100%;
     display: flex;
@@ -14,29 +16,31 @@
     align-items: center;
 }
 .card_intro{
-    width: 55%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     h2{
         padding: 10px 0 0 10px;
-        }
+        font-size: $mp;
+    }
 }
 .order_proImg{
-    width: 30%;
+    width: 25%;
     img{
         width: 100%;
         vertical-align: top;
     }
 }
 button.order_detail{
-    width: 15%;
+    width: 20%;
     font-size: $p;
     margin-block: 5px;
-    padding: 15px 5px;
+    padding: 30px 5px;
     color: $whiteWord;
     border: none;
     border-radius: $borr2;
     cursor: pointer;
+    font-size: $mp;
     margin-bottom: 10px;
     text-align: center;
     transition: border 0.1s ease-in-out;
@@ -54,18 +58,24 @@ button.order_detail{
 .fade-enter, .fade-leave-to {
     transition:opacity 0.1s;
 }
+.detail_card_content{
+    width: 100%;
+}
 .detail_card{
+    background-color: #fff;
+    border-radius: $borr2;
     width: 100%;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     padding: 10px 0 20px 20px;
+    margin-block: 10px;
     h2{
         padding: 10px;
+        font-size: $mp;
     }
 }
 .detail_proImg{
-    width: 15%;
+    width: 25%;
     img{
         width: 100%;
         vertical-align: top;
@@ -73,5 +83,27 @@ button.order_detail{
 }
 .detail_text{
     display: flex;
-    
+    flex-wrap: wrap;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .card_intro{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        h2{
+            padding: 10px 0 0 10px;
+            font-size: $h4;
+        }
+    }
+    .detail_card{
+        width: 100%;
+        h2{
+            font-size: $h5;
+        }
+    }
+    .detail_text{
+        padding-left: 20px;
+        flex-direction: column;
+    }
 }
