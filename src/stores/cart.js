@@ -98,7 +98,8 @@ export default defineStore("cartStore", {
         },
 
         clearCartData(){
-            this.cartItems = [];
+            localStorage.removeItem('cartItems');
+            console.log('清除購物車', this.cartItems);
         },
 
     },
