@@ -8,10 +8,11 @@ import PriceSorter from '@/components/PriceSorter.vue';
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
+import loading from "@/components/loading.vue";
 
 export default {
   components: {
-    CardShProcess, MainHeader, PageNumber, shProductCard, PriceSorter, GreenBird, BlueBird, YellowBird,
+    CardShProcess, MainHeader, PageNumber, shProductCard, PriceSorter, GreenBird, BlueBird, YellowBird,loading
   },
   data() {
     return {
@@ -24,6 +25,7 @@ export default {
       responseData: [],
       displayData: [],
       productDisplayList: [],
+      isLoading: true,
 
     }
   },
@@ -36,6 +38,7 @@ export default {
         // console.log(response.data)
         this.responseData = response.data;
         this.displayData = response.data;
+        this.isLoading = false;
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -76,6 +79,9 @@ export default {
 }
 </script>
 <template>
+  <loading 
+  :isLoading="isLoading"
+  />
   <MainHeader />
 
   <div class="sh_pro_list_title">
