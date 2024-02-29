@@ -12,11 +12,13 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import ProCardSwiper from "@/components/ProCardSwiper.vue"
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
+import chatBox from '@/components/btn/chatBox.vue'
+
 
 export default {
   components: {
     CardShProcess, TitleMaybeYouLike, TitleViewed,
-    ProductCard, MainHeader, ShProductIntroCard, Swiper, ProCardSwiper, DoubleCloud,
+    ProductCard, MainHeader, ShProductIntroCard, Swiper, ProCardSwiper, DoubleCloud, chatBox,
   },
   data() {
     return {
@@ -234,6 +236,8 @@ export default {
     </div>
     <CardShProcess />
   </div>
+  <chatBox />
+
 </template>
   
 <style lang="scss" scoped>
