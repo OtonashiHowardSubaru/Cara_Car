@@ -164,7 +164,7 @@ export default {
                 <span class="cartProcessname">完成訂單</span>
             </div>
             <div class="cartContent" v-show="cartItems.length != 0">
-                <span class="productName">商品名稱與單價</span>
+                <span class="productName">品名與單價</span>
                 <span class="count">數量</span>
                 <span class="countTotal">合計</span>
             </div>
