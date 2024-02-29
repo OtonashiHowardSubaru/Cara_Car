@@ -11,6 +11,7 @@ import CardShProcess from '@/components/card/CardShProcess.vue';
 import bannerCanvas from "@/components/Canvas.vue";
 import bannerCanvas2 from "@/components/Canvas2.vue";
 import bannerCanvas3 from "@/components/Canvas3.vue";
+import bannerCanvas4 from "@/components/Canvas4.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import chatBox from '@/components/btn/chatBox.vue'
@@ -23,6 +24,7 @@ export default {
     bannerCanvas,
     bannerCanvas2,
     bannerCanvas3,
+    bannerCanvas4,
     chatBox,
     loading,
   },
@@ -372,13 +374,17 @@ export default {
     <bannerCanvas class="bannerCanvas" />
     <bannerCanvas2 class="bannerCanvas2" />
     <bannerCanvas3 class="bannerCanvas3" />
+    <bannerCanvas4 class="bannerCanvas4" />
+
     <h1 class="indexBannerTitle">每一次轉彎，</h1>
     <h2 class="indexBannerTitle2">都是新的發現！</h2>
     <RouterLink class="RouterLink" to="/">
       <img src="@/assets/imgs/Home/index-logo.svg" alt="" class="indexLogo">
     </RouterLink>
     <div class="indexBannerBagBlock"></div>
-    <SingleCloud class="SingleCloud" />
+    <div class="cloud1">
+      <SingleCloud class="SingleCloud" />
+    </div>
     <DoubleCloud class="DoubleCloud" />
   </div>
 
@@ -439,10 +445,15 @@ export default {
   </div>
   
   <div class="indexGameGroup">
-    <img src="@/assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
+
+    <div class="gameTitle">
+      <img src="@/assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
+    </div>
+    <img src="@/assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
+
     <div class="game">
-      <img src="@/assets/imgs/Home/indexGameBackground.svg" alt="GameBackground" class="indexGameBackground">
       <img src="@/assets/imgs/Home/indexGameImg.png" alt="GameImg" class="indexGameImg">
+
       <RouterLink class="RouterLink" to="/Game">
         <button class="indexGameButton" @mouseover="toggleHover" @mouseout="resetRotation"
           :class="{ 'hovered': isHovered }">

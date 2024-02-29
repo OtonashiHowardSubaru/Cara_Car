@@ -75,7 +75,7 @@
     margin-top: 10px;
 }
 .cartProcessname{
-    padding: 0px 52px;
+    padding: 0px 32px;
     font-size: 12px;
     color: $grey_3;
     letter-spacing: 3px;
@@ -138,7 +138,7 @@
     padding: 1% 0;
 }
 .number_select{
-    width: 28%;
+    width: 20%;
 }
 .countButton{
     background-color: $grey_1;
@@ -309,27 +309,27 @@ button{
     // border-radius: $borr2;
     border-radius: 15px;
     font-size: $mh6;
-    width: 36%;
+    width: 45%;
     color: #fff;
-    margin-bottom: 5%;
+    // margin-bottom: 5%;
     // padding: 10px;
 }
 #goToProduct{
     position: absolute;
-    left: 12%;
+    left: 5%;
     bottom: 5%;
     border: 2px solid $grass_2;
-    padding: 12px 50px;
+    padding: 12px 30px;
     background-color: #fff;
     color: $grass_1;
     cursor: pointer;
 }
 #goToCart{
     position: absolute;
-    right: 12%;
+    right: 5%;
     bottom: 5%;
     background-color: $grass_2;
-    padding: 14px 50px;
+    padding: 14px 30px;
     cursor: pointer;
 }
 .cartPrice{
@@ -435,6 +435,9 @@ button{
         position: absolute;
         top:95%;
         right:10%;
+    }
+    .cartProcessname{
+        padding: 0px 52px;        
     }
     .cartContent{
         font-size: $h4;
