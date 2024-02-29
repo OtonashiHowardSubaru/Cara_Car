@@ -91,7 +91,7 @@
 .smallImgsBox{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     .smallImg{
         box-sizing: border-box;
         width: 24%;
@@ -102,7 +102,7 @@
 }
 @media (min-width: 768px){
     .smallImgsBox .smallImg{
-        width: 48%;
+        width: 36%;
     }
 }
 //圖片切換器css終點
