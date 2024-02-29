@@ -124,10 +124,7 @@ export default {
         // });
         const handleWheel = (event) => {
             // 檢查是否有 deltaX 或 deltaY 屬性，若無則設置為 0
-            const delta = event?.deltaX || event?.deltaY || 0;
-
-            // console.log("handleWheel 轉動?", delta);
-            
+            const delta = event?.deltaX || event?.deltaY || 0;            
              // 阻止滾輪事件的默認行為，防止其他滾輪的滾動
             event.preventDefault();
             // 根據滾輪的滾動方向調整 swiperQ 容器的左右滾動位置
@@ -151,7 +148,7 @@ export default {
                 body: defaultAnswer1,
                 author: 'Cara',  // 回答由Cara提供
                 hasLinkButton: true,
-                routerLink: "/News",   //導到其他頁面
+                routerLink: "/About",   //導到其他頁面
             });
             // 滾動到聊天室底部
             nextTick(() => {
@@ -189,6 +186,8 @@ export default {
             messages.value.push({
                 body: defaultAnswer1,
                 author: 'Cara',
+                hasLinkButton: true,
+                routerLink: "/SecondHandSale",
             });
             nextTick(() => {
                 if (chatArea.value) {
@@ -280,13 +279,19 @@ export default {
                     messages.value.push({ body: "哇，汽車真是個有趣的話題！歡迎到Cara Car 挑選您喜愛的兒童汽車哦!", author: 'Cara' });
                 } else if (youMessage.value.toLowerCase().includes('二手車')) {
                     // 檢查 youMessage 是否包含二手車關鍵字
-                    messages.value.push({ body: "如果有興趣知道販售二手車的流程的話，可以參考我們要賣車的網頁唷~裡面有詳細資訊~", author: 'Cara' });
+                    messages.value.push({ body: "如果有興趣知道販售二手車的流程的話，可以參考我們要賣車的網頁唷~裡面有詳細資訊~", author: 'Cara' , hasLinkButton: true, routerLink: "/About"});
                 } else if (youMessage.value.toLowerCase().includes('購物車')) {
                     // 檢查 youMessage 是否包含購物車
                     messages.value.push({ body: "快把你喜愛的車款加到購物車!!喜歡就不要錯過囉~購物車要記得結帳唷!", author: 'Cara' });
                 } else if (youMessage.value.toLowerCase().includes('cara')) {
                     // 檢查 youMessage 是否包含cara
                     messages.value.push({ body: "Cara Car 很讚哦!是全國第一的兒童汽車及模型車的販賣公司唷~~", author: 'Cara' });
+                } else if (youMessage.value.toLowerCase().includes('會員')) {
+                    // 檢查 youMessage 是否包含會員
+                    messages.value.push({ body: "歡迎光臨Cara Car!點選網站右上角註冊按鈕,填寫資料即可成為會員。", author: 'Cara' , hasLinkButton: true, routerLink: "/MemberCenter"});
+                } else if (youMessage.value.toLowerCase().includes('優惠')) {
+                    // 檢查 youMessage 是否包含優惠
+                    messages.value.push({ body: "Cara Car不定期會推出優惠活動，歡迎參考最新消息的頁面。", author: 'Cara' ,  hasLinkButton: true, routerLink: "/News" });
 
                 } else {
                     // 如果 youMessage 没有包含設定的關鍵字，就自動回復默認訊息
