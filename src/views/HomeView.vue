@@ -14,7 +14,7 @@ import bannerCanvas3 from "@/components/Canvas3.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import chatBox from '@/components/btn/chatBox.vue'
-
+import loading from "@/components/loading.vue";
 
 export default {
   components: {
@@ -24,9 +24,11 @@ export default {
     bannerCanvas2,
     bannerCanvas3,
     chatBox,
+    loading,
   },
   data() {
     return {
+      isLoading: true,
       userStoreData: userStore(),
       lightBoxStore: lightBoxStore(),
       showLightbox: false,
@@ -102,6 +104,7 @@ export default {
       .then((response) => {
         // 成功取得資料後，將資料存入陣列
         this.displayData = response.data.slice(0, 8);
+        this.isLoading = false;
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -316,6 +319,7 @@ export default {
 
 
 <template>
+    <loading :isLoading="isLoading"/>
 
   <header class="mainHeader">
     <nav>

@@ -51,6 +51,7 @@ export default {
         ShopInfoAnimation,
         chatBox,
         loading,
+
     },
     data() {
         return{

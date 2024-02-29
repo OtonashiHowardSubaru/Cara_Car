@@ -2,14 +2,32 @@
   <div class="loadingBox" v-if="this.isLoading">
     <div class="loadingContainer">
       <div class="container1">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoC.png" alt="logoC">
+        </div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoA.png" alt="logoA">
+        </div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoR.png" alt="logoR">
+        </div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoA2.png" alt="logoA2">
+        </div>
       </div>
       <div class="container2">
-        <div class="dot shadow"></div>
-        <div class="dot shadow"></div>
-        <div class="dot shadow"></div>
+        <div class="dot shadow">
+          <img src="../assets/imgs/nav/logoC.png" alt="logoC">
+        </div>
+        <div class="dot shadow">
+          <img src="../assets/imgs/nav/logoA.png" alt="logoA">
+        </div>
+        <div class="dot shadow">
+          <img src="../assets/imgs/nav/logoR.png" alt="logoR">
+        </div>
+        <div class="dot shadow">
+          <img src="../assets/imgs/nav/logoA2.png" alt="logoA2">
+        </div>
       </div>
     </div>
   </div>

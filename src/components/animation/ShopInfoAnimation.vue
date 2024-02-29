@@ -3,6 +3,7 @@
     <div class="bgCover" v-show="showBgCover">
         <img src="../../assets/imgs/Home/index-logo.svg" alt="logo" class="bgCoveLogo">
     </div>
+
     <div class="bgAnime">
         <img src="/src/assets/imgs/shopInfo/longStreetv2.png" alt="longStreetv2" class="longStreetv2">
         <img src="/src/assets/imgs/shopInfo/longStreet2v2.png" alt="longStreet2v2" class="longStreet2v2">
@@ -73,12 +74,12 @@ import { ref, onMounted, onUnmounted } from 'vue';
 export default {
     emits: ['loadFinished'], 
     setup() {
+
         // 使用ref追踪是否显示bgCover
         const showBgCover = ref(false);
         const coverColor = ref('#000'); // 初始背景颜色
 
         onMounted(() => {
-
             // 設定底圖動畫
             var image = document.querySelector (".bgAnime");
 
