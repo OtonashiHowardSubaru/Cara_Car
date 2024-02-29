@@ -375,6 +375,36 @@
         
       }
     }
+    .year{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .intro_text{
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #222;
+    }
+    #purchase_btn{
+      display: flex;
+      justify-content: center;
+      button{
+          align-items: center;
+          width: 15vw;
+          height: 4vw;
+          color: #fff;
+          background-color: $grass_1;
+          border-radius: 15px;
+          border: none;
+          cursor: pointer;
+          @media(max-width:768px){
+            width: 35vw;
+            height: 7.5vw;
+            margin-bottom: 60px;
+          }
+
+      }
+    }
   }
 }
 
