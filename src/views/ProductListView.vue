@@ -129,24 +129,6 @@ export default {
       // 在這裡更新過濾邏輯，可能需要重新運行過濾
       this.updateFilter(); // 這裡需要定義 updateFilter 方法
     },
-<<<<<<< HEAD
-    computed:{
-      // 頁數切換
-      paginated(){
-        const start = (this.currentPage - 1) * this.perPage; //將當前頁數-1再乘以頁面顯示內容筆數得到start值
-        const end = start + this.perPage;//計算此頁面中的內容是否達到perPage中的數字最後索引值來得到end值
-        return this.displayData.slice(start, end);//用JS的.slice()方法獲取vue data中的member陣列內容顯示內容
-      },
-      totalPages() {
-        return Math.ceil(this.displayData.length / this.perPage);//用Math.ceil()無條件進位，值則是用member陣列物件長度除以顯示內容筆數取得
-      },
-    }
-  }
-  </script>
-
-<template>
-
-=======
     updateFilter() {
       if (this.activeFilterValue == "") {
         this.displayData = this.responseData;
@@ -183,7 +165,6 @@ export default {
   <loading 
   :isLoading="isLoading"
   />
->>>>>>> subaru
   <MainHeader />
 
   <div class="pro_list_title">
@@ -213,32 +194,17 @@ export default {
         @toggleFilter="handleToggleFilter"
         />
       </div>
-<<<<<<< HEAD
-      
-      <div class="col-md-10 pro_card_list ">
-        <!-- <loading /> -->
-        <ProductCard 
-        :displayData="paginated"
-        />
-=======
       <div class="col-md-10 pro_card_list">
         <ProductCard :displayData="paginated" />
->>>>>>> subaru
       </div>
     </div>
 
   </div>
-<<<<<<< HEAD
-
-  <PageNumber :totalPages="totalPages" :currentPage="currentPage" @pageChange="changePage" />
-
-=======
   <PageNumber
     :totalPages="totalPages"
     :currentPage="currentPage"
     @pageChange="changePage"
   />
->>>>>>> subaru
   <div class="CardShProcessBG">
     <img src="@/assets/imgs/product/sh_bg.png" alt="" />
   </div>
