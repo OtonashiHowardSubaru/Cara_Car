@@ -80,7 +80,8 @@ export default {
             // console.log(res);
             if (res && res.data && res.data.msg === "會員註冊成功") {
               alert("註冊成功");
-              location.reload();
+              // location.reload();
+              this.$router.push('/');
             } else {
               alert("註冊失敗");
             }
