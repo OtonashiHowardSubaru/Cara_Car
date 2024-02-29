@@ -161,7 +161,6 @@ methods: {
                 }else{
                     alert('訂購失敗')
                 }
-                this.getProduct(res.data.ordId)
             }).catch(error=>{
                 console.log(error);
             })

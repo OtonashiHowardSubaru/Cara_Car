@@ -22,8 +22,8 @@ export default {
         }
     },
     created() {
-        this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
         this.fetchData();
+        this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
 
     },
     computed: {
