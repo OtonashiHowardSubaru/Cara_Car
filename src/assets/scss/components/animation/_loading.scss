@@ -42,6 +42,10 @@
 
 .container2 {
   display: flex;
+  transform: scaleY(-1);
+  position: relative;
+  top:-25px;
+  align-items: center;
 }
 
 // .dot {
