@@ -17,6 +17,7 @@ export default {
         return {
             orderList: [],
             cartItems: [],
+            thisOrderList:[],
             city: [
                 { c: '台北市' },
                 { c: '新北市' },
@@ -42,8 +43,11 @@ export default {
         }
     },
     created() {
-        this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
         this.fetchData();
+        // this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
+        // console.log(this.orderList);
+        this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        let imgName = JSON.parse(localStorage.getItem('cart')).shimageUrl;
     },
     // computed: {
 
@@ -57,17 +61,23 @@ export default {
             axios.get(`${import.meta.env.VITE_PHP_URL}/back/backShOrder.php?`)
                 .then((response) => {
                     // 成功取得資料後，將資料存入陣列
-                    // console.log(response.data)
+                    console.log(response.data)
                     this.orderList = response.data;
                     this.thisOrderList = response.data.find((item) => {
                         return item.sh_pro_id == pageId
                     })
-                    // console.log(this.orderList);
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
                     this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
                 });
+        },
+        getShProImg(imgName){
+            return new URL(`${import.meta.env.VITE_IMG_BASE_URL}/sh_products/${imgName}`).href
+        },
+        clearshCartData() {
+            localStorage.removeItem('cart');
+            // console.log('清除購物車', this.cart);
         },
     },
 }
@@ -103,7 +113,7 @@ export default {
 
         </section>
 
-        <div class="orderList">
+        <div class="orderList" v-if="orderList.length > 0">
             <div class="listTitle">
                 <h1>訂單資訊</h1>
             </div>
@@ -157,45 +167,62 @@ export default {
 
         <section class="cartFunction">
             <!-- 這裡是商品內容 -->
-            <div class="productCard" v-for="(item, index) in cartItems" :key="index">
-                <img :src="(item.imageUrl)" alt="ProductImage">
-                <div class="proCardP">
-                    <p class="pro_name">{{ item.name }}</p>
-                    <p class="pro_price">${{ item.price }}</p>
+
+            <div class="shProductCard" v-for="item in cartItems" :key="item.id">
+                <img :src="getShProImg(item.shimageUrl)" alt="ProductImage">
+                <div class="sh_proCardP">
+                    <p class="sh_pro_name">{{ item.shname }}</p>
+                    <p class="sh_pro_price">${{ item.shprice }}</p>
                 </div>
-                <!-- <NumberSelect
-                    :qtyValue="item.quantity" @change="updateQuantity(index, $event)"
-                    /> -->
-                <div class="number_select">
-                    <input type="button" value="-" class="qtyMinus" @click="handleQtyChange(index, -1)">
-                    <input type="text" name="quantity" :value="item.quantity" class="qty" ref="`qtyInput_${index}`"
-                        @keydown.enter.prevent>
-                    <input type="button" value="+" class="qtyPlus" @click="handleQtyChange(index, 1)">
+            </div>
+            
+            <div v-if="cartItems.length > 0">
+                <div class="cartPrice">
+                    <span class="cartFunctionTitle">小計</span>
+                    <!-- 這裡要算小計 -->
+                    <span class="cartFunctionTitle">${{ cartItems[0].shprice}}</span>
                 </div>
-                <p class="proCount">{{ item.price * item.quantity }}</p>
+                <div class="cartPrice">
+                    <span class="cartFunctionTitle">運費</span>
+                    <span class="cartFunctionTitle">$120</span>
+                </div>
+                <!-- 這裡要算加運費的總金額 -->
+                <p class="cartCountTotal" id="cart3Total">合計金額：{{  cartItems[0].shprice + 120 }}</p>
             </div>
-            <div class="cartPrice">
-                <span class="cartFunctionTitle">小計</span>
-                <!-- 這裡要算小計 -->
-                <span class="cartFunctionTitle">${{ subtotal }}</span>
-            </div>
-            <div class="cartPrice">
-                <span class="cartFunctionTitle">運費</span>
-                <span class="cartFunctionTitle">運費計算參考</span>
-            </div>
-            <!-- 這裡要算加運費的總金額 -->
-            <p class="cartCountTotal">合計金額：${{ total }}</p>
 
         </section>
     </main>
-    <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
+    <router-link to="/">
+        <button type="button" class="subButton" id="goToHome" @click="clearshCartData">返回首頁</button>
+    </router-link>
+    <!-- <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
-    <chatBox />
+    <chatBox /> -->
 
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/page/cart.scss';
+.shProductCard{
+    display: flex;
+    margin-left: 70px;
+    img{
+        width: 100px;
+        margin-right: 30px;
+    }
+    .sh_proCardP{
+        display: flex;
+        align-items: center;
+
+        .sh_pro_name{
+            display: flex;
+        }
+        p{
+            margin-right: 40px;
+        }
+    }
+}
+
 #circle2 {
     background-color: #C0AA88;
     border: none;
@@ -276,4 +303,19 @@ export default {
         padding-bottom: 20px;
         border-bottom: 1px solid #222;
     }
-}</style>
+}
+.subButton{
+    display: flex;
+    justify-content: center;
+    font-size: $mh4;
+    width: 35%;
+    padding: 10px 0;
+    margin: 15px auto 25px auto;
+    border-style: none;
+    border-radius: 16px;
+    background-color: $grass_2;
+    color: $whiteWord;
+    cursor: pointer;
+    margin-bottom: 90px;
+}
+</style>

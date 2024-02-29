@@ -164,16 +164,6 @@ export default {
             })
 
         },
-
-        clearshCartData() {
-            this.shCartItems = [];
-            this.cart = [];
-            localStorage.setItem('cart', JSON.stringify(this.shCartItems));
-            // console.log('清除購物車', this.cart);
-        },
-        subOrder() {
-            this.buyDone();
-        }
     },
 }
 </script>
@@ -222,8 +212,8 @@ export default {
                     <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`"
                         @keydown.enter.prevent v-bind:style="{ margin: L + 'px' }" readonly>
                 </div>
-                <p class="shipment">$120</p>
-                <p class="proCount">${{ item.shprice + 120 }}</p>
+                <p class="shipment">${{ item.sh_ord_ship }}</p>
+                <p class="proCount">${{ item.shprice }}</p>
             </div>
             <div class="total"></div>
             <!-- 結束 -->
@@ -272,7 +262,7 @@ export default {
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
                 <router-link to="/ShcartPart3">
-                    <input type="button" class="subButton" @click="subOrder" value="確認並送出訂單">
+                    <input type="button" class="subButton" @click="buyDone" value="確認並送出訂單">
                 </router-link>
 
                 <router-link to="/secondHand">
