@@ -259,7 +259,7 @@ export default {
       <div class="col-12 col-md-6 intro">
         <div
           class="price"
-          :style="{ color: thisProduct.promo_state === 1 ? 'red' : 'black' }"
+          :style="{ color: thisProduct.promo_state == 1 ? 'red' : 'black' }"
         >
           <p>
             <span>{{ thisProduct.promo_name }}</span>

@@ -111,6 +111,7 @@ export default {
     startGame() {
       this.active = true;
       this.process = 0;//確保遊戲開始時機制重整
+      this.value = 0;
     },
     clickanswer(choosedValue) {
       this.process++; //追蹤進度
@@ -148,9 +149,14 @@ export default {
             <button @click="clickanswer(1)">{{ questionBank[process].answer3 }}</button>
           </div>
         </div>
-        <div v-if="active && process >= questionBank.length" class="col-10 col-md-7 finishGame">
-          <h3>\ 看看這個是不是你喜歡的吧！ /</h3>
-          <ProCardSwiper :displayData="displayData.slice(this.value, (this.value) + 3)" />
+        <div v-if="active && process >= questionBank.length" class="col-10 col-md-7" style="margin: auto;">
+          <div class="finishGame" >
+            <h3>\ 看看這個是不是你喜歡的吧！ /</h3>
+            <ProCardSwiper :displayData="displayData.slice(this.value, (this.value) + 3)" />
+          </div>
+          <div class="start_game">
+            <button id="btnStartGame" @click="startGame">再玩一次</button>
+          </div>
         </div>
       </div>
     </div>
