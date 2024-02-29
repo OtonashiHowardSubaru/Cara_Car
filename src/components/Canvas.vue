@@ -80,10 +80,11 @@ export default {
 
             context.strokeStyle = 'rgba(0,0,0,0.3)';
 
+
             let pic1 = new Image();
             pic1.src = indexBannerImg;
             pic1.onload = () => {
-                // console.log('pic1 loaded successfully');
+        //         // console.log('pic1 loaded successfully');
                 this.pic1 = pic1;
                 this.animate()
             };

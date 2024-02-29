@@ -308,9 +308,9 @@ export default {
           </div>
           <!-- 加入購物車按鈕 -->
 
-          <button type="button" id="buyNowBtn">
-            直接購買
-            <!-- <router-link to="/cart">直接購買</router-link> -->
+          <button type="button" id="buyNowBtn" @click="addToCart(thisProduct, qtyValue)">
+            <!-- 直接購買 -->
+            <router-link to="/cart">直接購買</router-link>
           </button>
           <button
             type="button"
