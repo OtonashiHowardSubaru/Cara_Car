@@ -278,14 +278,21 @@
 
 @media (max-width:768px){
   .intro{
-    display: none;
+    .titleBackGround{
+      display: none;
+    }
+    .year{
+      margin-top: -70px;
+    }
+    #purchase_btn{
+      margin-bottom: -60px;
+    }
   }
 
   .sh_product_wrap{
     flex-direction: column;
 
     .intromq{
-
       display: flex;
       flex-direction: column;
       align-items: center;

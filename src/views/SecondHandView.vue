@@ -189,18 +189,6 @@ export default {
         <img v-for="item in ImgsName" :src="getProductImgSrc(item.img_name)" alt="" @click="showLarge($event)" :key="item"
           class="littlepic">
       </div>
-      <div class="year price">
-        <span>${{ thisProduct.sh_pro_price }}</span>
-        <span>車輛年份: 2019</span>
-      </div>
-      <div v-if="thisProduct.sh_pro_intro">
-        <div class="intro_text" v-html="replaceLineBreaks(thisProduct.sh_pro_intro)"></div>
-          <div class="purchase_btn" id="purchase_btn" @click="addToShCart">
-          
-            <button type="button" id="purchase_btn">直接購買</button>
-          
-          </div>
-      </div>
     </div>
     <div class="intro">
       <div class="titleBackGround">
