@@ -5,13 +5,14 @@
 </template>
 
 <script>
-import indexBannerImg from '@/assets/imgs/Home/indexBannerImg.svg';
-import indexBannerImg2 from '@/assets/imgs/Home/indexBannerImg2.svg';
+import indexBannerImg3 from '@/assets/imgs/Home/indexBannerImg3.svg';
+import indexBannerImg4 from '@/assets/imgs/Home/indexBannerImg4.svg';
 import jump from '@/assets/imgs/Home/jump.png';
 import CaraCar from '@/assets/imgs/Home/CaraCar.svg';
 import think from '@/assets/imgs/Home/think.png';
 import ball from '@/assets/imgs/Home/ball.png';
 import sing from '@/assets/imgs/Home/sing.png';
+import balloon from '@/assets/imgs/Home/balloon.png';
 export default {
     data() {
         return {
@@ -22,6 +23,7 @@ export default {
             pic5: new Image(),
             pic6: new Image(),
             pic7: new Image(),
+            pic8: new Image(),
             x: 460,
             y: 250,
             startX: 460,
@@ -90,7 +92,7 @@ export default {
 
 
             let pic1 = new Image();
-            pic1.src = indexBannerImg;
+            pic1.src = indexBannerImg3;
             pic1.onload = () => {
             // console.log('pic1 loaded successfully');
                 this.pic1 = pic1;
@@ -98,7 +100,7 @@ export default {
             };
 
             let pic2 = this.pic2;
-            pic2.src = indexBannerImg2;
+            pic2.src = indexBannerImg4;
             pic2.onload = () => {
                 // console.log('pic2 loaded successfully');
                 this.pic2 = pic2;
@@ -130,6 +132,11 @@ export default {
             pic7.src = sing;
             pic7.onload = () => {
                 this.pic7 = pic7;
+            };
+            let pic8 = this.pic8;
+            pic8.src = balloon;
+            pic8.onload = () => {
+                this.pic8 = pic8;
             };
 
         },
@@ -182,7 +189,7 @@ export default {
             context.drawImage(this.pic4, x, y, 180, 120);
             // context.drawImage(this.pic3,390, 80, 120, 120);
             context.drawImage(this.pic2, 390, 80, 1020, 965);
-            let pic3YOffset = Math.sin(Date.now() / 300) * 5; // Adjust the amplitude and frequency as needed
+            let pic3YOffset = Math.sin(Date.now() / 350) * 5; // Adjust the amplitude and frequency as needed
             context.drawImage(this.pic3, 800 , 500+ pic3YOffset, 150, 120);
 
             let pic5XOffset = Math.sin(Date.now() / 500) * 5; // Adjust the amplitude and frequency as needed
@@ -193,6 +200,9 @@ export default {
 
             let pic7XOffset = Math.sin(Date.now() / 500) * 3; // Adjust the amplitude and frequency as needed
             context.drawImage(this.pic7, 1065+ pic7XOffset , 365, 110, 120);
+
+            let pic8YOffset = Math.sin(Date.now() / 200) * 4; // Adjust the amplitude and frequency as needed
+            context.drawImage(this.pic8, 1200 , 730+ pic8YOffset, 80, 50);
 
             if (y > 460) {
                 y = 270;
