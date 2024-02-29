@@ -195,10 +195,11 @@
     .decoGrass{
         z-index: -5;
         position: absolute;
+        top: 35%;
         width: 100%;
         
         @media (min-width:600px) {
-            top:  50%;
+            top:  40%;
         }
         @media (min-width:768px) {
             top:40%;
@@ -244,7 +245,7 @@
         .decoRail {
             width: 1000px;
             position: absolute;
-            bottom: 26%;
+            bottom: 22%;
             
 
             @media (min-width:768px) {
@@ -861,7 +862,7 @@ to {
         position: absolute;
         // width: 100px;
         top: 33.5%;
-        left: 49%;
+        left: 48%;
     }
     // .rotate{
     //     transition: transform 5s;
