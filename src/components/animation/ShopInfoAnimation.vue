@@ -3,16 +3,17 @@
     <div class="bgCover" v-show="showBgCover">
         <img src="../../assets/imgs/Home/index-logo.svg" alt="logo" class="bgCoveLogo">
     </div>
+
     <div class="bgAnime">
-        <img src="/src/assets/imgs/shopInfo/longStreetv2.jpg" alt="longStreetv2" class="longStreetv2">
+        <img src="/src/assets/imgs/shopInfo/longStreetv2.png" alt="longStreetv2" class="longStreetv2">
         <img src="/src/assets/imgs/shopInfo/longStreet2v2.png" alt="longStreet2v2" class="longStreet2v2">
 
         <div class="animaImg">
-            <img src="/src/assets/imgs/shopInfo/animaPic/car.png" alt="car" class="animaImg-car">
-            <img src="/src/assets/imgs/shopInfo/animaPic/ship.png" alt="ship" class="animaImg-ship">
-            <img src="/src/assets/imgs/shopInfo/animaPic/train.png" alt="train" class="animaImg-train">
+            <img src="/src/assets/imgs/shopInfo/animaPic/car2.png" alt="car" class="animaImg-car">
+            <img src="/src/assets/imgs/shopInfo/animaPic/ship2.png" alt="ship" class="animaImg-ship">
+            <img src="/src/assets/imgs/shopInfo/animaPic/train2.png" alt="train" class="animaImg-train">
             <!-- <img src="/src/assets/imgs/shopInfo/animaPic/balloon.png" alt="balloon" class="animaImg-balloon"> -->
-            <img src="/src/assets/imgs/shopInfo/animaPic/sale.png" alt="sale" class="animaImg-sale">
+            <img src="/src/assets/imgs/shopInfo/animaPic/sale2.png" alt="sale" class="animaImg-sale">
             <div class="animaImg-boyDoze"></div>
             <div class="animaImg-grandpama"></div>
             <div class="animaImg-girl"></div>
@@ -23,7 +24,7 @@
             <div class="animaImg-chatFamily"></div>
             <div class="animaImg-sportBoy"></div>
             <div class="animaImg-sportGirl"></div>
-            <img src="/src/assets/imgs/shopInfo/animaPic/football.png" alt="football" class="animaImg-football">
+            <img src="/src/assets/imgs/shopInfo/animaPic/football2.png" alt="football" class="animaImg-football">
             <div class="animaImg-mermaid"></div>
             <div class="animaImg-fish"></div>
             <div class="animaImg-surfboardBoy"></div>
@@ -33,11 +34,11 @@
             <div class="animaImg-watering"></div>
 
 
-            <img src="/src/assets/imgs/shopInfo/animaPic/car.png" alt="car" class="animaImg-car2">
-            <img src="/src/assets/imgs/shopInfo/animaPic/ship.png" alt="ship" class="animaImg-ship2">
-            <img src="/src/assets/imgs/shopInfo/animaPic/train.png" alt="train" class="animaImg-train2">
+            <img src="/src/assets/imgs/shopInfo/animaPic/car2.png" alt="car" class="animaImg-car2">
+            <img src="/src/assets/imgs/shopInfo/animaPic/ship2.png" alt="ship" class="animaImg-ship2">
+            <img src="/src/assets/imgs/shopInfo/animaPic/train2.png" alt="train" class="animaImg-train2">
             <!-- <img src="/src/assets/imgs/shopInfo/animaPic/balloon.png" alt="balloon" class="animaImg-balloon2"> -->
-            <img src="/src/assets/imgs/shopInfo/animaPic/sale.png" alt="sale" class="animaImg-sale2">
+            <img src="/src/assets/imgs/shopInfo/animaPic/sale2.png" alt="sale" class="animaImg-sale2">
             <div class="animaImg-boyDoze2"></div>
             <div class="animaImg-grandpama2"></div>
             <div class="animaImg-girl2"></div>
@@ -48,7 +49,7 @@
             <div class="animaImg-chatFamily2"></div>
             <div class="animaImg-sportBoy2"></div>
             <div class="animaImg-sportGirl2"></div>
-            <img src="/src/assets/imgs/shopInfo/animaPic/football.png" alt="football" class="animaImg-football2">
+            <img src="/src/assets/imgs/shopInfo/animaPic/football2.png" alt="football" class="animaImg-football2">
             <div class="animaImg-mermaid2"></div>
             <div class="animaImg-fish2"></div>
             <div class="animaImg-surfboardBoy2"></div>
@@ -71,13 +72,14 @@ import gsap from 'gsap';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
+    emits: ['loadFinished'], 
     setup() {
+
         // 使用ref追踪是否显示bgCover
         const showBgCover = ref(false);
         const coverColor = ref('#000'); // 初始背景颜色
 
         onMounted(() => {
-
             // 設定底圖動畫
             var image = document.querySelector (".bgAnime");
 
@@ -671,7 +673,10 @@ export default {
         return {
             showBgCover,
         }
-    }
+    },
+    mounted(){
+        this.$emit('loadFinished')
+    },
 }
 </script>
 

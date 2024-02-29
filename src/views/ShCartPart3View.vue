@@ -1,6 +1,5 @@
 <script>
 import axios from 'axios'; //引入函式庫
-import { mapState, mapActions } from 'pinia';
 import MainHeader from '@/components/MainHeader.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
@@ -45,11 +44,10 @@ export default {
     created() {
         this.orderList = JSON.parse(localStorage.getItem('orderList')) || [];
         this.fetchData();
-
     },
-    computed: {
+    // computed: {
 
-    },
+    // },
     methods: {
         fetchData() {
             // 定義頁碼
@@ -64,17 +62,13 @@ export default {
                     this.thisOrderList = response.data.find((item) => {
                         return item.sh_pro_id == pageId
                     })
-                    console.log(this.orderList);
+                    // console.log(this.orderList);
                 })
-                // console.log("========",this.thisProduct)
-                // })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
                     this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
                 });
-
         },
-
     },
 }
 </script>
@@ -202,11 +196,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/page/cart.scss';
-
-// @import '@/assets/scss/page/cartPart2.scss';
-// #cartProcessTop{
-//     margin-top: 90px;
-// }
 #circle2 {
     background-color: #C0AA88;
     border: none;

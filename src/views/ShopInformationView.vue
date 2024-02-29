@@ -1,8 +1,13 @@
 <template>
+    <loading
+    :isLoading="isLoading"
+    />
     <MainHeader />
     <main class="ShopInformation">
         <div class="infoBg">
-            <ShopInfoAnimation />
+            <ShopInfoAnimation
+            @loadFinished="loadFinished"
+            />
         </div>
 
         <section class="infoText">
@@ -33,7 +38,7 @@ import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
 import ShopInfoAnimation from '@/components/animation/ShopInfoAnimation.vue'
 import chatBox from '@/components/btn/chatBox.vue'
-
+import loading from '@/components/loading.vue';
 
 
 export default {
@@ -44,7 +49,8 @@ export default {
         ShopMap,
         InfoTextCards,
         ShopInfoAnimation,
-        chatBox
+        chatBox,
+        loading,
 
     },
     data() {
@@ -56,9 +62,16 @@ export default {
                     openTime: " 10 : 00 ~ 20 :30",
                     holiday: " 每周一、四"
                 }],
+            isLoading: true,
         }
     },
     methods:{
+        loadFinished(){
+        // 使用 setTimeout 添加一點延遲，確保 loading 組件有足夠的時間顯示
+        setTimeout(() => {
+            this.isLoading = false;
+        }, 1500); // 延遲 1500 毫秒
+    }
     },
     mounted() {
     }

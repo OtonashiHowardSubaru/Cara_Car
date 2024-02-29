@@ -2,7 +2,6 @@
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/MainHeader.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
-// import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
@@ -21,33 +20,9 @@ export default {
     data() {
         return {
             allProducts: [],
-            // cart:'',
             qtyValue: 0,
-            // count: 1,
             expanded: false,
             cartStore: cartStore(),
-            // city:[
-            //     {c:'台北市'},
-            //     {c:'新北市'},
-            //     {c:'基隆市'},
-            //     {c:'基隆縣'},
-            //     {c:'桃園市'},
-            //     {c:'新竹市'},
-            //     {c:'新竹縣'},
-            //     {c:'苗栗縣'},
-            //     {c:'台中市'},
-            //     {c:'彰化縣'},
-            //     {c:'南投縣'},
-            //     {c:'雲林縣'},
-            //     {c:'嘉義縣'},
-            //     {c:'台南市'},
-            //     {c:'高雄市'},
-            //     {c:'屏東縣'},
-            //     {c:'台東縣'},
-            //     {c:'花蓮縣'},
-            //     {c:'宜蘭縣'},
-            //     {c:'澎湖縣'},
-            // ],
         }
     },
     created() {
@@ -99,7 +74,7 @@ export default {
                     this.thisProduct = response.data.find((item) => {
                         return item.pro_id == pageId
                     })
-                    console.log(this.allProducts);
+                    // console.log(this.allProducts);
                 })
                 // console.log("========",this.thisProduct)
                 // })

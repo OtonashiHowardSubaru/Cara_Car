@@ -1,5 +1,3 @@
-<!-- 疑問疑問 ↓↓小龜老師看這裡 ↓↓ 疑問疑問-->
-<!-- 在這頁中有引用燈箱的store和component，這頁的header是手機板的nav，但在HomeView.vue檔中引用燈箱和MainHeader.vue就會變成有兩個燈箱，而且我修改燈箱的css他會影分身成兩個 -->
 <script>
 import axios from 'axios'; //引入函式庫
 import qs from 'qs' // 引入qs模組
@@ -16,7 +14,7 @@ import bannerCanvas3 from "@/components/Canvas3.vue";
 import SingleCloud from "@/components/animation/SingleCloud.vue";
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import chatBox from '@/components/btn/chatBox.vue'
-
+import loading from "@/components/loading.vue";
 
 export default {
   components: {
@@ -26,9 +24,11 @@ export default {
     bannerCanvas2,
     bannerCanvas3,
     chatBox,
+    loading,
   },
   data() {
     return {
+      isLoading: true,
       userStoreData: userStore(),
       lightBoxStore: lightBoxStore(),
       showLightbox: false,
@@ -97,13 +97,14 @@ export default {
   },
   created() {
 
-    console.log('getLineConnectionInfo');
+    // console.log('getLineConnectionInfo');
     //axios的get方法(`$import.meta.env.{變數}/檔名.php`)用.env檔中寫的網址來判斷網址URL的前贅
     // 取得全部商品資料用作商品資料，以及swiper用的所有資料
     axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php`)
       .then((response) => {
         // 成功取得資料後，將資料存入陣列
         this.displayData = response.data.slice(0, 8);
+        this.isLoading = false;
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -118,12 +119,10 @@ export default {
       // 使用 get 方法從 urlParams 實例中獲取名為 code 的參數的值。(授權碼，通常由用戶在身份驗證流程中獲得)
       // 如果查詢字串中存在名為 code 的參數，code 變數將被賦值為該參數的值；否則，code 變數將為 null。
       this.getLineConnectionInfo();
-      // const code = urlParams.get('code');
-      // await this.lineLoginRedirect(code);
     } else {
       // 判斷有沒有登入過，如果沒有token等同於沒有登入
       const user = this.checkLogin()
-      console.log(user);
+      // console.log(user);
       if (user) {
         //有登入資訊轉到首頁
         this.$router.push('/')
@@ -159,8 +158,8 @@ export default {
       this.currentHoverIndex = -1;
     },
     changeImageTitlePh($index) {
-      console.log('Index:', $index);
-      console.log('titlePh[index]:', this.titlePh[$index]);
+      // console.log('Index:', $index);
+      // console.log('titlePh[index]:', this.titlePh[$index]);
 
       if (this.titlePh[$index]) {
         this.currentTitle = this.titlePh[$index].ph;
@@ -186,7 +185,6 @@ export default {
         this.userStoreData.updateToken('')
         this.userStoreData.updateUserData('')
         //登入是燈箱沒有頁面就不跳轉頁面了
-        // this.$router.push('/')
       }
     },
     handleClick(e) {
@@ -321,6 +319,8 @@ export default {
 
 
 <template>
+    <loading :isLoading="isLoading"/>
+
   <header class="mainHeader">
     <nav>
       <!-- 電腦版header -->
@@ -345,6 +345,7 @@ export default {
       <img src="@/assets/imgs/Home/signboard.png" alt="" class="broad">
     </nav>
   </header>
+
   <!-- 手機板haeder -->
   <ul class="indexHeaderNavPh">
     <li class="indexHeaderButtonPh" v-for="(item, $index) in imgPh" :key="item">
@@ -362,9 +363,11 @@ export default {
       <img src="@/assets/imgs/nav/nav-icon-Logout-PH.png" alt="login" class="indexHeaderButtonLoginPh" @click="logout">
     </div>
   </ul>
+
   <Transition name="fade">
     <LoginBox v-if="lightBoxStore.showLightbox" />
   </Transition>
+
   <div class="indexBannerGroup">
     <bannerCanvas class="bannerCanvas" />
     <bannerCanvas2 class="bannerCanvas2" />
@@ -378,6 +381,7 @@ export default {
     <SingleCloud class="SingleCloud" />
     <DoubleCloud class="DoubleCloud" />
   </div>
+
   <div class="indexProductGroup">
     <div class="indexProductTitle">
       <img src="@/assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
@@ -390,6 +394,7 @@ export default {
       <ProductCard :displayData="displayData" />
     </div>
   </div>
+
   <div class="decoTrainAnimation">
     <img src="@/assets/imgs/Home/index-grass-background.svg" alt="grass.svg" class="decoGrass">
     <img src="@/assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
@@ -400,11 +405,11 @@ export default {
       <img src="@/assets/imgs/draw/rail.svg" alt="rail.svg" class="decoRail">
     </div>
   </div>
+
   <div class="indexEventGroup">
     <div class="indexEventTitle">
       <img src="@/assets/imgs/Home/indexEventTitle.svg" alt="indexEventTitle">
       <RouterLink to="/News" class="linkToEvent">
-        <!-- <div class="decoLine"></div> -->
         <div class="eventLink">消息一覽</div>
       </RouterLink>
       <img class="decoImg" src="@/assets/imgs/draw/person_sit.png" alt="person_sit">
@@ -413,6 +418,7 @@ export default {
       <EventCardSlider class="otherEventCard" />
     </div>
   </div>
+
   <div class="indexAboutUsGroup">
     <div class="indexAboutBlock"></div>
     <div class="indexAboutUsImg">
@@ -427,11 +433,11 @@ export default {
         <p>我們致力於提供各種特色的玩具車， 讓每個孩子都能擁有專屬的玩具車， 展開一場屬於他們獨特的冒險旅程。</p>
       </div>
       <RouterLink to="/About" class="linkToAbout">
-        <!-- <div class="decoLine"></div> -->
         <div class="AboutLink">了解更多</div>
       </RouterLink>
     </div>
   </div>
+  
   <div class="indexGameGroup">
     <img src="@/assets/imgs/Home/indexGameTitle.svg" alt="" class="indexGameTitle">
     <div class="game">

@@ -2,24 +2,16 @@
 import axios from 'axios'; //引入函式庫
 import MainHeader from '@/components/MainHeader.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
-// import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
-
-// import userStore from '@/stores/user'
-
 import apiInstance from '@/stores/auth'
-import { nextTick } from 'vue'
-// import { mapState, mapActions } from "pinia";
-// import cartStore from "@/stores/cart";
 import chatBox from '@/components/btn/chatBox.vue'
 
 export default {
     components: {
         MainHeader, DoubleCloud, BlueBird, GreenBird, YellowBird, ProCardSwiper,chatBox,
-        // NumberSelect,
     },
     data() {
         return {
@@ -36,7 +28,6 @@ export default {
             count: 1,
             expanded: false,
             memInfo: [],
-            // userStoreData:userStore(),
             cityOption: [
                 { c: '台北市' },
                 { c: '新北市' },
@@ -104,10 +95,8 @@ export default {
                     this.thisProduct = response.data.find((item) => {
                         return item.pro_id == pageId
                     })
-                    console.log(this.allProducts);
+                    // console.log(this.allProducts);
                 })
-                // console.log("========",this.thisProduct)
-                // })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
                     this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
@@ -119,7 +108,7 @@ export default {
             axios.get(`${import.meta.env.VITE_PHP_URL}/back/backMember.php`)
                 .then(res => {
                     this.memInfo = res.data
-                    console.log(this.memInfo);
+                    // console.log(this.memInfo);
                 })
                 .catch(error => {
                     console.error("Error:", error);
@@ -164,7 +153,7 @@ export default {
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartFromData
             }).then(res => {
-                console.log(res);
+                // console.log(res);
                 if (res && res.data && res.data.msg === '完成訂購') {
                     alert("訂購完成")
                 } else {
@@ -180,7 +169,7 @@ export default {
             this.shCartItems = [];
             this.cart = [];
             localStorage.setItem('cart', JSON.stringify(this.shCartItems));
-            console.log('清除購物車', this.cart);
+            // console.log('清除購物車', this.cart);
         },
         subOrder() {
             this.buyDone();
@@ -300,8 +289,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/page/cart.scss';
-
-// @import '@/assets/scss/page/cartPart2.scss';
 #circle2 {
     background-color: #C0AA88;
     border: none;

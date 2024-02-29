@@ -15,7 +15,7 @@ export default {
         },
         // 轉換pro_info到比較合適的版型
         replaceLineBreaks(text) {
-            console.log(text);
+            // console.log(text);
             return text.replace(/\r\n/g, "<br>");
         },
     },

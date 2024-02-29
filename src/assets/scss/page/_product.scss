@@ -1,6 +1,4 @@
-main{
-    padding: 80px 0 100px 0;
-}
+
 .pro_title{
 
     position: relative;
@@ -93,7 +91,7 @@ main{
 .smallImgsBox{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     .smallImg{
         box-sizing: border-box;
         width: 24%;
@@ -104,7 +102,7 @@ main{
 }
 @media (min-width: 768px){
     .smallImgsBox .smallImg{
-        width: 48%;
+        width: 36%;
     }
 }
 //圖片切換器css終點

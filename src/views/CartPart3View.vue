@@ -19,7 +19,6 @@ export default {
         return {
             orderList: [],
             allProducts: [],
-            // cartItems: [],
         }
     },
     created() {

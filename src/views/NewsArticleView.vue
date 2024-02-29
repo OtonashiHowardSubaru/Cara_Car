@@ -1,5 +1,6 @@
 
 <template>
+    <loading :isLoading="isLoading"/>
     <MainHeader />
     <main class="newsArticle">
         <div class="topDecoBg"></div>
@@ -63,6 +64,7 @@ import GreenBird from '@/components/animation/GreenBird.vue'
 
 import axios from 'axios'; //引入函式庫
 import chatBox from '@/components/btn/chatBox.vue'
+import loading from "@/components/loading.vue";
 
 export default {
     components: {
@@ -71,7 +73,8 @@ export default {
         YellowBird,
         BlueBird,
         GreenBird,
-        chatBox
+        chatBox,
+        loading,
 
     },
     data() {
@@ -79,6 +82,7 @@ export default {
             // 資料
             allNews: [],
             thisNews: {},
+            isLoading: true,
         }
     },
     created() {//在頁面載入時同時載入function
@@ -86,7 +90,7 @@ export default {
     },
     watch: {
         '$route'(to, from) {
-            // 間丁 $route 有變化
+            // 監聽 $route 有變化
             // 在路徑參數有變化時,執行一次fetchData(抓取資料)
             this.fetchData();
         }
@@ -106,6 +110,8 @@ export default {
                     this.allNews = response.data;
                     // 找到相符合的news並設置給 thisNews
                     this.thisNews = this.allNews.find((thisNews) => thisNews.news_id == pageId)
+
+                    this.isLoading = false;
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);

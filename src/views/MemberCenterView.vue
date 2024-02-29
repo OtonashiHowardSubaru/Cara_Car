@@ -32,7 +32,7 @@ export default {
       orderList: [], //全部訂單資料
       payedUnShipList: [],//已付款未出貨
       payedAndShipList: [],//已付款已出貨
-      detailList:[],//每一筆訂單內容的篩選結果
+      detailList: [],//每一筆訂單內容的篩選結果
       currentOrderData: 0,
       selectedFile: null,
       imgShow: true,
@@ -44,15 +44,15 @@ export default {
     this.updateWindowSize();
 
     //get在localStorage裡面
-    this.userData.member_id = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).id: "";
-    this.userData.m_name = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).name: "";
-    this.userData.m_phone = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).phone: "";
-    this.userData.m_email = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).email: "";
-    this.userData.m_city = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).city: "";
-    this.userData.m_district = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).district: "";
-    this.userData.m_address = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).address: "";
-    this.userData.img_path = localStorage.getItem("userData")? JSON.parse(localStorage.getItem("userData")).img_path: "";
-      
+    this.userData.member_id = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id : "";
+    this.userData.m_name = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).name : "";
+    this.userData.m_phone = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).phone : "";
+    this.userData.m_email = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).email : "";
+    this.userData.m_city = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).city : "";
+    this.userData.m_district = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).district : "";
+    this.userData.m_address = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).address : "";
+    this.userData.img_path = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).img_path : "";
+
     this.axiosGetOrder();
     this.axiosGetOrderContent();
 
@@ -187,7 +187,7 @@ export default {
       return this.userData.img_path
         ? (this.userData.img_path.startsWith("http")
           ? this.userData.img_path
-          : new URL(`${import.meta.env.VITE_IMG_BASE_URL}/memberImg/${this.userData.img_path}`).href)
+          : new URL(`${import.meta.env.VITE_IMG_BASE_URL}/memberImgs/${this.userData.img_path}`).href)
         : userImage;
     },
 
@@ -232,49 +232,49 @@ export default {
     },
     axiosGetOrder() {
       // 判斷localStorage裡面有沒有userData，有就把member_id抓出來讀取PHP，沒有則執行else回傳錯誤訊息
-      if(localStorage.getItem('userData')){
+      if (localStorage.getItem('userData')) {
 
         let userData = JSON.parse(localStorage.getItem('userData'));
         let member_id = userData.id;
 
         axios.get(`${import.meta.env.VITE_PHP_URL}/front/frontOrder.php?member_id=${member_id}`)
-        .then((res) => {
-          // 成功取得資料後，將資料存入陣列
-          // console.log(res.data)
-          this.orderList = res.data
-          this.payedUnShipList = this.orderList.filter(item => {
-            return item.ord_del_state === 0;
+          .then((res) => {
+            // 成功取得資料後，將資料存入陣列
+            // console.log(res.data)
+            this.orderList = res.data
+            this.payedUnShipList = this.orderList.filter(item => {
+              return item.ord_del_state === 0;
+            })
+            // console.log(this.payedUnShipList)
+            this.payedAndShipList = this.orderList.filter(item => {
+              return item.ord_del_state === 1;
+            })
+            // console.log(this.payedAndShipList)
           })
-          console.log(this.payedUnShipList)
-          this.payedAndShipList = this.orderList.filter(item => {
-            return item.ord_del_state === 1;
-          })
-          console.log(this.payedAndShipList)
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
-        });
-      }else{
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+            this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
+          });
+      } else {
         console.error("userData not found in localStorage.")
         member_id = null;
         this.errorMessage = "目前為訪客身分，無法取得會員資訊"
       }
     },
 
-    axiosGetOrderContent(){
+    axiosGetOrderContent() {
       let userData = JSON.parse(localStorage.getItem('userData'));
       let member_id = userData.id;
       axios.get(`${import.meta.env.VITE_PHP_URL}/front/getOrderDetail.php?member_id=${member_id}`)
-      .then((res) => {
-        console.log(res.data);
-        this.detailList = res.data
-        console.log(this.detailList);
-      })
-      .catch((error)=>{
-        console.error("Error fetching data:", error)
-        this.errorMessage = "執行失敗" + error.message;
-      })
+        .then((res) => {
+          // console.log(res.data);
+          this.detailList = res.data
+          // console.log(this.detailList);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error)
+          this.errorMessage = "執行失敗" + error.message;
+        })
     }
   },
 

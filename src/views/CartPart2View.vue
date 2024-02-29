@@ -1,30 +1,25 @@
 <script>
 import axios from 'axios'; //引入函式庫
-// import { router } from '@/router'; 
 import MainHeader from '@/components/MainHeader.vue';
 import ProCardSwiper from '@/components/ProCardSwiper.vue';
-// import NumberSelect from '@/components/btn/BtnNumberSelect.vue';
 import DoubleCloud from "@/components/animation/DoubleCloud.vue";
 import BlueBird from "@/components/animation/BlueBird.vue";
 import GreenBird from "@/components/animation/GreenBird.vue";
 import YellowBird from "@/components/animation/YellowBird.vue";
 import Swal from 'sweetalert2';
-
+import chatBox from '@/components/btn/chatBox.vue'
 import apiInstance from '@/stores/auth'
 import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
-import chatBox from '@/components/btn/chatBox.vue'
 
 export default {
 components:{
-    MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,chatBox,
-    // NumberSelect,
-    Swal,
+    MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,
+    Swal,chatBox,
 },
 data(){
     return {
         allProducts:[],
-        // cartItems:[],
         name:'',
         phone:'',
         city:'',
@@ -63,30 +58,6 @@ data(){
 },
 created() {
     this.fetchData();
-    // this.getLocalCartData();
-
-    // const userData = JSON.parse(localStorage.getItem('userData'));
-    // this.id = userData ? userData.id : null;
-    // console.log(this.id); 
-
-    // axios.get(`${import.meta.env.VITE_LPHP_URL}/buyDone.php`)
-    //     .then(response => {
-    //         // 處理從後端收到的訂單ID
-    //         const orderId = response.data.ordId;
-    //         // 做任何您需要的處理，例如存儲在data中以便後續使用
-    //         this.orderId = orderId;
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
-    // // console.log(cartItems);
-    //要抓取localStorage裡面cartItems的JSON裡面第一個物件的陣列，取不出來
-    
-   // 從LocalStorage中讀取購物車資料
-    // const cartData = JSON.parse(localStorage.getItem('cart'));
-    // if (cartData) {
-    //     this.cartItems = cartData; // 將資料存儲在Vue的data屬性中
-    // }; 
 },
 computed: {
     ...mapState(cartStore,[
@@ -105,15 +76,11 @@ methods: {
         axios.get(`${import.meta.env.VITE_PHP_URL}/front/productlist.php?`)
         .then((response) => {
           // 成功取得資料後，將資料存入陣列
-          // console.log(response.data)
         this.allProducts = response.data;
         this.thisProduct = response.data.find((item) =>{
             return item.pro_id == pageId
         })
-        // console.log(this.allProducts);
         })
-        // console.log("========",this.thisProduct)
-      // })
         .catch((error) => {
         console.error("Error fetching data:", error);
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
@@ -121,16 +88,6 @@ methods: {
 
         },
 
-    axiosGet(){
-        axios.get(`${import.meta.env.VITE_PHP_URL}/back/backMember.php`)
-        .then(res=>{
-            this.memInfo = res.data
-            console.log(this.memInfo);
-        })
-        .catch(error=> {
-            console.error("Error:", error);
-        });
-    },
     
     updateQuantity(index, newQuantity){
         // 更新购物车内商品数量
@@ -158,8 +115,60 @@ methods: {
         "addToCart",
         "getProductImgSrc",
     ]),
+    //購買人資料填寫
+    buyDone(){
+        if (!this.name || !this.phone || !this.city || !this.area || !this.road) {
+        Swal.fire({
+        icon: "error",
+        text: '請填寫完整資訊才能完成訂購',
+        });
+        return; // 阻止 API 调用
+        }
+        //尋找數量計算資料
+        const subtotal = this.subtotal;
+        const subFreight = this.subFreight;
+        const total = this.total;
+        //尋找會員資料
+        const member_id = JSON.parse(localStorage.getItem('userData')).id;
+
+        const cartFromData = new FormData();
+        cartFromData.append('ord_reciever', this.name);
+        cartFromData.append('ord_phone', this.phone);
+        cartFromData.append('ord_city', this.city);
+        cartFromData.append('ord_district', this.area);
+        cartFromData.append('ord_address', this.road);
+        cartFromData.append('remark', this.remark);
+        cartFromData.append('member_id', member_id);
+        cartFromData.append('ord_ship', subFreight);
+        cartFromData.append('ord_sum', subtotal);
+        cartFromData.append('ord_total', total);
+        cartFromData.append('ord_del_state', 0);
+
+        
+
+        apiInstance({
+                method: 'post',
+                url: `${import.meta.env.VITE_PHP_URL}/front/buyDone.php`, // 改成我們的php
+                headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
+                data: cartFromData
+            }).then(res=>{
+                // console.log(cartFromData);
+                let ordId = res.data.ordId
+                if(res && res.data && res.data.msg === '完成訂購'){
+                    alert("訂購完成");
+                    this.getProduct(ordId);
+                    this.$router.push('/CartPart3');
+                }else{
+                    alert('訂購失敗')
+                }
+                this.getProduct(res.data.ordId)
+            }).catch(error=>{
+                console.log(error);
+            })
+
+    },
     //抓取商品資料
-    getProduct(){
+    getProduct(ordId){
         const cartBuyData = new FormData();
 
         let cartArray = []
@@ -179,14 +188,10 @@ methods: {
                 cartArray.push(cart);
             }
         }
-        console.log(cartArray)
-
-            const cartArrayJSON = JSON.stringify(cartArray);
-            cartBuyData.append('cartArray', cartArrayJSON);
-
-
-            // console.log(cartStore.cartItems);
-            // cartBuyData.append('pro_name',cartStore.cartItems[0].name);
+        
+        const cartArrayJSON = JSON.stringify(cartArray);
+        cartBuyData.append('cartArray', cartArrayJSON);
+        // console.log(cartArray)
 
             apiInstance({
                 method: 'post',
@@ -194,10 +199,10 @@ methods: {
                 headers: { "Content-Type": "multipart/form-data" }, // 跨域存取
                 data: cartBuyData
             }).then(res => {
-                console.log(cartBuyData);
+                // console.log(res);
+                // console.log(cartBuyData);
                 if (res && res.data && res.data.msg === '已抓取商品資訊') {
                     alert("成功");
-                    // this.$router.push('/CartPart3');
                 }else{
                     alert('失敗')
                 }
@@ -239,9 +244,6 @@ methods: {
             </div>
 
         </section>
-        <!-- {{ cartItems }} -->
-        <!-- {{ subFreight }} -->
-        <!-- {{ subtotal}} -->
         <form class="cartReceiptInformation">
             <div class="receiptnformation">
                 <span class="informationTitle">
@@ -284,7 +286,9 @@ methods: {
                     <input type="text" placeholder=" 中正區" class="area">
                 </div>
                 <input type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
-                    <input type="button" class="subButton" @click="buyDone" value="確認並送出訂單">
+
+                <input type="button" class="subButton" @click="buyDone" value="確認並送出訂單">
+
                 <router-link to="/cart">
                     <button class="subButton" id="backButton">
                         回上一頁修改
@@ -292,18 +296,14 @@ methods: {
                 </router-link>
             </div>
         </form>
-        
+        <chatBox />
     </main>
     <ProCardSwiper :displayData="allProducts" :title="'別人也逛過'" />
     <ProCardSwiper :displayData="allProducts" :title="'也許你會喜歡'" />
-    <chatBox />
-
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/page/cart.scss';
-
-// @import '@/assets/scss/page/cartPart2.scss';
 #circle2 {
     background-color: #C0AA88;
     border: none;

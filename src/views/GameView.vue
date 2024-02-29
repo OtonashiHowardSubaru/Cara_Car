@@ -115,7 +115,7 @@ export default {
     clickanswer(choosedValue) {
       this.process++; //追蹤進度
       this.value += choosedValue
-      console.log(this.value);
+      // console.log(this.value);
     }
   }
 }

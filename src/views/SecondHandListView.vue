@@ -33,7 +33,7 @@ export default {
     axios.get(`${import.meta.env.VITE_PHP_URL}/front/shProductList.php`)
       .then((response) => {
         // 成功取得資料後，將資料存入陣列
-        console.log(response.data)
+        // console.log(response.data)
         this.responseData = response.data;
         this.displayData = response.data;
       })
@@ -57,9 +57,6 @@ export default {
       } else if (newSort === "asc") {
         this.displayData.sort((a, b) => a.sh_pro_price - b.sh_pro_price);
       };
-    },
-    currentSidebar(item) {
-      this.activeTab = item
     },
     changePage(page) {
       this.currentPage = page;

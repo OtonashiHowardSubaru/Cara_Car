@@ -45,13 +45,18 @@ export default {
 </script>
 
 <template>
+
   <loading />
+
   <MainHeader />
+
   <div class="about">
+
     <div class="aboutTitle">
       <h1>關於CaRa Car</h1>
       <img src="@/assets/imgs/about/aboutTitle.svg" alt="關於CaRa Car">
     </div>
+
     <div class="topPics">
       <div class="topPicsView">
         <div class="topPicContainer">
@@ -70,6 +75,7 @@ export default {
         </div>
       </div>
     </div>
+
     <div class="bgcPic">
       <div class="aboutUsContents">
         <div class="aboutUsContentsPic">
@@ -117,11 +123,11 @@ export default {
     </div>
 
     <chatBox />
+
     <div class="bottonbtns">
       <BtnEvent />
       <BtnShopInfo />
     </div>
-
 
   </div>
 </template>
