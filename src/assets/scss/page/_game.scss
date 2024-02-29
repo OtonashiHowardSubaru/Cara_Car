@@ -113,11 +113,12 @@ main{
   }
 }
 .finishGame{
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
   padding: 3% 5%;
-  margin: var(--gameMargin);
+  margin: 50px 0 0 0;
   aspect-ratio: 0.8/1;
   background-image: url(../../imgs/game/result_box_mobile.svg);
   background-size: cover;
@@ -137,6 +138,5 @@ main{
       font-size: $h4;
     }
   }
-
 }
 //分頁標題css終點
