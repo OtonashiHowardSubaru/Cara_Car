@@ -187,7 +187,7 @@ export default {
                     <span class="cartFunctionTitle">$120</span>
                 </div>
                 <!-- 這裡要算加運費的總金額 -->
-                <p class="cartCountTotal" id="cart3Total">合計金額：{{  cartItems[0].shprice + 120 }}</p>
+                <p class="cartCountTotal" id="cart3Total">合計金額：{{  parseInt(cartItems[0].shprice) + 120 }}</p>
             </div>
 
         </section>

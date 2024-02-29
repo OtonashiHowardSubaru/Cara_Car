@@ -212,8 +212,8 @@ export default {
                     <input type="text" name="quantity" :value="item.shquantity" class="qty" ref="`qtyInput_${index}`"
                         @keydown.enter.prevent v-bind:style="{ margin: L + 'px' }" readonly>
                 </div>
-                <p class="shipment">${{ item.sh_ord_ship }}</p>
-                <p class="proCount">${{ item.shprice }}</p>
+                <p class="shipment">$120</p>
+                <p class="proCount">${{ parseInt(item.shprice)+120 }}</p>
             </div>
             <div class="total"></div>
             <!-- 結束 -->
