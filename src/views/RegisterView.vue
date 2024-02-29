@@ -33,6 +33,28 @@ export default {
 
     // 註冊事件
     register() {
+
+      // 所有欄位都要填才能送出
+      if (!this.name ||
+        !this.birthday ||
+        !this.email ||
+        !this.phone ||
+        !this.city ||
+        !this.district ||
+        !this.address ||
+        !this.psw666 ||
+        !this.psw666again) {
+      alert("請填寫所有必填欄位");
+      return;
+    }
+
+      // 條款一定要勾選才能送出
+    const termsChecked = document.getElementById('registerChecked').checked;
+    if (!termsChecked) {
+      alert("請勾選同意所有條款");
+      return;
+    }
+
       if (this.psw666 !== this.psw666again) {
         alert("請確認密碼");
       } else if (this.psw666.length < 8 && this.psw666.length < 8) {
@@ -83,7 +105,6 @@ export default {
       <div class="title">
         <img src="@/assets/imgs/login/JoinUsTitle.png" alt="title" />
       </div>
-      <div class="line"></div>
     </div>
     <div class="registerContent">
       <div class="textarea">
