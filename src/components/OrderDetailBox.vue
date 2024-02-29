@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["orderList","detailList"],
+  props: ["orderList", "detailList"],
   data() {
     return {
       active: "",
@@ -9,7 +9,7 @@ export default {
 
   methods: {
     checkOrderDetail(ord_id) {
-      this.active = this.active === ord_id ? null : ord_id;
+      this.active = this.active == ord_id ? null : ord_id;
     },
   },
 };
@@ -17,11 +17,7 @@ export default {
 
 <template>
   <div class="order_detail">
-    <div
-      class="order_card"
-      v-for="orderItems in orderList"
-      :key="orderItems.ord_id"
-    >
+    <div class="order_card" v-for="orderItems in orderList" :key="orderItems.ord_id">
       <div class="order_proImg">
         <img src="@/assets/imgs/product/product_1.png" alt="" />
       </div>
@@ -38,19 +34,19 @@ export default {
 
       <Transition name="fade">
 
-        <div class="detail_card_content" v-if="active === orderItems.ord_id">
-            <div class="detail_card" v-for="detail in detailList" :key="detail.ord_id">
-                <div class="detail_proImg">
-                    <img src="@/assets/imgs/product/product_1.png" alt="" />
-                </div>
-                <div class="detail_text">
-                    <h2>商品名稱：{{ detail.pro_name }}</h2>
-                    <h2>商品單價：{{ detail.pro_sale }}</h2>
-                    <h2>商品數量：{{ detail.ord_qty }}</h2>
-                    <h2>運費：{{ 120 * detail.ord_qty }}</h2>
-                    <h2>商品總額：{{ detail.ord_sum }}</h2>
-                </div>
+        <div class="detail_card_content" v-if="active == orderItems.ord_id">
+          <div class="detail_card" v-for="detail in detailList" :key="detail.ord_id">
+            <div class="detail_proImg">
+              <img src="@/assets/imgs/product/product_1.png" alt="" />
             </div>
+            <div class="detail_text">
+              <h2>商品名稱：{{ detail.pro_name }}</h2>
+              <h2>商品單價：{{ detail.pro_sale }}</h2>
+              <h2>商品數量：{{ detail.ord_qty }}</h2>
+              <h2>運費：{{ 120 * detail.ord_qty }}</h2>
+              <h2>商品總額：{{ detail.ord_sum }}</h2>
+            </div>
+          </div>
         </div>
       </Transition>
 

@@ -243,11 +243,11 @@ export default {
             // console.log(res.data)
             this.orderList = res.data
             this.payedUnShipList = this.orderList.filter(item => {
-              return item.ord_del_state === 0;
+              return item.ord_del_state == 0;
             })
             // console.log(this.payedUnShipList)
             this.payedAndShipList = this.orderList.filter(item => {
-              return item.ord_del_state === 1;
+              return item.ord_del_state == 1;
             })
             // console.log(this.payedAndShipList)
           })
