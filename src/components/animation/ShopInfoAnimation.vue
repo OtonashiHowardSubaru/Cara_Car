@@ -71,6 +71,7 @@ import gsap from 'gsap';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
+    emits: ['loadFinished'], 
     setup() {
         // 使用ref追踪是否显示bgCover
         const showBgCover = ref(false);
@@ -671,7 +672,10 @@ export default {
         return {
             showBgCover,
         }
-    }
+    },
+    mounted(){
+        this.$emit('loadFinished')
+    },
 }
 </script>
 
