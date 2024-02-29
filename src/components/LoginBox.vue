@@ -105,12 +105,12 @@ export default {
                 // console.log(res);
                 if (res && res.data) {
 
-                    if (res.data.code == '1') {
+                    if (res.data.code == 1) {
                         // Check m_state value
-                        if (res.data.memInfo.m_state === '0') {
+                        if (res.data.memInfo.m_state == 0) {
                             alert('此帳號為禁用狀態,請聯繫管理人員哦QVQ');
 
-                        } else if (res.data.memInfo.m_state === '1') {
+                        } else if (res.data.memInfo.m_state == 1) {
                             // Normal login flow for m_state = 1
                             this.userStoreData.updateToken(res.data.session_id)
                             this.userStoreData.updateUserData(res.data.memInfo)
