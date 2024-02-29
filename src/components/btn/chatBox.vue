@@ -279,7 +279,7 @@ export default {
                     messages.value.push({ body: "哇，汽車真是個有趣的話題！歡迎到Cara Car 挑選您喜愛的兒童汽車哦!", author: 'Cara' });
                 } else if (youMessage.value.toLowerCase().includes('二手車')) {
                     // 檢查 youMessage 是否包含二手車關鍵字
-                    messages.value.push({ body: "如果有興趣知道販售二手車的流程的話，可以參考我們要賣車的網頁唷~裡面有詳細資訊~", author: 'Cara' , hasLinkButton: true, routerLink: "/About"});
+                    messages.value.push({ body: "如果有興趣知道販售二手車的流程的話，可以參考我們要賣車的網頁唷~裡面有詳細資訊~", author: 'Cara' , hasLinkButton: true, routerLink: "/SecondHandSale"});
                 } else if (youMessage.value.toLowerCase().includes('購物車')) {
                     // 檢查 youMessage 是否包含購物車
                     messages.value.push({ body: "快把你喜愛的車款加到購物車!!喜歡就不要錯過囉~購物車要記得結帳唷!", author: 'Cara' });
