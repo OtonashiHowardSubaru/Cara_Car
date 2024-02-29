@@ -51,8 +51,8 @@ export default {
             let context = canvas.getContext('2d');
 
             canvas.width = document.documentElement.clientWidth;
-            // canvas.height = 1100;
-            canvas.height = document.documentElement.clientWidth * 0.965;
+            canvas.height = 1100;
+            // canvas.height = document.documentElement.clientWidth * 0.965;
             // context.translate(300, 80);
             // matchMedia
 
