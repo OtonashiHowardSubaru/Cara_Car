@@ -2,15 +2,24 @@
   <div class="loadingBox" v-if="this.isLoading">
     <div class="loadingContainer">
       <div class="container1">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoC.png" alt="logoC">
+        </div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoA.png" alt="logoA">
+        </div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoR.png" alt="logoR">
+        </div>
+        <div class="dot">
+          <img src="../assets/imgs/nav/logoA2.png" alt="logoA2">
+        </div>
       </div>
-      <div class="container2">
+      <!-- <div class="container2">
         <div class="dot shadow"></div>
         <div class="dot shadow"></div>
         <div class="dot shadow"></div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -35,17 +44,17 @@ export default {
       ease: "power1.in",
     });
 
-    gsap.from(".container2 .dot", {
-      y: 60,
-      duration: 0.5,
-      stagger: {
-        each: 0.2,
-        repeat: -1,
-        yoyo: true,
-      },
-      ease: "power1.in",
-      opacity: 0,
-    });
+    // gsap.from(".container2 .dot", {
+    //   y: 60,
+    //   duration: 0.5,
+    //   stagger: {
+    //     each: 0.2,
+    //     repeat: -1,
+    //     yoyo: true,
+    //   },
+    //   ease: "power1.in",
+    //   opacity: 0,
+    // });
   },
   methods: {},
 };

@@ -33,7 +33,7 @@ import ShopMap from '@/components/ShopMap.vue';
 import InfoTextCards from '@/components/InfoTextCards.vue';
 import ShopInfoAnimation from '@/components/animation/ShopInfoAnimation.vue'
 import chatBox from '@/components/btn/chatBox.vue'
-
+import loading from "@/components/loading.vue";
 
 
 export default {
@@ -44,7 +44,7 @@ export default {
         ShopMap,
         InfoTextCards,
         ShopInfoAnimation,
-        chatBox
+        chatBox,
 
     },
     data() {

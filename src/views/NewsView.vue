@@ -1,4 +1,6 @@
 <template>
+    <loading :isLoading="isLoading" />
+
     <MainHeader />
     <main class="pageNews">
         <header class="newsTitle">
@@ -63,6 +65,9 @@ import SingleCloud from '@/components/animation/SingleCloud.vue'
 import axios from 'axios'; //引入函式庫
 import chatBox from '@/components/btn/chatBox.vue'
 
+// loading 動畫
+import loading from "@/components/loading.vue";
+
 
 
 
@@ -76,7 +81,8 @@ export default {
         GreenBird,
         DoubleCloud,
         SingleCloud,
-        chatBox
+        chatBox,
+        loading,
 
     },
     data() {
@@ -113,6 +119,9 @@ export default {
             isCheckedAll: false,
             isCheckedSales: false,
             isCheckedActivity: false,
+
+            // loading 動畫
+            isLoading: true,
         }
     },
 
@@ -125,6 +134,7 @@ export default {
                 // console.log(response.data)
                 this.responseData = response.data;
                 this.displayData = response.data;
+                this.isLoading = false;
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
