@@ -23,6 +23,10 @@
 .bannerCanvas3{
     display: none;
 }
+.bannerCanvas4{
+    display: none;
+}
+
 .indexBannerTitle{
     // font-family: 'Kosugi Maru';
     letter-spacing: 5px;
@@ -59,7 +63,13 @@
     position: absolute;
     left: 8%;
     bottom: 26%;
+    // width: 10px;
 }
+// .cloud1{
+//     // top: -50px;
+//     position: relative;
+
+// }
 .DoubleCloud{
     position: absolute;
     left: 16%;
@@ -545,36 +555,46 @@
     width: 100%;
     flex-direction: column;
 }
+.gameTitle{
+    width: 100%;
+    box-sizing: border-box;
+}
 .indexGameTitle{
-    width: 380px;
-    margin: 0 auto;
+    width: 60%;
+    margin-left: 20%;
+    // margin: 0 auto;
+    vertical-align: top;
 }
 .game{
     position: relative;
+    width: 100%;
 }
 .indexGameBackground{
     width: 100%;
+    // border: 1px solid #000;
     z-index: -1;
     position: absolute;
-    top: -70%;
+    // top: -70%;
 }
 .indexGameImg{
-    width: 450px;
-    height: 250px;
-    margin-top: 50px;
+    width: 80%;
+    vertical-align: top;
+    // width: 450px;
+    // height: 250px;
+    margin-top: 30px;
 
 }
 .indexGameButton{
-    width: 200px;
-    height: 200px;
+    width: 35%;
+    height: 70%;
     border-radius: $borr5;
     background-color: $blackWord;
     border: $bor2 solid $whiteWord;
     cursor: pointer;
     z-index: 7;
     position: absolute;
-    top:25%;
-    right: 20%;
+    top:20%;
+    right: 10%;
 }
 .indexGameButton:hover{
     .indexGameButton2{
@@ -586,9 +606,10 @@
     // }
 }
 .gameButtonText{
-    position: absolute;
-    top: 15%;
-    left: 47%;
+    display: none;
+    // position: absolute;
+    // top: 15%;
+    // left: 47%;
 }
 // .rotate{
 //     transition: transform 5s;
@@ -617,8 +638,8 @@
     }
 }
 .indexGameButton2{
-    width: 160px;
-    height: 160px;
+    width: 80%;
+    height: 80%;
     border-radius: $borr5;
     background-color: $blackWord;
     border: $bor3 solid $whiteWord;
@@ -627,7 +648,7 @@
 }
 .indexGameButtonTitle{
     display: inline-block;
-    font-size: $h1;
+    font-size: $h3;
     color: $whiteWord;
     text-align: center;
     font-family: 'Single Day', cursive;
@@ -717,6 +738,9 @@ to {
     .bannerCanvas3{
         display: none;
     }
+    .bannerCanvas4{
+        display: none;
+    }
     .indexBannerTitle{
         writing-mode: vertical-rl;
         left: 10%;
@@ -759,36 +783,54 @@ to {
     }
     .bannerCanvas3{
         display: block;
-
+    }
+    .bannerCanvas4{
+        display: none;
+    }
+}
+@media (max-width:450px) {
+    .bannerCanvas{
+        display: none;
+    }
+    .bannerCanvas2{
+        display: none;
+    }
+    .bannerCanvas3{
+        display: none;
+    }
+    .bannerCanvas4{
+        display: block;
     }
 }
 
 @media (min-width:768px) {
     .indexGameGroup{
         // position: relative;
-        // display: flex;
-        // max-width: 1280px;
         width: 100%;
         // border: 1px solid red;
         // flex-direction: column;
     }
     .indexGameTitle{
-        width: 30%;
-        margin: 0 auto 0 auto;
+        margin-left: 30%;
+        width: 40%;
+        vertical-align: top;
     }
     .game{
         position: relative;
+        // width: 100%;
     }
     .indexGameBackground{
         width: 100%;
         z-index: -1;
         position: absolute;
-        top: -70%;
+        margin-top: -12%;
+        // bottom: 10%;
+        // top: -70%;
     }
     .indexGameImg{
         width: 60%;
-        height: 50%;
-        margin-top: 80px;
+        // height: 50%;
+        margin-top: 90px;
 
     }
     .indexGameButton{
@@ -814,6 +856,7 @@ to {
         // }
     }
     .gameButtonText{
+        display: block;
         position: absolute;
         // width: 100px;
         top: 33.5%;

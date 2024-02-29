@@ -47,10 +47,10 @@
     margin-top: 30px;
 }
 .cartProcessCircle{
-    width: 65px;
-    height: 65px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    line-height: 65px;
+    line-height: 50px;
     border-radius:$borr4;
     border: $bor2 solid $grey_2;
     color: $grey_3;
@@ -75,10 +75,10 @@
     margin-top: 10px;
 }
 .cartProcessname{
-    padding: 0px 52px;
+    padding: 0px 32px;
     font-size: 12px;
     color: $grey_3;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-weight: 600;
 }
 #process1{
@@ -138,7 +138,7 @@
     padding: 1% 0;
 }
 .number_select{
-    width: 28%;
+    width: 20%;
 }
 .countButton{
     background-color: $grey_1;
@@ -309,27 +309,27 @@ button{
     // border-radius: $borr2;
     border-radius: 15px;
     font-size: $mh6;
-    width: 36%;
+    width: 40%;
     color: #fff;
-    margin-bottom: 5%;
+    // margin-bottom: 5%;
     // padding: 10px;
 }
 #goToProduct{
     position: absolute;
-    left: 12%;
+    left: 8%;
     bottom: 5%;
     border: 2px solid $grass_2;
-    padding: 12px 50px;
+    padding: 12px 10px;
     background-color: #fff;
     color: $grass_1;
     cursor: pointer;
 }
 #goToCart{
     position: absolute;
-    right: 12%;
+    right: 8%;
     bottom: 5%;
     background-color: $grass_2;
-    padding: 14px 50px;
+    padding: 14px 10px;
     cursor: pointer;
 }
 .cartPrice{
@@ -436,6 +436,9 @@ button{
         top:95%;
         right:10%;
     }
+    .cartProcessname{
+        padding: 0px 52px;        
+    }
     .cartContent{
         font-size: $h4;
     }
@@ -480,6 +483,14 @@ button{
     .cartMatter{
         margin: 10% auto 13% auto;
     }
+    .cartProcessCircle{
+        width: 65px;
+        height: 65px;
+        text-align: center;
+        line-height: 65px;
+        border-radius:$borr4;
+
+    }
     .cartButton{
         position: relative;
         // margin-top: 20px;
@@ -490,6 +501,7 @@ button{
             width: 25%;
             color: #fff;
             letter-spacing: 3px;
+            margin-bottom: 5%;
         }
     }
     #goToProduct{
