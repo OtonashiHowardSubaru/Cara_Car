@@ -12,20 +12,23 @@
     }
 }
 .registerTitle{
-    margin-top: 85px;
+    margin-top: 80px;
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    & .line{
-        width: 100%;
-        height: 0;
-        background-color: transparent;
-        border: $bor1 solid $blackWord;
-    }
+    background-image: url(../../imgs/draw/greeting_illust.svg);
+    // background-position: center bottom -30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 140px;
+
     & .title{
         width: 100%;
         margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
         & img{
             width: 100%;
             vertical-align: top;
@@ -114,6 +117,7 @@
             }
         }
     }
+
     & .register_btn{
         display: flex;
         align-items: center;
@@ -139,8 +143,14 @@
         & a{
             color: $blackWord;
             font-size: $p;
+
+            &:hover {
+                color: $lightBlue;
+            }
         }
     }
+
+    
     & .other_register{
         width: 100%;
         padding: 0 0 20px 0;
