@@ -387,7 +387,6 @@ export default {
     </div>
     <DoubleCloud class="DoubleCloud" />
   </div>
-
   <div class="indexProductGroup">
     <div class="indexProductTitle">
       <img src="@/assets/imgs/Home/indexProductTitle.png" alt="indexProductTitle">
@@ -400,7 +399,6 @@ export default {
       <ProductCard :displayData="displayData" />
     </div>
   </div>
-
   <div class="decoTrainAnimation">
     <img src="@/assets/imgs/Home/index-grass-background.svg" alt="grass.svg" class="decoGrass">
     <img src="@/assets/imgs/draw/mountain.png" alt="mountain.png" class="decoMountain">
