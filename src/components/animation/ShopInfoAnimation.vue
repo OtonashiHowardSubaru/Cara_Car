@@ -5,7 +5,7 @@
     </div>
 
     <div class="bgAnime">
-        <img src="/src/assets/imgs/shopInfo/longStreetv2.png" alt="longStreetv2" class="longStreetv2">
+        <img src="/src/assets/imgs/shopInfo/longStreetv2.jpg" alt="longStreetv2" class="longStreetv2">
         <img src="/src/assets/imgs/shopInfo/longStreet2v2.png" alt="longStreet2v2" class="longStreet2v2">
 
         <div class="animaImg">
