@@ -36,8 +36,23 @@ export default defineStore("cartStore", {
             }
         },
 
+        // Swal.fire({
+        //     title: "請先登入會員",
+        //     icon: "warning",
+        //     confirmButtonText: "確定"
+        // });
+
         //加入購物車
         addToCart(thisProduct, qtyValue = 1){
+
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (!userData || !userData.id) {
+                Swal.fire({
+                    icon: "error",
+                    text: '請先登入會員',
+                });
+                return;
+            };
             const existingProductIndex = this.cartItems.findIndex((item) => {
                 return item.id == thisProduct.pro_id ;
             });
@@ -66,6 +81,7 @@ export default defineStore("cartStore", {
                     icon: 'success',
                     confirmButtonText: 'OK',
                 })
+        
         },
         reduceFromCart(thisProduct){
             const productIndex = this.cartItems.findIndex(

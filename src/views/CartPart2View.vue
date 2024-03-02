@@ -15,7 +15,7 @@ import cartStore from "@/stores/cart";
 export default {
 components:{
     MainHeader,DoubleCloud,BlueBird,GreenBird,YellowBird,ProCardSwiper,
-    Swal,chatBox,
+    chatBox,Swal,
 },
 data(){
     return {
@@ -31,6 +31,8 @@ data(){
         count: 1,
         expanded:false,
         cartStore: cartStore(),
+        // userData:false,
+        // useUserData:false,
         cityOption:[
             {c:'台北市'},
             {c:'新北市'},
@@ -53,7 +55,7 @@ data(){
             {c:'宜蘭縣'},
             {c:'澎湖縣'},
         ],
-        
+        creditCardNumber: '',
     }
 },
 created() {
@@ -86,27 +88,6 @@ methods: {
           this.errorMessage = "執行失敗: " + error.message; // 存儲錯誤訊息
         });
 
-        },
-
-    
-    updateQuantity(index, newQuantity){
-        // 更新购物车内商品数量
-        if (newQuantity < 1) {
-            // 如果数量小于1，则从购物车中删除该商品
-            this.cartItems.splice(index, 1);
-        } else {
-            this.cartItems[index].quantity = newQuantity;
-            //更新商品總金額
-            this.updateTotalPrice(index);
-        }
-        this.saveCartData();
-    },
-    updateTotalPrice(index){
-        const item = this.cartItems[index];
-        item.total = item.price * item.quantity;
-    },
-    saveCartData() {
-        localStorage.setItem('cart', JSON.stringify(this.cartItems));
     },
     ...mapActions(cartStore, [
         "reduceFromCart",
@@ -131,9 +112,22 @@ methods: {
         //尋找會員資料
         const member_id = JSON.parse(localStorage.getItem('userData')).id;
 
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        if (!userData || !userData.id) {
+        Swal.fire({
+            icon: "error",
+            text: '請先登入會員',
+        });
+        return; // 阻止 API 调用
+    }
+        // const member_id = this.userData ? userData.id : this.member_id;
+        // const userName = this.userData ? userData.name : this.name;
+        // const userPhone = userData.phone;
+
+
         const cartFromData = new FormData();
         cartFromData.append('ord_reciever', this.name);
-        cartFromData.append('ord_phone', this.phone);
+        cartFromData.append('ord_phone',  this.phone);
         cartFromData.append('ord_city', this.city);
         cartFromData.append('ord_district', this.area);
         cartFromData.append('ord_address', this.road);
@@ -208,7 +202,62 @@ methods: {
             }).catch(error => {
                 console.log(error);
             })
+    },
+    //會員資料快取
+    fetchMemberData() {
+        const isChecked = document.querySelector('.cartCheckbox').checked;
+        if(isChecked){
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData && userData.id) {
+                // 如果 userData 存在且包含用戶的相關資訊，則填入表單
+                this.name = userData.name;
+                this.phone = userData.phone;
+                this.city = userData.city;
+                this.area = userData.district;
+                this.road = userData.address;
+        }else {
+            // 如果用戶未登入，可以在此做其他處理，例如顯示提示訊息或導向登入頁面
+            console.log("User is not logged in.");
+            }
+        }else{
+            this.name = '';
+            this.phone = '';
+            this.city = '';
+            this.area = '';
+            this.road = '';
+        }
+    },
+    validateCreditCard() {
+    const isValid = this.luhnCheck(this.creditCardNumber);
+    if (isValid) {
+        Swal.fire({
+            icon: 'success',
+            title: '信用卡驗證成功！',
+        });
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: '信用卡驗證失敗！',
+        });
+    }
+},
 
+  // 使用 Luhn 算法驗證信用卡號的函数
+luhnCheck(cardNumber) {
+    let sum = 0;
+    let alternate = false;
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+        let n = parseInt(cardNumber.charAt(i), 10);
+        if (alternate) {
+            n *= 2;
+            if (n > 9) {
+            n = (n % 10) + 1;
+            }
+        }
+        sum += n;
+        alternate = !alternate;
+        }
+    return (sum % 10 === 0);
     },
 },
 }
@@ -247,21 +296,23 @@ methods: {
             <div class="receiptnformation">
                 <span class="informationTitle">
                     填寫收件人資料
-                    <span class="informationTitle2"><input type="checkbox" class="cartCheckbox">同會員資料</span>
+                    <span class="informationTitle2">
+                    <input type="checkbox"  class="cartCheckbox" @click="fetchMemberData">同會員資料
+                    </span>
                 </span>
                 <p class="cartInputTitle">收件人姓名</p>
-                <input v-model="name" type="text" name="name" class="cartInput">
+                <input v-model="name"  type="text" name="name" class="cartInput">
                 <p class="cartInputTitle">連絡電話</p>
                 <input v-model="phone" type="tel" minlength="10" maxlength="10" class="cartInput">
                 <p class="cartInputTitle">收件地址</p>
                 <div class="col66">
                     <select v-model="city" name="city" id="city">
-                        <option value="">請選擇縣市</option>
+                        <option value="" >請選擇縣市</option>
                         <option v-for="item in cityOption" :key="item">{{ (item).c }}</option>
                     </select>
                     <input v-model="area" type="text" placeholder=" 中正區" class="area">
                 </div>
-                <input v-model="road" type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
+                <input v-model="road"  type="text" placeholder="OO路O段O號O樓" class="cartInputRoad">
                 <p class="cartInputTitle">備註欄</p>
                 <textarea v-model="remark" name="remark" id="remark" cols="20" rows="5"></textarea>
                 <span class="informationTitle">
@@ -269,11 +320,12 @@ methods: {
                 </span>
                 <p class="cartInputTitle">信用卡卡號</p>
                 <div class="allCardNumber">
-                    <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
+                    <input type="text" v-model="creditCardNumber" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
                     <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
                     <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
                     <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
                 </div>
+                <div class="subButton" @click="validateCreditCard">驗證</div>
                 <p class="cartInputTitle">持卡人姓名</p>
                 <input type="text" name="name" class="cartInput">
                 <p class="cartInputTitle">帳單地址</p>
