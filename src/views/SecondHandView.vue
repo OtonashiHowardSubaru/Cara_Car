@@ -189,7 +189,6 @@ export default {
         <img v-for="item in ImgsName" :src="getProductImgSrc(item.img_name)" alt="" @click="showLarge($event)" :key="item"
           class="littlepic">
       </div>
-
     </div>
     <div class="intro">
       <div class="titleBackGround">

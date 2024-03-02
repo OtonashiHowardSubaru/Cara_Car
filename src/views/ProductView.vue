@@ -158,6 +158,7 @@ export default {
             });
         } else {
             this.favoriteProducts.push(product);
+            localStorage.setItem('favoriteProducts', JSON.stringify(this.favoriteProducts));
             Swal.fire({
               title: '已加入收藏清單',
               icon: 'success',
