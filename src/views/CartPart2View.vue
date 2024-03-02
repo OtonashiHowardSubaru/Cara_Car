@@ -325,7 +325,7 @@ luhnCheck(cardNumber) {
                     <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
                     <input type="text" name="cardNumber" class="cardNumber" maxlength="4" placeholder="----">
                 </div>
-                <div class="subButton" @click="validateCreditCard">驗證</div>
+                <!-- <div class="subButton" @click="validateCreditCard">驗證</div> -->
                 <p class="cartInputTitle">持卡人姓名</p>
                 <input type="text" name="name" class="cartInput">
                 <p class="cartInputTitle">帳單地址</p>
