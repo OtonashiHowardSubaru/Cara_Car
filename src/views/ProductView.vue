@@ -40,6 +40,7 @@ export default {
       favoriteProducts: [],
       isFavorite: false,
       isLoading: true,
+      isLoggedIn: false, 
     };
   },
   computed: {
@@ -50,6 +51,11 @@ export default {
     this.fetchData();
     this.getLocalCartData();
     this.fetchFavoriteProducts();
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (userData) {
+      // 如果有用戶數據，將 isLoggedIn 設置為 true
+      this.isLoggedIn = true;
+    }
   },
   watch: {
     $route(to, from) {
@@ -162,8 +168,30 @@ export default {
         localStorage.setItem('favoriteProducts', JSON.stringify(this.favoriteProducts));
         this.isFavorite = !this.isFavorite; 
       },
-    
-
+      // login(){
+      //   //登入
+      //   this.isLoggedIn = true;
+      //   localStorage.setItem("isLoggedIn", JSON.stringify(true));
+        
+      // },
+      logout() {
+      // 登出時清除本地端存儲的用戶數據
+      localStorage.removeItem('userData');
+      this.isLoggedIn = false;
+      },
+      handleAddToCart(thisProduct, qtyValue) {
+        if (this.isLoggedIn) {
+            // 用戶已登入，執行加入購物車操作
+            this.addToCart(thisProduct, qtyValue);
+        } else {
+            // 用戶未登入，顯示提示信息
+            Swal.fire({
+                title: "請先登入會員",
+                icon: "warning",
+                confirmButtonText: "確定"
+            });
+        }
+    },
 
 
 
@@ -326,7 +354,7 @@ export default {
           <button
             type="button"
             id="addToCartBtn"
-            @click="addToCart(thisProduct, qtyValue)"
+            @click="handleAddToCart(thisProduct, qtyValue)"
           >
             加入購物車
           </button>

@@ -254,69 +254,142 @@ export default {
 }
 
 .orderList {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto 60px;
-
-    h1 {
-        font-size: 20px;
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-    }
-
-    .left {
-        width: 40%;
-        margin-left: 10px;
-    }
-
-    .right {
-        width: 60%;
+        width: 80%;
         display: flex;
-        justify-content: center;
-    }
-
-    .listContent {
-        display: flex;
-        border-bottom: 1px solid #222;
-        padding-bottom: 15px;
-        // border:1px solid red;
-        // justify-content: space-between;
-        .row {
+        flex-direction: column;
+        margin: 0 auto 60px;
+    
+        h1 {
+            font-size: 18px;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+    
+        .left {
+            width: 45%;
+            margin-left: 10px;
+        }
+    
+        .right {
+            width: 45%;
             display: flex;
-            align-items: center;
-            width: 100%;
-            margin: 2px 0px;
+            justify-content: center;
         }
-
-        li {
-            font-weight: 600;
-            width: 40%;
-            line-height: 30px;
-            margin-right: 30px;
+    
+        .listContent {
+            display: flex;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+            // border:1px solid red;
+            // justify-content: space-between;
+            .row {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                // margin: 2px 0px;
+                // border:1px solid red;
+            }
+    
+            li {
+                font-weight: 600;
+                width: 50%;
+                line-height: 30px;
+                margin-right: 28px;
+                // border:1px solid red;
+            }
+            span{
+                width: 60%;
+                // border:1px solid red;
+            }
+        }
+        .count {
+            span {
+                border: none;
+            }
+        }
+    }
+    
+    .cartFunction {
+        border-radius: 20px;
+        padding: 50px 0 80px;
+        width: 75%;
+        margin: 0 auto;
+        background-color: $grey_1;
+    
+        .productCard {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #222;
         }
     }
 
-    .count {
-        span {
-            border: none;
+@media (min-width: 768px) {
+    .orderList {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto 60px;
+    
+        h1 {
+            font-size: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+    
+        .left {
+            width: 50%;
+            margin-left: 10px;
+        }
+    
+        .right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+    
+        .listContent {
+            display: flex;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+            // border:1px solid red;
+            // justify-content: space-between;
+            .row {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin: 2px 0px;
+            }
+    
+            li {
+                font-weight: 600;
+                width: 40%;
+                line-height: 30px;
+                margin-right: 30px;
+            }
+        }
+    
+        .count {
+            span {
+                border: none;
+            }
         }
     }
-}
-
-.cartFunction {
-    border-radius: 20px;
-    padding: 50px 0 80px;
-    width: 50%;
-    margin: 0 auto;
-    background-color: $grey_1;
-
-    .productCard {
-        padding-bottom: 20px;
-        border-bottom: 1px solid #222;
+    
+    .cartFunction {
+        border-radius: 20px;
+        padding: 50px 0 80px;
+        width: 50%;
+        margin: 0 auto;
+        background-color: $grey_1;
+    
+        .productCard {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #222;
+        }
     }
+    #cart3Total{
+        margin-right: 3%;
+    }
+    
 }
-#cart3Total{
-    margin-right: 3%;
-}
+
 </style>
