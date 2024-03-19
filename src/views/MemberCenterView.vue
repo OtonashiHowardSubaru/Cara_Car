@@ -12,6 +12,15 @@ export default {
   components: {
     MainHeader, OrderDetailBox, chatBox,Swal
   },
+  beforeRouteEnter(to, from, next) {
+    const storageToken = localStorage.getItem("token");
+    if (!storageToken) {
+      alert("請登入");
+      next(false);
+    } else {
+      next();
+    }
+  },
   data() {
     return {
       //呼叫登入Pinia取得登入資訊至localStorage
@@ -193,7 +202,7 @@ export default {
       return this.userData.img_path
         ? (this.userData.img_path.startsWith("http")
           ? this.userData.img_path
-          : new URL(`${import.meta.env.VITE_IMG_BASE_URL}/memberImgs/${this.userData.img_path}`).href)
+          : new URL(`${import.meta.env.VITE_IMG_BASE_URL}/memberImg/${this.userData.img_path}`).href)
         : userImage;
     },
 

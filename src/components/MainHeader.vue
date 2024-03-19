@@ -115,9 +115,8 @@ export default {
                 this.userStoreData.updateToken('')
                 this.userStoreData.updateUserData('')
                 localStorage.removeItem("imagePreview")
-                //登入是燈箱沒有頁面就不跳轉頁面了
-                location.reload()
-                // this.$router.push('/')
+                //雖然登入是燈箱，但會員中心可以按登出，未登入不能進入會員中心頁面，因此登出跳轉回首頁較合適。
+                this.$router.push('/')
             }
         },
         handleClick(e) {

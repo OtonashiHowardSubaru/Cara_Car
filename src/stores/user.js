@@ -16,7 +16,7 @@ export default defineStore('userStore', {
     // 對應 methods (物件形式)
     actions: {
         checkLogin() {
-            const storageToken = localStorage.getItem("userToken");
+            const storageToken = localStorage.getItem("token");
             if (this.token) {
                 return this.token; // 如果存儲庫中已經設定了 token，則返回它。
             } else if (storageToken) {
@@ -26,6 +26,21 @@ export default defineStore('userStore', {
                 return ""; // 如果找不到 token，則返回空字串。
             }
         },
+        // checkLogin() {
+        //     const storageToken = localStorage.getItem("userToken");
+        //     if(storageToken){
+        //         this.token = storageToken;
+        //         const member_id = localStorage.getItem("member_id");
+        //         if (member_id) {
+        //             return member_id;
+        //         } else {
+        //             return -1;
+        //         }
+        //     } else {
+        //         alert("請點選右上角Login登入")
+        //         return "";
+        //     }
+        // },
         updateToken(payload) {
             // console.log(payload);
             // 定義一個名為 updateToken 的方法，接受一個 payload 作為參數。
